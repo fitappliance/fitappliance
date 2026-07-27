@@ -111,10 +111,10 @@
         },
         {
           "path": "src/domain/mineru-document.mjs",
-          "contentSha256": "818b7beb6df158d3af2991fe6397ad7d17502dda15559481d18731bbc31df2d2"
+          "contentSha256": "2eb08c8d8a2c5e5c67a986752e3417e6b412023fa8f68adff3167fec1f0a44c8"
         }
       ],
-      "semanticSha256": "d64ff7ac7e7caebf52c79f0fd9960c3e41ec2bdbe2aa1bde40280a343b88daaf"
+      "semanticSha256": "c2215cb77b6836c956978855b00a9604f89d776e2d5c56fd48893eee38106fe7"
     },
     {
       "id": "publication",
@@ -1924,10 +1924,10 @@
         },
         {
           "path": "src/domain/mineru-document.mjs",
-          "contentSha256": "818b7beb6df158d3af2991fe6397ad7d17502dda15559481d18731bbc31df2d2"
+          "contentSha256": "2eb08c8d8a2c5e5c67a986752e3417e6b412023fa8f68adff3167fec1f0a44c8"
         }
       ],
-      "producerSha256": "d606bb0554a1834f6bd8c964c539e00a1d5069a8b2cc175f8bcb871d0755cae1",
+      "producerSha256": "79a4ea84ee56fb4091f803011a03a2da6246311569a8dea4cc5611dac3c58f23",
       "consumers": [
         "program-status"
       ],
@@ -2312,9 +2312,9 @@
       "consumers": [],
       "schemaVersion": 2,
       "generatedAt": "2026-07-19T19:32:08.439Z",
-      "contentSha256": "beb1deb0b1dd6e9d9fe3b61ac568d134e007cb194443a0a49445d1a9a65a583a",
-      "semanticSha256": "d4d983327c0c47fc144cbfb2424bc8144df7caa62591164abcf94dda88117de4",
-      "declaredSemanticSha256": "d4d983327c0c47fc144cbfb2424bc8144df7caa62591164abcf94dda88117de4",
+      "contentSha256": "2017fe117f0605c1820adeef0dec9eff6c269e45d5e96be389de90bf9339655d",
+      "semanticSha256": "3c6be306349ed07b5ae8fefe04c1258597e4524f068f9edfc042ae996cf6b7a7",
+      "declaredSemanticSha256": "3c6be306349ed07b5ae8fefe04c1258597e4524f068f9edfc042ae996cf6b7a7",
       "sourceBindings": [
         {
           "sourceStageId": "bounded-planner",
@@ -2840,6 +2840,6 @@
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_de77f30a75074d8bfd8a3c89",
-  "semanticContractSha256": "de77f30a75074d8bfd8a3c895abbe106a16e843653e10a370a8fde5cec8a1b9c"
+  "contractId": "historical_evidence_system_a25990f9af0ee57999c98cb2",
+  "semanticContractSha256": "a25990f9af0ee57999c98cb25fa4d615b566aa0d4fe0c30c2d817938b31fff9d"
 }

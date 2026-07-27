@@ -1,0 +1,4725 @@
+{
+  "schemaVersion": 1,
+  "reportId": "pdf-failure-baseline-100-wp8-parser-replay",
+  "builtOn": "2026-07-27",
+  "sourceBaselineId": "pdf-failure-baseline-100-2026-07-27",
+  "sourceRerunId": "pdf-failure-baseline-100-2026-07-27-wp7a-rerun",
+  "sourceRerunSha256": "6050a0ee7f0cf0ab7198d8993e47b54b704aaa371b439a83e3a8d3837fa3b169",
+  "requestedFields": [
+    "closedEnvelope.widthMm",
+    "closedEnvelope.heightMm",
+    "closedEnvelope.depthMm"
+  ],
+  "summary": {
+    "total": 100,
+    "byOutcome": {
+      "ACQUISITION_UNAVAILABLE": 43,
+      "COMPLETE_3_AXIS": 33,
+      "IDENTITY_SCOPE_FAILURE": 12,
+      "MINERU_STRUCTURE_INSUFFICIENT": 2,
+      "PARSER_GRAMMAR_GAP": 7,
+      "PARTIAL_AXIS": 2,
+      "SOURCE_CONTENT_ERROR": 1
+    },
+    "publicationEligible": 0
+  },
+  "familyBacklog": {
+    "eligibilityThresholdExactModelReceipts": 10,
+    "rankedForParserResearch": [],
+    "excluded": [
+      {
+        "familyId": "pdf_family_e2762b4b26f7b34c8975",
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 86,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 1,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "SOURCE_CONTENT_ERROR": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_2511f2812a448ef8ef76030e"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_dafd5dbfa43b0dd425b3",
+        "category": "dishwasher",
+        "brand": "Bosch",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 71,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_00200741afe1d2ea9b471985"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_5de15841e8f5df531aef",
+        "category": "fridge",
+        "brand": "Smeg",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 45,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_01dace5f644854a73bf18dd4"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_3f739d7852af0591c730",
+        "category": "fridge",
+        "brand": "Beko",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 40,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_071032fa7bd7a1ef5fbb6aee"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_ef1a40e75d86b14e4605",
+        "category": "washing_machine",
+        "brand": "LG",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 39,
+        "sampledDocuments": 2,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 2
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_036adab69d661abaa9347b4e",
+          "pdf_baseline_036ee590e95e96cec862164f"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_726b80a7e2784eb61c06",
+        "category": "fridge",
+        "brand": "Hisense",
+        "sourceHost": "dtc-aus-api.hisense.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 39,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_00b2c7b26a176ee5d34678fa"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_c522d0a2f7fcad3b2eb5",
+        "category": "dishwasher",
+        "brand": "Smeg",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 37,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_01093bf8b859b20b16fecdfb"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_37957004f54283f3e94b",
+        "category": "fridge",
+        "brand": "LG",
+        "sourceHost": "gscs-b2c.lge.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 34,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_1cde0efe4d80cbe7c7eea7c1"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_f033280ff7a335e952d8",
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.fisherpaykel.com",
+        "sourceFamilyHint": "quick_reference_guide",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 30,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 1,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_1a1c1b56e215ee75ed2a7fe7"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_cdb9400b07d2ec50b0a5",
+        "category": "fridge",
+        "brand": "CHIQ",
+        "sourceHost": "chiq.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 26,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0a979fd3ab6d496fa131b737"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_4664d65ada86be706950",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.fisherpaykel.com",
+        "sourceFamilyHint": "quick_reference_guide",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 25,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0254a4583d8e6e963c30d7d0"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_74c8c8884b83d2e346a5",
+        "category": "dishwasher",
+        "brand": "Beko",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 19,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_04603515d46d95088254a4d1"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_f22ea86219fd09a27588",
+        "category": "dishwasher",
+        "brand": "ASKO",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 19,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_01737849db8a8248fd5fe7a6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_74a91649e5ec8dfdc31e",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 18,
+        "sampledDocuments": 2,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 2
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_7134b88945c251551be937bb",
+          "pdf_baseline_adea778129992c0aa8de9af6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_9ce75570aef0bed984b3",
+        "category": "washing_machine",
+        "brand": "Haier",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 14,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0ab3a01c58a50efa12cf760a"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_bbaec155a6c999b8d4e0",
+        "category": "washing_machine",
+        "brand": "Bosch",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 14,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0faed27031e20ac292006109"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_0439d0064398ad4fe6e9",
+        "category": "washing_machine",
+        "brand": "Esatto",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 12,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_06299a5bafa10fcf50b1981a"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_130459ce9975aa051060",
+        "category": "fridge",
+        "brand": "Euromaid",
+        "sourceHost": "www.euromaid.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 11,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0d0ee9fa596dcc6363943645"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_93368fb289b07feac24c",
+        "category": "fridge",
+        "brand": "Bosch",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 11,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_123a955f8d4b54e4d22adc01"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_9c528537bc587132dd99",
+        "category": "washing_machine",
+        "brand": "Beko",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 11,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0403d1697666a642c1a4a18b"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_d134d78c71bc85711c8d",
+        "category": "dishwasher",
+        "brand": "Miele",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 11,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_027b63b02f1d49a64801c2b3"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_9df99912b1145610dbbf",
+        "category": "dryer",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.fisherpaykel.com",
+        "sourceFamilyHint": "quick_reference_guide",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 10,
+        "sampledDocuments": 2,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 2
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_03849faa14b85ab6a87517ef",
+          "pdf_baseline_0ffd0cb432b59569953ff8af"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_dcb617439470acf90ad2",
+        "category": "fridge",
+        "brand": "Esatto",
+        "sourceHost": "esatto.house",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 10,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": true,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0628a4f689af28d321e7bed6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_5d88e04bd85c59e95753",
+        "category": "dryer",
+        "brand": "Beko",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 9,
+        "sampledDocuments": 3,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 2,
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0e746d20e35d14aa4686701b",
+          "pdf_baseline_1abf75d38c1aabaa48c8538e",
+          "pdf_baseline_2c559af6ed099395e696b9e5"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_037f166e6a0484908c41",
+        "category": "dishwasher",
+        "brand": "Westinghouse",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 9,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_1950b8652e3679be297b5ac6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_ea84717745074760d16b",
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "sourceHost": "resource.electrolux.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
+        "candidateTargets": 9,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 1,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_e5641fd0daa0933a6182426a"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_bd49780065c3822fca95",
+        "category": "fridge",
+        "brand": "Miele",
+        "sourceHost": "media.miele.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 8,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_160d49bf7e5d139a6c8c71f6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_7c3d2a49a8ed86924fa5",
+        "category": "dryer",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 7,
+        "sampledDocuments": 3,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 3
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_01140f452c716ec932965544",
+          "pdf_baseline_139ba19eda53a6eec1a697cb",
+          "pdf_baseline_39a5920605e1b6d8fe160502"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_620c3ba6111b6713551c",
+        "category": "washing_machine",
+        "brand": "BEKO",
+        "sourceHost": "www.beko.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 7,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_1d2200d4821f768510e753a0"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_63ed0b2aa76aca7fbdf5",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "sourceHost": "org.downloadcenter.samsung.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 7,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_192a33c2b6b975733d9d8d0c"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_70b8cc4dc307629d7cb1",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.fisherpaykel.com",
+        "sourceFamilyHint": "quick_reference_guide",
+        "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
+        "candidateTargets": 7,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_1e1104f8f9454ef1b40b105f"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_84d0ac21b358f046447e",
+        "category": "fridge",
+        "brand": "Inalto",
+        "sourceHost": "inalto.house",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 7,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0f210c22a8ac7b6768d401df"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_abca66a97d11a29f693b",
+        "category": "fridge",
+        "brand": "Sub-Zero",
+        "sourceHost": "au.subzero-wolf.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 7,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0642927a518470ac275ceb34"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_b1f945922ca19e317ff8",
+        "category": "dryer",
+        "brand": "Bosch",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 6,
+        "sampledDocuments": 3,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 3
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_20098cd3a611d81061675718",
+          "pdf_baseline_2496ba8ed2ea73443b91e77e",
+          "pdf_baseline_3398fca71dda389ed2388959"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_e232cdfb43f88774107c",
+        "category": "dishwasher",
+        "brand": "Omega",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 6,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_13c9a33b90fdf24653846e50"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_0aa7205d121967b7b000",
+        "category": "washing_machine",
+        "brand": "Whirlpool",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 5,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_44d15198a65cbeeb60b1a647"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_2fa9377563d026c25d56",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 5,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_00c8eccc7446588d0897e3e0"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_c0a734ee87831dfc398c",
+        "category": "dryer",
+        "brand": "Electrolux",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 5,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_5522355d4e264664cb6a9c05"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_1d9a0fb841eb8b58414b",
+        "category": "fridge",
+        "brand": "Robinhood",
+        "sourceHost": "cdn.shopify.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_3423bb79229de813906cec06"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_1f3c566ec08668dd151f",
+        "category": "fridge",
+        "brand": "Electrolux",
+        "sourceHost": "www.electrolux.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_8e11d56025b2146584b26002"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_6ea2cd6ece98bf09f55d",
+        "category": "dishwasher",
+        "brand": "LG",
+        "sourceHost": "gscs-b2c.lge.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_2bb092263a50b5d691bc796c"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_9e0870fd1f2c5ed4ac59",
+        "category": "washing_machine",
+        "brand": "Midea",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0a55e053bf92fdae5d7e2080"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_db75514931c5e12b47ba",
+        "category": "dishwasher",
+        "brand": "Electrolux",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_100f8784f4b04b713e7cb35d"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_e5f6623869435d7e6582",
+        "category": "washing_machine",
+        "brand": "LG",
+        "sourceHost": "gscs-b2c.lge.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 1,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_a313b630c1d244e3fc83d90b"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_e8012727c03dad8ac1e6",
+        "category": "fridge",
+        "brand": "TCL",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_6e182534e33df68020f9e8be"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_fec5293ba5f9564d6a97",
+        "category": "fridge",
+        "brand": "Haier",
+        "sourceHost": "dam.fisherpaykel.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 4,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_428b3fa5951cbc591c5c945e"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_85e2c1c18aaf24017ee0",
+        "category": "dryer",
+        "brand": "Samsung",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 2,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 2
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_26e2a824176892049c69d7aa",
+          "pdf_baseline_271006272e40f3fd69e5c2bb"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_0603982ef591628ce1cf",
+        "category": "dryer",
+        "brand": "LG",
+        "sourceHost": "gscs-b2c.lge.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 1,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARTIAL_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_f7b7d2e2a63b8cab9f208d31"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_2af2ccede5ece38f8dd1",
+        "category": "fridge",
+        "brand": "Ilve",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_19c5d120bfd5cfec31440901"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_41700fd36fbc26a5bbd2",
+        "category": "dryer",
+        "brand": "ASKO",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_4238b663c7360bad599304bd"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_6473665fa2eca6bcc608",
+        "category": "dishwasher",
+        "brand": "Robinhood",
+        "sourceHost": "cdn.shopify.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_0091f6e0fab54efeff6261c7"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_6e2afbd327d4e963dc72",
+        "category": "dryer",
+        "brand": "Omega",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_6a4388cba7257dd4d9613a23"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_7a93927078afcf069b84",
+        "category": "dryer",
+        "brand": "Miele",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_5dd015c14682b50ddfb66c5e"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_a985121095513435bdf7",
+        "category": "dryer",
+        "brand": "Esatto",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_6dfe59a3c7dc92587e761ecf"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_b3fb9713546c189cff7a",
+        "category": "dishwasher",
+        "brand": "LG",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_378b2d4f9188866ce397b326"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_ddf0eabf6c5d50fa4ece",
+        "category": "washing_machine",
+        "brand": "ASKO",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_208777d115ce2da4ab7757b4"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_e3b8a98f4e2b70fea3b2",
+        "category": "dishwasher",
+        "brand": "Samsung",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_3ccbee9cef21a2ad69eaf7dc"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_ef5460b42031f0d569d2",
+        "category": "washing_machine",
+        "brand": "Kogan",
+        "sourceHost": "assets.kogan.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 3,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_09bd6d4603d4a7135c4c7f02"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_20337f5277864bdae5c8",
+        "category": "dishwasher",
+        "brand": "Whirlpool",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_4066ef965fbff1b3b658b8e4"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_2bdcd7c852855e5c80f6",
+        "category": "washing_machine",
+        "brand": "Smeg",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "MINERU_STRUCTURE_INSUFFICIENT": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_34de6d1c35d9bf01729e6587"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_4210f5764a5c382b521d",
+        "category": "washing_machine",
+        "brand": "Westinghouse",
+        "sourceHost": "commercial.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_632db92c3c2e882d7febb69d"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_5be8bf3fa28abbdadd25",
+        "category": "fridge",
+        "brand": "Liebherr",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_6be4ca7b1a33d478852258f1"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_63620bd7c8737900bfaa",
+        "category": "dishwasher",
+        "brand": "Euromaid",
+        "sourceHost": "www.euromaid.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_4ff2baa8fd61b2dd045ec892"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_7ed7c56e46fac0422126",
+        "category": "washing_machine",
+        "brand": "Omega",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_123a43881bec524ab70e5ee1"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_87e86e6c659b4c0acf7e",
+        "category": "washing_machine",
+        "brand": "CHIQ",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_b16ef12feeb12e8b1cfa500d"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_a9e92a731913015aa390",
+        "category": "washing_machine",
+        "brand": "Hisense",
+        "sourceHost": "dtc-aus-api.hisense.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_5278a46966d7c62908bc3e37"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_aed7b4323ef98bdbf079",
+        "category": "dryer",
+        "brand": "Smeg",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "MINERU_STRUCTURE_INSUFFICIENT": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_31ea5749454956b1302e716d"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_dacad628e2154360621d",
+        "category": "dishwasher",
+        "brand": "Hisense",
+        "sourceHost": "dtc-aus-api.hisense.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_3e43e16f4fe85b332475c3f5"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_fa3cf4fac60d183e03b4",
+        "category": "washing_machine",
+        "brand": "VOGUE",
+        "sourceHost": "trade-depot.s3.ap-southeast-2.amazonaws.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_33243bb829eba191ce7f8e1f"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_fc93f49db48ee140965a",
+        "category": "fridge",
+        "brand": "Kogan",
+        "sourceHost": "assets.kogan.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 2,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_81f4aefc63c0ed9b4134c30a"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_06e31103d5e73901abc9",
+        "category": "dryer",
+        "brand": "Robinhood",
+        "sourceHost": "cdn.shopify.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_c3803a0f3b9196ea12abb89c"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_1c7df55dd40e7c0a2196",
+        "category": "fridge",
+        "brand": "Mitsubishi Electric",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_4fdbca7853d4fac48cd971ed"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_1d34de826bdc90bad9b4",
+        "category": "fridge",
+        "brand": "TECO",
+        "sourceHost": "appliances.teco.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_4bda98909198878cf74c472e"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_212a61cdd9fe0c4281ed",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "installation_guide",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_3aa3dca1553abcb794b7d568"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_30173708b22c54a83a61",
+        "category": "dryer",
+        "brand": "Hisense",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_986eb60e9b8ae5238fe1442b"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_337328d6aa3ad03bbd46",
+        "category": "washing_machine",
+        "brand": "Electrolux",
+        "sourceHost": "commercial.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_4fc3e8d3354a5d1655ab85bf"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_403d49f4804f3dcebcf0",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "dam.fisherpaykel.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_6539fed7abaf3d701fdc75f6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_40b13da2c0807f86bacc",
+        "category": "dryer",
+        "brand": "Whirlpool",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_1bea4418046e98b8df3645af"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_5001f474bb05422db62f",
+        "category": "washing_machine",
+        "brand": "LG",
+        "sourceHost": "www.lg.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_b2fef0a1102763f88ecca0d6"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_6986b153506c2792f26e",
+        "category": "dishwasher",
+        "brand": "Haier",
+        "sourceHost": "www.haier.com.au",
+        "sourceFamilyHint": "quick_reference_guide",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARTIAL_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_23a899028c54c02052323fc8"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_6b099908ca108379904e",
+        "category": "dishwasher",
+        "brand": "Ilve",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "installation_guide",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_09fbd20c658705a1cea51837"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_7b6d9d1c9e9c9bfd56ec",
+        "category": "dryer",
+        "brand": "Midea",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_105611e6562fa32994e4e387"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_8920f18302948307560b",
+        "category": "dishwasher",
+        "brand": "Artusi",
+        "sourceHost": "artusi.com.au",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_b7ca3d5ba8ddd8c1e9bcc1b1"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_aca402cf9734df7fa1aa",
+        "category": "fridge",
+        "brand": "Midea",
+        "sourceHost": "www.midea.com",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "PARSER_GRAMMAR_GAP": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_288290fc6fd5b1689657de86"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_ae93c23d0424766b9cf0",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "dam.fisherpaykel.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "IDENTITY_SCOPE_FAILURE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_8745d91a3803c7fbc90a8332"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_b061e811703c4778e7d7",
+        "category": "dishwasher",
+        "brand": "Midea",
+        "sourceHost": "www.midea.com",
+        "sourceFamilyHint": "specification_sheet",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_be0eb81af5500d791bdc45c8"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_d19a1d5d621402701f1b",
+        "category": "dryer",
+        "brand": "Haier",
+        "sourceHost": "www.appliancesonline.com.au",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_3201eb3887b67704b0943efc"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_ef062813d4cde6aa3fa2",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "sourceHost": "www.fisherpaykel.com",
+        "sourceFamilyHint": "quick_reference_guide",
+        "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "COMPLETE_3_AXIS": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_79d1d42ed1be3584a5b23ec7"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_f0a43e6e020877667292",
+        "category": "dishwasher",
+        "brand": "Esatto",
+        "sourceHost": "esatto.house",
+        "sourceFamilyHint": "user_manual",
+        "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_b10098c89b1b7927d6a8cff9"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      },
+      {
+        "familyId": "pdf_family_fa9b9f58a6ec4b0f0090",
+        "category": "fridge",
+        "brand": "Samsung",
+        "sourceHost": "downloadcenter.samsung.com",
+        "sourceFamilyHint": "unclassified_pdf_url",
+        "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+        "candidateTargets": 1,
+        "sampledDocuments": 1,
+        "acquiredSampleDocuments": 0,
+        "eligibleForSharedRuleResearch": false,
+        "projectionBasis": "candidate_upper_bound_requires_exact_model_receipt_validation",
+        "replayOutcomes": {
+          "ACQUISITION_UNAVAILABLE": 1
+        },
+        "representativeSampleIds": [
+          "pdf_baseline_2d6e398d03ab287029618ce3"
+        ],
+        "eligibleForParserResearch": false,
+        "eligibleForSharedRulePublication": false,
+        "sharedRuleBlocker": "No indexed representative exposes a confirmed parser grammar gap."
+      }
+    ]
+  },
+  "samples": [
+    {
+      "sampleId": "pdf_baseline_00200741afe1d2ea9b471985",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU46GS01A",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46GS01A.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 815
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 573
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "b8d58bcbfdc5537077bd8a45f8a4066733b7e019be7b89209b5b1de74bca379e",
+      "mineruContentSha256": "88d8003ce41d70ff30c2964e011e56660aba98868a055a04ecf5dcc37b2f13f7"
+    },
+    {
+      "sampleId": "pdf_baseline_0091f6e0fab54efeff6261c7",
+      "category": "dishwasher",
+      "brand": "Robinhood",
+      "model": "RHDW45PS",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_01093bf8b859b20b16fecdfb",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWA314W",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 595
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "smeg-au-dishwasher-size-whd-suffix-fixed-v1"
+      ],
+      "sourcePdfSha256": "088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99",
+      "mineruContentSha256": "647608a2af8becc82eb3c4138e0bad21e0ca2b0129c2facfbf61439d32d1e189"
+    },
+    {
+      "sampleId": "pdf_baseline_01737849db8a8248fd5fe7a6",
+      "category": "dishwasher",
+      "brand": "ASKO",
+      "model": "D5646SSXXL",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0254a4583d8e6e963c30d7d0",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60STI9",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdf81343e/QRG/AU/QRG-AU-82320.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 599
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 454
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 553
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "368a3d3666e2045c26c88dc4e00829e00e865925443e4ddeb04cd8812357f78d",
+      "mineruContentSha256": "8d8dc986e6180379dfdcf4dd441640431198810540d3cc41d6545ed7bd1a2906"
+    },
+    {
+      "sampleId": "pdf_baseline_027b63b02f1d49a64801c2b3",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7130SCICLST",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "structured exact-model identity signal required in MinerU JSON",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+      "mineruContentSha256": "890c71c34e142a62c830ba381d3acf5e12c431b4d787b025ca49b33525df983d"
+    },
+    {
+      "sampleId": "pdf_baseline_04603515d46d95088254a4d1",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1410X",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610169077.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "range",
+            "minMm": 850,
+            "maxMm": 865
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "beko_au_dishwasher_product_spec_truncated_labels_v1"
+      ],
+      "sourcePdfSha256": "afcd048bee6e2b0ed96b75946c64e477989166961cb5a948c8bb45d583ab1f89",
+      "mineruContentSha256": "1d2873fef2613a5b30f8724765e16d0797d90e10e2f8f9fe683a0783b19f0974"
+    },
+    {
+      "sampleId": "pdf_baseline_09fbd20c658705a1cea51837",
+      "category": "dishwasher",
+      "brand": "Ilve",
+      "model": "IVFSD60",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_100f8784f4b04b713e7cb35d",
+      "category": "dishwasher",
+      "brand": "Electrolux",
+      "model": "ESF8735ROX",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 596
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 818
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 570
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+      "mineruContentSha256": "95f833eed07a7e019ad42d846966e17a97eab36e74c756dffb955fd3c2613ea3"
+    },
+    {
+      "sampleId": "pdf_baseline_13c9a33b90fdf24653846e50",
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "ODW717XB",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_1950b8652e3679be297b5ac6",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6606XA",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XA&brand=Westinghouse",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 3,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 3,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "52909b89283a3eaec84d03907850b6e39026d264e563b3e7f1fbe388169d3bbe",
+      "mineruContentSha256": "5ef21057b0bca386e12bf571c3fae6a1b3af49050c18cf972f68d633156e2bd0"
+    },
+    {
+      "sampleId": "pdf_baseline_1e1104f8f9454ef1b40b105f",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60ST4NX9",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcae4c1ac/QRG/AU/QRG-AU-82883.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 599
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 454
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 573
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "93cc4a3d29bf455279976c443751f902e1441edc9d3ca6325073bcf543317ba6",
+      "mineruContentSha256": "6a4db5cd9cfab1203bfd77905d99c37d312ee697c8be2c030d97ee768b1cbe80"
+    },
+    {
+      "sampleId": "pdf_baseline_23a899028c54c02052323fc8",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15V2B2",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw8aa1b475/QRG/AU/QRG-AU-61611.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "PARTIAL_AXIS",
+      "code": "closed_envelope_axis_incomplete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "6febf17d417e8a001c6d6755556eef32dc232c4420b595a7169bf691961dff54",
+      "mineruContentSha256": "57f8b94ae610b4062be9db7ef8c9adb66d3c18963eb8cceedd5cd65d64885486"
+    },
+    {
+      "sampleId": "pdf_baseline_2bb092263a50b5d691bc796c",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25UMB",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=emu7beepFnNfwAFPbsIIvw",
+      "documentType": "user_manual",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "118d88ef1194512f83bbf1f8277cca64905d0554c4a9a5bf479bb368cd98c153",
+      "mineruContentSha256": "28200f6b25e0c50b59d22bfe7d2bc7bfac5f8897409a717c436816809d13d681"
+    },
+    {
+      "sampleId": "pdf_baseline_378b2d4f9188866ce397b326",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25PS",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+      "documentType": "user_manual",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "structured exact-model identity signal required in MinerU JSON",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "425da1b10d0740f4dfb06456ae886f5a68ed553e1f0b4ddf269ee07f975de7c6",
+      "mineruContentSha256": "e8a2bffce4a4738f323820394f37bd24f78ed5f2946ad52aee9d04a847fdf70f"
+    },
+    {
+      "sampleId": "pdf_baseline_3ccbee9cef21a2ad69eaf7dc",
+      "category": "dishwasher",
+      "brand": "Samsung",
+      "model": "DW60H6050FW",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_3e43e16f4fe85b332475c3f5",
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSBE15FS",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dtc-aus-api.hisense.com/medias/HSBE15FS-SPEC.pdf?context=bWFzdGVyfG1hbnVhbHwxMTkyNzN8YXBwbGljYXRpb24vcGRmfGFETXpMMmhqT1M4NE9ESTJORGN4TlRjNU5qYzRMMGhUUWtVeE5VWlRMVk5RUlVNdWNHUm18YjdhMTdkYTgxYzZkZjhmYTBhZGMyNzEyM2ZiOWQwZmViYjZlMzlkMGEwOTc0OTgxN2U3MWFlZDcxYmYzYmE3Yw",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 845
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 596
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "hisense-au-exact-spec-net-package-whd-v1"
+      ],
+      "sourcePdfSha256": "d013680dacc44d0774f178bb5d1d99b0ed5ffcc280f110e3024edad0df709360",
+      "mineruContentSha256": "0b091387a913a5dd71a33be25bb3e4198f31fa9add9f695c87580e08a455a8ab"
+    },
+    {
+      "sampleId": "pdf_baseline_4066ef965fbff1b3b658b8e4",
+      "category": "dishwasher",
+      "brand": "Whirlpool",
+      "model": "ADP5000MT",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_4ff2baa8fd61b2dd045ec892",
+      "category": "dishwasher",
+      "brand": "Euromaid",
+      "model": "EDW6014X",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_6539fed7abaf3d701fdc75f6",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60U4I2",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/2663j9cc47brvvss4ggggx6v/FP-DataSheet-en-DW60U4I2-DW60U4HI2-IntegratedDishwasher-0-90002306B-AU-NZ-UK-IE-CN.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "bf1d812c8a8b647b43a6122314ffd2ed4962c8e416c34ace514d7ab9bd603189",
+      "mineruContentSha256": "453cb3386f5baed419e2fc28d382f8b66374dedb1efd6b85c6d86e6caef98b4e"
+    },
+    {
+      "sampleId": "pdf_baseline_7134b88945c251551be937bb",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D2NX9",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw46b47394/QRG/AU/QRG-AU-82878.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 599
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "range",
+            "minMm": 820,
+            "maxMm": 880
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 573
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "6e2336937617c751be778edbb1c7d42a84cd1d7374d73f76e07ee6ef706d91e7",
+      "mineruContentSha256": "d319224445ca938fd545602877f80276c9f3b3e0cb16c4eba88aa437b53af43e"
+    },
+    {
+      "sampleId": "pdf_baseline_adea778129992c0aa8de9af6",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D4NX9",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe5310b55/QRG/AU/QRG-AU-82880.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 599
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "range",
+            "minMm": 820,
+            "maxMm": 880
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 573
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "a786997d288e26303ab759964bf9c5f6995561efc0750a9e611af03855c9eb25",
+      "mineruContentSha256": "2e424030424c547c40db1c6dee73859203e3b2a39f089052c13862ade6142517"
+    },
+    {
+      "sampleId": "pdf_baseline_b10098c89b1b7927d6a8cff9",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDWI605S",
+      "publicationEligible": false,
+      "acquisitionStatus": "transport_failed",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "transport_failed",
+      "detail": "All bounded exact-model official PDF candidates failed transport validation.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_b7ca3d5ba8ddd8c1e9bcc1b1",
+      "category": "dishwasher",
+      "brand": "Artusi",
+      "model": "ADW5009X",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf",
+      "documentType": "unclassified_pdf_url",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "1c5edce84593807c62ca2a975c42373e75d96c2c35b3ffa6884efb8bfbc23a68",
+      "mineruContentSha256": "228315a6e0a57bd0d1bca196c0d0f85b4bee3454617ef468364e8a32fd5a7ddc"
+    },
+    {
+      "sampleId": "pdf_baseline_be0eb81af5500d791bdc45c8",
+      "category": "dishwasher",
+      "brand": "Midea",
+      "model": "MDW6099B15BDX",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 815
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 570
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "bc38415a01186d4b2995fd714b9c08e7648c825eb7e6d5322f06f2a9829ea660",
+      "mineruContentSha256": "24254b5632df91ee7ebb89d550a92494f27dca5857e4691845e036089ff9ad83"
+    },
+    {
+      "sampleId": "pdf_baseline_01140f452c716ec932965544",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE5060M1",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_03849faa14b85ab6a87517ef",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060HG1",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw966cf444/QRG/AU/QRG-AU-93296.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 655
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "cc21323af3a07fb2f4f76abc1964448347f8db62cef9fff72f355c1b5372fe79",
+      "mineruContentSha256": "14d054cf7931c682d562975010e264285274d9b25e0707d814c2e28d6f5e6949"
+    },
+    {
+      "sampleId": "pdf_baseline_0e746d20e35d14aa4686701b",
+      "category": "dryer",
+      "brand": "Beko",
+      "model": "DPE7400",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0ffd0cb432b59569953ff8af",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060G2",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee94f3f/QRG/AU/QRG-AU-92278.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 830
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 575
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe",
+      "mineruContentSha256": "af0407137e78f75a7167f4febc32f16a33558e8e8f1846b6f03bd5b6aad06d5e"
+    },
+    {
+      "sampleId": "pdf_baseline_105611e6562fa32994e4e387",
+      "category": "dryer",
+      "brand": "Midea",
+      "model": "MDHP07",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_139ba19eda53a6eec1a697cb",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE4560M1",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_1abf75d38c1aabaa48c8538e",
+      "category": "dryer",
+      "brand": "Beko",
+      "model": "BDP83HW",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 597
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 846
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 654
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "beko_au_dryer_product_spec_parallel_lists_v1"
+      ],
+      "sourcePdfSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+      "mineruContentSha256": "c9e04cb21a57ef46e33089a3d8f3550a99854e73e9e98bb4295239802d463478"
+    },
+    {
+      "sampleId": "pdf_baseline_1bea4418046e98b8df3645af",
+      "category": "dryer",
+      "brand": "Whirlpool",
+      "model": "HSCR80420",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_20098cd3a611d81061675718",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WTG86400AU",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 842
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 613
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+      "mineruContentSha256": "ec2ff90b32bd46497d44eadebc9df0db3aa4e84d11702f56836533e98c40c7e2"
+    },
+    {
+      "sampleId": "pdf_baseline_2496ba8ed2ea73443b91e77e",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WTY88701AU",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 842
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 634
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+      "mineruContentSha256": "b03f6d5f16bfe78348b81ac6c04ad254d49de0453a9762cc2712b40efc1dea67"
+    },
+    {
+      "sampleId": "pdf_baseline_26e2a824176892049c69d7aa",
+      "category": "dryer",
+      "brand": "Samsung",
+      "model": "DV90N8289AW",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_271006272e40f3fd69e5c2bb",
+      "category": "dryer",
+      "brand": "Samsung",
+      "model": "DV80M5010QW",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_2c559af6ed099395e696b9e5",
+      "category": "dryer",
+      "brand": "Beko",
+      "model": "DCY7402GXB2",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_31ea5749454956b1302e716d",
+      "category": "dryer",
+      "brand": "Smeg",
+      "model": "SACD82",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://sys.smeg.com.au/Product/Techspecs/SACD82.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "MINERU_STRUCTURE_INSUFFICIENT",
+      "code": "no_machine_readable_dimension_structure",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "fa04e1c6eeccc35c05b3eabf29ddd43843055da01fba033bc3e76b70bfc30d2d",
+      "mineruContentSha256": "8b5da1db34baab2dca85810a4ae91684ed2d9fd187cdf636b8afb8b108404ed7"
+    },
+    {
+      "sampleId": "pdf_baseline_3201eb3887b67704b0943efc",
+      "category": "dryer",
+      "brand": "Haier",
+      "model": "HDY-M40",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_3398fca71dda389ed2388959",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WTW87564AU",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 842
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 665
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+      "mineruContentSha256": "b976692764b169f4180b51ebb5dac45866711b9239ce42e5d34d92e0d45a8acc"
+    },
+    {
+      "sampleId": "pdf_baseline_39a5920605e1b6d8fe160502",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060P1",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_4238b663c7360bad599304bd",
+      "category": "dryer",
+      "brand": "ASKO",
+      "model": "T208H.W",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=576408&jezik=en&tipVsebine=1&docName=576488en.pdf",
+      "documentType": "user_manual",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
+      "mineruContentSha256": "16bd9c30c3b89ccaf47ccd482d4ef9b861fc1046e485858d51e2b694fb852211"
+    },
+    {
+      "sampleId": "pdf_baseline_5522355d4e264664cb6a9c05",
+      "category": "dryer",
+      "brand": "Electrolux",
+      "model": "EDH3586GDW",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 3,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 3,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 3,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+      "mineruContentSha256": "f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed"
+    },
+    {
+      "sampleId": "pdf_baseline_5dd015c14682b50ddfb66c5e",
+      "category": "dryer",
+      "brand": "Miele",
+      "model": "TWD364",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_6a4388cba7257dd4d9613a23",
+      "category": "dryer",
+      "brand": "Omega",
+      "model": "OCD7HP",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_6dfe59a3c7dc92587e761ecf",
+      "category": "dryer",
+      "brand": "Esatto",
+      "model": "ECD7",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://esatto.house/s/Esatto_ProductCard-ECD7.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0",
+      "mineruContentSha256": "85890295652ab21e90695d3a1b3e4ed6f31897cebc1145112b8fc5407cb87729"
+    },
+    {
+      "sampleId": "pdf_baseline_986eb60e9b8ae5238fe1442b",
+      "category": "dryer",
+      "brand": "Hisense",
+      "model": "HDF5I90H",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HDF5I90H-.pdf?context=bWFzdGVyfE1hbnVhbHwxNDY4MTV8YXBwbGljYXRpb24vcGRmfGFHWTFMMmhrWWk4NE9EazRNekk1TnpBMk5USTJMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaEVSalZKT1RCSUtTNXdaR1l8MTdlNzk2ZjgyMmUzOTBiODJiMDU0ODNmNDkyOTRjMWNiMTBmYThjNDg2MTg1YWJhOGU3NDFjYzdiNDVhYTRjYw",
+      "documentType": "specification_sheet",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "ac6b41264a65e8b04ea213fabf0aeae53645f26e0b87bf67c72acf8822ee439b",
+      "mineruContentSha256": "cd10718dd0a024744a2441433fb31b1c67de0faeb31a45384ee1305b71b5f06d"
+    },
+    {
+      "sampleId": "pdf_baseline_c3803a0f3b9196ea12abb89c",
+      "category": "dryer",
+      "brand": "Robinhood",
+      "model": "RHSD7W",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_f7b7d2e2a63b8cab9f208d31",
+      "category": "dryer",
+      "brand": "LG",
+      "model": "DVH9-09B",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+      "documentType": "user_manual",
+      "outcome": "PARTIAL_AXIS",
+      "code": "closed_envelope_axis_incomplete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 10,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 10,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+      "mineruContentSha256": "219ccea21e6fc6a0aa70e37e4d6dcb7825f9ff39bdbc87c212a46f1bc6a646f6"
+    },
+    {
+      "sampleId": "pdf_baseline_00b2c7b26a176ee5d34678fa",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRCF146",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF146-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY2NDF8YXBwbGljYXRpb24vcGRmfGFEUmlMMmd3WlM4NE9EQTBNRGt5TmpBNE5UUXlMMGhTUTBZeE5EWXRVM0JsWXk1d1pHWXxmYzE3MWViNmNkZGNhYjhiNGM0YzA2NzEzNDBhNjU1MjIxNTk2MDhiZDdiZWE1MWRlNzk3NTMwYjA5MGUzM2Nh",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 625
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 854
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 559
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "b629896919dc27ab9c7d8f8c2352b9aa3bbc1f46c93bb3d4fbe5c355e55ec4aa",
+      "mineruContentSha256": "51e80eff8101c543e151d69e9f02a35c8dbbaca10415a9a87303b1d061ee0108"
+    },
+    {
+      "sampleId": "pdf_baseline_01dace5f644854a73bf18dd4",
+      "category": "fridge",
+      "brand": "Smeg",
+      "model": "FAB32RWH5AU",
+      "publicationEligible": false,
+      "acquisitionStatus": "transport_failed",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "transport_failed",
+      "detail": "All bounded exact-model official PDF candidates failed transport validation.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0628a4f689af28d321e7bed6",
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF69W",
+      "publicationEligible": false,
+      "acquisitionStatus": "transport_failed",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "transport_failed",
+      "detail": "All bounded exact-model official PDF candidates failed transport validation.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0642927a518470ac275ceb34",
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-36R/O-LH",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36r/icb-built-in-refrigeration-qr-sheet-36ro-st.pdf",
+      "documentType": "unclassified_pdf_url",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "structured exact-model identity signal required in MinerU JSON",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "0b8a89af0045fa8a2898a2010d756ad01163afb45e66a5a56a1a23bda14909b4",
+      "mineruContentSha256": "62b387afdfafbfebf57457b1270819886abb4f75a8597883f49d8235709c6888"
+    },
+    {
+      "sampleId": "pdf_baseline_071032fa7bd7a1ef5fbb6aee",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BTM345PX",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0a979fd3ab6d496fa131b737",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CCF299WE",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1125
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 835
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 610
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ],
+      "sourcePdfSha256": "dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
+      "mineruContentSha256": "237fa6472f893ad2cc9ab03c4de6c792ff47dd46c28551b582ecd81b4945e9ff"
+    },
+    {
+      "sampleId": "pdf_baseline_0d0ee9fa596dcc6363943645",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ECFR145W",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0f210c22a8ac7b6768d401df",
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "ICF142B2",
+      "publicationEligible": false,
+      "acquisitionStatus": "transport_failed",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "transport_failed",
+      "detail": "All bounded exact-model official PDF candidates failed transport validation.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_123a955f8d4b54e4d22adc01",
+      "category": "fridge",
+      "brand": "Bosch",
+      "model": "KIN34P60AU",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN34P60AU.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 556
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1772
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 545
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f",
+      "mineruContentSha256": "3d0fbbcde8f61f376a2eeca85c18b3f359e90e5e71e0c6927372395c4e1b0454"
+    },
+    {
+      "sampleId": "pdf_baseline_160d49bf7e5d139a6c8c71f6",
+      "category": "fridge",
+      "brand": "Miele",
+      "model": "KS 7793 D",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_19c5d120bfd5cfec31440901",
+      "category": "fridge",
+      "brand": "Ilve",
+      "model": "ILREF256I/L",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_1a1c1b56e215ee75ed2a7fe7",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUQSX4",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+      "documentType": null,
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "structured exact-model identity signal required in MinerU JSON",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+      "mineruContentSha256": "51554bc8038fb13bcdfeef90d6f74632f1c4cf000de1c905d271ede662917cb6"
+    },
+    {
+      "sampleId": "pdf_baseline_1cde0efe4d80cbe7c7eea7c1",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-V600MBLC",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+      "documentType": "user_manual",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 913
+          },
+          "page": 12,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1790
+          },
+          "page": 12,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 735
+          },
+          "page": 12,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "lg-au-fridge-a-b-c-dimension-diagram-v1"
+      ],
+      "sourcePdfSha256": "5ceaeaaafb54c39b263672efb8dd54b24e4302aea61a18de6134758ab5f54ca1",
+      "mineruContentSha256": "9246c76175b82441fe2c915a1e605ebcbdac2db76b71f4da45bf48b40db77240"
+    },
+    {
+      "sampleId": "pdf_baseline_2511f2812a448ef8ef76030e",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874BA",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874BA&brand=Westinghouse",
+      "documentType": "specification_sheet",
+      "outcome": "SOURCE_CONTENT_ERROR",
+      "code": "official_document_contains_error_payload",
+      "detail": "The official PDF is a rendered error payload rather than usable product evidence.",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "0c4a4d7124ff9c41a18fc538a0a65c2cc5ef68bea37effab0def3993ee41cbfe",
+      "mineruContentSha256": "75724a074f9040205eb41e7565ce9ba5a436b8bf8513ceabc637de2817ba73ba"
+    },
+    {
+      "sampleId": "pdf_baseline_288290fc6fd5b1689657de86",
+      "category": "fridge",
+      "brand": "Midea",
+      "model": "MDRC499FZF01AP",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
+      "documentType": "user_manual",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "900f2e280d68035ea9ce9b0d683a76534b5b5825b966cb28698b0568f9063346",
+      "mineruContentSha256": "94197b380902549d5fafee290ae286977285bcda8cb2a840c12da99e379064e3"
+    },
+    {
+      "sampleId": "pdf_baseline_2d6e398d03ab287029618ce3",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7300BSS",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_3423bb79229de813906cec06",
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHBFD121W",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_428b3fa5951cbc591c5c945e",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF210TG",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw218eeecf/QRG/AU/QRG-AU-62409.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 545
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1465
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 565
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "2bdf9a140b5d81d8332a6a24f2f32c8e54f6044b9c82320d6f3df03533aace98",
+      "mineruContentSha256": "0a4144bf8899527f33e7ff828e5ba82af07cf64a54430f8e01d7d5a2a9f160eb"
+    },
+    {
+      "sampleId": "pdf_baseline_4bda98909198878cf74c472e",
+      "category": "fridge",
+      "brand": "TECO",
+      "model": "TFF334WNTAH",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf",
+      "documentType": "user_manual",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "a91d0b798c9a413fea5f466a8f19683dbc261a6593a67bd69cac47ed1afda901",
+      "mineruContentSha256": "a59acc07def4df4701f220f6bdbfd39995c4b96fa1bc876fd109e07a7f37777c"
+    },
+    {
+      "sampleId": "pdf_baseline_4fdbca7853d4fac48cd971ed",
+      "category": "fridge",
+      "brand": "Mitsubishi Electric",
+      "model": "MR-BF325EK-W-A",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_6be4ca7b1a33d478852258f1",
+      "category": "fridge",
+      "brand": "Liebherr",
+      "model": "ICNh 5133",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_6e182534e33df68020f9e8be",
+      "category": "fridge",
+      "brand": "TCL",
+      "model": "P421CDN",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_81f4aefc63c0ed9b4134c30a",
+      "category": "fridge",
+      "brand": "Kogan",
+      "model": "KATFSBS503A",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://assets.kogan.com/files/usermanuals/KATFSBS503A_UG.pdf",
+      "documentType": "user_manual",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "80704021eb7205679cf70ccb7c97b3cce260816a8ee2162498e1523b4ac7f2c8",
+      "mineruContentSha256": "9982359a16e66908816c56b254556c6f26ba54bf11a3939f264bb52e7cb4d73f"
+    },
+    {
+      "sampleId": "pdf_baseline_8e11d56025b2146584b26002",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EFE4227SC",
+      "publicationEligible": false,
+      "acquisitionStatus": "transport_failed",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "transport_failed",
+      "detail": "All bounded exact-model official PDF candidates failed transport validation.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_e5641fd0daa0933a6182426a",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874SA",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+      "documentType": null,
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 913
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1782
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 803
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+      "mineruContentSha256": "26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de"
+    },
+    {
+      "sampleId": "pdf_baseline_00c8eccc7446588d0897e3e0",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WA8060E1",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_036adab69d661abaa9347b4e",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WF-T8582",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=KROWM000608101.pdf",
+      "documentType": "user_manual",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 632
+          },
+          "page": 39,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1020
+          },
+          "page": 39,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 670
+          },
+          "page": 39,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "lg-au-washer-exact-model-size-wdh-v1"
+      ],
+      "sourcePdfSha256": "72663d1e35e7426822922bbfdf75db540afd25dc79aac19243ed7e5bf0e462e0",
+      "mineruContentSha256": "7f47a9b7893cb2b4094365d7464ffd5982cb7f853c00b8544c16b7da7a7f3db6"
+    },
+    {
+      "sampleId": "pdf_baseline_036ee590e95e96cec862164f",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WD1411SBW",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9Panb8QuJ2gJf1M7rhPCA",
+      "documentType": "user_manual",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 8,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 8,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 640
+          },
+          "page": 8,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "0e1c9fd38e963cc7ca014f68ab07686af0fba135d5527138ccc436f40231e57f",
+      "mineruContentSha256": "c515c1cd2523a70891b967f863a24a081f9753488c8339268e2666d7204693a0"
+    },
+    {
+      "sampleId": "pdf_baseline_0403d1697666a642c1a4a18b",
+      "category": "washing_machine",
+      "brand": "Beko",
+      "model": "WMY9046LB2",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_06299a5bafa10fcf50b1981a",
+      "category": "washing_machine",
+      "brand": "Esatto",
+      "model": "ETLW55",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://esatto.house/s/Esatto_ProductCard-ETLW55.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 530
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 925
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 542
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "esatto-au-product-card-physical-wdh-v1"
+      ],
+      "sourcePdfSha256": "f94f47aa927c1b14449e6c23ee1c186b024106f5760b6e05092bea3f7e43985b",
+      "mineruContentSha256": "e124242d70cae98a6ac6b8f2219bc78e232287a4c63f548e671a1bd803680230"
+    },
+    {
+      "sampleId": "pdf_baseline_09bd6d4603d4a7135c4c7f02",
+      "category": "washing_machine",
+      "brand": "Kogan",
+      "model": "KAMFWASH80A",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf",
+      "documentType": "user_manual",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "a8c67fa69928ebbe7c167fc0dbcd9213d5004ded9c0607c800866123317a1664",
+      "mineruContentSha256": "bde15ae58aab2e62d3df67ac050c62cfeee9e3ad14f8cbbf2a025dd5a30b7c27"
+    },
+    {
+      "sampleId": "pdf_baseline_0a55e053bf92fdae5d7e2080",
+      "category": "washing_machine",
+      "brand": "Midea",
+      "model": "MTW70",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0ab3a01c58a50efa12cf760a",
+      "category": "washing_machine",
+      "brand": "Haier",
+      "model": "HWD8040BW1",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_0faed27031e20ac292006109",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WNA254U1AU",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 598
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 848
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 635
+          },
+          "page": 2,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+      "mineruContentSha256": "5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f"
+    },
+    {
+      "sampleId": "pdf_baseline_123a43881bec524ab70e5ee1",
+      "category": "washing_machine",
+      "brand": "Omega",
+      "model": "OWD735W",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_192a33c2b6b975733d9d8d0c",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB94ADGH",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB94ADGH&CttFileID=11298569&CDCttType=UM&VPath=UM%2F202602%2F20260225092633863%2FOID139018_IB_B-PJT_WASHER-AD_SimpleUX_EN_251211.pdf",
+      "documentType": "unclassified_pdf_url",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 66,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 66,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 695
+          },
+          "page": 66,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [
+        "samsung-au-washer-wildcard-specification-v1"
+      ],
+      "sourcePdfSha256": "af50c51b9268902edacb2854408c22e405545f4616bce99aced15af7a0216ad9",
+      "mineruContentSha256": "5472495b0e5917a8e5e02a2748f56f2661ec33005e79934be46bdd4e7b5acbf6"
+    },
+    {
+      "sampleId": "pdf_baseline_1d2200d4821f768510e753a0",
+      "category": "washing_machine",
+      "brand": "BEKO",
+      "model": "BFLB8010W",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+      "documentType": "user_manual",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "1aa9692f2d1c9645bf651897e0b7d3fdc4ce1ecc93b4c1829e1bcc4ff4da626c",
+      "mineruContentSha256": "f199cab1fb848f7556da25570ea8365f16c505200749cde0e2d1c94e9d5df4d2"
+    },
+    {
+      "sampleId": "pdf_baseline_208777d115ce2da4ab7757b4",
+      "category": "washing_machine",
+      "brand": "ASKO",
+      "model": "W4104C.W",
+      "publicationEligible": false,
+      "acquisitionStatus": "identity_unproven",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "identity_unproven",
+      "detail": "Official document candidates did not preserve the exact target model identity.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_33243bb829eba191ce7f8e1f",
+      "category": "washing_machine",
+      "brand": "VOGUE",
+      "model": "360113",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_34de6d1c35d9bf01729e6587",
+      "category": "washing_machine",
+      "brand": "Smeg",
+      "model": "SAWS1014",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://sys.smeg.com.au/Product/Techspecs/SAWS1014.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "MINERU_STRUCTURE_INSUFFICIENT",
+      "code": "no_machine_readable_dimension_structure",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "3c755dfefe00442274045008e1b21684209f8633626f80849c080fbd85efa4e5",
+      "mineruContentSha256": "aa940ddee208d6a4a38b40cb6732b37b81f8c03a6bb8dc4c8c170c0da7d11e06"
+    },
+    {
+      "sampleId": "pdf_baseline_3aa3dca1553abcb794b7d568",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH8560J3",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/jstc4gfgvm4t6qhzbfkkrr5g/FP-InstallGuide-en-WH1060-WH9060-WH8560-WH8060-WH7560-WM1490P-FrontLoadWashingMachine-0-430291B-NZ-AU-UK-IE-EU-SG.pdf",
+      "documentType": "installation_guide",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "structured exact-model identity signal required in MinerU JSON",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "3ba5e64c20289b14dd51beb78829daf0093bf9a33b66d0cb3edda95358764a03",
+      "mineruContentSha256": "2282ad2de1cf59e82b33a1a6aba567e85e0ac7704c67b19d06133eac4047b5bc"
+    },
+    {
+      "sampleId": "pdf_baseline_44d15198a65cbeeb60b1a647",
+      "category": "washing_machine",
+      "brand": "Whirlpool",
+      "model": "WWEB9602IW",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_4fc3e8d3354a5d1655ab85bf",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF9043R7WC",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF9043R7WC&brand=Electrolux",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 659
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "606f214458f80d1f31c4d2130033827b9be475c8a07286413cf2653726ab3494",
+      "mineruContentSha256": "f7619f647e040d4272d1f47b13f0317958f05ca2b94f3fc1652f390f53478b41"
+    },
+    {
+      "sampleId": "pdf_baseline_5278a46966d7c62908bc3e37",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF5S1214",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF5S1214-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTU3MDR8YXBwbGljYXRpb24vcGRmfGFHWXpMMmhoWWk4NE9EQTBNVEEwTVRReU9EYzRMMGhYUmpWVE1USXhOQzFUY0dWakxuQmtaZ3w2NGJjYzNiOTdlMzFkNjViYjE1NDljNTcwNzkyYWQyMjE1ODA0NmFiMmZlNDAwMzY2YmYyMWQwZGE4Zjk5ZmEx",
+      "documentType": "specification_sheet",
+      "outcome": "PARSER_GRAMMAR_GAP",
+      "code": "dimension_structure_present_but_unparsed",
+      "detail": "no exact-model MinerU evidence with explicit axes extracted",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "63decb781c54d8031f99f83186b72dadb5d850ef8f9538cd5c042c77be385351",
+      "mineruContentSha256": "dd8efc0ea47e746cf61a44209802def0680cc8c26422ec569f777c6e8d066cdc"
+    },
+    {
+      "sampleId": "pdf_baseline_632db92c3c2e882d7febb69d",
+      "category": "washing_machine",
+      "brand": "Westinghouse",
+      "model": "WWF1044M7SA",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WWF1044M7SA&brand=Westinghouse",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 660
+          },
+          "page": 4,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "1a172290adfd298f200b161232c41339b0fe07891e7706fc208ee7d228e7e411",
+      "mineruContentSha256": "c29a867d74889668c37e8e0882112d44a1b12815d01b3c6830b6ebf48df4bceb"
+    },
+    {
+      "sampleId": "pdf_baseline_79d1d42ed1be3584a5b23ec7",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WD8560F1",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+      "documentType": "quick_reference_guide",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 600
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 850
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 645
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+      "mineruContentSha256": "019d08ca030317d36cb547600caf40f0007f1b545287aa66bbc3bd9c77a19909"
+    },
+    {
+      "sampleId": "pdf_baseline_8745d91a3803c7fbc90a8332",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH8560P3",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/2cjh5kph3nsf8jvm49njbsn3/FP-UserGuide-en-WH1060P-WH1060J-WH9060P-WH9060J-WH8560F-WH8560P-WH8560J-WH8060F-WH8060P-WH8060J-WH7560P-WH7560J-FrontLoaderWashingMachine-0-430218C-NZ-AU-SG.pdf",
+      "documentType": "unclassified_pdf_url",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "0ea67fc3121842c1e30ecedbf15c441e3d4dd0810b043adc52a0abd74eb480b5",
+      "mineruContentSha256": "538e2c921fe4e7733527a532514369c424e37df391f77c0440a29d7fe0440fe6"
+    },
+    {
+      "sampleId": "pdf_baseline_a313b630c1d244e3fc83d90b",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV9-1412B",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
+      "documentType": "user_manual",
+      "outcome": "IDENTITY_SCOPE_FAILURE",
+      "code": "exact_model_identity_scope_unproven",
+      "detail": "unresolved family manual or multiple models in identity scope",
+      "claims": [],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+      "mineruContentSha256": "8f9533d9e0a32c0fa24aada93605cf3c69bc642a0b85d34f5d1f9f40dd94da4a"
+    },
+    {
+      "sampleId": "pdf_baseline_b16ef12feeb12e8b1cfa500d",
+      "category": "washing_machine",
+      "brand": "CHIQ",
+      "model": "WDFL8T48W2",
+      "publicationEligible": false,
+      "acquisitionStatus": "official_candidate_not_found",
+      "officialSourceUrl": null,
+      "documentType": null,
+      "outcome": "ACQUISITION_UNAVAILABLE",
+      "code": "official_candidate_not_found",
+      "detail": "No exact-model official manufacturer PDF was discovered within the bounded resolver contract.",
+      "claims": [],
+      "grammarProfileIds": []
+    },
+    {
+      "sampleId": "pdf_baseline_b2fef0a1102763f88ecca0d6",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTL9-12B",
+      "publicationEligible": false,
+      "acquisitionStatus": "indexed",
+      "officialSourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/images/wm/features/WTL9-12B_Specsheet_231010_V1.pdf",
+      "documentType": "specification_sheet",
+      "outcome": "COMPLETE_3_AXIS",
+      "code": "closed_envelope_three_axis_complete",
+      "detail": null,
+      "claims": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 690
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 1070
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": {
+            "kind": "fixed",
+            "mm": 730
+          },
+          "page": 1,
+          "semanticBasis": null,
+          "parserProfileId": null
+        }
+      ],
+      "grammarProfileIds": [],
+      "sourcePdfSha256": "441c8cc4705cd5ab31fc62b89086e89eefeffa7e0bd2122f533460018e8efd28",
+      "mineruContentSha256": "a8b8743ca4b26eb7ad2686ce74893c9adf245eee704e2a160a3cd31026ee242f"
+    }
+  ]
+}

@@ -58,7 +58,7 @@
         "discoveryMethod": "official_published_route"
       },
       "confidence": "high",
-      "state": "route_verified"
+      "state": "sent"
     },
     {
       "id": "lg-australia",
@@ -68,14 +68,14 @@
         "https://www.lg.com/au/privacy/"
       ],
       "route": {
-        "type": "customer_support_form",
-        "publicSourceUrl": "https://www.lg.com/au/support/contact-us/email/",
+        "type": "business_showroom_route",
+        "publicSourceUrl": "https://www.lg.com/au/business/b2b-showroom/",
         "targetTeam": "home_appliance_product_data_or_ecommerce_content",
         "discoveryMethod": "official_published_route",
-        "limitation": "consumer_support_routing_fallback"
+        "limitation": "general_b2b_routing_requires_internal_assignment"
       },
       "confidence": "medium",
-      "state": "route_verified"
+      "state": "sent"
     },
     {
       "id": "hisense-australia",
@@ -85,14 +85,14 @@
         "https://hisense.com.au/about-hisense"
       ],
       "route": {
-        "type": "support_hub",
-        "publicSourceUrl": "https://hisense.com.au/support-centre",
+        "type": "published_corporate_route",
+        "publicSourceUrl": "https://hisense.com.au/TermsOfUse",
         "targetTeam": "home_appliance_product_data_or_ecommerce_content",
         "discoveryMethod": "official_published_route",
-        "limitation": "consumer_support_routing_fallback"
+        "limitation": "general_corporate_routing_requires_internal_assignment"
       },
       "confidence": "medium",
-      "state": "route_verified"
+      "state": "sent"
     },
     {
       "id": "smeg-australia",
@@ -102,14 +102,14 @@
         "https://shop.smeg.com.au/pages/legal"
       ],
       "route": {
-        "type": "commercial_enquiry_form",
-        "publicSourceUrl": "https://shop.smeg.com.au/pages/contact-form",
+        "type": "published_corporate_route",
+        "publicSourceUrl": "https://shop.smeg.com.au/pages/legal",
         "targetTeam": "commercial_product_data_or_specification",
         "discoveryMethod": "official_published_route",
-        "limitation": "general_form_requires_internal_routing"
+        "limitation": "general_corporate_routing_requires_internal_assignment"
       },
       "confidence": "medium",
-      "state": "route_verified"
+      "state": "sent"
     },
     {
       "id": "miele-australia",
@@ -119,13 +119,13 @@
         "https://www.miele.com.au/experiences/contact-us"
       ],
       "route": {
-        "type": "projects_enquiry_form",
-        "publicSourceUrl": "https://www.miele.com.au/experiences/projects",
+        "type": "published_projects_route",
+        "publicSourceUrl": "https://www.miele.com.au/media/ex/au/pdf/Miele_Projects_Brochure.pdf",
         "targetTeam": "projects_or_trade_product_data",
         "discoveryMethod": "official_published_route"
       },
       "confidence": "high",
-      "state": "route_verified"
+      "state": "sent"
     },
     {
       "id": "chiq-australia",
@@ -142,7 +142,7 @@
         "limitation": "general_support_route_requires_internal_routing"
       },
       "confidence": "medium",
-      "state": "route_verified"
+      "state": "sent"
     }
   ]
 }

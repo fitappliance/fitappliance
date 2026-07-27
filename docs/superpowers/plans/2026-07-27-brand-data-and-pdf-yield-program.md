@@ -2,7 +2,7 @@
 
 **Created:** 2026-07-27
 
-**Status:** Active; preparation work may proceed, external brand email is gated
+**Status:** WP0-WP10 execution checkpoint complete; WP11 and WP12 await replies and the Day-14 gate
 
 **Owner:** FitAppliance
 
@@ -19,16 +19,17 @@ The program is complete only when both tracks have comparable measured outputs. 
 
 ## Current Truth Snapshot
 
-As of 2026-07-27:
+As of the 2026-07-27 execution checkpoint:
 
 - `data/architecture-v2/reviews/automated/brand-data-outreach-queue.json` contains a frozen 100-model pilot across 12 brands.
 - The queue has one confirmed official trade route and 11 brands requiring contact-route research.
-- No brand or provider request has been sent.
-- Brevo SMTP credentials and Gmail Send As are configured.
-- The Brevo sender `FitAppliance <hello@fitappliance.com.au>` is verified.
-- A delivery test reached `qiangico@gmail.com`, but Brevo rewrote the RFC5322 From address to `hello@11564950.brevosend.com` because `fitappliance.com.au` is not yet authenticated in Brevo.
-- Authoritative DNS, Google DNS, and Quad9 resolve both Brevo DKIM CNAMEs. Cloudflare `1.1.1.1` still has an NXDOMAIN negative cache.
-- Brand email must not start until an original-message audit proves the real From and DKIM identity are aligned to `fitappliance.com.au`.
+- Brevo preserved `From: hello@fitappliance.com.au`; SPF, aligned DKIM and DMARC passed in the delivered original-message audit.
+- Eight deduplicated organization requests covering all 13 target brands were sent and captured as private EML objects. The Git-safe ledger contains only public organization metadata, lifecycle state and hashes.
+- WP7A terminated all 100 frozen acquisition attempts: 57 exact-model official PDFs were integrity-checked and MinerU-indexed, while 43 attempts ended in typed acquisition or identity failures.
+- The frozen parser replay now yields 33 complete three-axis samples, up from 29 before WP10. Parser grammar gaps fell from 11 to 7.
+- Four eligible real document variants were repaired: LG washer exact-model W/D/H suffix rows, LG refrigerator audited A/B/C diagrams, Beko dishwasher truncated-label cards and Esatto physical-versus-packaged product cards.
+- The apparent fifth high-yield target is a Westinghouse official error-payload PDF. It is classified as `SOURCE_CONTENT_ERROR`, not repaired by weakening parser rules.
+- Every WP7A and WP8 sample remains `publicationEligible: false`. No catalog record or FitDecision was promoted.
 - Existing local changes in the worktree are user-owned and must not be reverted or folded into this program accidentally.
 
 ## Dependency Order
@@ -59,10 +60,10 @@ Calendar-based outreach timing starts only after the outbound authentication gat
 | WP5 | Research and deduplicate official contact routes | WP0 | official web research / Agent Reach fallback | organization contact matrix with source URLs | complete |
 | WP6 | Tailor and humanize organization-level drafts | WP2, WP3, WP5 | humanizer + evidence review | private draft set + body and file hashes | complete |
 | WP7 | Run stratified 100-PDF failure baseline | WP0 | MinerU PDF skill + data-quality audit | frozen sample and baseline report | complete |
-| WP7A | Acquire, validate and content-address the frozen 100 PDF candidates | WP7 | bounded official acquisition + PDF integrity checks | immutable PDF objects and rerun baseline | pending |
-| WP8 | Prioritize top five confirmed PDF document families | WP7A | metric diagnostics | ranked family backlog | blocked by WP7A |
-| WP9 | Send first organization requests | WP1, WP2, WP3, WP4, WP6 | Gmail | private sent messages + Git-safe status hashes | in progress: 2 sent |
-| WP10 | Implement reusable parser rules with TDD | WP8 | TDD + MinerU + replay audit | tests, parser changes, receipts | pending |
+| WP7A | Acquire, validate and content-address the frozen 100 PDF candidates | WP7 | bounded official acquisition + PDF integrity checks | immutable PDF objects and rerun baseline | complete: 57 indexed, 43 typed stops |
+| WP8 | Prioritize top five confirmed PDF document families | WP7A | metric diagnostics | ranked family backlog | complete: four grammar gaps; fifth is source error |
+| WP9 | Send first organization requests | WP1, WP2, WP3, WP4, WP6 | Gmail | private sent messages + Git-safe status hashes | complete: 8 organization threads sent |
+| WP10 | Implement reusable parser rules with TDD | WP8 | TDD + MinerU + replay audit | tests, parser changes, receipts | complete for four eligible variants; publication remains blocked |
 | WP11 | Ingest and validate provider responses | WP9 | Evidence Broker + data quality | quarantined source objects and receipts | pending |
 | WP12 | Day-14 investment decision | WP10, WP11 | product/business analysis | decision record and next allocation | pending |
 
@@ -234,14 +235,20 @@ Authentication gate result (2026-07-27):
 - DKIM passed with signing domain `fitappliance.com.au` and selector `brevo2`;
 - DMARC passed with `header.from=fitappliance.com.au`.
 
-The first two organization-level requests were then sent without attachments:
+Eight organization-level requests were then sent without attachments:
 
 | Organization thread | State | Subject SHA-256 | Body SHA-256 |
 | --- | --- | --- | --- |
 | Fisher & Paykel / Haier | sent | `750e4f00c67bc18aeef99c47f7ee5af55f485b944d7d2442fa038ef04ebe79e3` | `f4a59d46c5c046ae888400093adc3340187a8b0b31e51c105a037fb2465a25bf` |
 | Electrolux / Westinghouse | sent | `8c00ef74b618dc85bb12ddb0a8058f88322591d30b66bb81188db5e83faa944e` | `8810735be54827d5eaed6539bcced19ceabdbb39913ec46f00e483e9a866f663` |
+| Residentia Group | sent | `ecdaef7579af1f51a8d1d981a1cb770c7b2abd7f5ed13360317acc01f3281f72` | `a4aaed29f206133766068fc4add1c0471d3e30834c4f39cfa8ffaed8dfbd8aa9` |
+| LG Electronics Australia | sent | `c8470eda4e21b58d345fd67d058ba868c894e43295b332c703381561aa250b75` | `5502bb730f2a104efb9a69bcd8ef9486e6e78c843cb900600c7b7a546c5080da` |
+| Hisense Australia | sent | `548ef0218dfb762ae942e88a36b4f5acbf3269c9b9a3ebe76a4883080a1eb7fc` | `95cd93e4350ba357725f57e03b04266f832baa94a419cbb885aba1fcdfd04943` |
+| Smeg Australia | sent | `e4f02bae4d7fb12718cedbc05faeafbfccd77452fed635505cec0c026e2de3fb` | `8733fa87131d12a64d540ab53e5ec4077af3f1df690da8e57e7d3a88276b83dc` |
+| Miele Australia | sent | `5b9620db6cc9383f449a71381e2c87fcf0bd1e582d084d5e12bbb784e20e7d3a` | `d9f75af07878fdbaabbd92dd4cef393962af2f173733519161121a65ad99b698` |
+| CHiQ Australia | sent | `f8ebe158c353ad42404c935fe47dfe0d6bc5ecccd8d77df523de27f6346ea653` | `3356ebe13fe306b82f95425b4a4f2a92a3501fde5e377ddbfe58457972fcb9c7` |
 
-This narrow, user-authorized send preceded completion of WP3, WP4 and WP6. Do not expand to the remaining organizations until those work packages provide the durable field dictionary, private evidence store and reviewed organization-specific drafts.
+All eight EML object hashes and byte sizes are recorded in the Git-safe ledger and verified against the private evidence store. First follow-up is due 2026-08-01 and final follow-up is due 2026-08-06 only when no human response exists.
 
 - `T+0`: send one tailored request per data-owning organization;
 - `T+5 days`: one concise follow-up only where no human response exists;
@@ -291,6 +298,41 @@ Each rule requires:
 - zero automatic promotion to Verified Fit from dimensions alone.
 
 Two consecutive executions with zero new valid receipts trigger a typed stop. The next epoch must change acquisition, family identification, or parser capability before retrying.
+
+### WP7A and WP10 execution checkpoint
+
+The immutable WP7A artifact is
+`data/architecture-v2/reviews/automated/pdf-failure-baseline-100-wp7a.json`
+with SHA-256
+`6050a0ee7f0cf0ab7198d8993e47b54b704aaa371b439a83e3a8d3837fa3b169`.
+All 100 frozen attempts reached a terminal state:
+
+| Acquisition outcome | Samples |
+| --- | ---: |
+| MinerU indexed | 57 |
+| Official candidate not found | 37 |
+| Transport failed | 5 |
+| Exact-model identity unproven | 1 |
+
+The post-repair WP8 replay is
+`data/architecture-v2/reviews/automated/pdf-failure-baseline-100-wp8-replay.json`
+with SHA-256
+`eaccf44053faba67ed7e747615cb6ef6eeb4ac291f72c5b906f25880abcefefe`.
+It re-hashes both PDF and MinerU objects before parsing.
+
+| Variant | Representative exact model | Result | Publication boundary |
+| --- | --- | --- | --- |
+| `lg-au-washer-exact-model-size-wdh-v1` | `WF-T8582` | W/D/H suffix row recovered | one frozen receipt candidate; shared rule blocked |
+| `lg-au-fridge-a-b-c-dimension-diagram-v1` | `GS-V600MBLC` | audited A/B/C mapped to W/H/closed D | all 15 declared manual models pass parser canaries; no receipt issuance |
+| `beko_au_dishwasher_product_spec_truncated_labels_v1` | `BDF1410X` | explicit unpackaged labels recovered; unlabeled packaged tail excluded | one frozen receipt candidate; shared rule blocked |
+| `esatto-au-product-card-physical-wdh-v1` | `ETLW55` | Physical W/D/H recovered; Packaged tuple excluded | one frozen receipt candidate; shared rule blocked |
+| Westinghouse error-payload source | `WHE6874BA` | `SOURCE_CONTENT_ERROR` typed stop | parser relaxation prohibited |
+
+Frozen replay outcomes changed from 29 to 33 complete three-axis samples and from
+11 to 7 parser grammar gaps. Remaining outcomes are 43 acquisition unavailable,
+12 identity-scope failures, 2 MinerU structure failures, 2 partial-axis samples and
+1 source-content error. The four repairs remain dimensions-only research results:
+`publicationEligible` is zero, no acceptance receipt was issued, and Verified Fit remains zero.
 
 ## Decision Gate
 

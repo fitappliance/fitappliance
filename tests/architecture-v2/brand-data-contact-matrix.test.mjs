@@ -72,10 +72,27 @@ test('contact routes are official, evidence-backed, and contain no inferred addr
   assert.doesNotMatch(serialized, /recipient|mailbox|contactName/i);
 });
 
-test('only the two already dispatched organization threads are marked sent', async () => {
-  const matrix = await readMatrix();
+test('contact matrix dispatch state matches the Git-safe outreach ledger', async () => {
+  const [matrix, ledger] = await Promise.all([
+    readMatrix(),
+    readFile('data/architecture-v2/reviews/automated/brand-data-outreach-ledger.json', 'utf8')
+      .then(JSON.parse),
+  ]);
   assert.deepEqual(
     matrix.organizations.filter(({ state }) => state === 'sent').map(({ id }) => id).sort(),
-    ['electrolux-home-products', 'fisher-paykel-australia'],
+    ledger.threads.filter(({ state }) => state === 'sent').map(({ id }) => id).sort(),
   );
+  assert.deepEqual(
+    ledger.threads.filter(({ state }) => state === 'sent').map(({ id }) => id).sort(),
+    EXPECTED_ORGANIZATIONS,
+  );
+  const ledgerById = new Map(ledger.threads.map((thread) => [thread.id, thread]));
+  for (const organization of matrix.organizations) {
+    const ledgerThread = ledgerById.get(organization.id);
+    assert.equal(
+      new URL(organization.route.publicSourceUrl).toString().replace(/\/$/, ''),
+      new URL(ledgerThread.publicRouteSourceUrl).toString().replace(/\/$/, ''),
+      organization.id,
+    );
+  }
 });
