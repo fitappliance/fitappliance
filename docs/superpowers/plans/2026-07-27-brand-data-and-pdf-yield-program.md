@@ -395,16 +395,16 @@ Never skip ahead because a downstream task is easier. Never mark a work package 
 
 **Last updated:** 2026-07-27
 
-**Last completed:** WP7, including WP3-WP6 dependencies, official contact matrix, private draft fingerprints and a deterministic 100-PDF failure baseline
+**Last completed:** WP10, including the terminal WP7A acquisition pass, frozen WP8 replay, eight organization-level outreach threads and four TDD parser-family repairs
 
-**Active blocker:** parser-family ranking is blocked because 95 of the 100 frozen candidates do not yet have an immutable PDF object; URL path hints are not document-structure evidence
+**Active blocker:** WP11 is response-driven. No technical work package is blocked, but provider data cannot be ingested or rights-reviewed until a reply or file is received.
 
-**Next executable without email:** WP7A, acquire, validate and content-address the frozen 100 candidates, then rerun the unchanged failure classifier
+**Next executable without a provider reply:** monitor delivery and preserve the frozen WP7A/WP8 artifacts. Do not rerun the same 100-sample cohort unless a source, transport or parser epoch changes.
 
-**Parallel next executable:** WP9 can continue with the six `draft_ready` organizations; WP11 remains response-driven
+**Next scheduled outreach actions:** send the first follow-up on 2026-08-01 and the final follow-up on 2026-08-06 only where no reply has arrived. Evaluate WP12 no earlier than the Day-14 gate on 2026-08-10.
 
-**External-message state:** two organization-level requests sent; six organization-specific drafts are validated and byte-bound in private storage; no attachment or private feed data included
+**External-message state:** eight deduplicated organization threads were sent from `hello@fitappliance.com.au`; all private `.eml` files are byte-bound to the Git-safe ledger, and no private retailer feed data was disclosed.
 
-**Verification at checkpoint:** `npm test` 1,987/1,987 passing; Architecture V2 369/369 passing; schema validation 2,334 pages, 6,522 blocks, 0 errors; six private draft files match their Git-safe hashes and are mode `0600`; PDF baseline SHA-256 `adce6cbaad3e212e9f4f0535406cde8dfadf47aa59f7c1f0b23e536e24ab67cc`
+**Verification at checkpoint:** `npm test` 2,916/2,916 passing; PR #195 checks all passing; WP7A indexed 57 exact-model official PDFs and typed-stopped 43 attempts; WP8 increased complete three-axis samples from 29 to 33 and reduced parser grammar gaps from 11 to 7; publication and Fit-promotion violations remain zero.
 
-**Do not do next:** infer scanned/table/family layouts from filenames, or implement shared parser rules before WP7A exposes confirmed MinerU document structures
+**Do not do next:** resend the initial requests, weaken identity or parser rules for the Westinghouse error payload, publish any frozen-sample result, or treat a provider response as trusted before rights, identity, conflict and receipt checks pass.
