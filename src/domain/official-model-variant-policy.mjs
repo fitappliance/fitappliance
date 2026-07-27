@@ -18,6 +18,19 @@ function alphanumericModel(value) {
   return String(value ?? '').replace(/[^A-Z0-9]+/gi, '').toUpperCase();
 }
 
+function stripAlphanumericSuffix(value, suffix) {
+  let valueIndex = value.length - 1;
+  let suffixIndex = suffix.length - 1;
+  while (suffixIndex >= 0) {
+    while (valueIndex >= 0 && !/[A-Z0-9]/i.test(value[valueIndex])) valueIndex -= 1;
+    if (valueIndex < 0 || value[valueIndex].toUpperCase() !== suffix[suffixIndex]) return null;
+    valueIndex -= 1;
+    suffixIndex -= 1;
+  }
+  while (valueIndex >= 0 && /[^A-Z0-9]/i.test(value[valueIndex])) valueIndex -= 1;
+  return value.slice(0, valueIndex + 1).trim();
+}
+
 export function officialMarketApiModelVariant(caseIdentity, sourceModel) {
   const targetModel = normalizedModel(caseIdentity?.model);
   const candidateModel = normalizedModel(sourceModel);
@@ -63,7 +76,29 @@ export function officialProductMaterialModelVariant(caseIdentity, sourceModel) {
   const targetModel = normalizedModel(caseIdentity?.model);
   const candidateModel = normalizedModel(sourceModel);
   const category = String(caseIdentity?.category ?? '').trim().toLowerCase();
-  if (!targetModel || !candidateModel || !category || targetModel === candidateModel) return null;
+  if (!targetModel || !candidateModel || !category) return null;
+  const exactAliases = manufacturerPolicy.officialProductMaterialModelAliases
+    ?.[brandKey(caseIdentity?.brand)]?.[category];
+  if (Array.isArray(exactAliases)) {
+    const targetKey = alphanumericModel(targetModel);
+    const candidateKey = alphanumericModel(candidateModel);
+    const exact = exactAliases.find((configuration) => (
+      alphanumericModel(configuration?.targetModel) === targetKey
+        && alphanumericModel(configuration?.pageModel) === candidateKey
+    ));
+    if (exact) {
+      return {
+        relationshipKind: 'model_variant',
+        sourceModel: normalizedModel(exact.sourceModel),
+        pageModel: normalizedModel(exact.pageModel),
+        suffix: 'EXACT_POLICY_ALIAS',
+        finishLabel: String(exact.finishLabel ?? '').trim(),
+        pageFinishLabels: (exact.pageFinishLabels ?? []).map((value) => String(value).trim()),
+        materialNumber: String(exact.materialNumber ?? '').trim(),
+      };
+    }
+  }
+  if (targetModel === candidateModel) return null;
   const variants = manufacturerPolicy.officialProductMaterialModelVariantSuffixes
     ?.[brandKey(caseIdentity?.brand)]?.[category];
   if (!Array.isArray(variants)) return null;
@@ -71,10 +106,20 @@ export function officialProductMaterialModelVariant(caseIdentity, sourceModel) {
   const sourceKey = alphanumericModel(candidateModel);
   for (const configuration of variants) {
     const suffix = String(configuration?.suffix ?? '').trim().toUpperCase();
+    const sourceSuffix = String(configuration?.sourceSuffix ?? '').trim().toUpperCase();
     const finishLabel = String(configuration?.finishLabel ?? '').trim();
-    if (!suffix || !finishLabel || targetKey !== `${sourceKey}${suffix}`) continue;
+    if (!suffix || !finishLabel || !targetKey.endsWith(suffix)) continue;
+    const targetBase = targetKey.slice(0, -suffix.length);
+    const sourceBase = sourceSuffix && sourceKey.endsWith(sourceSuffix)
+      ? sourceKey.slice(0, -sourceSuffix.length)
+      : sourceSuffix ? null : sourceKey;
+    if (!sourceBase || targetBase !== sourceBase) continue;
+    const sourceModel = sourceSuffix
+      ? stripAlphanumericSuffix(candidateModel, sourceSuffix)
+      : candidateModel;
+    if (!sourceModel || alphanumericModel(sourceModel) !== sourceBase) continue;
     return {
-      sourceModel: candidateModel,
+      sourceModel,
       suffix,
       finishLabel,
     };
@@ -105,6 +150,63 @@ function escapedRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function strictSamsungSupportVariantPdfFailure(source, caseIdentity, targetModel, sourceModel) {
+  const provenance = source?.discoveryProvenance;
+  if (brandKey(caseIdentity?.brand) !== 'samsung'
+    || String(caseIdentity?.category ?? '').trim() !== 'fridge'
+    || provenance?.method !== 'official_product_page'
+    || !/^SRF\d{4}[A-Z0-9]{1,12}$/.test(alphanumericModel(targetModel))
+    || !/^RF71A[A-Z0-9]{5,14}\/SA$/i.test(sourceModel)) return 'variant policy';
+  const hash = String(provenance.discoveryContentSha256 ?? '');
+  if (normalizedModel(provenance.requestedModel) !== targetModel
+    || normalizedModel(provenance.matchedModel) !== targetModel
+    || !/^[a-f0-9]{64}$/.test(hash)) return 'discovery provenance';
+
+  const supportUrl = canonicalUrl(provenance.discoveryUrl);
+  const artifactLinkUrl = canonicalUrl(provenance.artifactLinkUrl);
+  const artifactUrl = canonicalUrl(provenance.artifactUrl);
+  const sourceUrl = canonicalUrl(source?.sourceUrl);
+  if (!supportUrl || !artifactLinkUrl || artifactLinkUrl !== artifactUrl || sourceUrl !== artifactLinkUrl) {
+    return 'artifact relationship';
+  }
+  const support = new URL(supportUrl);
+  const supportSegments = support.pathname.split('/').filter(Boolean).map(decodeURIComponent);
+  if (support.hostname.toLowerCase() !== 'www.samsung.com'
+    || supportSegments.length !== 5
+    || supportSegments[0] !== 'au'
+    || supportSegments[1] !== 'support'
+    || supportSegments[2] !== 'model'
+    || alphanumericModel(`${supportSegments[3]}/${supportSegments[4]}`)
+      !== alphanumericModel(sourceModel)) return 'support model binding';
+  const artifact = new URL(artifactLinkUrl);
+  if (artifact.hostname.toLowerCase() !== 'org.downloadcenter.samsung.com'
+    || artifact.pathname.toLowerCase() !== '/downloadfile/contentsfile.aspx'
+    || alphanumericModel(artifact.searchParams.get('CDSite')) !== 'UNIAU'
+    || alphanumericModel(artifact.searchParams.get('CDCttType')) !== 'UM'
+    || alphanumericModel(artifact.searchParams.get('ModelName')) !== alphanumericModel(targetModel)
+    || !/^\d+$/.test(String(artifact.searchParams.get('CttFileID') ?? ''))) {
+    return 'Samsung document binding';
+  }
+
+  const claims = source?.claims ?? [];
+  if (claims.length !== VARIANT_DIMENSION_FIELDS.length
+    || new Set(claims.map((claim) => claim?.field)).size !== VARIANT_DIMENSION_FIELDS.length
+    || !claims.every((claim) => VARIANT_DIMENSION_FIELDS.includes(claim?.field))) {
+    return 'dimension claim set';
+  }
+  const familySignal = signalByType(source, 'mineru_samsung_rf71a_support_family');
+  if (!new RegExp(
+    `^${escapedRegex(targetModel)}:source:${escapedRegex(sourceModel)}:family:RF71A:page:[1-9]\\d*:[a-f0-9]{64}$`,
+    'i',
+  ).test(familySignal ?? '')) return 'MinerU support-family signal';
+  if (signalByType(source, 'canonical_source_model') !== sourceModel) {
+    return 'canonical source-model signal';
+  }
+  if (signalByType(source, 'official_product_page_model')
+    !== `${targetModel}:${hash}:${supportUrl}`) return 'support-page model signal';
+  return null;
+}
+
 export function strictOfficialModelVariantPdfFailure(source, caseIdentity) {
   if (source?.sourceType !== 'official_model_variant_pdf'
     || source?.contentType !== 'application/pdf'
@@ -116,17 +218,30 @@ export function strictOfficialModelVariantPdfFailure(source, caseIdentity) {
     || normalizedModel(source?.identity?.model) !== targetModel
     || String(source?.identity?.category ?? caseIdentity?.category) !== String(caseIdentity?.category)) return 'case identity';
   const provenance = source?.discoveryProvenance;
+  if (provenance?.method === 'official_product_page') {
+    return strictSamsungSupportVariantPdfFailure(
+      source,
+      caseIdentity,
+      targetModel,
+      sourceModel,
+    );
+  }
   const marketVariant = officialMarketApiModelVariant(caseIdentity, sourceModel);
-  const materialVariant = officialProductMaterialModelVariant(caseIdentity, sourceModel);
+  const materialVariant = officialProductMaterialModelVariant(
+    caseIdentity,
+    provenance?.matchedModel,
+  );
   const variant = provenance?.method === 'official_market_api'
     ? marketVariant
     : provenance?.method === 'official_product_material'
       ? materialVariant
       : null;
-  if (!variant) return 'variant policy';
+  if (!variant || (provenance?.method === 'official_product_material'
+    && normalizedModel(variant.sourceModel) !== sourceModel)) return 'variant policy';
   if (!['official_market_api', 'official_product_material'].includes(provenance?.method)
     || normalizedModel(provenance.requestedModel) !== targetModel
-    || normalizedModel(provenance.matchedModel) !== variant.sourceModel
+    || (provenance.method === 'official_market_api'
+      && normalizedModel(provenance.matchedModel) !== normalizedModel(variant.sourceModel))
     || !/^[a-f0-9]{64}$/.test(String(provenance.discoveryContentSha256 ?? ''))) return 'discovery provenance';
 
   const claims = source?.claims ?? [];
@@ -232,7 +347,54 @@ export function isStrictOfficialModelVariantApiSource(source, caseIdentity) {
   return strictOfficialModelVariantApiFailure(source, caseIdentity) === null;
 }
 
+export function strictOfficialModelVariantProductPageFailure(source, caseIdentity) {
+  if (source?.sourceType !== 'official_model_variant_product_page'
+    || source?.contentType !== 'text/html'
+    || source?.identity?.outcome !== 'official_marketing_alias') return 'source metadata';
+  const targetModel = normalizedModel(caseIdentity?.model);
+  const sourceModelLabel = String(source?.identity?.sourceModel ?? '').trim();
+  const sourceModel = normalizedModel(sourceModelLabel);
+  if (!targetModel || !sourceModel) return 'model identity';
+  if (brandKey(source?.identity?.brand) !== brandKey(caseIdentity?.brand)
+    || normalizedModel(source?.identity?.model) !== targetModel
+    || String(source?.identity?.category ?? caseIdentity?.category) !== String(caseIdentity?.category)) return 'case identity';
+  const provenance = source?.discoveryProvenance;
+  const variant = officialProductMaterialModelVariant(caseIdentity, provenance?.matchedModel);
+  if (!variant || normalizedModel(variant.pageModel ?? provenance?.matchedModel) !== sourceModel) {
+    return 'variant policy';
+  }
+  const hash = String(provenance?.discoveryContentSha256 ?? '');
+  const boundUrl = canonicalUrl(provenance?.discoveryUrl);
+  if (provenance?.method !== 'official_product_material'
+    || normalizedModel(provenance.requestedModel) !== targetModel
+    || String(provenance.materialNumber ?? '') !== String(variant.materialNumber ?? provenance.materialNumber ?? '')
+    || !/^[a-f0-9]{64}$/.test(hash)
+    || source.contentSha256 !== hash
+    || !boundUrl
+    || canonicalUrl(provenance.artifactUrl) !== boundUrl
+    || canonicalUrl(source.sourceUrl) !== boundUrl
+    || canonicalUrl(source.finalUrl) !== boundUrl) return 'self-source discovery provenance';
+  const claims = source?.claims ?? [];
+  if (claims.length !== VARIANT_DIMENSION_FIELDS.length
+    || new Set(claims.map((claim) => claim?.field)).size !== VARIANT_DIMENSION_FIELDS.length
+    || !claims.every((claim) => VARIANT_DIMENSION_FIELDS.includes(claim?.field))) return 'dimension claim set';
+  if (normalizedModel(signalByType(source, 'canonical_source_model')) !== sourceModel) {
+    return 'canonical source-model signal';
+  }
+  if (signalByType(source, 'official_product_material_page')
+    !== `${targetModel}:${sourceModelLabel}:${provenance.materialNumber}:${hash}:${boundUrl}`) {
+    return 'product-material page signal';
+  }
+  if (!signalByType(source, 'document_title')) return 'document title signal';
+  return null;
+}
+
+export function isStrictOfficialModelVariantProductPageSource(source, caseIdentity) {
+  return strictOfficialModelVariantProductPageFailure(source, caseIdentity) === null;
+}
+
 export function isStrictOfficialModelVariantSource(source, caseIdentity) {
   return isStrictOfficialModelVariantPdfSource(source, caseIdentity)
-    || isStrictOfficialModelVariantApiSource(source, caseIdentity);
+    || isStrictOfficialModelVariantApiSource(source, caseIdentity)
+    || isStrictOfficialModelVariantProductPageSource(source, caseIdentity);
 }

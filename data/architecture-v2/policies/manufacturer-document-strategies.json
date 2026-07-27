@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-15.3",
+  "policyVersion": "2026-07-27.1",
   "documentTypePriority": [
     "installation_guide",
     "quick_reference_guide",
@@ -48,11 +48,7 @@
     "hisense": { "templates": [] },
     "lg": { "templates": [] },
     "samsung": { "templates": [] },
-    "smeg": {
-      "templates": [
-        { "documentType": "specification_sheet", "url": "https://sys.smeg.com.au/Product/Techspecs/{model}.pdf" }
-      ]
-    },
+    "smeg": { "templates": [] },
     "miele": { "templates": [] }
   }
 }

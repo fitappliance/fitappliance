@@ -128,7 +128,7 @@ test('discovery and acquisition share content-addressed finder options for every
   const writeObject = async () => {};
   const options = officialResolverOptionsForObjectStore({ writeObject });
   for (const brand of [
-    'bosch', 'beko', 'haier', 'asko', 'esatto', 'miele', 'fisherPaykel',
+    'bosch', 'beko', 'chiq', 'electrolux', 'haier', 'hisense', 'asko', 'esatto', 'miele', 'omega', 'samsung', 'smeg', 'westinghouse', 'fisherPaykel',
   ]) {
     assert.equal(options[brand].finderOptions.writeObject, writeObject, brand);
   }
@@ -470,6 +470,7 @@ test('brand-specific discovery makes the generic resolver supplemental instead o
     }),
   });
   assert.equal(fisherPaykel[0].resolverId, 'architecture-v2-core-official-discovery');
+  assert.equal(fisherPaykel[0].version, '2');
   assert.equal(fisherPaykel[0].required, false);
   assert.equal((await fisherPaykel[0].resolve({})).required, false);
   assert.equal(fisherPaykel[1].resolverId, 'fisher-paykel-official-support');
@@ -696,8 +697,10 @@ test('fresh run blocks completed history before graph, run state, or tracked out
   let scannedTargetIds = [];
   let graphInvoked = false;
   const deps = dependencies(f, {
-    scanRunHistory: async ({ selectedBatch }) => {
+    scanRunHistory: async ({ selectedBatch, currentBoundedManifest, currentScaleControl }) => {
       scannedTargetIds = selectedBatch.targets.map((target) => target.targetId);
+      assert.equal(currentBoundedManifest, null);
+      assert.equal(currentScaleControl, null);
       return [{
         targetId: 'target-a', priorRunId: 'prior-run', priorStatus: 'claims_incomplete',
         priorFailureCode: 'source_authority', reason: 'completed_exhausted_source_discovery',
@@ -719,6 +722,34 @@ test('fresh run blocks completed history before graph, run state, or tracked out
   await assert.rejects(() => fs.access(join(
     f.root, 'runs/historical-evidence-recovery/run-history-blocked',
   )), /ENOENT/);
+});
+
+test('fresh manifest-bound run gives history scanning the validated control authorisation', async (t) => {
+  const f = await fixture();
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  const manifest = f.boundedBatches.manifests[0];
+  let observed = null;
+  const deps = dependencies(f, {
+    scanRunHistory: async (input) => {
+      observed = input;
+      return [{
+        targetId: 'target-a', priorRunId: 'prior-run', priorStatus: 'accepted',
+        priorFailureCode: null, reason: 'completed_unpromoted_acceptance',
+        brand: 'Example', model: 'EX100',
+      }];
+    },
+  });
+
+  await assert.rejects(() => runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath,
+    queue: f.queuePath, targetState: f.targetStatePath,
+    boundedBatches: f.boundedBatchesPath, manifestId: manifest.manifestId,
+    storageRoot: f.root, runId: 'run-history-authorisation', resume: false, dryRun: false,
+    jobIds: [], routes: [], limit: null, networkConcurrency: 2, mineruConcurrency: 1,
+  }, deps), /completed run history blocks repeated targets/i);
+
+  assert.deepEqual(observed.currentBoundedManifest, manifest);
+  assert.equal(observed.currentScaleControl, null);
 });
 
 test('interrupted run resumes only pending work and matches uninterrupted semantic digest', async (t) => {

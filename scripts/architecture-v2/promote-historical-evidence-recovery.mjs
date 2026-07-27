@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { createEvidenceObjectStore } from '../../src/domain/evidence-recovery-state-store.mjs';
 import {
   auditHistoricalAcceptanceReceipts,
+  filterHistoricalAcceptanceBundleByReceiptReplayAudit,
   promoteHistoricalEvidenceRecovery,
 } from '../../src/domain/historical-evidence-recovery-audit.mjs';
 import {
@@ -78,9 +79,13 @@ export async function runPromotionCli(options) {
   ));
   const storageRoot = resolve(options.storageRoot ?? process.env.FITAPPLIANCE_STORAGE_ROOT ?? '');
   if (!storageRoot || storageRoot === resolve('')) throw new Error('FITAPPLIANCE_STORAGE_ROOT required to locate the audited batch');
-  const [results, audit, priorBundle, priorAttemptLedger] = await Promise.all([
-    readJson(resultsPath), readJson(auditPath), readOptionalJson(bundlePath), readOptionalJson(attemptLedgerPath),
+  const [results, audit, rawPriorBundle, priorReceiptAudit, priorAttemptLedger] = await Promise.all([
+    readJson(resultsPath), readJson(auditPath), readOptionalJson(bundlePath),
+    readOptionalJson(receiptAuditPath), readOptionalJson(attemptLedgerPath),
   ]);
+  const priorBundle = rawPriorBundle
+    ? filterHistoricalAcceptanceBundleByReceiptReplayAudit(rawPriorBundle, priorReceiptAudit).bundle
+    : null;
   const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', results.runId);
   const [batch, state] = await Promise.all([
     readJson(join(runDirectory, 'batch.json')),

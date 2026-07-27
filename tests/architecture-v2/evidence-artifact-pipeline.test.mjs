@@ -471,6 +471,44 @@ test('HTML V2 attestation binds a verbatim grouped product label instead of a pa
   assert.equal(result.source.verificationReceipt.schemaVersion, 3);
 });
 
+test('Hisense product-page grouped dimensions cannot enter V2 attestation', async () => {
+  const model = 'HWF5I1015';
+  const artifactUrl = `https://hisense.com.au/product/${model}/10kg-series-5i-front-load-washer`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>${model} washer | Hisense Australia</title>
+    <link rel="canonical" href="${artifactUrl}">
+  </head><body data-product-model="${model}">
+    <div><h2>Dimensions (H*W*D) Unit: mm</h2><p>550*845*595</p></div>
+  </body></html>`);
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+
+  await assert.rejects(attestEvidenceArtifactForCase({
+    id: `case-${model}`,
+    brand: 'Hisense',
+    model,
+    category: 'washing_machine',
+    sources: [],
+  }, {
+    authorityMode: 'official',
+    authorityBrand: 'Hisense',
+    requestedUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    contentType: 'text/html',
+    contentSha256,
+    objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`,
+    byteSize: bytes.length,
+    bytes,
+  }, {
+    now: '2026-07-27T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    claimSemanticsVersion: 2,
+    requireRequestedFieldCoverage: true,
+  }), /no supported evidence claims extracted/i);
+});
+
 test('official HTML attestation treats punctuation-only Westinghouse hinge formatting as exact identity', async () => {
   const targetModel = 'WBE4504BBL';
   const sourceModel = 'WBE4504BB-L';
@@ -624,6 +662,9 @@ function mieleMaterialVariantFixture({
   productTitle = `${pageModel} Front AutoDos`,
   firstPageModel = true,
   finishTableMaterialCaption = false,
+  structuredPageFinish = false,
+  includeFinishRow = true,
+  pdfTitle = `${pdfModel} Front AutoDos`,
   width = 598,
   height = 845,
   depth = 600,
@@ -635,7 +676,9 @@ function mieleMaterialVariantFixture({
     <link rel="canonical" href="${productUrl}">
   </head><body>
     <h1>${productTitle}</h1>
-    <div data-product-sku="${materialNumber}">${pageFinish}</div>
+    ${structuredPageFinish
+      ? `<div data-product-sku="${materialNumber}"></div><dl class="attribute-list-item"><dt>Control panel colour</dt><dd>${pageFinish}</dd></dl>`
+      : `<div data-product-sku="${materialNumber}">${pageFinish}</div>`}
   </body></html>`);
   const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
   const discoveryObjectPath = `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`;
@@ -647,7 +690,7 @@ function mieleMaterialVariantFixture({
           list_type: 'text_list',
           list_items: [{
             item_type: 'text',
-            item_content: [{ type: 'text', content: `${pdfModel} Front AutoDos` }],
+            item_content: [{ type: 'text', content: pdfTitle }],
           }],
         },
         bbox: [112, 153, 699, 204],
@@ -662,7 +705,7 @@ function mieleMaterialVariantFixture({
         },
         bbox: [391, 208, 700, 222],
       }] : []),
-      {
+      ...(includeFinishRow ? [{
         type: 'table',
         content: {
           table_caption: finishTableMaterialCaption ? [{
@@ -673,7 +716,7 @@ function mieleMaterialVariantFixture({
           html: `<table><tr><td>Control panel colour</td><td>${pdfFinish}</td></tr></table>`,
         },
         bbox: [391, 229, 931, 908],
-      },
+      }] : []),
     ],
     [
       {
@@ -682,7 +725,7 @@ function mieleMaterialVariantFixture({
           list_type: 'text_list',
           list_items: [{
             item_type: 'text',
-            item_content: [{ type: 'text', content: `${pdfModel} Front AutoDos` }],
+            item_content: [{ type: 'text', content: pdfTitle }],
           }],
         },
         bbox: [112, 153, 699, 203],
@@ -757,6 +800,206 @@ function mieleMaterialVariantFixture({
       discoveryContentSha256: discoveryHash,
       discoveryObjectPath,
       discoveryByteSize: discoveryBytes.length,
+    },
+  };
+}
+
+function mieleFridgeMaterialVariantFixture({
+  targetModel = 'FNS4782EBS',
+  pageModel = 'FNS 4782 E edt/bs',
+  pdfModel = 'FNS 4782 E',
+  materialNumber = '12430770',
+  pageFinish = 'BlackSteel door',
+  pdfFinish = 'BlackSteel',
+  dimensions = '600 x 1850 x 675',
+} = {}) {
+  const productUrl = `https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid${materialNumber}/`;
+  const artifactUrl = `https://www.miele.com.au/media/ex/au/specsheets/${materialNumber}.pdf`;
+  const discoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>${pageModel} | Refrigeration | Miele online shop</title>
+    <link rel="canonical" href="${productUrl}">
+  </head><body>
+    <h1>${pageModel}</h1>
+    <div data-product-sku="${materialNumber}"></div>
+    <dl class="attribute-list-item"><dt>Front colour</dt><dd>${pageFinish}</dd></dl>
+  </body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryObjectPath = `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`;
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [
+      {
+        type: 'image',
+        content: {
+          image_source: { path: 'images/product.jpg' },
+          image_caption: [{ type: 'text', content: pdfModel }],
+          image_footnote: [],
+        },
+        bbox: [90, 111, 250, 360],
+      },
+      {
+        type: 'table',
+        content: {
+          table_caption: [],
+          table_footnote: [],
+          html: `<table>
+            <tr><td>Appliance category</td><td>Freezer</td></tr>
+            <tr><td>Front colour</td><td>${pdfFinish}</td></tr>
+            <tr><td>Technical data</td><td></td></tr>
+            <tr><td>Appliance dimensions in mm (W x H x D)</td><td>${dimensions}</td></tr>
+          </table>`,
+        },
+        bbox: [368, 118, 897, 538],
+      },
+    ],
+  ]));
+  const pdfBytes = Buffer.from('%PDF-1.7\nMiele refrigerator material-bound product sheet');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  return {
+    targetModel,
+    sourceModel: pdfModel,
+    materialNumber,
+    productUrl,
+    artifactUrl,
+    discoveryBytes,
+    discoveryObjectPath,
+    artifact: {
+      authorityMode: 'official',
+      authorityBrand: 'Miele',
+      requestedUrl: artifactUrl,
+      finalUrl: artifactUrl,
+      redirectChain: [],
+      contentType: 'application/pdf',
+      contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      byteSize: pdfBytes.length,
+      bytes: pdfBytes,
+      derivedArtifactBytes: jsonBytes,
+      derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+        pdfSha256: pdfHash,
+        parserVersion: '3.4.4',
+        modelRevision: MODEL_REVISION,
+      }),
+    },
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_material',
+      market: 'AU',
+      discoveryUrl: productUrl,
+      requestedModel: targetModel,
+      matchedModel: pageModel,
+      artifactUrl,
+      materialNumber,
+      discoveryContentSha256: discoveryHash,
+      discoveryObjectPath,
+      discoveryByteSize: discoveryBytes.length,
+    },
+  };
+}
+
+function mieleCleanSteelProductPageFixture({
+  targetModel = 'KS4783EDETCCS',
+  pageModel = 'KS 4783 EDT CS',
+  materialNumber = '11949580',
+  finish = 'Stainless steel/CleanSteel',
+  canonicalUrl = null,
+  dimensions = '597 x 1855 x 675',
+} = {}) {
+  const productUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fridges/freestanding-fridges/ks-4783-edt-cs-zid11949580/';
+  const effectiveCanonicalUrl = canonicalUrl ?? productUrl;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>${pageModel} | Miele Australia</title>
+    <link rel="canonical" href="${effectiveCanonicalUrl}">
+  </head><body>
+    <h1>${pageModel}</h1><div data-product-sku="${materialNumber}"></div>
+    <dl class="attribute-list-item"><dt>Front colour</dt><dd>${finish}</dd></dl>
+    <table><tr><th>Appliance dimensions in mm (W x H x D)</th><td>${dimensions}</td></tr></table>
+  </body></html>`);
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const objectPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`;
+  return {
+    targetModel,
+    pageModel,
+    materialNumber,
+    productUrl,
+    bytes,
+    artifact: {
+      authorityMode: 'official',
+      authorityBrand: 'Miele',
+      requestedUrl: productUrl,
+      finalUrl: productUrl,
+      redirectChain: [],
+      contentType: 'text/html',
+      contentSha256: hash,
+      objectPath,
+      byteSize: bytes.length,
+      bytes,
+    },
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_material',
+      market: 'AU',
+      discoveryUrl: productUrl,
+      requestedModel: targetModel,
+      matchedModel: pageModel,
+      artifactUrl: productUrl,
+      materialNumber,
+      discoveryContentSha256: hash,
+      discoveryObjectPath: objectPath,
+      discoveryByteSize: bytes.length,
+    },
+  };
+}
+
+function mieleBlackSteelProductPageFixture({
+  targetModel = 'FNS4782EBS',
+  pageModel = 'FNS 4782 E edt/bs',
+  materialNumber = '12430770',
+  finish = 'BlackSteel door',
+  dimensions = { widthMm: 597, heightMm: 1855, depthMm: 675 },
+} = {}) {
+  const productUrl = `https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid${materialNumber}/`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>${pageModel} | Refrigeration | Miele online shop</title>
+    <link rel="canonical" href="${productUrl}">
+  </head><body>
+    <h1>${pageModel}</h1><div data-product-sku="${materialNumber}"></div>
+    <dl class="attribute-list-item"><dt>Front colour</dt><dd>${finish}</dd></dl>
+    <dl class="attribute-list-item"><dt>Appliance width in mm</dt><dd>${dimensions.widthMm}</dd></dl>
+    <dl class="attribute-list-item"><dt>Appliance height in mm</dt><dd>${dimensions.heightMm}</dd></dl>
+    <dl class="attribute-list-item"><dt>Appliance depth in mm</dt><dd>${dimensions.depthMm}</dd></dl>
+  </body></html>`);
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const objectPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`;
+  return {
+    targetModel,
+    pageModel,
+    materialNumber,
+    productUrl,
+    bytes,
+    artifact: {
+      authorityMode: 'official',
+      authorityBrand: 'Miele',
+      requestedUrl: productUrl,
+      finalUrl: productUrl,
+      redirectChain: [],
+      contentType: 'text/html',
+      contentSha256: hash,
+      objectPath,
+      byteSize: bytes.length,
+      bytes,
+    },
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_material',
+      market: 'AU',
+      discoveryUrl: productUrl,
+      requestedModel: targetModel,
+      matchedModel: pageModel,
+      artifactUrl: productUrl,
+      materialNumber,
+      discoveryContentSha256: hash,
+      discoveryObjectPath: objectPath,
+      discoveryByteSize: bytes.length,
     },
   };
 }
@@ -847,6 +1090,228 @@ test('Miele integrated material sheet attests exact closed W/H/D without flatten
     ['closedEnvelope.depthMm', 570],
   ]);
   assert.equal(result.source.claims.some((claim) => /niche|door open/i.test(claim.sourceLabel)), false);
+});
+
+test('Miele Obsidian Black material sheet binds OBSW without sharing sibling dimensions', async () => {
+  const fixtureValue = mieleMaterialVariantFixture({
+    targetModel: 'G7719SCIXXLOBSW',
+    pageModel: 'G 7719 SCi XXL',
+    pdfModel: 'G 7719 SCi XXL',
+    materialNumber: '12531710',
+    pageFinish: 'Obsidian Black',
+    pdfFinish: 'Obsidian Black',
+    productPath: 'integrated-dishwashers/g-7719-sci-xxl-autodos',
+    productTitle: 'G 7719 SCi XXL AutoDos',
+    firstPageModel: false,
+    finishTableMaterialCaption: true,
+    structuredPageFinish: true,
+    width: 598,
+    height: 845,
+    depth: 570,
+  });
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele',
+    model: fixtureValue.targetModel,
+    category: 'dishwasher',
+    sources: [],
+  }, fixtureValue.artifact, {
+    now: '2026-07-26T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async () => fixtureValue.discoveryBytes,
+  });
+
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 598],
+    ['closedEnvelope.heightMm', 845],
+    ['closedEnvelope.depthMm', 570],
+  ]);
+  assert.equal(result.source.identity.sourceModel, 'G 7719 SCI XXL');
+  assert.match(
+    result.source.identitySignals.find((signal) => (
+      signal.type === 'mineru_miele_product_material_model'
+    )).value,
+    /finish:Obsidian Black:/,
+  );
+});
+
+test('Miele BlackSteel refrigerator material sheet binds the compact W/H/D row without sharing CleanSteel', async () => {
+  const fixtureValue = mieleFridgeMaterialVariantFixture();
+  const options = {
+    now: '2026-07-26T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async () => fixtureValue.discoveryBytes,
+  };
+  const caseValue = {
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele',
+    model: fixtureValue.targetModel,
+    category: 'fridge',
+    sources: [],
+  };
+
+  const result = await attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, options);
+
+  assert.equal(result.source.sourceType, 'official_model_variant_pdf');
+  assert.equal(result.source.identity.sourceModel, 'FNS 4782 E');
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 600],
+    ['closedEnvelope.heightMm', 1850],
+    ['closedEnvelope.depthMm', 675],
+  ]);
+  for (const fixtureMutation of [
+    mieleFridgeMaterialVariantFixture({ pageFinish: 'CleanSteel' }),
+    mieleFridgeMaterialVariantFixture({ pdfFinish: 'CleanSteel' }),
+    mieleFridgeMaterialVariantFixture({ pdfModel: 'FNS 4782 EDT' }),
+  ]) {
+    await assert.rejects(() => attestEvidenceArtifactForCase(caseValue, fixtureMutation.artifact, {
+      ...options,
+      discoveryProvenance: fixtureMutation.discoveryProvenance,
+      readObject: async () => fixtureMutation.discoveryBytes,
+    }), /finish|model|material|scope|variant/i);
+  }
+});
+
+test('Miele material-bound product page self-attests only the mapped CleanSteel W/H/D', async () => {
+  const fixtureValue = mieleCleanSteelProductPageFixture();
+  const caseValue = {
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele', model: fixtureValue.targetModel, category: 'fridge', sources: [],
+  };
+  const options = {
+    now: '2026-07-26T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async () => fixtureValue.bytes,
+  };
+
+  const result = await attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, options);
+  assert.equal(result.source.sourceType, 'official_model_variant_product_page');
+  assert.deepEqual(result.source.identity, {
+    brand: 'Miele', model: fixtureValue.targetModel, category: 'fridge',
+    outcome: 'official_marketing_alias', sourceModel: fixtureValue.pageModel,
+  });
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 597],
+    ['closedEnvelope.heightMm', 1855],
+    ['closedEnvelope.depthMm', 675],
+  ]);
+  assert.ok(result.source.identitySignals.some((signal) => (
+    signal.type === 'official_product_material_page'
+  )));
+  await assert.rejects(() => attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, {
+    ...options, requestedFields: ['closedEnvelope.widthMm', 'installation.rearMm'],
+  }), /dimensions only/i);
+
+  for (const mutation of [
+    mieleCleanSteelProductPageFixture({ materialNumber: '12431300' }),
+    mieleCleanSteelProductPageFixture({ finish: 'BlackSteel' }),
+    mieleCleanSteelProductPageFixture({ pageModel: 'KS 4383 EDT CS' }),
+    mieleCleanSteelProductPageFixture({ canonicalUrl: 'https://shop.miele.com.au/en/kitchen/refrigeration/fridges/wrong-zid11949580/' }),
+  ]) {
+    await assert.rejects(() => attestEvidenceArtifactForCase(caseValue, mutation.artifact, {
+      ...options,
+      discoveryProvenance: mutation.discoveryProvenance,
+      readObject: async () => mutation.bytes,
+    }), /material|finish|model|canonical|variant/i);
+  }
+  await assert.rejects(() => attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, {
+    ...options,
+    discoveryProvenance: {
+      ...fixtureValue.discoveryProvenance,
+      artifactUrl: 'https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf',
+    },
+  }), /artifact|self-source|match/i);
+});
+
+test('Miele BlackSteel suffix product page self-attests its exact page model and W/H/D', async () => {
+  const fixtureValue = mieleBlackSteelProductPageFixture();
+  const caseValue = {
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele', model: fixtureValue.targetModel, category: 'fridge', sources: [],
+  };
+  const result = await attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, {
+    now: '2026-07-26T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async () => fixtureValue.bytes,
+  });
+
+  assert.equal(result.source.sourceType, 'official_model_variant_product_page');
+  assert.deepEqual(result.source.identity, {
+    brand: 'Miele', model: fixtureValue.targetModel, category: 'fridge',
+    outcome: 'official_marketing_alias', sourceModel: fixtureValue.pageModel,
+  });
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 597],
+    ['closedEnvelope.heightMm', 1855],
+    ['closedEnvelope.depthMm', 675],
+  ]);
+});
+
+test('Miele exact K2O material sheet binds dimensions without inventing a finish alias', async () => {
+  const fixtureValue = mieleMaterialVariantFixture({
+    targetModel: 'G7989SCVIXXLK2O',
+    pageModel: 'G 7989 SCVi XXL K2O',
+    pdfModel: 'G 7989 SCVi XXL K2O',
+    materialNumber: '12531740',
+    pageFinish: 'Not used as identity evidence',
+    productPath: 'fully-integrated-dishwashers/g-7989-scvi-xxl-autodos-k2o',
+    productTitle: 'G 7989 SCVi XXL AutoDos K2O',
+    pdfTitle: 'G 7989 SCVi XXL AutoDos K2O',
+    firstPageModel: true,
+    includeFinishRow: false,
+    width: 598,
+    height: 845,
+    depth: 570,
+  });
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele',
+    model: fixtureValue.targetModel,
+    category: 'dishwasher',
+    sources: [],
+  }, fixtureValue.artifact, {
+    now: '2026-07-26T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async () => fixtureValue.discoveryBytes,
+  });
+
+  assert.equal(result.source.sourceType, 'official_exact_model_pdf');
+  assert.deepEqual(result.source.identity, {
+    brand: 'Miele', model: 'G7989SCVIXXLK2O', outcome: 'exact',
+  });
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 598],
+    ['closedEnvelope.heightMm', 845],
+    ['closedEnvelope.depthMm', 570],
+  ]);
+  assert.ok(result.source.identitySignals.some((signal) => (
+    signal.type === 'official_product_material_model'
+  )));
 });
 
 test('Miele material-bound PDF rejects sibling, material, finish, and discovery mutations', async () => {

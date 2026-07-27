@@ -384,6 +384,97 @@ test('fails closed when acceptance receipt replay does not cover the bundle', ()
   );
 });
 
+test('reports failed historical receipts after they are excluded from the effective bundle', () => {
+  const input = fixture();
+  input.acceptanceBundle.entries = input.acceptanceBundle.entries.slice(0, 3);
+  input.receiptReplaySourceEntryCount = 4;
+  input.receiptReplayAudit.summary = { entries: 4, sources: 5, passed: 4, failed: 1 };
+  input.receiptReplayAudit.outcomes = [
+    { targetId: 'target-1', referenceId: 'ref-1', status: 'passed' },
+    { targetId: 'target-2', referenceId: 'ref-2', status: 'passed' },
+    { targetId: 'target-3', referenceId: 'ref-3', status: 'passed' },
+    { targetId: 'target-4', referenceId: 'ref-4', status: 'passed' },
+    { targetId: 'target-4', referenceId: 'ref-4', status: 'failed' },
+  ];
+
+  input.classification.records[3].operationalClass = 'OFFLINE_PARSER_REPAIR';
+  input.classification.summary.byOperationalClass = {
+    COMPLETE_RECEIPT: 3,
+    OFFLINE_PARSER_REPAIR: 1,
+    OFFICIAL_DISCOVERY: 1,
+  };
+  input.acquisitionQueue.records = [{ referenceId: 'ref-4' }, { referenceId: 'ref-5' }];
+  input.acquisitionQueue.summary.queuedModels = 2;
+  input.acquisitionQueue.summary.excluded.COMPLETE_RECEIPT = 3;
+  input.executableQueue.discoveryTargets = [
+    { referenceId: 'ref-4', candidateJobIds: [] },
+    { referenceId: 'ref-5', candidateJobIds: [] },
+  ];
+  input.executableQueue.summary.acquisitionRecords = 2;
+  input.executableQueue.summary.targets = 2;
+  input.executableQueue.summary.discoveryTargets = 2;
+  input.targetState.records[3] = {
+    referenceId: 'ref-4', state: 'SOURCE_DISCOVERY_REQUIRED', stateClass: 'ACTIONABLE',
+    actionable: true, terminal: false,
+    binding: { type: 'executable_queue', targetId: 'target-4', executionLane: 'BOUNDED_DISCOVERY' },
+  };
+  input.targetState.summary.actionable = 2;
+  input.targetState.summary.completed = 3;
+  input.targetState.summary.terminal = 3;
+  input.targetState.summary.byState = { DIMENSIONS_RECEIPT: 3, SOURCE_DISCOVERY_REQUIRED: 2 };
+  input.targetState.summary.byStateClass = { ACTIONABLE: 2, COMPLETED: 3 };
+
+  const status = buildHistoricalEvidenceProgramStatus(input);
+  assert.equal(status.inventory.acceptedRecoveryEntries, 3);
+  assert.equal(status.inventory.quarantinedReceiptTargets, 1);
+  assert.equal(metricById(status, 'receipt_replay.failed_sources').numerator, 1);
+  assert.ok(status.diagnostics.some((diagnostic) => (
+    diagnostic.code === 'RECEIPT_REPLAY_FAILURES_QUARANTINED'
+  )));
+  assert.match(
+    status.controls.find((control) => control.id === 'receipt_replay').label,
+    /isolated/i,
+  );
+});
+
+test('fails closed when a quarantined receipt target is not bound to actionable repair work', () => {
+  const input = fixture();
+  input.acceptanceBundle.entries = input.acceptanceBundle.entries.slice(0, 3);
+  input.receiptReplaySourceEntryCount = 4;
+  input.receiptReplayAudit.summary = { entries: 4, sources: 5, passed: 4, failed: 1 };
+  input.receiptReplayAudit.outcomes = [
+    { targetId: 'target-4', referenceId: 'ref-4', status: 'failed' },
+  ];
+  input.classification.records[3].operationalClass = 'OFFLINE_PARSER_REPAIR';
+  input.classification.summary.byOperationalClass = {
+    COMPLETE_RECEIPT: 3, OFFLINE_PARSER_REPAIR: 1, OFFICIAL_DISCOVERY: 1,
+  };
+  input.acquisitionQueue.records = [{ referenceId: 'ref-4' }, { referenceId: 'ref-5' }];
+  input.acquisitionQueue.summary.queuedModels = 2;
+  input.acquisitionQueue.summary.excluded.COMPLETE_RECEIPT = 3;
+  input.executableQueue.discoveryTargets.push({ referenceId: 'ref-4', candidateJobIds: [] });
+  input.executableQueue.summary.acquisitionRecords = 2;
+  input.executableQueue.summary.targets = 2;
+  input.executableQueue.summary.discoveryTargets = 2;
+  input.targetState.records[3] = {
+    referenceId: 'ref-4', state: 'BLOCKED_SAME_EPOCH', stateClass: 'BLOCKED',
+    actionable: false, terminal: false,
+  };
+  input.targetState.summary.actionable = 1;
+  input.targetState.summary.completed = 3;
+  input.targetState.summary.blocked = 1;
+  input.targetState.summary.terminal = 3;
+  input.targetState.summary.byState = {
+    DIMENSIONS_RECEIPT: 3, BLOCKED_SAME_EPOCH: 1, SOURCE_DISCOVERY_REQUIRED: 1,
+  };
+  input.targetState.summary.byStateClass = { ACTIONABLE: 1, BLOCKED: 1, COMPLETED: 3 };
+
+  assert.throws(
+    () => buildHistoricalEvidenceProgramStatus(input),
+    /failed receipt target is not actionable/i,
+  );
+});
+
 test('fails closed when replacement and classification inventories drift', () => {
   const input = fixture();
   input.replacementAudit.summary.referenceRecords = 4;

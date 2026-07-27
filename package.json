@@ -55,6 +55,7 @@
     "audit:historical-evidence-recovery:offline": "node scripts/architecture-v2/audit-historical-evidence-recovery.mjs --mode offline",
     "audit:historical-acceptance-receipts": "node scripts/architecture-v2/audit-historical-acceptance-receipts.mjs",
     "promote:historical-evidence-recovery": "node scripts/architecture-v2/promote-historical-evidence-recovery.mjs",
+    "reconcile:historical-evidence-control-run": "node scripts/architecture-v2/reconcile-historical-evidence-control-run.mjs",
     "migrate:historical-attempt-processor-epochs": "node scripts/architecture-v2/migrate-historical-attempt-processor-epochs.mjs",
     "publish:historical-reference": "node scripts/architecture-v2/publish-historical-reference.mjs",
     "audit:historical-replacement": "node scripts/architecture-v2/audit-historical-replacement.mjs",

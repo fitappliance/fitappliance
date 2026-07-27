@@ -217,11 +217,14 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
   assert.deepEqual(validateHistoricalEvidenceRecoveryPolicy(policy), policy);
   assert.deepEqual(policy.supportedReceiptSchemaVersions, [2, 3]);
   assert.deepEqual(policy.supportedClaimSemanticsVersions, [1, 2]);
+  assert.equal(policy.policyVersion, '2026-07-26.23');
   assert.deepEqual(policy.requestedFields, FIELDS);
   assert.equal(policy.reconciliation.registryAxisPermutationToleranceMm, 10);
   assert.equal(policy.reconciliation.officialSemanticResolutionVersion, 1);
-  assert.equal(policy.parser.claimParserRevision, '2026-07-19.20');
+  assert.equal(policy.parser.claimParserRevision, '2026-07-26.22');
   assert.ok(policy.limits.resolverTimeoutMs > policy.limits.timeoutMs);
+  assert.equal(policy.limits.maximumBytes, 32 * 1024 * 1024);
+  assert.ok(policy.limits.maximumBytes > 28_891_549);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryPolicy({ ...policy, unexpected: true }),
     /unknown key/i,
@@ -291,6 +294,56 @@ test('batch contract validates both sides of the artifact-target graph', () => {
       },
     })),
     /authority mode/i,
+  );
+
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    requestedModel: 'EX100',
+    artifactUrl: 'https://example.com.au/manual.pdf',
+  };
+  const bound = batch();
+  bound.artifactJobs[0].discoveryProvenanceBindings = [{
+    targetId: TARGET_ID,
+    targetModel: 'EX100',
+    targetCategory: 'dishwasher',
+    discoveryProvenance: provenance,
+  }];
+  assert.equal(validateHistoricalEvidenceRecoveryBatch(bound), bound);
+
+  const wrongModel = structuredClone(bound);
+  wrongModel.artifactJobs[0].discoveryProvenanceBindings[0].targetModel = 'EX200';
+  wrongModel.artifactJobs[0]
+    .discoveryProvenanceBindings[0].discoveryProvenance.requestedModel = 'EX200';
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryBatch(wrongModel),
+    /identity mismatch/i,
+  );
+
+  const duplicateBinding = structuredClone(bound);
+  duplicateBinding.artifactJobs[0].discoveryProvenanceBindings.push(
+    structuredClone(duplicateBinding.artifactJobs[0].discoveryProvenanceBindings[0]),
+  );
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryBatch(duplicateBinding),
+    /target binding invalid/i,
+  );
+
+  const wrongProvenanceModel = structuredClone(bound);
+  wrongProvenanceModel.artifactJobs[0]
+    .discoveryProvenanceBindings[0].discoveryProvenance.requestedModel = 'EX200';
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryBatch(wrongProvenanceModel),
+    /requested model mismatch/i,
+  );
+
+  const wrongProvenanceUrl = structuredClone(bound);
+  wrongProvenanceUrl.artifactJobs[0]
+    .discoveryProvenanceBindings[0].discoveryProvenance.artifactUrl = 'https://example.com.au/other.pdf';
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryBatch(wrongProvenanceUrl),
+    /URL mismatch/i,
   );
 });
 

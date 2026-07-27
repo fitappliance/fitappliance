@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-25.1",
+  "policyVersion": "2026-07-27.1",
   "supportedReceiptPolicyVersions": [
     "2026-07-12.1",
     "2026-07-14.1",
@@ -10,7 +10,12 @@
     "2026-07-16.3",
     "2026-07-16.4",
     "2026-07-21.1",
-    "2026-07-25.1"
+    "2026-07-25.1",
+    "2026-07-26.1",
+    "2026-07-26.2",
+    "2026-07-26.3",
+    "2026-07-26.4",
+    "2026-07-27.1"
   ],
   "officialHtmlModelVariantSuffixes": {
     "westinghouse": {
@@ -39,6 +44,31 @@
         {
           "suffix": "CLST",
           "finishLabel": "CleanSteel"
+        },
+        {
+          "suffix": "OBSW",
+          "finishLabel": "Obsidian Black"
+        }
+      ],
+      "fridge": [
+        {
+          "suffix": "BS",
+          "sourceSuffix": "EDTBS",
+          "finishLabel": "BlackSteel"
+        }
+      ]
+    }
+  },
+  "officialProductMaterialModelAliases": {
+    "miele": {
+      "fridge": [
+        {
+          "targetModel": "KS4783EDETCCS",
+          "pageModel": "KS 4783 EDT CS",
+          "sourceModel": "KS 4783 ED",
+          "materialNumber": "11949580",
+          "finishLabel": "Clean steel",
+          "pageFinishLabels": ["Stainless steel/CleanSteel", "CleanSteel"]
         }
       ]
     }
@@ -51,7 +81,11 @@
   "marketPathPatterns": {
     "asko": ["^/(?:p/|products/|manuals(?:/|$)|ggcommercewebservices/v2/asko-au/)"],
     "lg": ["^/au(?:/|$)", "^/content/dam/channel/wcms/au(?:/|$)"],
-    "samsung": ["^/au(?:/|$)", "[?&]CDSite=UNI_AU(?:&|$)"]
+    "samsung": [
+      "^/au(?:/|$)",
+      "[?&]CDSite=UNI_AU(?:&|$)",
+      "^/support/search/suggestdetail/v6\\?(?:[^#&]+&)*siteCd=au(?:&|$)"
+    ]
   },
   "brands": {
     "artusi": ["artusi.com.au"],
@@ -75,7 +109,7 @@
     "omega": ["omegaappliances.com.au"],
     "robinhood": ["robinhood.com.au", "robinhood.co.nz"],
     "samsung": ["samsung.com"],
-    "smeg": ["smeg.com.au"],
+    "smeg": ["smeg.com.au", "smeg.com"],
     "subzero": ["subzero-wolf.com"],
     "teco": ["teco.com.au"],
     "vogue": ["vogue-appliances.com"],

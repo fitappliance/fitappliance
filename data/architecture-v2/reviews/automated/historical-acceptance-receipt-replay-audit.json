@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:40:12.165Z",
-  "sourceBundleSha256": "708ea197f9c8bb154385b596c5306610323f853657f468f4301394c6f44fb113",
+  "generatedAt": "2026-07-27T02:48:07.966Z",
+  "sourceBundleSha256": "130cb4a331ea1c7efd55934a4890d10282db73578926642d352eedddf8461063",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -144,6 +144,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_04de1bfe9e9719affced76c6",
+      "referenceId": "fa_ref_7c936edb103f7762189bfd5d",
+      "brand": "Westinghouse",
+      "model": "WBE5300BC-R",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBE5300BC-R&brand=Westinghouse",
+      "sourcePdfSha256": "00d98a1e70dfd1773763484ca2ccd090be7ee7cfa553fce0359bb62b1d196225",
+      "contentSha256": "00d98a1e70dfd1773763484ca2ccd090be7ee7cfa553fce0359bb62b1d196225",
+      "receiptBindingSha256": "1fd24e1488f4f570894948a57c6403030ea3405a48ba8979249bea7d8cd2d301",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b6/24/b6244e3e9fa5d556fc11d7f169919fd56ad7fb00af2f273691069481ed797ce2.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_0559733e484d45dbaa45b81f",
       "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
       "brand": "Hisense",
@@ -224,6 +238,20 @@
       "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
       "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_082a385d730fbff8e7ba1d2b",
+      "referenceId": "fa_ref_c64bf17adf7f867c0fd586c3",
+      "brand": "Smeg",
+      "model": "FAB32RWH5AU",
+      "category": "fridge",
+      "sourceUrl": "https://pi-exchange.smeg.it/catalog/FAB32RWH5AU/en-AU",
+      "sourcePdfSha256": "efe5abbadd0d3aae03092465770263123122821f907334dba23e3ff545df18af",
+      "contentSha256": "efe5abbadd0d3aae03092465770263123122821f907334dba23e3ff545df18af",
+      "receiptBindingSha256": "42e0c761e736a93c05490abc89406a266df8670533e32026f160583765a89398",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f8/37/f83741bc791d050ecc6df529e14d7d90f52cf0bf8b3ac8b35bbdfd97045fe33f.json",
       "status": "passed",
       "failureCode": null
     },
@@ -312,6 +340,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_0ce3998236d375f5a3e8c651",
+      "referenceId": "fa_ref_f69519c3a0704595e291379f",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260RG5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw6a68da0e/QRG/AU/QRG-AU-92312.pdf",
+      "sourcePdfSha256": "6f0949b387261f9efc65222be4364e6263d0eedc443a00c3acbbaf87caabc595",
+      "contentSha256": "6f0949b387261f9efc65222be4364e6263d0eedc443a00c3acbbaf87caabc595",
+      "receiptBindingSha256": "460508699879b06fbc04f6aade015aec4d702f3176ef7416700003042c445284",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/70/92/7092bcf93edc46835a43d60cfd6bc4bd91e1710b8c4ff23be410decec273876f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_0e614eea576bd1682de1e2c1",
       "referenceId": "fa_ref_ce76089bb2083f6db580a195",
       "brand": "LG",
@@ -382,6 +424,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_1279cb8210f776f3223adaa8",
+      "referenceId": "fa_ref_7815e52e51f6b1e204354b2b",
+      "brand": "Haier",
+      "model": "HRF580YHC",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009kcmfIAA&d=%2Fa%2FJw000000bOY1%2F7nP01N3FwWR0xcTx7euXtI1f9N_4SuL5tvRzsRfXqAc&operationContext=DELIVERY&viewId=05HJw00000QVSaYMAX&dpt=",
+      "sourcePdfSha256": "f165dc61a280dd3b3db56ea10e69975301a1e383498bb005289ba3dbe2eb476a",
+      "contentSha256": "f165dc61a280dd3b3db56ea10e69975301a1e383498bb005289ba3dbe2eb476a",
+      "receiptBindingSha256": "3e68b4482f42049a9e25968dfabadac5946a061c71a24b6296c260a59aabfbde",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/21/4c/214c2025c477c7bbc0aca63fb2cf65e3c5aa0261d6dd7f30766cebfe215d60bf.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_144fd604c86e62a6301b9d7f",
+      "referenceId": "fa_ref_06c9e8af8c9acfd1161406d9",
+      "brand": "Miele",
+      "model": "G7989SCVIXXLK2O",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531740.pdf",
+      "sourcePdfSha256": "9f8629467740cba33aa778c5b7dcf11dd540c0b1053bf4b864ce6962fe875cf8",
+      "contentSha256": "9f8629467740cba33aa778c5b7dcf11dd540c0b1053bf4b864ce6962fe875cf8",
+      "receiptBindingSha256": "fc1c4de16a25c2e69374086ef3954e8fad86971b5395a7213f76958add4c2729",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/4a/83/4a83e5ef718bb56aadb19b2ec63daefc6bbdf360e0ff0f8be55f999233e795b9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
       "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
       "brand": "Electrolux",
@@ -392,6 +462,20 @@
       "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
       "receiptBindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/32/15/3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_15767e663a438dc4bed37aa9",
+      "referenceId": "fa_ref_e04d3327902dd4b8b6fdd179",
+      "brand": "Electrolux",
+      "model": "ERE5047SC-R",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ERE5047SC-R&brand=Electrolux",
+      "sourcePdfSha256": "64914b28359601dd73b213335db3b15e6b8a4d5b53a85d6f46eeba31652f7360",
+      "contentSha256": "64914b28359601dd73b213335db3b15e6b8a4d5b53a85d6f46eeba31652f7360",
+      "receiptBindingSha256": "e58d0c7b42fd6f95b092adeba26d7aaf939fc05acc0ff945fb8c12e08f5a6e82",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/9c/72/9c72339110b201df16a8d8b33fc82ae21b96a1e3b47f40aafab0457476a7e07a.json",
       "status": "passed",
       "failureCode": null
     },
@@ -550,6 +634,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_1f3195f0d134d997e011fdc2",
+      "referenceId": "fa_ref_9572ce64edcd65ad387a4ebd",
+      "brand": "Omega",
+      "model": "OFI101XKIT",
+      "category": "dishwasher",
+      "sourceUrl": "https://omegaappliances.com.au/s/OFI101XKIT_Specsheet_V20.pdf",
+      "sourcePdfSha256": "bbc5c02fc54c788fad31226d0ee0239d0c595fa7ac5b1b22a5a35272cf1e044f",
+      "contentSha256": "bbc5c02fc54c788fad31226d0ee0239d0c595fa7ac5b1b22a5a35272cf1e044f",
+      "receiptBindingSha256": "96a842459a60923dd427653a1a8df289967bbc6900cf6f4eaddbf102ecc1ec9c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e3/b3/e3b38d4b8eb4e830f963c3669d5692ca2335bff21d49c98069d179cab12a7be8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_224ef93daefed26722cf0f53",
       "referenceId": "fa_ref_b3c5fff0b169a8e2dac9bc25",
       "brand": "Fisher & Paykel",
@@ -648,6 +746,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_26c882086c89d90a7cb07770",
+      "referenceId": "fa_ref_6eeff26f0cf820a6a66bc953",
+      "brand": "Beko",
+      "model": "BFR575PX",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-multi-door-90-8-cm-bfr575px",
+      "sourcePdfSha256": null,
+      "contentSha256": "6d49d2545deffd4bc616cdf11c441b3a08660db638fb81772a2b2e2173253a87",
+      "receiptBindingSha256": "1c7646fe992182bcb957f046e92d457667799926c17f311aa0523e29c1e86995",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_2720162f1f2c0ac51f121673",
       "referenceId": "fa_ref_a8ad42fb8885ae1f1d411b40",
       "brand": "Fisher & Paykel",
@@ -686,6 +798,20 @@
       "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
       "receiptBindingSha256": "c0a844bfb75c8e894ab3ff92a12e065c090be050a7db051f510c2dbea4e49375",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2771f6b33f1e140a5202e900",
+      "referenceId": "fa_ref_6f75b8917e336f41b6dc57d0",
+      "brand": "CHIQ",
+      "model": "CSR125DW",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR125DW_SPEC.pdf",
+      "sourcePdfSha256": "570be421fd2c97f58cd13225a406d5b60dd72d32fd822a36989c4d92c3737925",
+      "contentSha256": "570be421fd2c97f58cd13225a406d5b60dd72d32fd822a36989c4d92c3737925",
+      "receiptBindingSha256": "002ce24790cf5e54d9b5aa6c300604b8a0e111f7d7e412264c133f3b32fc0ac3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/94/0e/940e3e85d171c7a234bb83b9f7af2251b1300c4b2756cf432d38132951849ab3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -756,6 +882,20 @@
       "contentSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
       "receiptBindingSha256": "0795949f3b24cb9c79d46c9ed1c78ff354ba27807bed3ee980f6c57fac41ccdc",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b2/ba/b2ba9143046a420b0586679e91c9964c1c31b19cab9c765501b886ccacef916d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_28d090a9e40935bc404c49e9",
+      "referenceId": "fa_ref_339501789578146b5030ea9a",
+      "brand": "Esatto",
+      "model": "EUF172W",
+      "category": "fridge",
+      "sourceUrl": "https://esatto.house/s/Esatto_ProductCard-EUF172W-m95s.pdf",
+      "sourcePdfSha256": "4bcdd98d4343bd734826a6786baecfeb65477fd00dd16006e88fa81a6d7a3365",
+      "contentSha256": "4bcdd98d4343bd734826a6786baecfeb65477fd00dd16006e88fa81a6d7a3365",
+      "receiptBindingSha256": "90f0b96ff0f7fec87efcee3d33b434b6bef89c066f0469b8f32c183636db27f6",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f1/1e/f11ec8aaa8e5700e3fcf7b2a7aaf52d2961a049e48c47da9476eea0467ab23ed.json",
       "status": "passed",
       "failureCode": null
     },
@@ -900,6 +1040,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_2d68c6c9eb21d41a3ee94647",
+      "referenceId": "fa_ref_61c56b941f00f29713cde015",
+      "brand": "Haier",
+      "model": "HRF580YPC",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009kVLRIA2&d=%2Fa%2FJw000000bOPx%2F_RpjVHKRlH48QXUHv46IlDLTcmTrIAncU1TkURLGuSA&operationContext=DELIVERY&viewId=05HJw00000QVU2rMAH&dpt=",
+      "sourcePdfSha256": "81ed79d328cc76c70e41aca8fcb907bfd08f83fd5fb44c24c13e6936c0ab608c",
+      "contentSha256": "81ed79d328cc76c70e41aca8fcb907bfd08f83fd5fb44c24c13e6936c0ab608c",
+      "receiptBindingSha256": "6e260bd3d0f61330900c18c824dce1befed6afeeb875f7e976cb652dc1fd9e2d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/22/a3/22a373d5d4cf16e0f80b358d5000546d4a7ce39a357a539f1b7ca71e4f79a24a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_2d8920247a3ab65929bc8ebf",
       "referenceId": "fa_ref_e1029b4f322e8d3050149ab6",
       "brand": "Bosch",
@@ -952,6 +1106,20 @@
       "contentSha256": "2ccd37f0b081bdf4c86d1b2c82576e40912ea016e93f5e271272fd3592145b55",
       "receiptBindingSha256": "3b1f381e878f0c4f0a77ae42675dc11c519d91a32e8116f48566b02b3f486958",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/ad/d6/add64baa5f325ddf8e1b3e953e52fb89980b34ec62fd03c4e3fc0f706507b80b.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2f40b1e7ac6aa3c821cb178d",
+      "referenceId": "fa_ref_9d12f4bd501f96bd747d062f",
+      "brand": "Omega",
+      "model": "ODW101W",
+      "category": "dishwasher",
+      "sourceUrl": "https://omegaappliances.com.au/s/ODW101W_Specsheet_40.pdf",
+      "sourcePdfSha256": "3a1d19736695e3b183b1d90ccfcfd829a59223d66127e179426ccb2feb6caefb",
+      "contentSha256": "3a1d19736695e3b183b1d90ccfcfd829a59223d66127e179426ccb2feb6caefb",
+      "receiptBindingSha256": "ac9539527f12f3902e1f27e096993d0f148249103a4fc9885416df959343b1ff",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/18/68/18682ae344cf968a1e09b3d16234cb3c635da8fe16540118eac811d7460874b7.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1362,6 +1530,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_407fec6a355954f67a5470bc",
+      "referenceId": "fa_ref_341c132a1ba2d4377a0dd0fe",
+      "brand": "Westinghouse",
+      "model": "WBE5300SC-L",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBE5300SC-L&brand=Westinghouse",
+      "sourcePdfSha256": "adf9fe630b36bd8aee708bb5ddf7ade74ab814b908589d83988bc5c48ede4782",
+      "contentSha256": "adf9fe630b36bd8aee708bb5ddf7ade74ab814b908589d83988bc5c48ede4782",
+      "receiptBindingSha256": "484b5c2f167c1774a7def8d03e4d058f697c2bcf85e5968332459bce10092375",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/3b/0f/3b0f72955d798bef54575dbe1619b70c2637858bb849839a4854b18d8d5850db.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
       "referenceId": "fa_ref_efe40b27d389481fc3b0d451",
       "brand": "Westinghouse",
@@ -1512,6 +1694,20 @@
       "contentSha256": "bba28973f5fe9f1912cb563dad356f133fe4dc7048cb52bb3766edf7cb4251cb",
       "receiptBindingSha256": "44b517769b19308935325202e509b534c42616ec2baae25fb27ffcc56ad7c92f",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/d8/51/d851b13f372ba9d46a70563004d9f54b7c71eb7059add462a75390a6a88724b0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_478424ba2e35d51a3b119827",
+      "referenceId": "fa_ref_69e68a9d064ae20ddf620714",
+      "brand": "Westinghouse",
+      "model": "WTM2500WA-X",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM2500WA-X&brand=Westinghouse",
+      "sourcePdfSha256": "6c780ecb245cf917ee97b5e21f61749920bd71dbf3b1284d43892e0028994abe",
+      "contentSha256": "6c780ecb245cf917ee97b5e21f61749920bd71dbf3b1284d43892e0028994abe",
+      "receiptBindingSha256": "71e9093975822086c25792ca711f075d48d28106587f3d1a79d536e4ef19a3dd",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/51/94/51949148b9286ae7bca11756898cad99bd649765a584c0aae53a74f24665ae9c.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1670,6 +1866,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_4d96223ddb8716713c2eb81e",
+      "referenceId": "fa_ref_3da5985a2b93006bda04eefb",
+      "brand": "Haier",
+      "model": "HRF680YPC",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009NI0mIAG&d=%2Fa%2FJw000000Y9NR%2FaoCPrkQgC7XIurCYO8I4ziSc5mX2LWM6GoUkuJXpZTU&operationContext=DELIVERY&viewId=05HJw00000QVUndMAH&dpt=",
+      "sourcePdfSha256": "736d4706d78bf6569b32ec9a87607457fca4da3b9bc7ff8fed210059bab8dc44",
+      "contentSha256": "736d4706d78bf6569b32ec9a87607457fca4da3b9bc7ff8fed210059bab8dc44",
+      "receiptBindingSha256": "3247c75c9039f3c6f94d0693a5de1968ded0330cb65ad497641b9dd3854f9785",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/1f/a1/1fa10f579fd91f775c9b58cce1619351844a84f6d2cced6c7da090cfd6eb0c5d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_4e0c094f77e02225b54e5875",
+      "referenceId": "fa_ref_998274b933c86670d842a3f4",
+      "brand": "Samsung",
+      "model": "SRF9800BFH",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf9000d-rf9000dc-t-style-french-door-21-5inch-family-hub-809l-black-rf71dg9hc3b1sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "ac461e3d721fb64aaaf451044906e1852b90d53249c3e9fe1fe46526f1ce78b5",
+      "receiptBindingSha256": "c96ee07386196a830c7200265d9e126783fd6589b3b8f3870ec6160219b72cca",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_4eadcda3e2e72f10324e3fd2",
       "referenceId": "fa_ref_93a20f6bd080cc75e7512b8b",
       "brand": "Bosch",
@@ -1694,6 +1918,20 @@
       "contentSha256": "7fe483659b04dbb1f77a958bb33a3f4cbc29ad7b8b54e0deb19c688a3cae1678",
       "receiptBindingSha256": "fe8222e7c811e92c45af52a29917bbb0e320100b6a819644e881cd7614697343",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/e7/e5/e7e514c67bc52c4ec459a13b2b748df12f1c86224edbfc326b6a7e37c05ff8bb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_501c698cfc9db824aad3dc55",
+      "referenceId": "fa_ref_dae0d6eaef8645eab79f97ba",
+      "brand": "Fisher & Paykel",
+      "model": "WH9060P5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1bd5f589/QRG/AU/QRG-AU-92307.pdf",
+      "sourcePdfSha256": "cbd7f9cd5b27dafeca262f2cdeb303ac27932fe2f54a2ffa25d7e3ece7124d48",
+      "contentSha256": "cbd7f9cd5b27dafeca262f2cdeb303ac27932fe2f54a2ffa25d7e3ece7124d48",
+      "receiptBindingSha256": "6d376aa144916bb5b60ee36df9d455d67a1a4ce6f969caac4143862e3462a1a1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/7a/67/7a67931caecdd095716dfb0f4384b5bb48f827f66a675c18a5b70ed10a0711af.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1778,6 +2016,20 @@
       "contentSha256": "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
       "receiptBindingSha256": "ae0ebd875d6af915fd3b606e3bd389fb5e24195a82276684221ff950a2fa4542",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/65/b565c2e835ddd97647fcdbfb71157d33427bfe9a0275a4f5fbf7720e287c1c4a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5468e581ed8a2c3df9da236b",
+      "referenceId": "fa_ref_77aa37d3c00ecbafa5175c65",
+      "brand": "Hisense",
+      "model": "HWF5I1015",
+      "category": "washing_machine",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+      "sourcePdfSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+      "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+      "receiptBindingSha256": "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/9c/e6/9ce68b6bacbebad0a18056f42be498b2cbc8d427613bd414d34db680996cc5f3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1890,6 +2142,20 @@
       "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
       "receiptBindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5838a3c2c43a6a4aca3751ba",
+      "referenceId": "fa_ref_a4966aef1a04be5958c8d233",
+      "brand": "Electrolux",
+      "model": "EFE4227SC-L",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EFE4227SC-L&brand=Electrolux",
+      "sourcePdfSha256": "daa8bac4a5348613616fc466dec4750d2a084301281b75886580aa11ba58491b",
+      "contentSha256": "daa8bac4a5348613616fc466dec4750d2a084301281b75886580aa11ba58491b",
+      "receiptBindingSha256": "fb8c118fa1ef402182ead2b8dcd686164dbac4945ee4d38a482e8ed0719175d3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/68/f6/68f6a391fef1f136f2342e2cee9ec952556b3755b512adedad39ab532ccccff7.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2468,6 +2734,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6c4e16f31d7a020ec5dd17dc",
+      "referenceId": "fa_ref_cfe43c2d3aeff7765751ddba",
+      "brand": "Beko",
+      "model": "BVF290W",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/freezer/freezer-upright-59-5cm-bvf290w",
+      "sourcePdfSha256": null,
+      "contentSha256": "65d4801732080298aa72e7756a9ef26af0ee197762b1e6642a6cdeeebcb9ae2f",
+      "receiptBindingSha256": "4cbd0f28a905672e16cdcfd4c0622e26e9c32fd2e6be693e75b8c4250059c874",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
       "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
       "brand": "Beko",
@@ -2706,6 +2986,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_764002319c78e620b230fe0f",
+      "referenceId": "fa_ref_a30d97e8b5d66df690298a53",
+      "brand": "Samsung",
+      "model": "SRF7900BFH",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf7000ac-family-hub-640l-black-rf59a7f10b1-sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "e87cf0ddb011c517e31a0dcafba3f23c783b36c0688a4170e70f03354df147f3",
+      "receiptBindingSha256": "ceb50958f86f45d743355103d9067db134752f281f0f9c67ee4c2d00fe701cef",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
       "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
       "brand": "LG",
@@ -2758,6 +3052,20 @@
       "contentSha256": "93e6a1cf6b970a160a844129f721cb6ded378424fbcfd3948dd609ffb24d0bba",
       "receiptBindingSha256": "df1b6c2b61a1009bf47c60b43ced13fed1384781aa8b886bb782bb1492805f55",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7c019913330fc717686c0d76",
+      "referenceId": "fa_ref_b75d68ac2af262e6fe53a3b9",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060P5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9a99cdbe/QRG/AU/QRG-AU-92333.pdf",
+      "sourcePdfSha256": "3b4408baf29dd810d4e4640e6585a50e8f73148df9cfca8d5ee047073908e956",
+      "contentSha256": "3b4408baf29dd810d4e4640e6585a50e8f73148df9cfca8d5ee047073908e956",
+      "receiptBindingSha256": "c6d2257a2a69c8dd97148a98df197e79c08bc5242950a125a240c86ee478c936",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/1b/02/1b026e995cb587329b19ff5aa65a96400f9a3e1c3317e42dcd6d11404543e2a9.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3336,6 +3644,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_97a42c78ffe2dfc4c76217ff",
+      "referenceId": "fa_ref_973c2822b6794dc7c0b0f312",
+      "brand": "Samsung",
+      "model": "SRF9700BFH",
+      "category": "fridge",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=SRF9700BFH&CttFileID=8134461&CDCttType=UM&VPath=UM%2F202105%2F20210513095755777%2FDA68-04024C-00_MANUAL_USERS_F-Hub_EN.pdf",
+      "sourcePdfSha256": "9eb3fcce01c75ac722365df97823a419187442897dcdeca575fff6e49be9b3b3",
+      "contentSha256": "9eb3fcce01c75ac722365df97823a419187442897dcdeca575fff6e49be9b3b3",
+      "receiptBindingSha256": "6b96af9482290bcea57794d1c1c18767cf954d2b2e718184253ad5d9a054931e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/33/ba/33ba501f632f941f5f2725a49314451ed453197f3746ed8d62af2229a0721aaf.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_97b25b1f250f474d218cf607",
       "referenceId": "fa_ref_17b4e72272ac25833e45bd3d",
       "brand": "Fisher & Paykel",
@@ -3490,6 +3812,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_9cff53a8dbf2441f8a914bc9",
+      "referenceId": "fa_ref_9739594296736ffce6b8c415",
+      "brand": "Miele",
+      "model": "G7939SCIXXLOBSW",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531730.pdf",
+      "sourcePdfSha256": "08cc660bc8a53422b20cb701ee2d153ca33a111747cb9619937b3de1fc0e4199",
+      "contentSha256": "08cc660bc8a53422b20cb701ee2d153ca33a111747cb9619937b3de1fc0e4199",
+      "receiptBindingSha256": "82d1e64a0bd5b514197e72d407fcd9f50126d8337e801997e09d5d6f99f8b885",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0b/3e/0b3e5d91047251e3db477d38d8beac2f8e11a923eca1a3ffcc9300c9e018de95.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
       "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
       "brand": "Electrolux",
@@ -3626,6 +3962,20 @@
       "contentSha256": "2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
       "receiptBindingSha256": "1debe5590983b357487389fb34638ac8381bc0789c73caf0e84bcdfef018fb27",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/51/9d/519d09e274dd68300aa682b4d96106cb41d7fecbc26f0b486ad952b4d079c0f8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a194a336c7ff6633d8abec33",
+      "referenceId": "fa_ref_90fc8a14a91c4647f92d2174",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060DG5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw40d6b33b/QRG/AU/QRG-AU-92330.pdf",
+      "sourcePdfSha256": "c7d01e298628d878966dca8ebf08ae5d58a509608d3b98a03468d2117f2eb908",
+      "contentSha256": "c7d01e298628d878966dca8ebf08ae5d58a509608d3b98a03468d2117f2eb908",
+      "receiptBindingSha256": "2cc94b7510355bb8474c965534a76cc474ffdffb3580415acd46c4c75a3319e3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b7/6b/b76b08c05c42640a8635c1219394be090c023cc07b16c69f76779ce39f1f8971.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4120,6 +4470,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_b0ee84dba24c9ae6249873fa",
+      "referenceId": "fa_ref_4414a56a5a364e5e78412031",
+      "brand": "Samsung",
+      "model": "SRF7500BB",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf7000ac-srf7500bb-648l-black-rf59a7670b1-sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "3e87b6851433001f92da463c5a6ba6b434552da9b6a406a25d5014430c7dc808",
+      "receiptBindingSha256": "975453ef6af7fbf8b79b137580881e4596f6c375a2a9205b21659f5c8902c2c7",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_b0f95c8a17cfdaefea82a96d",
       "referenceId": "fa_ref_f6bb6f5ff518c83502a946d9",
       "brand": "Fisher & Paykel",
@@ -4144,6 +4508,20 @@
       "contentSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
       "receiptBindingSha256": "fd26aadef370a520519330f7bd8af484794e7ef14c9775c4cfc3882bf10f33cb",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/45/c2/45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_b12024854cac2c50af8d48aa",
+      "referenceId": "fa_ref_52a2ba13254bf6b4a1572bed",
+      "brand": "Samsung",
+      "model": "SRF9400BFH",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf9000d-rf9000dc-t-style-french-door-21-5inch-family-hub-636l-black-rf65dg9hc3b1sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "e243e477f784215f6d35872fbab03b38839cbc21d565bfd83d120a71ad68c4a4",
+      "receiptBindingSha256": "1bf06fd154943636809ae307cf33bc77b1af073c25749693341c4f39e9d65bdb",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -4694,6 +5072,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_cb31f8071db3044e56e70b94",
+      "referenceId": "fa_ref_2d8057087ded2a2a46ab6b41",
+      "brand": "Beko",
+      "model": "BWD7541W",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/freestanding-washer-dryer/freestanding-washer-dryer-7-5-kg-4-kg-1400-rpm-bwd7541w",
+      "sourcePdfSha256": null,
+      "contentSha256": "db254724cd7d11fce9c7b3bbf4512872760fd09392929bafa0c35507395bbb62",
+      "receiptBindingSha256": "fc4b8e5f3eafdae7999cc025685aee84e762a2214c53db620bd1914e0d3a1bf1",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_cb6fcb92c442eb8289833b2c",
       "referenceId": "fa_ref_aad7cf956d452ba0de28d0a8",
       "brand": "Bosch",
@@ -4736,6 +5128,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_cd29e0a837bf66a6ee0c788f",
+      "referenceId": "fa_ref_dc953441da6057602d950fec",
+      "brand": "Smeg",
+      "model": "SABI221FF",
+      "category": "fridge",
+      "sourceUrl": "https://www.smeg.com/au/products/SABI221FF",
+      "sourcePdfSha256": null,
+      "contentSha256": "239f0b7e0db701fa2a90fdf082fc580e4d7523f7817166062baee01144a4f00c",
+      "receiptBindingSha256": "c2756267a6ec207a82e7fe2022c3a5f1c7af622800ff44c5bb57d573dd0f5541",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_cd6a731478fc9a9763a249c4",
       "referenceId": "fa_ref_c540a956ee574610850b7567",
       "brand": "Hisense",
@@ -4746,6 +5152,20 @@
       "contentSha256": "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e",
       "receiptBindingSha256": "03913b256316980d53c4620573101ed4e8809e40911f9358c4a042259407fe3e",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_cdf519337d1da610c7f8eb22",
+      "referenceId": "fa_ref_e521131ce4fe1e20081230b2",
+      "brand": "Miele",
+      "model": "G7719SCIXXLOBSW",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531710.pdf",
+      "sourcePdfSha256": "ef6fd3b3ea5879791a1feab64f8f1cec103aa070640b1f36cdf66b43f9911168",
+      "contentSha256": "ef6fd3b3ea5879791a1feab64f8f1cec103aa070640b1f36cdf66b43f9911168",
+      "receiptBindingSha256": "4194ede47a47ef3c6e2771b6663e5d10d2c142d20494dd2db832a76fcc529775",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ce/91/ce91a1d0bb687ad92f635b6f7245f0505a5fdf2ba23f23c6d4c7c1e267a4f4c7.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4876,6 +5296,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_d438f5a7523e3f79aad37348",
+      "referenceId": "fa_ref_69115d64d7661cac09bb1628",
+      "brand": "Samsung",
+      "model": "SRL4200B",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/bottom-mount-freezer/rb5300-427l-matte-black-steel-rb43dg6005b1sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "eb9829e652aa99025f57b65d2c7c0198adb5a15a3d973e5654becdc16b06187b",
+      "receiptBindingSha256": "1aa8b137d649a10e7659ea4e5e5ebd1744ffb51d828018d807539ba346c7e5df",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_d447e2da85532c5eb0a2ec70",
+      "referenceId": "fa_ref_cf804b20eb6442a5d71e36be",
+      "brand": "Samsung",
+      "model": "SRL334NMB",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/bottom-mount-freezer/310l-black-doi-rb30n4020b1-sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "84e0354cd6b13d4b1db69411d7f2a1a17365fec210c12dae0a603b79517ea986",
+      "receiptBindingSha256": "cfcd705e3cfc2fe98b8c932ae5971359d642d7fef2d5cf5affd7a893d758f0a5",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_d467320cd885c606ee003a57",
       "referenceId": "fa_ref_9774b2c4a1d1d8d4a5fc1449",
       "brand": "Bosch",
@@ -4984,6 +5432,20 @@
       "contentSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
       "receiptBindingSha256": "3a024097305a5ec4a1b249d7dc4a9efdf673ff57b4b383b35242e92dd1f47fcb",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/4b/52/4b52c676322e5387720774dea13b95364fc737e249f32bef28477155892fbfd9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_db29ae3a74b977aa20ffc90e",
+      "referenceId": "fa_ref_0fc75fe30a4a37a81e5931ab",
+      "brand": "Beko",
+      "model": "BVF404W",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/freezer/freezer-upright-404-l-bvf404w",
+      "sourcePdfSha256": null,
+      "contentSha256": "ef6cc819a475445b8c026f1abd5c799a98d46f9c52e31cb10dea203af6f12916",
+      "receiptBindingSha256": "e415a12f6e80c6bfb2bb6fa97379dbaea064f017ac53edb99b80c06e2dbaeb79",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -5268,6 +5730,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e2a5539aa11c516b2d64b54b",
+      "referenceId": "fa_ref_171bfee13fe4fe7d42ddb21a",
+      "brand": "Samsung",
+      "model": "SRT4200S",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/top-mount-freezer/rt6300c-top-mount-freezer-optimal-fresh-and-space-max-393l-silver-rt38cg6428s9sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "a9a63fc9c500ecb108d4ce1c8ed8cff471246563e250da0de13717d2eb7be9e3",
+      "receiptBindingSha256": "4f6efc26d84c52ef443a5489dcd22ae4fad11377ecbb02f45d46800160257336",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
       "referenceId": "fa_ref_83bd985062196f48441767df",
       "brand": "Samsung",
@@ -5422,6 +5898,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_eac72ab179f55dd59cb4f538",
+      "referenceId": "fa_ref_00a4fd550cdf41d3fc07916b",
+      "brand": "Haier",
+      "model": "HWC90UC",
+      "category": "fridge",
+      "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw45217c3d/QRG/AU/QRG-AU-62284.pdf",
+      "sourcePdfSha256": "029741b3f3b3cd802a3450d53cf94eb5f22e03660f9e8676602a6e9236dfc357",
+      "contentSha256": "029741b3f3b3cd802a3450d53cf94eb5f22e03660f9e8676602a6e9236dfc357",
+      "receiptBindingSha256": "3ecab63ce43472b9be051befd7f660afa1268094886a9b14033e60b2a09797c0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f4/45/f44597ba46797a8639a157e852f8850edef3d53f1c2a8d3d4c080fc31b2f8050.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_eb58b54c30decadc6bf2560d",
       "referenceId": "fa_ref_55aa979380310a84995d90b1",
       "brand": "Westinghouse",
@@ -5572,6 +6062,20 @@
       "contentSha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
       "receiptBindingSha256": "dd8b2a505742e20062905c98e72584d4df738a39c86bc7649061c3679f8318f0",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/63/42/6342804c70e22b01b8743121130632e0f8262759e7951d6f9067d96bc0ce5045.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_f5e3462fb74d11a2574fced4",
+      "referenceId": "fa_ref_84bd2b01f23011d0f2d724f6",
+      "brand": "Westinghouse",
+      "model": "WSF6608XA",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6608XA&brand=Westinghouse",
+      "sourcePdfSha256": "d80b9b8c1c50d342327c132bdb9d88ad1a431815c0161195e3b17db84214574f",
+      "contentSha256": "d80b9b8c1c50d342327c132bdb9d88ad1a431815c0161195e3b17db84214574f",
+      "receiptBindingSha256": "1de129184130999fceb472aaf7381f0edc8204a4a52d7cb242c5a8821eda0635",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/3b/3e/3b3efbc74a7bbd8ad59bc72ab35d2ce285c30573467364af195f12dbbff13a1e.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5815,11 +6319,11 @@
     }
   ],
   "summary": {
-    "entries": 389,
-    "sources": 415,
-    "passed": 415,
+    "entries": 425,
+    "sources": 451,
+    "passed": 451,
     "failed": 0
   },
-  "checkedObjects": 824,
-  "semanticAuditSha256": "0ad8094309417e1f437a9bc3dac1e9312c7a90f94ed29ec1ea8fb847d70847f3"
+  "checkedObjects": 919,
+  "semanticAuditSha256": "5a4b0a91947b7dfb29f8a995dc943f06e2a9e5d33a172fac36c80bac78c4978c"
 }

@@ -1,5 +1,6 @@
 import { claimV2GeometryValue, validateDimensionEvidenceClaimV2 } from './dimension-evidence-claim.mjs';
 import { computeCandidateInventorySha256 } from './evidence-candidate-inventory.mjs';
+import { evaluateRequiredEvidenceCompanions } from './evidence-source-companion-policy.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
@@ -116,6 +117,15 @@ function strongestOfficialCandidateFailure(candidates) {
   return [
     'receipt', 'payload', 'mineru', 'claim_semantics', 'transport', 'source_authority',
   ].find((code) => codes.has(code)) ?? 'source_authority';
+}
+
+function requiredOfficialTransportFailure(candidates) {
+  return (candidates ?? []).some((candidate) => (
+    candidate.authorityMode === 'official'
+    && candidate.requiredAttempt === true
+    && (candidate.outcome?.status === 'transport_failure'
+      || candidate.outcome?.failureCode === 'transport')
+  ));
 }
 
 function deduplicateSources(sources) {
@@ -469,6 +479,25 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
       && candidate.outcome.source)
     .map((candidate) => candidate.outcome.source);
   const supplied = [...(inventory.activeReceiptSources ?? []), ...candidateSources];
+  const companionEvaluation = evaluateRequiredEvidenceCompanions({
+    identity,
+    sources: supplied,
+    candidates: inventory.candidates ?? [],
+  });
+  if (companionEvaluation) {
+    return failure(
+      companionEvaluation.status,
+      companionEvaluation.failureCode,
+      inventory,
+      {
+        ...(companionEvaluation.kind === 'conflict' ? {
+          sources: supplied,
+          conflictingFields: companionEvaluation.conflictingFields,
+        } : {}),
+        companionDiagnostic: companionEvaluation.diagnostic,
+      },
+    );
+  }
   const exact = supplied.filter((source) => source.authority === 'manufacturer' && exactIdentity(source, identity));
   const aliases = supplied.filter((source) => source.authority === 'manufacturer' && aliasIdentity(source, identity));
   const standaloneVariantAliases = aliases.filter((source) => (
@@ -483,6 +512,9 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     ? [...exact, ...standaloneMarketingAliases]
     : standaloneAliases;
   if (!identityAnchors.length) {
+    if (requiredOfficialTransportFailure(inventory.candidates)) {
+      return failure('retryable_failure', 'transport', inventory);
+    }
     const hadIdentityRejection = (inventory.candidates ?? []).some((candidate) => candidate.outcome?.status === 'identity_rejected');
     return failure(
       hadIdentityRejection || aliases.length ? 'identity_rejected' : 'claims_incomplete',

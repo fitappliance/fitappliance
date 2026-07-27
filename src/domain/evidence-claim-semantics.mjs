@@ -1,6 +1,6 @@
 const FIELD_RULES = Object.freeze({
   'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
-  'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|lid\s*open|(?:excluding|without)\s+(?:the\s+)?(?:removable\s+)?(?:worktop|top)\b/i },
+  'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|lid\s*open|(?:excluding|without)\s+(?:the\s+)?(?:removable\s+)?(?:worktop|top)\b|without\s+(?:the\s+)?hinge\b/i },
   'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:including|with)\s+(?:the\s+)?(?:(?:doors?\s*(?:and|&)\s*)?handles?|doors?\s+handles?)|without\s+(?:the\s+)?(?:doors?|handles?)|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
   'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
   'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
@@ -181,7 +181,7 @@ export function claimsFromExplicitDimensionSequence(fragment, context, requested
   const valueText = String(fragment?.value ?? '').replace(/\s+/g, ' ').trim();
   if (!label || !valueText) return [];
   if (!/\b(?:dimension|dimensions|size)\b/i.test(label)
-    || /\b(?:pack(?:ed|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate|cabinet|cavity|niche|opening|installation)\b|cut[ -]?out|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)|lid\s*open/i.test(label)) return [];
+    || /\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate|cabinet|cavity|niche|opening|installation)\b|cut[ -]?out|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)|lid\s*open/i.test(label)) return [];
   const labelAxisOrder = explicitDimensionSequence(label);
   const valueSequence = explicitDimensionValueSequence(valueText);
   if (labelAxisOrder && valueSequence

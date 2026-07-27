@@ -148,6 +148,41 @@ function buildQueue(input) {
   });
 }
 
+test('propagates a terminal official accessory finding into the deferred control-plane target', () => {
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records: [acquisition('accessory')],
+    sources: [],
+  };
+  const candidateManifest = candidateManifestFor(acquisitionQueue);
+  const target = candidateManifest.targets[0];
+  Object.assign(target, {
+    state: 'NO_CANDIDATE_COMPLETE',
+    terminal: true,
+    retryableDiscovery: false,
+    incompleteResolverIds: [],
+    terminalReasonCodes: ['official_non_appliance_accessory'],
+  });
+  candidateManifest.summary.byState = { NO_CANDIDATE_COMPLETE: 1 };
+  candidateManifest.semanticManifestSha256 = canonicalJsonSha256({
+    sourceAcquisitionQueueSha256: candidateManifest.sourceAcquisitionQueueSha256,
+    runBindings: candidateManifest.runBindings,
+    candidates: candidateManifest.candidates,
+    targets: candidateManifest.targets,
+  });
+
+  const queue = buildQueue({
+    acquisitionQueue,
+    candidateManifest,
+    historicalReference: { records: [reference('accessory')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+  assert.equal(queue.targets.length, 0);
+  assert.deepEqual(queue.deferredTargets[0].terminalReasonCodes, ['official_non_appliance_accessory']);
+});
+
 test('materializes acquisition and bounded-discovery targets without fabricating source URLs', () => {
   const records = [
     acquisition('official', { candidateSourceIds: ['source-official'] }),
@@ -210,6 +245,128 @@ test('materializes acquisition and bounded-discovery targets without fabricating
   assert.deepEqual(registry.candidateJobIds, []);
   assert.deepEqual(registry.requestedFields, fields);
   assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
+});
+
+test('preserves exact target discovery provenance on executable candidate edges', () => {
+  const record = acquisition('official', { candidateSourceIds: ['source-official'] });
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records: [record],
+    sources: [{
+      sourceId: 'source-official',
+      sourceUrl: 'https://example.com/official.pdf',
+      sourceAuthority: 'OFFICIAL',
+      receiptEligible: true,
+      documentIds: ['doc-official'],
+      referenceIds: ['official'],
+    }],
+  };
+  const manifest = candidateManifestFor(acquisitionQueue);
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://example.com/products/official',
+    requestedModel: 'OFFICIAL',
+    matchedModel: 'OFFICIAL',
+    artifactUrl: 'https://example.com/official.pdf',
+    discoveryContentSha256: 'b'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/bb/bb/${'b'.repeat(64)}.html`,
+    discoveryByteSize: 1024,
+    artifactLinkUrl: 'https://example.com/official.pdf',
+  };
+  manifest.candidates[0].discoveries[0].discoveryProvenance = discoveryProvenance;
+  manifest.candidates[0].discoveries.push({
+    ...manifest.candidates[0].discoveries[0],
+    retrievedAt: '2026-07-15T00:00:00.000Z',
+    discoveryProvenance: {
+      ...discoveryProvenance,
+      requestedModel: 'OTHER-MODEL',
+      matchedModel: 'OTHER-MODEL',
+    },
+  });
+  manifest.semanticManifestSha256 = canonicalJsonSha256({
+    sourceAcquisitionQueueSha256: manifest.sourceAcquisitionQueueSha256,
+    runBindings: manifest.runBindings,
+    candidates: manifest.candidates,
+    targets: manifest.targets,
+  });
+
+  const queue = buildQueue({
+    acquisitionQueue,
+    candidateManifest: manifest,
+    historicalReference: { records: [reference('official')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.deepEqual(queue.targets[0].candidateEdges[0].discoveryProvenance, discoveryProvenance);
+});
+
+test('isolates candidate edges that are not bound to the current resolver epoch', () => {
+  const record = acquisition('resolver-upgrade', {
+    candidateSourceIds: ['source-current', 'source-stale', 'source-seed'],
+  });
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records: [record],
+    sources: [{
+      sourceId: 'source-current',
+      sourceUrl: 'https://example.com/current.pdf',
+      sourceAuthority: 'OFFICIAL',
+      receiptEligible: true,
+      documentIds: ['doc-current'],
+      referenceIds: ['resolver-upgrade'],
+    }, {
+      sourceId: 'source-stale',
+      sourceUrl: 'https://example.com/stale.pdf',
+      sourceAuthority: 'OFFICIAL',
+      receiptEligible: true,
+      documentIds: ['doc-stale'],
+      referenceIds: ['resolver-upgrade'],
+    }, {
+      sourceId: 'source-seed',
+      sourceUrl: 'https://example.com/seed.pdf',
+      sourceAuthority: 'OFFICIAL',
+      receiptEligible: true,
+      documentIds: ['doc-seed'],
+      referenceIds: ['resolver-upgrade'],
+    }],
+  };
+  const manifest = candidateManifestFor(acquisitionQueue);
+  manifest.targets[0].resolverContract[0].version = '2';
+  manifest.targets[0].candidateEdges[0].discoveryStrategyIds = [
+    'fixture-resolver@1:fixture',
+    'fixture-resolver@2:fixture',
+  ];
+  manifest.targets[0].candidateEdges[1].discoveryStrategyIds = [
+    'fixture-resolver@1:fixture',
+  ];
+  manifest.targets[0].candidateEdges[2].discoveryStrategyIds = [
+    'acquisition-queue-seed@1:classified_document_link',
+  ];
+  manifest.semanticManifestSha256 = canonicalJsonSha256({
+    sourceAcquisitionQueueSha256: manifest.sourceAcquisitionQueueSha256,
+    runBindings: manifest.runBindings,
+    candidates: manifest.candidates,
+    targets: manifest.targets,
+  });
+
+  const queue = buildQueue({
+    acquisitionQueue,
+    candidateManifest: manifest,
+    historicalReference: { records: [reference('resolver-upgrade')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.equal(queue.jobs.length, 2);
+  assert.equal(queue.targets[0].candidateEdges.length, 2);
+  assert.equal(queue.targets[0].candidateEdges[0].candidateId, 'candidate-source-current');
+  assert.equal(queue.targets[0].candidateEdges[1].candidateId, 'candidate-source-seed');
+  assert.equal(queue.summary.isolatedStaleResolverEpochEdges, 1);
 });
 
 test('keeps retryable candidate observations non-executable until required resolvers complete', () => {

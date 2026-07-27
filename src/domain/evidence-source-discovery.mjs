@@ -7,7 +7,7 @@ import { discoverOfficialDocumentCandidates } from './official-document-discover
 
 const CORE_RESOLVER = Object.freeze({
   resolverId: 'architecture-v2-core-official-discovery',
-  version: '1',
+  version: '2',
   scope: 'explicit_urls_product_pages_templates_and_bounded_sitemaps',
   required: true,
 });

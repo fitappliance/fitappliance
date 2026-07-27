@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 106,
+    "nonIndexedClassificationLinks": 139,
     "nonIndexedClassificationLinksByLane": {
-      "HTML": 86,
-      "JSON": 20
+      "HTML": 98,
+      "JSON": 41
     }
   },
   "sourceVersions": [
@@ -9978,11 +9978,25 @@
   ],
   "nonIndexedClassificationLinks": [
     {
+      "referenceId": "fa_ref_00a4fd550cdf41d3fc07916b",
+      "contentSha256": "029741b3f3b3cd802a3450d53cf94eb5f22e03660f9e8676602a6e9236dfc357",
+      "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw45217c3d/QRG/AU/QRG-AU-62284.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:029741b3f3b3cd802a3450d53cf94eb5f22e03660f9e8676602a6e9236dfc357"
+    },
+    {
       "referenceId": "fa_ref_011443e29c4bd4a0be0dcfd5",
       "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
       "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
       "contentLane": "JSON",
       "documentId": "pdf:12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+    },
+    {
+      "referenceId": "fa_ref_06c9e8af8c9acfd1161406d9",
+      "contentSha256": "9f8629467740cba33aa778c5b7dcf11dd540c0b1053bf4b864ce6962fe875cf8",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531740.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:9f8629467740cba33aa778c5b7dcf11dd540c0b1053bf4b864ce6962fe875cf8"
     },
     {
       "referenceId": "fa_ref_07d330f0460c5f8d0ccc40a0",
@@ -10013,6 +10027,13 @@
       "documentId": "pdf:81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77"
     },
     {
+      "referenceId": "fa_ref_0fc75fe30a4a37a81e5931ab",
+      "contentSha256": "ef6cc819a475445b8c026f1abd5c799a98d46f9c52e31cb10dea203af6f12916",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/freezer/freezer-upright-404-l-bvf404w",
+      "contentLane": "HTML",
+      "documentId": "pdf:ef6cc819a475445b8c026f1abd5c799a98d46f9c52e31cb10dea203af6f12916"
+    },
+    {
       "referenceId": "fa_ref_1007383838c55161f7d2bc37",
       "contentSha256": "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e",
       "sourceUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
@@ -10025,6 +10046,13 @@
       "sourceUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
       "contentLane": "HTML",
       "documentId": "pdf:fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2"
+    },
+    {
+      "referenceId": "fa_ref_171bfee13fe4fe7d42ddb21a",
+      "contentSha256": "a9a63fc9c500ecb108d4ce1c8ed8cff471246563e250da0de13717d2eb7be9e3",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/top-mount-freezer/rt6300c-top-mount-freezer-optimal-fresh-and-space-max-393l-silver-rt38cg6428s9sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:a9a63fc9c500ecb108d4ce1c8ed8cff471246563e250da0de13717d2eb7be9e3"
     },
     {
       "referenceId": "fa_ref_178dedb8b2ad0bf29c003c37",
@@ -10111,6 +10139,13 @@
       "documentId": "pdf:a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5"
     },
     {
+      "referenceId": "fa_ref_2d8057087ded2a2a46ab6b41",
+      "contentSha256": "db254724cd7d11fce9c7b3bbf4512872760fd09392929bafa0c35507395bbb62",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/freestanding-washer-dryer/freestanding-washer-dryer-7-5-kg-4-kg-1400-rpm-bwd7541w",
+      "contentLane": "HTML",
+      "documentId": "pdf:db254724cd7d11fce9c7b3bbf4512872760fd09392929bafa0c35507395bbb62"
+    },
+    {
       "referenceId": "fa_ref_2ec9757e9c741c0018388580",
       "contentSha256": "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
       "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
@@ -10125,11 +10160,32 @@
       "documentId": "pdf:d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
     },
     {
+      "referenceId": "fa_ref_339501789578146b5030ea9a",
+      "contentSha256": "4bcdd98d4343bd734826a6786baecfeb65477fd00dd16006e88fa81a6d7a3365",
+      "sourceUrl": "https://esatto.house/s/Esatto_ProductCard-EUF172W-m95s.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:4bcdd98d4343bd734826a6786baecfeb65477fd00dd16006e88fa81a6d7a3365"
+    },
+    {
       "referenceId": "fa_ref_34152dee9f4eb051876dc7ad",
       "contentSha256": "60ced669f624722772747e8bed385bb007a31d2eea4e98efd49f946d9bf0580d",
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS40E02AU",
       "contentLane": "HTML",
       "documentId": "pdf:60ced669f624722772747e8bed385bb007a31d2eea4e98efd49f946d9bf0580d"
+    },
+    {
+      "referenceId": "fa_ref_341c132a1ba2d4377a0dd0fe",
+      "contentSha256": "adf9fe630b36bd8aee708bb5ddf7ade74ab814b908589d83988bc5c48ede4782",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBE5300SC-L&brand=Westinghouse",
+      "contentLane": "JSON",
+      "documentId": "pdf:adf9fe630b36bd8aee708bb5ddf7ade74ab814b908589d83988bc5c48ede4782"
+    },
+    {
+      "referenceId": "fa_ref_3da5985a2b93006bda04eefb",
+      "contentSha256": "736d4706d78bf6569b32ec9a87607457fca4da3b9bc7ff8fed210059bab8dc44",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009NI0mIAG&d=%2Fa%2FJw000000Y9NR%2FaoCPrkQgC7XIurCYO8I4ziSc5mX2LWM6GoUkuJXpZTU&operationContext=DELIVERY&viewId=05HJw00000QVUndMAH&dpt=",
+      "contentLane": "JSON",
+      "documentId": "pdf:736d4706d78bf6569b32ec9a87607457fca4da3b9bc7ff8fed210059bab8dc44"
     },
     {
       "referenceId": "fa_ref_400c55d0b2eba10373b521ae",
@@ -10151,6 +10207,13 @@
       "sourceUrl": "https://www.lg.com/au/washer-dryers/top-load-washing-machines/wtg1432vh/",
       "contentLane": "HTML",
       "documentId": "pdf:6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5"
+    },
+    {
+      "referenceId": "fa_ref_4414a56a5a364e5e78412031",
+      "contentSha256": "3e87b6851433001f92da463c5a6ba6b434552da9b6a406a25d5014430c7dc808",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf7000ac-srf7500bb-648l-black-rf59a7670b1-sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:3e87b6851433001f92da463c5a6ba6b434552da9b6a406a25d5014430c7dc808"
     },
     {
       "referenceId": "fa_ref_450c097ec4ac96a2cee08561",
@@ -10202,6 +10265,13 @@
       "documentId": "pdf:b9b30bfa63db44c2c35477cf0df779caf64e819719b2038fbbf84b8984940ac4"
     },
     {
+      "referenceId": "fa_ref_52a2ba13254bf6b4a1572bed",
+      "contentSha256": "e243e477f784215f6d35872fbab03b38839cbc21d565bfd83d120a71ad68c4a4",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf9000d-rf9000dc-t-style-french-door-21-5inch-family-hub-636l-black-rf65dg9hc3b1sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:e243e477f784215f6d35872fbab03b38839cbc21d565bfd83d120a71ad68c4a4"
+    },
+    {
       "referenceId": "fa_ref_5311c845bb733803b9bf4e95",
       "contentSha256": "279b4bb972e32743534f4ff67982ca8f5cdac247a65728b8f14ca82c47288177",
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMI50M05AU",
@@ -10251,6 +10321,13 @@
       "documentId": "pdf:ed492bf7600635018fdfe340b4bda3361dfbdc448ae54c6073c59dad28c262ea"
     },
     {
+      "referenceId": "fa_ref_61c56b941f00f29713cde015",
+      "contentSha256": "81ed79d328cc76c70e41aca8fcb907bfd08f83fd5fb44c24c13e6936c0ab608c",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009kVLRIA2&d=%2Fa%2FJw000000bOPx%2F_RpjVHKRlH48QXUHv46IlDLTcmTrIAncU1TkURLGuSA&operationContext=DELIVERY&viewId=05HJw00000QVU2rMAH&dpt=",
+      "contentLane": "JSON",
+      "documentId": "pdf:81ed79d328cc76c70e41aca8fcb907bfd08f83fd5fb44c24c13e6936c0ab608c"
+    },
+    {
       "referenceId": "fa_ref_637fa56e4ea92ec4e6971d8b",
       "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
       "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
@@ -10265,11 +10342,39 @@
       "documentId": "pdf:faf6b50f88102366e5d784bbfdad14bccc7320fa5cde143c8f7b4dec616c7700"
     },
     {
+      "referenceId": "fa_ref_69115d64d7661cac09bb1628",
+      "contentSha256": "eb9829e652aa99025f57b65d2c7c0198adb5a15a3d973e5654becdc16b06187b",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/bottom-mount-freezer/rb5300-427l-matte-black-steel-rb43dg6005b1sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:eb9829e652aa99025f57b65d2c7c0198adb5a15a3d973e5654becdc16b06187b"
+    },
+    {
+      "referenceId": "fa_ref_69e68a9d064ae20ddf620714",
+      "contentSha256": "6c780ecb245cf917ee97b5e21f61749920bd71dbf3b1284d43892e0028994abe",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM2500WA-X&brand=Westinghouse",
+      "contentLane": "JSON",
+      "documentId": "pdf:6c780ecb245cf917ee97b5e21f61749920bd71dbf3b1284d43892e0028994abe"
+    },
+    {
       "referenceId": "fa_ref_6e3ab48cc2e552dd15c677d7",
       "contentSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d",
       "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-9-contemporary-tall-single-dishdrawer-dishwasher-dd60sdftx9-82324.html",
       "contentLane": "HTML",
       "documentId": "pdf:81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d"
+    },
+    {
+      "referenceId": "fa_ref_6eeff26f0cf820a6a66bc953",
+      "contentSha256": "6d49d2545deffd4bc616cdf11c441b3a08660db638fb81772a2b2e2173253a87",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-multi-door-90-8-cm-bfr575px",
+      "contentLane": "HTML",
+      "documentId": "pdf:6d49d2545deffd4bc616cdf11c441b3a08660db638fb81772a2b2e2173253a87"
+    },
+    {
+      "referenceId": "fa_ref_6f75b8917e336f41b6dc57d0",
+      "contentSha256": "570be421fd2c97f58cd13225a406d5b60dd72d32fd822a36989c4d92c3737925",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR125DW_SPEC.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:570be421fd2c97f58cd13225a406d5b60dd72d32fd822a36989c4d92c3737925"
     },
     {
       "referenceId": "fa_ref_70a486d5df7caa827a726723",
@@ -10307,6 +10412,20 @@
       "documentId": "pdf:56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145"
     },
     {
+      "referenceId": "fa_ref_77aa37d3c00ecbafa5175c65",
+      "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+      "contentLane": "JSON",
+      "documentId": "pdf:46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010"
+    },
+    {
+      "referenceId": "fa_ref_7815e52e51f6b1e204354b2b",
+      "contentSha256": "f165dc61a280dd3b3db56ea10e69975301a1e383498bb005289ba3dbe2eb476a",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009kcmfIAA&d=%2Fa%2FJw000000bOY1%2F7nP01N3FwWR0xcTx7euXtI1f9N_4SuL5tvRzsRfXqAc&operationContext=DELIVERY&viewId=05HJw00000QVSaYMAX&dpt=",
+      "contentLane": "JSON",
+      "documentId": "pdf:f165dc61a280dd3b3db56ea10e69975301a1e383498bb005289ba3dbe2eb476a"
+    },
+    {
       "referenceId": "fa_ref_7a8c19f214387d7f14b2897b",
       "contentSha256": "686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203",
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU88TS04A",
@@ -10326,6 +10445,13 @@
       "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
       "contentLane": "HTML",
       "documentId": "pdf:af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
+    },
+    {
+      "referenceId": "fa_ref_7c936edb103f7762189bfd5d",
+      "contentSha256": "00d98a1e70dfd1773763484ca2ccd090be7ee7cfa553fce0359bb62b1d196225",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBE5300BC-R&brand=Westinghouse",
+      "contentLane": "JSON",
+      "documentId": "pdf:00d98a1e70dfd1773763484ca2ccd090be7ee7cfa553fce0359bb62b1d196225"
     },
     {
       "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
@@ -10354,6 +10480,13 @@
       "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-black-ww11cg60adlbsa/",
       "contentLane": "HTML",
       "documentId": "pdf:68dd32dc4fbd3e4f580c6bd39bd0fe487cdd679d362096e3cac2d9d8be2f2441"
+    },
+    {
+      "referenceId": "fa_ref_84bd2b01f23011d0f2d724f6",
+      "contentSha256": "d80b9b8c1c50d342327c132bdb9d88ad1a431815c0161195e3b17db84214574f",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6608XA&brand=Westinghouse",
+      "contentLane": "JSON",
+      "documentId": "pdf:d80b9b8c1c50d342327c132bdb9d88ad1a431815c0161195e3b17db84214574f"
     },
     {
       "referenceId": "fa_ref_84dea0453f6b62afcdfc8f0c",
@@ -10398,6 +10531,13 @@
       "documentId": "pdf:cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be"
     },
     {
+      "referenceId": "fa_ref_90fc8a14a91c4647f92d2174",
+      "contentSha256": "c7d01e298628d878966dca8ebf08ae5d58a509608d3b98a03468d2117f2eb908",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw40d6b33b/QRG/AU/QRG-AU-92330.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:c7d01e298628d878966dca8ebf08ae5d58a509608d3b98a03468d2117f2eb908"
+    },
+    {
       "referenceId": "fa_ref_92e0fb04cedc250ae2ee2f14",
       "contentSha256": "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e",
       "sourceUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
@@ -10419,6 +10559,27 @@
       "documentId": "pdf:502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f"
     },
     {
+      "referenceId": "fa_ref_9572ce64edcd65ad387a4ebd",
+      "contentSha256": "bbc5c02fc54c788fad31226d0ee0239d0c595fa7ac5b1b22a5a35272cf1e044f",
+      "sourceUrl": "https://omegaappliances.com.au/s/OFI101XKIT_Specsheet_V20.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:bbc5c02fc54c788fad31226d0ee0239d0c595fa7ac5b1b22a5a35272cf1e044f"
+    },
+    {
+      "referenceId": "fa_ref_9739594296736ffce6b8c415",
+      "contentSha256": "08cc660bc8a53422b20cb701ee2d153ca33a111747cb9619937b3de1fc0e4199",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531730.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:08cc660bc8a53422b20cb701ee2d153ca33a111747cb9619937b3de1fc0e4199"
+    },
+    {
+      "referenceId": "fa_ref_973c2822b6794dc7c0b0f312",
+      "contentSha256": "9eb3fcce01c75ac722365df97823a419187442897dcdeca575fff6e49be9b3b3",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=SRF9700BFH&CttFileID=8134461&CDCttType=UM&VPath=UM%2F202105%2F20210513095755777%2FDA68-04024C-00_MANUAL_USERS_F-Hub_EN.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:9eb3fcce01c75ac722365df97823a419187442897dcdeca575fff6e49be9b3b3"
+    },
+    {
       "referenceId": "fa_ref_9774b2c4a1d1d8d4a5fc1449",
       "contentSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60",
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M28AU",
@@ -10431,6 +10592,20 @@
       "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
       "contentLane": "HTML",
       "documentId": "pdf:b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
+    },
+    {
+      "referenceId": "fa_ref_998274b933c86670d842a3f4",
+      "contentSha256": "ac461e3d721fb64aaaf451044906e1852b90d53249c3e9fe1fe46526f1ce78b5",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf9000d-rf9000dc-t-style-french-door-21-5inch-family-hub-809l-black-rf71dg9hc3b1sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:ac461e3d721fb64aaaf451044906e1852b90d53249c3e9fe1fe46526f1ce78b5"
+    },
+    {
+      "referenceId": "fa_ref_9d12f4bd501f96bd747d062f",
+      "contentSha256": "3a1d19736695e3b183b1d90ccfcfd829a59223d66127e179426ccb2feb6caefb",
+      "sourceUrl": "https://omegaappliances.com.au/s/ODW101W_Specsheet_40.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:3a1d19736695e3b183b1d90ccfcfd829a59223d66127e179426ccb2feb6caefb"
     },
     {
       "referenceId": "fa_ref_9e27a5123836852a17b39d47",
@@ -10459,6 +10634,20 @@
       "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531670.pdf",
       "contentLane": "JSON",
       "documentId": "pdf:ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e"
+    },
+    {
+      "referenceId": "fa_ref_a30d97e8b5d66df690298a53",
+      "contentSha256": "e87cf0ddb011c517e31a0dcafba3f23c783b36c0688a4170e70f03354df147f3",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf7000ac-family-hub-640l-black-rf59a7f10b1-sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:e87cf0ddb011c517e31a0dcafba3f23c783b36c0688a4170e70f03354df147f3"
+    },
+    {
+      "referenceId": "fa_ref_a4966aef1a04be5958c8d233",
+      "contentSha256": "daa8bac4a5348613616fc466dec4750d2a084301281b75886580aa11ba58491b",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EFE4227SC-L&brand=Electrolux",
+      "contentLane": "JSON",
+      "documentId": "pdf:daa8bac4a5348613616fc466dec4750d2a084301281b75886580aa11ba58491b"
     },
     {
       "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
@@ -10587,6 +10776,13 @@
       "documentId": "pdf:0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e"
     },
     {
+      "referenceId": "fa_ref_c64bf17adf7f867c0fd586c3",
+      "contentSha256": "efe5abbadd0d3aae03092465770263123122821f907334dba23e3ff545df18af",
+      "sourceUrl": "https://pi-exchange.smeg.it/catalog/FAB32RWH5AU/en-AU",
+      "contentLane": "JSON",
+      "documentId": "pdf:efe5abbadd0d3aae03092465770263123122821f907334dba23e3ff545df18af"
+    },
+    {
       "referenceId": "fa_ref_c70e360fa7196337f42789f3",
       "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
       "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
@@ -10622,6 +10818,20 @@
       "documentId": "pdf:f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014"
     },
     {
+      "referenceId": "fa_ref_cf804b20eb6442a5d71e36be",
+      "contentSha256": "84e0354cd6b13d4b1db69411d7f2a1a17365fec210c12dae0a603b79517ea986",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/bottom-mount-freezer/310l-black-doi-rb30n4020b1-sa/",
+      "contentLane": "HTML",
+      "documentId": "pdf:84e0354cd6b13d4b1db69411d7f2a1a17365fec210c12dae0a603b79517ea986"
+    },
+    {
+      "referenceId": "fa_ref_cfe43c2d3aeff7765751ddba",
+      "contentSha256": "65d4801732080298aa72e7756a9ef26af0ee197762b1e6642a6cdeeebcb9ae2f",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/freezer/freezer-upright-59-5cm-bvf290w",
+      "contentLane": "HTML",
+      "documentId": "pdf:65d4801732080298aa72e7756a9ef26af0ee197762b1e6642a6cdeeebcb9ae2f"
+    },
+    {
       "referenceId": "fa_ref_d3fae0a782e69d5351dc2dec",
       "contentSha256": "743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b",
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMV63M10AU",
@@ -10634,6 +10844,20 @@
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50M15AU",
       "contentLane": "HTML",
       "documentId": "pdf:4cfa64487ebf42fa518da73163a68bc710e5502fb6c9b7766f4abf8308347b40"
+    },
+    {
+      "referenceId": "fa_ref_dc953441da6057602d950fec",
+      "contentSha256": "239f0b7e0db701fa2a90fdf082fc580e4d7523f7817166062baee01144a4f00c",
+      "sourceUrl": "https://www.smeg.com/au/products/SABI221FF",
+      "contentLane": "HTML",
+      "documentId": "pdf:239f0b7e0db701fa2a90fdf082fc580e4d7523f7817166062baee01144a4f00c"
+    },
+    {
+      "referenceId": "fa_ref_e04d3327902dd4b8b6fdd179",
+      "contentSha256": "64914b28359601dd73b213335db3b15e6b8a4d5b53a85d6f46eeba31652f7360",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ERE5047SC-R&brand=Electrolux",
+      "contentLane": "JSON",
+      "documentId": "pdf:64914b28359601dd73b213335db3b15e6b8a4d5b53a85d6f46eeba31652f7360"
     },
     {
       "referenceId": "fa_ref_e1029b4f322e8d3050149ab6",
@@ -10655,6 +10879,13 @@
       "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732486?fields=FULL&lang=en_AU&curr=AUD",
       "contentLane": "JSON",
       "documentId": "pdf:a20220ab9f4631c24c6ec8a486304478a2e68793932ecb24a47dcb60d2943832"
+    },
+    {
+      "referenceId": "fa_ref_e521131ce4fe1e20081230b2",
+      "contentSha256": "ef6fd3b3ea5879791a1feab64f8f1cec103aa070640b1f36cdf66b43f9911168",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531710.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:ef6fd3b3ea5879791a1feab64f8f1cec103aa070640b1f36cdf66b43f9911168"
     },
     {
       "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
@@ -30833,9 +31064,9 @@
           "proofLevel": "EXACT_MODEL_PROVEN",
           "proofLocators": [
             {
-              "type": "CLASSIFICATION_ASSOCIATION",
-              "identityScope": "EXACT_MODEL",
-              "receiptState": "NONE"
+              "type": "CURRENT_RECEIPT",
+              "documentId": "pdf:3b4408baf29dd810d4e4640e6585a50e8f73148df9cfca8d5ee047073908e956",
+              "receiptState": "CURRENT_VALID"
             },
             {
               "type": "INDEX_IDENTITY_HINT",
@@ -50826,9 +51057,9 @@
           "proofLevel": "EXACT_MODEL_PROVEN",
           "proofLocators": [
             {
-              "type": "CLASSIFICATION_ASSOCIATION",
-              "identityScope": "EXACT_MODEL",
-              "receiptState": "NONE"
+              "type": "CURRENT_RECEIPT",
+              "documentId": "pdf:6f0949b387261f9efc65222be4364e6263d0eedc443a00c3acbbaf87caabc595",
+              "receiptState": "CURRENT_VALID"
             },
             {
               "type": "INDEX_IDENTITY_HINT",
@@ -86081,9 +86312,9 @@
           "proofLevel": "EXACT_MODEL_PROVEN",
           "proofLocators": [
             {
-              "type": "CLASSIFICATION_ASSOCIATION",
-              "identityScope": "EXACT_MODEL",
-              "receiptState": "NONE"
+              "type": "CURRENT_RECEIPT",
+              "documentId": "pdf:cbd7f9cd5b27dafeca262f2cdeb303ac27932fe2f54a2ffa25d7e3ece7124d48",
+              "receiptState": "CURRENT_VALID"
             },
             {
               "type": "INDEX_IDENTITY_HINT",
@@ -116909,5 +117140,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "428c7356b010eac74bc836d13967a9a9b091bd64b73950200ef4f5c457299116"
+  "semanticGraphSha256": "628d094cb61ef7691cbcce5eed9052f7b0d4cd0e9be3b1f3d18af71f1b563853"
 }

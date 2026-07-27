@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-25.1",
+  "policyVersion": "2026-07-27.1",
   "supportedReceiptPolicyVersions": [
     "2026-07-13.2",
     "2026-07-14.1",
@@ -12,7 +12,9 @@
     "2026-07-16.4",
     "2026-07-16.5",
     "2026-07-16.6",
-    "2026-07-25.1"
+    "2026-07-25.1",
+    "2026-07-26.2",
+    "2026-07-27.1"
   ],
   "market": "AU",
   "brandGlobalArtifactHosts": {
@@ -35,6 +37,12 @@
     "esatto": [
       "static1.squarespace.com"
     ],
+    "omega": [
+      "static1.squarespace.com"
+    ],
+    "smeg": [
+      "pi-exchange.smeg.it"
+    ],
     "bosch": [
       "media3.bsh-group.com"
     ]
@@ -56,6 +64,18 @@
         "requiredQuery": {
           "fields": "FULL",
           "lang": "en_AU",
+          "curr": "AUD"
+        },
+        "requiresBoundResponse": true
+      }
+    ],
+    "hisense": [
+      {
+        "hostname": "dtc-aus-api.hisense.com",
+        "pathnamePattern": "^/occ/v2/au/products/[A-Za-z0-9._-]+$",
+        "requiredQuery": {
+          "fields": "FULL",
+          "lang": "en",
           "curr": "AUD"
         },
         "requiresBoundResponse": true

@@ -368,6 +368,20 @@ export function buildHistoricalEvidenceRecoveryBatch({
         const edge = target?.candidateEdges?.find((candidate) => candidate.jobId === job.jobId);
         return edge ? edge.requiredAttempt === true : true;
       });
+      const requiredTargetIdSet = new Set(requiredTargetIds);
+      const discoveryProvenanceBindings = linkedTargetIds.flatMap((targetId) => {
+        const target = selectedTargetsById.get(targetId);
+        const edge = target?.candidateEdges?.find((candidate) => candidate.jobId === job.jobId);
+        return edge?.discoveryProvenance ? [{
+          targetId,
+          targetModel: target.model,
+          targetCategory: target.category,
+          discoveryProvenance: structuredClone(edge.discoveryProvenance),
+        }] : [];
+      }).sort((left, right) => (
+        Number(requiredTargetIdSet.has(right.targetId)) - Number(requiredTargetIdSet.has(left.targetId))
+          || left.targetId.localeCompare(right.targetId)
+      ));
       return {
         jobId: job.jobId,
         sourceUrl: job.sourceUrl,
@@ -375,6 +389,7 @@ export function buildHistoricalEvidenceRecoveryBatch({
         authorityMode: job.authorityMode,
         sourceRole: batchJobSourceRole(job),
         requiredTargetIds,
+        ...(discoveryProvenanceBindings.length > 0 ? { discoveryProvenanceBindings } : {}),
         acquisitionRoute: job.acquisitionRoute,
         priorityClass: job.priorityClass,
         targetIds: linkedTargetIds,
@@ -397,6 +412,7 @@ export function buildHistoricalEvidenceRecoveryBatch({
       job.targetIds,
       job.sourceRole,
       job.requiredTargetIds,
+      job.discoveryProvenanceBindings ?? [],
     ]),
   });
   const batch = {

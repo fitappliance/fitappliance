@@ -343,10 +343,10 @@ test('HTML identity accepts an exact model followed only by a numeric product ID
 test('HTML identity records a strict official marketing alias and limits it to dimensions', () => {
   const aliasIdentity = { brand: 'Samsung', model: 'SRF5300SD', category: 'fridge' };
   const bytes = Buffer.from(`<!doctype html><html><head>
-    <title>495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU</title>
+    <title>495L French Door Fridge Non Plumbed | Samsung AU</title>
     <link rel="canonical" href="https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/">
     <meta property="og:description" content="Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA from Samsung Australia.">
-  </head><body data-model-code="RF44A5202SL/SA">
+  </head><body data-model-name="SRF5300SD" data-model-code="RF44A5202SL/SA">
     <dl><dt>Total width (mm)</dt><dd>817 mm</dd>
       <dt>Total height (mm)</dt><dd>1776 mm</dd>
       <dt>Total depth (mm)</dt><dd>715 mm</dd></dl>
@@ -371,8 +371,35 @@ test('HTML identity records a strict official marketing alias and limits it to d
     brand: 'Samsung', model: 'SRF5300SD', outcome: 'official_marketing_alias',
     sourceModel: 'RF44A5202SL/SA',
   });
-  assert.ok(attested.identitySignals.some((signal) => signal.type === 'official_alias_binding'));
+  assert.equal(
+    attested.identitySignals.find((signal) => signal.type === 'official_alias_binding')?.value,
+    'Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA from Samsung Australia.',
+  );
   assert.equal(verifyAttestedResolutionArtifact({ source: attested, caseIdentity: aliasIdentity, bytes }), true);
+
+  const titleBoundBytes = Buffer.from(bytes.toString('utf8').replace(
+    '495L French Door Fridge Non Plumbed | Samsung AU',
+    '495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU',
+  ));
+  const titleBoundClaims = extractClaimsFromHtml(titleBoundBytes, {
+    category: 'fridge',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const titleBound = verifyAndAttestResolutionArtifact({
+    source: source(titleBoundBytes, {
+      sourceUrl: input.sourceUrl,
+      finalUrl: input.finalUrl,
+      identity: input.identity,
+      claims: titleBoundClaims,
+    }),
+    caseIdentity: aliasIdentity,
+    bytes: titleBoundBytes,
+    verifiedAt: '2026-07-12T10:00:00.000Z',
+  });
+  assert.equal(
+    titleBound.identitySignals.filter((signal) => signal.type === 'document_title').length,
+    1,
+  );
 
   const unboundBytes = Buffer.from(bytes.toString('utf8').replace(
     'Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA',
@@ -389,6 +416,50 @@ test('HTML identity records a strict official marketing alias and limits it to d
     bytes: unboundBytes,
     verifiedAt: '2026-07-12T10:00:00.000Z',
   }), /alias|canonical.*model|identity/i);
+});
+
+test('HTML identity binds a co-located official marketing model and canonical technical model', () => {
+  const target = { brand: 'Samsung', model: 'SRL4200B', category: 'fridge' };
+  const canonical = 'https://www.samsung.com/au/refrigerators/bottom-mount-freezer/rb5300-rb43dg6005b1sa/';
+  const markup = ({ marketingModel = target.model, technicalModel = 'RB43DG6005B1SA', split = false } = {}) => (
+    Buffer.from(`<!doctype html><html><head>
+      <title>427L Smart Bottom Mount Refrigerator - ${target.model} | Samsung AU</title>
+      <link rel="canonical" href="${canonical}">
+    </head><body>
+      ${split
+    ? `<span data-modelname="${marketingModel}"></span><span data-modelcode="${technicalModel}"></span>`
+    : `<button data-modelname="${marketingModel}" data-modelcode="${technicalModel}"></button>`}
+      <ul><li><p>Dimension (WxHxD)</p><p>700 x 1700 x 705 mm</p></li></ul>
+    </body></html>`)
+  );
+  const attest = (bytes) => verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: canonical,
+      finalUrl: canonical,
+      identity: { ...target, outcome: 'exact' },
+      claims: extractClaimsFromHtml(bytes, {
+        category: target.category,
+        fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+      }),
+    }),
+    caseIdentity: target,
+    bytes,
+    verifiedAt: '2026-07-27T02:00:00.000Z',
+  });
+
+  const bytes = markup();
+  const attested = attest(bytes);
+  assert.deepEqual(attested.identity, {
+    brand: target.brand,
+    model: target.model,
+    outcome: 'official_marketing_alias',
+    sourceModel: 'RB43DG6005B1SA',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'official_alias_binding'));
+  assert.equal(verifyAttestedResolutionArtifact({ source: attested, caseIdentity: target, bytes }), true);
+  assert.throws(() => attest(markup({ marketingModel: 'SRL4200S' })), /alias|canonical.*model|identity/i);
+  assert.throws(() => attest(markup({ technicalModel: 'RB43DG6005S9SA' })), /alias|canonical.*model|identity/i);
+  assert.throws(() => attest(markup({ split: true })), /alias|canonical.*model|identity/i);
 });
 
 test('HTML identity attests only a policy-bound Westinghouse hinge variant', () => {
@@ -772,6 +843,17 @@ test('HTML grouped dimensions accept an explicit H*W*D axis order', () => {
   });
 });
 
+test('HTML grouped dimensions reject Hisense product-page tuples with unreliable axis metadata', () => {
+  const washer = Buffer.from(`<!doctype html><html><body>
+    <div class="specification"><h2>Dimensions (H*W*D) Unit: mm</h2><p>550*845*595</p></div>
+  </body></html>`);
+  assert.deepEqual(extractClaimsFromHtml(washer, {
+    brand: 'Hisense',
+    category: 'washing_machine',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), []);
+});
+
 test('HTML grouped dimensions fail closed when structured product rows conflict', () => {
   const conflicting = Buffer.from(`<!doctype html><html><body><ul>
     <li><span>Product Dimensions (W x H x D)</span><span>600 x 850 x 650 mm</span></li>
@@ -781,6 +863,64 @@ test('HTML grouped dimensions fail closed when structured product rows conflict'
     category: 'dryer',
     fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
   }), /ambiguous extracted values/i);
+});
+
+test('HTML closed-envelope height includes the hinge and rejects a hinge-excluded fallback', () => {
+  const fields = [
+    'closedEnvelope.widthMm',
+    'closedEnvelope.heightMm',
+    'closedEnvelope.depthMm',
+  ];
+  const samsungRows = Buffer.from(`<!doctype html><html><body><ul>
+    <li><p>Width</p><p>595 mm</p></li>
+    <li><p>Height with Hinge</p><p>1700 mm</p></li>
+    <li><p>Height without Hinge</p><p>1680 mm</p></li>
+    <li><p>Depth with Handle</p><p>663 mm</p></li>
+    <li><p>Depth without Door</p><p>590 mm</p></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(samsungRows, { category: 'fridge', fields });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 595,
+    'closedEnvelope.heightMm': 1700,
+    'closedEnvelope.depthMm': 663,
+  });
+
+  const hingeExcludedOnly = Buffer.from(`<!doctype html><html><body><ul>
+    <li><p>Height without Hinge</p><p>1680 mm</p></li>
+  </ul></body></html>`);
+  assert.deepEqual(extractClaimsFromHtml(hingeExcludedOnly, {
+    category: 'fridge', fields: ['closedEnvelope.heightMm'],
+  }), []);
+});
+
+test('HTML extractor ignores dimension examples attached to form labels', () => {
+  const html = Buffer.from(`<!doctype html><html><body>
+    <ul><li><p>Width</p><p>700 mm</p></li></ul>
+    <form><ul><li><label for="spaceWidth">Width (mm)</label><span>Ex.: 769</span>
+      <input id="spaceWidth" type="text"></li></ul></form>
+  </body></html>`);
+  const claims = extractClaimsFromHtml(html, {
+    category: 'fridge', fields: ['closedEnvelope.widthMm'],
+  });
+  assert.deepEqual(claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.widthMm', 700],
+  ]);
+});
+
+test('HTML extractor ignores packing dimension rows when product dimensions are present', () => {
+  const html = Buffer.from(`<!doctype html><html><body><ul>
+    <li><p>Dimension (WxHxD)</p><p>700 x 1700 x 705 mm</p></li>
+    <li><p>Packing Dimension (WxHxD)</p><p>769 x 1800 x 740 mm</p></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(html, {
+    category: 'fridge',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 700,
+    'closedEnvelope.heightMm': 1700,
+    'closedEnvelope.depthMm': 705,
+  });
 });
 
 test('HTML extractor maps a canonical Product JSON-LD HxWxD tuple and ignores packed dimensions', () => {
@@ -1498,6 +1638,124 @@ test('a hash-bound exact Fisher & Paykel support product binds the RF610A family
     discoveryArtifactBytes: siblingBytes,
     verifiedAt: '2026-07-16T06:01:00.000Z', claimSemanticsVersion: 2,
   }), /exact model/i);
+});
+
+test('a Samsung AU support page binds an exact marketing model to the RF71A manual column', () => {
+  const caseIdentity = { brand: 'Samsung', model: 'SRF9700BFH', category: 'fridge' };
+  const artifactUrl = 'https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&ModelName=SRF9700BFH&CttFileID=8134461&CDCttType=UM&VPath=UM%2Fmanual.pdf';
+  const finalUrl = 'https://downloadcenter.samsung.com/content/UM/manual.pdf';
+  const supportUrl = 'https://www.samsung.com/au/support/model/RF71A9770B1/SA/';
+  const pdfBytes = Buffer.from('%PDF-1.7\nSamsung RF71A support-family manual');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[], [{
+    type: 'table',
+    content: { html: '<table><tr><td>Model</td><td>RF65A*</td><td>RF71A*</td></tr><tr><td>Depth "A"</td><td>723 mm</td><td>861 mm</td></tr><tr><td>Width "B"</td><td>912 mm</td><td>912 mm</td></tr><tr><td>Height "C"</td><td>1797 mm</td><td>1797 mm</td></tr><tr><td>Overall Height "D"</td><td>1825 mm</td><td>1825 mm</td></tr></table>' },
+    bbox: [520, 228, 882, 351],
+  }]]));
+  const supportBytes = Buffer.from(`<!doctype html><html><head>
+    <title>810L Family Hub - SRF9700BFH | Samsung Support Australia</title>
+    <link rel="canonical" href="${supportUrl}">
+  </head><body><h1>SRF9700BFH</h1><ul>
+    <li data-sdf-prop="modelCode">RF71A9770B1/SA</li>
+    <li data-sdf-prop="modelName">SRF9700BFH</li>
+    <li data-sdf-prop="contents">${JSON.stringify({ manuals: [{
+      description: 'User Manual', contentsTypeCode: 'UM', downloadUrl: artifactUrl,
+    }] })}</li>
+  </ul></body></html>`);
+  const supportHash = createHash('sha256').update(supportBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: supportUrl,
+    requestedModel: caseIdentity.model,
+    matchedModel: caseIdentity.model,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: supportHash,
+    discoveryObjectPath: `evidence/web/sha256/${supportHash.slice(0, 2)}/${supportHash.slice(2, 4)}/${supportHash}.html`,
+    discoveryByteSize: supportBytes.length,
+  };
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4',
+    modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity,
+    claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'RF71A',
+    boundSupportSourceModel: 'RF71A9770B1/SA',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4',
+    modelRevision: MINERU_MODEL_REVISION,
+  });
+  const pdfSource = {
+    authority: 'manufacturer',
+    sourceType: 'official_model_variant_pdf',
+    sourceUrl: artifactUrl,
+    finalUrl,
+    redirectChain: [artifactUrl, finalUrl],
+    retrievedAt: '2026-07-26T23:15:20.000Z',
+    contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf',
+    byteSize: pdfBytes.length,
+    identity: {
+      ...caseIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'RF71A9770B1/SA',
+    },
+    claims,
+    derivedArtifact,
+    discoveryProvenance,
+  };
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource,
+    caseIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: supportBytes,
+    verifiedAt: '2026-07-26T23:17:00.000Z',
+    claimSemanticsVersion: 2,
+  });
+  assert.deepEqual(attested.identity, pdfSource.identity);
+  const signalTypes = new Set(attested.identitySignals.map((signal) => signal.type));
+  assert.ok(signalTypes.has('official_product_page_model'));
+  assert.ok(signalTypes.has('mineru_samsung_rf71a_support_family'));
+  assert.ok(signalTypes.has('canonical_source_model'));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested,
+    caseIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: supportBytes,
+  }), true);
+
+  const siblingSupportBytes = Buffer.from(supportBytes.toString('utf8')
+    .replaceAll('RF71A9770B1/SA', 'RF65A9770B1/SA')
+    .replaceAll('/RF71A9770B1/SA/', '/RF65A9770B1/SA/'));
+  const siblingHash = createHash('sha256').update(siblingSupportBytes).digest('hex');
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: {
+      ...pdfSource,
+      discoveryProvenance: {
+        ...discoveryProvenance,
+        discoveryUrl: 'https://www.samsung.com/au/support/model/RF65A9770B1/SA/',
+        discoveryContentSha256: siblingHash,
+        discoveryObjectPath: `evidence/web/sha256/${siblingHash.slice(0, 2)}/${siblingHash.slice(2, 4)}/${siblingHash}.html`,
+        discoveryByteSize: siblingSupportBytes.length,
+      },
+    },
+    caseIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: siblingSupportBytes,
+    verifiedAt: '2026-07-26T23:17:00.000Z',
+    claimSemanticsVersion: 2,
+  }), /support family|identity signal|exact model/i);
 });
 
 test('a hash-bound exact Fisher & Paykel support product binds the DW60CH AU/NZ installation family', () => {

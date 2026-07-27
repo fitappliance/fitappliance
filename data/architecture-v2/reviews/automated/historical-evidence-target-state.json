@@ -1,39 +1,40 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T14:40:12.165Z",
+  "generatedAt": "2026-07-27T02:48:07.966Z",
   "sourceBindings": {
-    "classificationSha256": "c732efe382262121f93b81c810e9a11aff890ed08f314435a6c7f01e182b8e91",
-    "acquisitionQueueSha256": "72da95b70cab32e55e76d69cb79a1ed6c4d19514814a4c1307072adb84cc3aca",
-    "executableQueueSha256": "61c230d55875e96a93081505cd2d1e52f2794410a192cf81565990130bd66bee",
-    "acceptanceBundleSha256": "a4755f2616f5a1b381b12a90552ecbc0023cce817211fdc0471e1767d386beaa",
-    "attemptLedgerSha256": "00bfb43e90497bd02387a2e2ab598ce73869ded1fd7494b2d4cf6e301328fde1"
+    "classificationSha256": "d240db302a9474213a878bb4633ad2cf4d997101145cdf39e0e516efc8b0e88c",
+    "acquisitionQueueSha256": "1a620d942c835c33fde4ad8af90fe2ba6c3a4a5c74f441c62a3e34164e5f54fc",
+    "executableQueueSha256": "7c18b0f60fadd1ac9dffb521a9ec62b90ed9ef3dafe8b0f441523ac12d6eceb2",
+    "acceptanceBundleSha256": "2ef8120f76e502a5718c69e7f32b47f6a22a9d3596a9835129ed461f7c844895",
+    "attemptLedgerSha256": "32f8d772fb28a88d2e2a89da1efaff8c21ac8f9ede23fffaa5d32864906cceb5"
   },
-  "sourceClassificationGeneratedAt": "2026-07-26T14:40:12.165Z",
-  "sourceExecutableQueueGeneratedAt": "2026-07-26T14:40:12.165Z",
+  "sourceClassificationGeneratedAt": "2026-07-27T02:48:07.966Z",
+  "sourceExecutableQueueGeneratedAt": "2026-07-27T02:48:07.966Z",
   "summary": {
     "records": 8087,
-    "actionable": 4985,
+    "actionable": 4944,
     "actionableBlockedOverlap": 6,
     "acquisitionWork": 0,
-    "discoveryWork": 4985,
-    "deferred": 2694,
-    "completed": 408,
-    "blocked": 2700,
-    "terminal": 3108,
+    "discoveryWork": 4944,
+    "deferred": 2699,
+    "completed": 444,
+    "blocked": 2705,
+    "terminal": 3149,
     "byState": {
       "BLOCKED_SAME_EPOCH": 2,
-      "CONFLICT_QUARANTINE": 83,
-      "DIMENSIONS_RECEIPT": 408,
-      "IDENTITY_RESEARCH": 132,
-      "NO_OFFICIAL_SOURCE": 33,
+      "CONFLICT_QUARANTINE": 86,
+      "DIMENSIONS_RECEIPT": 444,
+      "IDENTITY_QUARANTINE": 1,
+      "IDENTITY_RESEARCH": 128,
+      "NO_OFFICIAL_SOURCE": 34,
       "RETRYABLE": 10,
-      "SOURCE_DISCOVERY_REQUIRED": 4837,
+      "SOURCE_DISCOVERY_REQUIRED": 4800,
       "UNSEEN": 2582
     },
     "byStateClass": {
-      "ACTIONABLE": 4979,
-      "BLOCKED": 2700,
-      "COMPLETED": 408
+      "ACTIONABLE": 4938,
+      "BLOCKED": 2705,
+      "COMPLETED": 444
     }
   },
   "controls": {
@@ -2357,9 +2358,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -2393,9 +2397,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -2429,9 +2436,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -2465,9 +2475,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -2528,9 +2541,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -3916,9 +3932,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5095,9 +5114,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5131,9 +5153,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5167,9 +5192,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5203,9 +5231,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5239,9 +5270,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5275,9 +5309,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5311,9 +5348,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -5347,9 +5387,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -17577,9 +17620,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -17757,9 +17803,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -17793,9 +17842,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -17949,9 +18001,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -17985,9 +18040,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -18486,9 +18544,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -18573,9 +18634,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -25189,20 +25253,23 @@
       "model": "G7719SCIXXLOBSW",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
+        "activeRetryable": 1,
         "activeTerminal": 0,
-        "resolved": 0
+        "resolved": 1
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_cdf519337d1da610c7f8eb22",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:4194ede47a47ef3c6e2771b6663e5d10d2c142d20494dd2db832a76fcc529775"
+        ],
+        "acceptanceTargetId": "recovery_target_cdf519337d1da610c7f8eb22",
+        "receiptBindingSha256s": [
+          "4194ede47a47ef3c6e2771b6663e5d10d2c142d20494dd2db832a76fcc529775"
+        ]
       },
       "reopeningConditions": []
     },
@@ -25241,16 +25308,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_9cff53a8dbf2441f8a914bc9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:82d1e64a0bd5b514197e72d407fcd9f50126d8337e801997e09d5d6f99f8b885"
+        ],
+        "acceptanceTargetId": "recovery_target_9cff53a8dbf2441f8a914bc9",
+        "receiptBindingSha256s": [
+          "82d1e64a0bd5b514197e72d407fcd9f50126d8337e801997e09d5d6f99f8b885"
+        ]
       },
       "reopeningConditions": []
     },
@@ -25289,16 +25359,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_144fd604c86e62a6301b9d7f",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:fc1c4de16a25c2e69374086ef3954e8fad86971b5395a7213f76958add4c2729"
+        ],
+        "acceptanceTargetId": "recovery_target_144fd604c86e62a6301b9d7f",
+        "receiptBindingSha256s": [
+          "fc1c4de16a25c2e69374086ef3954e8fad86971b5395a7213f76958add4c2729"
+        ]
       },
       "reopeningConditions": []
     },
@@ -26996,19 +27069,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
-        "resolved": 0
+        "activeTerminal": 2,
+        "resolved": 1
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_2f40b1e7ac6aa3c821cb178d",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:ac9539527f12f3902e1f27e096993d0f148249103a4fc9885416df959343b1ff"
+        ],
+        "acceptanceTargetId": "recovery_target_2f40b1e7ac6aa3c821cb178d",
+        "receiptBindingSha256s": [
+          "ac9539527f12f3902e1f27e096993d0f148249103a4fc9885416df959343b1ff"
+        ]
       },
       "reopeningConditions": []
     },
@@ -28100,19 +28176,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_1f3195f0d134d997e011fdc2",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:96a842459a60923dd427653a1a8df289967bbc6900cf6f4eaddbf102ecc1ec9c"
+        ],
+        "acceptanceTargetId": "recovery_target_1f3195f0d134d997e011fdc2",
+        "receiptBindingSha256s": [
+          "96a842459a60923dd427653a1a8df289967bbc6900cf6f4eaddbf102ecc1ec9c"
+        ]
       },
       "reopeningConditions": []
     },
@@ -36531,19 +36610,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 2,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_f5e3462fb74d11a2574fced4",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:1de129184130999fceb472aaf7381f0edc8204a4a52d7cb242c5a8821eda0635"
+        ],
+        "acceptanceTargetId": "recovery_target_f5e3462fb74d11a2574fced4",
+        "receiptBindingSha256s": [
+          "1de129184130999fceb472aaf7381f0edc8204a4a52d7cb242c5a8821eda0635"
+        ]
       },
       "reopeningConditions": []
     },
@@ -39601,9 +39683,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -39661,9 +39746,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -40087,9 +40175,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -40123,9 +40214,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -40255,9 +40349,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -40291,9 +40388,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -40327,9 +40427,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -40363,9 +40466,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -44412,9 +44518,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -44523,9 +44632,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -44607,9 +44719,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -44718,9 +44833,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -44781,9 +44899,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -61938,19 +62059,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_26c882086c89d90a7cb07770",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:1c7646fe992182bcb957f046e92d457667799926c17f311aa0523e29c1e86995"
+        ],
+        "acceptanceTargetId": "recovery_target_26c882086c89d90a7cb07770",
+        "receiptBindingSha256s": [
+          "1c7646fe992182bcb957f046e92d457667799926c17f311aa0523e29c1e86995"
+        ]
       },
       "reopeningConditions": []
     },
@@ -62250,19 +62374,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_6c4e16f31d7a020ec5dd17dc",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:4cbd0f28a905672e16cdcfd4c0622e26e9c32fd2e6be693e75b8c4250059c874"
+        ],
+        "acceptanceTargetId": "recovery_target_6c4e16f31d7a020ec5dd17dc",
+        "receiptBindingSha256s": [
+          "4cbd0f28a905672e16cdcfd4c0622e26e9c32fd2e6be693e75b8c4250059c874"
+        ]
       },
       "reopeningConditions": []
     },
@@ -62274,19 +62401,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_db29ae3a74b977aa20ffc90e",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:e415a12f6e80c6bfb2bb6fa97379dbaea064f017ac53edb99b80c06e2dbaeb79"
+        ],
+        "acceptanceTargetId": "recovery_target_db29ae3a74b977aa20ffc90e",
+        "receiptBindingSha256s": [
+          "e415a12f6e80c6bfb2bb6fa97379dbaea064f017ac53edb99b80c06e2dbaeb79"
+        ]
       },
       "reopeningConditions": []
     },
@@ -68571,16 +68701,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_2771f6b33f1e140a5202e900",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:002ce24790cf5e54d9b5aa6c300604b8a0e111f7d7e412264c133f3b32fc0ac3"
+        ],
+        "acceptanceTargetId": "recovery_target_2771f6b33f1e140a5202e900",
+        "receiptBindingSha256s": [
+          "002ce24790cf5e54d9b5aa6c300604b8a0e111f7d7e412264c133f3b32fc0ac3"
+        ]
       },
       "reopeningConditions": []
     },
@@ -73712,20 +73845,23 @@
       "model": "EFE4227SC-L",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
+        "activeRetryable": 2,
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_5838a3c2c43a6a4aca3751ba",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:fb8c118fa1ef402182ead2b8dcd686164dbac4945ee4d38a482e8ed0719175d3"
+        ],
+        "acceptanceTargetId": "recovery_target_5838a3c2c43a6a4aca3751ba",
+        "receiptBindingSha256s": [
+          "fb8c118fa1ef402182ead2b8dcd686164dbac4945ee4d38a482e8ed0719175d3"
+        ]
       },
       "reopeningConditions": []
     },
@@ -74590,20 +74726,23 @@
       "model": "ERE5047SC-R",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeRetryable": 1,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_15767e663a438dc4bed37aa9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:e58d0c7b42fd6f95b092adeba26d7aaf939fc05acc0ff945fb8c12e08f5a6e82"
+        ],
+        "acceptanceTargetId": "recovery_target_15767e663a438dc4bed37aa9",
+        "receiptBindingSha256s": [
+          "e58d0c7b42fd6f95b092adeba26d7aaf939fc05acc0ff945fb8c12e08f5a6e82"
+        ]
       },
       "reopeningConditions": []
     },
@@ -76298,19 +76437,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
-        "resolved": 0
+        "activeTerminal": 2,
+        "resolved": 1
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_28d090a9e40935bc404c49e9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:90f0b96ff0f7fec87efcee3d33b434b6bef89c066f0469b8f32c183636db27f6"
+        ],
+        "acceptanceTargetId": "recovery_target_28d090a9e40935bc404c49e9",
+        "receiptBindingSha256s": [
+          "90f0b96ff0f7fec87efcee3d33b434b6bef89c066f0469b8f32c183636db27f6"
+        ]
       },
       "reopeningConditions": []
     },
@@ -90935,18 +91077,23 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "IDENTITY_QUARANTINE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_920ce2fc6a78e34b190ef9f5",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE",
+        "terminalReasonCodes": [
+          "official_non_appliance_accessory"
+        ],
+        "terminalReasonCode": "official_non_appliance_accessory"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "OFFICIAL_PRODUCT_CLASSIFICATION_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_1b727e0efea0eafde91b72c6",
@@ -97112,9 +97259,12 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
-          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
-          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "2995d5adf16975c51883709c3444e8f0c6b6bf2f70f39e583b1a132cc1e84a47",
+          "esatto_au_product_card_dimensions_v2": "571c3dd035181502d16ff945e506ae216d662c9eb343a6bf82b0a90ad3210b30",
+          "miele_au_product_material_identity_v1": "c46609a8eacd2d4929f40a2644afbe3e847470febd700ee9bbece2039dbb364a",
+          "omega_au_product_card_dimensions_v1": "656125b126933129fbe8f01c5bbed57d2c1898a4f05c45cea38fd4af209a728f",
+          "samsung_au_rf71a_support_family": "a9c800f587124bbcdb5ff728410b9e645b3fceed33394484c0622f46117f3090",
+          "smeg_au_techspec_pdf_dimensions_v1": "62839ddc58e52e275d1079a5914b8a8c20482b3c5ae940af63913184f476321d"
         }
       },
       "reopeningConditions": [
@@ -101059,20 +101209,23 @@
       "model": "HRF580YHC",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
+        "activeRetryable": 5,
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_1279cb8210f776f3223adaa8",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:3e68b4482f42049a9e25968dfabadac5946a061c71a24b6296c260a59aabfbde"
+        ],
+        "acceptanceTargetId": "recovery_target_1279cb8210f776f3223adaa8",
+        "receiptBindingSha256s": [
+          "3e68b4482f42049a9e25968dfabadac5946a061c71a24b6296c260a59aabfbde"
+        ]
       },
       "reopeningConditions": []
     },
@@ -101155,20 +101308,23 @@
       "model": "HRF580YPC",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
+        "activeRetryable": 5,
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_2d68c6c9eb21d41a3ee94647",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:6e260bd3d0f61330900c18c824dce1befed6afeeb875f7e976cb652dc1fd9e2d"
+        ],
+        "acceptanceTargetId": "recovery_target_2d68c6c9eb21d41a3ee94647",
+        "receiptBindingSha256s": [
+          "6e260bd3d0f61330900c18c824dce1befed6afeeb875f7e976cb652dc1fd9e2d"
+        ]
       },
       "reopeningConditions": []
     },
@@ -101227,20 +101383,23 @@
       "model": "HRF680YPC",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeRetryable": 9,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_4d96223ddb8716713c2eb81e",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:3247c75c9039f3c6f94d0693a5de1968ded0330cb65ad497641b9dd3854f9785"
+        ],
+        "acceptanceTargetId": "recovery_target_4d96223ddb8716713c2eb81e",
+        "receiptBindingSha256s": [
+          "3247c75c9039f3c6f94d0693a5de1968ded0330cb65ad497641b9dd3854f9785"
+        ]
       },
       "reopeningConditions": []
     },
@@ -102294,16 +102453,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_eac72ab179f55dd59cb4f538",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:3ecab63ce43472b9be051befd7f660afa1268094886a9b14033e60b2a09797c0"
+        ],
+        "acceptanceTargetId": "recovery_target_eac72ab179f55dd59cb4f538",
+        "receiptBindingSha256s": [
+          "3ecab63ce43472b9be051befd7f660afa1268094886a9b14033e60b2a09797c0"
+        ]
       },
       "reopeningConditions": []
     },
@@ -107081,18 +107243,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_82974ff949271d57a63a8e0f",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_45c31380fcf2ecfad8feac5b",
@@ -135019,18 +135182,25 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "CONFLICT_QUARANTINE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_cfbdc53245c01f53cdbf696e",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "classification",
+        "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json",
+        "operationalClass": "CONFLICT_QUARANTINE",
+        "conflictState": "SOURCE_CONFLICT",
+        "controlPlaneDisposition": {
+          "type": "control_plane_disposition",
+          "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+          "targetId": "recovery_target_cfbdc53245c01f53cdbf696e",
+          "dispositionReason": "RESEARCH_REQUIRED"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "CONFLICT_CLOSURE_DECISION_ACCEPTED"
+      ]
     },
     {
       "referenceId": "fa_ref_2cb3e7a3803d9352893cdd87",
@@ -135691,18 +135861,25 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "CONFLICT_QUARANTINE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_8940fae9a8d21e2cf8d398f9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "classification",
+        "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json",
+        "operationalClass": "CONFLICT_QUARANTINE",
+        "conflictState": "SOURCE_CONFLICT",
+        "controlPlaneDisposition": {
+          "type": "control_plane_disposition",
+          "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+          "targetId": "recovery_target_8940fae9a8d21e2cf8d398f9",
+          "dispositionReason": "RESEARCH_REQUIRED"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "CONFLICT_CLOSURE_DECISION_ACCEPTED"
+      ]
     },
     {
       "referenceId": "fa_ref_d1fc3a6f0df0f76054859bf5",
@@ -135715,18 +135892,25 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "CONFLICT_QUARANTINE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_b7db4bc5eb0bc3b28f4efdfe",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "classification",
+        "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json",
+        "operationalClass": "CONFLICT_QUARANTINE",
+        "conflictState": "SOURCE_CONFLICT",
+        "controlPlaneDisposition": {
+          "type": "control_plane_disposition",
+          "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+          "targetId": "recovery_target_b7db4bc5eb0bc3b28f4efdfe",
+          "dispositionReason": "RESEARCH_REQUIRED"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "CONFLICT_CLOSURE_DECISION_ACCEPTED"
+      ]
     },
     {
       "referenceId": "fa_ref_ba4e344d2a979aa438826181",
@@ -145729,19 +145913,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_b0ee84dba24c9ae6249873fa",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:975453ef6af7fbf8b79b137580881e4596f6c375a2a9205b21659f5c8902c2c7"
+        ],
+        "acceptanceTargetId": "recovery_target_b0ee84dba24c9ae6249873fa",
+        "receiptBindingSha256s": [
+          "975453ef6af7fbf8b79b137580881e4596f6c375a2a9205b21659f5c8902c2c7"
+        ]
       },
       "reopeningConditions": []
     },
@@ -145801,19 +145988,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_764002319c78e620b230fe0f",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:ceb50958f86f45d743355103d9067db134752f281f0f9c67ee4c2d00fe701cef"
+        ],
+        "acceptanceTargetId": "recovery_target_764002319c78e620b230fe0f",
+        "receiptBindingSha256s": [
+          "ceb50958f86f45d743355103d9067db134752f281f0f9c67ee4c2d00fe701cef"
+        ]
       },
       "reopeningConditions": []
     },
@@ -145849,19 +146039,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_b12024854cac2c50af8d48aa",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:1bf06fd154943636809ae307cf33bc77b1af073c25749693341c4f39e9d65bdb"
+        ],
+        "acceptanceTargetId": "recovery_target_b12024854cac2c50af8d48aa",
+        "receiptBindingSha256s": [
+          "1bf06fd154943636809ae307cf33bc77b1af073c25749693341c4f39e9d65bdb"
+        ]
       },
       "reopeningConditions": []
     },
@@ -145873,19 +146066,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
-        "resolved": 0
+        "activeTerminal": 1,
+        "resolved": 1
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_97a42c78ffe2dfc4c76217ff",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:6b96af9482290bcea57794d1c1c18767cf954d2b2e718184253ad5d9a054931e"
+        ],
+        "acceptanceTargetId": "recovery_target_97a42c78ffe2dfc4c76217ff",
+        "receiptBindingSha256s": [
+          "6b96af9482290bcea57794d1c1c18767cf954d2b2e718184253ad5d9a054931e"
+        ]
       },
       "reopeningConditions": []
     },
@@ -145897,19 +146093,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 2,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_4e0c094f77e02225b54e5875",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:c96ee07386196a830c7200265d9e126783fd6589b3b8f3870ec6160219b72cca"
+        ],
+        "acceptanceTargetId": "recovery_target_4e0c094f77e02225b54e5875",
+        "receiptBindingSha256s": [
+          "c96ee07386196a830c7200265d9e126783fd6589b3b8f3870ec6160219b72cca"
+        ]
       },
       "reopeningConditions": []
     },
@@ -145945,19 +146144,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_d447e2da85532c5eb0a2ec70",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:cfcd705e3cfc2fe98b8c932ae5971359d642d7fef2d5cf5affd7a893d758f0a5"
+        ],
+        "acceptanceTargetId": "recovery_target_d447e2da85532c5eb0a2ec70",
+        "receiptBindingSha256s": [
+          "cfcd705e3cfc2fe98b8c932ae5971359d642d7fef2d5cf5affd7a893d758f0a5"
+        ]
       },
       "reopeningConditions": []
     },
@@ -145969,19 +146171,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_d438f5a7523e3f79aad37348",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:1aa8b137d649a10e7659ea4e5e5ebd1744ffb51d828018d807539ba346c7e5df"
+        ],
+        "acceptanceTargetId": "recovery_target_d438f5a7523e3f79aad37348",
+        "receiptBindingSha256s": [
+          "1aa8b137d649a10e7659ea4e5e5ebd1744ffb51d828018d807539ba346c7e5df"
+        ]
       },
       "reopeningConditions": []
     },
@@ -146209,19 +146414,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_e2a5539aa11c516b2d64b54b",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:4f6efc26d84c52ef443a5489dcd22ae4fad11377ecbb02f45d46800160257336"
+        ],
+        "acceptanceTargetId": "recovery_target_e2a5539aa11c516b2d64b54b",
+        "receiptBindingSha256s": [
+          "4f6efc26d84c52ef443a5489dcd22ae4fad11377ecbb02f45d46800160257336"
+        ]
       },
       "reopeningConditions": []
     },
@@ -153220,16 +153428,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_082a385d730fbff8e7ba1d2b",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:42e0c761e736a93c05490abc89406a266df8670533e32026f160583765a89398"
+        ],
+        "acceptanceTargetId": "recovery_target_082a385d730fbff8e7ba1d2b",
+        "receiptBindingSha256s": [
+          "42e0c761e736a93c05490abc89406a266df8670533e32026f160583765a89398"
+        ]
       },
       "reopeningConditions": []
     },
@@ -153961,19 +154172,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_cd29e0a837bf66a6ee0c788f",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:c2756267a6ec207a82e7fe2022c3a5f1c7af622800ff44c5bb57d573dd0f5541"
+        ],
+        "acceptanceTargetId": "recovery_target_cd29e0a837bf66a6ee0c788f",
+        "receiptBindingSha256s": [
+          "c2756267a6ec207a82e7fe2022c3a5f1c7af622800ff44c5bb57d573dd0f5541"
+        ]
       },
       "reopeningConditions": []
     },
@@ -165746,19 +165960,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_04de1bfe9e9719affced76c6",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:1fd24e1488f4f570894948a57c6403030ea3405a48ba8979249bea7d8cd2d301"
+        ],
+        "acceptanceTargetId": "recovery_target_04de1bfe9e9719affced76c6",
+        "receiptBindingSha256s": [
+          "1fd24e1488f4f570894948a57c6403030ea3405a48ba8979249bea7d8cd2d301"
+        ]
       },
       "reopeningConditions": []
     },
@@ -165890,19 +166107,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_407fec6a355954f67a5470bc",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:484b5c2f167c1774a7def8d03e4d058f697c2bcf85e5968332459bce10092375"
+        ],
+        "acceptanceTargetId": "recovery_target_407fec6a355954f67a5470bc",
+        "receiptBindingSha256s": [
+          "484b5c2f167c1774a7def8d03e4d058f697c2bcf85e5968332459bce10092375"
+        ]
       },
       "reopeningConditions": []
     },
@@ -171356,19 +171576,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_478424ba2e35d51a3b119827",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:71e9093975822086c25792ca711f075d48d28106587f3d1a79d536e4ef19a3dd"
+        ],
+        "acceptanceTargetId": "recovery_target_478424ba2e35d51a3b119827",
+        "receiptBindingSha256s": [
+          "71e9093975822086c25792ca711f075d48d28106587f3d1a79d536e4ef19a3dd"
+        ]
       },
       "reopeningConditions": []
     },
@@ -175785,19 +176008,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_cb31f8071db3044e56e70b94",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:fc4b8e5f3eafdae7999cc025685aee84e762a2214c53db620bd1914e0d3a1bf1"
+        ],
+        "acceptanceTargetId": "recovery_target_cb31f8071db3044e56e70b94",
+        "receiptBindingSha256s": [
+          "fc4b8e5f3eafdae7999cc025685aee84e762a2214c53db620bd1914e0d3a1bf1"
+        ]
       },
       "reopeningConditions": []
     },
@@ -182918,19 +183144,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 8,
         "resolved": 0
       },
-      "state": "IDENTITY_RESEARCH",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_a194a336c7ff6633d8abec33",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:2cc94b7510355bb8474c965534a76cc474ffdffb3580415acd46c4c75a3319e3"
+        ],
+        "acceptanceTargetId": "recovery_target_a194a336c7ff6633d8abec33",
+        "receiptBindingSha256s": [
+          "2cc94b7510355bb8474c965534a76cc474ffdffb3580415acd46c4c75a3319e3"
+        ]
       },
       "reopeningConditions": []
     },
@@ -183046,19 +183275,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 8,
         "resolved": 0
       },
-      "state": "IDENTITY_RESEARCH",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_7c019913330fc717686c0d76",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:c6d2257a2a69c8dd97148a98df197e79c08bc5242950a125a240c86ee478c936"
+        ],
+        "acceptanceTargetId": "recovery_target_7c019913330fc717686c0d76",
+        "receiptBindingSha256s": [
+          "c6d2257a2a69c8dd97148a98df197e79c08bc5242950a125a240c86ee478c936"
+        ]
       },
       "reopeningConditions": []
     },
@@ -183686,19 +183918,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 8,
         "resolved": 0
       },
-      "state": "IDENTITY_RESEARCH",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_0ce3998236d375f5a3e8c651",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:460508699879b06fbc04f6aade015aec4d702f3176ef7416700003042c445284"
+        ],
+        "acceptanceTargetId": "recovery_target_0ce3998236d375f5a3e8c651",
+        "receiptBindingSha256s": [
+          "460508699879b06fbc04f6aade015aec4d702f3176ef7416700003042c445284"
+        ]
       },
       "reopeningConditions": []
     },
@@ -184515,19 +184750,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 8,
         "resolved": 0
       },
-      "state": "IDENTITY_RESEARCH",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_501c698cfc9db824aad3dc55",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:6d376aa144916bb5b60ee36df9d455d67a1a4ce6f969caac4143862e3462a1a1"
+        ],
+        "acceptanceTargetId": "recovery_target_501c698cfc9db824aad3dc55",
+        "receiptBindingSha256s": [
+          "6d376aa144916bb5b60ee36df9d455d67a1a4ce6f969caac4143862e3462a1a1"
+        ]
       },
       "reopeningConditions": []
     },
@@ -187215,19 +187453,22 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 1,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_5468e581ed8a2c3df9da236b",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250"
+        ],
+        "acceptanceTargetId": "recovery_target_5468e581ed8a2c3df9da236b",
+        "receiptBindingSha256s": [
+          "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250"
+        ]
       },
       "reopeningConditions": []
     },

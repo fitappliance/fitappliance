@@ -26,6 +26,7 @@ function policy() {
     },
     minimumConclusiveUnits: 10,
     minimumCompletedManifests: 2,
+    maximumConsecutiveRetryableOnlyManifests: 2,
     stages: {
       DISCOVERY: { floorBasisPoints: 2_000, diagnosticOnly: false },
       ACQUISITION: { floorBasisPoints: 8_000, diagnosticOnly: false },
@@ -264,6 +265,100 @@ test('five misses cannot halt and retryable units never inflate a conclusive sam
   assert.equal(result.haltedCohorts.length, 0);
   assert.equal(result.stageSummaries[0].conclusiveDenominator, 5);
   assert.equal(result.stageSummaries[0].retryableUnits, 20);
+});
+
+test('two consecutive retryable-only manifests halt a cohort without claiming source exhaustion', () => {
+  const retryableOnly = (id, manifestId) => checkpoint({
+    id,
+    manifestId,
+    cohortKey: 'smeg_fab32rwh5au',
+    metrics: [metric({ stage: 'DISCOVERY', denominator: 1, retryableUnits: 1 })],
+  });
+  const first = evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: [retryableOnly('retry-a', 'manifest-a')],
+    policy: policy(),
+    currentEpochs: EPOCHS,
+  });
+  assert.equal(first.haltedCohorts.length, 0);
+  assert.equal(first.stageSummaries[0].retryableOnlyStreak, 1);
+
+  const second = evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: [
+      retryableOnly('retry-a', 'manifest-a'),
+      retryableOnly('retry-b', 'manifest-b'),
+    ],
+    policy: policy(),
+    currentEpochs: EPOCHS,
+  });
+  assert.deepEqual(second.haltedCohorts.map((row) => ({
+    cohortKey: row.cohortKey,
+    stage: row.stage,
+    reason: row.reason,
+    retryableOnlyStreak: row.retryableOnlyStreak,
+  })), [{
+    cohortKey: 'smeg_fab32rwh5au',
+    stage: 'DISCOVERY',
+    reason: 'CONSECUTIVE_RETRYABLE_ONLY_MANIFEST_LIMIT',
+    retryableOnlyStreak: 2,
+  }]);
+
+  const legacyPolicy = policy();
+  delete legacyPolicy.maximumConsecutiveRetryableOnlyManifests;
+  assert.equal(evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: [
+      retryableOnly('legacy-a', 'legacy-manifest-a'),
+      retryableOnly('legacy-b', 'legacy-manifest-b'),
+    ],
+    policy: legacyPolicy,
+    currentEpochs: EPOCHS,
+  }).haltedCohorts[0].reason, 'CONSECUTIVE_RETRYABLE_ONLY_MANIFEST_LIMIT');
+});
+
+test('a conclusive manifest resets the retryable-only streak and relevant epoch drift reopens it', () => {
+  const cohortKey = 'smeg_fab32rwh5au';
+  const retryable = (id, manifestId, epochs = EPOCHS) => checkpoint({
+    id,
+    manifestId,
+    cohortKey,
+    metrics: [metric({ stage: 'DISCOVERY', denominator: 1, retryableUnits: 1, epochs })],
+  });
+  const conclusive = checkpoint({
+    id: 'complete-a',
+    manifestId: 'manifest-complete',
+    cohortKey,
+    metrics: [metric({ stage: 'DISCOVERY', numerator: 1, denominator: 1 })],
+  });
+  const reset = evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: [
+      retryable('retry-a', 'manifest-a'),
+      conclusive,
+      retryable('retry-b', 'manifest-b'),
+    ],
+    policy: policy(),
+    currentEpochs: EPOCHS,
+  });
+  assert.equal(reset.haltedCohorts.length, 0);
+  assert.equal(reset.stageSummaries[0].retryableOnlyStreak, 1);
+
+  const prior = evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: [retryable('retry-a', 'manifest-a'), retryable('retry-b', 'manifest-b')],
+    policy: policy(),
+    currentEpochs: EPOCHS,
+  });
+  assert.equal(prior.haltedCohorts.length, 1);
+  const changed = structuredClone(EPOCHS);
+  changed.find((row) => row.id === 'resolver-contract').semanticSha256 = 'f'.repeat(64);
+  const reopened = evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: [retryable('retry-a', 'manifest-a'), retryable('retry-b', 'manifest-b')],
+    policy: policy(),
+    currentEpochs: changed,
+  });
+  assert.equal(reopened.haltedCohorts.length, 0);
+  assert.ok(reopened.reopenedCohorts.some((row) => (
+    row.cohortKey === cohortKey
+      && row.stage === 'DISCOVERY'
+      && row.reason === 'RELEVANT_EPOCH_CHANGED'
+  )));
 });
 
 test('a Wilson-qualified sample halts only its stage/cohort and selects another P0', () => {

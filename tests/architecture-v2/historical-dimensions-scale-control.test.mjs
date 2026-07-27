@@ -96,18 +96,33 @@ function manifest({
   };
 }
 
-function batches({ p0 = 4, p1 = 8, p0ExecutionLane = 'ACQUISITION' } = {}) {
+function batches({
+  p0 = 4,
+  p1 = 8,
+  parserRepair = 0,
+  p0ExecutionLane = 'ACQUISITION',
+  p0Brand = 'Example',
+} = {}) {
   const p0Manifest = manifest({
     id: 'manifest-p0', workstreamId: 'CURRENT_DIMENSIONS',
     priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS', lifecycleState: 'CURRENT_RETAIL',
-    familyId: 'family-current', executionLane: p0ExecutionLane,
+    familyId: 'family-current', executionLane: p0ExecutionLane, brand: p0Brand,
   });
   const p1Manifest = manifest({
     id: 'manifest-p1', workstreamId: 'HISTORICAL_DIMENSIONS',
     priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS', lifecycleState: 'CATALOG_ARCHIVED',
     familyId: 'family-historical',
   });
-  const manifests = [p0 ? p0Manifest : null, p1 ? p1Manifest : null].filter(Boolean);
+  const repairManifest = manifest({
+    id: 'manifest-repair', workstreamId: 'PARSER_REPAIR',
+    priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS', lifecycleState: 'CURRENT_RETAIL',
+    executionLane: 'BOUNDED_DISCOVERY',
+  });
+  const manifests = [
+    p0 ? p0Manifest : null,
+    p1 ? p1Manifest : null,
+    parserRepair ? repairManifest : null,
+  ].filter(Boolean);
   const workstream = ({
     workstreamId, description, assignedTargets, priorityClass, manifestRow,
   }) => ({
@@ -152,8 +167,8 @@ function batches({ p0 = 4, p1 = 8, p0ExecutionLane = 'ACQUISITION' } = {}) {
         priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS', manifestRow: p1Manifest,
       }),
       workstream({
-        workstreamId: 'PARSER_REPAIR', description: 'parser', assignedTargets: 0,
-        priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS', manifestRow: null,
+        workstreamId: 'PARSER_REPAIR', description: 'parser', assignedTargets: parserRepair,
+        priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS', manifestRow: repairManifest,
       }),
       workstream({
         workstreamId: 'CONFLICT_CLOSURE', description: 'conflict', assignedTargets: 0,
@@ -162,18 +177,18 @@ function batches({ p0 = 4, p1 = 8, p0ExecutionLane = 'ACQUISITION' } = {}) {
     ],
     manifests,
     summary: {
-      assignedTargets: p0 + p1,
-      eligibleTargets: p0 + p1,
+      assignedTargets: p0 + p1 + parserRepair,
+      eligibleTargets: p0 + p1 + parserRepair,
       suppressedTargets: 0,
       suppressedByReason: {},
-      eligibleCohorts: Number(p0 > 0) + Number(p1 > 0),
-      windowedCohorts: Number(p0 > 0) + Number(p1 > 0),
+      eligibleCohorts: Number(p0 > 0) + Number(p1 > 0) + Number(parserRepair > 0),
+      windowedCohorts: Number(p0 > 0) + Number(p1 > 0) + Number(parserRepair > 0),
       deferredCohorts: 0,
-      manifests: Number(p0 > 0) + Number(p1 > 0),
-      manifestedTargets: Number(p0 > 0) + Number(p1 > 0),
+      manifests: Number(p0 > 0) + Number(p1 > 0) + Number(parserRepair > 0),
+      manifestedTargets: Number(p0 > 0) + Number(p1 > 0) + Number(parserRepair > 0),
       byWorkstream: {
         CURRENT_DIMENSIONS: p0, HISTORICAL_DIMENSIONS: p1,
-        PARSER_REPAIR: 0, CONFLICT_CLOSURE: 0,
+        PARSER_REPAIR: parserRepair, CONFLICT_CLOSURE: 0,
       },
     },
   };
@@ -190,12 +205,24 @@ function inputs(options = {}) {
       metric('model.replacement_auto_fill', 321),
       metric('fit.receipt_bound_dimensions', 332, 3_515),
       metric('fit.receipt_bound_verified', 0, 3_515),
+      metric('receipt_replay.failed_sources', options.receiptFailures ?? 0, 408),
     ],
+    inventory: { quarantinedReceiptTargets: options.quarantinedReceiptTargets ?? 0 },
     controls: [], diagnostics: [],
   };
   const receiptAudit = {
     schemaVersion: 1,
-    summary: { entries: 382, sources: 408, passed: 408, failed: 0 },
+    summary: {
+      entries: 382,
+      sources: 408,
+      passed: 408 - (options.receiptFailures ?? 0),
+      failed: options.receiptFailures ?? 0,
+    },
+    outcomes: Array.from({ length: options.receiptFailures ?? 0 }, (_, index) => ({
+      targetId: `repair-target-${index + 1}`,
+      referenceId: `repair-reference-${index + 1}`,
+      status: 'failed',
+    })),
   };
   const replacementAudit = {
     schemaVersion: 3,
@@ -278,6 +305,22 @@ test('P0 remains the only dimensions lane while any eligible current target exis
   }), /P1|not allowed/i);
 });
 
+test('quarantined receipt repair is controlled and outranks ordinary P0 work', () => {
+  const input = inputs({ parserRepair: 2, receiptFailures: 2, quarantinedReceiptTargets: 2 });
+  const control = buildHistoricalDimensionsScaleControl(input);
+  const repair = input.nextBatches.manifests.find((row) => row.workstreamId === 'PARSER_REPAIR');
+  const p0 = input.nextBatches.manifests.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
+  assert.equal(control.decision.status, 'RUN_RECEIPT_REPAIR');
+  assert.equal(control.decision.allowedManifestId, repair.manifestId);
+  assert.equal(control.decision.allowedWorkstreamId, 'PARSER_REPAIR');
+  assertHistoricalDimensionsScaleManifestAllowed({
+    control, batches: input.nextBatches, manifest: repair,
+  });
+  assert.throws(() => assertHistoricalDimensionsScaleManifestAllowed({
+    control, batches: input.nextBatches, manifest: p0,
+  }), /not allowed/i);
+});
+
 test('P1 opens only after the P0 workstream reaches zero eligible targets', () => {
   const input = inputs({ p0: 0, p1: 8 });
   input.ledger.baseline.counters = canonicalHistoricalDimensionsScaleCounters(input);
@@ -312,7 +355,7 @@ test('checkpoint chains and publication guards fail closed', () => {
   const receiptFailure = inputs();
   receiptFailure.receiptAudit.summary.failed = 1;
   receiptFailure.receiptAudit.summary.passed = 407;
-  assert.throws(() => canonicalHistoricalDimensionsScaleCounters(receiptFailure), /receipt.*failed/i);
+  assert.throws(() => canonicalHistoricalDimensionsScaleCounters(receiptFailure), /receipt/i);
 
   const publicationFailure = inputs();
   publicationFailure.fitPublicationAudit.summary.violations = 1;
@@ -322,6 +365,38 @@ test('checkpoint chains and publication guards fail closed', () => {
   const invalidReplacement = inputs();
   invalidReplacement.replacementAudit.summary.byLookupAction.AUTO_FILL = 402;
   assert.throws(() => canonicalHistoricalDimensionsScaleCounters(invalidReplacement), /replacement.*receipt/i);
+});
+
+test('evidence invalidation rebaseline records bounded receipt coverage decreases', () => {
+  const prior = inputs();
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const current = inputs({ parserRepair: 2, receiptFailures: 2, quarantinedReceiptTargets: 2 });
+  current.programStatus.metrics.find((row) => row.id === 'model.current_valid_receipt').numerator = 399;
+  current.programStatus.metrics.find((row) => row.id === 'model.current_valid_receipt').rateBasisPoints = Math.round((399 / 8_089) * 10_000);
+
+  const advanced = recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: current,
+    activatedAt: '2026-07-19T20:30:00.000Z',
+    reason: 'EVIDENCE_INVALIDATION_RECONCILIATION',
+  });
+  assert.equal(advanced.rebaseline.reason, 'EVIDENCE_INVALIDATION_RECONCILIATION');
+  assert.deepEqual(advanced.rebaseline.evidenceInvalidation, {
+    targetIds: ['repair-target-1', 'repair-target-2'],
+    quarantinedTargetCount: 2,
+    failedSourceCount: 2,
+  });
+  assert.equal(advanced.control.counters.currentValidReceipts, 399);
+  assert.equal(advanced.control.counters.receiptSourcesPassed, 406);
+  assert.equal(advanced.control.decision.status, 'RUN_RECEIPT_REPAIR');
 });
 
 test('release DAG rebaseline preserves checkpoint history and only reopens queue counters', () => {
@@ -381,6 +456,38 @@ test('release DAG rebaseline preserves checkpoint history and only reopens queue
     activatedAt: '2026-07-19T20:05:00.000Z',
     reason: 'RELEASE_DAG_RECONCILIATION',
   }), /coverage.*rebaseline|rebaseline.*coverage/i);
+});
+
+test('release DAG rebaseline records an epoch-only compatibility change without fabricating queue work', () => {
+  const prior = inputs();
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const current = structuredClone(prior);
+  current.epochs.find((row) => row.id === 'parser').semanticSha256 = 'f'.repeat(64);
+
+  const advanced = recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: current,
+    activatedAt: '2026-07-19T20:06:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  });
+
+  assert.deepEqual(advanced.ledger.rebaselines[0].queueCounterDeltas, {
+    p0AssignedTargets: 0,
+    p0EligibleTargets: 0,
+    p1AssignedTargets: 0,
+    p1EligibleTargets: 0,
+  });
+  assert.deepEqual(advanced.ledger.rebaselines[0].changedArtifactBindings, ['epochsSha256']);
+  assert.equal(advanced.control.counters.currentValidReceipts, priorControl.counters.currentValidReceipts);
+  assert.equal(advanced.control.counters.p0AssignedTargets, priorControl.counters.p0AssignedTargets);
 });
 
 test('weekly throughput and projected batches use receipted target grain only', () => {
@@ -674,6 +781,116 @@ test('dimensions checkpoint requires a passing online audit bound to scalar resu
     audit: { ...audit, status: 'failed' },
     afterCounters: after,
   }), /passing full online audit/i);
+});
+
+test('a delayed checkpoint uses its immutable run-time control after a release-DAG rebaseline', () => {
+  const priorInput = inputs({ p0: 4, p0Brand: 'Before' });
+  const authorizingControl = buildHistoricalDimensionsScaleControl(priorInput);
+  const priorManifest = priorInput.nextBatches.manifests.find(
+    (row) => row.manifestId === authorizingControl.decision.allowedManifestId,
+  );
+  const targetId = priorManifest.targetBindings[0].targetId;
+  const run = {
+    schemaVersion: 1,
+    runId: 'dimensions-delayed-after-rebaseline-a',
+    batchId: 'batch-delayed-a',
+    batchSha256: '5'.repeat(64),
+    queueSha256: '6'.repeat(64),
+    policySha256: '7'.repeat(64),
+    startedAt: '2026-07-19T20:05:00.000Z',
+    completedAt: '2026-07-19T20:10:00.000Z',
+    semanticOutcomeSha256: '8'.repeat(64),
+    outcomes: [{
+      targetId,
+      status: 'conflict_quarantined',
+      failureCode: 'conflict',
+      candidateInventory: { candidates: [] },
+      sources: [],
+      geometryProjection: null,
+    }],
+    summary: { targets: 1, accepted: 0, nonScalar: 0, retryable: 0, terminal: 1 },
+  };
+  const audit = {
+    schemaVersion: 1,
+    mode: 'online',
+    status: 'passed',
+    priorObjectsReplayed: true,
+    checkedTargets: 1,
+    resultsSha256: canonicalJsonSha256(run),
+    violations: [],
+    semanticAuditSha256: 'a'.repeat(64),
+  };
+  const nextInput = inputs({ p0: 5, p0Brand: 'After' });
+  const rebased = recordHistoricalDimensionsScaleRebaseline({
+    priorControl: authorizingControl,
+    ledger: priorInput.ledger,
+    currentInput: nextInput,
+    activatedAt: '2026-07-19T20:20:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  });
+  const epochInput = structuredClone(nextInput);
+  epochInput.epochs.find((row) => row.id === 'scale-metrics').semanticSha256 = 'f'.repeat(64);
+  const twiceRebased = recordHistoricalDimensionsScaleRebaseline({
+    priorControl: rebased.control,
+    ledger: rebased.ledger,
+    currentInput: epochInput,
+    activatedAt: '2026-07-19T20:25:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  });
+  assert.notEqual(twiceRebased.control.decision.allowedManifestId, priorManifest.manifestId);
+  const currentInput = {
+    generatedAt: '2026-07-19T20:30:00.000Z',
+    nextBatches: epochInput.nextBatches,
+    programStatus: epochInput.programStatus,
+    receiptAudit: epochInput.receiptAudit,
+    replacementAudit: epochInput.replacementAudit,
+    fitPublicationAudit: epochInput.fitPublicationAudit,
+    epochs: epochInput.epochs,
+  };
+
+  const advanced = recordHistoricalDimensionsScaleCheckpoint({
+    control: twiceRebased.control,
+    authorizingControl,
+    ledger: twiceRebased.ledger,
+    manifest: priorManifest,
+    run,
+    audit,
+    recordedAt: '2026-07-19T20:30:00.000Z',
+    currentInput,
+  });
+  const recorded = advanced.ledger.entries.at(-1);
+  assert.equal(recorded.runId, run.runId);
+  assert.equal(recorded.recordedAt, '2026-07-19T20:30:00.000Z');
+  assert.equal(
+    recorded.evidenceBindings.authorizingControlSha256,
+    authorizingControl.semanticControlSha256,
+  );
+  assert.deepEqual(recorded.beforeCounters, twiceRebased.control.counters);
+  assert.deepEqual(recorded.afterCounters, twiceRebased.control.counters);
+
+  assert.throws(() => recordHistoricalDimensionsScaleCheckpoint({
+    control: twiceRebased.control,
+    ledger: twiceRebased.ledger,
+    manifest: priorManifest,
+    run,
+    audit,
+    recordedAt: '2026-07-19T20:30:00.000Z',
+    currentInput,
+  }), /manifest.*not allowed/i);
+
+  const unrelatedAuthorizingControl = buildHistoricalDimensionsScaleControl(
+    inputs({ p0: 6, p0Brand: 'Before' }),
+  );
+  assert.throws(() => recordHistoricalDimensionsScaleCheckpoint({
+    control: twiceRebased.control,
+    authorizingControl: unrelatedAuthorizingControl,
+    ledger: twiceRebased.ledger,
+    manifest: priorManifest,
+    run,
+    audit,
+    recordedAt: '2026-07-19T20:30:00.000Z',
+    currentInput,
+  }), /authorizing control|rebaseline/i);
 });
 
 test('recording a checkpoint advances ledger and control as one validated state transition', () => {

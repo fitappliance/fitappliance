@@ -60,6 +60,7 @@ export const HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY = Object.freeze({
   }),
   minimumConclusiveUnits: 10,
   minimumCompletedManifests: 2,
+  maximumConsecutiveRetryableOnlyManifests: 2,
   stages: Object.freeze({
     DISCOVERY: Object.freeze({ floorBasisPoints: 2_000, diagnosticOnly: false }),
     ACQUISITION: Object.freeze({ floorBasisPoints: 8_000, diagnosticOnly: false }),
@@ -138,12 +139,26 @@ function workstreamById(nextBatches, id) {
   return matches[0];
 }
 
-function auditGuards({ receiptAudit, replacementAudit, fitPublicationAudit }) {
+function auditGuards({ receiptAudit, replacementAudit, fitPublicationAudit, programStatus }) {
   const receipts = requiredObject(receiptAudit?.summary, 'receipt replay summary');
   const sources = requiredInteger(receipts.sources, 'receipt replay sources');
   const passed = requiredInteger(receipts.passed, 'receipt replay passed');
   const failed = requiredInteger(receipts.failed, 'receipt replay failed');
-  if (failed !== 0 || passed !== sources) throw new Error('receipt replay failed or incomplete');
+  if (passed + failed !== sources) throw new Error('receipt replay incomplete');
+
+  const failedMetric = metricById(programStatus, 'receipt_replay.failed_sources');
+  const quarantinedTargets = requiredInteger(
+    programStatus?.inventory?.quarantinedReceiptTargets,
+    'quarantined receipt targets',
+  );
+  const failedTargetIds = new Set((receiptAudit?.outcomes ?? [])
+    .filter((outcome) => outcome?.status === 'failed')
+    .map((outcome) => requiredText(outcome.targetId, 'failed receipt target ID')));
+  if (failedMetric !== failed
+    || failedTargetIds.size !== quarantinedTargets
+    || (failed > 0 && quarantinedTargets === 0)) {
+    throw new Error('receipt replay quarantine accounting mismatch');
+  }
 
   const replacement = requiredObject(replacementAudit?.summary, 'replacement audit summary');
   if (requiredInteger(replacement.issueCount, 'replacement audit issue count') !== 0) {
@@ -160,7 +175,13 @@ function auditGuards({ receiptAudit, replacementAudit, fitPublicationAudit }) {
     || violations.length !== 0) {
     throw new Error('Fit publication violation blocks dimensions scale work');
   }
-  return { receiptSourcesPassed: passed, replacementAutoFill: autoFill, fit };
+  return {
+    receiptSourcesPassed: passed,
+    receiptSourcesFailed: failed,
+    quarantinedReceiptTargets: quarantinedTargets,
+    replacementAutoFill: autoFill,
+    fit,
+  };
 }
 
 export function canonicalHistoricalDimensionsScaleCounters(input) {
@@ -537,6 +558,11 @@ function validateStagePolicy(policy) {
   const minimumCompletedManifests = requiredInteger(
     policy.minimumCompletedManifests, 'minimum completed manifests', 2,
   );
+  const maximumConsecutiveRetryableOnlyManifests = requiredInteger(
+    policy.maximumConsecutiveRetryableOnlyManifests ?? 2,
+    'maximum consecutive retryable-only manifests',
+    2,
+  );
   if (policy.confidence?.method !== 'ONE_SIDED_WILSON'
     || policy.confidence?.confidenceBasisPoints !== 9_500
     || !Number.isFinite(policy.confidence?.z) || policy.confidence.z <= 0) {
@@ -551,7 +577,11 @@ function validateStagePolicy(policy) {
       if (floor > 10_000) throw new TypeError(`${stage} floor basis points invalid`);
     }
   }
-  return { minimumConclusiveUnits, minimumCompletedManifests };
+  return {
+    minimumConclusiveUnits,
+    minimumCompletedManifests,
+    maximumConsecutiveRetryableOnlyManifests,
+  };
 }
 
 function validateStageMetric(metric) {
@@ -599,9 +629,26 @@ export function evaluateHistoricalDimensionsStageCircuitBreakers({
         checkpointIds: [], manifestIds: new Set(), numerator: 0, denominator: 0,
         conclusiveNumerator: 0, conclusiveDenominator: 0,
         retryableUnits: 0, structuralTerminalUnits: 0,
+        manifestOrder: [], manifestMetrics: new Map(),
       };
       group.checkpointIds.push(checkpointId);
       group.manifestIds.add(manifestId);
+      let manifestMetric = group.manifestMetrics.get(manifestId);
+      if (!manifestMetric) {
+        manifestMetric = {
+          manifestId,
+          checkpointIds: [],
+          denominator: 0,
+          conclusiveDenominator: 0,
+          retryableUnits: 0,
+        };
+        group.manifestMetrics.set(manifestId, manifestMetric);
+        group.manifestOrder.push(manifestId);
+      }
+      manifestMetric.checkpointIds.push(checkpointId);
+      manifestMetric.denominator += metric.denominator;
+      manifestMetric.conclusiveDenominator += metric.conclusiveDenominator;
+      manifestMetric.retryableUnits += metric.retryableUnits;
       for (const field of [
         'numerator', 'denominator', 'conclusiveNumerator', 'conclusiveDenominator',
         'retryableUnits', 'structuralTerminalUnits',
@@ -615,11 +662,24 @@ export function evaluateHistoricalDimensionsStageCircuitBreakers({
   for (const group of groups.values()) {
     const stagePolicy = policy.stages[group.stage];
     const currentEpochSha256 = stageEpochSha256(group.stage, epochMap);
+    const manifestOutcomes = group.manifestOrder.map((manifestId) => (
+      group.manifestMetrics.get(manifestId)
+    ));
+    let retryableOnlyStreak = 0;
+    for (let index = manifestOutcomes.length - 1; index >= 0; index -= 1) {
+      const metric = manifestOutcomes[index];
+      if (metric.denominator <= 0
+        || metric.conclusiveDenominator !== 0
+        || metric.retryableUnits !== metric.denominator) break;
+      retryableOnlyStreak += 1;
+    }
+    const { manifestOrder, manifestMetrics, ...summaryGroup } = group;
     const row = {
-      ...group,
+      ...summaryGroup,
       manifestIds: [...group.manifestIds].sort(),
       completedManifests: group.manifestIds.size,
       currentEpochSha256,
+      retryableOnlyStreak,
     };
     stageSummaries.push(row);
     if (group.epochSha256 !== currentEpochSha256) {
@@ -629,6 +689,22 @@ export function evaluateHistoricalDimensionsStageCircuitBreakers({
         priorEpochSha256: group.epochSha256,
         currentEpochSha256,
         reason: 'RELEVANT_EPOCH_CHANGED',
+      });
+      continue;
+    }
+    if (!stagePolicy.diagnosticOnly
+      && retryableOnlyStreak >= thresholds.maximumConsecutiveRetryableOnlyManifests) {
+      const retryableOnlyManifests = manifestOutcomes.slice(-retryableOnlyStreak);
+      haltedCohorts.push({
+        cohortKey: group.cohortKey,
+        stage: group.stage,
+        epochSha256: group.epochSha256,
+        checkpointIds: retryableOnlyManifests.flatMap((metric) => metric.checkpointIds),
+        manifestIds: retryableOnlyManifests.map((metric) => metric.manifestId),
+        retryableOnlyStreak,
+        maximumConsecutiveRetryableOnlyManifests:
+          thresholds.maximumConsecutiveRetryableOnlyManifests,
+        reason: 'CONSECUTIVE_RETRYABLE_ONLY_MANIFEST_LIMIT',
       });
       continue;
     }
@@ -674,6 +750,7 @@ export function evaluateHistoricalDimensionsStageCircuitBreakers({
 export function selectHistoricalDimensionsScaleDecision({
   nextBatches,
   counters,
+  repairRequiredTargets = 0,
   haltedCohorts = [],
   operationalState = {},
 }) {
@@ -713,6 +790,41 @@ export function selectHistoricalDimensionsScaleDecision({
   };
   const p0Eligible = requiredInteger(counters.p0EligibleTargets, 'P0 eligible targets');
   const p1Eligible = requiredInteger(counters.p1EligibleTargets, 'P1 eligible targets');
+  const repairRequired = requiredInteger(repairRequiredTargets, 'receipt repair targets');
+  if (repairRequired > 0) {
+    const row = requiredObject(stream('PARSER_REPAIR'), 'PARSER_REPAIR workstream');
+    const assigned = requiredInteger(row.assignedTargets, 'receipt repair assigned targets');
+    const eligible = requiredInteger(row.eligibleTargets, 'receipt repair eligible targets');
+    if (assigned < repairRequired || eligible === 0) {
+      return Object.freeze({
+        status: 'STOP_RECEIPT_REPAIR_UNAVAILABLE',
+        allowedManifestId: null,
+        allowedWorkstreamId: 'PARSER_REPAIR',
+        p1Blocked: true,
+        reason: 'QUARANTINED_RECEIPTS_HAVE_NO_ELIGIBLE_REPAIR_WORK',
+        cohortKey: null,
+      });
+    }
+    const manifest = requiredArray(row.manifestIds, 'PARSER_REPAIR manifest IDs')
+      .map((id) => manifests.get(id))
+      .find((candidate) => candidate && !blocked.has(candidate.cohortKey));
+    if (manifest) return Object.freeze({
+      status: 'RUN_RECEIPT_REPAIR',
+      allowedManifestId: manifest.manifestId,
+      allowedWorkstreamId: 'PARSER_REPAIR',
+      p1Blocked: true,
+      reason: 'QUARANTINED_RECEIPTS_REPAIR_FIRST',
+      cohortKey: manifest.cohortKey,
+    });
+    return Object.freeze({
+      status: 'STOP_NO_RUNNABLE_REPAIR_MANIFESTS',
+      allowedManifestId: null,
+      allowedWorkstreamId: 'PARSER_REPAIR',
+      p1Blocked: true,
+      reason: 'ZERO_RUNNABLE_RECEIPT_REPAIR_MANIFESTS',
+      cohortKey: null,
+    });
+  }
   if (p0Eligible > 0) {
     const { row, manifest } = select('CURRENT_DIMENSIONS', 'P0_CURRENT_MISSING_DIMENSIONS');
     if (manifest) return Object.freeze({
@@ -798,13 +910,19 @@ function validateCheckpoint(value, previousCounters, previousCompletedAt) {
   )) throw new Error(`${checkpointId} semantic hash drift`);
   requiredText(checkpoint.runId, `${checkpointId} run ID`);
   const completedAt = requiredTimestamp(checkpoint.completedAt, `${checkpointId} completion time`);
-  if (previousCompletedAt && Date.parse(completedAt) < Date.parse(previousCompletedAt)) {
+  const recordedAt = checkpoint.recordedAt === undefined
+    ? completedAt
+    : requiredTimestamp(checkpoint.recordedAt, `${checkpointId} recording time`);
+  if (Date.parse(recordedAt) < Date.parse(completedAt)) {
+    throw new Error(`${checkpointId} recording time precedes run completion`);
+  }
+  if (previousCompletedAt && Date.parse(recordedAt) < Date.parse(previousCompletedAt)) {
     throw new Error(`${checkpointId} completion time is out of order`);
   }
   if (!['DISCOVERY', 'DIMENSIONS'].includes(checkpoint.stage)) {
     throw new TypeError(`${checkpointId} stage invalid`);
   }
-  if (!['CURRENT_DIMENSIONS', 'HISTORICAL_DIMENSIONS'].includes(checkpoint.workstreamId)) {
+  if (!['CURRENT_DIMENSIONS', 'HISTORICAL_DIMENSIONS', 'PARSER_REPAIR'].includes(checkpoint.workstreamId)) {
     throw new TypeError(`${checkpointId} workstream invalid`);
   }
   requiredText(checkpoint.manifestId, `${checkpointId} manifest ID`);
@@ -813,6 +931,12 @@ function validateCheckpoint(value, previousCounters, previousCompletedAt) {
   if (checkpoint.familyId !== null) requiredText(checkpoint.familyId, `${checkpointId} family ID`);
   const bindings = requiredObject(checkpoint.evidenceBindings, `${checkpointId} evidence bindings`);
   requiredHash(bindings.runSha256, `${checkpointId} run SHA-256`);
+  if (bindings.authorizingControlSha256 !== undefined) {
+    requiredHash(
+      bindings.authorizingControlSha256,
+      `${checkpointId} authorizing control SHA-256`,
+    );
+  }
   if (checkpoint.stage === 'DIMENSIONS') {
     requiredHash(bindings.auditSha256, `${checkpointId} audit SHA-256`);
     if (bindings.storageContentSha256 != null) {
@@ -853,7 +977,7 @@ function validateCheckpoint(value, previousCounters, previousCompletedAt) {
   if (after.currentValidReceipts - before.currentValidReceipts !== funnel.dimensionsReceipted) {
     throw new Error(`${checkpointId} dimensions receipt delta drift`);
   }
-  return { checkpoint, completedAt, after };
+  return { checkpoint, completedAt: recordedAt, after };
 }
 
 function validateScaleArtifactBindings(value, label) {
@@ -863,6 +987,44 @@ function validateScaleArtifactBindings(value, label) {
   }
   for (const field of SCALE_ARTIFACT_BINDING_FIELDS) requiredHash(bindings[field], `${label} ${field}`);
   return bindings;
+}
+
+function validateEvidenceInvalidation(value, before, after) {
+  const invalidation = requiredObject(value, 'evidence invalidation');
+  const targetIds = requiredArray(invalidation.targetIds, 'evidence invalidation target IDs')
+    .map((targetId) => requiredText(targetId, 'evidence invalidation target ID'));
+  const sorted = [...new Set(targetIds)].sort();
+  if (!canonicalEqual(targetIds, sorted)) {
+    throw new Error('evidence invalidation target IDs must be unique and sorted');
+  }
+  const quarantinedTargetCount = requiredInteger(
+    invalidation.quarantinedTargetCount,
+    'evidence invalidation target count',
+  );
+  const failedSourceCount = requiredInteger(
+    invalidation.failedSourceCount,
+    'evidence invalidation source count',
+  );
+  if (quarantinedTargetCount === 0 || failedSourceCount === 0
+    || targetIds.length !== quarantinedTargetCount) {
+    throw new Error('evidence invalidation accounting invalid');
+  }
+  if (after.currentValidReceipts - before.currentValidReceipts !== -quarantinedTargetCount
+    || after.receiptSourcesPassed - before.receiptSourcesPassed !== -failedSourceCount) {
+    throw new Error('evidence invalidation receipt counter delta drift');
+  }
+  for (const field of [
+    'replacementAutoFill', 'fitReceiptBoundDimensions', 'fitReceiptBoundVerified',
+  ]) {
+    const delta = after[field] - before[field];
+    if (delta > 0 || delta < -quarantinedTargetCount) {
+      throw new Error(`evidence invalidation coverage counter delta invalid: ${field}`);
+    }
+  }
+  if (after.fitReceiptBoundVerified > after.fitReceiptBoundDimensions) {
+    throw new Error('evidence invalidation leaves Verified Fit above receipt-bound dimensions');
+  }
+  return invalidation;
 }
 
 function validateRebaseline(value, previousCounters, previousCompletedAt) {
@@ -877,7 +1039,7 @@ function validateRebaseline(value, previousCounters, previousCompletedAt) {
   if (previousCompletedAt && Date.parse(activatedAt) < Date.parse(previousCompletedAt)) {
     throw new Error(`${rebaselineId} activation time is out of order`);
   }
-  if (rebaseline.reason !== 'RELEASE_DAG_RECONCILIATION') {
+  if (!['RELEASE_DAG_RECONCILIATION', 'EVIDENCE_INVALIDATION_RECONCILIATION'].includes(rebaseline.reason)) {
     throw new TypeError(`${rebaselineId} rebaseline reason invalid`);
   }
   requiredInteger(rebaseline.afterEntryCount, `${rebaselineId} entry offset`);
@@ -904,10 +1066,14 @@ function validateRebaseline(value, previousCounters, previousCompletedAt) {
   if (!canonicalEqual(before, previousCounters)) {
     throw new Error(`${rebaselineId} rebaseline counter chain drift`);
   }
-  for (const field of MONOTONIC_COUNTERS) {
-    if (after[field] !== before[field]) {
-      throw new Error(`${rebaselineId} coverage counters cannot change during rebaseline: ${field}`);
+  if (rebaseline.reason === 'RELEASE_DAG_RECONCILIATION') {
+    for (const field of MONOTONIC_COUNTERS) {
+      if (after[field] !== before[field]) {
+        throw new Error(`${rebaselineId} coverage counters cannot change during rebaseline: ${field}`);
+      }
     }
+  } else {
+    validateEvidenceInvalidation(rebaseline.evidenceInvalidation, before, after);
   }
   const queueCounterDeltas = requiredObject(
     rebaseline.queueCounterDeltas,
@@ -924,7 +1090,15 @@ function validateRebaseline(value, previousCounters, previousCompletedAt) {
     }
     if (delta !== 0) changedQueueCounters += 1;
   }
-  if (changedQueueCounters === 0) throw new Error(`${rebaselineId} rebaseline has no queue counter change`);
+  if (rebaseline.reason === 'RELEASE_DAG_RECONCILIATION'
+    && changedQueueCounters === 0 && !changedBindings.includes('epochsSha256')) {
+    throw new Error(`${rebaselineId} rebaseline has no queue counter or processor epoch change`);
+  }
+  if (rebaseline.reason === 'EVIDENCE_INVALIDATION_RECONCILIATION'
+    && (!changedBindings.includes('receiptAuditSha256')
+      || !changedBindings.includes('programStatusSha256'))) {
+    throw new Error(`${rebaselineId} evidence invalidation bindings incomplete`);
+  }
   return { rebaseline, activatedAt, after };
 }
 
@@ -1137,6 +1311,10 @@ export function buildHistoricalDimensionsScaleControl(input) {
     decision: selectHistoricalDimensionsScaleDecision({
       nextBatches: input.nextBatches,
       counters,
+      repairRequiredTargets: requiredInteger(
+        input.programStatus?.inventory?.quarantinedReceiptTargets,
+        'quarantined receipt targets',
+      ),
       haltedCohorts: circuits.haltedCohorts,
       operationalState,
     }),
@@ -1172,10 +1350,10 @@ export function assertHistoricalDimensionsScaleCheckpointSource({ control, manif
   if (manifest.executionLane !== expectedLane) {
     throw new Error(`checkpoint stage and manifest execution lane mismatch: ${stage}`);
   }
-  if (!['CURRENT_DIMENSIONS', 'HISTORICAL_DIMENSIONS'].includes(manifest.workstreamId)) {
+  if (!['CURRENT_DIMENSIONS', 'HISTORICAL_DIMENSIONS', 'PARSER_REPAIR'].includes(manifest.workstreamId)) {
     throw new TypeError('checkpoint manifest must belong to a dimensions workstream');
   }
-  if (!['RUN_P0', 'RUN_P1'].includes(control.decision.status)
+  if (!['RUN_P0', 'RUN_P1', 'RUN_RECEIPT_REPAIR'].includes(control.decision.status)
     || control.decision.allowedManifestId !== manifest.manifestId
     || control.decision.allowedWorkstreamId !== manifest.workstreamId) {
     throw new Error(`checkpoint manifest is not allowed by scale control: ${manifest.manifestId}`);
@@ -1187,6 +1365,84 @@ export function assertHistoricalDimensionsScaleCheckpointSource({ control, manif
     throw new Error('checkpoint manifest cohort drift against scale control');
   }
   return manifest;
+}
+
+function resolveCheckpointAuthorization({
+  control,
+  authorizingControl,
+  ledger,
+  manifest,
+  stage,
+  run,
+  recordedAt,
+}) {
+  const authorizing = authorizingControl ?? control;
+  validateScaleControl(authorizing);
+  assertHistoricalDimensionsScaleCheckpointSource({ control: authorizing, manifest, stage });
+  if (authorizing.semanticControlSha256 === control.semanticControlSha256) return authorizing;
+
+  const transitions = requiredArray(ledger?.rebaselines ?? [], 'scale ledger rebaselines');
+  const latest = transitions.at(-1);
+  const entryCount = requiredArray(ledger?.entries, 'scale ledger entries').length;
+  const startIndexes = transitions
+    .map((transition, index) => ({ transition, index }))
+    .filter(({ transition }) => (
+      transition.priorControlSha256 === authorizing.semanticControlSha256
+        && transition.afterEntryCount === entryCount
+    ))
+    .map(({ index }) => index);
+  if (!latest || latest.rebaselineId !== control.latestRebaseline?.rebaselineId
+    || startIndexes.length !== 1) {
+    throw new Error('delayed checkpoint authorizing control is not bound by a unique release-DAG rebaseline chain');
+  }
+  const chainStart = startIndexes[0];
+  const chain = transitions.slice(chainStart);
+  if (!chain.length || chain.some((transition) => (
+    transition.reason !== 'RELEASE_DAG_RECONCILIATION'
+      || transition.afterEntryCount !== entryCount
+  ))) {
+    throw new Error('delayed checkpoint authorizing control rebaseline chain is not contiguous');
+  }
+  const runCompletedAt = requiredTimestamp(run?.completedAt, 'delayed checkpoint run completion time');
+  const registration = requiredTimestamp(recordedAt, 'delayed checkpoint recording time');
+  if (Date.parse(chain[0].activatedAt) < Date.parse(runCompletedAt)
+    || Date.parse(registration) < Date.parse(latest.activatedAt)) {
+    throw new Error('delayed checkpoint rebaseline or recording time is out of order');
+  }
+  const priorLedger = structuredClone(ledger);
+  priorLedger.rebaselines.splice(chainStart);
+  let priorLedgerSha256 = canonicalJsonSha256(priorLedger);
+  if (!priorLedger.rebaselines.length
+    && priorLedgerSha256 !== authorizing.sourceBindings.ledgerSha256) {
+    delete priorLedger.rebaselines;
+    priorLedgerSha256 = canonicalJsonSha256(priorLedger);
+  }
+  if (priorLedgerSha256 !== authorizing.sourceBindings.ledgerSha256) {
+    throw new Error('delayed checkpoint authorizing control ledger binding drift');
+  }
+  for (let index = 0; index < chain.length; index += 1) {
+    const transition = chain[index];
+    const previous = chain[index - 1];
+    const expectedPriorBindings = previous?.nextArtifactBindings ?? authorizing.sourceBindings;
+    const expectedPriorCounters = previous?.nextCounters ?? authorizing.counters;
+    for (const field of SCALE_ARTIFACT_BINDING_FIELDS) {
+      if (transition.priorArtifactBindings?.[field] !== expectedPriorBindings[field]) {
+        throw new Error(`delayed checkpoint rebaseline artifact chain drift: ${field}`);
+      }
+    }
+    if (!canonicalEqual(transition.previousCounters, expectedPriorCounters)) {
+      throw new Error('delayed checkpoint rebaseline counter chain drift');
+    }
+  }
+  for (const field of SCALE_ARTIFACT_BINDING_FIELDS) {
+    if (latest.nextArtifactBindings?.[field] !== control.sourceBindings[field]) {
+      throw new Error(`delayed checkpoint current artifact binding drift: ${field}`);
+    }
+  }
+  if (!canonicalEqual(latest.nextCounters, control.counters)) {
+    throw new Error('delayed checkpoint current counter binding drift');
+  }
+  return authorizing;
 }
 
 function sortedUnique(values, label) {
@@ -1217,19 +1473,30 @@ function validateDimensionsCheckpointAudit(run, audit) {
 
 export function buildHistoricalDimensionsScaleCheckpoint({
   control,
+  authorizingControl = null,
+  ledger = null,
   manifest,
   run,
   audit = null,
   candidateManifest = null,
   afterCounters,
   storageContentSha256 = null,
+  recordedAt = null,
 }) {
   const stage = manifest?.executionLane === 'BOUNDED_DISCOVERY' ? 'DISCOVERY' : 'DIMENSIONS';
-  assertHistoricalDimensionsScaleCheckpointSource({ control, manifest, stage });
+  const authorizing = resolveCheckpointAuthorization({
+    control, authorizingControl, ledger, manifest, stage, run, recordedAt,
+  });
   requiredObject(run, 'scale checkpoint run');
   if (run.schemaVersion !== 1) throw new TypeError('scale checkpoint run schema v1 required');
   const runId = requiredText(run.runId, 'scale checkpoint run ID');
   const completedAt = requiredTimestamp(run.completedAt, 'scale checkpoint completion time');
+  const registration = recordedAt === null
+    ? null
+    : requiredTimestamp(recordedAt, 'scale checkpoint recording time');
+  if (registration && Date.parse(registration) < Date.parse(completedAt)) {
+    throw new Error('scale checkpoint recording time precedes run completion');
+  }
   let funnel;
   let auditSha256 = null;
   if (stage === 'DISCOVERY') {
@@ -1269,6 +1536,7 @@ export function buildHistoricalDimensionsScaleCheckpoint({
   const evidenceBindings = {
     runSha256,
     auditSha256,
+    authorizingControlSha256: authorizing.semanticControlSha256,
     storageContentSha256: stage === 'DISCOVERY' ? storageContentSha256 : null,
     candidateManifestSha256: stage === 'DISCOVERY'
       ? canonicalJsonSha256(candidateManifest)
@@ -1276,9 +1544,11 @@ export function buildHistoricalDimensionsScaleCheckpoint({
   };
   const checkpointIdentitySha256 = canonicalJsonSha256({
     controlId: control.controlId,
+    authorizingControlSha256: authorizing.semanticControlSha256,
     runId,
     stage,
     manifestId: manifest.manifestId,
+    recordedAt: registration,
     evidenceBindings,
   });
   const checkpointId = `historical-dimensions-checkpoint-${checkpointIdentitySha256.slice(0, 24)}`;
@@ -1286,6 +1556,7 @@ export function buildHistoricalDimensionsScaleCheckpoint({
     checkpointId,
     runId,
     completedAt,
+    ...(registration ? { recordedAt: registration } : {}),
     stage,
     workstreamId: manifest.workstreamId,
     manifestId: manifest.manifestId,
@@ -1295,8 +1566,8 @@ export function buildHistoricalDimensionsScaleCheckpoint({
     evidenceBindings,
     funnel: structuredClone(funnel),
     stageMetrics: structuredClone(stage === 'DISCOVERY'
-      ? buildHistoricalDimensionsDiscoveryStageMetrics(funnel, control.epochs)
-      : buildHistoricalDimensionsRecoveryStageMetrics(run, control.epochs)),
+      ? buildHistoricalDimensionsDiscoveryStageMetrics(funnel, authorizing.epochs)
+      : buildHistoricalDimensionsRecoveryStageMetrics(run, authorizing.epochs)),
     beforeCounters: before,
     afterCounters: after,
   };
@@ -1310,6 +1581,7 @@ export function buildHistoricalDimensionsScaleCheckpoint({
 
 export function recordHistoricalDimensionsScaleCheckpoint({
   control,
+  authorizingControl = null,
   ledger,
   manifest,
   run,
@@ -1317,6 +1589,7 @@ export function recordHistoricalDimensionsScaleCheckpoint({
   candidateManifest = null,
   currentInput,
   storageContentSha256 = null,
+  recordedAt = null,
 }) {
   validateScaleControl(control);
   requiredObject(ledger, 'scale checkpoint ledger');
@@ -1384,13 +1657,14 @@ export function recordHistoricalDimensionsScaleCheckpoint({
     });
   }
   const checkpoint = buildHistoricalDimensionsScaleCheckpoint({
-    control,
+    control, authorizingControl, ledger,
     manifest,
     run,
     audit,
     candidateManifest,
     afterCounters,
     storageContentSha256,
+    recordedAt,
   });
   const nextLedger = structuredClone(ledger);
   nextLedger.entries.push(structuredClone(checkpoint));
@@ -1426,10 +1700,32 @@ export function recordHistoricalDimensionsScaleRebaseline({
   const epochs = normalizedEpochRows(shared.epochs);
   const nextCounters = canonicalHistoricalDimensionsScaleCounters(shared);
   const previousCounters = structuredClone(priorControl.counters);
-  for (const field of MONOTONIC_COUNTERS) {
-    if (nextCounters[field] !== previousCounters[field]) {
-      throw new Error(`coverage counters cannot change during release DAG rebaseline: ${field}`);
+  if (!['RELEASE_DAG_RECONCILIATION', 'EVIDENCE_INVALIDATION_RECONCILIATION'].includes(reason)) {
+    throw new TypeError('scale rebaseline reason invalid');
+  }
+  let evidenceInvalidation = null;
+  if (reason === 'RELEASE_DAG_RECONCILIATION') {
+    for (const field of MONOTONIC_COUNTERS) {
+      if (nextCounters[field] !== previousCounters[field]) {
+        throw new Error(`coverage counters cannot change during release DAG rebaseline: ${field}`);
+      }
     }
+  } else {
+    const targetIds = [...new Set((shared.receiptAudit?.outcomes ?? [])
+      .filter((outcome) => outcome?.status === 'failed')
+      .map((outcome) => requiredText(outcome.targetId, 'failed receipt target ID')))].sort();
+    evidenceInvalidation = {
+      targetIds,
+      quarantinedTargetCount: requiredInteger(
+        shared.programStatus?.inventory?.quarantinedReceiptTargets,
+        'quarantined receipt targets',
+      ),
+      failedSourceCount: requiredInteger(
+        shared.receiptAudit?.summary?.failed,
+        'failed receipt sources',
+      ),
+    };
+    validateEvidenceInvalidation(evidenceInvalidation, previousCounters, nextCounters);
   }
   const priorArtifactBindings = Object.fromEntries(SCALE_ARTIFACT_BINDING_FIELDS.map((field) => [
     field,
@@ -1445,19 +1741,25 @@ export function recordHistoricalDimensionsScaleRebaseline({
     field,
     nextCounters[field] - previousCounters[field],
   ]));
-  if (Object.values(queueCounterDeltas).every((delta) => delta === 0)) {
-    throw new Error('release DAG rebaseline requires a queue counter change');
+  if (reason === 'RELEASE_DAG_RECONCILIATION'
+    && Object.values(queueCounterDeltas).every((delta) => delta === 0)
+    && !changedArtifactBindings.includes('epochsSha256')) {
+    throw new Error('release DAG rebaseline requires a queue counter or processor epoch change');
+  }
+  if (reason === 'EVIDENCE_INVALIDATION_RECONCILIATION'
+    && (!changedArtifactBindings.includes('receiptAuditSha256')
+      || !changedArtifactBindings.includes('programStatusSha256'))) {
+    throw new Error('evidence invalidation rebaseline requires changed receipt and programme bindings');
   }
   const activation = requiredTimestamp(activatedAt, 'scale rebaseline activation time');
-  if (reason !== 'RELEASE_DAG_RECONCILIATION') {
-    throw new TypeError('scale rebaseline reason invalid');
-  }
   const identitySha256 = canonicalJsonSha256({
     activatedAt: activation,
     afterEntryCount: ledger.entries.length,
+    reason,
     priorControlSha256: priorControl.semanticControlSha256,
     nextArtifactBindings,
     nextCounters,
+    evidenceInvalidation,
   });
   const semantic = {
     rebaselineId: `historical-dimensions-rebaseline-${identitySha256.slice(0, 24)}`,
@@ -1471,6 +1773,7 @@ export function recordHistoricalDimensionsScaleRebaseline({
     previousCounters,
     nextCounters: structuredClone(nextCounters),
     queueCounterDeltas,
+    ...(evidenceInvalidation ? { evidenceInvalidation } : {}),
   };
   const rebaseline = {
     ...semantic,
@@ -1489,7 +1792,7 @@ export function recordHistoricalDimensionsScaleRebaseline({
 export function assertHistoricalDimensionsScaleManifestAllowed({ control, batches, manifest }) {
   validateScaleControl(control);
   requiredObject(manifest, 'bounded manifest');
-  if (!['CURRENT_DIMENSIONS', 'HISTORICAL_DIMENSIONS'].includes(manifest.workstreamId)) {
+  if (!['CURRENT_DIMENSIONS', 'HISTORICAL_DIMENSIONS', 'PARSER_REPAIR'].includes(manifest.workstreamId)) {
     return manifest;
   }
   if (control.sourceBindings.nextBatchesSha256 !== canonicalJsonSha256(batches)) {

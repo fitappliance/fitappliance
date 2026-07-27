@@ -35,7 +35,7 @@ test('brand strategy emits exact-model official factsheet candidates without web
   assert.equal(rows[0].modelSignal, 'exact_query');
 });
 
-test('proven deterministic Bosch and Smeg templates emit exact-model specification PDFs', async () => {
+test('only proven generic templates emit specification PDFs without exact product provenance', async () => {
   const fetchImpl = async () => { throw new Error('no page fetch expected'); };
   const bosch = await discoverOfficialDocumentCandidates({
     brand: 'Bosch', model: 'WAN24126AU', category: 'washing_machine',
@@ -47,8 +47,7 @@ test('proven deterministic Bosch and Smeg templates emit exact-model specificati
   }, { fetchImpl });
   assert.equal(bosch[0].url, 'https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf');
   assert.equal(bosch[0].modelSignal, 'exact_url');
-  assert.equal(smeg[0].url, 'https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf');
-  assert.equal(smeg[0].modelSignal, 'exact_url');
+  assert.deepEqual(smeg, []);
 });
 
 test('candidate discovery deduplicates URLs and rejects cross-brand product pages', async () => {

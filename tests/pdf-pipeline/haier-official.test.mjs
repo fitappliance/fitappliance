@@ -67,6 +67,7 @@ test('Haier finder prefers Specification Guide links and filters energy labels',
 });
 
 test('Haier finder returns the matching product-page Specification Guide', async () => {
+  const writes = [];
   const result = await findHaierOfficialPdf({
     brand: 'Haier',
     sku: 'HRF130UW2',
@@ -77,12 +78,21 @@ test('Haier finder returns the matching product-page Specification Guide', async
       'https://example.test/sitemap_index.xml': '<sitemapindex><sitemap><loc>https://example.test/products.xml</loc></sitemap></sitemapindex>',
       'https://example.test/products.xml': sitemapXml,
       'https://www.haier.com.au/refrigeration/refrigerators/129l-300-series-bar-refrigerator-hrf130uw2-62403.html': productHtml
-    })
+    }),
+    writeObject: async (path, bytes) => writes.push([path, Buffer.from(bytes)]),
   });
 
   assert.equal(result.resourceType, 'specification_guide');
   assert.match(result.sourceUrl, /SpecificationGuide-en-HRF130UW2/);
   assert.equal(result.productUrl, 'https://www.haier.com.au/refrigeration/refrigerators/129l-300-series-bar-refrigerator-hrf130uw2-62403.html');
+  assert.equal(result.sourceLanes.find((lane) => lane.laneId === 'current_product').status, 'complete');
+  assert.equal(result.sourceLanes.find((lane) => lane.laneId === 'official_document_cdn').status, 'complete');
+  assert.equal(result.sourceLanes.find((lane) => lane.laneId === 'official_product_detail').status, 'complete');
+  const completeProvenance = result.sourceLanes
+    .filter((lane) => lane.status === 'complete')
+    .flatMap((lane) => lane.provenance);
+  assert.ok(completeProvenance.length >= 3);
+  assert.ok(completeProvenance.every((entry) => writes.some(([path]) => path === entry.objectPath)));
 });
 
 test('Haier support matching tolerates model punctuation but rejects sibling models', () => {
@@ -143,9 +153,12 @@ test('Haier finder resolves archived AU support articles and binds attachment pr
     discoveryObjectPath: `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`,
     discoveryByteSize: Buffer.byteLength(articlePage),
   });
-  assert.equal(writes.length, 1);
-  assert.equal(writes[0][0], result.resources[0].discoveryProvenance.discoveryObjectPath);
-  assert.equal(writes[0][1].toString('utf8'), articlePage);
+  assert.equal(writes.length, 2);
+  const articleWrite = writes.find(([path]) => (
+    path === result.resources[0].discoveryProvenance.discoveryObjectPath
+  ));
+  assert.ok(articleWrite);
+  assert.equal(articleWrite[1].toString('utf8'), articlePage);
 });
 
 test('Haier finder falls through to the archived refrigerator support taxonomy', async () => {

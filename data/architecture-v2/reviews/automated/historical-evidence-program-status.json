@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:40:12.165Z",
+  "generatedAt": "2026-07-27T02:48:07.966Z",
   "inventory": {
     "historicalModelReferences": 8087,
     "currentCatalogProducts": 3513,
-    "acceptedRecoveryEntries": 389,
-    "targetAttempts": 85
+    "acceptedRecoveryEntries": 425,
+    "quarantinedReceiptTargets": 0,
+    "targetAttempts": 91
   },
   "controls": [
     {
@@ -81,36 +82,36 @@
       "id": "model.current_valid_receipt",
       "label": "Models with current valid receipts",
       "grain": "historical_model_reference",
-      "numerator": 408,
+      "numerator": 444,
       "denominator": 8087,
-      "rateBasisPoints": 505,
+      "rateBasisPoints": 549,
       "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
     },
     {
       "id": "model.queued_for_acquisition",
       "label": "Models queued for acquisition",
       "grain": "historical_model_reference",
-      "numerator": 7679,
+      "numerator": 7643,
       "denominator": 8087,
-      "rateBasisPoints": 9495,
+      "rateBasisPoints": 9451,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json"
     },
     {
       "id": "model.executable_targets",
       "label": "Executable model targets",
       "grain": "historical_model_reference",
-      "numerator": 4985,
-      "denominator": 7679,
-      "rateBasisPoints": 6492,
+      "numerator": 4944,
+      "denominator": 7643,
+      "rateBasisPoints": 6469,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json"
     },
     {
       "id": "model.accepted_recovery_entries",
       "label": "Models in cumulative recovery acceptance",
       "grain": "historical_model_reference",
-      "numerator": 389,
+      "numerator": 425,
       "denominator": 8087,
-      "rateBasisPoints": 481,
+      "rateBasisPoints": 526,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
     {
@@ -126,9 +127,9 @@
       "id": "target_state.actionable",
       "label": "Models with scheduled evidence work",
       "grain": "historical_model_reference",
-      "numerator": 4985,
+      "numerator": 4944,
       "denominator": 8087,
-      "rateBasisPoints": 6164,
+      "rateBasisPoints": 6114,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -144,18 +145,18 @@
       "id": "target_state.completed",
       "label": "Completed model targets",
       "grain": "historical_model_reference",
-      "numerator": 408,
+      "numerator": 444,
       "denominator": 8087,
-      "rateBasisPoints": 505,
+      "rateBasisPoints": 549,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
       "id": "target_state.blocked",
       "label": "Blocked model targets",
       "grain": "historical_model_reference",
-      "numerator": 2700,
+      "numerator": 2705,
       "denominator": 8087,
-      "rateBasisPoints": 3339,
+      "rateBasisPoints": 3345,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -231,21 +232,30 @@
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {
+      "id": "receipt_replay.failed_sources",
+      "label": "Quarantined receipt replay failures",
+      "grain": "accepted_source_receipt",
+      "numerator": 0,
+      "denominator": 451,
+      "rateBasisPoints": 0,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json"
+    },
+    {
       "id": "accepted_source_lane.pdf_only",
       "label": "PDF only",
       "grain": "accepted_model_entry",
-      "numerator": 298,
-      "denominator": 389,
-      "rateBasisPoints": 7661,
+      "numerator": 322,
+      "denominator": 425,
+      "rateBasisPoints": 7576,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
     {
       "id": "accepted_source_lane.html_only",
       "label": "HTML only",
       "grain": "accepted_model_entry",
-      "numerator": 64,
-      "denominator": 389,
-      "rateBasisPoints": 1645,
+      "numerator": 76,
+      "denominator": 425,
+      "rateBasisPoints": 1788,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
     {
@@ -253,8 +263,8 @@
       "label": "JSON/API only",
       "grain": "accepted_model_entry",
       "numerator": 13,
-      "denominator": 389,
-      "rateBasisPoints": 334,
+      "denominator": 425,
+      "rateBasisPoints": 306,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
     {
@@ -262,17 +272,17 @@
       "label": "Mixed official source lanes",
       "grain": "accepted_model_entry",
       "numerator": 14,
-      "denominator": 389,
-      "rateBasisPoints": 360,
+      "denominator": 425,
+      "rateBasisPoints": 329,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
     {
       "id": "accepted_source_lane.pdf_involved",
       "label": "PDF involved",
       "grain": "accepted_model_entry",
-      "numerator": 312,
-      "denominator": 389,
-      "rateBasisPoints": 8021,
+      "numerator": 336,
+      "denominator": 425,
+      "rateBasisPoints": 7906,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
     {

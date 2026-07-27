@@ -223,6 +223,41 @@ test('batch preserves per-target required attempts and candidate source roles', 
   assert.deepEqual(byId.get(optionalJob.jobId).requiredTargetIds, []);
 });
 
+test('batch preserves target-specific discovery provenance bindings', () => {
+  const queue = fixtureQueue();
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    requestedModel: queue.targets[0].model,
+    matchedModel: queue.targets[0].model,
+    artifactUrl: queue.jobs[0].sourceUrl,
+  };
+  queue.targets[0].candidateEdges = [{
+    jobId: queue.jobs[0].jobId,
+    requiredAttempt: true,
+    discoveryProvenance: provenance,
+  }, {
+    jobId: queue.jobs[1].jobId,
+    requiredAttempt: true,
+  }];
+
+  const result = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [],
+    selection: { targetIds: [queue.targets[0].targetId] },
+  });
+
+  assert.deepEqual(result.artifactJobs[0].discoveryProvenanceBindings, [{
+    targetId: queue.targets[0].targetId,
+    targetModel: queue.targets[0].model,
+    targetCategory: queue.targets[0].category,
+    discoveryProvenance: provenance,
+  }]);
+  assert.equal(result.artifactJobs[1].discoveryProvenanceBindings, undefined);
+});
+
 test('batch summary accounts for targets already covered by cumulative acceptance', () => {
   const queue = fixtureQueue();
   const batch = buildHistoricalEvidenceRecoveryBatch({

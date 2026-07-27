@@ -281,6 +281,112 @@ function containsExactSku(value, sku) {
     .some((token) => normalizeSku(token) === targetSku);
 }
 
+function productIdentityText(html) {
+  const values = [];
+  const source = String(html || '');
+  for (const match of source.matchAll(/<(?:title|h1)\b[^>]*>([\s\S]*?)<\/(?:title|h1)>/gi)) {
+    values.push(decodeHtml(match[1]).replace(/<[^>]+>/g, ' '));
+  }
+  for (const match of source.matchAll(/<meta\b[^>]*(?:property|name)=["'](?:og:title|twitter:title)["'][^>]*content=["']([^"']+)["'][^>]*>/gi)) {
+    values.push(decodeHtml(match[1]));
+  }
+  return values.join(' ').replace(/\s+/g, ' ').trim();
+}
+
+function classifyFisherPaykelProductPage(html, sourceUrl, sku) {
+  const identityText = productIdentityText(html);
+  const exactModelVisible = containsExactSku(identityText, sku);
+  let accessoryRoute = false;
+  try {
+    accessoryRoute = /(?:^|\/)accessories(?:\/|$)|-accessories(?:\/|$)/i.test(new URL(sourceUrl).pathname);
+  } catch {
+    // URL validation is handled by the resolver contract.
+  }
+  const accessoryName = /\b(?:door\s+panels?|front\s+panels?|handle\s+kits?|stacking\s+kits?|joiner\s+kits?|installation\s+kits?|trim\s+kits?|water\s+filters?)\b/i
+    .test(identityText);
+  if (exactModelVisible && accessoryRoute && accessoryName) {
+    return {
+      classification: 'NON_APPLIANCE_ACCESSORY',
+      reasonCode: 'official_non_appliance_accessory',
+      sourceUrl: String(sourceUrl),
+      exactModelVisible: true,
+      accessoryRoute: true,
+      accessoryName: true,
+    };
+  }
+  return {
+    classification: 'UNRESOLVED_APPLIANCE_IDENTITY',
+    reasonCode: null,
+    sourceUrl: String(sourceUrl || ''),
+    exactModelVisible,
+    accessoryRoute,
+    accessoryName,
+  };
+}
+
+async function persistLanePayload({
+  bytes,
+  contentType,
+  extension,
+  discoveryUrl,
+  requestedModel,
+  method,
+  market = 'AU',
+  writeObject,
+}) {
+  if (typeof writeObject !== 'function') return null;
+  const payload = Buffer.isBuffer(bytes) ? bytes : Buffer.from(String(bytes || ''));
+  if (!payload.length) return null;
+  const contentSha256 = createHash('sha256').update(payload).digest('hex');
+  const objectPath = `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.${extension}`;
+  await writeObject(objectPath, payload);
+  return {
+    schemaVersion: 1,
+    method,
+    market: String(market).toUpperCase(),
+    discoveryUrl,
+    requestedModel: normalizeSku(requestedModel),
+    contentType,
+    contentSha256,
+    objectPath,
+    byteSize: payload.length,
+  };
+}
+
+function productPageCandidateProvenance(provenance, { sourceUrl, sku, artifactUrl }) {
+  if (!provenance) return null;
+  return {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: sourceUrl,
+    requestedModel: normalizeSku(sku),
+    matchedModel: normalizeSku(sku),
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: provenance.contentSha256,
+    discoveryObjectPath: provenance.objectPath,
+    discoveryByteSize: provenance.byteSize,
+  };
+}
+
+function supportProductCandidateProvenance(provenance, { sourceUrl, sku }) {
+  if (!provenance) return null;
+  return {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    discoveryUrl: provenance.discoveryUrl,
+    requestedModel: normalizeSku(sku),
+    matchedModel: normalizeSku(sku),
+    artifactUrl: sourceUrl,
+    artifactLinkUrl: sourceUrl,
+    discoveryContentSha256: provenance.contentSha256,
+    discoveryObjectPath: provenance.objectPath,
+    discoveryByteSize: provenance.byteSize,
+  };
+}
+
 function extractExactSupportHit(payload, sku) {
   const targetSku = normalizeSku(sku);
   if (!targetSku) return null;
@@ -532,18 +638,39 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
   const exactSku = normalizeSku(sku);
   const markets = opts.supportMarkets || ['AU', 'NZ'];
   const failures = [];
+  const searchAttempts = [];
+  const exactHits = [];
 
   for (const market of markets) {
     const searchUrl = `${FP_SUPPORT_BASE_URL}/api/search?q=${encodeURIComponent(exactSku)}&market=${encodeURIComponent(String(market).toUpperCase())}`;
-    let hit;
     try {
-      hit = extractExactSupportHit(await fetchJson(searchUrl, opts), exactSku);
+      const { payload, bytes } = await fetchJsonWithBytes(searchUrl, opts);
+      const provenance = await persistLanePayload({
+        bytes,
+        contentType: 'application/json',
+        extension: 'json',
+        discoveryUrl: searchUrl,
+        requestedModel: exactSku,
+        method: 'official_support_search_api',
+        market,
+        writeObject: opts.writeObject,
+      });
+      const hit = extractExactSupportHit(payload, exactSku);
+      searchAttempts.push({ market: String(market).toUpperCase(), searchUrl, status: 'complete', provenance });
+      if (hit) exactHits.push({ market, searchUrl, hit });
     } catch (error) {
       failures.push({ market, stage: 'search', message: error.message });
-      continue;
+      searchAttempts.push({
+        market: String(market).toUpperCase(),
+        searchUrl,
+        status: 'retryable',
+        provenance: null,
+        reason: error.message,
+      });
     }
-    if (!hit) continue;
+  }
 
+  for (const { market, searchUrl, hit } of exactHits) {
     const marketPath = String(market).toLowerCase();
     const lookupUrl = `${FP_SUPPORT_BASE_URL}/${marketPath}/api/support/products/${encodeURIComponent(exactSku)}`;
     let lookupResponse;
@@ -619,17 +746,21 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
       if (!existing || resource.score > existing.score) deduped.set(resource.url, resource);
     }
     const supportApiUrl = productApiUrl;
-    let discoveryFields = null;
-    if (deduped.size && typeof opts.writeObject === 'function') {
-      const discoveryContentSha256 = createHash('sha256').update(productBytes).digest('hex');
-      const discoveryObjectPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.json`;
-      await opts.writeObject(discoveryObjectPath, productBytes);
-      discoveryFields = {
-        discoveryContentSha256,
-        discoveryObjectPath,
-        discoveryByteSize: productBytes.length,
-      };
-    }
+    const productApiProvenance = await persistLanePayload({
+      bytes: productBytes,
+      contentType: 'application/json',
+      extension: 'json',
+      discoveryUrl: supportApiUrl,
+      requestedModel: exactSku,
+      method: 'official_support_api',
+      market,
+      writeObject: opts.writeObject,
+    });
+    const discoveryFields = productApiProvenance ? {
+      discoveryContentSha256: productApiProvenance.contentSha256,
+      discoveryObjectPath: productApiProvenance.objectPath,
+      discoveryByteSize: productApiProvenance.byteSize,
+    } : null;
     const resources = [...deduped.values()]
       .sort((a, b) => b.score - a.score || a.url.localeCompare(b.url))
       .map((resource) => ({
@@ -670,9 +801,12 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
       supportMarket: String(market).toUpperCase(),
       supportSearchUrl: searchUrl,
       supportApiUrl,
+      productApiProvenance,
       productPageUrl: new URL(supportProductPath, FP_BASE_URL).toString().replace(/\/$/, ''),
       resources,
       failures,
+      searchAttempts,
+      productLookupComplete: true,
       sourceHit: hit
     };
   }
@@ -684,24 +818,36 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
     supportSearchUrl: null,
     productPageUrl: null,
     resources: [],
-    failures
+    failures,
+    searchAttempts,
+    productApiProvenance: null,
+    productLookupComplete: exactHits.length === 0 && searchAttempts.every((attempt) => attempt.status === 'complete')
   };
 }
 
 async function findFisherPaykelProductPage(sku, opts = {}) {
   const exactSku = normalizeSku(sku);
   const variants = buildFisherPaykelSkuSearchVariants(sku);
+  const searchAttempts = [];
   let lastSearch = {
     productPageUrl: null,
     searchUrl: '',
     searchHtml: '',
     matchedSku: variants[0] || exactSku,
     matchScope: 'none',
+    searchAttempts,
   };
 
   for (const variant of variants) {
     const url = `${FP_BASE_URL}/au/search/?q=${encodeURIComponent(variant)}`;
-    const html = await fetchHtml(url, opts);
+    let html;
+    try {
+      html = await fetchHtml(url, opts);
+      searchAttempts.push({ variant, searchUrl: url, status: 'complete', searchHtml: html });
+    } catch (error) {
+      searchAttempts.push({ variant, searchUrl: url, status: 'retryable', searchHtml: '', reason: error.message });
+      continue;
+    }
     const productPageUrl = extractProductPageUrls(html, variant)[0] || null;
     lastSearch = {
       productPageUrl,
@@ -711,11 +857,73 @@ async function findFisherPaykelProductPage(sku, opts = {}) {
       matchScope: productPageUrl
         ? (variant === exactSku ? 'exact_model' : 'search_variant')
         : 'none',
+      searchAttempts,
     };
     if (productPageUrl) return lastSearch;
   }
 
   return lastSearch;
+}
+
+function sourceLane(laneId, status, provenance, candidateCount, reason = null) {
+  return {
+    laneId,
+    required: true,
+    supported: true,
+    status,
+    candidateCount,
+    provenance,
+    reason,
+  };
+}
+
+function fisherPaykelSourceLanes({ product, support, resources }) {
+  const exactSku = normalizeSku(product.requestedSku);
+  const exactSearch = product.searchAttempts.find((attempt) => normalizeSku(attempt.variant) === exactSku);
+  const currentProvenance = exactSearch?.provenance ? [exactSearch.provenance] : [];
+  const australianSupportAttempts = support.searchAttempts
+    .filter((attempt) => String(attempt.market).toUpperCase() === 'AU');
+  const supportProvenance = australianSupportAttempts
+    .map((attempt) => attempt.provenance)
+    .filter(Boolean);
+  const supportComplete = australianSupportAttempts.length > 0
+    && australianSupportAttempts.every((attempt) => attempt.status === 'complete' && attempt.provenance);
+  const currentComplete = exactSearch?.status === 'complete' && currentProvenance.length > 0;
+  const productPageProvenance = product.productPageProvenance ? [product.productPageProvenance] : [];
+  const supportDetailProvenance = support.productApiProvenance?.market === 'AU'
+    ? [support.productApiProvenance]
+    : [];
+  const dependentProvenance = [
+    ...productPageProvenance,
+    ...supportDetailProvenance,
+    ...currentProvenance,
+    ...supportProvenance,
+  ];
+  const detailComplete = currentComplete
+    && supportComplete
+    && !product.productPageError
+    && support.productLookupComplete === true
+    && dependentProvenance.length > 0;
+  const productCandidates = resources.filter((resource) => resource.sourceLaneId === 'official_product_detail');
+  const documentCandidates = resources.filter((resource) => resource.sourceLaneId === 'official_document_cdn');
+  const currentReason = currentComplete
+    ? null
+    : exactSearch?.reason || 'Immutable exact-model current-product search provenance was not persisted.';
+  const supportReason = supportComplete
+    ? null
+    : support.searchAttempts.find((attempt) => attempt.status !== 'complete')?.reason
+      || 'Immutable support search provenance was not persisted.';
+  const detailReason = detailComplete
+    ? null
+    : product.productPageError || support.failures.at(-1)?.message || currentReason || supportReason
+      || 'Exact product detail and document inventory were not fully inspected.';
+  return [
+    sourceLane('current_product', currentComplete ? 'complete' : 'retryable', currentProvenance, 0, currentReason),
+    sourceLane('discontinued_archive', supportComplete ? 'complete' : 'retryable', supportProvenance, 0, supportReason),
+    sourceLane('support_search_api', supportComplete ? 'complete' : 'retryable', supportProvenance, 0, supportReason),
+    sourceLane('official_document_cdn', detailComplete ? 'complete' : 'retryable', dependentProvenance, documentCandidates.length, detailReason),
+    sourceLane('official_product_detail', detailComplete ? 'complete' : 'retryable', dependentProvenance, productCandidates.length, detailReason),
+  ];
 }
 
 async function findFisherPaykelOfficialPdf(target, opts = {}) {
@@ -725,21 +933,93 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     const search = await findFisherPaykelProductPage(sku, opts);
     const resources = [];
     const failures = [];
+    for (const attempt of search.searchAttempts) {
+      if (attempt.status !== 'complete') {
+        failures.push({ market: 'AU', stage: 'product_search', message: attempt.reason });
+        continue;
+      }
+      attempt.provenance = await persistLanePayload({
+        bytes: attempt.searchHtml,
+        contentType: 'text/html',
+        extension: 'html',
+        discoveryUrl: attempt.searchUrl,
+        requestedModel: sku,
+        method: 'official_product_search',
+        writeObject: opts.writeObject,
+      });
+    }
+    let productPageProvenance = null;
+    let productIdentityFinding = null;
+    let productPageError = null;
     if (search.productPageUrl) {
       try {
         const evidenceScope = search.matchScope === 'exact_model'
           ? 'exact_product_page'
           : 'research_only_search_variant';
-        resources.push(...extractPdfResources(await fetchHtml(search.productPageUrl, opts)).map((resource) => ({
-          ...resource,
-          evidenceScope,
-          sourceModelHint: search.matchedSku,
-        })));
+        const productHtml = await fetchHtml(search.productPageUrl, opts);
+        productPageProvenance = await persistLanePayload({
+          bytes: productHtml,
+          contentType: 'text/html',
+          extension: 'html',
+          discoveryUrl: search.productPageUrl,
+          requestedModel: sku,
+          method: 'official_product_page',
+          writeObject: opts.writeObject,
+        });
+        productIdentityFinding = search.matchScope === 'exact_model'
+          ? classifyFisherPaykelProductPage(productHtml, search.productPageUrl, sku)
+          : null;
+        const accessory = productIdentityFinding?.classification === 'NON_APPLIANCE_ACCESSORY';
+        const pageDiscovery = productPageCandidateProvenance(productPageProvenance, {
+          sourceUrl: search.productPageUrl,
+          sku,
+          artifactUrl: search.productPageUrl,
+        });
+        if (search.matchScope === 'exact_model' && !accessory) {
+          resources.push({
+            url: search.productPageUrl,
+            type: 'product_page',
+            score: 0,
+            evidenceScope,
+            sourceModelHint: search.matchedSku,
+            sourceLaneId: 'official_product_detail',
+            requiredAttempt: false,
+            ...(pageDiscovery ? { discoveryProvenance: pageDiscovery } : {}),
+          });
+        }
+        if (!accessory) {
+          resources.push(...extractPdfResources(productHtml).map((resource) => ({
+            ...resource,
+            evidenceScope,
+            sourceModelHint: search.matchedSku,
+            sourceLaneId: 'official_document_cdn',
+            ...(productPageCandidateProvenance(productPageProvenance, {
+              sourceUrl: search.productPageUrl,
+              sku,
+              artifactUrl: resource.url,
+            }) ? {
+              discoveryProvenance: productPageCandidateProvenance(productPageProvenance, {
+                sourceUrl: search.productPageUrl,
+                sku,
+                artifactUrl: resource.url,
+              }),
+            } : {}),
+          })));
+        }
       } catch (error) {
+        productPageError = error.message;
         failures.push({ market: 'AU', stage: 'product_page', message: error.message });
       }
     }
-    return { ...search, resources, failures };
+    return {
+      ...search,
+      requestedSku: normalizeSku(sku),
+      resources,
+      failures,
+      productPageProvenance,
+      productIdentityFinding,
+      productPageError,
+    };
   })();
   const supportTask = findFisherPaykelSupportProduct(sku, opts);
   const [productResult, supportResult] = await Promise.allSettled([productTask, supportTask]);
@@ -750,15 +1030,21 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
         searchUrl: `${FP_BASE_URL}/au/search/?q=${encodeURIComponent(normalizeSku(sku))}`,
         matchedSku: normalizeSku(sku),
         matchScope: 'none',
+        requestedSku: normalizeSku(sku),
+        searchAttempts: [],
         resources: [],
-        failures: [{ market: 'AU', stage: 'product_search', message: productResult.reason?.message || String(productResult.reason) }]
+        failures: [{ market: 'AU', stage: 'product_search', message: productResult.reason?.message || String(productResult.reason) }],
+        productPageProvenance: null,
+        productIdentityFinding: null,
+        productPageError: productResult.reason?.message || String(productResult.reason),
       };
   const support = supportResult.status === 'fulfilled'
     ? supportResult.value
     : {
         matchedSku: normalizeSku(sku), supportMarket: null, supportSearchUrl: null,
         supportApiUrl: null, productPageUrl: null, resources: [],
-        failures: [{ market: 'AU/NZ', stage: 'support', message: supportResult.reason?.message || String(supportResult.reason) }]
+        failures: [{ market: 'AU/NZ', stage: 'support', message: supportResult.reason?.message || String(supportResult.reason) }],
+        searchAttempts: [], productApiProvenance: null, productLookupComplete: false,
       };
   const {
     productPageUrl: discoveredProductPageUrl,
@@ -773,8 +1059,27 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     ...resource,
     evidenceScope: 'exact_support_product_article',
     sourceModelHint: support.matchedSku,
+    sourceLaneId: 'official_document_cdn',
   }));
-  for (const resource of [...productResources, ...exactSupportResources]) {
+  const supportProductPage = support.productPageUrl ? [{
+    url: support.productPageUrl,
+    type: 'product_page',
+    score: 0,
+    evidenceScope: 'exact_support_product',
+    sourceModelHint: support.matchedSku,
+    sourceLaneId: 'official_product_detail',
+    requiredAttempt: false,
+    ...(supportProductCandidateProvenance(support.productApiProvenance, {
+      sourceUrl: support.productPageUrl,
+      sku,
+    }) ? {
+      discoveryProvenance: supportProductCandidateProvenance(support.productApiProvenance, {
+        sourceUrl: support.productPageUrl,
+        sku,
+      }),
+    } : {}),
+  }] : [];
+  for (const resource of [...productResources, ...exactSupportResources, ...supportProductPage]) {
     const existing = merged.get(resource.url);
     if (!existing) {
       merged.set(resource.url, resource);
@@ -791,6 +1096,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
   }
   const resources = [...merged.values()]
     .sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || a.url.localeCompare(b.url));
+  const sourceLanes = fisherPaykelSourceLanes({ product, support, resources });
   const best = resources.find(isDimensionCandidateResource) || null;
   const exactProductPageUrl = matchScope === 'exact_model'
     ? discoveredProductPageUrl
@@ -817,6 +1123,8 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
       resourceType: best.type,
       dimensionResourceCount: resources.filter(isDimensionCandidateResource).length,
       resources,
+      sourceLanes,
+      productIdentityFinding: product.productIdentityFinding,
       failures: [...productFailures, ...support.failures]
     };
   }
@@ -833,6 +1141,8 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     source: 'fisher-paykel-official',
     dimensionResourceCount: 0,
     resources,
+    sourceLanes,
+    productIdentityFinding: product.productIdentityFinding,
     failures: [...productFailures, ...support.failures],
     reason: resources.length || support.productPageUrl
       ? 'dimension_resource_not_found'
@@ -847,6 +1157,7 @@ exports.extractProductPageUrls = extractProductPageUrls;
 exports.extractPdfResources = extractPdfResources;
 exports.extractSupportProductResources = extractSupportProductResources;
 exports.buildFisherPaykelSkuSearchVariants = buildFisherPaykelSkuSearchVariants;
+exports.classifyFisherPaykelProductPage = classifyFisherPaykelProductPage;
 exports.findFisherPaykelOfficialPdf = findFisherPaykelOfficialPdf;
 exports.findFisherPaykelProductPage = findFisherPaykelProductPage;
 exports.findFisherPaykelSupportProduct = findFisherPaykelSupportProduct;

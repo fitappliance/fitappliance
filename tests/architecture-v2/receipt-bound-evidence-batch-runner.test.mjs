@@ -185,6 +185,64 @@ test('one shared artifact is acquired once and independently attested for every 
   assert.equal(result.summary.accounted, 2);
 });
 
+test('shared artifact uses one transport binding and target-specific provenance for attestation', async () => {
+  const sharedJob = job('a'.repeat(32), 'https://official.example.com/shared.pdf', ['target-a', 'target-b'], {
+    discoveryProvenanceBindings: [{
+      targetId: 'target-a',
+      targetModel: 'EX100',
+      targetCategory: 'dishwasher',
+      discoveryProvenance: {
+        schemaVersion: 1, method: 'official_product_page', market: 'AU',
+        requestedModel: 'EX100', artifactUrl: 'https://official.example.com/shared.pdf',
+      },
+    }, {
+      targetId: 'target-b',
+      targetModel: 'EX200',
+      targetCategory: 'dishwasher',
+      discoveryProvenance: {
+        schemaVersion: 1, method: 'official_product_page', market: 'AU',
+        requestedModel: 'EX200', artifactUrl: 'https://official.example.com/shared.pdf',
+      },
+    }],
+  });
+  const input = batch({
+    jobs: [sharedJob],
+    targets: [target('target-a', 'EX100', [sharedJob.jobId]), target('target-b', 'EX200', [sharedJob.jobId])],
+  });
+  const acquisitions = [];
+  const attestations = [];
+  const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    acquireArtifact: async (artifactJob) => {
+      acquisitions.push({
+        jobId: artifactJob.jobId,
+        targetModel: artifactJob.targetModel,
+        provenanceModel: artifactJob.discoveryProvenance?.requestedModel,
+      });
+      return { jobId: artifactJob.jobId, sourceUrl: artifactJob.sourceUrl, contentSha256: 'c'.repeat(64) };
+    },
+    attestTarget: async (targetRecord, artifact, artifactJob, candidate) => {
+      attestations.push({
+        targetId: targetRecord.targetId,
+        jobId: artifactJob.jobId,
+        provenanceModel: candidate.discoveryProvenance?.requestedModel,
+      });
+      return { source: attestedSource(targetRecord, artifact) };
+    },
+  }));
+
+  assert.deepEqual(acquisitions, [{
+    jobId: sharedJob.jobId,
+    targetModel: 'EX100',
+    provenanceModel: 'EX100',
+  }]);
+  assert.deepEqual(attestations.sort((left, right) => left.targetId.localeCompare(right.targetId)), [{
+    targetId: 'target-a', jobId: sharedJob.jobId, provenanceModel: 'EX100',
+  }, {
+    targetId: 'target-b', jobId: sharedJob.jobId, provenanceModel: 'EX200',
+  }]);
+  assert.equal(result.summary.accepted, 2);
+});
+
 test('one target with alternate jobs receives one inventory and exactly one terminal outcome', async () => {
   const jobs = [
     job('a'.repeat(32), 'https://official.example.com/primary.pdf', ['target-a']),

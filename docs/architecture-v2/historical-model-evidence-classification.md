@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-26T14:40:12.165Z
+Generated: 2026-07-27T02:48:07.966Z
 
 Coverage: **8,087 / 8,087** unique historical models.
 Models with document links: **1,766**; without links: **6,321**.
@@ -11,20 +11,20 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 1122 |
+| dishwasher | 1419 | 94 | 1128 |
 | dryer | 838 | 72 | 275 |
-| fridge | 4334 | 121 | 2303 |
-| washing_machine | 1496 | 88 | 680 |
+| fridge | 4334 | 121 | 2327 |
+| washing_machine | 1496 | 88 | 683 |
 
 ## Operational Classes
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 408 |
-| CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 132 |
+| COMPLETE_RECEIPT | 444 |
+| CONFLICT_QUARANTINE | 86 |
+| IDENTITY_RESEARCH | 128 |
 | OFFICIAL_DISCOVERY | 6412 |
-| REFERENCE_REDISCOVERY | 1052 |
+| REFERENCE_REDISCOVERY | 1017 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -86,10 +86,10 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Haier | OFFICIAL_DISCOVERY | 118 |
 | fridge | LG | OFFICIAL_DISCOVERY | 118 |
 | washing_machine | Kogan | OFFICIAL_DISCOVERY | 108 |
-| fridge | Haier | REFERENCE_REDISCOVERY | 92 |
 | fridge | MITSUBISHI ELECTRIC | OFFICIAL_DISCOVERY | 90 |
-| fridge | Westinghouse | REFERENCE_REDISCOVERY | 87 |
+| fridge | Haier | REFERENCE_REDISCOVERY | 88 |
 | fridge | Fisher & Paykel | REFERENCE_REDISCOVERY | 85 |
+| fridge | Westinghouse | REFERENCE_REDISCOVERY | 84 |
 | dishwasher | Smeg | OFFICIAL_DISCOVERY | 78 |
 | fridge | Hisense | OFFICIAL_DISCOVERY | 69 |
 | fridge | Hisense | REFERENCE_REDISCOVERY | 69 |
@@ -98,8 +98,8 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Miele | OFFICIAL_DISCOVERY | 65 |
 | fridge | TECO | OFFICIAL_DISCOVERY | 65 |
 | fridge | HELLER | OFFICIAL_DISCOVERY | 61 |
-| fridge | CHIQ | REFERENCE_REDISCOVERY | 60 |
 | dryer | LG | OFFICIAL_DISCOVERY | 59 |
+| fridge | CHIQ | REFERENCE_REDISCOVERY | 59 |
 | dishwasher | Artusi | OFFICIAL_DISCOVERY | 57 |
 | washing_machine | Haier | OFFICIAL_DISCOVERY | 57 |
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |
@@ -113,15 +113,15 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Husky | OFFICIAL_DISCOVERY | 47 |
 | washing_machine | Solt | OFFICIAL_DISCOVERY | 47 |
 | dishwasher | Kogan | OFFICIAL_DISCOVERY | 46 |
-| fridge | Smeg | REFERENCE_REDISCOVERY | 46 |
 | dryer | Fisher & Paykel | OFFICIAL_DISCOVERY | 45 |
 | dryer | Miele | OFFICIAL_DISCOVERY | 45 |
 | fridge | Esatto | OFFICIAL_DISCOVERY | 45 |
 | washing_machine | LG | REFERENCE_REDISCOVERY | 45 |
 | washing_machine | SAMSUNG ELECTRONICS | OFFICIAL_DISCOVERY | 45 |
-| fridge | Samsung | REFERENCE_REDISCOVERY | 44 |
+| fridge | Smeg | REFERENCE_REDISCOVERY | 44 |
 | washing_machine | Miele | OFFICIAL_DISCOVERY | 44 |
 | washing_machine | Electrolux | OFFICIAL_DISCOVERY | 43 |
 | washing_machine | Midea | OFFICIAL_DISCOVERY | 43 |
 | fridge | SAMSUNG ELECTRONICS | OFFICIAL_DISCOVERY | 42 |
 | dishwasher | Omega | OFFICIAL_DISCOVERY | 41 |
+| washing_machine | CHIQ | OFFICIAL_DISCOVERY | 39 |

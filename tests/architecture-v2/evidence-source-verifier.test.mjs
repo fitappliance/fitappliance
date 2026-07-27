@@ -13,6 +13,7 @@ import {
   normalizeOfficialArtifactDiscoveryProvenance,
   officialHtmlModelVariant,
   officialMarketApiModelVariant,
+  officialProductMaterialModelVariant,
   validateTrustedSourceMetadata,
   verifyVerificationReceipt,
 } from '../../src/domain/evidence-source-verifier.mjs';
@@ -73,6 +74,26 @@ test('official market API model variants permit only ASKO AU technical suffixes'
   assert.equal(officialMarketApiModelVariant({
     brand: 'ASKO', model: 'D5424SS', category: 'dishwasher',
   }, 'D5424S.AU'), null);
+});
+
+test('Miele retailer SKU alias is scoped to one official CleanSteel model and material', () => {
+  const identity = { brand: 'Miele', model: 'KS4783EDETCCS', category: 'fridge' };
+  assert.deepEqual(officialProductMaterialModelVariant(identity, 'KS 4783 EDT CS'), {
+    relationshipKind: 'model_variant',
+    sourceModel: 'KS 4783 ED',
+    pageModel: 'KS 4783 EDT CS',
+    suffix: 'EXACT_POLICY_ALIAS',
+    finishLabel: 'Clean steel',
+    pageFinishLabels: ['Stainless steel/CleanSteel', 'CleanSteel'],
+    materialNumber: '11949580',
+  });
+  for (const [model, sourceModel] of [
+    ['KS4783EDETCCX', 'KS 4783 EDT CS'],
+    ['KS4783EDETCCS', 'KS 4783 EDT BS'],
+    ['KS4783EDETCCS', 'KS 4383 EDT CS'],
+  ]) {
+    assert.equal(officialProductMaterialModelVariant({ ...identity, model }, sourceModel), null);
+  }
 });
 
 function source(overrides = {}) {
@@ -156,6 +177,14 @@ test('official source policy accepts explicit Australian static assets and query
   ), true);
   assert.equal(isOfficialBrandUrl(
     'https://downloadcenter.samsung.com/content/manual.pdf?CDSite=UNI_US&ModelName=DV90BB9440GH',
+    'Samsung',
+  ), false);
+  assert.equal(isOfficialBrandUrl(
+    'https://esapi.samsung.com/support/search/suggestdetail/v6?siteCd=au&suggestionValue=SRF7900BFH',
+    'Samsung',
+  ), true);
+  assert.equal(isOfficialBrandUrl(
+    'https://esapi.samsung.com/support/search/suggestdetail/v6?siteCd=us&suggestionValue=SRF7900BFH',
     'Samsung',
   ), false);
   assert.equal(isOfficialBrandHostUrl(
@@ -244,6 +273,30 @@ test('Esatto CDN redirects require product-page-bound discovery provenance', () 
   }), false);
 });
 
+test('Omega Squarespace redirects require product-page-bound Australian provenance', () => {
+  const artifactUrl = 'https://omegaappliances.com.au/s/ODW101W_Specsheet_40.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://omegaappliances.com.au/dishwashers/p/55cm-freestanding-benchtop-dishwasher-odw101w',
+    requestedModel: 'ODW101W',
+    matchedModel: 'ODW101W',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: 'd'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+    discoveryByteSize: 1234,
+  };
+  const cdnUrl = 'https://static1.squarespace.com/static/site/t/file/ODW101W_Specsheet_4.0.pdf';
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'Omega', {
+    model: 'ODW101W', category: 'dishwasher', artifactUrl, discoveryProvenance: provenance,
+  }), true);
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'Omega', {
+    model: 'ODW101W', category: 'dishwasher', artifactUrl,
+  }), false);
+});
+
 test('market-scoped requests may redirect within the same official brand host family', () => {
   const redirected = pdfSource({
     sourceUrl: 'https://org.downloadcenter.samsung.com/file?CDSite=UNI_AU&ModelName=WHE6874BA',
@@ -290,7 +343,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-25.1');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-27.1');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
@@ -314,6 +367,37 @@ test('global official artifact is trusted only with receipt-bound Australian dis
     ...input,
     discoveryProvenance: { ...discoveryProvenance, matchedModel: 'WD1275A2' },
   }, identity, { asOf: input.verificationReceipt.verifiedAt }), /model|receipt|provenance/i);
+});
+
+test('Smeg global catalog PDF requires exact AU product-page discovery provenance', () => {
+  const identity = { brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge' };
+  const productUrl = 'https://www.smeg.com/au/products/FAB32RWH5AU';
+  const artifactUrl = 'https://pi-exchange.smeg.it/catalog/FAB32RWH5AU/en-AU';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productUrl,
+    requestedModel: identity.model,
+    matchedModel: identity.model,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: 'c'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/cc/cc/${'c'.repeat(64)}.html`,
+    discoveryByteSize: 4096,
+  };
+
+  assert.equal(isOfficialBrandMarketUrl(productUrl, identity.brand), true);
+  assert.equal(isOfficialBrandArtifactUrl(artifactUrl, identity.brand, identity), false);
+  assert.equal(isOfficialBrandArtifactUrl(artifactUrl, identity.brand, {
+    ...identity,
+    artifactUrl,
+    discoveryProvenance,
+  }), true);
+  assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+    ...discoveryProvenance,
+    matchedModel: 'FAB32RWH5',
+  }, { ...identity, artifactUrl }), /model does not match/i);
 });
 
 test('Bosch receipt verifies an exact PDF URL embedded in the official product-page manifest', () => {
@@ -557,6 +641,37 @@ test('Fisher & Paykel Salesforce receipt remains bound to exact AU article, mode
   }), /artifact link|Salesforce|relationship/i);
 });
 
+test('Hisense AU OCC provenance requires the exact market endpoint and query contract', () => {
+  const identity = { brand: 'Hisense', model: 'HWF5I1015', category: 'washing_machine' };
+  const artifactUrl = 'https://dtc-aus-api.hisense.com/medias/HWF5I1015-specification.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD',
+    requestedModel: identity.model,
+    matchedModel: identity.model,
+    artifactUrl,
+    discoveryContentSha256: 'c'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/cc/cc/${'c'.repeat(64)}.json`,
+    discoveryByteSize: 1234,
+  };
+  const context = { ...identity, artifactUrl };
+
+  assert.deepEqual(normalizeOfficialArtifactDiscoveryProvenance(provenance, context), provenance);
+  for (const discoveryUrl of [
+    provenance.discoveryUrl.replace('&curr=AUD', ''),
+    provenance.discoveryUrl.replace('lang=en', 'lang=en_AU'),
+    provenance.discoveryUrl.replace('/occ/v2/au/', '/occ/v2/us/'),
+    provenance.discoveryUrl.replace('dtc-aus-api.hisense.com', 'example.com'),
+  ]) {
+    assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+      ...provenance,
+      discoveryUrl,
+    }, context), /approved AU market API|official host/i);
+  }
+});
+
 test('Fisher & Paykel archived support API provenance stays bound to exact model, source market and artifact', () => {
   const artifactUrl = 'https://content.fisherpaykel.com/guides/DW60CDW2-installation-guide.pdf';
   const provenance = {
@@ -682,9 +797,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-25.1',
+    manufacturerPolicyVersion: '2026-07-27.1',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '5d2ab54ed6f9095ee3043a4e6538d0390308daa740a2201fc3e909f1d8c3b595',
+    bindingSha256: '04880cca39169e0ef6ef246ab91b12625c46fa27803d3b3fcf6558df6a48bae8',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

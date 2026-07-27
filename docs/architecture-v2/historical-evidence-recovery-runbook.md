@@ -2250,6 +2250,54 @@ resource budget, unavailable required online external state, or no runnable
 manifest. Never edit or delete ledger history to bypass a stop; repair the
 typed stage or advance its relevant tested epoch.
 
+### Final current-retail P0 closure (2026-07-27)
+
+The final missing-dimensions target was Hisense `HWF5I1015`. Its official
+product page cannot be used for grouped dimensions because the displayed axis
+label and value order conflict with the exact Australian specification PDF.
+For Hisense, grouped HTML tuples now fail closed. The accepted PDF path must
+have all of the following:
+
+- an exact Hisense AU OCC product response for the requested model;
+- an artifact URL linked by that immutable response;
+- exact model scope in the PDF and source URL;
+- the adjacent `Net dimensions(W x H x D) (mm)` label and value row;
+- one unambiguous positive-integer tuple; and
+- source PDF, MinerU JSON, page, bbox and fragment hashes in the receipt.
+
+Run `historical-scale-p0-hisense-hwf5i1015-acquisition-20260727-d` accepted
+W595, H845 and D550 mm from PDF SHA-256
+`46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010`
+and MinerU SHA-256
+`9ce68b6bacbebad0a18056f42be498b2cbc8d427613bd414d34db680996cc5f3`.
+Online audit `historical-recovery-audit-e911a27eadb00200faeb4bf1` replayed 919
+objects with zero violations. Checkpoint
+`historical-dimensions-checkpoint-207d696f90b963a5fe0a056c` recorded one
+selected, fetched, MinerU-valid, identity-proven and dimensions-receipted
+target. The separate 50-page user manual remained a typed MinerU failure; it
+did not weaken or broaden the exact specification receipt.
+
+An unpromoted acceptance may need more than one rebaseline while its manifest
+ID remains stable. Reconciliation receipts therefore use
+`control-reconciliations/<manifest-id>/<control-id>.json`. The former flat
+`<manifest-id>.json` path remains a read-only compatibility fallback. Never
+replace an old receipt or remove a completed run to reopen work.
+
+After promotion, the cumulative bundle contains 425 accepted targets and
+451/451 passing source receipts. `COMPLETE_RECEIPT` is 444. The executable
+queue has no `P0_CURRENT_MISSING_DIMENSIONS` row. Control
+`historical-dimensions-scale-fce2c5b5dbc837fc30f38967` therefore emits
+`STOP_NO_RUNNABLE_MANIFESTS / ZERO_RUNNABLE_P0_MANIFESTS`. The controller's
+`p0AssignedTargets` and `p0EligibleTargets` counters cover the broader
+CURRENT_DIMENSIONS workstream; inspect `queue.summary.byPriority` before
+interpreting them. The remaining current targets are P2 confirmation work.
+
+The active release remains unchanged: 349 current products, 332
+receipt-bound public dimensions, zero receipt-bound `VERIFIED_FIT`, zero
+historical replacement issues and zero Fit-publication violations. The final
+dimensions evidence remains staged and `INSUFFICIENT_DATA` because installation
+and rear-service fields are unknown.
+
 ## 42. Independent installation and Fit evidence pipeline
 
 Installation/Fit evidence is independent of the stopped dimensions P0 loop. A

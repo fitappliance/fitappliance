@@ -13,6 +13,7 @@ import {
 } from './official-market-api-discovery-evidence.mjs';
 import { officialMarketApiModelVariant } from './official-model-variant-policy.mjs';
 import { officialProductMaterialBoundVariant } from './official-product-material-discovery-evidence.mjs';
+import { officialProductPageBoundSupportFamilyModel } from './official-product-page-discovery-evidence.mjs';
 import { officialSupportApiBoundFamilyModel } from './official-support-api-discovery-evidence.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
@@ -318,33 +319,56 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       discoveryArtifactBytes,
       artifact.derivedArtifactBytes,
     );
-    const productMaterialVariant = officialProductMaterialBoundVariant(
+    const productMaterialBinding = officialProductMaterialBoundVariant(
       discoveryProvenance,
       identity,
       discoveryArtifactBytes,
     );
-    if (marketVariantModel && productMaterialVariant) {
+    if (marketVariantModel && productMaterialBinding) {
       throw new Error('multiple official model variant bindings are not allowed');
     }
-    boundVariantModel = marketVariantModel ?? productMaterialVariant?.sourceModel ?? null;
-    const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
+    const productMaterialVariant = productMaterialBinding?.relationshipKind === 'model_variant'
+      ? productMaterialBinding
+      : null;
+    const parserVariantModel = marketVariantModel ?? productMaterialVariant?.sourceModel ?? null;
+    const supportApiBoundFamilyModel = officialSupportApiBoundFamilyModel(
       discoveryProvenance,
       identity,
       discoveryArtifactBytes,
     );
-    const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel || boundVariantModel
+    const productPageSupportBinding = officialProductPageBoundSupportFamilyModel(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+    );
+    if ((marketVariantModel || productMaterialBinding) && productPageSupportBinding) {
+      throw new Error('multiple official model variant bindings are not allowed');
+    }
+    if (supportApiBoundFamilyModel && productPageSupportBinding) {
+      throw new Error('multiple official support family bindings are not allowed');
+    }
+    const boundSupportFamilyModel = supportApiBoundFamilyModel
+      ?? productPageSupportBinding?.familyModel
+      ?? null;
+    boundVariantModel = parserVariantModel ?? productPageSupportBinding?.sourceModel ?? null;
+    const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel || parserVariantModel
+      || productMaterialBinding
       ? null
       : boundFamilyModel;
-    if (boundVariantModel && requestedFields.some((field) => ![
+    if ((productMaterialBinding || productPageSupportBinding) && requestedFields.some((field) => ![
       'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
     ].includes(field))) {
-      throw new Error('official model variant PDF is dimensions only');
+      throw new Error('official model-variant PDF is dimensions only');
     }
     claims = parseMineruContentListV2(artifact.derivedArtifactBytes, {
       pdfSha256: artifact.contentSha256,
       parserVersion: artifact.derivedArtifact.parserVersion,
       modelRevision: artifact.derivedArtifact.modelRevision,
-      caseIdentity: boundVariantModel ? { ...identity, model: boundVariantModel } : identity,
+      caseIdentity: productMaterialBinding
+        ? { ...identity, model: productMaterialBinding.sourceModel }
+        : parserVariantModel
+          ? { ...identity, model: parserVariantModel }
+          : identity,
       fields: requestedFields,
       claimSemanticsVersion,
       sourceUrls: [artifact.requestedUrl, artifact.finalUrl].filter(Boolean),
@@ -353,18 +377,43 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       ...((marketVariantModel || boundExactCoverModel) ? {
         boundExactCoverModel: marketVariantModel || boundExactCoverModel,
       } : {}),
-      ...(productMaterialVariant ? {
-        boundProductMaterialNumber: productMaterialVariant.materialNumber,
-        boundProductFinishLabel: productMaterialVariant.finishLabel,
+      ...(productMaterialBinding ? {
+        boundProductMaterialNumber: productMaterialBinding.materialNumber,
+        boundProductFinishLabel: productMaterialBinding.finishLabel,
       } : {}),
       ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
+      ...(productPageSupportBinding ? {
+        boundSupportSourceModel: productPageSupportBinding.sourceModel,
+      } : {}),
       ...(artifact.derivedArtifact.fallbackTrigger ? {
         identityContextJsonBytes: artifact.fallbackTriggerArtifactBytes,
         identityContextContentSha256: artifact.derivedArtifact.fallbackTrigger.contentSha256,
       } : {}),
     }).claims;
   } else if (artifact.contentType === 'text/html') {
+    const productMaterialBinding = officialProductMaterialBoundVariant(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+    );
+    if (productMaterialBinding) {
+      if (productMaterialBinding.artifactKind !== 'product_page'
+        || artifact.requestedUrl !== productMaterialBinding.discoveryUrl
+        || artifact.finalUrl !== productMaterialBinding.discoveryUrl
+        || artifact.contentSha256 !== discoveryProvenance.discoveryContentSha256) {
+        throw new Error('official product-material HTML must be the hash-bound discovery self-source');
+      }
+      if (requestedFields.some((field) => ![
+        'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      ].includes(field))) {
+        throw new Error('official product-material product page is dimensions only');
+      }
+      if (productMaterialBinding.relationshipKind === 'model_variant') {
+        boundVariantModel = productMaterialBinding.pageModel ?? discoveryProvenance.matchedModel;
+      }
+    }
     const extracted = extractClaimsFromHtml(artifact.bytes, {
+      brand: identity.brand,
       category: caseRecord.category,
       fields: requestedFields,
     });
@@ -408,7 +457,9 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
         : 'official_exact_model_pdf')
       : artifact.contentType === 'application/json'
         ? (boundVariantModel ? 'official_model_variant_api' : 'official_exact_model_api')
-        : 'official_exact_model_product_page',
+        : (boundVariantModel
+          ? 'official_model_variant_product_page'
+          : 'official_exact_model_product_page'),
     sourceUrl: artifact.requestedUrl,
     finalUrl: artifact.finalUrl,
     redirectChain: [...artifact.redirectChain],

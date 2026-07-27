@@ -1947,6 +1947,75 @@ test('MinerU parses strict Smeg fixed suffix permutations without reordering axe
   }
 });
 
+test('MinerU parses the exact-model Smeg AU catalogue logistic table as closed-envelope dimensions', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [titleFragment('FAB32RWH5AU')],
+    [paragraph('Product features and performance')],
+    [
+      titleFragment('Logistic Information'),
+      tableFragment(`<table>
+        <tr><td>Width</td><td>601 mm</td><td>Product width with</td><td>926 mm</td></tr>
+        <tr><td>Depth without handle</td><td>728 mm</td><td>maximum doors opening Product depth with</td><td>768 mm</td></tr>
+        <tr><td>Height max</td><td>1968 mm</td><td>handle</td><td></td></tr>
+        <tr><td></td><td></td><td>Product depth with doors open at 90°</td><td>1197 mm</td></tr>
+      </table>`),
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://pi-exchange.smeg.it/catalog/FAB32RWH5AU/en-AU'],
+    caseIdentity: { brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 601 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1968 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 768 },
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 3));
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'smeg-au-catalog-logistic-closed-envelope-v1',
+  ]);
+});
+
+test('Smeg AU catalogue logistic grammar rejects incomplete or duplicated dimension sections', () => {
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://pi-exchange.smeg.it/catalog/FAB32RWH5AU/en-AU'],
+    caseIdentity: { brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const table = tableFragment(`<table>
+    <tr><td>Width</td><td>601 mm</td><td>Product width with maximum doors opening</td><td>926 mm</td></tr>
+    <tr><td>Depth without handle</td><td>728 mm</td><td>Product depth with handle</td><td>768 mm</td></tr>
+    <tr><td>Height max</td><td>1968 mm</td><td>Product depth with doors open at 90°</td><td>1197 mm</td></tr>
+  </table>`);
+
+  for (const pages of [
+    [[titleFragment('FAB32RWH5AU')], [titleFragment('Logistic Information'), table]],
+    [[titleFragment('FAB32RWH5AU')], [
+      titleFragment('Logistic Information'), table,
+      titleFragment('Logistic Information', [80, 780, 500, 820]),
+      tableFragment(table.content.html),
+    ]],
+  ]) {
+    const mutated = structuredClone(pages);
+    if (mutated[1].length === 2) {
+      mutated[1][1].content.html = mutated[1][1].content.html.replace(
+        '<td>Product depth with handle</td><td>768 mm</td>',
+        '<td></td><td></td>',
+      );
+    }
+    assert.throws(
+      () => parseMineruContentListV2(Buffer.from(JSON.stringify(mutated)), options),
+      /no exact-model MinerU evidence/i,
+    );
+  }
+});
+
 test('MinerU preserves a strict Smeg parenthetical maximum as a height range', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('DWAI315XT smeg dishwasher'),
@@ -2561,6 +2630,56 @@ test('MinerU binds the RF610A support family only to its explicit RF610/RF540A p
   }), /bound support family|identity signal/i);
 });
 
+test('MinerU binds a Samsung RF71A support family only to its overall closed-envelope column', () => {
+  const identity = { brand: 'Samsung', model: 'SRF9700BFH', category: 'fridge' };
+  const dimensions = tableFragment(`<table>
+    <tr><td>Model</td><td>RF65A*</td><td>RF71A*</td></tr>
+    <tr><td>Depth "A"</td><td>723 mm</td><td>861 mm</td></tr>
+    <tr><td>Width "B"</td><td>912 mm</td><td>912 mm</td></tr>
+    <tr><td>Height "C"</td><td>1797 mm</td><td>1797 mm</td></tr>
+    <tr><td>Overall Height "D"</td><td>1825 mm</td><td>1825 mm</td></tr>
+  </table>`);
+  const options = {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: identity,
+    claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'RF71A',
+    boundSupportSourceModel: 'RF71A9770B1/SA',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const parsed = parseMineruContentListV2(
+    Buffer.from(JSON.stringify([[], [dimensions]])),
+    options,
+  );
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 912 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1825 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 861 },
+  });
+  assert.ok(parsed.grammarProfileIds.includes('samsung-au-rf71a-support-family-v1'));
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_samsung_rf71a_support_family'
+  )));
+
+  for (const [label, pages, overrides = {}] of [
+    ['missing canonical source model', [[], [dimensions]], { boundSupportSourceModel: undefined }],
+    ['wrong canonical family', [[], [dimensions]], { boundSupportSourceModel: 'RF65A9770B1/SA' }],
+    ['duplicate dimension table', [[], [dimensions, dimensions]]],
+    ['missing overall height', [[], [{
+      ...dimensions,
+      content: { html: dimensions.content.html.replace(/<tr><td>Overall Height[\s\S]*?<\/tr>/, '') },
+    }]]],
+  ]) {
+    assert.throws(() => parseMineruContentListV2(
+      Buffer.from(JSON.stringify(pages)),
+      { ...options, ...overrides },
+    ), /bound support family|identity signal/i, label);
+  }
+});
+
 test('MinerU binds a DW60CH support family only through the shared AU/NZ cover and product table', () => {
   const identity = { brand: 'Fisher & Paykel', model: 'DW60CHW1', category: 'dishwasher' };
   const cover = paragraph('DW60CH, DW60CHP and DW60CK models');
@@ -3114,6 +3233,53 @@ test('MinerU parses a single-cell exact-model net dimension sequence', () => {
   });
 });
 
+test('MinerU parses a Hisense exact-spec net W x H x D label followed by its value row', () => {
+  const specification = (rows = `
+    <tr><td>Net dimensions(W x H x D) (mm)</td><td></td></tr>
+    <tr><td></td><td>595x 845x 550</td></tr>
+  `) => Buffer.from(JSON.stringify([[
+    pageHeader('Hisense HWF5I1015 Specifications'),
+    tableFragment(`<table>
+      <tr><td colspan="2">Model</td></tr>
+      <tr><td>Model Number Series</td><td>HWF5I1015 51</td></tr>
+      <tr><td>Packaging</td><td>Yes</td></tr>
+      ${rows}
+      <tr><td>Net weight/ Gross weight (kg)</td><td>65/68</td></tr>
+    </table>`),
+  ]]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bound'],
+    caseIdentity: { brand: 'Hisense', model: 'HWF5I1015', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+
+  const parsed = parseMineruContentListV2(specification(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 595,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.depthMm': 550,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-exact-spec-net-whd-split-row-v1']);
+  assert.ok(parsed.claims.every((claim) => claim.sourceAxisOrder.join(',') === 'width,height,depth'));
+
+  assert.throws(() => parseMineruContentListV2(specification(`
+    <tr><td>Net dimensions(W x H x D)</td><td></td></tr>
+    <tr><td></td><td>595x 845x 550</td></tr>
+  `), options), /evidence/i);
+  assert.throws(() => parseMineruContentListV2(specification(`
+    <tr><td>Net dimensions(W x H x D) (mm)</td><td></td></tr>
+    <tr><td></td><td>595x 845x 550</td></tr>
+    <tr><td>Net dimensions(W x H x D) (mm)</td><td></td></tr>
+    <tr><td></td><td>596x 845x 550</td></tr>
+  `), options), /evidence|ambiguous/i);
+  assert.throws(() => parseMineruContentListV2(specification(), {
+    ...options,
+    sourceUrls: ['https://example.com/HWF5I1015-Spec.pdf'],
+  }), /evidence|identity/i);
+});
+
 test('MinerU joins an exact axis label and value split into aligned paragraph fragments', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('QUICK REFERENCE GUIDE > DD60SDFTX9'),
@@ -3338,6 +3504,45 @@ test('Haier HBM450 technical list binds only the complete shared family tuple', 
   assert.throws(
     () => parseMineruContentListV2(document({ dimension: 'Dimension (WxDxH) 676x700x1725mm' }), options('HBM450SA1')),
     /identity|dimension|evidence|axis/i,
+  );
+});
+
+test('Haier HRF680 technical data binds the complete model list to one shared D/W/H tuple', () => {
+  const document = (overrides = {}) => mineruJson(`<table>
+    <tr><td>Trade mark</td><td>Haier</td></tr>
+    <tr><td>Model No.</td><td>${overrides.models ?? 'HRF680YPC/ HRF680YPS/HRF680YS'}</td></tr>
+    <tr><td>Category of the model</td><td>Cooled Appliance</td></tr>
+    <tr><td>${overrides.dimensionLabel ?? 'Dimension (DxWxH)'}</td><td>${overrides.dimensionValue ?? '750x908x1775mm'}</td></tr>
+    ${overrides.extraRow ?? ''}
+  </table>`, 'Technical data');
+  const options = (model) => ({
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Haier', model, category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  for (const model of ['HRF680YPC', 'HRF680YPS', 'HRF680YS']) {
+    const parsed = parseMineruContentListV2(document(), options(model));
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+      'closedEnvelope.widthMm': 908,
+      'closedEnvelope.heightMm': 1775,
+      'closedEnvelope.depthMm': 750,
+    });
+    assert.deepEqual(parsed.grammarProfileIds, ['haier-au-hrf680-technical-data-family-v1']);
+  }
+
+  assert.throws(
+    () => parseMineruContentListV2(document({
+      models: 'HRF680YPC/ HRF680YPS/HRF680YPB',
+    }), options('HRF680YPC')),
+    /family|multiple models|exact-model|scope/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(document({
+      extraRow: '<tr><td>Dimension (DxWxH)</td><td>760x910x1780mm</td></tr>',
+    }), options('HRF680YPC')),
+    /family|multiple models|ambiguous|scope/i,
   );
 });
 
@@ -4056,6 +4261,66 @@ test('Miele integrated sheet binds a captioned material on page one to model-sco
   assert.ok(parsed.claims.every((claim) => claim.page === 2));
 });
 
+test('Miele refrigerator grammar recovers a compact W/H/D tuple merged into the adjacent capacity row', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    titleFragment('KS 4783 ED', [67, 85, 179, 100]),
+    tableFragment(`<table>
+      <tr><td>Appliance category</td><td>Refrigerator</td></tr>
+      <tr><td>Front colour</td><td>Clean steel</td></tr>
+      <tr><td colspan="2">Technical data</td></tr>
+      <tr><td>Appliance dimensions in mm (W x H x D)</td><td></td></tr>
+      <tr><td>Refrigerator zone/PerfectFresh zone/Freezer zone in I</td><td>600 x 1850 x 675 399/-/-</td></tr>
+    </table>`),
+  ]]));
+  const options = {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: { brand: 'Miele', model: 'KS 4783 ED', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    sourceUrls: ['https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf'],
+    boundProductMaterialNumber: '11949580',
+    boundProductFinishLabel: 'Clean steel',
+  };
+
+  const parsed = parseMineruContentListV2(bytes, options);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 675 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1850 },
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 600 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'miele-au-fridge-product-material-specification-v1',
+  ]);
+
+  for (const [label, html] of [
+    ['missing capacity context', `<table>
+      <tr><td>Front colour</td><td>Clean steel</td></tr>
+      <tr><td colspan="2">Technical data</td></tr>
+      <tr><td>Appliance dimensions in mm (W x H x D)</td><td></td></tr>
+      <tr><td>Other value</td><td>600 x 1850 x 675 399/-/-</td></tr>
+    </table>`],
+    ['missing capacity tuple', `<table>
+      <tr><td>Front colour</td><td>Clean steel</td></tr>
+      <tr><td colspan="2">Technical data</td></tr>
+      <tr><td>Appliance dimensions in mm (W x H x D)</td><td></td></tr>
+      <tr><td>Refrigerator zone/PerfectFresh zone/Freezer zone in I</td><td>600 x 1850 x 675</td></tr>
+    </table>`],
+  ]) {
+    const mutated = Buffer.from(JSON.stringify([[
+      titleFragment('KS 4783 ED', [67, 85, 179, 100]),
+      tableFragment(html),
+    ]]));
+    assert.throws(
+      () => parseMineruContentListV2(mutated, options),
+      /material|finish|model|dimension|scope/i,
+      label,
+    );
+  }
+});
+
 test('Miele product-sheet material grammar fails closed across identity and binding mutations', () => {
   const cases = [
     ['sibling source model', mieleProductSheet({ model: 'G 7130 SCU' }), mieleProductSheetOptions],
@@ -4090,5 +4355,76 @@ test('Miele product-sheet material grammar fails closed across identity and bind
       /identity|material|finish|model|evidence|scope/i,
       label,
     );
+  }
+});
+
+test('Omega AU product card maps exact-model H/W/D suffixes with a millimetre heading', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    titleFragment('Dimensions/Weight', [534, 96, 722, 117]),
+    paragraph('Overall Dimensions (mm): Weight:', [534, 128, 697, 158]),
+    structuredListFragment(['438(h) x 550(w) x 500(d)', '22kg'], {
+      type: 'index', bbox: [724, 128, 889, 158],
+    }),
+    {
+      type: 'page_header',
+      content: {
+        page_header_content: [{ type: 'text', content: 'ODW101W APN 9312646023581' }],
+      },
+      bbox: [820, 26, 959, 59],
+    },
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: { brand: 'Omega', model: 'ODW101W', category: 'dishwasher' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    sourceUrls: ['https://omegaappliances.com.au/s/ODW101W_Specsheet_40.pdf'],
+    claimSemanticsVersion: 2,
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 550 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 438 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 500 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['omega-au-product-card-overall-hwd-suffix-v1']);
+});
+
+test('Omega AU product-card grammar fails closed outside its exact identity and axis scope', () => {
+  const parse = ({
+    label = 'Overall Dimensions (mm): Weight:',
+    dimensions = '438(h) x 550(w) x 500(d)',
+    header = 'ODW101W APN 9312646023581',
+    sourceUrl = 'https://omegaappliances.com.au/s/ODW101W_Specsheet_40.pdf',
+  } = {}) => parseMineruContentListV2(Buffer.from(JSON.stringify([[
+    titleFragment('Dimensions/Weight', [534, 96, 722, 117]),
+    paragraph(label, [534, 128, 697, 158]),
+    structuredListFragment([dimensions, '22kg'], {
+      type: 'index', bbox: [724, 128, 889, 158],
+    }),
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: header }] },
+      bbox: [820, 26, 959, 59],
+    },
+  ]])), {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: { brand: 'Omega', model: 'ODW101W', category: 'dishwasher' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    sourceUrls: [sourceUrl],
+    claimSemanticsVersion: 2,
+  });
+
+  for (const mutation of [
+    { dimensions: '438(h) x 550(w) x 500(w)' },
+    { label: 'Packaged Dimensions (mm): Weight:' },
+    { header: 'ODW102W APN 9312646023581' },
+    { sourceUrl: 'https://omegaappliances.com.au/s/ODW101W_EnergyLabel.pdf' },
+  ]) {
+    assert.throws(() => parse(mutation), /identity|evidence|scope|exact-model/i);
   }
 });

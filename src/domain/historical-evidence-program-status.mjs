@@ -116,6 +116,29 @@ function pass(id, label) {
   return { id, label, status: 'PASS' };
 }
 
+function failedReceiptTargets(receiptReplayAudit) {
+  const expectedFailures = integer(
+    receiptReplayAudit?.summary?.failed,
+    'receipt replay failed sources',
+  );
+  if (expectedFailures === 0) return new Map();
+  if (!Array.isArray(receiptReplayAudit.outcomes)) {
+    throw new TypeError('failed receipt replay outcomes required');
+  }
+  const failed = receiptReplayAudit.outcomes.filter((outcome) => outcome?.status === 'failed');
+  if (failed.length !== expectedFailures) throw new Error('receipt replay failed outcome accounting mismatch');
+  const targets = new Map();
+  for (const outcome of failed) {
+    const targetId = String(outcome.targetId ?? '').trim();
+    const referenceId = String(outcome.referenceId ?? '').trim();
+    if (!targetId || !referenceId) throw new TypeError('failed receipt replay target binding required');
+    const prior = targets.get(targetId);
+    if (prior && prior !== referenceId) throw new Error(`failed receipt target reference drift: ${targetId}`);
+    targets.set(targetId, referenceId);
+  }
+  return targets;
+}
+
 function sourceArtifactsFor(value) {
   if (value == null) return SOURCE_ARTIFACTS;
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -143,6 +166,7 @@ function assertAccounting({
   targetState,
   mineruBackfillAudit,
   receiptReplayAudit,
+  receiptReplaySourceEntryCount,
   replacementAudit,
   fitPublicationAudit,
 }) {
@@ -212,14 +236,38 @@ function assertAccounting({
       throw new Error(`accepted reference is not classified COMPLETE_RECEIPT: ${entry.referenceId}`);
     }
   }
-  if (receiptReplayAudit.summary.entries !== acceptedEntries) {
+  const replaySourceEntries = integer(
+    receiptReplaySourceEntryCount ?? acceptedEntries,
+    'receipt replay source bundle entries',
+  );
+  if (receiptReplayAudit.summary.entries !== replaySourceEntries
+    || acceptedEntries > replaySourceEntries) {
     throw new Error('receipt replay entry accounting mismatch');
   }
   const replaySources = integer(receiptReplayAudit.summary.sources, 'receipt replay sources');
   const replayPassed = integer(receiptReplayAudit.summary.passed, 'receipt replay passed');
   const replayFailed = integer(receiptReplayAudit.summary.failed, 'receipt replay failed');
-  if (replayPassed + replayFailed !== replaySources || replayFailed !== 0) {
+  const quarantinedTargets = failedReceiptTargets(receiptReplayAudit);
+  if (replayPassed + replayFailed !== replaySources
+    || replaySourceEntries - acceptedEntries !== quarantinedTargets.size) {
     throw new Error('receipt replay source accounting mismatch');
+  }
+  const acceptedTargetIds = new Set(acceptanceBundle.entries.map((entry) => entry.targetId).filter(Boolean));
+  const acceptedReferenceIds = new Set(acceptanceBundle.entries.map((entry) => entry.referenceId));
+  const targetStateByReference = new Map(targetState.records.map((record) => [record.referenceId, record]));
+  for (const [targetId, referenceId] of quarantinedTargets) {
+    if (acceptedTargetIds.has(targetId) || acceptedReferenceIds.has(referenceId)) {
+      throw new Error(`failed receipt target remains in effective acceptance bundle: ${targetId}`);
+    }
+    if (classificationByReference.get(referenceId)?.operationalClass !== 'OFFLINE_PARSER_REPAIR') {
+      throw new Error(`failed receipt target is not classified for repair: ${targetId}`);
+    }
+    const state = targetStateByReference.get(referenceId);
+    if (state?.actionable !== true || state.stateClass !== 'ACTIONABLE'
+      || state.binding?.type !== 'executable_queue'
+      || state.binding?.targetId !== targetId) {
+      throw new Error(`failed receipt target is not actionable: ${targetId}`);
+    }
   }
 
   if (replacementAudit.summary.referenceRecords !== classified
@@ -353,7 +401,9 @@ function assertAccounting({
     pass('acquisition_inventory', 'Acquisition queue accounts for every classified model'),
     pass('executable_inventory', 'Executable queue accounts for every acquisition target'),
     pass('target_state', 'Target outcome projection matches classification and executable work'),
-    pass('receipt_replay', 'Every accepted source replays without failure'),
+    pass('receipt_replay', replayFailed === 0
+      ? 'Every accepted source replays without failure'
+      : 'Failed receipt sources are isolated from the effective acceptance bundle'),
     pass('replacement_inventory', 'Replacement reference matches the historical inventory'),
     pass('fit_publication', 'Current catalogue and Fit audit agree without violations'),
     pass('document_graph', 'Every MinerU index has one content-hash graph node and typed model edges'),
@@ -397,6 +447,14 @@ function diagnosticsFor({ metrics, executableQueue, knowledge }) {
       message: 'Fewer than half of historical models have a current valid evidence receipt.',
     });
   }
+  if (byId.get('receipt_replay.failed_sources').numerator > 0) {
+    diagnostics.push({
+      code: 'RECEIPT_REPLAY_FAILURES_QUARANTINED',
+      severity: 'HIGH',
+      metricId: 'receipt_replay.failed_sources',
+      message: 'Failed historical receipt sources are quarantined and scheduled for repair.',
+    });
+  }
   if (byId.get('fit.receipt_bound_verified').denominator > 0
     && byId.get('fit.receipt_bound_verified').numerator === 0) {
     diagnostics.push({
@@ -437,12 +495,14 @@ export function buildHistoricalEvidenceProgramStatus(input) {
     targetState,
     mineruBackfillAudit,
     receiptReplayAudit,
+    receiptReplaySourceEntryCount: input.receiptReplaySourceEntryCount,
     replacementAudit,
     fitPublicationAudit,
   });
   const inventory = classification.summary.records;
   const acceptedEntries = acceptanceBundle.entries.length;
   const sourceLanes = acceptedSourceLanes(acceptanceBundle.entries);
+  const quarantinedReceiptTargets = failedReceiptTargets(receiptReplayAudit).size;
   const sourceArtifacts = sourceArtifactsFor(input.sourceArtifacts);
   const modelSource = sourceArtifacts.classification;
   const metrics = [
@@ -554,6 +614,13 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       numerator: knowledge.summary.completeParserReplays,
       denominator: knowledge.summary.parserReplays, sourceArtifact: sourceArtifacts.knowledge,
     }),
+    metric({
+      id: 'receipt_replay.failed_sources', label: 'Quarantined receipt replay failures',
+      grain: 'accepted_source_receipt',
+      numerator: receiptReplayAudit.summary.failed,
+      denominator: receiptReplayAudit.summary.sources,
+      sourceArtifact: sourceArtifacts.receiptReplayAudit,
+    }),
     ...[
       ['pdf_only', 'PDF only'],
       ['html_only', 'HTML only'],
@@ -589,6 +656,7 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       historicalModelReferences: inventory,
       currentCatalogProducts: fitPublicationAudit.summary.products,
       acceptedRecoveryEntries: acceptedEntries,
+      quarantinedReceiptTargets,
       targetAttempts: integer(attemptLedger.summary.targetAttempts, 'target attempts'),
     },
     controls,

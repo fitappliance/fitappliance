@@ -15,6 +15,9 @@ import {
   renderHistoricalModelEvidenceClassificationMarkdown,
   validateHistoricalModelEvidenceClassificationPolicy,
 } from '../../src/domain/historical-model-evidence-classification.mjs';
+import {
+  activeHistoricalTargetConflicts,
+} from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
@@ -336,6 +339,36 @@ export function applyAcceptanceReceiptReplayAudit({ links, audit }) {
   return Object.freeze({ failedReceipts, passedReceipts });
 }
 
+export function applyRecoveryAttemptConflicts({
+  conflictsByReference,
+  attemptLedger,
+  allowedReferenceIds = null,
+}) {
+  if (!(conflictsByReference instanceof Map)) {
+    throw new TypeError('classification conflict map required');
+  }
+  if (allowedReferenceIds !== null && !(allowedReferenceIds instanceof Set)) {
+    throw new TypeError('recovery conflict reference scope must be a set');
+  }
+  let applied = 0;
+  let skippedOutsideActiveRelease = 0;
+  for (const attempt of activeHistoricalTargetConflicts({ ledger: attemptLedger })) {
+    if (allowedReferenceIds && !allowedReferenceIds.has(attempt.referenceId)) {
+      skippedOutsideActiveRelease += 1;
+      continue;
+    }
+    const existing = conflictsByReference.get(attempt.referenceId);
+    if (existing && existing !== 'SOURCE_CONFLICT') {
+      throw new Error(`conflicting conflict classifications for ${attempt.referenceId}`);
+    }
+    if (!existing) {
+      conflictsByReference.set(attempt.referenceId, 'SOURCE_CONFLICT');
+      applied += 1;
+    }
+  }
+  return Object.freeze({ applied, skippedOutsideActiveRelease });
+}
+
 async function atomicWrite(path, bytes) {
   await mkdir(dirname(path), { recursive: true });
   const temporary = `${path}.${process.pid}.${Date.now()}.tmp`;
@@ -355,6 +388,7 @@ export function deriveHistoricalModelEvidenceClassificationGeneratedAt({
   identityAcceptanceResults,
   imageRepairAudit,
   acceptanceReceiptReplayAudit,
+  recoveryAttemptLedger,
   activeReleaseActivatedAt,
 }) {
   const values = [
@@ -372,6 +406,7 @@ export function deriveHistoricalModelEvidenceClassificationGeneratedAt({
     imageRepairAudit?.generatedAt,
     acceptanceReceiptReplayAudit?.generatedAt,
     acceptanceReceiptReplayAudit?.auditedAt,
+    recoveryAttemptLedger?.generatedAt,
     activeReleaseActivatedAt,
   ].filter((value) => value != null).map((value) => {
     const timestamp = new Date(value);
@@ -388,7 +423,8 @@ async function main(args) {
   const generatedAtOption = option(args, '--generated-at');
   const [policyValue, activeRelease, sourceDocumentArtifact, knowledge, legacyAudit,
     recoveryQueue, acceptanceBundle, pdfAcceptanceResults,
-    identityAcceptanceResults, imageRepairAudit, acceptanceReceiptReplayAudit] = await Promise.all([
+    identityAcceptanceResults, imageRepairAudit, acceptanceReceiptReplayAudit,
+    recoveryAttemptLedger] = await Promise.all([
     readJson(policyPath),
     loadActiveRetailRelease({ root }),
     readJson(resolveArchitectureV2Path(root, 'sourceDocuments')),
@@ -400,6 +436,7 @@ async function main(args) {
     readJson(resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'historicalPdfImageRepairAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
+    readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAttemptLedger')),
   ]);
   const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
   const historicalReference = {
@@ -419,6 +456,7 @@ async function main(args) {
     identityAcceptanceResults,
     imageRepairAudit,
     acceptanceReceiptReplayAudit,
+    recoveryAttemptLedger,
     activeReleaseActivatedAt: activeRelease.descriptor.activatedAt,
   });
   const policy = validateHistoricalModelEvidenceClassificationPolicy(policyValue);
@@ -559,6 +597,12 @@ async function main(args) {
     allowedReferenceIds: new Set(referenceById.keys()),
   });
   applyAcceptanceReceiptReplayAudit({ links, audit: acceptanceReceiptReplayAudit });
+  const conflictsByReference = new Map(imageAuditApplication.conflictsByReference);
+  applyRecoveryAttemptConflicts({
+    conflictsByReference,
+    attemptLedger: recoveryAttemptLedger,
+    allowedReferenceIds: new Set(referenceById.keys()),
+  });
 
   const snapshot = buildHistoricalModelEvidenceClassification({
     generatedAt,
@@ -567,7 +611,8 @@ async function main(args) {
     historicalRecords: records,
     linksByReference: materializeLinks(links),
     groupsByReference: buildGroups(knowledge, referenceByExactKey),
-    conflictsByReference: imageAuditApplication.conflictsByReference,
+    conflictsByReference,
+    recoveryAttemptLedgerSha256: canonicalJsonSha256(recoveryAttemptLedger),
   });
   await Promise.all([
     atomicWrite(outputPath, `${JSON.stringify(snapshot, null, 2)}\n`),

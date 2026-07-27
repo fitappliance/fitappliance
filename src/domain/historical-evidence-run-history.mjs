@@ -5,6 +5,11 @@ import {
   canonicalJsonSha256,
   validateHistoricalEvidenceRecoveryAudit,
 } from './historical-evidence-recovery-contract.mjs';
+import {
+  historicalControlReconciliationMatches,
+  historicalControlReconciliationPath,
+} from './historical-evidence-control-reconciliation.mjs';
+import { historicalAttemptProcessorCapability } from './evidence-processor-epoch.mjs';
 
 const ACCEPTED_STATUSES = new Set(['accepted', 'receipt_accepted_non_scalar']);
 const TERMINAL_STATUSES = new Set([
@@ -63,6 +68,8 @@ export function historicalRunTargetSuppression({
   currentResolverContract,
   currentHasExplicitCandidateJobs = false,
   verifiedRepairReopen = false,
+  verifiedControlReconciliation = false,
+  verifiedProcessorEpochReopen = false,
 }) {
   const target = priorState?.targets?.[targetId];
   const outcome = target?.outcome;
@@ -76,7 +83,7 @@ export function historicalRunTargetSuppression({
     if (priorState.input?.policySha256 !== currentPolicySha256) return null;
     if (!sameResolverContract(outcome.candidateInventory?.resolvers, currentResolverContract)) return null;
     if (ACCEPTED_STATUSES.has(outcome.status)) {
-      if (verifiedRepairReopen) return null;
+      if (verifiedRepairReopen || verifiedControlReconciliation || verifiedProcessorEpochReopen) return null;
       reason = 'completed_unpromoted_acceptance';
     } else if (TERMINAL_STATUSES.has(outcome.status)
       && priorState.input?.toolchainSha256 === currentToolchainSha256) {
@@ -92,6 +99,34 @@ export function historicalRunTargetSuppression({
     priorFailureCode: outcome.failureCode ?? null,
     reason,
   };
+}
+
+function failedCandidateProcessorEpochChanged({
+  priorState,
+  targetId,
+  targetBrand,
+  currentProcessorEpochs,
+}) {
+  if (!currentProcessorEpochs || typeof currentProcessorEpochs !== 'object'
+    || Array.isArray(currentProcessorEpochs)) return false;
+  const priorProcessorEpochs = priorState?.input?.toolchain?.evidenceProcessorEpochs;
+  if (!priorProcessorEpochs || typeof priorProcessorEpochs !== 'object'
+    || Array.isArray(priorProcessorEpochs)) return false;
+  const candidates = priorState?.targets?.[targetId]?.outcome?.candidateInventory?.candidates;
+  if (!Array.isArray(candidates)) return false;
+  return candidates.some((candidate) => {
+    const capability = historicalAttemptProcessorCapability({
+      brand: targetBrand,
+      sourceUrl: candidate?.sourceUrl,
+      failureCode: candidate?.outcome?.failureCode,
+    });
+    if (!capability) return false;
+    const priorEpoch = String(priorProcessorEpochs[capability] ?? '');
+    const currentEpoch = String(currentProcessorEpochs[capability] ?? '');
+    return /^[a-f0-9]{64}$/.test(priorEpoch)
+      && /^[a-f0-9]{64}$/.test(currentEpoch)
+      && priorEpoch !== currentEpoch;
+  });
 }
 
 function receiptSetSha256(target) {
@@ -130,6 +165,7 @@ function auditSemanticView(audit) {
 function verifiedParserRepairReopen({
   targetId,
   currentTarget,
+  currentToolchainSha256,
   priorState,
   priorBatch,
   priorResults,
@@ -142,6 +178,13 @@ function verifiedParserRepairReopen({
     return false;
   }
   const semanticSha256 = canonicalJsonSha256(auditSemanticView(priorAudit));
+  const receiptReplayMismatch = priorAudit.violations.includes(
+    `prior object ${targetId}: artifact attestation receipt mismatch`,
+  );
+  const reconciliationReplayMismatch = priorState.input?.toolchainSha256 !== currentToolchainSha256
+    && priorAudit.violations.some((violation) => (
+      String(violation).startsWith(`target ${targetId}: reconciliation replay mismatch:`)
+    ));
   if (priorAudit.semanticAuditSha256 !== semanticSha256
     || priorAudit.auditId !== `historical-recovery-audit-${semanticSha256.slice(0, 24)}`
     || priorAudit.mode !== 'online'
@@ -152,11 +195,12 @@ function verifiedParserRepairReopen({
     || priorResults.runId !== priorState.runId
     || priorResults.batchId !== priorBatch.batchId
     || (priorState.input?.batchSha256 && priorState.input.batchSha256 !== priorAudit.batchSha256)
-    || !priorAudit.violations.includes(`prior object ${targetId}: artifact attestation receipt mismatch`)) {
+    || (!receiptReplayMismatch && !reconciliationReplayMismatch)) {
     return false;
   }
   const priorTargets = (priorBatch.targets ?? []).filter((target) => target.targetId === targetId);
   if (priorTargets.length !== 1) return false;
+  if (reconciliationReplayMismatch) return priorTargets[0].repairExistingReceipt === true;
   const priorReceiptSet = receiptSetSha256(priorTargets[0]);
   const currentReceiptSet = receiptSetSha256(currentTarget);
   return priorReceiptSet !== null && currentReceiptSet !== null && priorReceiptSet !== currentReceiptSet;
@@ -175,12 +219,50 @@ async function readRepairEvidence(fs, runRoot) {
   }
 }
 
+async function readControlReconciliationReceipt(fs, runRoot, currentManifestId, currentControlId) {
+  try {
+    return await fs.readFile(
+      historicalControlReconciliationPath(runRoot, currentManifestId, currentControlId),
+      'utf8',
+    ).then(JSON.parse);
+  } catch (error) {
+    if (error?.code !== 'ENOENT') throw error;
+    return fs.readFile(
+      historicalControlReconciliationPath(runRoot, currentManifestId),
+      'utf8',
+    ).then(JSON.parse);
+  }
+}
+
+async function readControlReconciliationEvidence(
+  fs,
+  runRoot,
+  currentManifestId,
+  currentControlId,
+) {
+  try {
+    const [receipt, priorBatch, priorResults, priorAudit, priorManifest] = await Promise.all([
+      readControlReconciliationReceipt(fs, runRoot, currentManifestId, currentControlId),
+      fs.readFile(join(runRoot, 'batch.json'), 'utf8').then(JSON.parse),
+      fs.readFile(join(runRoot, 'results.json'), 'utf8').then(JSON.parse),
+      fs.readFile(join(runRoot, 'audit-full.json'), 'utf8').then(JSON.parse),
+      fs.readFile(join(runRoot, 'bounded-manifest.json'), 'utf8').then(JSON.parse),
+    ]);
+    return { receipt, priorBatch, priorResults, priorAudit, priorManifest };
+  } catch {
+    return null;
+  }
+}
+
 export async function scanHistoricalEvidenceRunHistory({
   storageRoot,
   selectedBatch,
   currentPolicySha256,
   currentToolchainSha256,
+  currentProcessorEpochs = null,
   resolverContractForTarget,
+  currentBoundedManifest = null,
+  currentScaleControl = null,
   excludeRunId = null,
   fs = defaultFs,
 }) {
@@ -234,13 +316,42 @@ export async function scanHistoricalEvidenceRunHistory({
     const repairEvidence = hasAcceptedRepairCandidate
       ? await readRepairEvidence(fs, join(root, directory.name))
       : null;
+    const hasAcceptedTarget = selectedBatch.targets.some((target) => (
+      ACCEPTED_STATUSES.has(priorState.targets?.[target.targetId]?.outcome?.status)
+    ));
+    const controlReconciliationEvidence = hasAcceptedTarget
+      && currentBoundedManifest?.manifestId
+      && currentScaleControl?.controlId
+      ? await readControlReconciliationEvidence(
+        fs,
+        join(root, directory.name),
+        currentBoundedManifest.manifestId,
+        currentScaleControl.controlId,
+      )
+      : null;
     for (const target of selectedBatch.targets) {
       const verifiedRepairReopen = repairEvidence ? verifiedParserRepairReopen({
         targetId: target.targetId,
         currentTarget: currentTargets.get(target.targetId),
+        currentToolchainSha256,
         priorState,
         ...repairEvidence,
       }) : false;
+      const verifiedControlReconciliation = controlReconciliationEvidence
+        ? historicalControlReconciliationMatches({
+          ...controlReconciliationEvidence,
+          priorState,
+          currentControl: currentScaleControl,
+          currentManifest: currentBoundedManifest,
+          targetId: target.targetId,
+        })
+        : false;
+      const verifiedProcessorEpochReopen = failedCandidateProcessorEpochChanged({
+        priorState,
+        targetId: target.targetId,
+        targetBrand: target.brand,
+        currentProcessorEpochs,
+      });
       const suppression = historicalRunTargetSuppression({
         priorState,
         targetId: target.targetId,
@@ -249,6 +360,8 @@ export async function scanHistoricalEvidenceRunHistory({
         currentResolverContract: contracts.get(target.targetId),
         currentHasExplicitCandidateJobs: explicitCandidateJobs.get(target.targetId),
         verifiedRepairReopen,
+        verifiedControlReconciliation,
+        verifiedProcessorEpochReopen,
       });
       if (suppression) conflicts.push({
         ...suppression,

@@ -10,6 +10,7 @@ import {
   auditHistoricalEvidenceRecovery,
   auditHistoricalEvidenceRecoveryBundle,
   filterHistoricalAcceptanceBundleByReceiptReplayAudit,
+  historicalEvidenceRequiredCompanionFailure,
   promoteHistoricalEvidenceRecovery,
 } from '../../src/domain/historical-evidence-recovery-audit.mjs';
 import { buildMineruDerivedArtifact, parseMineruContentListV2 } from '../../src/domain/mineru-document.mjs';
@@ -19,7 +20,10 @@ import { computeCandidateInventorySha256 } from '../../src/domain/evidence-candi
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { recoveryOutcomeSemanticSha256 } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
 import { createVerificationReceipt } from '../../src/domain/evidence-source-verifier.mjs';
-import { selectRecoveryQueueSnapshot } from '../../scripts/architecture-v2/audit-historical-evidence-recovery.mjs';
+import {
+  runAuditCli,
+  selectRecoveryQueueSnapshot,
+} from '../../scripts/architecture-v2/audit-historical-evidence-recovery.mjs';
 import { resolveAcceptanceAuditGeneratedAt } from '../../scripts/architecture-v2/audit-historical-acceptance-receipts.mjs';
 import { runPromotionCli } from '../../scripts/architecture-v2/promote-historical-evidence-recovery.mjs';
 
@@ -281,6 +285,100 @@ test('acceptance receipt audit defaults to the immutable bundle timestamp', () =
   );
 });
 
+function mieleMaterialSource({
+  contentType = 'application/pdf',
+  sourceType = 'official_model_variant_pdf',
+  artifactUrl = 'https://www.miele.com.au/media/ex/au/specsheets/12431300.pdf',
+  contentSha256 = '1'.repeat(64),
+  objectPath = 'evidence/web/sha256/11/11.pdf',
+  dimensions = [600, 1850, 675],
+  materialNumber = '12431300',
+  discoveryUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/ks-4783-ed-edt-bs-zid12431300/',
+} = {}) {
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  return {
+    authority: 'manufacturer',
+    sourceType,
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    contentType,
+    contentSha256,
+    objectPath,
+    claims: fields.map((field, index) => ({
+      field,
+      value: { kind: 'fixed', mm: dimensions[index] },
+    })),
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_material',
+      market: 'AU',
+      discoveryUrl,
+      requestedModel: 'KS4783EDBS',
+      matchedModel: 'KS 4783 ED edt/bs',
+      artifactUrl,
+      discoveryContentSha256: '2'.repeat(64),
+      discoveryObjectPath: 'evidence/web/sha256/22/22.html',
+      discoveryByteSize: 1234,
+      materialNumber,
+    },
+  };
+}
+
+function mieleMaterialPage(options = {}) {
+  const source = mieleMaterialSource({
+    ...options,
+    contentType: 'text/html',
+    sourceType: 'official_model_variant_product_page',
+  });
+  source.sourceUrl = source.discoveryProvenance.discoveryUrl;
+  source.finalUrl = source.discoveryProvenance.discoveryUrl;
+  source.discoveryProvenance.artifactUrl = source.discoveryProvenance.discoveryUrl;
+  source.contentSha256 = source.discoveryProvenance.discoveryContentSha256;
+  source.objectPath = source.discoveryProvenance.discoveryObjectPath;
+  return source;
+}
+
+test('Miele refrigerator material receipts require a hash-bound product-page companion', () => {
+  const pdf = mieleMaterialSource();
+  const entry = {
+    brand: 'Miele', model: 'KS4783EDBS', category: 'fridge', sources: [pdf],
+  };
+  assert.deepEqual(historicalEvidenceRequiredCompanionFailure(entry, pdf), {
+    failureCode: 'required_companion_missing',
+    diagnostic: 'Miele refrigerator material PDF requires a same-material hash-bound official product page',
+  });
+
+  const wrongMaterialPage = mieleMaterialPage({ materialNumber: '11949580' });
+  assert.equal(
+    historicalEvidenceRequiredCompanionFailure({ ...entry, sources: [pdf, wrongMaterialPage] }, pdf).failureCode,
+    'required_companion_missing',
+  );
+});
+
+test('Miele refrigerator material receipts quarantine conflicting official dimensions', () => {
+  const pdf = mieleMaterialSource();
+  const page = mieleMaterialPage({ dimensions: [597, 1855, 675] });
+  const entry = {
+    brand: 'Miele', model: 'KS4783EDBS', category: 'fridge', sources: [pdf, page],
+  };
+  assert.deepEqual(historicalEvidenceRequiredCompanionFailure(entry, pdf), {
+    failureCode: 'required_companion_conflict',
+    diagnostic: 'Miele refrigerator product page and material PDF disagree on closed-envelope dimensions',
+  });
+});
+
+test('Miele refrigerator material receipts accept only a matching companion and do not broaden scope', () => {
+  const pdf = mieleMaterialSource();
+  const page = mieleMaterialPage();
+  const entry = {
+    brand: 'Miele', model: 'KS4783EDBS', category: 'fridge', sources: [pdf, page],
+  };
+  assert.equal(historicalEvidenceRequiredCompanionFailure(entry, pdf), null);
+  assert.equal(historicalEvidenceRequiredCompanionFailure({ ...entry, category: 'dishwasher' }, pdf), null);
+  assert.equal(historicalEvidenceRequiredCompanionFailure({ ...entry, brand: 'Other' }, pdf), null);
+  assert.equal(historicalEvidenceRequiredCompanionFailure(entry, page), null);
+});
+
 test('online audit replays objects, inventory, receipt, semantics and geometry', async () => {
   const fixture = acceptedFixture();
   const audit = await runAudit(fixture);
@@ -439,6 +537,161 @@ function completedRunState(fixture) {
     },
   };
 }
+
+function receiptAuditRejectingBundle(bundle, passingAudit) {
+  const outcomes = passingAudit.outcomes.map((outcome) => ({
+    ...structuredClone(outcome),
+    status: 'failed',
+    failureCode: 'claim_replay_mismatch',
+    diagnostic: 'fixture receipt rejected by current replay policy',
+  }));
+  const sourceBundleSha256 = canonicalJsonSha256(bundle);
+  return {
+    ...structuredClone(passingAudit),
+    sourceBundleSha256,
+    outcomes,
+    summary: {
+      entries: bundle.entries.length,
+      sources: outcomes.length,
+      passed: 0,
+      failed: outcomes.length,
+    },
+    semanticAuditSha256: canonicalJsonSha256({ sourceBundleSha256, outcomes }),
+  };
+}
+
+async function writeAuditCliFixture(fixture, storageRoot) {
+  const queue = { schemaVersion: 2, jobs: [] };
+  const policy = JSON.parse(await readFile(
+    'data/architecture-v2/policies/historical-evidence-recovery-policy.json',
+    'utf8',
+  ));
+  fixture.batch.queue = { schemaVersion: 2, sha256: canonicalJsonSha256(queue) };
+  fixture.batch.policy = {
+    version: policy.policyVersion,
+    sha256: canonicalJsonSha256(policy),
+  };
+  fixture.results.queueSha256 = fixture.batch.queue.sha256;
+  fixture.results.policySha256 = fixture.batch.policy.sha256;
+  fixture.results.batchSha256 = canonicalJsonSha256(fixture.batch);
+  fixture.state.input.batchSha256 = fixture.results.batchSha256;
+  fixture.state.input.queueSha256 = fixture.results.queueSha256;
+  fixture.state.input.policySha256 = fixture.results.policySha256;
+  fixture.state.input.toolchain = { evidenceProcessorEpochs: {} };
+  fixture.state.input.toolchainSha256 = canonicalJsonSha256(fixture.state.input.toolchain);
+
+  const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', fixture.results.runId);
+  await mkdir(runDirectory, { recursive: true });
+  await writeFile(join(runDirectory, 'batch.json'), `${JSON.stringify(fixture.batch)}\n`);
+  await writeFile(join(runDirectory, 'state.json'), `${JSON.stringify(fixture.state)}\n`);
+  await writeFile(join(runDirectory, 'queue.json'), `${JSON.stringify(queue)}\n`);
+  await writeFile(join(runDirectory, 'policy.json'), `${JSON.stringify(policy)}\n`);
+  for (const [relativePath, bytes] of fixture.objects) {
+    const absolutePath = join(storageRoot, relativePath);
+    await mkdir(dirname(absolutePath), { recursive: true });
+    await writeFile(absolutePath, bytes);
+  }
+  return { queue, policy };
+}
+
+test('audit and promotion use the receipt-replay effective bundle without resurrecting quarantined entries', async () => {
+  const fixture = acceptedFixture();
+  const initialAudit = await runAudit(fixture);
+  const rawBundle = promoteHistoricalEvidenceRecovery({
+    batch: fixture.batch,
+    results: fixture.results,
+    audit: initialAudit,
+    priorBundle: null,
+    generatedAt: '2026-07-13T00:05:00.000Z',
+  });
+  rawBundle.entries[0].targetId = 'target-quarantined-prior';
+  rawBundle.entries[0].referenceId = 'reference-quarantined-prior';
+  const passingReceiptAudit = await auditHistoricalAcceptanceReceipts({
+    bundle: rawBundle,
+    generatedAt: '2026-07-13T00:06:00.000Z',
+    readObject: async (path) => fixture.objects.get(path),
+  });
+  const priorReceiptAudit = receiptAuditRejectingBundle(rawBundle, passingReceiptAudit);
+
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-effective-bundle-'));
+  await writeAuditCliFixture(fixture, storageRoot);
+  const resultsPath = join(storageRoot, 'results.json');
+  const auditPath = join(storageRoot, 'audit.json');
+  const bundlePath = join(storageRoot, 'bundle.json');
+  const receiptAuditPath = join(storageRoot, 'receipt-audit.json');
+  const attemptLedgerPath = join(storageRoot, 'attempt-ledger.json');
+  await writeFile(resultsPath, `${JSON.stringify(fixture.results)}\n`);
+  await writeFile(bundlePath, `${JSON.stringify(rawBundle)}\n`);
+  await writeFile(receiptAuditPath, `${JSON.stringify(priorReceiptAudit)}\n`);
+
+  const audit = await runAuditCli({
+    mode: 'online',
+    full: true,
+    results: resultsPath,
+    output: auditPath,
+    bundle: bundlePath,
+    receiptAudit: receiptAuditPath,
+    storageRoot,
+  });
+  const effectivePrior = filterHistoricalAcceptanceBundleByReceiptReplayAudit(
+    rawBundle,
+    priorReceiptAudit,
+  ).bundle;
+  assert.equal(audit.status, 'passed', audit.violations.join('\n'));
+  assert.equal(audit.priorBundleSha256, canonicalJsonSha256(effectivePrior));
+  assert.equal(audit.priorObjectsReplayed, true);
+
+  const promoted = await runPromotionCli({
+    results: resultsPath,
+    audit: auditPath,
+    bundle: bundlePath,
+    receiptAudit: receiptAuditPath,
+    attemptLedger: attemptLedgerPath,
+    storageRoot,
+  });
+  assert.deepEqual(promoted.entries.map((entry) => entry.targetId), [fixture.target.targetId]);
+  assert.equal(promoted.entries.some((entry) => entry.targetId === 'target-quarantined-prior'), false);
+  const prospectiveReceiptAudit = JSON.parse(await readFile(receiptAuditPath, 'utf8'));
+  assert.deepEqual(prospectiveReceiptAudit.summary, {
+    entries: 1, sources: 1, passed: 1, failed: 0,
+  });
+});
+
+test('audit fails closed when the prior receipt-replay audit is stale', async () => {
+  const fixture = acceptedFixture();
+  const initialAudit = await runAudit(fixture);
+  const rawBundle = promoteHistoricalEvidenceRecovery({
+    batch: fixture.batch,
+    results: fixture.results,
+    audit: initialAudit,
+    priorBundle: null,
+    generatedAt: '2026-07-13T00:05:00.000Z',
+  });
+  const receiptAudit = structuredClone(await auditHistoricalAcceptanceReceipts({
+    bundle: rawBundle,
+    generatedAt: '2026-07-13T00:06:00.000Z',
+    readObject: async (path) => fixture.objects.get(path),
+  }));
+  receiptAudit.sourceBundleSha256 = 'f'.repeat(64);
+
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-stale-receipt-audit-'));
+  await writeAuditCliFixture(fixture, storageRoot);
+  const resultsPath = join(storageRoot, 'results.json');
+  const bundlePath = join(storageRoot, 'bundle.json');
+  const receiptAuditPath = join(storageRoot, 'receipt-audit.json');
+  await writeFile(resultsPath, `${JSON.stringify(fixture.results)}\n`);
+  await writeFile(bundlePath, `${JSON.stringify(rawBundle)}\n`);
+  await writeFile(receiptAuditPath, `${JSON.stringify(receiptAudit)}\n`);
+
+  await assert.rejects(() => runAuditCli({
+    mode: 'online',
+    full: true,
+    results: resultsPath,
+    bundle: bundlePath,
+    receiptAudit: receiptAuditPath,
+    storageRoot,
+  }), /receipt replay audit binding mismatch/i);
+});
 
 test('promotion CLI receipt-audits the prospective cumulative bundle before publishing it', async () => {
   const fixture = acceptedFixture();

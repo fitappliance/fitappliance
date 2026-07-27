@@ -172,6 +172,9 @@ function classificationSemantic(value) {
     schemaVersion: value.schemaVersion,
     policyVersion: value.policyVersion,
     ...(value.sourceBindings ? { sourceBindings: value.sourceBindings } : {}),
+    ...(value.recoveryAttemptLedgerSha256 ? {
+      recoveryAttemptLedgerSha256: value.recoveryAttemptLedgerSha256,
+    } : {}),
     summary: value.summary,
     categorySummaries: value.categorySummaries,
     topGaps: value.topGaps,
@@ -403,10 +406,10 @@ function verifyCurrentReplay({
   const acceptanceBundle = validateHistoricalEvidenceRecoveryAcceptanceBundle(
     artifacts.historicalEvidenceRecoveryAcceptanceBundle,
   );
-  filterHistoricalAcceptanceBundleByReceiptReplayAudit(
+  const effectiveAcceptanceBundle = filterHistoricalAcceptanceBundleByReceiptReplayAudit(
     acceptanceBundle,
     artifacts.historicalAcceptanceReceiptReplayAudit,
-  );
+  ).bundle;
   assertHistoricalReplacementAudit(artifacts.historicalReplacementAudit);
 
   const targetState = buildHistoricalEvidenceTargetState({
@@ -438,7 +441,8 @@ function verifyCurrentReplay({
     documentGraph: artifacts.historicalDocumentFamilyGraph,
     acquisitionQueue: artifacts.historicalModelPdfAcquisitionQueue,
     executableQueue: artifacts.historicalExecutableEvidenceRecoveryQueue,
-    acceptanceBundle,
+    acceptanceBundle: effectiveAcceptanceBundle,
+    receiptReplaySourceEntryCount: acceptanceBundle.entries.length,
     attemptLedger: artifacts.historicalEvidenceRecoveryAttemptLedger,
     targetState,
     mineruBackfillAudit: artifacts.historicalMineruBackfillAudit,
@@ -630,7 +634,7 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     ['candidate-lifecycle-reduction', 'historicalApplianceReferenceReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'scripts/architecture-v2/build-historical-appliance-reference.mjs', 'src/domain/historical-appliance-reference.mjs'], [['official-registry-snapshots', 'content'], ['candidate-current-publication', 'content'], ['receipt-reconciliation', 'content']], ['HISTORICAL_INPUT_CANDIDATE'], 'PENDING_NEXT', 2],
     ['candidate-release-gate', 'retailLifecycleReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-release-candidate.mjs'], [['current-publication', 'content'], ['candidate-publication-base', 'content'], ['candidate-current-publication', 'content'], ['candidate-lifecycle-shadow', 'semantic'], ['candidate-lifecycle-reduction', 'content'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
     ['active-retail-release', 'activeRetailRelease', 'src/domain/active-retail-release.mjs', ['src/domain/active-retail-release.mjs'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT', 'CONTROL_INPUT']],
-    ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/active-historical-evidence-scope.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['active-retail-release', 'content'], ['receipt-reconciliation', 'content']], ['CONTROL_ONLY']],
+    ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/active-historical-evidence-scope.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'src/domain/historical-evidence-recovery-attempt-ledger.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['active-retail-release', 'content'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content']], ['CONTROL_ONLY']],
     ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['lifecycle-reduction', 'content']], ['CONTROL_ONLY']],
     ['document-identity', 'historicalDocumentFamilyGraph', 'scripts/architecture-v2/build-historical-document-family-graph.mjs', ['scripts/architecture-v2/build-historical-document-family-graph.mjs', 'src/domain/active-historical-evidence-scope.mjs', 'src/domain/historical-document-family-graph.mjs'], [['active-retail-release', 'content'], ['classification', 'semantic'], ['mineru-knowledge', 'content']], ['CONTROL_ONLY']],
     ['mineru-backfill-audit', 'historicalMineruBackfillAudit', 'scripts/architecture-v2/backfill-historical-mineru.mjs', ['scripts/architecture-v2/backfill-historical-mineru.mjs', 'src/domain/historical-mineru-backfill.mjs'], [], ['CONTROL_ONLY']],

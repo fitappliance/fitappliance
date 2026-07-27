@@ -26,11 +26,19 @@ function exactModel(left, right) {
     === requiredText(right, 'target model').toUpperCase();
 }
 
-function exactProducts(payload, targetModel) {
+function apiProductModel(product, caseIdentity) {
+  const brand = requiredText(caseIdentity?.brand, 'target brand').toUpperCase();
+  return brand === 'HISENSE' ? product?.code : product?.modelMark;
+}
+
+function exactProducts(payload, targetModel, caseIdentity) {
   if (Array.isArray(payload?.products)) {
-    return payload.products.filter((product) => exactModel(product?.modelMark, targetModel));
+    return payload.products.filter((product) => exactModel(
+      apiProductModel(product, caseIdentity),
+      targetModel,
+    ));
   }
-  return payload && exactModel(payload.modelMark, targetModel) ? [payload] : [];
+  return payload && exactModel(apiProductModel(payload, caseIdentity), targetModel) ? [payload] : [];
 }
 
 function boundProductSelection(payload, caseIdentity, provenance = null) {
@@ -54,13 +62,31 @@ function boundProductSelection(payload, caseIdentity, provenance = null) {
     targetModel,
     matchedModel,
     variant,
-    products: exactProducts(payload, matchedModel),
+    products: exactProducts(payload, matchedModel, caseIdentity),
   };
 }
 
-function productDocuments(product) {
+function productDocuments(product, caseIdentity) {
   if (Array.isArray(product?.manuals)) return product.manuals;
-  return Array.isArray(product?.documents) ? product.documents : [];
+  if (Array.isArray(product?.documents)) return product.documents;
+  if (requiredText(caseIdentity?.brand, 'target brand').toUpperCase() !== 'HISENSE') return [];
+  const additional = Array.isArray(product?.additionalManual)
+    ? product.additionalManual
+    : [product?.additionalManual];
+  return [
+    product?.specificationDoc,
+    product?.productManual,
+    product?.warrantyManual,
+    ...additional,
+  ].filter((document) => document && typeof document === 'object');
+}
+
+function canonicalLinkedUrl(value, baseUrl, label) {
+  const url = new URL(requiredText(value, label), baseUrl);
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new TypeError(`${label} must use trusted HTTPS`);
+  }
+  return url.toString();
 }
 
 export function officialMarketApiDimensions(payload, caseIdentity, provenance = null) {
@@ -124,11 +150,11 @@ export function verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentit
   try { payload = JSON.parse(buffer.toString('utf8')); } catch {
     throw new Error('official market API discovery artifact is invalid JSON');
   }
+  const discoveryUrl = canonicalUrl(provenance.discoveryUrl, 'official market API discovery URL');
   const artifactUrl = canonicalUrl(provenance.artifactUrl, 'discovered artifact URL');
   const selection = boundProductSelection(payload, caseIdentity, provenance);
   const matchedProducts = selection.products;
   if (!matchedProducts.length) throw new Error('official market API does not prove the declared model');
-  const discoveryUrl = canonicalUrl(provenance.discoveryUrl, 'official market API discovery URL');
   if (artifactUrl === discoveryUrl) {
     if (matchedProducts.length !== 1 || !officialMarketApiDimensions(payload, caseIdentity, provenance)) {
       throw new Error('official market API self-source lacks one complete declared-model dimension set');
@@ -136,8 +162,12 @@ export function verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentit
     return true;
   }
   const linked = matchedProducts.some((product) => (
-    productDocuments(product).some((manual) => {
-      try { return canonicalUrl(manual?.url, 'API artifact URL') === artifactUrl; } catch { return false; }
+    productDocuments(product, caseIdentity).some((manual) => {
+      try {
+        return canonicalLinkedUrl(manual?.url, discoveryUrl, 'API artifact URL') === artifactUrl;
+      } catch {
+        return false;
+      }
     })
   ));
   if (!linked) throw new Error('official market API model is missing the declared artifact link');

@@ -120,6 +120,10 @@ function brandKey(value) {
   return text(value, 'brand').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
 
+function modelKey(value, label = 'model') {
+  return text(value, label).toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
 function dimensions(value, label) {
   exactKeys(value, label, ['width', 'height', 'depth']);
   for (const axis of ['width', 'height', 'depth']) integer(value[axis], `${label}.${axis}`, 1);
@@ -250,7 +254,7 @@ function validateArtifactJob(value) {
   exactKeys(value, 'artifact job', [
     'jobId', 'sourceUrl', 'authorityBrand', 'authorityMode', 'acquisitionRoute',
     'priorityClass', 'targetIds',
-  ], ['sourceRole', 'requiredTargetIds']);
+  ], ['sourceRole', 'requiredTargetIds', 'discoveryProvenanceBindings']);
   text(value.jobId, 'artifact job ID');
   const sourceUrl = new URL(text(value.sourceUrl, 'artifact source URL'));
   if (sourceUrl.protocol !== 'https:' || sourceUrl.username || sourceUrl.password) {
@@ -266,6 +270,38 @@ function validateArtifactJob(value) {
     const requiredTargetIds = strings(value.requiredTargetIds, 'artifact requiredTargetIds');
     if (requiredTargetIds.some((targetId) => !targetIds.includes(targetId))) {
       throw new TypeError('artifact requiredTargetIds must be linked targetIds');
+    }
+  }
+  if (value.discoveryProvenanceBindings !== undefined) {
+    if (!Array.isArray(value.discoveryProvenanceBindings)
+      || value.discoveryProvenanceBindings.length === 0) {
+      throw new TypeError('artifact discoveryProvenanceBindings must be a non-empty array');
+    }
+    const boundTargetIds = new Set();
+    for (const binding of value.discoveryProvenanceBindings) {
+      exactKeys(binding, 'artifact discovery provenance binding', [
+        'targetId', 'targetModel', 'targetCategory', 'discoveryProvenance',
+      ]);
+      const targetId = text(binding.targetId, 'artifact discovery provenance target ID');
+      if (!targetIds.includes(targetId) || boundTargetIds.has(targetId)) {
+        throw new TypeError('artifact discovery provenance target binding invalid');
+      }
+      boundTargetIds.add(targetId);
+      text(binding.targetModel, 'artifact discovery provenance target model');
+      oneOf(binding.targetCategory, CATEGORIES, 'artifact discovery provenance target category');
+      const provenance = object(binding.discoveryProvenance, 'artifact discovery provenance');
+      if (provenance.schemaVersion !== 1 || text(provenance.market, 'artifact discovery market') !== 'AU') {
+        throw new TypeError('artifact discovery provenance must be schema v1 for AU');
+      }
+      text(provenance.method, 'artifact discovery method');
+      if (modelKey(provenance.requestedModel, 'artifact discovery requested model')
+        !== modelKey(binding.targetModel, 'artifact discovery target model')) {
+        throw new TypeError('artifact discovery provenance requested model mismatch');
+      }
+      const artifactUrl = new URL(text(provenance.artifactUrl, 'artifact discovery URL')).toString();
+      if (artifactUrl !== sourceUrl.toString()) {
+        throw new TypeError('artifact discovery provenance URL mismatch');
+      }
     }
   }
 }
@@ -420,6 +456,12 @@ export function validateHistoricalEvidenceRecoveryBatch(value) {
       const target = targets.get(targetId);
       if (!target) throw new TypeError(`artifact target missing: ${targetId}`);
       if (!target.candidateJobIds.includes(job.jobId)) throw new TypeError(`target candidate edge missing job ${job.jobId}`);
+    }
+    for (const binding of job.discoveryProvenanceBindings ?? []) {
+      const target = targets.get(binding.targetId);
+      if (binding.targetModel !== target.model || binding.targetCategory !== target.category) {
+        throw new TypeError(`artifact discovery provenance identity mismatch for ${binding.targetId}`);
+      }
     }
   }
   exactKeys(

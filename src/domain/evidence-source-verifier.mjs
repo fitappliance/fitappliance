@@ -14,10 +14,12 @@ import { verifyOfficialSupportApiDiscoveryEvidence } from './official-support-ap
 import {
   isStrictOfficialModelVariantApiSource,
   isStrictOfficialModelVariantPdfSource,
+  isStrictOfficialModelVariantProductPageSource,
   officialMarketApiModelVariant,
   officialProductMaterialModelVariant,
   strictOfficialModelVariantApiFailure,
   strictOfficialModelVariantPdfFailure,
+  strictOfficialModelVariantProductPageFailure,
 } from './official-model-variant-policy.mjs';
 
 export {
@@ -551,6 +553,12 @@ function normalizedSourceIdentity(source, caseIdentity, contentType) {
     return { ...identity, outcome, sourceModel };
   }
   if (contentType !== 'text/html') throw new TypeError('official marketing alias requires HTML, bound PDF, or bound API evidence');
+  if (source?.sourceType === 'official_model_variant_product_page') {
+    if (!isStrictOfficialModelVariantProductPageSource(source, identity)) {
+      throw new TypeError(`official model variant product-page binding invalid: ${strictOfficialModelVariantProductPageFailure(source, identity)}`);
+    }
+    return { ...identity, outcome, sourceModel };
+  }
   for (const required of ['document_title', 'canonical_source_model']) {
     if (!signalTypes.has(required)) throw new TypeError(`official marketing alias missing ${required}`);
   }

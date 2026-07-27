@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   auditHistoricalEvidenceRecovery,
   auditHistoricalEvidenceRecoveryBundle,
+  filterHistoricalAcceptanceBundleByReceiptReplayAudit,
 } from '../../src/domain/historical-evidence-recovery-audit.mjs';
 import { createEvidenceObjectStore } from '../../src/domain/evidence-recovery-state-store.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
@@ -15,20 +16,22 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArgs(argv) {
   const result = {
-    mode: 'online', results: null, output: null, bundle: null, queue: null, storageRoot: null, full: false,
+    mode: 'online', results: null, output: null, bundle: null, receiptAudit: null,
+    queue: null, storageRoot: null, full: false,
   };
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     if (raw === '--full') { result.full = true; continue; }
     const [flag, inline] = raw.includes('=') ? raw.split(/=(.*)/s, 2) : [raw, null];
-    if (!['--mode', '--results', '--output', '--bundle', '--queue', '--storage-root'].includes(flag)) {
+    if (!['--mode', '--results', '--output', '--bundle', '--receipt-audit', '--queue', '--storage-root'].includes(flag)) {
       throw new TypeError(`unknown argument: ${raw}`);
     }
     const value = inline ?? argv[++index];
     if (!value) throw new TypeError(`${flag} requires a value`);
     result[{
       '--mode': 'mode', '--results': 'results', '--output': 'output',
-      '--bundle': 'bundle', '--queue': 'queue', '--storage-root': 'storageRoot',
+      '--bundle': 'bundle', '--receipt-audit': 'receiptAudit',
+      '--queue': 'queue', '--storage-root': 'storageRoot',
     }[flag]] = value;
   }
   if (!['online', 'offline'].includes(result.mode)) throw new TypeError('--mode must be online or offline');
@@ -100,6 +103,9 @@ export async function runAuditCli(options) {
   const bundlePath = resolve(options.bundle ?? join(
     repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
   ));
+  const receiptAuditPath = resolve(options.receiptAudit ?? join(
+    repoRoot, 'data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json',
+  ));
   if (options.mode === 'offline') {
     const report = auditHistoricalEvidenceRecoveryBundle(await readJson(bundlePath));
     if (options.output) await durableWrite(resolve(options.output), report);
@@ -117,12 +123,16 @@ export async function runAuditCli(options) {
   const results = await readJson(resultsPath);
   const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', results.runId);
   const batch = await readJson(join(runDirectory, 'batch.json'));
-  const [state, queue, policy, priorBundle] = await Promise.all([
+  const [state, queue, policy, rawPriorBundle, priorReceiptAudit] = await Promise.all([
     readJson(join(runDirectory, 'state.json')),
     readBoundQueueSnapshot(batch, options.queue, runDirectory),
     readBoundPolicySnapshot(batch, runDirectory),
     readOptionalJson(bundlePath),
+    readOptionalJson(receiptAuditPath),
   ]);
+  const priorBundle = rawPriorBundle
+    ? filterHistoricalAcceptanceBundleByReceiptReplayAudit(rawPriorBundle, priorReceiptAudit).bundle
+    : null;
   const objectStore = createEvidenceObjectStore(storageRoot);
   const audit = await auditHistoricalEvidenceRecovery({
     mode: 'online', batch, results, state, queue, policy, priorBundle,

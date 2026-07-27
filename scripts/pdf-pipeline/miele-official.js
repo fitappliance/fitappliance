@@ -2,6 +2,7 @@ const { createHash } = require('node:crypto');
 
 const { findManualEvidenceSourceUrl } = require('./1-fetch');
 const { mieleModelMatchesSku, normalizeSku } = require('./parsers/miele');
+const manufacturerSourcePolicy = require('../../data/architecture-v2/policies/manufacturer-source-policy.json');
 
 const MIELE_SHOP_SEARCH_URL = 'https://shop.miele.com.au/INTERSHOP/web/WFS/Miele-AU-Site/en_AU/-/AUD/ViewParametricSearch-SimpleOfferSearch';
 const MIELE_DOMESTIC_DOWNLOAD_URL = 'https://www.miele.com.au/domestic/product-details-1995.htm?info=download';
@@ -18,6 +19,14 @@ function getTargetSku(target = {}) {
 
 function getTargetCategory(target = {}) {
   return normalizeCategory(target.category || target.cat || target.product?.cat);
+}
+
+function exactProductMaterialAlias(target = {}) {
+  const targetModel = normalizeSku(getTargetSku(target));
+  const category = getTargetCategory(target);
+  const aliases = manufacturerSourcePolicy.officialProductMaterialModelAliases?.miele?.[category];
+  if (!targetModel || !Array.isArray(aliases)) return null;
+  return aliases.find((entry) => normalizeSku(entry?.targetModel) === targetModel) ?? null;
 }
 
 function getEvidenceItems(entry) {
@@ -115,7 +124,7 @@ function findMieleManualEvidencePdf(target = {}, manualEvidence = {}) {
 
 function stripMieleColourSuffix(value) {
   const compact = normalizeSku(value);
-  for (const suffix of ['EDTCS', 'CLST', 'BRWS']) {
+  for (const suffix of ['EDTCS', 'CLST', 'BRWS', 'OBSW']) {
     if (compact.endsWith(suffix) && compact.length - suffix.length >= 4) {
       return compact.slice(0, -suffix.length);
     }
@@ -127,7 +136,7 @@ function formatMieleSearchModel(value) {
   const compact = normalizeSku(value);
   let stem = compact;
   let finish = '';
-  for (const suffix of ['EDTCS', 'CLST', 'BRWS']) {
+  for (const suffix of ['EDTCS', 'CLST', 'BRWS', 'OBSW']) {
     if (stem.endsWith(suffix) && stem.length - suffix.length >= 4) {
       finish = suffix;
       stem = stem.slice(0, -suffix.length);
@@ -136,14 +145,27 @@ function formatMieleSearchModel(value) {
   }
   const match = stem.match(/^([A-Z]{1,5})(\d{3,5})([A-Z0-9]*)$/);
   if (!match) return String(value || '').trim();
-  return [match[1], match[2], match[3], finish].filter(Boolean).join(' ');
+  let descriptor = match[3];
+  let size = '';
+  let feature = '';
+  if (descriptor.endsWith('K2O')) {
+    feature = 'K2O';
+    descriptor = descriptor.slice(0, -feature.length);
+    if (descriptor.endsWith('XXL')) {
+      size = 'XXL';
+      descriptor = descriptor.slice(0, -size.length);
+    }
+  }
+  return [match[1], match[2], descriptor, size, feature, finish].filter(Boolean).join(' ');
 }
 
 function buildMieleSearchQueries(target = {}) {
   const sku = getTargetSku(target);
   const compact = normalizeSku(sku);
   const stripped = stripMieleColourSuffix(sku);
+  const exactAlias = exactProductMaterialAlias(target);
   return [...new Set([
+    exactAlias?.pageModel,
     formatMieleSearchModel(compact),
     sku,
     formatMieleSearchModel(stripped),
@@ -177,14 +199,26 @@ function htmlText(value) {
 }
 
 function extractLeadingMieleModel(value) {
-  const match = htmlText(value).match(
+  const text = htmlText(value);
+  const match = text.match(
     /^\s*([A-Z]{1,5})\s*(\d{3,5})(?:\s+(SC(?:i|Vi)|[A-Z]{1,5})(?![a-z]))?(?:\s+(XXL)(?=\s|$))?/
   );
   if (!match) return null;
-  const parts = match.slice(1).filter(Boolean);
+  const trailing = text.slice(match[0].length);
+  const trailingFeature = /\bK2O\b/i.test(trailing) ? 'K2O' : null;
+  const parts = [...match.slice(1), trailingFeature].filter(Boolean);
+  const slashFinish = trailing.match(/^\s+edt\s*\/\s*(bs|cs)\b/i);
+  const separatedFinish = !slashFinish && normalizeSku(match[3]) === 'EDT'
+    ? trailing.match(/^\s+(BS|CS)\b/i)
+    : null;
+  const finish = String(slashFinish?.[1] ?? separatedFinish?.[1] ?? '').toUpperCase();
+  const modelLabel = [
+    ...parts,
+    slashFinish ? `edt/${finish.toLowerCase()}` : finish,
+  ].filter(Boolean).join(' ');
   return {
-    model: normalizeSku(parts.join(' ')),
-    modelLabel: parts.join(' '),
+    model: normalizeSku([...parts, finish].filter(Boolean).join(' ')),
+    modelLabel,
   };
 }
 
@@ -246,6 +280,12 @@ function productCategoryMatchesTarget(url, target = {}) {
 }
 
 function productRecordMatchesTarget(record, target = {}) {
+  const exactAlias = exactProductMaterialAlias(target);
+  if (exactAlias) {
+    return record?.materialNumber === String(exactAlias.materialNumber)
+      && record?.model === normalizeSku(exactAlias.pageModel)
+      && productCategoryMatchesTarget(record.sourceUrl, target);
+  }
   const targetModel = stripMieleColourSuffix(getTargetSku(target));
   return Boolean(targetModel)
     && record?.model === targetModel
@@ -342,7 +382,7 @@ function mieleSourceLanes({
   searchError,
   selectionError,
   pageProvenance,
-  pageError,
+  productPageError,
   resources,
 }) {
   const currentStatus = searchProvenance.length && !selectionError ? 'complete' : 'retryable';
@@ -356,12 +396,15 @@ function mieleSourceLanes({
   const documentCount = resources.filter((resource) => (
     resource.sourceLaneId === 'official_document_cdn'
   )).length;
-  const productStatus = productCount > 0 && pageProvenance.length >= 2 && !pageError
+  const productPagePersisted = pageProvenance.some((entry) => (
+    entry.method === 'official_product_page'
+  ));
+  const productStatus = productCount > 0 && productPagePersisted && !productPageError
     ? 'complete'
     : 'retryable';
   const productReason = productStatus === 'complete'
     ? null
-    : pageError || selectionError || 'Exact official product detail was not persisted.';
+    : productPageError || selectionError || 'Exact official product detail was not persisted.';
   const documentStatus = documentCount > 0 && productStatus === 'complete'
     ? 'complete'
     : 'retryable';
@@ -444,7 +487,7 @@ async function findMieleOfficialPdf(target = {}, {
         searchError: searchErrors[0] || null,
         selectionError,
         pageProvenance: [],
-        pageError: null,
+        productPageError: null,
         resources,
       }),
       reason: selectionError || searchErrors[0] || `Miele official Product Sheet not found for ${requestedModel}`,
@@ -456,6 +499,7 @@ async function findMieleOfficialPdf(target = {}, {
   const downloadUrl = `${MIELE_DOMESTIC_DOWNLOAD_URL}&${new URLSearchParams({ mat: materialNumber })}`;
   const pageProvenance = [];
   const pageErrors = [];
+  let productPageError = null;
   let productPageProvenance = null;
   let downloadHtml = '';
   try {
@@ -471,7 +515,8 @@ async function findMieleOfficialPdf(target = {}, {
       pageProvenance.push(provenance);
     }
   } catch (error) {
-    pageErrors.push(`${match.sourceUrl}: ${error.message}`);
+    productPageError = `${match.sourceUrl}: ${error.message}`;
+    pageErrors.push(productPageError);
   }
   try {
     downloadHtml = await fetchText(downloadUrl, { fetchImpl, timeoutMs, userAgent });
@@ -502,18 +547,25 @@ async function findMieleOfficialPdf(target = {}, {
     deterministicSpecUrl,
     ...linkedOfficialSheets.map((link) => link.sourceUrl),
   ])];
-  const materialDiscoveryProvenance = productPageProvenance ? {
+  const materialDiscoveryBase = productPageProvenance ? {
     schemaVersion: 1,
     method: 'official_product_material',
     market: 'AU',
     discoveryUrl: match.sourceUrl,
     requestedModel,
     matchedModel: match.modelLabel,
-    artifactUrl: deterministicSpecUrl,
     materialNumber,
     discoveryContentSha256: productPageProvenance.contentSha256,
     discoveryObjectPath: productPageProvenance.objectPath,
     discoveryByteSize: productPageProvenance.byteSize,
+  } : null;
+  const materialDiscoveryProvenance = materialDiscoveryBase ? {
+    ...materialDiscoveryBase,
+    artifactUrl: deterministicSpecUrl,
+  } : null;
+  const productPageDiscoveryProvenance = materialDiscoveryBase ? {
+    ...materialDiscoveryBase,
+    artifactUrl: match.sourceUrl,
   } : null;
   const resources = [
     {
@@ -521,6 +573,10 @@ async function findMieleOfficialPdf(target = {}, {
       resourceType: 'product_page',
       sourceLaneId: 'official_product_detail',
       sourceModelHint: match.modelLabel,
+      requiredAttempt: true,
+      ...(productPageDiscoveryProvenance
+        ? { discoveryProvenance: productPageDiscoveryProvenance }
+        : {}),
     },
     ...documentUrls.map((sourceUrl) => ({
       sourceUrl,
@@ -529,6 +585,7 @@ async function findMieleOfficialPdf(target = {}, {
         : 'user_manual',
       sourceLaneId: 'official_document_cdn',
       sourceModelHint: match.modelLabel,
+      requiredAttempt: true,
       ...(sourceUrl === deterministicSpecUrl && materialDiscoveryProvenance
         ? { discoveryProvenance: materialDiscoveryProvenance }
         : {}),
@@ -539,7 +596,7 @@ async function findMieleOfficialPdf(target = {}, {
     searchError: searchErrors[0] || null,
     selectionError: null,
     pageProvenance,
-    pageError: pageErrors[0] || null,
+    productPageError,
     resources,
   });
   return {

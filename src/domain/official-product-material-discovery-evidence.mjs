@@ -26,11 +26,40 @@ function modelKey(value) {
   return requiredText(value, 'model').toUpperCase().replace(/[^A-Z0-9]+/g, '');
 }
 
-function materialFromProductUrl(value) {
+function visibleText(value) {
+  return String(value ?? '').replace(/\s+/g, ' ').trim();
+}
+
+function productFinishCandidates($, relationship) {
+  const candidates = [visibleText($('title').text()), visibleText($('h1').text())];
+
+  $('[data-product-sku]').each((_, element) => {
+    if (visibleText($(element).attr('data-product-sku')) === relationship.materialNumber) {
+      candidates.push(visibleText($(element).text()));
+    }
+  });
+
+  $('dl.attribute-list-item').each((_, element) => {
+    const label = visibleText($(element).find('dt').first().text());
+    if (/^(?:(?:control panel|front|door|product)\s+)?(?:colour|color|finish)$/i.test(label)) {
+      candidates.push(visibleText($(element).find('dd').first().text()));
+    }
+  });
+
+  return candidates.filter(Boolean);
+}
+
+function materialFromProductUrl(value, caseIdentity) {
   const url = new URL(canonicalUrl(value, 'Miele product URL'));
+  const category = String(caseIdentity?.category ?? '').trim().toLowerCase();
+  const categoryPath = category === 'dishwasher'
+    ? /^\/en\/kitchen\/dishwashers\//i
+    : category === 'fridge'
+      ? /^\/en\/kitchen\/refrigeration\//i
+      : null;
   if (url.hostname.toLowerCase() !== 'shop.miele.com.au'
-    || !/^\/en\/kitchen\/dishwashers\//i.test(url.pathname)) {
-    throw new TypeError('Miele product URL is not an Australian dishwasher page');
+    || !categoryPath?.test(url.pathname)) {
+    throw new TypeError('Miele product URL is not an approved Australian category page');
   }
   const match = url.pathname.match(/-zid(\d{6,14})\/?$/i);
   if (!match) throw new TypeError('Miele product URL lacks a material number');
@@ -43,7 +72,18 @@ export function validateOfficialProductMaterialRelationship(provenance, caseIden
   if (modelKey(provenance.requestedModel) !== modelKey(targetModel)) {
     throw new TypeError('product-material requested model does not match target model');
   }
-  const variant = officialProductMaterialModelVariant(caseIdentity, provenance.matchedModel);
+  const matchedModel = requiredText(provenance.matchedModel, 'product-material source model');
+  const exactModel = modelKey(matchedModel) === modelKey(targetModel);
+  const variant = exactModel
+    ? {
+      relationshipKind: 'exact_model',
+      sourceModel: matchedModel.toUpperCase(),
+      pageModel: matchedModel.toUpperCase(),
+      suffix: null,
+      finishLabel: null,
+      pageFinishLabels: [],
+    }
+    : officialProductMaterialModelVariant(caseIdentity, matchedModel);
   if (!variant) throw new TypeError('product-material model variant is not policy approved');
 
   const materialNumber = requiredText(provenance.materialNumber, 'Miele material number');
@@ -51,21 +91,28 @@ export function validateOfficialProductMaterialRelationship(provenance, caseIden
     throw new TypeError('Miele material number invalid');
   }
   const discoveryUrl = canonicalUrl(provenance.discoveryUrl, 'Miele product discovery URL');
-  if (materialFromProductUrl(discoveryUrl) !== materialNumber) {
+  if (materialFromProductUrl(discoveryUrl, caseIdentity) !== materialNumber) {
     throw new TypeError('Miele product URL material binding invalid');
   }
+  if (variant.materialNumber && variant.materialNumber !== materialNumber) {
+    throw new TypeError('Miele product material does not match the exact alias policy');
+  }
   const artifactUrl = new URL(canonicalUrl(provenance.artifactUrl, 'Miele specification URL'));
-  if (artifactUrl.hostname.toLowerCase() !== 'www.miele.com.au'
-    || artifactUrl.pathname !== `/media/ex/au/specsheets/${materialNumber}.pdf`
-    || artifactUrl.search) {
+  const productPageSelfSource = artifactUrl.toString() === discoveryUrl;
+  const materialSpecification = artifactUrl.hostname.toLowerCase() === 'www.miele.com.au'
+    && artifactUrl.pathname === `/media/ex/au/specsheets/${materialNumber}.pdf`
+    && !artifactUrl.search;
+  if (!productPageSelfSource && !materialSpecification) {
     throw new TypeError('Miele specification material binding invalid');
   }
   return {
+    relationshipKind: variant.relationshipKind ?? 'model_variant',
     ...variant,
     targetModel,
     materialNumber,
     discoveryUrl,
     artifactUrl: artifactUrl.toString(),
+    artifactKind: productPageSelfSource ? 'product_page' : 'specification_sheet',
   };
 }
 
@@ -96,7 +143,11 @@ export function verifyOfficialProductMaterialDiscoveryEvidence(provenance, caseI
     throw new Error('Miele discovery page canonical URL does not match the bound product');
   }
   const identityText = [$('title').text(), $('h1').text()].join(' ');
-  if (!containsExactModel(identityText, relationship.sourceModel)) {
+  const pageModel = relationship.pageModel ?? relationship.sourceModel;
+  const comparableIdentityText = pageModel.endsWith('K2O')
+    ? identityText.replace(/\bAutoDos\b/gi, ' ')
+    : identityText;
+  if (!containsExactModel(comparableIdentityText, pageModel)) {
     throw new Error('Miele discovery page does not prove the bound source model');
   }
   const declaredSkus = new Set($('[data-product-sku]').map((_, element) => (
@@ -105,13 +156,19 @@ export function verifyOfficialProductMaterialDiscoveryEvidence(provenance, caseI
   if (!declaredSkus.has(relationship.materialNumber)) {
     throw new Error('Miele discovery page does not prove the bound material number');
   }
-  const pageText = [$('title').text(), $('h1').text(), $('body').text()].join(' ');
-  const finishPattern = new RegExp(
-    `(?:^|[^A-Z0-9])${relationship.finishLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:[^A-Z0-9]|$)`,
-    'i',
-  );
-  if (!finishPattern.test(pageText)) {
-    throw new Error('Miele discovery page does not prove the approved finish');
+  if (relationship.finishLabel) {
+    const finishLabels = relationship.pageFinishLabels?.length
+      ? relationship.pageFinishLabels
+      : [relationship.finishLabel];
+    const finishPatterns = finishLabels.map((label) => new RegExp(
+      `(?:^|[^A-Z0-9])${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:[^A-Z0-9]|$)`,
+      'i',
+    ));
+    if (!productFinishCandidates($, relationship).some((value) => (
+      finishPatterns.some((pattern) => pattern.test(value))
+    ))) {
+      throw new Error('Miele discovery page does not prove the approved finish');
+    }
   }
   return relationship;
 }

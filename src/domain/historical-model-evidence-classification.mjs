@@ -339,6 +339,12 @@ export function buildHistoricalModelEvidenceClassification(input) {
   const generatedAt = new Date(input?.generatedAt ?? '').toISOString();
   const policy = validateHistoricalModelEvidenceClassificationPolicy(input?.policy ?? DEFAULT_CLASSIFICATION_POLICY);
   const sourceBindings = normalizeSourceBindings(input?.sourceBindings);
+  const recoveryAttemptLedgerSha256 = input?.recoveryAttemptLedgerSha256 == null
+    ? null
+    : requireSha256(
+      input.recoveryAttemptLedgerSha256,
+      'classification recovery attempt ledger SHA-256',
+    );
   const references = Array.isArray(input?.historicalRecords) ? input.historicalRecords : [];
   if (references.length !== policy.expectedReferenceCount) {
     throw new Error(`historical classification expected ${policy.expectedReferenceCount} records; found ${references.length}`);
@@ -434,6 +440,7 @@ export function buildHistoricalModelEvidenceClassification(input) {
     schemaVersion: 1,
     policyVersion: policy.policyVersion,
     ...(sourceBindings ? { sourceBindings } : {}),
+    ...(recoveryAttemptLedgerSha256 ? { recoveryAttemptLedgerSha256 } : {}),
     summary,
     categorySummaries,
     topGaps,
@@ -444,6 +451,7 @@ export function buildHistoricalModelEvidenceClassification(input) {
     generatedAt,
     policyVersion: policy.policyVersion,
     ...(sourceBindings ? { sourceBindings } : {}),
+    ...(recoveryAttemptLedgerSha256 ? { recoveryAttemptLedgerSha256 } : {}),
     semanticClassificationSha256: canonicalJsonSha256(semantic),
     summary,
     categorySummaries,

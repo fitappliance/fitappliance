@@ -5,6 +5,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const {
   buildHisenseOccProductUrl,
+  findHisenseOfficialEvidence,
   findHisenseOfficialPdf,
   hisenseProductCodeMatchesSku,
   selectHisensePdfResource
@@ -17,6 +18,128 @@ function jsonResponse(payload, status = 200) {
     json: async () => payload
   };
 }
+
+function bodyResponse(body, {
+  status = 200,
+  url = 'https://hisense.com.au/',
+  contentType = 'application/json',
+} = {}) {
+  const bytes = Buffer.from(typeof body === 'string' ? body : JSON.stringify(body));
+  return {
+    ok: status >= 200 && status < 300,
+    status,
+    url,
+    headers: { get: (name) => name.toLowerCase() === 'content-type' ? contentType : null },
+    arrayBuffer: async () => bytes,
+  };
+}
+
+test('Hisense evidence finder completes bounded source lanes when an exact retired model has no live product', async () => {
+  const written = [];
+  const result = await findHisenseOfficialEvidence({
+    brand: 'Hisense',
+    sku: 'HRCD650SW',
+    category: 'fridge',
+  }, {
+    writeObject: async (objectPath, bytes) => written.push([objectPath, Buffer.from(bytes)]),
+    fetchImpl: async (url) => {
+      const value = String(url);
+      if (value === 'https://hisense.com.au/sitemap.xml') {
+        return bodyResponse(
+          '<sitemapindex><sitemap><loc>https://hisense.com.au/sitemap-products.xml</loc></sitemap></sitemapindex>',
+          { url: value, contentType: 'application/xml' },
+        );
+      }
+      if (value === 'https://hisense.com.au/sitemap-products.xml') {
+        return bodyResponse(
+          '<urlset><url><loc>https://hisense.com.au/product/HRCD585BW/current-fridge</loc></url></urlset>',
+          { url: value, contentType: 'application/xml' },
+        );
+      }
+      if (value.includes('/products/HRCD650SW?')) {
+        return bodyResponse({ errors: [{ type: 'UnknownIdentifierError' }] }, {
+          status: 400,
+          url: value,
+        });
+      }
+      if (value.includes('/products/search?')) {
+        return bodyResponse({ products: [], pagination: { totalResults: 0 } }, { url: value });
+      }
+      throw new Error(`Unexpected URL ${value}`);
+    },
+  });
+
+  assert.deepEqual(result.resources, []);
+  assert.deepEqual(result.sourceLanes.map((lane) => [lane.laneId, lane.status]), [
+    ['current_product', 'complete'],
+    ['discontinued_archive', 'unsupported'],
+    ['support_search_api', 'complete'],
+    ['official_document_cdn', 'complete'],
+    ['official_product_detail', 'complete'],
+  ]);
+  assert.equal(result.sourceLanes.find((lane) => lane.laneId === 'official_document_cdn').candidateCount, 0);
+  assert.ok(result.sourceLanes.filter((lane) => lane.status === 'complete')
+    .every((lane) => lane.provenance.length > 0));
+  assert.equal(written.length, 4);
+  assert.ok(written.every(([objectPath]) => /^evidence\/web\/sha256\/[a-f0-9]{2}\/[a-f0-9]{2}\/[a-f0-9]{64}\.(?:json|xml)$/.test(objectPath)));
+});
+
+test('Hisense evidence finder binds exact OCC documents and product detail to immutable discovery payloads', async () => {
+  const productPageUrl = 'https://hisense.com.au/product/HRBM418S/bottom-mount-fridge';
+  const specificationUrl = 'https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf';
+  const result = await findHisenseOfficialEvidence({
+    brand: 'Hisense',
+    sku: 'HRBM418S',
+    category: 'fridge',
+  }, {
+    writeObject: async () => {},
+    fetchImpl: async (url) => {
+      const value = String(url);
+      if (value === 'https://hisense.com.au/sitemap.xml') {
+        return bodyResponse(
+          '<sitemapindex><sitemap><loc>https://hisense.com.au/sitemap-products.xml</loc></sitemap></sitemapindex>',
+          { url: value, contentType: 'application/xml' },
+        );
+      }
+      if (value === 'https://hisense.com.au/sitemap-products.xml') {
+        return bodyResponse(`<urlset><url><loc>${productPageUrl}</loc></url></urlset>`, {
+          url: value,
+          contentType: 'application/xml',
+        });
+      }
+      if (value.includes('/products/HRBM418S?')) {
+        return bodyResponse({
+          code: 'HRBM418S',
+          name: 'Bottom Mount Fridge',
+          url: '/product/HRBM418S/bottom-mount-fridge',
+          specificationDoc: { name: 'HRBM418S-Spec.pdf', url: '/medias/HRBM418S-Spec.pdf' },
+          productManual: { name: 'HRBM418S-UM.pdf', url: '/medias/HRBM418S-UM.pdf' },
+        }, { url: value });
+      }
+      if (value.includes('/products/search?')) {
+        return bodyResponse({ products: [], pagination: { totalResults: 0 } }, { url: value });
+      }
+      if (value === productPageUrl) {
+        return bodyResponse('<html><body>Model No. HRBM418S</body></html>', {
+          url: value,
+          contentType: 'text/html',
+        });
+      }
+      throw new Error(`Unexpected URL ${value}`);
+    },
+  });
+
+  assert.equal(result.sourceUrl, specificationUrl);
+  assert.deepEqual(result.resources.map((resource) => [resource.resourceType, resource.sourceLaneId]), [
+    ['specification_doc', 'official_document_cdn'],
+    ['product_manual', 'official_document_cdn'],
+    ['product_page', 'official_product_detail'],
+  ]);
+  assert.equal(result.resources[0].discoveryProvenance.method, 'official_market_api');
+  assert.equal(result.resources[0].discoveryProvenance.artifactUrl, specificationUrl);
+  assert.equal(result.resources[2].discoveryProvenance.method, 'official_product_page');
+  assert.equal(result.sourceLanes.find((lane) => lane.laneId === 'official_document_cdn').candidateCount, 2);
+});
 
 test('Hisense official finder reads specificationDoc from the OCC product endpoint', async () => {
   const calls = [];

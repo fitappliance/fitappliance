@@ -109,6 +109,16 @@ function candidateId(candidate) {
   ].join('\0')).digest('hex').slice(0, 24)}`;
 }
 
+function discoveryProvenanceSemanticSha256(value) {
+  const {
+    discoveryContentSha256: _discoveryContentSha256,
+    discoveryObjectPath: _discoveryObjectPath,
+    discoveryByteSize: _discoveryByteSize,
+    ...semanticBinding
+  } = value;
+  return canonicalJsonSha256(semanticBinding);
+}
+
 function resolverDescriptor(resolver, index) {
   if (typeof resolver === 'function') {
     return {
@@ -223,7 +233,7 @@ function classifyAcquisitionFailure(error) {
   const message = String(error?.message ?? error);
   const code = String(error?.code ?? '').toLowerCase();
   const haystack = `${code} ${message}`.toLowerCase();
-  if (/identity|exact model|sibling|family manual/.test(haystack)) {
+  if (/identity|exact model|sibling|family manual|approved finish|finish proof|product-material model variant|product-page binding|canonical source-model/.test(haystack)) {
     return { status: 'identity_rejected', failureCode: 'identity', reason: message };
   }
   if (/claim|field coverage|supported evidence/.test(haystack)) {
@@ -409,10 +419,11 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
       current.requiredAttempt ||= candidate.requiredAttempt;
       if (candidate.discoveryProvenance) {
         if (current.discoveryProvenance
-          && canonicalJsonSha256(current.discoveryProvenance) !== canonicalJsonSha256(candidate.discoveryProvenance)) {
+          && discoveryProvenanceSemanticSha256(current.discoveryProvenance)
+            !== discoveryProvenanceSemanticSha256(candidate.discoveryProvenance)) {
           throw new TypeError('conflicting discovery provenance for duplicate candidate URL');
         }
-        current.discoveryProvenance = structuredClone(candidate.discoveryProvenance);
+        current.discoveryProvenance ??= structuredClone(candidate.discoveryProvenance);
       }
       if (candidate.batchJobId) current.batchJobIds.add(candidate.batchJobId);
       current.resolverRefs.push({

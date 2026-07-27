@@ -468,6 +468,43 @@ test('all required schema-v2 source lanes must complete before candidates or zer
   input.discoveryRuns[0] = rebindDiscoveryRun(input.discoveryRuns[0]);
   assert.equal(target(buildHistoricalOfficialCandidateManifest(input), 'no-100').state, 'NO_CANDIDATE_COMPLETE');
 
+  const accessory = fixture();
+  accessory.resolverContractsByReference.set('no-100', input.resolverContractsByReference.get('no-100'));
+  accessory.discoveryRuns[0].targets[1].resolvers = [{
+    ...input.discoveryRuns[0].targets[1].resolvers[0],
+    failures: [{
+      code: 'official_non_appliance_accessory',
+      sourceUrl: 'https://manuals.alpha.example/accessories/NO-100.html',
+      message: 'Official exact-model page identifies an accessory.',
+    }],
+  }];
+  const stale = fixture();
+  stale.discoveryRuns[0].targets[1].resolvers[0].candidates = [{
+    sourceUrl: 'https://manuals.alpha.example/accessories/NO-100.html',
+    resolverId: 'alpha-official',
+    resolverVersion: '1',
+    discoveryMethod: 'official_product_page',
+    documentType: 'product_page',
+    sourceModelHint: 'NO-100',
+    authorityMode: 'official',
+    sourceRole: 'manufacturer_product_page',
+    requiredAttempt: true,
+    batchJobId: null,
+  }];
+  stale.discoveryRuns[0] = rebindDiscoveryRun(stale.discoveryRuns[0]);
+  accessory.priorManifest = buildHistoricalOfficialCandidateManifest(stale);
+  accessory.discoveryRuns[0].runId = 'candidate-canary-20260719-v2';
+  accessory.discoveryRuns[0].completedAt = '2026-07-19T01:02:00.000Z';
+  accessory.discoveryRuns[0] = rebindDiscoveryRun(accessory.discoveryRuns[0]);
+  const accessoryManifest = buildHistoricalOfficialCandidateManifest(accessory);
+  const accessoryTarget = target(accessoryManifest, 'no-100');
+  assert.equal(accessoryTarget.state, 'NO_CANDIDATE_COMPLETE');
+  assert.deepEqual(accessoryTarget.terminalReasonCodes, ['official_non_appliance_accessory']);
+  assert.deepEqual(accessoryTarget.candidateEdges, []);
+  assert.ok(accessoryManifest.candidates.every((candidate) => (
+    !candidate.applicableReferenceIds.includes('no-100')
+  )));
+
   const partial = fixture();
   partial.resolverContractsByReference.set('no-100', input.resolverContractsByReference.get('no-100'));
   partial.discoveryRuns[0].targets[1].resolvers = [{

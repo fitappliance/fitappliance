@@ -13,9 +13,10 @@ const { findLgOfficialPdf } = require('./lg-official.js');
 const { findElectroluxGroupFactsheet } = require('./electrolux-group-official.js');
 const { findHaierOfficialPdf } = require('./haier-official.js');
 const { findSamsungOfficialPdf } = require('./samsung-official.js');
+const { findSmegOfficialEvidence } = require('./smeg-official.js');
 const { findBekoOfficialPdf } = require('./beko-official.js');
 const { findAskoOfficialPdf } = require('./asko-official.js');
-const { findHisenseOfficialPdf } = require('./hisense-official.js');
+const { findHisenseOfficialEvidence } = require('./hisense-official.js');
 const { findMieleOfficialPdf } = require('./miele-official.js');
 const { findLiebherrOfficialPdf } = require('./liebherr-official.js');
 const { findMideaOfficialPdf } = require('./midea-official.js');
@@ -26,11 +27,20 @@ const { findEuromaidOfficialPdf } = require('./euromaid-official.js');
 const { findInaltoOfficialPdf } = require('./inalto-official.js');
 const { findKoganOfficialPdf } = require('./kogan-official.js');
 const { findOmegaOfficialPdf } = require('./omega-official.js');
+const { findWestinghouseOfficialPdf } = require('./westinghouse-official.js');
 const { findRobinhoodOfficialPdf } = require('./robinhood-official.js');
 const { findSubZeroOfficialPdf } = require('./sub-zero-official.js');
 const { findTecoOfficialPdf } = require('./teco-official.js');
 const { findVogueOfficialPdf } = require('./vogue-official.js');
 const { findBoschOfficialPdf } = require('./bosch-official.js');
+
+const FISHER_PAYKEL_OFFICIAL_SOURCE_LANES = Object.freeze([
+  { laneId: 'current_product', required: true, supported: true },
+  { laneId: 'discontinued_archive', required: true, supported: true },
+  { laneId: 'support_search_api', required: true, supported: true },
+  { laneId: 'official_document_cdn', required: true, supported: true },
+  { laneId: 'official_product_detail', required: true, supported: true },
+]);
 
 function exactTarget(caseRecord) {
   const brand = String(caseRecord?.brand ?? '').trim();
@@ -419,17 +429,31 @@ export function createFisherPaykelResolverAdapter(options = {}) {
   const finder = options.finder ?? findFisherPaykelOfficialPdf;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'fisher-paykel-official-support',
-    version: '6',
-    scope: 'exact_model_product_page_and_support_documents',
+    version: '8',
+    scope: 'exact_model_au_product_support_archive_and_document_source_lanes',
     required: true,
+    sourceLanes: FISHER_PAYKEL_OFFICIAL_SOURCE_LANES,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
       if (/[*?]/.test(target.model)) {
-        return { completion: 'complete', candidates: [], failures: [] };
+        const reason = 'Exact model is required for Fisher & Paykel source-lane discovery.';
+        return {
+          completion: 'retryable',
+          sourceLanes: FISHER_PAYKEL_OFFICIAL_SOURCE_LANES.map((lane) => ({
+            ...lane,
+            status: 'retryable',
+            candidateCount: 0,
+            provenance: [],
+            reason,
+          })),
+          candidates: [],
+          failures: [{ code: 'exact_model_required', message: reason }],
+        };
       }
       try {
         const result = await finder(target, options.finderOptions ?? {});
-        const listedResources = result.resources ?? [];
+        const accessory = result.productIdentityFinding?.classification === 'NON_APPLIANCE_ACCESSORY';
+        const listedResources = accessory ? [] : result.resources ?? [];
         const matchingPrimary = listedResources.find((resource) => resource?.url === result.sourceUrl);
         const resources = [
           matchingPrimary ?? (result.sourceUrl ? {
@@ -449,9 +473,13 @@ export function createFisherPaykelResolverAdapter(options = {}) {
             sourceModelHint: modelHint,
             targetModel: target.model,
             discoveryProvenance: resource.discoveryProvenance ?? null,
+            category: target.category,
+            requiredAttempt: resource.requiredAttempt ?? true,
+            sourceLaneId: resource.sourceLaneId ?? 'official_document_cdn',
           });
         });
-        if (result.productPageUrl) {
+        if (!accessory && result.productPageUrl
+          && !resources.some((resource) => resource.url === result.productPageUrl)) {
           candidates.push(typedCandidate({
             sourceUrl: result.productPageUrl,
             brand: target.brand,
@@ -459,11 +487,55 @@ export function createFisherPaykelResolverAdapter(options = {}) {
             documentType: 'product_page',
             sourceModelHint: target.model,
             requiredAttempt: hasLowerAuthorityDimensionConflict(caseRecord),
+            category: target.category,
+            discoveryProvenance: result.productPageDiscoveryProvenance ?? null,
+            sourceLaneId: 'official_product_detail',
           }));
         }
-        return { completion: 'complete', candidates: uniqueCandidates(candidates), failures: [] };
+        const unique = uniqueCandidates(candidates);
+        const emittedById = new Map((result.sourceLanes ?? []).map((lane) => [lane.laneId, lane]));
+        const sourceLanes = FISHER_PAYKEL_OFFICIAL_SOURCE_LANES.map((descriptor) => {
+          const emitted = emittedById.get(descriptor.laneId);
+          const reason = 'Finder did not emit this declared Fisher & Paykel source-lane outcome.';
+          return {
+            ...descriptor,
+            status: emitted?.status ?? 'retryable',
+            candidateCount: unique.filter((candidate) => candidate.sourceLaneId === descriptor.laneId).length,
+            provenance: emitted?.provenance ?? [],
+            reason: emitted ? emitted.reason : reason,
+          };
+        });
+        const completion = sourceLanes.every((lane) => lane.status === 'complete')
+          ? 'complete'
+          : 'retryable';
+        const failures = [
+          ...(accessory ? [{
+            code: 'official_non_appliance_accessory',
+            sourceUrl: result.productIdentityFinding.sourceUrl,
+            message: `Official exact-model product page classifies ${target.model} as an accessory, not a complete appliance.`,
+          }] : []),
+          ...sourceLanes
+            .filter((lane) => lane.status === 'retryable')
+            .map((lane) => ({
+              code: 'source_lane_retryable',
+              message: `${lane.laneId}: ${lane.reason}`,
+            })),
+        ];
+        return { completion, sourceLanes, candidates: unique, failures };
       } catch (error) {
-        return completionFromError(error);
+        const message = String(error?.message ?? error);
+        return {
+          completion: 'retryable',
+          sourceLanes: FISHER_PAYKEL_OFFICIAL_SOURCE_LANES.map((lane) => ({
+            ...lane,
+            status: 'retryable',
+            candidateCount: 0,
+            provenance: [],
+            reason: message,
+          })),
+          candidates: [],
+          failures: [{ code: 'resolver_failed', message }],
+        };
       }
     },
   });
@@ -594,6 +666,18 @@ export function createElectroluxGroupResolverAdapter(options = {}) {
   });
 }
 
+export function createElectroluxResolverAdapter(options = {}) {
+  return createLegacyFinderResolverAdapter({
+    brandKey: 'electrolux',
+    resolverId: 'electrolux-official-discovery',
+    version: '4',
+    scope: 'electrolux_au_sitemap_exact_product_detail_and_unwrapped_document_lanes',
+    sourceLanes: ELECTROLUX_OFFICIAL_SOURCE_LANES,
+    finder: options.finder ?? findElectroluxGroupFactsheet,
+    finderOptions: options.finderOptions ?? {},
+  });
+}
+
 export function createBoschResolverAdapter(options = {}) {
   const finder = options.finder ?? findBoschOfficialPdf;
   return createEvidenceSourceResolverAdapter({
@@ -662,38 +746,145 @@ const MIELE_OFFICIAL_SOURCE_LANES = Object.freeze([
   Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
 ]);
 
+const HAIER_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: false, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: true }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const BEKO_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: false, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const ELECTROLUX_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const CHIQ_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const HISENSE_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const OMEGA_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: true, supported: true }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const WESTINGHOUSE_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: true, supported: true }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const SAMSUNG_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
+const SMEG_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
 const LEGACY_RESOLVER_PROFILES = new Map([
   ['asko', { optionKey: 'asko', brandKey: 'asko', resolverId: 'asko-official-manuals-api', finder: findAskoOfficialPdf }],
   ['haier', {
     optionKey: 'haier',
     brandKey: 'haier',
     resolverId: 'haier-official-discovery',
-    version: '5',
-    scope: 'haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages',
+    version: '6',
+    scope: 'haier_au_exact_product_support_document_source_lanes',
+    sourceLanes: HAIER_OFFICIAL_SOURCE_LANES,
     finder: findHaierOfficialPdf,
   }],
-  ['samsung', { optionKey: 'samsung', brandKey: 'samsung', resolverId: 'samsung-official-discovery', finder: findSamsungOfficialPdf }],
+  ['samsung', {
+    optionKey: 'samsung',
+    brandKey: 'samsung',
+    resolverId: 'samsung-official-discovery',
+    version: '4',
+    scope: 'samsung_au_exact_sitemap_support_page_product_detail_and_document_lanes',
+    sourceLanes: SAMSUNG_OFFICIAL_SOURCE_LANES,
+    finder: findSamsungOfficialPdf,
+  }],
+  ['smeg', {
+    optionKey: 'smeg',
+    brandKey: 'smeg',
+    resolverId: 'smeg-official-discovery',
+    version: '2',
+    scope: 'smeg_au_exact_sitemap_product_detail_and_catalog_document_lanes',
+    sourceLanes: SMEG_OFFICIAL_SOURCE_LANES,
+    finder: findSmegOfficialEvidence,
+  }],
   ['beko', {
     optionKey: 'beko',
     brandKey: 'beko',
     resolverId: 'beko-official-discovery',
-    version: '2',
-    scope: 'beko_au_exact_support_search_result_and_product_documents',
+    version: '3',
+    scope: 'beko_au_exact_support_search_product_detail_and_document_lanes',
+    sourceLanes: BEKO_OFFICIAL_SOURCE_LANES,
     finder: findBekoOfficialPdf,
   }],
-  ['hisense', { optionKey: 'hisense', brandKey: 'hisense', resolverId: 'hisense-official-discovery', finder: findHisenseOfficialPdf }],
+  ['hisense', {
+    optionKey: 'hisense',
+    brandKey: 'hisense',
+    resolverId: 'hisense-official-discovery',
+    version: '2',
+    scope: 'hisense_au_exact_sitemap_occ_product_detail_and_document_lanes',
+    sourceLanes: HISENSE_OFFICIAL_SOURCE_LANES,
+    finder: findHisenseOfficialEvidence,
+  }],
   ['miele', {
     optionKey: 'miele',
     brandKey: 'miele',
     resolverId: 'miele-official-discovery',
-    version: '4',
-    scope: 'miele_au_product_material_bound_specification_and_context_lanes',
+    version: '7',
+    scope: 'miele_au_product_material_bound_required_product_page_and_specification_lanes',
     sourceLanes: MIELE_OFFICIAL_SOURCE_LANES,
     finder: findMieleOfficialPdf,
   }],
   ['liebherr', { optionKey: 'liebherr', brandKey: 'liebherr', resolverId: 'liebherr-official-discovery', finder: findLiebherrOfficialPdf }],
   ['midea', { optionKey: 'midea', brandKey: 'midea', resolverId: 'midea-official-discovery', finder: findMideaOfficialPdf }],
-  ['chiq', { optionKey: 'chiq', brandKey: 'chiq', resolverId: 'chiq-official-discovery', finder: findChiqOfficialPdf }],
+  ['chiq', {
+    optionKey: 'chiq',
+    brandKey: 'chiq',
+    resolverId: 'chiq-official-discovery',
+    version: '2',
+    scope: 'chiq_au_exact_shopify_search_product_detail_and_document_lanes',
+    sourceLanes: CHIQ_OFFICIAL_SOURCE_LANES,
+    finder: findChiqOfficialPdf,
+  }],
   ['artusi', { optionKey: 'artusi', brandKey: 'artusi', resolverId: 'artusi-official-discovery', finder: findArtusiOfficialPdf }],
   ['esatto', {
     optionKey: 'esatto',
@@ -707,7 +898,24 @@ const LEGACY_RESOLVER_PROFILES = new Map([
   ['euromaid', { optionKey: 'euromaid', brandKey: 'euromaid', resolverId: 'euromaid-official-discovery', finder: findEuromaidOfficialPdf }],
   ['inalto', { optionKey: 'inalto', brandKey: 'inalto', resolverId: 'inalto-official-discovery', finder: findInaltoOfficialPdf }],
   ['kogan', { optionKey: 'kogan', brandKey: 'kogan', resolverId: 'kogan-official-discovery', finder: findKoganOfficialPdf }],
-  ['omega', { optionKey: 'omega', brandKey: 'omega', resolverId: 'omega-official-discovery', finder: findOmegaOfficialPdf }],
+  ['omega', {
+    optionKey: 'omega',
+    brandKey: 'omega',
+    resolverId: 'omega-official-discovery',
+    version: '3',
+    scope: 'omega_au_sitemap_current_archive_exact_product_detail_and_document_lanes',
+    sourceLanes: OMEGA_OFFICIAL_SOURCE_LANES,
+    finder: findOmegaOfficialPdf,
+  }],
+  ['westinghouse', {
+    optionKey: 'westinghouse',
+    brandKey: 'westinghouse',
+    resolverId: 'westinghouse-official-discovery',
+    version: '5',
+    scope: 'westinghouse_au_sitemap_current_archive_exact_product_detail_and_document_lanes',
+    sourceLanes: WESTINGHOUSE_OFFICIAL_SOURCE_LANES,
+    finder: findWestinghouseOfficialPdf,
+  }],
   ['robinhood', { optionKey: 'robinhood', brandKey: 'robinhood', resolverId: 'robinhood-official-discovery', finder: findRobinhoodOfficialPdf }],
   ['subzero', { optionKey: 'subZero', brandKey: 'sub-zero', resolverId: 'sub-zero-official-discovery', finder: findSubZeroOfficialPdf }],
   ['teco', { optionKey: 'teco', brandKey: 'teco', resolverId: 'teco-official-discovery', finder: findTecoOfficialPdf }],
@@ -719,9 +927,8 @@ export function resolverAdapterIdsForBrand(value) {
   if (brand === 'bosch') return ['bosch-official-product-documents'];
   if (brand === 'fisherpaykel') return ['fisher-paykel-official-support'];
   if (brand === 'lg') return ['lg-official-support'];
-  if (['electrolux', 'westinghouse', 'kelvinator'].includes(brand)) {
-    return ['electrolux-group-official-factsheet'];
-  }
+  if (brand === 'electrolux') return ['electrolux-official-discovery'];
+  if (brand === 'kelvinator') return ['electrolux-group-official-factsheet'];
   const profile = LEGACY_RESOLVER_PROFILES.get(brand);
   if (profile) return [profile.resolverId];
   return hasDeterministicModelTemplate(brand)
@@ -734,9 +941,8 @@ export function buildArchitectureV2ResolverAdapters(caseRecord, options = {}) {
   if (brand === 'bosch') return [createBoschResolverAdapter(options.bosch)];
   if (brand === 'fisherpaykel') return [createFisherPaykelResolverAdapter(options.fisherPaykel)];
   if (brand === 'lg') return [createLgResolverAdapter(options.lg)];
-  if (['electrolux', 'westinghouse', 'kelvinator'].includes(brand)) {
-    return [createElectroluxGroupResolverAdapter(options.electroluxGroup)];
-  }
+  if (brand === 'electrolux') return [createElectroluxResolverAdapter(options.electrolux)];
+  if (brand === 'kelvinator') return [createElectroluxGroupResolverAdapter(options.electroluxGroup)];
   const profile = LEGACY_RESOLVER_PROFILES.get(brand);
   if (profile) {
     const overrides = options[profile.optionKey] ?? {};

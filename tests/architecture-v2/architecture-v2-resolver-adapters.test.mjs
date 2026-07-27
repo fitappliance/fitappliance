@@ -12,18 +12,51 @@ import {
   resolverAdapterIdsForBrand,
 } from '../../scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs';
 
+function withFisherPaykelSourceLanes(result, requestedModel) {
+  const hash = 'f'.repeat(64);
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://www.fisherpaykel.com/au/search/',
+    requestedModel,
+    contentType: 'text/html',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/ff/ff/${hash}.html`,
+    byteSize: 100,
+  };
+  return {
+    ...result,
+    sourceLanes: [
+      'current_product',
+      'discontinued_archive',
+      'support_search_api',
+      'official_document_cdn',
+      'official_product_detail',
+    ].map((laneId) => ({
+      laneId,
+      required: true,
+      supported: true,
+      status: 'complete',
+      candidateCount: 0,
+      provenance: [provenance],
+      reason: null,
+    })),
+  };
+}
+
 test('Fisher and Paykel adapter maps discovery metadata without parsed facts', async () => {
   const calls = [];
   const adapter = createFisherPaykelResolverAdapter({
     finder: async (target) => {
       calls.push(target);
-      return {
+      return withFisherPaykelSourceLanes({
         sourceUrl: 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-123.pdf',
         productPageUrl: 'https://www.fisherpaykel.com/au/laundry/washing-machines/WD8560F1.html',
         matchedSku: 'WD8560F1',
         resourceType: 'Quick Reference Guide',
         dimensions: { widthMm: 600, heightMm: 850, depthMm: 645 },
-      };
+      }, 'WD8560F1');
     },
   });
   const result = await adapter.resolve({ brand: 'Fisher & Paykel', model: 'WD8560F1' });
@@ -34,6 +67,43 @@ test('Fisher and Paykel adapter maps discovery metadata without parsed facts', a
     ['product_page', 'WD8560F1'],
   ]);
   assert.equal('dimensions' in result.candidates[0], false);
+});
+
+test('Fisher and Paykel adapter emits a typed terminal accessory finding without an appliance candidate', async () => {
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://www.fisherpaykel.com/au/accessories/cooling-accessories/door-panel-rd80u-25622.html',
+    requestedModel: 'RD80U',
+    contentType: 'text/html',
+    contentSha256: 'a'.repeat(64),
+    objectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.html`,
+    byteSize: 200,
+  };
+  const adapter = createFisherPaykelResolverAdapter({
+    finder: async () => withFisherPaykelSourceLanes({
+      productIdentityFinding: {
+        classification: 'NON_APPLIANCE_ACCESSORY',
+        reasonCode: 'official_non_appliance_accessory',
+        sourceUrl: provenance.discoveryUrl,
+      },
+      resources: [],
+      sourceLanes: [
+        { laneId: 'current_product', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [provenance], reason: null },
+        { laneId: 'discontinued_archive', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [provenance], reason: null },
+        { laneId: 'support_search_api', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [provenance], reason: null },
+        { laneId: 'official_document_cdn', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [provenance], reason: null },
+        { laneId: 'official_product_detail', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [provenance], reason: null },
+      ],
+    }, 'RD80U'),
+  });
+
+  const result = await adapter.resolve({ brand: 'Fisher & Paykel', model: 'RD80U', category: 'fridge' });
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates, []);
+  assert.equal(result.failures[0].code, 'official_non_appliance_accessory');
 });
 
 test('Fisher and Paykel adapter preserves exact archived support API provenance', async () => {
@@ -50,7 +120,7 @@ test('Fisher and Paykel adapter preserves exact archived support API provenance'
     documentId: 'ka0exact',
   };
   const adapter = createFisherPaykelResolverAdapter({
-    finder: async () => ({
+    finder: async () => withFisherPaykelSourceLanes({
       sourceUrl: artifactUrl,
       resourceType: 'Installation Guide',
       matchedSku: 'DW60CDW2',
@@ -59,7 +129,7 @@ test('Fisher and Paykel adapter preserves exact archived support API provenance'
         type: 'installation_manual',
         discoveryProvenance,
       }],
-    }),
+    }, 'DW60CDW2'),
   });
 
   const result = await adapter.resolve({
@@ -85,7 +155,7 @@ test('Fisher and Paykel adapter excludes sibling resources discovered through a 
     artifactUrl: exactArtifact,
   };
   const adapter = createFisherPaykelResolverAdapter({
-    finder: async () => ({
+    finder: async () => withFisherPaykelSourceLanes({
       sourceUrl: exactArtifact,
       resourceType: 'installation_manual',
       matchedSku: 'RF610ADUQSX4',
@@ -105,7 +175,7 @@ test('Fisher and Paykel adapter excludes sibling resources discovered through a 
           discoveryProvenance,
         },
       ],
-    }),
+    }, 'RF610ADUQSX4'),
   });
 
   const result = await adapter.resolve({
@@ -123,7 +193,7 @@ test('Fisher and Paykel adapter excludes sibling resources discovered through a 
 test('Fisher and Paykel adapter excludes parts-only support resources from dimension discovery', async () => {
   const partsUrl = 'https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80914-A-DW60CHW1.pdf';
   const adapter = createFisherPaykelResolverAdapter({
-    finder: async () => ({
+    finder: async () => withFisherPaykelSourceLanes({
       sourceUrl: partsUrl,
       resourceType: 'parts_manual',
       matchedSku: 'DW60CHW1',
@@ -132,7 +202,7 @@ test('Fisher and Paykel adapter excludes parts-only support resources from dimen
         type: 'parts_manual',
         evidenceScope: 'exact_model_identity_article',
       }],
-    }),
+    }, 'DW60CHW1'),
   });
 
   const result = await adapter.resolve({
@@ -146,12 +216,12 @@ test('Fisher and Paykel adapter excludes parts-only support resources from dimen
 
 test('Fisher and Paykel adapter requires the exact product page when lower-authority dimensions conflict', async () => {
   const adapter = createFisherPaykelResolverAdapter({
-    finder: async () => ({
+    finder: async () => withFisherPaykelSourceLanes({
       sourceUrl: 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-93296.pdf',
       productPageUrl: 'https://www.fisherpaykel.com/au/laundry/dryers/dh9060hg1-93296.html',
       matchedSku: 'DH9060HG1',
       resourceType: 'Quick Reference Guide',
-    }),
+    }, 'DH9060HG1'),
   });
   const result = await adapter.resolve({
     brand: 'Fisher & Paykel',
@@ -351,11 +421,103 @@ test('Electrolux group adapter does not request wildcard family tokens as exact 
   assert.deepEqual(result.candidates, []);
 });
 
+test('Electrolux router declares typed sitemap, product-detail and document lanes', () => {
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Electrolux', model: 'EFE4227SC-L', category: 'fridge' },
+    { electrolux: { finder: async () => null } },
+  );
+  assert.equal(adapter.resolverId, 'electrolux-official-discovery');
+  assert.equal(adapter.schemaVersion, 2);
+  assert.equal(adapter.version, '4');
+  assert.equal(adapter.scope, 'electrolux_au_sitemap_exact_product_detail_and_unwrapped_document_lanes');
+  assert.deepEqual(adapter.sourceLanes, [
+    { laneId: 'current_product', required: true, supported: true },
+    { laneId: 'discontinued_archive', required: false, supported: false },
+    { laneId: 'support_search_api', required: false, supported: false },
+    { laneId: 'official_document_cdn', required: true, supported: true },
+    { laneId: 'official_product_detail', required: true, supported: true },
+  ]);
+});
+
+test('Westinghouse router emits schema-v2 product and document source lanes', async () => {
+  const productUrl = 'https://www.westinghouse.com.au/dishwashing/dishwashers/wsf6608xa/';
+  const documentUrl = 'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6608XA&brand=Westinghouse';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productUrl,
+    requestedModel: 'WSF6608XA',
+    matchedModel: 'WSF6608XA',
+    artifactUrl: documentUrl,
+    artifactLinkUrl: documentUrl,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.html`,
+    discoveryByteSize: 100,
+  };
+  const sitemapProvenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://www.westinghouse.com.au/sitemap.xml',
+    requestedModel: 'WSF6608XA',
+    contentType: 'application/xml',
+    contentSha256: 'b'.repeat(64),
+    objectPath: `evidence/web/sha256/bb/bb/${'b'.repeat(64)}.xml`,
+    byteSize: 200,
+  };
+  const pageProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productUrl,
+    requestedModel: 'WSF6608XA',
+    contentType: 'text/html',
+    contentSha256: 'a'.repeat(64),
+    objectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.html`,
+    byteSize: 100,
+  };
+  const sourceLanes = [
+    { laneId: 'current_product', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [sitemapProvenance], reason: null },
+    { laneId: 'discontinued_archive', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [sitemapProvenance], reason: null },
+    { laneId: 'support_search_api', required: false, supported: false, status: 'unsupported', candidateCount: 0, provenance: [], reason: 'No supported API.' },
+    { laneId: 'official_document_cdn', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: [pageProvenance], reason: null },
+    { laneId: 'official_product_detail', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: [pageProvenance], reason: null },
+  ];
+  const [adapter] = buildArchitectureV2ResolverAdapters({
+    brand: 'Westinghouse', model: 'WSF6608XA', category: 'dishwasher',
+  }, {
+    westinghouse: {
+      finder: async () => ({
+        sourceUrl: documentUrl,
+        resourceType: 'fact_sheet',
+        discoveryProvenance: provenance,
+        resources: [
+          { sourceUrl: productUrl, resourceType: 'product_page', sourceLaneId: 'official_product_detail', sourceModelHint: 'WSF6608XA', discoveryProvenance: { ...provenance, artifactUrl: productUrl, artifactLinkUrl: productUrl } },
+          { sourceUrl: documentUrl, resourceType: 'fact_sheet', sourceLaneId: 'official_document_cdn', sourceModelHint: 'WSF6608XA', discoveryProvenance: provenance },
+        ],
+        sourceLanes,
+      }),
+    },
+  });
+  const result = await adapter.resolve({ brand: 'Westinghouse', model: 'WSF6608XA', category: 'dishwasher' });
+
+  assert.equal(adapter.resolverId, 'westinghouse-official-discovery');
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(result.version, '5');
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.sourceLanes, sourceLanes);
+  assert.deepEqual(result.candidates.map((candidate) => [candidate.sourceLaneId, candidate.sourceUrl]), [
+    ['official_document_cdn', documentUrl],
+    ['official_product_detail', productUrl],
+  ]);
+});
+
 test('adapter router enables only compatible pilot brand discovery', () => {
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'LG', model: 'WD1275A1' })
     .map((row) => row.resolverId), ['lg-official-support']);
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'Westinghouse', model: 'WHE5264SC' })
-    .map((row) => row.resolverId), ['electrolux-group-official-factsheet']);
+    .map((row) => row.resolverId), ['westinghouse-official-discovery']);
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'Samsung', model: 'WW90T504DAW' })
     .map((row) => row.resolverId), ['samsung-official-discovery']);
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'ASKO', model: 'T408HD.W' })
@@ -364,9 +526,99 @@ test('adapter router enables only compatible pilot brand discovery', () => {
     .map((row) => row.resolverId), ['bosch-official-product-documents']);
 });
 
+test('Samsung adapter declares complete per-target AU product and document lanes', async () => {
+  const hash = 'd'.repeat(64);
+  const productUrl = 'https://www.samsung.com/au/refrigerators/example-srf7500bb/';
+  const documentUrl = 'https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&ModelName=SRF7500BB';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productUrl,
+    requestedModel: 'SRF7500BB',
+    matchedModel: 'SRF7500BB',
+    artifactUrl: documentUrl,
+    artifactLinkUrl: documentUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/dd/dd/${hash}.html`,
+    discoveryByteSize: 500,
+  };
+  const pageLaneProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productUrl,
+    requestedModel: 'SRF7500BB',
+    contentType: 'text/html',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/dd/dd/${hash}.html`,
+    byteSize: 500,
+  };
+  const supportSearchProvenance = {
+    schemaVersion: 1,
+    method: 'official_support_search_api',
+    market: 'AU',
+    discoveryUrl: 'https://esapi.samsung.com/support/search/suggestdetail/v6?siteCd=au&suggestionValue=SRF7500BB',
+    requestedModel: 'SRF7500BB',
+    contentType: 'application/json',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/dd/dd/${hash}.json`,
+    byteSize: 500,
+  };
+  const sourceLanes = [
+    { laneId: 'current_product', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [{
+      schemaVersion: 1, method: 'official_sitemap', market: 'AU', discoveryUrl: 'https://www.samsung.com/au/da-sitemap.xml', requestedModel: 'SRF7500BB', contentType: 'application/xml', contentSha256: hash, objectPath: `evidence/web/sha256/dd/dd/${hash}.xml`, byteSize: 500,
+    }], reason: null },
+    { laneId: 'discontinued_archive', required: false, supported: false, status: 'unsupported', candidateCount: 0, provenance: [], reason: 'unsupported' },
+    { laneId: 'support_search_api', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: [supportSearchProvenance], reason: null },
+    { laneId: 'official_document_cdn', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: [pageLaneProvenance], reason: null },
+    { laneId: 'official_product_detail', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: [pageLaneProvenance], reason: null },
+  ];
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Samsung', model: 'SRF7500BB', category: 'fridge' },
+    { samsung: { finder: async () => ({
+      sourceUrl: documentUrl,
+      matchedSku: 'SRF7500BB',
+      resourceType: 'user_manual',
+      sourceLaneId: 'official_document_cdn',
+      requiredAttempt: true,
+      discoveryProvenance: provenance,
+      resources: [{
+        sourceUrl: documentUrl,
+        resourceType: 'user_manual',
+        sourceModelHint: 'SRF7500BB',
+        sourceLaneId: 'official_document_cdn',
+        requiredAttempt: true,
+        discoveryProvenance: provenance,
+      }, {
+        sourceUrl: productUrl,
+        resourceType: 'product_page',
+        documentType: 'product_page',
+        sourceModelHint: 'SRF7500BB',
+        sourceLaneId: 'official_product_detail',
+        requiredAttempt: true,
+        discoveryProvenance: {
+          ...provenance,
+          artifactUrl: productUrl,
+          artifactLinkUrl: productUrl,
+        },
+      }],
+      sourceLanes,
+    }) } },
+  );
+  const result = await adapter.resolve({ brand: 'Samsung', model: 'SRF7500BB', category: 'fridge' });
+
+  assert.equal(adapter.schemaVersion, 2);
+  assert.equal(adapter.version, '4');
+  assert.equal(adapter.scope, 'samsung_au_exact_sitemap_support_page_product_detail_and_document_lanes');
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.sourceLanes, sourceLanes);
+  assert.equal(result.candidates[0].sourceModelHint, 'SRF7500BB');
+});
+
 test('queue routing exposes specialized Bosch discovery and core discovery for remaining deterministic templates', () => {
   assert.deepEqual(resolverAdapterIdsForBrand('Bosch'), ['bosch-official-product-documents']);
-  assert.deepEqual(resolverAdapterIdsForBrand('Smeg'), ['architecture-v2-core-official-discovery']);
+  assert.deepEqual(resolverAdapterIdsForBrand('Smeg'), ['smeg-official-discovery']);
   assert.deepEqual(resolverAdapterIdsForBrand('Unknown Brand'), []);
 });
 
@@ -520,14 +772,20 @@ test('Miele adapter declares schema-v2 lanes and preserves bounded official obse
       sourceUrl: documentUrl,
       sourceLanes,
       resources: [
-        { sourceUrl: productUrl, resourceType: 'product_page', sourceLaneId: 'official_product_detail' },
-        { sourceUrl: documentUrl, resourceType: 'specification_sheet', sourceLaneId: 'official_document_cdn' },
+        {
+          sourceUrl: productUrl, resourceType: 'product_page', sourceLaneId: 'official_product_detail',
+          requiredAttempt: true,
+        },
+        {
+          sourceUrl: documentUrl, resourceType: 'specification_sheet', sourceLaneId: 'official_document_cdn',
+          requiredAttempt: true,
+        },
       ],
     }) } },
   );
 
   assert.equal(adapter.schemaVersion, 2);
-  assert.equal(adapter.version, '4');
+  assert.equal(adapter.version, '7');
   const result = await adapter.resolve({
     brand: 'Miele', model: 'G7130SCCLST', category: 'dishwasher',
   });
@@ -542,7 +800,7 @@ test('Miele adapter declares schema-v2 lanes and preserves bounded official obse
     candidate.sourceLaneId === 'official_product_detail'
   ));
   assert.equal(productPage.sourceRole, 'manufacturer_product_page');
-  assert.equal(productPage.requiredAttempt, false);
+  assert.equal(productPage.requiredAttempt, true);
 });
 
 test('Esatto adapter preserves the schema-v2 source-lane contract and candidate observations', async () => {
@@ -584,6 +842,53 @@ test('Esatto adapter preserves the schema-v2 source-lane contract and candidate 
 
   assert.equal(result.schemaVersion, 2);
   assert.equal(result.version, '2');
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.sourceLanes, sourceLanes);
+  assert.deepEqual(result.candidates.map((candidate) => [candidate.sourceLaneId, candidate.sourceUrl]), [
+    ['official_document_cdn', documentUrl],
+    ['official_product_detail', productUrl],
+  ]);
+});
+
+test('Omega adapter preserves Australian sitemap, archive, product and document lanes', async () => {
+  const hash = 'a'.repeat(64);
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://omegaappliances.com.au/sitemap.xml',
+    requestedModel: 'ODW101W',
+    contentType: 'application/xml',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/aa/aa/${hash}.xml`,
+    byteSize: 450,
+  };
+  const sourceLanes = [
+    ['current_product', true, true, 'complete', 0, [provenance], null],
+    ['discontinued_archive', true, true, 'complete', 0, [provenance], null],
+    ['support_search_api', false, false, 'unsupported', 0, [], 'No supported search API.'],
+    ['official_document_cdn', true, true, 'complete', 1, [provenance], null],
+    ['official_product_detail', true, true, 'complete', 1, [provenance], null],
+  ].map(([laneId, required, supported, status, candidateCount, laneProvenance, reason]) => ({
+    laneId, required, supported, status, candidateCount, provenance: laneProvenance, reason,
+  }));
+  const documentUrl = 'https://omegaappliances.com.au/s/ODW101W_Specsheet_40.pdf';
+  const productUrl = 'https://omegaappliances.com.au/dishwashers/p/55cm-freestanding-benchtop-dishwasher-odw101w';
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Omega', model: 'ODW101W', category: 'dishwasher' },
+    { omega: { finder: async () => ({
+      sourceUrl: documentUrl,
+      sourceLanes,
+      resources: [
+        { sourceUrl: documentUrl, resourceType: 'specification_sheet', sourceLaneId: 'official_document_cdn' },
+        { sourceUrl: productUrl, resourceType: 'product_page', sourceLaneId: 'official_product_detail' },
+      ],
+    }) } },
+  );
+  const result = await adapter.resolve({ brand: 'Omega', model: 'ODW101W', category: 'dishwasher' });
+
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(result.version, '3');
   assert.equal(result.completion, 'complete');
   assert.deepEqual(result.sourceLanes, sourceLanes);
   assert.deepEqual(result.candidates.map((candidate) => [candidate.sourceLaneId, candidate.sourceUrl]), [
@@ -796,14 +1101,125 @@ test('generic adapter does not mistake an AEM ProductCatalog directory for a cat
   ]);
 });
 
-test('Beko resolver uses the deterministic AU support-search contract epoch', () => {
+test('Beko resolver exposes typed AU support, product-detail and document lanes', async () => {
+  const hash = 'a'.repeat(64);
+  const laneProvenance = [{
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://www.beko.com/au-en/home-appliances/dishwasher/bdf1640ax',
+    requestedModel: 'BDF1640AX',
+    contentType: 'text/html',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/aa/aa/${hash}.html`,
+    byteSize: 100,
+  }];
+  const sourceLanes = [
+    { laneId: 'current_product', required: false, supported: true, status: 'complete', candidateCount: 1, provenance: laneProvenance },
+    {
+      laneId: 'discontinued_archive', required: false, supported: false,
+      status: 'unsupported', candidateCount: 0, provenance: [],
+      reason: 'The bounded Beko resolver does not enumerate an archive.',
+    },
+    { laneId: 'support_search_api', required: true, supported: true, status: 'complete', candidateCount: 0, provenance: laneProvenance },
+    { laneId: 'official_document_cdn', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: laneProvenance },
+    { laneId: 'official_product_detail', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: laneProvenance },
+  ];
   const [adapter] = buildArchitectureV2ResolverAdapters(
     { brand: 'Beko', model: 'BDF1640AX', category: 'dishwasher' },
-    { beko: { finder: async () => null } },
+    { beko: { finder: async () => ({
+      sourceUrl: 'https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf',
+      resourceType: 'specification_sheet',
+      sourceLanes,
+      resources: [{
+        url: 'https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf',
+        resourceType: 'specification_sheet',
+        sourceLaneId: 'official_document_cdn',
+        sourceModelHint: 'BDF1640AX',
+        discoveryProvenance: {
+          schemaVersion: 1,
+          method: 'official_product_page',
+          market: 'AU',
+          discoveryUrl: 'https://www.beko.com/au-en/home-appliances/dishwasher/bdf1640ax',
+          requestedModel: 'BDF1640AX',
+          matchedModel: 'BDF1640AX',
+          artifactUrl: 'https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf',
+          artifactLinkUrl: 'https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf',
+          discoveryContentSha256: hash,
+          discoveryObjectPath: `evidence/web/sha256/aa/aa/${hash}.html`,
+          discoveryByteSize: 100,
+        },
+      }],
+    }) } },
   );
   assert.equal(adapter.resolverId, 'beko-official-discovery');
+  assert.equal(adapter.schemaVersion, 2);
+  assert.equal(adapter.version, '3');
+  assert.equal(adapter.scope, 'beko_au_exact_support_search_product_detail_and_document_lanes');
+  const result = await adapter.resolve({ brand: 'Beko', model: 'BDF1640AX', category: 'dishwasher' });
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.sourceLanes.map((lane) => [lane.laneId, lane.status]), [
+    ['current_product', 'complete'],
+    ['discontinued_archive', 'unsupported'],
+    ['support_search_api', 'complete'],
+    ['official_document_cdn', 'complete'],
+    ['official_product_detail', 'complete'],
+  ]);
+  assert.equal(result.candidates[0].sourceLaneId, 'official_document_cdn');
+});
+
+test('CHIQ resolver declares the exact Shopify product source-lane epoch', () => {
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'CHIQ', model: 'CSR125DW', category: 'fridge' },
+    { chiq: { finder: async () => null } },
+  );
+  assert.equal(adapter.resolverId, 'chiq-official-discovery');
+  assert.equal(adapter.schemaVersion, 2);
   assert.equal(adapter.version, '2');
-  assert.equal(adapter.scope, 'beko_au_exact_support_search_result_and_product_documents');
+  assert.equal(adapter.scope, 'chiq_au_exact_shopify_search_product_detail_and_document_lanes');
+  assert.deepEqual(adapter.sourceLanes, [
+    { laneId: 'current_product', required: true, supported: true },
+    { laneId: 'discontinued_archive', required: false, supported: false },
+    { laneId: 'support_search_api', required: true, supported: true },
+    { laneId: 'official_document_cdn', required: true, supported: true },
+    { laneId: 'official_product_detail', required: true, supported: true },
+  ]);
+});
+
+test('Smeg resolver declares exact sitemap, product-detail and document source lanes', () => {
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge' },
+    { smeg: { finder: async () => null } },
+  );
+  assert.equal(adapter.resolverId, 'smeg-official-discovery');
+  assert.equal(adapter.schemaVersion, 2);
+  assert.equal(adapter.version, '2');
+  assert.equal(adapter.scope, 'smeg_au_exact_sitemap_product_detail_and_catalog_document_lanes');
+  assert.deepEqual(adapter.sourceLanes, [
+    { laneId: 'current_product', required: true, supported: true },
+    { laneId: 'discontinued_archive', required: false, supported: false },
+    { laneId: 'support_search_api', required: false, supported: false },
+    { laneId: 'official_document_cdn', required: true, supported: true },
+    { laneId: 'official_product_detail', required: true, supported: true },
+  ]);
+});
+
+test('Hisense resolver declares bounded sitemap, OCC and product-document source lanes', () => {
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Hisense', model: 'HRCD650SW', category: 'fridge' },
+    { hisense: { finder: async () => null } },
+  );
+  assert.equal(adapter.resolverId, 'hisense-official-discovery');
+  assert.equal(adapter.schemaVersion, 2);
+  assert.equal(adapter.version, '2');
+  assert.equal(adapter.scope, 'hisense_au_exact_sitemap_occ_product_detail_and_document_lanes');
+  assert.deepEqual(adapter.sourceLanes, [
+    { laneId: 'current_product', required: true, supported: true },
+    { laneId: 'discontinued_archive', required: false, supported: false },
+    { laneId: 'support_search_api', required: true, supported: true },
+    { laneId: 'official_document_cdn', required: true, supported: true },
+    { laneId: 'official_product_detail', required: true, supported: true },
+  ]);
 });
 
 test('generic adapter accepts object product-page entries without fabricating URLs', async () => {
@@ -819,7 +1235,7 @@ test('generic adapter accepts object product-page entries without fabricating UR
   assert.equal(result.candidates[0].documentType, 'product_page');
 });
 
-test('Haier resolver v5 binds target-ready and archived-taxonomy support provenance', async () => {
+test('Haier resolver v6 binds target-ready schema-v2 source lanes and support provenance', async () => {
   const artifactLinkUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuKH/bvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4';
   const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000000001&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw0000000001&dpt=';
   const discoveryUrl = 'https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-8875';
@@ -837,6 +1253,17 @@ test('Haier resolver v5 binds target-ready and archived-taxonomy support provena
     discoveryObjectPath: `evidence/web/sha256/aa/aa/${hash}.html`,
     discoveryByteSize: 100,
   };
+  const laneProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl,
+    requestedModel: 'HDW9TFE3SS',
+    contentType: 'text/html',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/aa/aa/${hash}.html`,
+    byteSize: 100,
+  };
   const [adapter] = buildArchitectureV2ResolverAdapters(
     { brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' },
     { haier: { finder: async () => ({
@@ -846,16 +1273,26 @@ test('Haier resolver v5 binds target-ready and archived-taxonomy support provena
       resources: [{
         url: artifactUrl,
         resourceType: 'installation_guide',
+        sourceLaneId: 'official_document_cdn',
         discoveryProvenance,
       }],
+      sourceLanes: [
+        { laneId: 'current_product', required: false, supported: true, status: 'retryable', candidateCount: 0, provenance: [], reason: 'Not inspected.' },
+        { laneId: 'discontinued_archive', required: false, supported: true, status: 'complete', candidateCount: 0, provenance: [laneProvenance], reason: null },
+        { laneId: 'support_search_api', required: false, supported: false, status: 'unsupported', candidateCount: 0, provenance: [], reason: 'No public API.' },
+        { laneId: 'official_document_cdn', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: [laneProvenance], reason: null },
+        { laneId: 'official_product_detail', required: true, supported: true, status: 'complete', candidateCount: 1, provenance: [laneProvenance], reason: null },
+      ],
     }) } },
   );
   const result = await adapter.resolve({ brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' });
 
-  assert.equal(result.version, '5');
-  assert.equal(result.scope, 'haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages');
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(result.completion, 'complete');
+  assert.equal(result.version, '6');
+  assert.equal(result.scope, 'haier_au_exact_product_support_document_source_lanes');
   assert.equal(result.candidates[0].authorityMode, 'official');
-  assert.equal(result.candidates[0].resolverVersion, '5');
+  assert.equal(result.candidates[0].resolverVersion, '6');
   assert.deepEqual(result.candidates[0].discoveryProvenance.artifactUrl, artifactUrl);
 });
 

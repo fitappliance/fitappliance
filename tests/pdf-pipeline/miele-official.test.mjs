@@ -24,6 +24,22 @@ test('Miele search queries restore the official spaced model form from compact c
   ]);
 });
 
+test('Miele search queries separate the proven Obsidian Black catalogue finish suffix', () => {
+  assert.deepEqual(buildMieleSearchQueries({ sku: 'G7719SCIXXLOBSW' }), [
+    'G 7719 SCIXXL OBSW',
+    'G7719SCIXXLOBSW',
+    'G 7719 SCIXXL',
+    'G7719SCIXXL',
+  ]);
+});
+
+test('Miele search queries preserve and space the Knock2open model token', () => {
+  assert.deepEqual(buildMieleSearchQueries({ sku: 'G7989SCVIXXLK2O' }), [
+    'G 7989 SCVI XXL K2O',
+    'G7989SCVIXXLK2O',
+  ]);
+});
+
 test('Miele manual-evidence finder can use conservative family suffix matches', () => {
   const manualEvidence = {
     products: {
@@ -262,6 +278,207 @@ test('Miele official finder preserves the XXL marker after an integrated model t
   assert.equal(found.resources[0].sourceModelHint, 'G 7609 SCi XXL');
   assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('99999999')));
   assert.ok(found.sourceLanes.filter((lane) => lane.required).every((lane) => lane.status === 'complete'));
+});
+
+test('Miele official finder preserves an explicit edt/bs finish and rejects the edt/cs sibling', async () => {
+  const blackSteelUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/';
+  const cleanSteelUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/freezers/fns-4782-edt-cs-zid11953250/';
+  const productCard = (url, material, title) => `
+    <a class="product-title" data-product-sku="${material}" href="${url}">
+      <span>${title}</span>
+    </a>
+  `;
+  const searchHtml = [
+    productCard(cleanSteelUrl, '11953250', 'FNS 4782 EDT CS Freestanding freezer'),
+    productCard(blackSteelUrl, '12430770', 'FNS 4782 E edt/bs'),
+  ].join('');
+  const productHtml = '<h1>FNS 4782 E edt/bs</h1>';
+  const downloadHtml = '<h1>Downloads for FNS 4782 E edt/bs</h1>';
+
+  assert.deepEqual(extractMieleProductRecords(searchHtml).map((record) => ({
+    materialNumber: record.materialNumber,
+    model: record.model,
+    modelLabel: record.modelLabel,
+  })), [
+    {
+      materialNumber: '11953250',
+      model: 'FNS4782EDTCS',
+      modelLabel: 'FNS 4782 EDT CS',
+    },
+    {
+      materialNumber: '12430770',
+      model: 'FNS4782EBS',
+      modelLabel: 'FNS 4782 E edt/bs',
+    },
+  ]);
+
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele',
+    sku: 'FNS4782EBS',
+    category: 'fridge',
+  }, {
+    writeObject: async () => {},
+    fetchImpl: async (url) => {
+      if (String(url).includes('product-details-1995')) {
+        return { ok: false, status: 410, text: async () => '' };
+      }
+      return {
+        ok: true,
+        text: async () => (
+          String(url).includes('ViewParametricSearch') ? searchHtml : productHtml
+        ),
+      };
+    },
+  });
+
+  assert.equal(found.materialNumber, '12430770');
+  assert.equal(found.productUrl, blackSteelUrl);
+  assert.equal(found.resources[0].sourceModelHint, 'FNS 4782 E edt/bs');
+  assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('11953250')));
+  assert.ok(found.sourceLanes.filter((lane) => lane.required).every((lane) => lane.status === 'complete'));
+  assert.match(found.reason, /HTTP 410/);
+});
+
+test('Miele official finder binds the retailer CleanSteel SKU only to material 11949580 and requires both official sources', async () => {
+  const cleanSteelUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fridges/freestanding-fridges/ks-4783-edt-cs-zid11949580/';
+  const blackSteelUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fridges/freestanding-fridges/ks-4783-edt-bs-zid12431300/';
+  const siblingUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fridges/freestanding-fridges/ks-4383-edt-cs-zid99999999/';
+  const productCard = (url, material, title) => `
+    <a class="product-title" data-product-sku="${material}" href="${url}">
+      <span>${title}</span>
+    </a>
+  `;
+  const searchHtml = [
+    productCard(blackSteelUrl, '12431300', 'KS 4783 EDT BS Freestanding refrigerator'),
+    productCard(cleanSteelUrl, '11949580', 'KS 4783 EDT CS Freestanding refrigerator'),
+    productCard(siblingUrl, '99999999', 'KS 4383 EDT CS Freestanding refrigerator'),
+  ].join('');
+  const productHtml = `<html><head><title>KS 4783 EDT CS</title>
+    <link rel="canonical" href="${cleanSteelUrl}"></head><body>
+    <h1>KS 4783 EDT CS</h1><div data-product-sku="11949580"></div>
+    <dl class="attribute-list-item"><dt>Front colour</dt><dd>Stainless steel/CleanSteel</dd></dl>
+    </body></html>`;
+  const downloadHtml = '<h1>Downloads for KS 4783 EDT CS</h1>';
+
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele', sku: 'KS4783EDETCCS', category: 'fridge',
+  }, {
+    writeObject: async () => {},
+    fetchImpl: async (url) => ({
+      ok: true,
+      text: async () => (
+        String(url).includes('ViewParametricSearch')
+          ? searchHtml
+          : String(url).includes('product-details-1995')
+            ? downloadHtml
+            : productHtml
+      ),
+    }),
+  });
+
+  assert.equal(found.materialNumber, '11949580');
+  assert.equal(found.productUrl, cleanSteelUrl);
+  assert.equal(found.sourceUrl, 'https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf');
+  assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('12431300')));
+  assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('99999999')));
+  const productPage = found.resources.find((resource) => resource.resourceType === 'product_page');
+  const productSheet = found.resources.find((resource) => resource.resourceType === 'specification_sheet');
+  assert.equal(productPage.requiredAttempt, true);
+  assert.equal(productPage.discoveryProvenance.method, 'official_product_material');
+  assert.equal(productPage.discoveryProvenance.artifactUrl, cleanSteelUrl);
+  assert.equal(productPage.discoveryProvenance.materialNumber, '11949580');
+  assert.equal(productSheet.requiredAttempt, true);
+  assert.equal(productSheet.discoveryProvenance.artifactUrl,
+    'https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf');
+});
+
+test('Miele official finder binds OBSW only to the exact Obsidian Black material', async () => {
+  const exactProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7719-sci-xxl-autodos-zid12531710/';
+  const siblingProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7719-sci-autodos-zid99999999/';
+  const productCard = (url, material, title) => `
+    <a class="product-title" data-product-sku="${material}" href="${url}">
+      <span>${title}</span>
+    </a>
+  `;
+  const searchHtml = [
+    productCard(exactProductUrl, '12531710', 'G 7719 SCi XXL AutoDos'),
+    productCard(siblingProductUrl, '99999999', 'G 7719 SCi AutoDos'),
+  ].join('');
+  const productHtml = '<h1>G 7719 SCi XXL AutoDos</h1><dl><dt>Control panel colour</dt><dd>Obsidian Black</dd></dl>';
+  const downloadHtml = '<h1>Downloads for G 7719 SCi XXL</h1>';
+
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele',
+    sku: 'G7719SCIXXLOBSW',
+    category: 'dishwasher',
+  }, {
+    writeObject: async () => {},
+    fetchImpl: async (url) => ({
+      ok: true,
+      text: async () => (
+        String(url).includes('ViewParametricSearch')
+          ? searchHtml
+          : String(url).includes('product-details-1995')
+            ? downloadHtml
+            : productHtml
+      ),
+    }),
+  });
+
+  assert.equal(found.materialNumber, '12531710');
+  assert.equal(found.productUrl, exactProductUrl);
+  assert.equal(found.sourceUrl, 'https://www.miele.com.au/media/ex/au/specsheets/12531710.pdf');
+  assert.equal(found.resources[0].sourceModelHint, 'G 7719 SCi XXL');
+  assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('99999999')));
+});
+
+test('Miele official finder binds a K2O exact model across bounded AutoDos title ordering', async () => {
+  const exactProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/fully-integrated-dishwashers/g-7989-scvi-xxl-autodos-k2o-zid12531740/';
+  const siblingProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/fully-integrated-dishwashers/g-7989-scvi-xxl-autodos-zid99999999/';
+  const productCard = (url, material, title) => `
+    <a class="product-title" data-product-sku="${material}" href="${url}">
+      <span>${title}</span>
+    </a>
+  `;
+  const searchHtml = [
+    productCard(exactProductUrl, '12531740', 'G 7989 SCVi XXL AutoDos K2O'),
+    productCard(siblingProductUrl, '99999999', 'G 7989 SCVi XXL AutoDos'),
+  ].join('');
+  const productHtml = '<h1>G 7989 SCVi XXL AutoDos K2O</h1>';
+  const downloadHtml = '<h1>Downloads for G 7989 SCVi XXL AutoDos K2O</h1>';
+
+  assert.deepEqual(extractMieleProductRecords(searchHtml).map((record) => ({
+    materialNumber: record.materialNumber,
+    model: record.model,
+    modelLabel: record.modelLabel,
+  })), [
+    { materialNumber: '12531740', model: 'G7989SCVIXXLK2O', modelLabel: 'G 7989 SCVi XXL K2O' },
+    { materialNumber: '99999999', model: 'G7989SCVIXXL', modelLabel: 'G 7989 SCVi XXL' },
+  ]);
+
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele',
+    sku: 'G7989SCVIXXLK2O',
+    category: 'dishwasher',
+  }, {
+    writeObject: async () => {},
+    fetchImpl: async (url) => ({
+      ok: true,
+      text: async () => (
+        String(url).includes('ViewParametricSearch')
+          ? searchHtml
+          : String(url).includes('product-details-1995')
+            ? downloadHtml
+            : productHtml
+      ),
+    }),
+  });
+
+  assert.equal(found.materialNumber, '12531740');
+  assert.equal(found.productUrl, exactProductUrl);
+  assert.equal(found.sourceUrl, 'https://www.miele.com.au/media/ex/au/specsheets/12531740.pdf');
+  assert.equal(found.resources[0].sourceModelHint, 'G 7989 SCVi XXL K2O');
+  assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('99999999')));
 });
 
 test('Miele official finder fails closed when one model stem maps to multiple materials', async () => {

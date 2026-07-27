@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-19.20",
+  "policyVersion": "2026-07-26.23",
   "queueSchemaVersion": 2,
   "supportedReceiptSchemaVersions": [2, 3],
   "supportedClaimSemanticsVersions": [1, 2],
@@ -24,7 +24,7 @@
   "limits": {
     "timeoutMs": 30000,
     "resolverTimeoutMs": 120000,
-    "maximumBytes": 20971520,
+    "maximumBytes": 33554432,
     "maximumRedirects": 5
   },
   "lock": {
@@ -40,7 +40,7 @@
     "name": "MinerU",
     "version": "3.4.4",
     "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-    "claimParserRevision": "2026-07-19.20",
+    "claimParserRevision": "2026-07-26.22",
     "backend": "pipeline",
     "method": "auto",
     "tableEnabled": true,

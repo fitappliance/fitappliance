@@ -100,6 +100,8 @@ test('Miele model matcher allows safe suffix variants but rejects broad or unrel
   assert.equal(mieleModelMatchesSku('G6XXX', 'G 6xxx'), false);
   assert.equal(mieleModelMatchesSku('G4203SCIACTIVE', 'G 5000'), false);
   assert.equal(mieleModelMatchesSku('KFNS37452IDE', 'KFNS 37452 iDE'), true);
+  assert.equal(mieleModelMatchesSku('FNS 4782 E edt/bs', 'FNS4782EBS'), true);
+  assert.equal(mieleModelMatchesSku('FNS 4782 E edt/cs', 'FNS4782EBS'), false);
 });
 
 test('Miele alias extractor reads lowercase model suffixes and underscore-wrapped URL model tokens', () => {

@@ -200,6 +200,20 @@ test('binds only complete target inventory terminals and records accurate reopen
   assert.deepEqual(noSource.reopeningConditions, ['EXPLICIT_OFFICIAL_CANDIDATE_ADDED']);
 });
 
+test('projects an official non-appliance finding as identity quarantine instead of no-source', () => {
+  const input = fixture();
+  const deferred = input.executableQueue.deferredTargets.find((target) => target.referenceId === 'ref-6');
+  deferred.dispositionReason = 'NO_CANDIDATE_COMPLETE';
+  deferred.terminalReasonCodes = ['official_non_appliance_accessory'];
+  input.executableQueue.summary.suppressedPriorResolverOnlyTargets = 1;
+  input.executableQueue.summary.excluded.NO_CANDIDATE_COMPLETE = 1;
+
+  const record = byReference(buildHistoricalEvidenceTargetState(input), 'ref-6');
+  assert.equal(record.state, 'IDENTITY_QUARANTINE');
+  assert.equal(record.binding.terminalReasonCode, 'official_non_appliance_accessory');
+  assert.deepEqual(record.reopeningConditions, ['OFFICIAL_PRODUCT_CLASSIFICATION_CHANGED']);
+});
+
 test('an executable target outranks a stale target-level terminal attempt', () => {
   const input = fixture();
   input.executableQueue.discoveryTargets.push({

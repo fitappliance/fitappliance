@@ -8,12 +8,76 @@ const HAIER_SALESFORCE_HOST = 'fisherpaykel.my.salesforce.com';
 const renderedHtmlCache = new Map();
 let dynamicRenderTail = Promise.resolve();
 
+const HAIER_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: false, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: true }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
 function normalizeSku(value) {
   return String(value || '')
     .trim()
     .toUpperCase()
     .replace(/\bSERIES\b/g, '')
     .replace(/[^A-Z0-9]+/g, '');
+}
+
+async function persistLanePayload({
+  bytes,
+  contentType,
+  extension,
+  discoveryUrl,
+  requestedModel,
+  method,
+  writeObject,
+}) {
+  if (typeof writeObject !== 'function') return null;
+  const payload = Buffer.isBuffer(bytes) ? bytes : Buffer.from(String(bytes || ''));
+  if (!payload.length) return null;
+  const contentSha256 = createHash('sha256').update(payload).digest('hex');
+  const objectPath = `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.${extension}`;
+  await writeObject(objectPath, payload);
+  return {
+    schemaVersion: 1,
+    method,
+    market: 'AU',
+    discoveryUrl,
+    requestedModel: normalizeSku(requestedModel),
+    contentType,
+    contentSha256,
+    objectPath,
+    byteSize: payload.length,
+  };
+}
+
+function sourceLane(laneId, status, provenance = [], candidateCount = 0, reason = null) {
+  const descriptor = HAIER_SOURCE_LANES.find((lane) => lane.laneId === laneId);
+  if (!descriptor) throw new Error(`Unknown Haier source lane: ${laneId}`);
+  return { ...descriptor, status, candidateCount, provenance, reason };
+}
+
+function unavailableLane(laneId, reason) {
+  const descriptor = HAIER_SOURCE_LANES.find((lane) => lane.laneId === laneId);
+  return descriptor.supported
+    ? sourceLane(laneId, 'retryable', [], 0, reason)
+    : sourceLane(laneId, 'unsupported', [], 0, reason);
+}
+
+function sourceLaneProvenance(discoveryProvenance) {
+  if (!discoveryProvenance?.discoveryContentSha256) return null;
+  return {
+    schemaVersion: 1,
+    method: discoveryProvenance.method,
+    market: discoveryProvenance.market,
+    discoveryUrl: discoveryProvenance.discoveryUrl,
+    requestedModel: discoveryProvenance.requestedModel,
+    contentType: 'text/html',
+    contentSha256: discoveryProvenance.discoveryContentSha256,
+    objectPath: discoveryProvenance.discoveryObjectPath,
+    byteSize: discoveryProvenance.discoveryByteSize,
+  };
 }
 
 function decodeHtml(value) {
@@ -265,15 +329,52 @@ async function fetchRenderedHtmlDocument(url, renderedHtmlImpl, expectedHost, wa
   return renderedHtmlCache.get(canonicalUrl);
 }
 
-async function loadHaierSitemapProductUrls(fetchImpl, sitemapIndexUrl = HAIER_SITEMAP_INDEX) {
-  const indexXml = await fetchText(sitemapIndexUrl, fetchImpl);
-  const sitemapUrls = extractXmlLocs(indexXml);
+async function loadHaierSitemapProductInventory(
+  fetchImpl,
+  sitemapIndexUrl,
+  requestedModel,
+  writeObject,
+) {
+  const sitemapHost = new URL(sitemapIndexUrl).hostname.toLowerCase();
+  const index = await fetchHtmlDocument(sitemapIndexUrl, fetchImpl, sitemapHost);
+  const provenance = [];
+  const indexProvenance = await persistLanePayload({
+    bytes: index.bytes,
+    contentType: 'application/xml',
+    extension: 'xml',
+    discoveryUrl: index.finalUrl,
+    requestedModel,
+    method: 'official_sitemap_index',
+    writeObject,
+  });
+  if (indexProvenance) provenance.push(indexProvenance);
+  const sitemapUrls = extractXmlLocs(index.html);
   const productUrls = [];
   for (const sitemapUrl of sitemapUrls) {
-    const sitemapXml = await fetchText(sitemapUrl, fetchImpl);
-    productUrls.push(...buildHaierProductCandidates(sitemapXml));
+    const sitemap = await fetchHtmlDocument(sitemapUrl, fetchImpl, sitemapHost);
+    const sitemapProvenance = await persistLanePayload({
+      bytes: sitemap.bytes,
+      contentType: 'application/xml',
+      extension: 'xml',
+      discoveryUrl: sitemap.finalUrl,
+      requestedModel,
+      method: 'official_sitemap',
+      writeObject,
+    });
+    if (sitemapProvenance) provenance.push(sitemapProvenance);
+    productUrls.push(...buildHaierProductCandidates(sitemap.html));
   }
-  return [...new Set(productUrls)].sort();
+  return { productUrls: [...new Set(productUrls)].sort(), provenance };
+}
+
+async function loadHaierSitemapProductUrls(fetchImpl, sitemapIndexUrl = HAIER_SITEMAP_INDEX) {
+  const inventory = await loadHaierSitemapProductInventory(
+    fetchImpl,
+    sitemapIndexUrl,
+    'SITEMAP-INVENTORY',
+    null,
+  );
+  return inventory.productUrls;
 }
 
 async function findHaierSupportPdf(target, {
@@ -319,6 +420,15 @@ async function findHaierSupportPdf(target, {
   if (!productPage) {
     throw new Error(`Haier support product page not found for ${requestedModel}${productErrors.length ? `: ${productErrors[0]}` : ''}`);
   }
+  const productPageProvenance = await persistLanePayload({
+    bytes: productPage.bytes,
+    contentType: 'text/html',
+    extension: 'html',
+    discoveryUrl: productPage.finalUrl,
+    requestedModel,
+    method: 'official_support_product_page',
+    writeObject,
+  });
   const resources = [];
   const errors = [];
 
@@ -355,6 +465,7 @@ async function findHaierSupportPdf(target, {
           sourceModelHint: requestedModel,
           score: supportResourceScore(resourceType),
           requiredAttempt: true,
+          sourceLaneId: 'official_document_cdn',
           discoveryProvenance: {
             schemaVersion: 1,
             method: 'official_product_page',
@@ -385,10 +496,33 @@ async function findHaierSupportPdf(target, {
   if (!unique.length) {
     throw new Error(`Haier official PDF resources not found for ${requestedModel}${errors.length ? `: ${errors[0]}` : ''}`);
   }
+  const articleProvenance = [...new Map(unique
+    .map((resource) => sourceLaneProvenance(resource.discoveryProvenance))
+    .filter(Boolean)
+    .map((provenance) => [provenance.objectPath, provenance])).values()];
+  const productPageResource = {
+    url: productPage.finalUrl,
+    sourceUrl: productPage.finalUrl,
+    source: 'haier-official-product-page',
+    resourceType: 'product_page',
+    documentType: 'product_page',
+    sourceModelHint: requestedModel,
+    score: 0,
+    requiredAttempt: false,
+    sourceLaneId: 'official_product_detail',
+  };
+  const sourceLanes = [
+    unavailableLane('current_product', 'Current-product sitemap was not inspected after the archived support path resolved.'),
+    sourceLane('discontinued_archive', 'complete', [productPageProvenance], 0, null),
+    unavailableLane('support_search_api', 'Haier Australia exposes support product pages rather than a public search API.'),
+    sourceLane('official_document_cdn', 'complete', articleProvenance, unique.length, null),
+    sourceLane('official_product_detail', 'complete', [productPageProvenance, ...articleProvenance], 1, null),
+  ];
   return {
     ...unique[0],
     productUrl: productPage.finalUrl,
-    resources: unique,
+    resources: [...unique, productPageResource],
+    sourceLanes,
     discoveryProvenance: unique[0].discoveryProvenance,
   };
 }
@@ -415,15 +549,88 @@ async function findHaierOfficialPdf(target = {}, {
   }
 
   try {
-    const productUrls = await loadHaierSitemapProductUrls(fetchImpl, sitemapIndexUrl);
-    const productUrl = productUrls.find((url) => haierProductUrlMatchesTarget(url, target));
+    const requestedModel = normalizeSku(target.sku || target.model || target.product?.model);
+    const inventory = await loadHaierSitemapProductInventory(
+      fetchImpl,
+      sitemapIndexUrl,
+      requestedModel,
+      writeObject,
+    );
+    const productUrl = inventory.productUrls.find((url) => haierProductUrlMatchesTarget(url, target));
     if (!productUrl) throw new Error(`Haier product page not found for ${target.sku || target.model}`);
-    const html = await fetchText(productUrl, fetchImpl);
-    const links = extractHaierDownloadLinks(html, productUrl)
-      .filter((link) => link.score > 0);
+    const productPage = await fetchHtmlDocument(
+      productUrl,
+      fetchImpl,
+      new URL(productUrl).hostname.toLowerCase(),
+    );
+    const productPageProvenance = await persistLanePayload({
+      bytes: productPage.bytes,
+      contentType: 'text/html',
+      extension: 'html',
+      discoveryUrl: productPage.finalUrl,
+      requestedModel,
+      method: 'official_product_page',
+      writeObject,
+    });
+    const discoveryFields = productPageProvenance ? {
+      discoveryContentSha256: productPageProvenance.contentSha256,
+      discoveryObjectPath: productPageProvenance.objectPath,
+      discoveryByteSize: productPageProvenance.byteSize,
+    } : null;
+    const links = extractHaierDownloadLinks(productPage.html, productPage.finalUrl)
+      .filter((link) => link.score > 0)
+      .map((link) => ({
+        ...link,
+        sourceLaneId: 'official_document_cdn',
+        sourceModelHint: requestedModel,
+        requiredAttempt: true,
+        ...(discoveryFields ? {
+          discoveryProvenance: {
+            schemaVersion: 1,
+            method: 'official_product_page',
+            market: 'AU',
+            discoveryUrl: productPage.finalUrl,
+            requestedModel,
+            matchedModel: requestedModel,
+            artifactUrl: link.url,
+            artifactLinkUrl: link.url,
+            ...discoveryFields,
+          },
+        } : {}),
+      }));
     const primary = links[0];
     if (!primary) throw new Error(`Haier official PDF resources not found for ${target.sku || target.model}`);
-    return { ...primary, productUrl, resources: links };
+    const currentComplete = inventory.provenance.length > 0;
+    const detailComplete = Boolean(productPageProvenance);
+    const productPageResource = {
+      url: productPage.finalUrl,
+      sourceUrl: productPage.finalUrl,
+      source: 'haier-official-product-page',
+      resourceType: 'product_page',
+      documentType: 'product_page',
+      sourceModelHint: requestedModel,
+      score: 0,
+      requiredAttempt: false,
+      sourceLaneId: 'official_product_detail',
+    };
+    return {
+      ...primary,
+      productUrl: productPage.finalUrl,
+      resources: [...links, productPageResource],
+      sourceLanes: [
+        currentComplete
+          ? sourceLane('current_product', 'complete', inventory.provenance, 0, null)
+          : unavailableLane('current_product', 'Current-product sitemap provenance was not persisted.'),
+        unavailableLane('discontinued_archive', 'Archived support was not inspected after the current product resolved.'),
+        unavailableLane('support_search_api', 'Haier Australia exposes support product pages rather than a public search API.'),
+        detailComplete
+          ? sourceLane('official_document_cdn', 'complete', [productPageProvenance], links.length, null)
+          : unavailableLane('official_document_cdn', 'Current product-page provenance was not persisted.'),
+        detailComplete
+          ? sourceLane('official_product_detail', 'complete', [productPageProvenance], 1, null)
+          : unavailableLane('official_product_detail', 'Current product-page provenance was not persisted.'),
+      ],
+    };
   } catch (error) {
     errors.push(error.message);
   }

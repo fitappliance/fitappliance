@@ -160,17 +160,24 @@ function batchResolver(jobs, targetId) {
         scope: resolver.scope,
         required: resolver.required,
         completion: 'complete',
-        candidates: jobs.map((job) => ({
-          sourceUrl: job.sourceUrl,
-          authorityMode: job.authorityMode,
-          sourceRole: job.sourceRole
-            ?? (job.authorityMode === 'official' ? 'manufacturer_document' : 'reference_document'),
-          discoveryMethod: 'recovery_batch',
-          requiredAttempt: job.requiredTargetIds
-            ? job.requiredTargetIds.includes(targetId)
-            : true,
-          batchJobId: job.jobId,
-        })),
+        candidates: jobs.map((job) => {
+          const provenanceBinding = job.discoveryProvenanceBindings
+            ?.find((binding) => binding.targetId === targetId);
+          return {
+            sourceUrl: job.sourceUrl,
+            authorityMode: job.authorityMode,
+            sourceRole: job.sourceRole
+              ?? (job.authorityMode === 'official' ? 'manufacturer_document' : 'reference_document'),
+            discoveryMethod: 'recovery_batch',
+            requiredAttempt: job.requiredTargetIds
+              ? job.requiredTargetIds.includes(targetId)
+              : true,
+            batchJobId: job.jobId,
+            ...(provenanceBinding ? {
+              discoveryProvenance: structuredClone(provenanceBinding.discoveryProvenance),
+            } : {}),
+          };
+        }),
       };
     },
   };
@@ -293,9 +300,16 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
     if (artifactPromises.has(key)) return artifactPromises.get(key);
     const promise = (async () => {
       try {
+        const transportBinding = job.discoveryProvenanceBindings?.[0];
+        const acquisitionJob = transportBinding ? {
+          ...job,
+          targetModel: transportBinding.targetModel,
+          targetCategory: transportBinding.targetCategory,
+          discoveryProvenance: structuredClone(transportBinding.discoveryProvenance),
+        } : job;
         const artifact = await networkSemaphore.run(job.sourceUrl, async () => {
-          await emit({ entity: 'artifact', id: key, state: 'running', artifactJob: structuredClone(job) });
-          return acquireArtifact(structuredClone(job), {
+          await emit({ entity: 'artifact', id: key, state: 'running', artifactJob: structuredClone(acquisitionJob) });
+          return acquireArtifact(structuredClone(acquisitionJob), {
             withMineru: (task) => mineruSemaphore.run(task),
           });
         });
@@ -374,7 +388,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         }
         if (candidate.discoveryProvenance) {
           const provenanceSha = canonicalJsonSha256(candidate.discoveryProvenance);
-          if (!job.discoveryProvenance) {
+          if (!job.discoveryProvenance && !job.discoveryProvenanceBindings?.length) {
             job = {
               ...job,
               jobId: `discovered_${canonicalJsonSha256({

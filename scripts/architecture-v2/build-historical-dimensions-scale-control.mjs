@@ -40,7 +40,7 @@ function option(args, name) {
 function parseArgs(args) {
   const supported = new Set([
     '--output', '--ledger', '--generated-at', '--initialize-ledger',
-    '--record-rebaseline', '--rebaseline-at',
+    '--record-rebaseline', '--rebaseline-at', '--rebaseline-reason',
   ]);
   let initializeLedger = false;
   let recordRebaseline = false;
@@ -55,12 +55,20 @@ function parseArgs(args) {
     throw new TypeError('--initialize-ledger and --record-rebaseline are mutually exclusive');
   }
   const rebaselineAt = option(args, '--rebaseline-at');
+  const rebaselineReason = option(args, '--rebaseline-reason') ?? 'RELEASE_DAG_RECONCILIATION';
   if (recordRebaseline && !rebaselineAt) throw new TypeError('--rebaseline-at is required');
   if (!recordRebaseline && rebaselineAt) throw new TypeError('--rebaseline-at requires --record-rebaseline');
+  if (!recordRebaseline && option(args, '--rebaseline-reason')) {
+    throw new TypeError('--rebaseline-reason requires --record-rebaseline');
+  }
+  if (!['RELEASE_DAG_RECONCILIATION', 'EVIDENCE_INVALIDATION_RECONCILIATION'].includes(rebaselineReason)) {
+    throw new TypeError('--rebaseline-reason invalid');
+  }
   return {
     initializeLedger,
     recordRebaseline,
     rebaselineAt,
+    rebaselineReason,
     output: resolve(option(args, '--output')
       ?? resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl')),
     ledger: resolve(option(args, '--ledger')
@@ -135,7 +143,7 @@ export async function runCli(args = process.argv.slice(2)) {
         generatedAt: options.generatedAt ?? programStatus.generatedAt ?? nextBatches.generatedAt,
       },
       activatedAt: options.rebaselineAt,
-      reason: 'RELEASE_DAG_RECONCILIATION',
+      reason: options.rebaselineReason,
     });
     await atomicJson(options.ledger, advanced.ledger);
     await atomicJson(options.output, advanced.control);

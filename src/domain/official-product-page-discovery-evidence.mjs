@@ -9,6 +9,10 @@ function requiredText(value, label) {
   return normalized;
 }
 
+function modelKey(value, label) {
+  return requiredText(value, label).toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
 function canonicalUrl(value, base = undefined) {
   const url = new URL(requiredText(value, 'discovery artifact link URL'), base);
   if (url.protocol !== 'https:' || url.username || url.password) {
@@ -60,6 +64,66 @@ function serializedTechnicalDocumentRecords(value) {
     records.push({ id, titleKey, filename, url });
   }
   return records;
+}
+
+function structuredSupportArtifactUrls($) {
+  const urls = [];
+  $('[data-sdf-prop="contents"]').each((_, element) => {
+    let payload;
+    try {
+      payload = JSON.parse($(element).text().trim());
+    } catch {
+      return;
+    }
+    for (const manual of Array.isArray(payload?.manuals) ? payload.manuals : []) {
+      if (typeof manual?.downloadUrl !== 'string') continue;
+      try { urls.push(canonicalUrl(manual.downloadUrl)); } catch { /* Ignore malformed records. */ }
+    }
+  });
+  return urls;
+}
+
+function structuredSupportValue($, property, label) {
+  const values = new Set($(`[data-sdf-prop="${property}"]`)
+    .map((_, element) => requiredText($(element).text(), label))
+    .get());
+  if (values.size !== 1) throw new Error(`official support page requires one ${label}`);
+  return [...values][0];
+}
+
+export function officialProductPageBoundSupportFamilyModel(provenance, caseIdentity, bytes) {
+  if (provenance?.method !== 'official_product_page'
+    || modelKey(caseIdentity?.brand, 'target brand') !== 'SAMSUNG'
+    || requiredText(caseIdentity?.category, 'target category') !== 'fridge') return null;
+
+  verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, bytes);
+  const discoveryUrl = new URL(provenance.discoveryUrl);
+  if (discoveryUrl.hostname.toLowerCase() !== 'www.samsung.com') return null;
+  const segments = discoveryUrl.pathname.split('/').filter(Boolean).map(decodeURIComponent);
+  if (segments.length !== 5 || segments[0] !== 'au' || segments[1] !== 'support'
+    || segments[2] !== 'model') return null;
+
+  const targetModel = modelKey(caseIdentity.model, 'target model');
+  if (modelKey(provenance.requestedModel, 'requested model') !== targetModel
+    || modelKey(provenance.matchedModel, 'matched model') !== targetModel) return null;
+  const $ = load(Buffer.from(bytes).toString('utf8'));
+  if (modelKey(structuredSupportValue($, 'modelName', 'support marketing model'), 'support marketing model')
+    !== targetModel) return null;
+  const sourceModel = structuredSupportValue($, 'modelCode', 'support canonical model');
+  if (modelKey(`${segments[3]}/${segments[4]}`, 'support URL canonical model')
+    !== modelKey(sourceModel, 'support canonical model')) return null;
+
+  const artifact = new URL(canonicalUrl(provenance.artifactLinkUrl));
+  if (artifact.hostname.toLowerCase() !== 'org.downloadcenter.samsung.com'
+    || artifact.pathname.toLowerCase() !== '/downloadfile/contentsfile.aspx'
+    || modelKey(artifact.searchParams.get('CDSite'), 'Samsung document site') !== 'UNIAU'
+    || modelKey(artifact.searchParams.get('CDCttType'), 'Samsung document type') !== 'UM'
+    || modelKey(artifact.searchParams.get('ModelName'), 'Samsung document model') !== targetModel
+    || !/^\d+$/.test(requiredText(artifact.searchParams.get('CttFileID'), 'Samsung document ID'))) {
+    return null;
+  }
+  if (!/^RF71A[A-Z0-9]{5,14}\/SA$/i.test(sourceModel)) return null;
+  return Object.freeze({ familyModel: 'RF71A', sourceModel });
 }
 
 export function validateOfficialProductPageArtifactRelationship(artifactLinkUrl, artifactUrl) {
@@ -125,6 +189,7 @@ export function verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdent
       try { linkedUrls.add(canonicalUrl(value, provenance.discoveryUrl)); } catch { /* Ignore malformed script URLs. */ }
     }
   });
+  for (const value of structuredSupportArtifactUrls($)) linkedUrls.add(value);
   if (!linkedUrls.has(canonicalUrl(provenance.artifactLinkUrl))) {
     throw new Error('official discovery page is missing the declared artifact link');
   }

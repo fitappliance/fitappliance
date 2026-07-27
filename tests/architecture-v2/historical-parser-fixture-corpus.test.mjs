@@ -188,6 +188,12 @@ test('Esatto product-card fixture publishes only the physical W/D/H tuple', () =
     'closedEnvelope.widthMm': 598,
   });
   assert.deepEqual(parsed.grammarProfileIds, [esattoProductCardProfile.parserProfileId]);
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_esatto_edw_product_card_exact_model'
+  )));
+  assert.ok(!parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_esatto_product_card_exact_model'
+  )));
   assert.ok(parsed.claims.every((claim) => claim.page === 1));
   assert.ok(parsed.claims.every((claim) => !/645|672|871|1175|packaged|door open/i.test(claim.quote)));
 
@@ -199,6 +205,59 @@ test('Esatto product-card fixture publishes only the physical W/D/H tuple', () =
       /identity|exact-model|evidence|missing|ambiguous|scope/i,
       row.caseId,
     );
+  }
+});
+
+test('Esatto fridge ProductCard accepts the observed inline Physical W/D/H layout', () => {
+  const row = {
+    source: { pdfSha256: '2'.repeat(64) },
+    sourceUrls: ['https://esatto.house/s/Esatto_ProductCard-EUF172W-m95s.pdf'],
+    identity: { category: 'fridge', brand: 'Esatto', model: 'EUF172W' },
+    contentList: [[
+      {
+        type: 'title',
+        content: { title_content: [{ type: 'text', content: 'Product Dimensions' }], level: 2 },
+        bbox: [745, 211, 851, 233],
+      },
+      {
+        type: 'paragraph',
+        content: { paragraph_content: [{ type: 'text', content: 'Packaged (w, d, h mm): 585 × 585 × 1450mm' }] },
+        bbox: [745, 236, 963, 258],
+      },
+      {
+        type: 'paragraph',
+        content: { paragraph_content: [{ type: 'text', content: 'Physical (w, d, h mm): 550 × 550 × 1420mm' }] },
+        bbox: [745, 263, 957, 284],
+      },
+      {
+        type: 'page_header',
+        content: { page_header_content: [{ type: 'text', content: '162L Upright Freezer, White EUF172W' }] },
+        bbox: [23, 28, 325, 99],
+      },
+    ]],
+  };
+
+  const parsed = parseFixture(row);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.depthMm': 550,
+    'closedEnvelope.heightMm': 1420,
+    'closedEnvelope.widthMm': 550,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['esatto-au-refrigeration-product-card-physical-wdh-v1']);
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_esatto_product_card_exact_model'
+  )));
+
+  for (const mutate of [
+    (copy) => { copy.sourceUrls = ['https://esatto.house/s/Esatto_ProductCard-EUF172W2-m95s.pdf']; },
+    (copy) => { copy.sourceUrls = ['https://esatto.house/archive/Esatto_ProductCard-EUF172W-m95s.pdf']; },
+    (copy) => { copy.sourceUrls = ['https://esatto.house/s/Esatto_ProductCard-EUF172W-m95s.pdf?model=EUF172W']; },
+    (copy) => { copy.contentList[0][3].content.page_header_content[0].content = 'EUF172W EUF172S'; },
+    (copy) => { copy.contentList[0][2].content.paragraph_content[0].content = 'Physical (h, w, d mm): 1420 × 550 × 550mm'; },
+  ]) {
+    const invalid = structuredClone(row);
+    mutate(invalid);
+    assert.throws(() => parseFixture(invalid), /identity|exact-model|evidence|scope/i);
   }
 });
 

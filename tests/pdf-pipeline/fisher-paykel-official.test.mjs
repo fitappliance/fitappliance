@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 
 import {
   buildFisherPaykelSkuSearchVariants,
+  classifyFisherPaykelProductPage,
   extractExactSupportHit,
   extractPdfResources,
   extractProductPageUrls,
@@ -12,6 +13,63 @@ import {
   findFisherPaykelOfficialPdf,
   resolveSalesforceDistributionPdf
 } from '../../scripts/pdf-pipeline/fisher-paykel-official.js';
+
+test('Fisher & Paykel official finder classifies an exact accessory page without trusting navigation text', () => {
+  const accessoryUrl = 'https://www.fisherpaykel.com/au/accessories/cooling-accessories/door-panel-for-integrated-ice-and-water-refrigerator-freezer-80cm-french-door-rd80u-25622.html';
+  const accessory = classifyFisherPaykelProductPage(`
+    <title>Door Panel for Integrated Refrigerator Freezer, 80cm, RD80U</title>
+    <h1>Door Panel for Integrated Refrigerator Freezer, 80cm</h1>
+    <span>RD80U</span>
+  `, accessoryUrl, 'RD80U');
+  assert.equal(accessory.classification, 'NON_APPLIANCE_ACCESSORY');
+  assert.equal(accessory.reasonCode, 'official_non_appliance_accessory');
+
+  const appliance = classifyFisherPaykelProductPage(`
+    <nav>Accessories</nav>
+    <title>538L Series 7 Quad Door Refrigerator Freezer, RF605QNUVB1</title>
+    <h1>538L Series 7 Quad Door Refrigerator Freezer</h1>
+    <span>RF605QNUVB1</span>
+  `, 'https://www.fisherpaykel.com/au/cooling/freestanding/rf605qnuvb1-26552.html', 'RF605QNUVB1');
+  assert.equal(appliance.classification, 'UNRESOLVED_APPLIANCE_IDENTITY');
+  assert.equal(appliance.reasonCode, null);
+});
+
+test('Fisher & Paykel official finder closes all persisted source lanes for an exact accessory', async () => {
+  const written = new Map();
+  const result = await findFisherPaykelOfficialPdf({ sku: 'RD80U' }, {
+    writeObject: async (path, bytes) => written.set(path, Buffer.from(bytes)),
+    fetchImpl: async (url) => {
+      const href = String(url);
+      if (href.includes('/au/search/')) {
+        return new Response(`
+          <a class="pdp" href="/au/accessories/cooling-accessories/door-panel-rd80u-25622.html">RD80U</a>
+        `, { status: 200, headers: { 'content-type': 'text/html' } });
+      }
+      if (href.includes('/au/accessories/')) {
+        return new Response(`
+          <title>Door Panel for Integrated Refrigerator Freezer, 80cm, RD80U</title>
+          <h1>Door Panel for Integrated Refrigerator Freezer, 80cm</h1><span>RD80U</span>
+        `, { status: 200, headers: { 'content-type': 'text/html' } });
+      }
+      if (href.includes('/api/search')) {
+        return new Response(JSON.stringify({ hits: [] }), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        });
+      }
+      throw new Error(`Unexpected request: ${href}`);
+    },
+  });
+
+  assert.equal(result.productIdentityFinding.reasonCode, 'official_non_appliance_accessory');
+  assert.deepEqual(result.resources, []);
+  assert.ok(result.sourceLanes.filter((lane) => lane.required).every((lane) => lane.status === 'complete'));
+  assert.ok(result.sourceLanes.filter((lane) => lane.required).every((lane) => lane.provenance.length > 0));
+  const laneProvenance = result.sourceLanes.flatMap((lane) => lane.provenance);
+  assert.ok(laneProvenance.every((entry) => entry.market === 'AU'));
+  assert.ok(laneProvenance.every((entry) => !/[?&]market=NZ(?:&|$)/.test(entry.discoveryUrl)));
+  assert.ok(written.size >= 3);
+});
 
 test('Fisher & Paykel official finder extracts matching PDP URLs from search HTML', () => {
   const html = `
@@ -179,7 +237,8 @@ test('Fisher & Paykel official finder searches product page and returns best PDF
   assert.match(result.sourceUrl, /QRG-AU-26552\.pdf$/);
   assert.deepEqual(result.resources.map((resource) => resource.type), [
     'quick_reference_guide',
-    'installation_manual'
+    'installation_manual',
+    'product_page',
   ]);
 });
 
@@ -343,9 +402,10 @@ test('Fisher & Paykel support discovery persists the exact product API response 
     },
   });
 
-  assert.equal(writes.length, 1);
-  assert.equal(writes[0].path, `evidence/web/sha256/${productHash.slice(0, 2)}/${productHash.slice(2, 4)}/${productHash}.json`);
-  assert.deepEqual(writes[0].bytes, productBytes);
+  const productObjectPath = `evidence/web/sha256/${productHash.slice(0, 2)}/${productHash.slice(2, 4)}/${productHash}.json`;
+  const persistedProduct = writes.find((write) => write.path === productObjectPath);
+  assert.ok(persistedProduct);
+  assert.deepEqual(persistedProduct.bytes, productBytes);
   assert.deepEqual(result.resources[0].discoveryProvenance, {
     schemaVersion: 1,
     method: 'official_support_api',
@@ -357,7 +417,7 @@ test('Fisher & Paykel support discovery persists the exact product API response 
     artifactUrl: sourceUrl,
     artifactLinkUrl: sourceUrl,
     discoveryContentSha256: productHash,
-    discoveryObjectPath: writes[0].path,
+    discoveryObjectPath: productObjectPath,
     discoveryByteSize: productBytes.length,
     documentId: 'ka0-rf610-install',
     originalFileName: 'RF610ADUQSX4-install.pdf',

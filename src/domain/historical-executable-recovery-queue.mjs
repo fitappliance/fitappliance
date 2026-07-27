@@ -40,6 +40,9 @@ const CANDIDATE_MANIFEST_STATES = new Set([
   'RESEARCH_REQUIRED',
   'NO_CANDIDATE_COMPLETE',
 ]);
+const STABLE_NON_RESOLVER_DISCOVERY_EPOCHS = new Set([
+  'acquisition-queue-seed@1',
+]);
 
 function id(prefix, seed) {
   return `${prefix}_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`;
@@ -104,6 +107,44 @@ function selectLegacyTarget(record, legacyByReference) {
 
 function normalizedBrand(value) {
   return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function normalizedModel(value) {
+  return String(value ?? '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
+function discoveryEpoch(strategyId) {
+  return String(strategyId ?? '').split(':', 1)[0];
+}
+
+function edgeUsesCurrentDiscoveryEpoch(edge, target) {
+  const allowedEpochs = new Set([
+    ...STABLE_NON_RESOLVER_DISCOVERY_EPOCHS,
+    ...(target.resolverContract ?? []).map((resolver) => `${resolver.resolverId}@${resolver.version}`),
+  ]);
+  return (edge.discoveryStrategyIds ?? [])
+    .some((strategyId) => allowedEpochs.has(discoveryEpoch(strategyId)));
+}
+
+function targetDiscoveryProvenance(candidate, target) {
+  const targetModel = normalizedModel(target.model);
+  const sourceUrl = trustedHttpsUrl(candidate.sourceUrl, 'candidate source URL');
+  const matches = (candidate.discoveries ?? []).filter((discovery) => {
+    const provenance = discovery?.discoveryProvenance;
+    if (!provenance || normalizedModel(provenance.requestedModel) !== targetModel) return false;
+    try {
+      return trustedHttpsUrl(provenance.artifactUrl, 'discovery artifact URL') === sourceUrl;
+    } catch {
+      return false;
+    }
+  }).sort((left, right) => (
+    String(right.retrievedAt ?? '').localeCompare(String(left.retrievedAt ?? ''))
+      || canonicalJsonSha256(left.discoveryProvenance)
+        .localeCompare(canonicalJsonSha256(right.discoveryProvenance))
+  ));
+  return matches[0]?.discoveryProvenance
+    ? structuredClone(matches[0].discoveryProvenance)
+    : null;
 }
 
 function sortedUnique(values) {
@@ -198,6 +239,13 @@ function validateCandidateManifest(candidateManifest, acquisitionQueue) {
     if (target.terminal !== (target.state === 'NO_CANDIDATE_COMPLETE')
       || typeof target.retryableDiscovery !== 'boolean') {
       throw new TypeError(`candidate manifest target terminal semantics invalid: ${target.referenceId}`);
+    }
+    const terminalReasonCodes = target.terminalReasonCodes ?? [];
+    if (!Array.isArray(terminalReasonCodes)
+      || terminalReasonCodes.some((code) => typeof code !== 'string' || !code)
+      || new Set(terminalReasonCodes).size !== terminalReasonCodes.length
+      || (terminalReasonCodes.length > 0 && target.state !== 'NO_CANDIDATE_COMPLETE')) {
+      throw new TypeError(`candidate manifest terminal reason codes invalid: ${target.referenceId}`);
     }
     if (target.state === 'CANDIDATES_READY' && target.candidateEdges.length === 0) {
       throw new Error(`candidate-ready target has no candidate edge: ${target.referenceId}`);
@@ -328,6 +376,7 @@ export function buildHistoricalExecutableRecoveryQueue({
   let suppressedPriorTerminalEdges = 0;
   let suppressedPriorAcceptedSourceEdges = 0;
   let suppressedPriorResolverOnlyTargets = 0;
+  let isolatedStaleResolverEpochEdges = 0;
 
   for (const record of acquisitionQueue.records) {
     const candidateTarget = candidateTargetsByReference.get(record.referenceId);
@@ -429,6 +478,9 @@ export function buildHistoricalExecutableRecoveryQueue({
         candidateIds: candidateTarget.candidateEdges.map((edge) => edge.candidateId),
         resolverContract: structuredClone(candidateTarget.resolverContract),
         incompleteResolverIds: [...candidateTarget.incompleteResolverIds],
+        ...(candidateTarget.terminalReasonCodes?.length ? {
+          terminalReasonCodes: [...candidateTarget.terminalReasonCodes],
+        } : {}),
       });
     };
 
@@ -462,6 +514,10 @@ export function buildHistoricalExecutableRecoveryQueue({
     const acquisitionRoute = RECOVERY_ROUTE[record.route];
     if (!acquisitionRoute) throw new Error(`candidate-ready acquisition route unsupported: ${record.route}`);
     for (const edge of candidateTarget.candidateEdges) {
+      if (!edgeUsesCurrentDiscoveryEpoch(edge, candidateTarget)) {
+        isolatedStaleResolverEpochEdges += 1;
+        continue;
+      }
       const candidate = candidatesById.get(edge.candidateId);
       if (acceptedUrls.has(candidate.sourceUrl)) {
         suppressedPriorAcceptedSourceEdges += 1;
@@ -493,11 +549,13 @@ export function buildHistoricalExecutableRecoveryQueue({
       job.priorityClasses.add(priority);
       job.targetIds.add(targetId);
       jobs.set(jobId, job);
+      const discoveryProvenance = targetDiscoveryProvenance(candidate, record);
       candidateEdges.push({
         ...structuredClone(edge),
         jobId,
         acquisitionRoute,
         priorityClass: priority,
+        ...(discoveryProvenance ? { discoveryProvenance } : {}),
       });
     }
     candidateEdges.sort((left, right) => left.sourceRank - right.sourceRank
@@ -567,6 +625,7 @@ export function buildHistoricalExecutableRecoveryQueue({
       resolverOnlyTargetsAllowed: false,
       discoveryTargetsSeparatedFromAcquisition: true,
       nonReadyCandidateObservationsExecutable: false,
+      candidateDiscoveryEpochBindingRequired: true,
       officialSourceRequiredForReceiptPromotion: true,
       registryOnlyHistoricalPublication: true,
     },
@@ -583,6 +642,7 @@ export function buildHistoricalExecutableRecoveryQueue({
       isolatedNonReadyCandidateEdges: candidateManifest.targets
         .filter((target) => target.state !== 'CANDIDATES_READY')
         .reduce((sum, target) => sum + target.candidateEdges.length, 0),
+      isolatedStaleResolverEpochEdges,
       uniqueReferences: new Set(workTargets.map((target) => target.referenceId)).size,
       suppressedPriorTerminalEdges,
       suppressedPriorAcceptedSourceEdges,

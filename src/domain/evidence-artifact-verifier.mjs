@@ -28,7 +28,10 @@ import {
   inspectMineruContentListV2,
   parseMineruContentListV2,
 } from './mineru-document.mjs';
-import { verifyOfficialProductPageDiscoveryEvidence } from './official-product-page-discovery-evidence.mjs';
+import {
+  officialProductPageBoundSupportFamilyModel,
+  verifyOfficialProductPageDiscoveryEvidence,
+} from './official-product-page-discovery-evidence.mjs';
 import {
   officialProductMaterialBoundVariant,
   verifyOfficialProductMaterialDiscoveryEvidence,
@@ -210,6 +213,49 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
   }
   const signals = [{ type: 'canonical_url', value: canonical }];
   const title = normalizedText($('title').first().text());
+  const materialProvenance = source?.discoveryProvenance;
+  if (materialProvenance?.method === 'official_product_material') {
+    const binding = verifyOfficialProductMaterialDiscoveryEvidence(
+      materialProvenance,
+      caseIdentity,
+      bytes,
+    );
+    if (binding.artifactKind !== 'product_page'
+      || resourceKey(source.sourceUrl) !== resourceKey(binding.discoveryUrl)
+      || resourceKey(source.finalUrl) !== resourceKey(binding.discoveryUrl)
+      || source.contentSha256 !== materialProvenance.discoveryContentSha256) {
+      throw new Error('Miele product-material page is not a hash-bound self-source');
+    }
+    const text = $.root().find('*').contents()
+      .filter((_, node) => node.type === 'text')
+      .map((_, node) => normalizedText(node.data))
+      .get()
+      .filter(Boolean)
+      .join(' ');
+    const structuredPropertyText = canonicalProductPropertyValues($)
+      .map((property) => `${property.name} ${property.value} ${property.unitText}`)
+      .join(' ');
+    const pageModel = binding.pageModel ?? materialProvenance.matchedModel;
+    signals.push({ type: 'document_title', value: title });
+    signals.push({ type: 'canonical_source_model', value: pageModel });
+    signals.push({
+      type: 'official_product_material_page',
+      value: `${caseIdentity.model}:${pageModel}:${binding.materialNumber}:${materialProvenance.discoveryContentSha256}:${binding.discoveryUrl}`,
+    });
+    return {
+      signals,
+      text: normalizedText(`${text} ${structuredPropertyText}`),
+      identity: binding.relationshipKind === 'model_variant'
+        ? {
+          brand: caseIdentity.brand,
+          model: caseIdentity.model,
+          category: caseIdentity.category,
+          outcome: 'official_marketing_alias',
+          sourceModel: pageModel,
+        }
+        : { brand: caseIdentity.brand, model: caseIdentity.model, outcome: 'exact' },
+    };
+  }
   if (containsExactModel(title, caseIdentity.model) || containsCosmeticExactModel(title, caseIdentity.model)) {
     signals.push({ type: 'document_title', value: title });
   }
@@ -255,6 +301,20 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
       }
     });
   }
+  const coLocatedAliasModels = new Map();
+  for (const [marketingAttribute, sourceAttribute] of [
+    ['data-modelname', 'data-modelcode'],
+    ['data-model-name', 'data-model-code'],
+  ]) {
+    $(`[${marketingAttribute}][${sourceAttribute}]`).each((_, element) => {
+      const marketingModel = normalizedText($(element).attr(marketingAttribute));
+      const sourceModel = normalizedText($(element).attr(sourceAttribute));
+      if (identifier(marketingModel) !== identifier(caseIdentity.model)
+        || identifier(sourceModel) === identifier(caseIdentity.model)
+        || !urlHasExactModelSegment(canonical, sourceModel)) return;
+      coLocatedAliasModels.set(identifier(sourceModel), sourceModel);
+    });
+  }
   const text = $.root().find('*').contents()
     .filter((_, node) => node.type === 'text')
     .map((_, node) => normalizedText(node.data))
@@ -296,13 +356,16 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
   const target = identifier(caseIdentity.model);
   const sourceModels = [...canonicalModels.entries()]
     .filter(([key]) => key !== target && !key.startsWith(target) && !target.startsWith(key));
-  if (containsExactModel(title, caseIdentity.model) && sourceModels.length === 1) {
+  if (title && sourceModels.length === 1) {
     const [sourceKey, sourceModel] = sourceModels[0];
     const binding = $('meta[name="description"],meta[property="description"],meta[property="og:description"],meta[name="twitter:description"]')
       .map((_, element) => normalizedText($(element).attr('content'))).get()
       .find((value) => containsExactModel(value, caseIdentity.model)
         && containsExactModel(value, sourceModel) && identifier(sourceModel) === sourceKey);
     if (binding) {
+      if (!signals.some((signal) => signal.type === 'document_title')) {
+        signals.push({ type: 'document_title', value: title });
+      }
       signals.push({ type: 'canonical_source_model', value: sourceModel });
       signals.push({ type: 'official_alias_binding', value: binding });
       return { signals, text: evidenceText, identity: {
@@ -312,6 +375,26 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
         sourceModel,
       } };
     }
+  }
+  if (!canonicalRegionalSku
+    && containsExactModel(title, caseIdentity.model)
+    && coLocatedAliasModels.size === 1) {
+    const sourceModel = [...coLocatedAliasModels.values()][0];
+    if (!signals.some((signal) => signal.type === 'document_title')) {
+      signals.push({ type: 'document_title', value: title });
+    }
+    signals.push({ type: 'canonical_source_model', value: sourceModel });
+    signals.push({
+      type: 'official_alias_binding',
+      value: `${caseIdentity.model} -> ${sourceModel} (co-located official product option)`,
+    });
+    signals.push({ type: 'product_model', value: sourceModel });
+    return { signals, text: evidenceText, identity: {
+      brand: caseIdentity.brand,
+      model: caseIdentity.model,
+      outcome: 'official_marketing_alias',
+      sourceModel,
+    } };
   }
   throw new Error('canonical URL does not prove exact model or a strict official marketing alias');
 }
@@ -408,26 +491,43 @@ function pdfIdentitySignals(
     discoveryArtifactBytes,
     bytes,
   );
-  const productMaterialVariant = officialProductMaterialBoundVariant(
+  const productMaterialBinding = officialProductMaterialBoundVariant(
     source?.discoveryProvenance,
     caseIdentity,
     discoveryArtifactBytes,
   );
-  if (marketVariantModel && productMaterialVariant) {
+  if (marketVariantModel && productMaterialBinding) {
     throw new Error('multiple official model variant bindings are not allowed');
   }
+  const productMaterialVariant = productMaterialBinding?.relationshipKind === 'model_variant'
+    ? productMaterialBinding
+    : null;
   const boundVariantModel = marketVariantModel ?? productMaterialVariant?.sourceModel ?? null;
-  const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
+  const supportApiBoundFamilyModel = officialSupportApiBoundFamilyModel(
     source?.discoveryProvenance,
     caseIdentity,
     discoveryArtifactBytes,
   );
+  const productPageSupportBinding = officialProductPageBoundSupportFamilyModel(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+  );
+  if (supportApiBoundFamilyModel && productPageSupportBinding) {
+    throw new Error('multiple official support family bindings are not allowed');
+  }
+  const boundSupportFamilyModel = supportApiBoundFamilyModel
+    ?? productPageSupportBinding?.familyModel
+    ?? null;
   const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel || boundVariantModel
+    || productMaterialBinding
     ? null
     : boundFamilyModel;
-  const parserIdentity = boundVariantModel
-    ? { ...caseIdentity, model: boundVariantModel }
-    : caseIdentity;
+  const parserIdentity = productMaterialBinding
+    ? { ...caseIdentity, model: productMaterialBinding.sourceModel }
+    : boundVariantModel
+      ? { ...caseIdentity, model: boundVariantModel }
+      : caseIdentity;
   const parsed = parseMineruContentListV2(bytes, {
     pdfSha256: source.contentSha256,
     parserVersion: derived.parserVersion,
@@ -442,11 +542,14 @@ function pdfIdentitySignals(
     ...((marketVariantModel || boundExactCoverModel) ? {
       boundExactCoverModel: marketVariantModel || boundExactCoverModel,
     } : {}),
-    ...(productMaterialVariant ? {
-      boundProductMaterialNumber: productMaterialVariant.materialNumber,
-      boundProductFinishLabel: productMaterialVariant.finishLabel,
+    ...(productMaterialBinding ? {
+      boundProductMaterialNumber: productMaterialBinding.materialNumber,
+      boundProductFinishLabel: productMaterialBinding.finishLabel,
     } : {}),
     ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
+    ...(productPageSupportBinding ? {
+      boundSupportSourceModel: productPageSupportBinding.sourceModel,
+    } : {}),
     ...(derived.fallbackTrigger ? {
       identityContextJsonBytes: fallbackTriggerArtifactBytes,
       identityContextContentSha256: derived.fallbackTrigger.contentSha256,
@@ -491,18 +594,21 @@ function pdfIdentitySignals(
     ));
     signals.push({ type: 'canonical_source_model', value: boundVariantModel });
   }
+  if (productPageSupportBinding) {
+    signals.push({ type: 'canonical_source_model', value: productPageSupportBinding.sourceModel });
+  }
   const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])]
     .find((value) => containsExactModelDocumentUrl(value, caseIdentity.model));
   if (exactModelUrl) signals.push({ type: 'pdf_source_url_model', value: exactModelUrl });
   return {
     signals,
     text: parsed.documentText,
-    ...(boundVariantModel ? { identity: {
+    ...((boundVariantModel || productPageSupportBinding) ? { identity: {
       brand: caseIdentity.brand,
       model: caseIdentity.model,
       category: caseIdentity.category,
       outcome: 'official_marketing_alias',
-      sourceModel: boundVariantModel,
+      sourceModel: boundVariantModel ?? productPageSupportBinding.sourceModel,
     } } : {}),
   };
 }
@@ -677,18 +783,19 @@ function htmlHandleInclusiveDepthClaim(field, label, quote, context) {
   };
 }
 
-export function extractClaimsFromHtml(bytes, { category, fields }) {
+export function extractClaimsFromHtml(bytes, { brand = null, category, fields }) {
   if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
   const $ = load(Buffer.from(bytes).toString('utf8'));
+  const groupedDimensionsTrusted = identifier(brand) !== 'HISENSE';
   const candidates = new Map(fields.map((field) => [field, []]));
   const structuredCandidates = new Map(fields.map((field) => [field, []]));
   for (const property of canonicalProductPropertyValues($)) {
     const quote = `${property.name} ${property.value} ${property.unitText}`;
-    const grouped = claimsFromExplicitDimensionSequence({
+    const grouped = groupedDimensionsTrusted ? claimsFromExplicitDimensionSequence({
       label: property.name,
       value: `${property.value} ${property.unitText}`,
       quote,
-    }, { category }, fields);
+    }, { category }, fields) : [];
     grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
     for (const field of fields) {
       const rule = evidenceFieldRules[field];
@@ -708,6 +815,7 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
     const rowText = elementText($, row);
     if (!rowText) return;
     $(row).find('*').addBack().each((__, element) => {
+      if (element.tagName === 'label') return;
       const label = elementOwnText($, element);
       if (!label || $(element).closest('li,[role="listitem"],tr').get(0) !== row) return;
       const labelIndex = rowText.indexOf(label);
@@ -716,7 +824,7 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       if (!value) return;
       const quote = normalizedText(`${label} ${value}`);
       const dimensionLabel = groupedDimensionLabel(label);
-      if (dimensionLabel) {
+      if (dimensionLabel && groupedDimensionsTrusted) {
         const grouped = claimsFromExplicitDimensionSequence({
           label: dimensionLabel, value: groupedDimensionValue(value), quote,
         }, { category }, fields);
@@ -742,6 +850,7 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
     });
   });
   $('body *').not('script,style,noscript,template').each((_, element) => {
+    if (element.tagName === 'label') return;
     if ($(element).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;
     const label = elementOwnText($, element);
     if (!label) return;
@@ -749,7 +858,7 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       ? normalizedText(`${label} ${$(element).next('dd').first().text()}`)
       : elementText($, $(element).parent().get(0));
     const dimensionLabel = groupedDimensionLabel(label);
-    if (dimensionLabel && quote.length <= 500) {
+    if (dimensionLabel && groupedDimensionsTrusted && quote.length <= 500) {
       const labelIndex = quote.indexOf(label);
       const value = labelIndex < 0
         ? ''

@@ -1,3 +1,5 @@
+import { CLAIM_PARSER_IMPLEMENTATION_PATHS } from './evidence-processor-epoch.mjs';
+
 export const HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS = Object.freeze([
   ['identity-registry', 'src/domain/canonical-registry.mjs', [
     'src/domain/canonical-registry.mjs', 'scripts/architecture-v2/build-canonical-registry.mjs',
@@ -12,6 +14,35 @@ export const HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS = Object.freeze([
   ]],
   ['resolver-contract', 'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs', [
     'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs',
+    'scripts/pdf-pipeline/artusi-official.js',
+    'scripts/pdf-pipeline/asko-official.js',
+    'scripts/pdf-pipeline/beko-official.js',
+    'scripts/pdf-pipeline/bosch-official.js',
+    'scripts/pdf-pipeline/chiq-official.js',
+    'scripts/pdf-pipeline/electrolux-group-official.js',
+    'scripts/pdf-pipeline/esatto-official.js',
+    'scripts/pdf-pipeline/euromaid-official.js',
+    'scripts/pdf-pipeline/fisher-paykel-official.js',
+    'scripts/pdf-pipeline/haier-official.js',
+    'scripts/pdf-pipeline/hisense-official.js',
+    'scripts/pdf-pipeline/inalto-official.js',
+    'scripts/pdf-pipeline/kogan-official.js',
+    'scripts/pdf-pipeline/lg-official.js',
+    'scripts/pdf-pipeline/liebherr-official.js',
+    'scripts/pdf-pipeline/midea-official.js',
+    'scripts/pdf-pipeline/miele-official.js',
+    'scripts/pdf-pipeline/omega-official.js',
+    'scripts/pdf-pipeline/robinhood-official.js',
+    'scripts/pdf-pipeline/samsung-official.js',
+    'scripts/pdf-pipeline/smeg-official.js',
+    'scripts/pdf-pipeline/sub-zero-official.js',
+    'scripts/pdf-pipeline/teco-official.js',
+    'scripts/pdf-pipeline/vogue-official.js',
+    'scripts/pdf-pipeline/westinghouse-official.js',
+    'scripts/architecture-v2/run-historical-evidence-recovery.mjs',
+    'src/domain/evidence-source-adapter-contract.mjs',
+    'src/domain/evidence-source-verifier.mjs',
+    'data/architecture-v2/policies/manufacturer-document-strategies.json',
     'data/architecture-v2/policies/official-discovery-seed-policy.json',
   ]],
   ['source-authority-policy', 'data/architecture-v2/policies/manufacturer-source-policy.json', [
@@ -23,7 +54,10 @@ export const HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS = Object.freeze([
     'scripts/architecture-v2/parse-pdf-with-mineru.mjs',
   ]],
   ['parser', 'src/domain/mineru-document.mjs', [
-    'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs',
+    ...new Set([
+      ...CLAIM_PARSER_IMPLEMENTATION_PATHS,
+      'src/domain/dimension-expression-knowledge.mjs',
+    ]),
   ]],
   ['scale-metrics', 'src/domain/historical-dimensions-scale-control.mjs', [
     'src/domain/evidence-candidate-inventory.mjs',

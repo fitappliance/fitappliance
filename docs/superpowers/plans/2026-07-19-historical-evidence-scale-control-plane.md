@@ -88,7 +88,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus six material-bound Miele variants; 408 current receipts; 415/415 source replay; Architecture V2 1,242/1,242 and full repository 2,920/2,920; zero publication violations |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | P0 missing-dimensions queue is empty under a typed stop; 444 current receipts; 451/451 source replay; Architecture V2 1,318/1,318 and full repository 3,020/3,020; zero publication violations |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
 
 ## Ten-Problem Solution Map
@@ -888,6 +888,43 @@ public dimensions and zero receipt-bound `VERIFIED_FIT`; missing installation,
 operation and rear-service fields keep this record at `INSUFFICIENT_DATA`. The
 next authorised P0 singleton is `G7719SCIXXLOBSW` under discovery manifest
 `historical_batch_babb9b4f333eb5500b011f49`.
+
+**P0 completion (2026-07-27):** The controlled loop continued through the
+remaining Miele, Fisher & Paykel, Samsung, Smeg, Westinghouse and Hisense
+current-retail missing-dimension cohorts. Every accepted source remained an
+exact-model official artifact with receipt-bound W/H/D; no dimensions receipt
+was allowed to supply installation, operation, service or Fit fields.
+
+The final target, Hisense `HWF5I1015`, exposed an unsafe official-page tuple:
+the page labelled one grouped value `H*W*D` while the exact AU specification
+PDF explicitly stated net `W x H x D`. The HTML route is now fail-closed for
+Hisense grouped dimensions. A dedicated exact-spec grammar accepts only the
+adjacent label/value rows `Net dimensions(W x H x D) (mm)` and
+`595 x 845 x 550`, under exact model identity and hash-bound Hisense AU OCC
+provenance. The accepted dimensions are therefore W595, H845 and D550 mm.
+
+The earlier wrong, unpromoted acceptance remains immutable and was never
+checkpointed or published. Its rerun required a tested epoch rebaseline and a
+control reconciliation. Reconciliation storage is now keyed by both manifest
+and control ID, so a later control epoch cannot overwrite or be blocked by an
+older immutable receipt for the same manifest. Final acquisition run
+`historical-scale-p0-hisense-hwf5i1015-acquisition-20260727-d` passed online
+audit `historical-recovery-audit-e911a27eadb00200faeb4bf1`, replaying 919
+objects with zero violations. Checkpoint
+`historical-dimensions-checkpoint-207d696f90b963a5fe0a056c` recorded a complete
+`1/1` dimensions funnel.
+
+The cumulative bundle now contains 425 accepted targets and replays 451/451
+source receipts. `COMPLETE_RECEIPT` is 444. The executable queue contains no
+`P0_CURRENT_MISSING_DIMENSIONS` entry, and controller
+`historical-dimensions-scale-fce2c5b5dbc837fc30f38967` returns
+`STOP_NO_RUNNABLE_MANIFESTS` with reason `ZERO_RUNNABLE_P0_MANIFESTS`. The
+remaining 132 eligible current-dimensions targets are P2 confirmation work,
+not unfinished P0. P1 remains blocked by the Task 9 boundary. The active
+release remains isolated at 349 current products, 332 receipt-bound public
+dimensions, zero receipt-bound `VERIFIED_FIT`, zero historical replacement
+issues and zero Fit-publication violations. Architecture V2 passes
+1,318/1,318, the full repository passes 3,020/3,020, and lint passes.
 
 **Acceptance:** Coverage increases monotonically, prior receipts replay, and no
 batch can claim progress from downloads or MinerU output alone.

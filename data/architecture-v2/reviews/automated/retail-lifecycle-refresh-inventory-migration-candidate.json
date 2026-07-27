@@ -4,8 +4,8 @@
   "releaseEpoch": "retail-lifecycle-shadow-2026-07-21-inputs-9bbd5004205e",
   "asOf": "2026-07-21T12:12:18.070Z",
   "sourceBindings": {
-    "shadowSha256": "3d5fd5f1ef0176afe7295f22ef993e46d7399eaad34786bc0eee84f42dbea414",
-    "shadowSemanticSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd",
+    "shadowSha256": "4767bda65d6cb9556e9424f734afc554a4d05d48b700bd4cd7f4e79f7dd5292f",
+    "shadowSemanticSha256": "afc56afb21ae92535e1ffaa2464c91d271fcc9787a2b98dcfd610539068dabff",
     "coverageSha256": "24632d4610b81dff160c7bfc5013ff65a2de9a6188d45ae640c34765d46421f3",
     "coverageSemanticSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598",
     "identityMigrationSha256": "5528e4843539638a37d68db5329f5c85ddb95d006dbabc85dda9242d5984a751",
@@ -22,6 +22,6 @@
     "controlTasks": 0,
     "byControlExecutionState": {}
   },
-  "inventoryId": "retail_lifecycle_refresh_96bf170431c2db52cdc780a1",
-  "semanticSha256": "96bf170431c2db52cdc780a1af4d7af2a96bcb020376a1cf2a66313c796b06a4"
+  "inventoryId": "retail_lifecycle_refresh_f69f6abb75b9ae650e59a336",
+  "semanticSha256": "f69f6abb75b9ae650e59a33642be1c68a5d5b2a8d9eca0f2f4bcb47506ca1f8b"
 }

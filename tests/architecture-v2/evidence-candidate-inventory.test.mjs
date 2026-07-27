@@ -205,6 +205,69 @@ test('duplicate URL retains one exact market discovery provenance and binds it i
   assert.notEqual(inventory.candidateInventorySha256, changed.candidateInventorySha256);
 });
 
+test('duplicate official material provenance tolerates a refreshed discovery snapshot only', async () => {
+  const url = 'https://www.miele.com.au/media/ex/au/specsheets/12430770.pdf';
+  const batchProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_material',
+    market: 'AU',
+    discoveryUrl: 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/',
+    requestedModel: 'FNS4782EBS',
+    matchedModel: 'FNS 4782 E edt/bs',
+    artifactUrl: url,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.html`,
+    discoveryByteSize: 204708,
+    materialNumber: '12430770',
+  };
+  const refreshedProvenance = {
+    ...batchProvenance,
+    discoveryContentSha256: 'b'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/bb/bb/${'b'.repeat(64)}.html`,
+    discoveryByteSize: 204912,
+  };
+  let received;
+  const inventory = await collectEvidenceCandidates({
+    id: 'target-miele', brand: 'Miele', model: 'FNS4782EBS', category: 'fridge',
+  }, {
+    batchCandidateJobIds: ['miele-pdf'],
+    activeReceiptSources: [],
+    resolvers: [
+      resolver({ id: 'batch-candidates', candidates: [candidate(url, {
+        batchJobId: 'miele-pdf', discoveryProvenance: batchProvenance,
+      })] }),
+      resolver({ id: 'miele-official', candidates: [candidate(url, {
+        batchJobId: 'miele-pdf', discoveryProvenance: refreshedProvenance,
+      })] }),
+    ],
+    acquireAndAttest: async (entry) => {
+      received = entry;
+      return { source: source('f'.repeat(64), url) };
+    },
+  });
+
+  assert.deepEqual(received.discoveryProvenance, batchProvenance);
+  assert.deepEqual(inventory.candidates[0].discoveryProvenance, batchProvenance);
+  assert.equal(inventory.candidates[0].resolverRefs.length, 2);
+
+  await assert.rejects(() => collectEvidenceCandidates({
+    id: 'target-miele', brand: 'Miele', model: 'FNS4782EBS', category: 'fridge',
+  }, {
+    batchCandidateJobIds: ['miele-pdf'],
+    activeReceiptSources: [],
+    resolvers: [
+      resolver({ id: 'batch-candidates', candidates: [candidate(url, {
+        batchJobId: 'miele-pdf', discoveryProvenance: batchProvenance,
+      })] }),
+      resolver({ id: 'miele-official', candidates: [candidate(url, {
+        batchJobId: 'miele-pdf',
+        discoveryProvenance: { ...refreshedProvenance, materialNumber: '11953250' },
+      })] }),
+    ],
+    acquireAndAttest: async () => ({ source: source('f'.repeat(64), url) }),
+  }), /conflicting discovery provenance/i);
+});
+
 test('truncated resolver and an unrepresented batch edge both prevent a complete inventory', async () => {
   const url = 'https://www.westinghouse.com.au/manuals/WHE6874BA.pdf';
   const inventory = await collectEvidenceCandidates(TARGET, {
@@ -281,6 +344,49 @@ test('a bound PDF dimension-scope rejection is classified as a MinerU failure, n
 
   assert.equal(inventory.candidates[0].outcome.status, 'mineru_failure');
   assert.equal(inventory.candidates[0].outcome.failureCode, 'mineru');
+});
+
+test('a product-material finish proof failure is classified as identity, not transport', async () => {
+  const url = 'https://www.miele.com.au/media/ex/au/specsheets/12531710.pdf';
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(url)] })],
+    acquireAndAttest: async () => {
+      throw new Error('Miele discovery page does not prove the approved finish');
+    },
+  });
+
+  assert.equal(inventory.candidates[0].outcome.status, 'identity_rejected');
+  assert.equal(inventory.candidates[0].outcome.failureCode, 'identity');
+});
+
+test('a persisted product-page canonical model failure is classified as identity, not transport', async () => {
+  const url = 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/';
+  const artifactBinding = {
+    sourceUrl: url,
+    finalUrl: url,
+    contentSha256: '9'.repeat(64),
+    objectPath: `evidence/web/sha256/99/99/${'9'.repeat(64)}.html`,
+    contentType: 'text/html',
+    byteSize: 2048,
+  };
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(url, {
+      sourceRole: 'manufacturer_product_page',
+    })] })],
+    acquireAndAttest: async () => {
+      throw Object.assign(new Error(
+        'official model variant product-page binding invalid: canonical source-model signal',
+      ), { artifactBinding });
+    },
+  });
+
+  assert.equal(inventory.candidates[0].outcome.status, 'identity_rejected');
+  assert.equal(inventory.candidates[0].outcome.failureCode, 'identity');
+  assert.deepEqual(inventory.candidates[0].outcome.artifactBinding, artifactBinding);
 });
 
 test('prior terminal source is suppressed while a newly discovered official source remains executable', async () => {

@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 
 import { verifyAttestedResolutionArtifact } from './evidence-artifact-verifier.mjs';
 import { computeCandidateInventorySha256 } from './evidence-candidate-inventory.mjs';
+import { evaluateRequiredEvidenceCompanions } from './evidence-source-companion-policy.mjs';
 import {
   buildLowerAuthorityHints,
   reconcileEvidenceClaims,
@@ -52,6 +53,25 @@ function identityKey(value) {
 function addViolation(violations, label, error) {
   const detail = String(error?.message ?? error).replace(/\s+/g, ' ').trim();
   violations.push(`${label}: ${detail}`);
+}
+
+export function historicalEvidenceRequiredCompanionFailure(entry, source) {
+  if (String(entry?.brand ?? '').toUpperCase().replace(/[^A-Z0-9]+/g, '') !== 'MIELE'
+    || entry?.category !== 'fridge'
+    || source?.contentType !== 'application/pdf'
+    || source?.discoveryProvenance?.method !== 'official_product_material') return null;
+  const evaluation = evaluateRequiredEvidenceCompanions({
+    identity: entry,
+    sources: entry?.sources ?? [],
+  });
+  if (!evaluation) return null;
+  const failureCode = {
+    missing: 'required_companion_missing',
+    invalid: 'required_companion_invalid',
+    conflict: 'required_companion_conflict',
+  }[evaluation.kind];
+  if (!failureCode) return null;
+  return Object.freeze({ failureCode, diagnostic: evaluation.diagnostic });
 }
 
 function validateInventoryForTarget(inventory, target, outcome) {
@@ -193,6 +213,12 @@ async function verifyOnlineSource(source, identity, readObject, verifiedObjects)
 function replayBundleEntry(entry) {
   const identity = { brand: entry.brand, model: entry.model, category: entry.category };
   for (const source of entry.sources) {
+    const companionFailure = historicalEvidenceRequiredCompanionFailure(entry, source);
+    if (companionFailure) {
+      const error = new Error(companionFailure.diagnostic);
+      error.failureCode = companionFailure.failureCode;
+      throw error;
+    }
     verifyVerificationReceipt(source, identity, { asOf: source.verificationReceipt?.verifiedAt });
   }
   if (entry.geometryProjection !== null) {
@@ -278,6 +304,7 @@ function buildIdenticalArtifactRepair(entry, target, outcome) {
 }
 
 function receiptReplayFailureCode(error) {
+  if (typeof error?.failureCode === 'string' && error.failureCode) return error.failureCode;
   const detail = String(error?.message ?? error).toLowerCase();
   if (/claims do not match|claim.*mismatch|expected receipt claim.*not rederived/.test(detail)) {
     return 'claim_replay_mismatch';
@@ -312,6 +339,12 @@ export async function auditHistoricalAcceptanceReceipts({
         derivedObjectPath: source.derivedArtifact?.objectPath ?? null,
       };
       try {
+        const companionFailure = historicalEvidenceRequiredCompanionFailure(entry, source);
+        if (companionFailure) {
+          const error = new Error(companionFailure.diagnostic);
+          error.failureCode = companionFailure.failureCode;
+          throw error;
+        }
         await verifyOnlineSource(source, identity, readObject, checkedObjects);
         outcomes.push({ ...base, status: 'passed', failureCode: null });
       } catch (error) {

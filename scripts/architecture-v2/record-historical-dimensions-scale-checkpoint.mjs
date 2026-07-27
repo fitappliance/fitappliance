@@ -133,19 +133,34 @@ async function loadDiscoveryRun(objectStore, storageIdentity, runId) {
     run,
     manifest: run.boundedManifest,
     audit: null,
+    authorizingControl: null,
     storageContentSha256: pointer.contentSha256,
   };
 }
 
 async function loadDimensionsRun(storageRoot, runId, auditPath) {
   const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', runId);
-  const [run, manifest, audit] = await Promise.all([
+  const resolvedAuditPath = resolveHistoricalDimensionsRunAuditPath(storageRoot, runId, auditPath);
+  const [run, manifest, audit, authorizingControl] = await Promise.all([
     readJson(join(runDirectory, 'results.json')),
     readJson(join(runDirectory, 'bounded-manifest.json')),
-    readJson(auditPath ?? join(runDirectory, 'audit-full.json')),
+    readJson(resolvedAuditPath),
+    readJson(join(runDirectory, 'dimensions-scale-control.json')),
   ]);
   if (run?.runId !== runId) throw new Error(`dimensions run ID mismatch: ${runId}`);
-  return { run, manifest, audit, storageContentSha256: null };
+  return {
+    run,
+    manifest,
+    audit,
+    auditPath: resolvedAuditPath,
+    authorizingControl,
+    storageContentSha256: null,
+  };
+}
+
+export function resolveHistoricalDimensionsRunAuditPath(storageRoot, runId, auditPath = null) {
+  if (auditPath) return resolve(auditPath);
+  return join(resolve(storageRoot), 'runs/historical-evidence-recovery', runId, 'audit-full.json');
 }
 
 export async function loadHistoricalDimensionsCheckpointCurrentInput(generatedAt) {
@@ -188,8 +203,37 @@ async function atomicJson(path, value) {
   await rename(temporary, path);
 }
 
+export async function persistHistoricalDimensionsRunAudit(path, value) {
+  const payloadSha256 = canonicalJsonSha256(value);
+  try {
+    const existing = JSON.parse(await readFile(path, 'utf8'));
+    if (canonicalJsonSha256(existing) !== payloadSha256) {
+      throw new Error(`immutable dimensions run audit differs: ${path}`);
+    }
+    return false;
+  } catch (error) {
+    if (error?.code !== 'ENOENT') throw error;
+  }
+  await mkdir(dirname(path), { recursive: true });
+  let handle;
+  try {
+    handle = await open(path, 'wx');
+  } catch (error) {
+    if (error?.code === 'EEXIST') return persistHistoricalDimensionsRunAudit(path, value);
+    throw error;
+  }
+  try {
+    await handle.writeFile(`${JSON.stringify(value, null, 2)}\n`);
+    await handle.sync();
+  } finally {
+    await handle.close();
+  }
+  return true;
+}
+
 export async function runCli(args = process.argv.slice(2)) {
   const options = parseHistoricalDimensionsScaleCheckpointArgs(args);
+  const recordedAt = options.generatedAt ?? new Date().toISOString();
   const lockPath = `${options.ledger}.lock`;
   await mkdir(dirname(lockPath), { recursive: true });
   const lock = await open(lockPath, 'wx').catch((error) => {
@@ -209,7 +253,7 @@ export async function runCli(args = process.argv.slice(2)) {
     const [control, ledger, currentInput, candidateManifest] = await Promise.all([
       readJson(options.control),
       readJson(options.ledger),
-      loadHistoricalDimensionsCheckpointCurrentInput(options.generatedAt),
+      loadHistoricalDimensionsCheckpointCurrentInput(recordedAt),
       options.stage === 'DISCOVERY'
         ? readJson(resolveArchitectureV2Path(root, 'historicalOfficialCandidateManifest'))
         : Promise.resolve(null),
@@ -220,7 +264,11 @@ export async function runCli(args = process.argv.slice(2)) {
       ...evidence,
       currentInput,
       candidateManifest,
+      recordedAt,
     });
+    if (options.stage === 'DIMENSIONS') {
+      await persistHistoricalDimensionsRunAudit(evidence.auditPath, evidence.audit);
+    }
     await atomicJson(options.ledger, advanced.ledger);
     await atomicJson(options.control, advanced.control);
     process.stdout.write(`${JSON.stringify({

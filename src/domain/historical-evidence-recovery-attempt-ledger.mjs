@@ -13,6 +13,7 @@ const EXHAUSTED_CANDIDATE_STATUSES = new Set([
   'claims_incomplete', 'identity_rejected', 'mineru_failure',
   'previous_terminal_suppressed', 'reference_only',
 ]);
+const TARGET_CONFLICT_REASON = 'complete_conflicting_candidate_inventory';
 
 function text(value, label) {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -285,11 +286,20 @@ function targetAttemptEntry({ target, result, batch, results, audit, bindings })
     candidate?.outcome
       && EXHAUSTED_CANDIDATE_STATUSES.has(candidate.outcome.status)
       && (candidate.authorityMode !== 'reference'
-        || candidate.outcome.status === 'reference_only')
+      || candidate.outcome.status === 'reference_only')
   ));
+  const conflictingFields = [...new Set((result.reconciliation?.conflictingFields ?? [])
+    .map((field) => text(field, 'target conflict field')))].sort();
+  const reconciliationConflict = result.status === 'conflict_quarantined'
+    && result.failureCode === 'conflict'
+    && conflictingFields.length > 0
+    && candidates.some((candidate) => (
+      candidate.authorityMode === 'official'
+        && ['accepted', 'unchanged'].includes(candidate.outcome?.status)
+    ));
   if (!terminalResult
     || inventory?.completionStatus !== 'complete'
-    || !exhaustedCandidates
+    || (!exhaustedCandidates && !reconciliationConflict)
     || (inventory.incompleteResolvers ?? []).length !== 0
     || (inventory.missingBatchCandidateJobIds ?? []).length !== 0) return null;
   const resolvers = (inventory.resolvers ?? []).map((resolver) => ({
@@ -326,11 +336,16 @@ function targetAttemptEntry({ target, result, batch, results, audit, bindings })
     lifecycleState: target.lifecycleState,
     status: result.status,
     failureCode: result.failureCode,
-    reason: candidates.length === 0
-      ? 'complete_zero_candidate_inventory'
-      : 'complete_exhausted_candidate_inventory',
-    disposition: 'AWAIT_RESOLVER_OR_POLICY_CHANGE',
+    reason: reconciliationConflict
+      ? TARGET_CONFLICT_REASON
+      : candidates.length === 0
+        ? 'complete_zero_candidate_inventory'
+        : 'complete_exhausted_candidate_inventory',
+    disposition: reconciliationConflict
+      ? 'RUN_CONFLICT_CLOSURE'
+      : 'AWAIT_RESOLVER_OR_POLICY_CHANGE',
     suppressesSamePolicyResolverOnly: true,
+    ...(reconciliationConflict ? { conflictingFields } : {}),
     resolverSetSha256,
     resolvers,
     policySha256: results.policySha256,
@@ -351,6 +366,34 @@ function targetAttemptEntry({ target, result, batch, results, audit, bindings })
   };
 }
 
+function targetAttemptResolutionEntry({ attempt, target, result, batch, results, audit, bindings }) {
+  const seed = {
+    targetAttemptId: attempt.targetAttemptId,
+    runId: results.runId,
+    targetId: target.targetId,
+    semanticOutcomeSha256: result.semanticOutcomeSha256,
+  };
+  return {
+    targetAttemptResolutionId: `historical_target_resolution_${canonicalJsonSha256(seed).slice(0, 24)}`,
+    targetAttemptId: attempt.targetAttemptId,
+    targetId: target.targetId,
+    referenceId: target.referenceId,
+    status: 'accepted',
+    reason: 'target_reconciliation_accepted',
+    policySha256: results.policySha256,
+    semanticOutcomeSha256: sha256(
+      result.semanticOutcomeSha256,
+      'target resolution semantic outcome SHA-256',
+    ),
+    batchId: batch.batchId,
+    batchSha256: bindings.batchSha256,
+    runId: results.runId,
+    resultsSha256: bindings.resultsSha256,
+    auditSha256: sha256(audit.semanticAuditSha256, 'target resolution audit SHA-256'),
+    resolvedAt: timestamp(results.completedAt, 'target resolution completion time'),
+  };
+}
+
 export function buildHistoricalEvidenceRecoveryAttemptLedger({
   batch,
   results,
@@ -368,6 +411,8 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     .map((entry) => [entry.sourceAcceptanceId, structuredClone(entry)]));
   const targetAttempts = new Map((priorLedger?.targetAttempts ?? [])
     .map((entry) => [entry.targetAttemptId, structuredClone(entry)]));
+  const targetAttemptResolutions = new Map((priorLedger?.targetAttemptResolutions ?? [])
+    .map((entry) => [entry.targetAttemptResolutionId, structuredClone(entry)]));
   for (const result of results.outcomes ?? []) {
     const target = targets.get(result.targetId);
     if (!target) throw new Error(`attempt target missing: ${result.targetId}`);
@@ -378,6 +423,22 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
         throw new Error(`conflicting target attempt ledger entry: ${targetAttempt.targetAttemptId}`);
       }
       if (!existing) targetAttempts.set(targetAttempt.targetAttemptId, targetAttempt);
+    }
+    if (result.status === 'accepted') {
+      for (const attempt of targetAttempts.values()) {
+        if (attempt.reason !== TARGET_CONFLICT_REASON
+          || (attempt.targetId !== target.targetId && attempt.referenceId !== target.referenceId)) continue;
+        const resolution = targetAttemptResolutionEntry({
+          attempt, target, result, batch, results, audit, bindings,
+        });
+        const existing = targetAttemptResolutions.get(resolution.targetAttemptResolutionId);
+        if (existing && !sameReauditedFact(existing, resolution)) {
+          throw new Error(`conflicting target attempt resolution: ${resolution.targetAttemptResolutionId}`);
+        }
+        if (!existing) {
+          targetAttemptResolutions.set(resolution.targetAttemptResolutionId, resolution);
+        }
+      }
     }
     for (const candidate of result.candidateInventory?.candidates ?? []) {
       const outcome = candidate.outcome;
@@ -433,6 +494,10 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     .sort((left, right) => left.sourceAcceptanceId.localeCompare(right.sourceAcceptanceId));
   const materializedTargetAttempts = [...targetAttempts.values()]
     .sort((left, right) => left.targetAttemptId.localeCompare(right.targetAttemptId));
+  const materializedTargetAttemptResolutions = [...targetAttemptResolutions.values()]
+    .sort((left, right) => (
+      left.targetAttemptResolutionId.localeCompare(right.targetAttemptResolutionId)
+    ));
   const resolvedAttemptIds = new Set(materializedResolutions.map((entry) => entry.attemptId));
   const activeSuppressions = materialized.filter((entry) => (
     entry.suppressesSamePolicySource && !resolvedAttemptIds.has(entry.attemptId)
@@ -454,6 +519,7 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     resolutions: materializedResolutions,
     sourceAcceptances: materializedSourceAcceptances,
     targetAttempts: materializedTargetAttempts,
+    targetAttemptResolutions: materializedTargetAttemptResolutions,
     summary: {
       entries: materialized.length,
       resolutions: materializedResolutions.length,
@@ -471,6 +537,21 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
       byDisposition: countBy(materialized, 'disposition'),
     },
   };
+}
+
+export function activeHistoricalTargetConflicts({ ledger }) {
+  if (ledger?.schemaVersion !== 1 || !Array.isArray(ledger.targetAttempts)) {
+    throw new TypeError('historical attempt ledger with target attempts required');
+  }
+  const resolved = new Set((ledger.targetAttemptResolutions ?? []).map((resolution) => (
+    text(resolution.targetAttemptId, 'target attempt resolution binding')
+  )));
+  return ledger.targetAttempts.filter((attempt) => (
+    attempt.reason === TARGET_CONFLICT_REASON
+      && attempt.status === 'conflict_quarantined'
+      && attempt.failureCode === 'conflict'
+      && !resolved.has(attempt.targetAttemptId)
+  )).map((attempt) => structuredClone(attempt));
 }
 
 export function activeHistoricalResolverSuppressions({

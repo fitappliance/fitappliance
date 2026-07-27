@@ -126,7 +126,7 @@ function extractProductPageUrlsForSku(html, pageUrl, sku) {
   const hrefs = extractHrefValues(source);
   for (const rawHref of hrefs) {
     const url = absoluteUrl(rawHref, pageUrl);
-    if (/\/au-en\/home-appliances\//i.test(url) && normalizeSku(url).includes(target)) {
+    if (productPageUrlMatchesSku(url, target)) {
       urls.push(url);
     }
   }
@@ -136,13 +136,27 @@ function extractProductPageUrlsForSku(html, pageUrl, sku) {
     const window = source.slice(Math.max(0, skuIndex - 6000), skuIndex + 8000);
     for (const rawHref of extractHrefValues(window)) {
       const url = absoluteUrl(rawHref, pageUrl);
-      if (/\/au-en\/home-appliances\//i.test(url) && normalizeSku(url).includes(target)) {
+      if (productPageUrlMatchesSku(url, target)) {
         urls.push(url);
       }
     }
   }
 
   return [...new Set(urls)];
+}
+
+function productPageUrlMatchesSku(rawUrl, sku) {
+  const target = normalizeSku(sku);
+  if (!target) return false;
+  try {
+    const parsed = new URL(rawUrl);
+    if (parsed.hostname.toLowerCase() !== 'www.beko.com'
+      || !parsed.pathname.startsWith('/au-en/home-appliances/')) return false;
+    const slug = decodeURIComponent(parsed.pathname.split('/').filter(Boolean).at(-1) || '');
+    return normalizeSku(slug.split('-').at(-1)) === target;
+  } catch {
+    return false;
+  }
 }
 
 function scorePdfUrl(url, target = {}) {
@@ -215,6 +229,113 @@ async function defaultScraplingImpl(url, options) {
   return fetchViaScrapling(url, options);
 }
 
+async function persistDiscoveryHtml(html, {
+  sourceUrl,
+  requestedModel,
+  method,
+  writeObject,
+}) {
+  if (typeof writeObject !== 'function') return null;
+  const bytes = Buffer.from(String(html || ''), 'utf8');
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+  const objectPath = `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`;
+  await writeObject(objectPath, bytes);
+  return {
+    schemaVersion: 1,
+    method,
+    market: 'AU',
+    discoveryUrl: sourceUrl,
+    requestedModel,
+    contentType: 'text/html',
+    contentSha256,
+    objectPath,
+    byteSize: bytes.length,
+  };
+}
+
+function candidateDiscoveryProvenance(pageProvenance, artifactUrl, matchedModel) {
+  if (!pageProvenance) return null;
+  return {
+    schemaVersion: 1,
+    method: pageProvenance.method,
+    market: 'AU',
+    discoveryUrl: pageProvenance.discoveryUrl,
+    requestedModel: pageProvenance.requestedModel,
+    matchedModel,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: pageProvenance.contentSha256,
+    discoveryObjectPath: pageProvenance.objectPath,
+    discoveryByteSize: pageProvenance.byteSize,
+  };
+}
+
+function sourceLane(laneId, required, supported, status, provenance, candidateCount, reason = null) {
+  return { laneId, required, supported, status, candidateCount, provenance, reason };
+}
+
+function laneProvenanceForResources(resources) {
+  const seen = new Set();
+  return resources.flatMap((resource) => {
+    const candidate = resource.discoveryProvenance;
+    if (!candidate?.discoveryContentSha256 || !candidate.discoveryObjectPath) return [];
+    const key = `${candidate.discoveryUrl}\0${candidate.discoveryContentSha256}`;
+    if (seen.has(key)) return [];
+    seen.add(key);
+    return [{
+      schemaVersion: 1,
+      method: candidate.method,
+      market: 'AU',
+      discoveryUrl: candidate.discoveryUrl,
+      requestedModel: candidate.requestedModel,
+      contentType: 'text/html',
+      contentSha256: candidate.discoveryContentSha256,
+      objectPath: candidate.discoveryObjectPath,
+      byteSize: candidate.discoveryByteSize,
+    }];
+  });
+}
+
+function bekoSourceLanes({ supportProvenance, resources, errors }) {
+  const productPages = resources.filter((resource) => (
+    resource.sourceLaneId === 'official_product_detail'
+  ));
+  const currentPages = productPages.filter((resource) => resource.catalogState === 'current');
+  const documents = resources.filter((resource) => resource.sourceLaneId === 'official_document_cdn');
+  const detailProvenance = laneProvenanceForResources(productPages);
+  const documentProvenance = laneProvenanceForResources(documents);
+  const supportComplete = Boolean(supportProvenance);
+  const detailComplete = productPages.length > 0 && detailProvenance.length > 0;
+  const documentComplete = documents.length > 0 && documentProvenance.length > 0;
+  return [
+    sourceLane(
+      'current_product', false, true,
+      currentPages.length > 0 ? 'complete' : 'retryable',
+      laneProvenanceForResources(currentPages), currentPages.length,
+      currentPages.length > 0 ? null : errors[0] || 'Exact current-product page was not persisted.',
+    ),
+    sourceLane(
+      'discontinued_archive', false, false, 'unsupported', [], 0,
+      'The bounded Beko resolver uses exact support lookup and does not enumerate an archive.',
+    ),
+    sourceLane(
+      'support_search_api', true, true, supportComplete ? 'complete' : 'retryable',
+      supportProvenance ? [supportProvenance] : [], 0,
+      supportComplete ? null : errors[0] || 'Exact Beko support lookup was not persisted.',
+    ),
+    sourceLane(
+      'official_document_cdn', true, true, documentComplete ? 'complete' : 'retryable',
+      documentProvenance, documents.length,
+      documentComplete ? null : errors[0] || 'No hash-bound official document was discovered.',
+    ),
+    sourceLane(
+      'official_product_detail', true, true, detailComplete ? 'complete' : 'retryable',
+      detailProvenance, productPages.length,
+      detailComplete ? null : errors[0] || 'No exact-model official detail page was persisted.',
+    ),
+  ];
+}
+
 function exactModelMention(html, sku) {
   const model = String(sku || '').trim().toUpperCase();
   if (!model) return false;
@@ -253,16 +374,16 @@ async function resultFromDiscoveryPage(target, discoveryUrl, html, writeObject) 
   const sku = String(target.sku || target.model || target.product?.model || '').trim();
   if (!exactModelMention(html, sku)) return null;
   const resources = extractPdfResourcesFromPage(html, discoveryUrl);
-  if (!resources.length) return null;
-  const productPageUrl = extractProductPageUrlsForSku(html, discoveryUrl, sku)[0] || null;
-  let discoveryFields = null;
-  if (typeof writeObject === 'function') {
-    const bytes = Buffer.from(html, 'utf8');
-    const discoveryContentSha256 = createHash('sha256').update(bytes).digest('hex');
-    const discoveryObjectPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`;
-    await writeObject(discoveryObjectPath, bytes);
-    discoveryFields = { discoveryContentSha256, discoveryObjectPath, discoveryByteSize: bytes.length };
-  }
+  const isCurrentProductPage = productPageUrlMatchesSku(discoveryUrl, sku);
+  const productPageUrl = isCurrentProductPage
+    ? discoveryUrl
+    : extractProductPageUrlsForSku(html, discoveryUrl, sku)[0] || null;
+  const pageProvenance = await persistDiscoveryHtml(html, {
+    sourceUrl: discoveryUrl,
+    requestedModel: sku,
+    method: isCurrentProductPage ? 'official_product_page' : 'official_support_result',
+    writeObject,
+  });
   const ranked = resources
     .map((resource) => ({ ...resource, score: scorePdfUrl(resource.url, target) }))
     .filter((resource) => resource.score > 0)
@@ -270,29 +391,34 @@ async function resultFromDiscoveryPage(target, discoveryUrl, html, writeObject) 
   if (!ranked.length) return null;
   const enriched = ranked.map((resource) => ({
     ...resource,
+    sourceLaneId: 'official_document_cdn',
+    sourceModelHint: sku,
     requiredAttempt: resource.resourceType === 'specification_sheet',
-    ...(discoveryFields ? {
-      discoveryProvenance: {
-        schemaVersion: 1,
-        method: 'official_product_page',
-        market: 'AU',
-        discoveryUrl,
-        requestedModel: sku,
-        matchedModel: sku,
-        artifactUrl: resource.url,
-        artifactLinkUrl: resource.url,
-        ...discoveryFields,
-      },
+    ...(pageProvenance ? {
+      discoveryProvenance: candidateDiscoveryProvenance(pageProvenance, resource.url, sku),
     } : {}),
   }));
-  const best = enriched[0];
+  const pageResource = {
+    url: discoveryUrl,
+    sourceUrl: discoveryUrl,
+    resourceType: 'product_page',
+    sourceLaneId: 'official_product_detail',
+    sourceModelHint: sku,
+    catalogState: isCurrentProductPage ? 'current' : 'support',
+    score: -1,
+    requiredAttempt: false,
+    ...(pageProvenance ? {
+      discoveryProvenance: candidateDiscoveryProvenance(pageProvenance, discoveryUrl, sku),
+    } : {}),
+  };
+  const best = enriched[0] || pageResource;
   return {
     sourceUrl: best.url,
     source: `beko-official-${best.resourceType}`,
     resourceType: best.resourceType,
     requiredAttempt: best.requiredAttempt,
     productPageUrl,
-    resources: enriched,
+    resources: [...enriched, pageResource],
     discoveryProvenance: best.discoveryProvenance,
   };
 }
@@ -334,11 +460,18 @@ async function findBekoOfficialPdf(target = {}, {
   const candidatePdfs = [];
   const errors = [];
   const sku = target.sku || target.model || target.product?.model;
+  let supportProvenance = null;
 
   const manualSearchApiUrl = manualSearchApiUrlForTarget(target);
   try {
     const searchHtml = await fetchText(manualSearchApiUrl, {
       fetchImpl, scraplingImpl, timeoutMs, userAgent,
+    });
+    supportProvenance = await persistDiscoveryHtml(searchHtml, {
+      sourceUrl: manualSearchApiUrl,
+      requestedModel: sku,
+      method: 'official_support_search_api',
+      writeObject,
     });
     const manualSearchUrl = extractManualResultUrlForSku(searchHtml, sku);
     if (!manualSearchUrl) {
@@ -369,7 +502,14 @@ async function findBekoOfficialPdf(target = {}, {
         }
       }
       const direct = combineDiscoveryResults(results);
-      if (direct) return direct;
+      if (direct) {
+        direct.sourceLanes = bekoSourceLanes({
+          supportProvenance,
+          resources: direct.resources,
+          errors,
+        });
+        return direct;
+      }
     }
     errors.push(`${manualSearchUrl}: no exact-model PDF result`);
   } catch (error) {
@@ -415,15 +555,25 @@ async function findBekoOfficialPdf(target = {}, {
     .sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
 
   if (!ranked[0]) {
-    throw new Error(`Beko official PDF resources not found for ${target.sku || target.model || ''}: ${errors.slice(0, 2).join(' | ')}`.trim());
+    return {
+      sourceUrl: null,
+      source: 'beko-official-no-candidate',
+      resourceType: 'product_page',
+      resources: [],
+      sourceLanes: bekoSourceLanes({ supportProvenance, resources: [], errors }),
+      reason: `Beko official PDF resources not found for ${target.sku || target.model || ''}: ${errors.slice(0, 2).join(' | ')}`.trim(),
+    };
   }
 
-  return {
+  const fallback = {
     sourceUrl: ranked[0].url,
     source: 'beko-official',
     resourceType: /manual/i.test(ranked[0].url) ? 'user_manual' : 'specification_sheet',
-    candidates: ranked
+    candidates: ranked,
+    resources: [],
   };
+  fallback.sourceLanes = bekoSourceLanes({ supportProvenance, resources: [], errors });
+  return fallback;
 }
 
 exports.absoluteUrl = absoluteUrl;
@@ -436,4 +586,5 @@ exports.extractProductPageUrlsForSku = extractProductPageUrlsForSku;
 exports.extractSearchResultUrls = extractSearchResultUrls;
 exports.findBekoOfficialPdf = findBekoOfficialPdf;
 exports.manualSearchApiUrlForTarget = manualSearchApiUrlForTarget;
+exports.productPageUrlMatchesSku = productPageUrlMatchesSku;
 exports.scorePdfUrl = scorePdfUrl;

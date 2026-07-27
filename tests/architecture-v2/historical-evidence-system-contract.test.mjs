@@ -341,7 +341,15 @@ test('tracked system contract replays from repository sources without external s
   assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 0);
   assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
   assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
-  assert.equal(first.controllerDecision.status, 'RUN_P0');
+  assert.deepEqual(first.controllerDecision, {
+    status: 'STOP_NO_RUNNABLE_MANIFESTS',
+    allowedManifestId: null,
+    allowedWorkstreamId: 'CURRENT_DIMENSIONS',
+    p1Blocked: true,
+    reason: 'ZERO_RUNNABLE_P0_MANIFESTS',
+    cohortKey: null,
+    checkpointCount: 140,
+  });
   const observationStage = first.stages.find((stage) => stage.id === 'retailer-observations');
   const canonicalIdentity = first.stages.find((stage) => stage.id === 'canonical-identity');
   const canonicalIdentityCandidate = first.stages.find(
@@ -352,6 +360,7 @@ test('tracked system contract replays from repository sources without external s
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
   const candidateRelease = first.stages.find((stage) => stage.id === 'candidate-release-gate');
   const activeRelease = first.stages.find((stage) => stage.id === 'active-retail-release');
+  const attemptLedger = first.stages.find((stage) => stage.id === 'attempt-ledger');
   const receiptReconciliation = first.stages.find(
     (stage) => stage.id === 'receipt-reconciliation',
   );
@@ -359,12 +368,17 @@ test('tracked system contract replays from repository sources without external s
   const fitPublication = first.stages.find((stage) => stage.id === 'fit-publication');
   assert.ok(activeRelease);
   assert.deepEqual(activeRelease.releaseDependencies, []);
+  assert.ok(attemptLedger);
+  assert.equal(attemptLedger.releaseState, 'RELEASED');
+  assert.equal(attemptLedger.releaseEpoch, 1);
+  assert.deepEqual(attemptLedger.releaseDependencies, []);
   assert.equal(receiptReconciliation.releaseState, 'PENDING_NEXT');
   assert.equal(receiptReconciliation.releaseEpoch, 2);
   assert.equal(classification.releaseState, 'PENDING_NEXT');
   assert.equal(classification.releaseEpoch, 2);
   assert.deepEqual(classification.releaseDependencies, [
     'active-retail-release',
+    'attempt-ledger',
     'receipt-reconciliation',
   ]);
   assert.equal(fitPublication.releaseState, 'RELEASED');

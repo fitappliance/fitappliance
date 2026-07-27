@@ -72,6 +72,56 @@ function inventory(sources, overrides = {}) {
 
 const verifyReceipt = () => true;
 
+function mieleFnsMaterialPdf() {
+  const identity = { brand: 'Miele', model: 'FNS4782EBS', category: 'fridge' };
+  const discoveryUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/';
+  const discoveryHash = 'd'.repeat(64);
+  return source('a'.repeat(64), { widthMm: 600, heightMm: 1850, depthMm: 675 }, {
+    sourceType: 'official_model_variant_pdf',
+    contentType: 'application/pdf',
+    sourceUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12430770.pdf',
+    finalUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12430770.pdf',
+    identity: { ...identity, outcome: 'official_marketing_alias', sourceModel: 'FNS 4782 E' },
+    identitySignals: [
+      { type: 'mineru_miele_product_material_model', value: `FNS 4782 E:material:12430770:finish:BlackSteel:page:1:${'e'.repeat(64)}` },
+      { type: 'canonical_source_model', value: 'FNS 4782 E' },
+      { type: 'official_product_material_model', value: `${identity.model}:FNS 4782 E:12430770:${discoveryHash}:${discoveryUrl}` },
+    ],
+    discoveryProvenance: {
+      method: 'official_product_material',
+      requestedModel: identity.model,
+      matchedModel: 'FNS 4782 E edt/bs',
+      discoveryUrl,
+      artifactUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12430770.pdf',
+      materialNumber: '12430770',
+      discoveryContentSha256: discoveryHash,
+    },
+  });
+}
+
+function failedMieleFnsProductPageCandidate(outcome) {
+  const discoveryUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/';
+  return {
+    candidateId: 'candidate-miele-fns-page',
+    sourceUrl: discoveryUrl,
+    authorityMode: 'official',
+    sourceRole: 'manufacturer_product_page',
+    requiredAttempt: true,
+    discoveryProvenance: {
+      method: 'official_product_material',
+      requestedModel: 'FNS4782EBS',
+      matchedModel: 'FNS 4782 E edt/bs',
+      discoveryUrl,
+      artifactUrl: discoveryUrl,
+      materialNumber: '12430770',
+      discoveryContentSha256: 'd'.repeat(64),
+    },
+    batchJobIds: [],
+    resolverRefs: [],
+    outcome,
+  };
+}
+
 test('same-hash official outcomes deduplicate to one accepted source', () => {
   const dimensions = { widthMm: 913, heightMm: 1782, depthMm: 803 };
   const first = source('a'.repeat(64), dimensions);
@@ -94,6 +144,75 @@ test('conflicting active exact official sources are quarantined', () => {
   assert.equal(result.failureCode, 'conflict');
   assert.deepEqual(result.conflictingFields, ['closedEnvelope.depthMm']);
   assert.equal(result.sources.length, 2);
+});
+
+test('Miele material PDF is rejected when its required same-material page fails identity attestation', () => {
+  const identity = { brand: 'Miele', model: 'FNS4782EBS', category: 'fridge' };
+  const pdf = mieleFnsMaterialPdf();
+  const result = reconcileEvidenceClaims(identity, inventory([], {
+    targetId: 'target-miele-fns4782ebs',
+    identity,
+    candidates: [
+      {
+        candidateId: 'candidate-miele-fns-pdf',
+        sourceUrl: pdf.sourceUrl,
+        authorityMode: 'official',
+        sourceRole: 'manufacturer_document',
+        requiredAttempt: true,
+        discoveryProvenance: pdf.discoveryProvenance,
+        batchJobIds: [],
+        resolverRefs: [],
+        outcome: { status: 'accepted', failureCode: null, source: pdf },
+      },
+      failedMieleFnsProductPageCandidate({
+        status: 'identity_rejected',
+        failureCode: 'identity',
+        reason: 'official model variant product-page binding invalid: canonical source-model signal',
+        artifactBinding: {
+          sourceUrl: 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/',
+          finalUrl: 'https://shop.miele.com.au/en/kitchen/refrigeration/fns-4782-e-edt-bs-zid12430770/',
+          contentSha256: 'd'.repeat(64),
+          objectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+          contentType: 'text/html',
+          byteSize: 2048,
+        },
+        source: null,
+      }),
+    ],
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'identity_rejected');
+  assert.equal(result.failureCode, 'identity');
+  assert.deepEqual(result.sources, []);
+});
+
+test('Miele material PDF is retryable when its required same-material page has a true transport failure', () => {
+  const identity = { brand: 'Miele', model: 'FNS4782EBS', category: 'fridge' };
+  const pdf = mieleFnsMaterialPdf();
+  const result = reconcileEvidenceClaims(identity, inventory([], {
+    targetId: 'target-miele-fns4782ebs',
+    identity,
+    candidates: [
+      {
+        candidateId: 'candidate-miele-fns-pdf',
+        sourceUrl: pdf.sourceUrl,
+        authorityMode: 'official',
+        sourceRole: 'manufacturer_document',
+        requiredAttempt: true,
+        discoveryProvenance: pdf.discoveryProvenance,
+        batchJobIds: [],
+        resolverRefs: [],
+        outcome: { status: 'accepted', failureCode: null, source: pdf },
+      },
+      failedMieleFnsProductPageCandidate({
+        status: 'transport_failure', failureCode: 'transport', reason: 'http_503', source: null,
+      }),
+    ],
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'retryable_failure');
+  assert.equal(result.failureCode, 'transport');
+  assert.deepEqual(result.sources, []);
 });
 
 test('explicit appliance depth plus an exact product page excludes a conflicting generic net-depth source', () => {
@@ -728,6 +847,53 @@ test('strict HTML variant disagreement with its exact source anchor remains quar
   assert.deepEqual(result.conflictingFields, ['closedEnvelope.depthMm']);
 });
 
+test('material-bound Miele PDF and product page disagreement is quarantined without a geometry source', () => {
+  const identity = { brand: 'Miele', model: 'KS4783EDETCCS', category: 'fridge' };
+  const discoveryUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/fridges/freestanding-fridges/ks-4783-edt-cs-zid11949580/';
+  const discoveryHash = 'd'.repeat(64);
+  const baseProvenance = {
+    method: 'official_product_material', requestedModel: identity.model,
+    matchedModel: 'KS 4783 EDT CS', discoveryUrl, materialNumber: '11949580',
+    discoveryContentSha256: discoveryHash,
+  };
+  const pdf = source('a'.repeat(64), { widthMm: 600, heightMm: 1850, depthMm: 675 }, {
+    sourceType: 'official_model_variant_pdf', contentType: 'application/pdf',
+    sourceUrl: 'https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf',
+    finalUrl: 'https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf',
+    identity: { ...identity, outcome: 'official_marketing_alias', sourceModel: 'KS 4783 ED' },
+    identitySignals: [
+      { type: 'mineru_miele_product_material_model', value: `KS 4783 ED:material:11949580:finish:Clean steel:page:1:${'e'.repeat(64)}` },
+      { type: 'canonical_source_model', value: 'KS 4783 ED' },
+      { type: 'official_product_material_model', value: `${identity.model}:KS 4783 ED:11949580:${discoveryHash}:${discoveryUrl}` },
+    ],
+    discoveryProvenance: {
+      ...baseProvenance,
+      artifactUrl: 'https://www.miele.com.au/media/ex/au/specsheets/11949580.pdf',
+    },
+  });
+  const productPage = source(discoveryHash, { widthMm: 597, heightMm: 1855, depthMm: 675 }, {
+    sourceType: 'official_model_variant_product_page', contentType: 'text/html',
+    sourceUrl: discoveryUrl, finalUrl: discoveryUrl,
+    identity: { ...identity, outcome: 'official_marketing_alias', sourceModel: 'KS 4783 EDT CS' },
+    identitySignals: [
+      { type: 'document_title', value: 'KS 4783 EDT CS | Miele Australia' },
+      { type: 'canonical_source_model', value: 'KS 4783 EDT CS' },
+      { type: 'official_product_material_page', value: `${identity.model}:KS 4783 EDT CS:11949580:${discoveryHash}:${discoveryUrl}` },
+    ],
+    discoveryProvenance: { ...baseProvenance, artifactUrl: discoveryUrl },
+  });
+  const result = reconcileEvidenceClaims(identity, inventory([pdf, productPage], {
+    targetId: 'target-miele-ks4783-cleansteel', identity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.equal(result.failureCode, 'conflict');
+  assert.deepEqual(result.conflictingFields, [
+    'closedEnvelope.heightMm', 'closedEnvelope.widthMm',
+  ]);
+  assert.equal(result.sources.length, 2);
+});
+
 test('incomplete inventory cannot reconcile to acceptance', () => {
   const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
   const incomplete = inventory([accepted], {
@@ -763,14 +929,45 @@ test('official parser and transport failures outrank an optional reference-only 
     },
   ];
   const parserResult = reconcileEvidenceClaims(IDENTITY, inventory([], { candidates: baseCandidates }));
-  assert.equal(parserResult.status, 'claims_incomplete');
-  assert.equal(parserResult.failureCode, 'mineru');
+  assert.equal(parserResult.status, 'retryable_failure');
+  assert.equal(parserResult.failureCode, 'transport');
 
   const transportResult = reconcileEvidenceClaims(IDENTITY, inventory([], {
     candidates: baseCandidates.filter((candidate) => candidate.candidateId !== 'official-pdf'),
   }));
-  assert.equal(transportResult.status, 'claims_incomplete');
+  assert.equal(transportResult.status, 'retryable_failure');
   assert.equal(transportResult.failureCode, 'transport');
+});
+
+test('required official transport failure cannot be hidden by an optional claim-semantic failure', () => {
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([], {
+    candidates: [{
+      candidateId: 'required-install-guide',
+      sourceUrl: 'https://www.westinghouse.com.au/install-guide.pdf',
+      authorityMode: 'official',
+      sourceRole: 'manufacturer_document',
+      requiredAttempt: true,
+      batchJobIds: [], resolverRefs: [],
+      outcome: {
+        status: 'transport_failure', failureCode: 'transport',
+        reason: 'artifact size outside limits', source: null,
+      },
+    }, {
+      candidateId: 'optional-product-page',
+      sourceUrl: 'https://www.westinghouse.com.au/model',
+      authorityMode: 'official',
+      sourceRole: 'manufacturer_product_page',
+      requiredAttempt: false,
+      batchJobIds: [], resolverRefs: [],
+      outcome: {
+        status: 'claims_incomplete', failureCode: 'claim_semantics',
+        reason: 'no supported evidence claims extracted', source: null,
+      },
+    }],
+  }));
+
+  assert.equal(result.status, 'retryable_failure');
+  assert.equal(result.failureCode, 'transport');
 });
 
 test('source authority is reported only when no official candidate reached evidence processing', () => {

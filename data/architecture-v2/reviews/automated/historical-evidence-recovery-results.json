@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-scale-p0-miele-g7130sciclst-dimensions-20260726-c",
-  "batchId": "historical-recovery-25920cd6433c8b4ea3699cff-slice-83eacb4a5d3f",
-  "batchSha256": "237ceee0edc978ec268546a99e8aa02ab086d34e91eb6cc8ad5814e6834c0e52",
-  "queueSha256": "c766384097eba42bbf8e7f73cf4490f8fccb6bafa8e40c27f022a836005450a8",
-  "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
-  "startedAt": "2026-07-26T03:18:46.683Z",
-  "completedAt": "2026-07-26T03:19:01.231Z",
-  "semanticOutcomeSha256": "8f1756e24931f715a76a14dfe9876813f93a0df96eb8e6e3eb047603ac5ea171",
+  "runId": "historical-scale-p0-hisense-hwf5i1015-acquisition-20260727-d",
+  "batchId": "historical-recovery-ebe102687ebaf7bee51f4e0e-slice-eb97df4bf305",
+  "batchSha256": "8dde4b692426bde5caf68fb2ba9128eeddf6a544208b06cc7157c2a967f710f4",
+  "queueSha256": "195e3c71783cd0af3332f7887656cf37a54348dbf2a861ceb6b1c253e204d092",
+  "policySha256": "707c448c6967ca12edbc130fb83175812ec84851bc01bb5e35bb26f89ef9fedc",
+  "startedAt": "2026-07-27T02:46:55.664Z",
+  "completedAt": "2026-07-27T02:47:02.097Z",
+  "semanticOutcomeSha256": "1f5c20cdc644166763d6fd70699d3c94c1fba59c231feb2dac47803b999a302c",
   "outcomes": [
     {
-      "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+      "targetId": "recovery_target_5468e581ed8a2c3df9da236b",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "774de018666dcd5f4ebc342d73a9254e31591f5a14155c86fc6d642aae0dd68a",
+      "candidateInventorySha256": "9cd65f8f28dd4490625149e355d81254e8a46171cf1b0a800b4c63c066b593e7",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+        "targetId": "recovery_target_5468e581ed8a2c3df9da236b",
         "identity": {
-          "brand": "Miele",
-          "model": "G7130SCICLST",
-          "category": "dishwasher"
+          "brand": "Hisense",
+          "model": "HWF5I1015",
+          "category": "washing_machine"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -28,7 +28,7 @@
         "resolvers": [
           {
             "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
+            "version": "2",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
             "required": false,
             "completion": "complete",
@@ -40,12 +40,12 @@
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
-            "candidateCount": 2
+            "candidateCount": 3
           },
           {
-            "resolverId": "miele-official-discovery",
-            "version": "3",
-            "scope": "miele_au_product_material_bound_specification_and_context_lanes",
+            "resolverId": "hisense-official-discovery",
+            "version": "2",
+            "scope": "hisense_au_exact_sitemap_occ_product_detail_and_document_lanes",
             "required": true,
             "completion": "complete",
             "candidateCount": 3
@@ -54,14 +54,26 @@
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_0ee88478b77fa0773b9e0aec",
-            "sourceUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/",
+            "candidateId": "candidate_0fecab2a87da8a8e1c34250d",
+            "sourceUrl": "https://hisense.com.au/product/HWF5I1015/10kg-series-5i-front-load-washer",
             "authorityMode": "official",
             "sourceRole": "manufacturer_product_page",
             "requiredAttempt": false,
-            "discoveryProvenance": null,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://hisense.com.au/product/HWF5I1015/10kg-series-5i-front-load-washer",
+              "requestedModel": "HWF5I1015",
+              "matchedModel": "HWF5I1015",
+              "artifactUrl": "https://hisense.com.au/product/HWF5I1015/10kg-series-5i-front-load-washer",
+              "discoveryContentSha256": "e7b30e3d72ad95a36832be0af5bb41a8ceb3daace98340a90146374bc56854e5",
+              "discoveryObjectPath": "evidence/web/sha256/e7/b3/e7b30e3d72ad95a36832be0af5bb41a8ceb3daace98340a90146374bc56854e5.html",
+              "discoveryByteSize": 488771,
+              "artifactLinkUrl": "https://hisense.com.au/product/HWF5I1015/10kg-series-5i-front-load-washer"
+            },
             "batchJobIds": [
-              "recovery_0a3dbb00f77c26e60b4c0ba5"
+              "recovery_9d6058352171bfc1090e0cb9"
             ],
             "resolverRefs": [
               {
@@ -70,15 +82,15 @@
                 "scope": "recovery_batch_graph",
                 "discoveryMethod": "recovery_batch",
                 "sourceRole": "manufacturer_product_page",
-                "order": 0
+                "order": 1
               },
               {
-                "resolverId": "miele-official-discovery",
-                "version": "3",
-                "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-                "discoveryMethod": "miele_legacy_finder",
+                "resolverId": "hisense-official-discovery",
+                "version": "2",
+                "scope": "hisense_au_exact_sitemap_occ_product_detail_and_document_lanes",
+                "discoveryMethod": "hisense_legacy_finder",
                 "sourceRole": "manufacturer_product_page",
-                "order": 1
+                "order": 2
               }
             ],
             "outcome": {
@@ -88,26 +100,25 @@
             }
           },
           {
-            "candidateId": "candidate_44b30d8747550c31138e5094",
-            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+            "candidateId": "candidate_4ccae7c15b6e577b1ddfffe4",
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
             "discoveryProvenance": {
               "schemaVersion": 1,
-              "method": "official_product_material",
+              "method": "official_market_api",
               "market": "AU",
-              "discoveryUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/",
-              "requestedModel": "G7130SCICLST",
-              "matchedModel": "G 7130 SCi",
-              "artifactUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-              "discoveryContentSha256": "2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4",
-              "discoveryObjectPath": "evidence/web/sha256/2a/51/2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4.html",
-              "discoveryByteSize": 408326,
-              "materialNumber": "12531640"
+              "discoveryUrl": "https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD",
+              "requestedModel": "HWF5I1015",
+              "matchedModel": "HWF5I1015",
+              "artifactUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+              "discoveryContentSha256": "48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555",
+              "discoveryObjectPath": "evidence/web/sha256/48/e7/48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555.json",
+              "discoveryByteSize": 39620
             },
             "batchJobIds": [
-              "recovery_ffb4e061d5e5592a525fbf0b"
+              "recovery_c45afb6f7033f6859c84071a"
             ],
             "resolverRefs": [
               {
@@ -116,23 +127,15 @@
                 "scope": "recovery_batch_graph",
                 "discoveryMethod": "recovery_batch",
                 "sourceRole": "manufacturer_document",
-                "order": 1
+                "order": 2
               },
               {
-                "resolverId": "miele-official-discovery",
-                "version": "3",
-                "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-                "discoveryMethod": "miele_legacy_finder",
+                "resolverId": "hisense-official-discovery",
+                "version": "2",
+                "scope": "hisense_au_exact_sitemap_occ_product_detail_and_document_lanes",
+                "discoveryMethod": "hisense_legacy_finder",
                 "sourceRole": "manufacturer_document",
                 "order": 0
-              },
-              {
-                "resolverId": "miele-official-discovery",
-                "version": "3",
-                "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-                "discoveryMethod": "miele_legacy_finder",
-                "sourceRole": "manufacturer_document",
-                "order": 2
               }
             ],
             "outcome": {
@@ -140,106 +143,109 @@
               "failureCode": null,
               "source": {
                 "authority": "manufacturer",
-                "sourceType": "official_model_variant_pdf",
-                "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-                "finalUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+                "finalUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-26T03:19:01.043Z",
-                "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-                "objectPath": "evidence/web/sha256/12/48/1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6.pdf",
+                "retrievedAt": "2026-07-27T02:47:01.955Z",
+                "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+                "objectPath": "evidence/web/sha256/46/c3/46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 116413,
+                "byteSize": 138508,
                 "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "Miele",
-                  "model": "G7130SCICLST",
-                  "category": "dishwasher",
-                  "outcome": "official_marketing_alias",
-                  "sourceModel": "G 7130 SCI"
+                  "brand": "Hisense",
+                  "model": "HWF5I1015",
+                  "outcome": "exact"
                 },
                 "claims": [
                   {
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 598
+                      "mm": 595
                     },
-                    "sourceLabel": "Appliance width in mm",
+                    "sourceLabel": "Width (Net dimensions W X H X D)",
                     "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 2,
-                    "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e",
-                    "bbox": [
-                      391,
-                      230,
-                      929,
-                      819
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 805
-                    },
-                    "sourceLabel": "Appliance height in mm",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 2,
-                    "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e",
-                    "bbox": [
-                      391,
-                      230,
-                      929,
-                      819
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 570
-                    },
-                    "sourceLabel": "Appliance depth in mm",
-                    "sourceAxisOrder": [
+                      "width",
+                      "height",
                       "depth"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 2,
-                    "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e",
+                    "page": 1,
+                    "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13",
                     "bbox": [
-                      391,
-                      230,
-                      929,
-                      819
+                      78,
+                      313,
+                      905,
+                      922
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 845
+                    },
+                    "sourceLabel": "Height (Net dimensions W X H X D)",
+                    "sourceAxisOrder": [
+                      "width",
+                      "height",
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13",
+                    "bbox": [
+                      78,
+                      313,
+                      905,
+                      922
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 550
+                    },
+                    "sourceLabel": "Depth (Net dimensions W X H X D)",
+                    "sourceAxisOrder": [
+                      "width",
+                      "height",
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13",
+                    "bbox": [
+                      78,
+                      313,
+                      905,
+                      922
                     ]
                   }
                 ],
                 "discoveryProvenance": {
                   "schemaVersion": 1,
-                  "method": "official_product_material",
+                  "method": "official_market_api",
                   "market": "AU",
-                  "discoveryUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/",
-                  "requestedModel": "G7130SCICLST",
-                  "matchedModel": "G 7130 SCi",
-                  "artifactUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-                  "discoveryContentSha256": "2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4",
-                  "discoveryObjectPath": "evidence/web/sha256/2a/51/2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4.html",
-                  "discoveryByteSize": 408326,
-                  "materialNumber": "12531640"
+                  "discoveryUrl": "https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD",
+                  "requestedModel": "HWF5I1015",
+                  "matchedModel": "HWF5I1015",
+                  "artifactUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+                  "discoveryContentSha256": "48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555",
+                  "discoveryObjectPath": "evidence/web/sha256/48/e7/48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555.json",
+                  "discoveryByteSize": 39620
                 },
                 "derivedArtifact": {
                   "schemaVersion": 1,
@@ -251,144 +257,218 @@
                   "method": "auto",
                   "tableEnabled": true,
                   "formulaEnabled": false,
-                  "sourcePdfSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-                  "contentSha256": "890c71c34e142a62c830ba381d3acf5e12c431b4d787b025ca49b33525df983d",
-                  "objectPath": "evidence/derived/mineru-json/sha256/89/0c/890c71c34e142a62c830ba381d3acf5e12c431b4d787b025ca49b33525df983d.json",
-                  "byteSize": 18885,
-                  "pageCount": 3
+                  "sourcePdfSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+                  "contentSha256": "9ce68b6bacbebad0a18056f42be498b2cbc8d427613bd414d34db680996cc5f3",
+                  "objectPath": "evidence/derived/mineru-json/sha256/9c/e6/9ce68b6bacbebad0a18056f42be498b2cbc8d427613bd414d34db680996cc5f3.json",
+                  "byteSize": 6435,
+                  "pageCount": 2
                 },
                 "identitySignals": [
                   {
-                    "type": "mineru_miele_product_material_model",
-                    "value": "G 7130 SCI:material:12531640:finish:CleanSteel:page:2:624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e"
+                    "type": "mineru_table_model",
+                    "value": "HWF5I1015:page:1:2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13"
                   },
                   {
-                    "type": "canonical_source_model",
-                    "value": "G 7130 SCI"
+                    "type": "mineru_title_model",
+                    "value": "HWF5I1015:page:1"
                   },
                   {
-                    "type": "official_product_material_model",
-                    "value": "G7130SCICLST:G 7130 SCI:12531640:2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4:https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/"
+                    "type": "source_url_exact_model",
+                    "value": "HWF5I1015:https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM"
+                  },
+                  {
+                    "type": "pdf_source_url_model",
+                    "value": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM"
+                  },
+                  {
+                    "type": "official_market_api_model",
+                    "value": "HWF5I1015:48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555:https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD"
                   }
                 ],
                 "verificationReceipt": {
                   "schemaVersion": 3,
                   "claimSemanticsVersion": 2,
                   "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-25.1",
-                  "discoveryPolicyVersion": "2026-07-25.1",
-                  "verifiedAt": "2026-07-26T03:19:01.043Z",
-                  "bindingSha256": "84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6"
+                  "manufacturerPolicyVersion": "2026-07-27.1",
+                  "discoveryPolicyVersion": "2026-07-27.1",
+                  "verifiedAt": "2026-07-27T02:47:01.955Z",
+                  "bindingSha256": "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250"
                 }
               }
             }
+          },
+          {
+            "candidateId": "candidate_81fa5872b002411e0ae34ee0",
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF5i1015-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxMTE0MzUxNHxhcHBsaWNhdGlvbi9wZGZ8YUdFeUwyZ3lNQzg0T0RrNE16TXdNVE15TlRFd0wwaFhSalZwTVRBeE5TQlZjMlZ5SUUxaGJuVmhiQzV3WkdZfDA4ODhhNDdlYjZhODA4Y2U2MDUwMjc2OTdlZWQ5MWI3NTcxYWIzMzg3ZDE0MzdmMTc1OWNlZGI5OGM4YmUxMTE",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD",
+              "requestedModel": "HWF5I1015",
+              "matchedModel": "HWF5I1015",
+              "artifactUrl": "https://dtc-aus-api.hisense.com/medias/HWF5i1015-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxMTE0MzUxNHxhcHBsaWNhdGlvbi9wZGZ8YUdFeUwyZ3lNQzg0T0RrNE16TXdNVE15TlRFd0wwaFhSalZwTVRBeE5TQlZjMlZ5SUUxaGJuVmhiQzV3WkdZfDA4ODhhNDdlYjZhODA4Y2U2MDUwMjc2OTdlZWQ5MWI3NTcxYWIzMzg3ZDE0MzdmMTc1OWNlZGI5OGM4YmUxMTE",
+              "discoveryContentSha256": "48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555",
+              "discoveryObjectPath": "evidence/web/sha256/48/e7/48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555.json",
+              "discoveryByteSize": 39620
+            },
+            "batchJobIds": [
+              "recovery_8ec1cc3a33ff2bd17a75a12a"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              },
+              {
+                "resolverId": "hisense-official-discovery",
+                "version": "2",
+                "scope": "hisense_au_exact_sitemap_occ_product_detail_and_document_lanes",
+                "discoveryMethod": "hisense_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF5i1015-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxMTE0MzUxNHxhcHBsaWNhdGlvbi9wZGZ8YUdFeUwyZ3lNQzg0T0RrNE16TXdNVE15TlRFd0wwaFhSalZwTVRBeE5TQlZjMlZ5SUUxaGJuVmhiQzV3WkdZfDA4ODhhNDdlYjZhODA4Y2U2MDUwMjc2OTdlZWQ5MWI3NTcxYWIzMzg3ZDE0MzdmMTc1OWNlZGI5OGM4YmUxMTE",
+                "finalUrl": "https://dtc-aus-api.hisense.com/medias/HWF5i1015-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxMTE0MzUxNHxhcHBsaWNhdGlvbi9wZGZ8YUdFeUwyZ3lNQzg0T0RrNE16TXdNVE15TlRFd0wwaFhSalZwTVRBeE5TQlZjMlZ5SUUxaGJuVmhiQzV3WkdZfDA4ODhhNDdlYjZhODA4Y2U2MDUwMjc2OTdlZWQ5MWI3NTcxYWIzMzg3ZDE0MzdmMTc1OWNlZGI5OGM4YmUxMTE",
+                "contentSha256": "8aff5ce2224b95e9de52b7e861993fc63c812cdabcc25187c1b8d4b0e714134d",
+                "objectPath": "evidence/web/sha256/8a/ff/8aff5ce2224b95e9de52b7e861993fc63c812cdabcc25187c1b8d4b0e714134d.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 11143514,
+                "derivedArtifact": {
+                  "parserName": "MinerU",
+                  "format": "content_list_v2",
+                  "sourcePdfSha256": "8aff5ce2224b95e9de52b7e861993fc63c812cdabcc25187c1b8d4b0e714134d",
+                  "contentSha256": "aab7f2c617faefcb2791b7ab2611ee8c7e6191a0c1f5cf02f17be41cf6932879",
+                  "objectPath": "evidence/derived/mineru-json/sha256/aa/b7/aab7f2c617faefcb2791b7ab2611ee8c7e6191a0c1f5cf02f17be41cf6932879.json",
+                  "byteSize": 186070,
+                  "pageCount": 50
+                }
+              },
+              "source": null
+            }
           }
         ],
-        "candidateInventorySha256": "774de018666dcd5f4ebc342d73a9254e31591f5a14155c86fc6d642aae0dd68a"
+        "candidateInventorySha256": "9cd65f8f28dd4490625149e355d81254e8a46171cf1b0a800b4c63c066b593e7"
       },
       "sources": [
         {
           "authority": "manufacturer",
-          "sourceType": "official_model_variant_pdf",
-          "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-          "finalUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
           "redirectChain": [],
-          "retrievedAt": "2026-07-26T03:19:01.043Z",
-          "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-          "objectPath": "evidence/web/sha256/12/48/1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6.pdf",
+          "retrievedAt": "2026-07-27T02:47:01.955Z",
+          "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+          "objectPath": "evidence/web/sha256/46/c3/46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010.pdf",
           "contentType": "application/pdf",
-          "byteSize": 116413,
+          "byteSize": 138508,
           "supersedesContentSha256": [],
           "identity": {
-            "brand": "Miele",
-            "model": "G7130SCICLST",
-            "category": "dishwasher",
-            "outcome": "official_marketing_alias",
-            "sourceModel": "G 7130 SCI"
+            "brand": "Hisense",
+            "model": "HWF5I1015",
+            "outcome": "exact"
           },
           "claims": [
             {
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 598
+                "mm": 595
               },
-              "sourceLabel": "Appliance width in mm",
+              "sourceLabel": "Width (Net dimensions W X H X D)",
               "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": 2,
-              "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e",
-              "bbox": [
-                391,
-                230,
-                929,
-                819
-              ]
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 805
-              },
-              "sourceLabel": "Appliance height in mm",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": 2,
-              "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e",
-              "bbox": [
-                391,
-                230,
-                929,
-                819
-              ]
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 570
-              },
-              "sourceLabel": "Appliance depth in mm",
-              "sourceAxisOrder": [
+                "width",
+                "height",
                 "depth"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 2,
-              "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e",
+              "page": 1,
+              "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13",
               "bbox": [
-                391,
-                230,
-                929,
-                819
+                78,
+                313,
+                905,
+                922
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Height (Net dimensions W X H X D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13",
+              "bbox": [
+                78,
+                313,
+                905,
+                922
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 550
+              },
+              "sourceLabel": "Depth (Net dimensions W X H X D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13",
+              "bbox": [
+                78,
+                313,
+                905,
+                922
               ]
             }
           ],
           "discoveryProvenance": {
             "schemaVersion": 1,
-            "method": "official_product_material",
+            "method": "official_market_api",
             "market": "AU",
-            "discoveryUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/",
-            "requestedModel": "G7130SCICLST",
-            "matchedModel": "G 7130 SCi",
-            "artifactUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-            "discoveryContentSha256": "2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4",
-            "discoveryObjectPath": "evidence/web/sha256/2a/51/2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4.html",
-            "discoveryByteSize": 408326,
-            "materialNumber": "12531640"
+            "discoveryUrl": "https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD",
+            "requestedModel": "HWF5I1015",
+            "matchedModel": "HWF5I1015",
+            "artifactUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+            "discoveryContentSha256": "48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555",
+            "discoveryObjectPath": "evidence/web/sha256/48/e7/48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555.json",
+            "discoveryByteSize": 39620
           },
           "derivedArtifact": {
             "schemaVersion": 1,
@@ -400,46 +480,54 @@
             "method": "auto",
             "tableEnabled": true,
             "formulaEnabled": false,
-            "sourcePdfSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-            "contentSha256": "890c71c34e142a62c830ba381d3acf5e12c431b4d787b025ca49b33525df983d",
-            "objectPath": "evidence/derived/mineru-json/sha256/89/0c/890c71c34e142a62c830ba381d3acf5e12c431b4d787b025ca49b33525df983d.json",
-            "byteSize": 18885,
-            "pageCount": 3
+            "sourcePdfSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+            "contentSha256": "9ce68b6bacbebad0a18056f42be498b2cbc8d427613bd414d34db680996cc5f3",
+            "objectPath": "evidence/derived/mineru-json/sha256/9c/e6/9ce68b6bacbebad0a18056f42be498b2cbc8d427613bd414d34db680996cc5f3.json",
+            "byteSize": 6435,
+            "pageCount": 2
           },
           "identitySignals": [
             {
-              "type": "mineru_miele_product_material_model",
-              "value": "G 7130 SCI:material:12531640:finish:CleanSteel:page:2:624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e"
+              "type": "mineru_table_model",
+              "value": "HWF5I1015:page:1:2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13"
             },
             {
-              "type": "canonical_source_model",
-              "value": "G 7130 SCI"
+              "type": "mineru_title_model",
+              "value": "HWF5I1015:page:1"
             },
             {
-              "type": "official_product_material_model",
-              "value": "G7130SCICLST:G 7130 SCI:12531640:2a51e4264e0bc4f415e6153cc5e36c3afa379bc9dd4b452d66aa84738aa6bea4:https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/"
+              "type": "source_url_exact_model",
+              "value": "HWF5I1015:https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "HWF5I1015:48e75ab7efc51309eae30567a8feb5b58c01158472434c130ea8d79ff86a3555:https://dtc-aus-api.hisense.com/occ/v2/au/products/HWF5I1015?fields=FULL&lang=en&curr=AUD"
             }
           ],
           "verificationReceipt": {
             "schemaVersion": 3,
             "claimSemanticsVersion": 2,
             "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-25.1",
-            "discoveryPolicyVersion": "2026-07-25.1",
-            "verifiedAt": "2026-07-26T03:19:01.043Z",
-            "bindingSha256": "84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6"
+            "manufacturerPolicyVersion": "2026-07-27.1",
+            "discoveryPolicyVersion": "2026-07-27.1",
+            "verifiedAt": "2026-07-27T02:47:01.955Z",
+            "bindingSha256": "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 598,
+            "widthMm": 595,
             "heightMm": {
-              "minimumMm": 805,
-              "maximumMm": 805
+              "minimumMm": 845,
+              "maximumMm": 845
             },
-            "depthMm": 570
+            "depthMm": 550
           },
           "installation": {
             "leftMm": null,
@@ -458,7 +546,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "dishwasher",
+          "category": "washing_machine",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -468,25 +556,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-            "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-            "receiptBindingSha256": "84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6",
-            "page": 2,
-            "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e"
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+            "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+            "receiptBindingSha256": "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250",
+            "page": 1,
+            "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-            "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-            "receiptBindingSha256": "84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6",
-            "page": 2,
-            "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e"
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+            "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+            "receiptBindingSha256": "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250",
+            "page": 1,
+            "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
-            "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
-            "receiptBindingSha256": "84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6",
-            "page": 2,
-            "fragmentSha256": "624b7c2050b12c272c78e8e68bc7710795656f011b0938136d67322ffff0005e"
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1015-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDh8YXBwbGljYXRpb24vcGRmfGFEUmhMMmd5TUM4NE9EazRNek13TVRZMU1qYzRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRBeE5Ta3VjR1JtfDI4NDI4YWZjYTM5NzlkOWM5ZTYwOTA4ZDM5MzRiY2JjZTNjNWNlYzNlZGZlNDI3MjMzMmQ0ODJmY2UyNjg3NmM",
+            "contentSha256": "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+            "receiptBindingSha256": "f547f338f9b95dfeb0f65d28c4e1512fb500399beca4c65a4638d37a73967250",
+            "page": 1,
+            "fragmentSha256": "2c14b652a52c49a79376a913380d361b44c25e677cf049028e377c8bfe443f13"
           }
         },
         "evidenceLevel": "dimensions",
@@ -496,13 +584,12 @@
           "installation.rearMm",
           "installation.rightMm",
           "installation.topMm",
-          "operation.doorOpenDepthMm",
           "service.rearServicesMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6"
+          "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010"
         ]
       },
       "reconciliation": {
@@ -514,7 +601,7 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "23c83608325de328ccffa4e5ac4c230b73232747f517c1803f53ebae99c6f0d1"
+      "semanticOutcomeSha256": "e99f7342f9fbe83f70eca85a44902565c9668266c5c67921c134c6cac192ff6c"
     }
   ],
   "summary": {

@@ -34,13 +34,27 @@ function hasWildcard(value) {
   return /X{2,}|\*{2,}/i.test(String(value || ''));
 }
 
+function mieleIdentityAliases(value) {
+  const source = String(value || '').trim();
+  const aliases = new Set([normalizeSku(source)]);
+  if (/\bedt\s*\/\s*(?:bs|cs)\b/i.test(source)) {
+    aliases.add(normalizeSku(source.replace(/\bedt\s*\/\s*(bs|cs)\b/ig, '$1')));
+  }
+  return [...aliases].filter(Boolean);
+}
+
 function mieleModelMatchesSku(evidenceModel, targetSku) {
   if (hasWildcard(evidenceModel) || hasWildcard(targetSku)) return false;
-  const evidence = normalizeSku(evidenceModel);
-  const target = normalizeSku(targetSku);
-  if (!evidence || !target || target.length < 4 || !/\d/.test(target)) return false;
-  if (evidence === target) return true;
-  return target.length >= 5 && evidence.startsWith(target);
+  const evidenceAliases = mieleIdentityAliases(evidenceModel);
+  const targetAliases = mieleIdentityAliases(targetSku);
+  if (!evidenceAliases.length || !targetAliases.length) return false;
+  return targetAliases.some((target) => (
+    target.length >= 4
+    && /\d/.test(target)
+    && evidenceAliases.some((evidence) => (
+      evidence === target || (target.length >= 5 && evidence.startsWith(target))
+    ))
+  ));
 }
 
 function parseMmFromLabel(source, label, { required = true } = {}) {
@@ -74,21 +88,25 @@ function extractMieleModelAliases(text, sourceUrl = '') {
   const aliases = new Set();
 
   const addAlias = (raw) => {
-    const alias = normalizeSku(raw);
-    if (
-      alias.length >= 4
-      && alias.length <= 24
-      && /\d/.test(alias)
-      && !hasWildcard(alias)
-      && !/^MI\d+/i.test(alias)
-      && !/(PRODUCT|TECHNICAL|ENERGY|POWER|WATER)/i.test(alias)
-    ) {
-      aliases.add(alias);
+    for (const alias of mieleIdentityAliases(raw)) {
+      if (
+        alias.length >= 4
+        && alias.length <= 24
+        && /\d/.test(alias)
+        && !hasWildcard(alias)
+        && !/^MI\d+/i.test(alias)
+        && !/(PRODUCT|TECHNICAL|ENERGY|POWER|WATER)/i.test(alias)
+      ) {
+        aliases.add(alias);
+      }
     }
   };
 
   const source = String(text || '').replace(/\r/g, '');
   for (const line of source.split('\n')) {
+    for (const match of line.matchAll(/\b([A-Z]{1,5}[ \t]*\d{3,5}(?:[ \t]*[A-Z][A-Z0-9]{0,4}){0,3}[ \t]+edt[ \t]*\/[ \t]*(?:bs|cs))\b/gi)) {
+      addAlias(match[1]);
+    }
     for (const match of line.matchAll(/\b(?:Miele[ \t]+)?([A-Z]{1,5}[ \t]*\d{3,5}(?:[ \t]*[A-Z][A-Z0-9]{0,4}){0,3})\b/gi)) {
       addAlias(match[1]);
     }

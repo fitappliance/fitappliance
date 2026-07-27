@@ -3,11 +3,17 @@ import { createHash } from 'node:crypto';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from './beko-product-page-dimensions.mjs';
 import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from './beko-product-page-identity.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
-import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from './mineru-document.mjs';
+import {
+  ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY,
+  ESATTO_AU_PRODUCT_CARD_DIMENSIONS_CAPABILITY,
+  OMEGA_AU_PRODUCT_CARD_DIMENSIONS_CAPABILITY,
+} from './mineru-document.mjs';
 import {
   MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY,
 } from './official-product-material-discovery-evidence.mjs';
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from './smeg-pdf-dimensions.mjs';
+
+export const SAMSUNG_AU_RF71A_SUPPORT_FAMILY_CAPABILITY = 'samsung_au_rf71a_support_family';
 
 export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: Object.freeze([
@@ -17,6 +23,12 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
     'src/domain/beko-product-page-identity.mjs',
   ]),
   [ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY]: Object.freeze([
+    'src/domain/mineru-document.mjs',
+  ]),
+  [ESATTO_AU_PRODUCT_CARD_DIMENSIONS_CAPABILITY]: Object.freeze([
+    'src/domain/mineru-document.mjs',
+  ]),
+  [OMEGA_AU_PRODUCT_CARD_DIMENSIONS_CAPABILITY]: Object.freeze([
     'src/domain/mineru-document.mjs',
   ]),
   [SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY]: Object.freeze([
@@ -32,6 +44,14 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
     'src/domain/official-model-variant-policy.mjs',
     'src/domain/official-product-material-discovery-evidence.mjs',
   ]),
+  [SAMSUNG_AU_RF71A_SUPPORT_FAMILY_CAPABILITY]: Object.freeze([
+    'src/domain/evidence-artifact-pipeline.mjs',
+    'src/domain/evidence-artifact-verifier.mjs',
+    'src/domain/evidence-source-verifier.mjs',
+    'src/domain/mineru-document.mjs',
+    'src/domain/official-model-variant-policy.mjs',
+    'src/domain/official-product-page-discovery-evidence.mjs',
+  ]),
 });
 
 export const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
@@ -44,10 +64,13 @@ export const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
   'src/domain/evidence-claim-reconciliation.mjs',
   'src/domain/evidence-claim-semantics.mjs',
   'src/domain/evidence-geometry-projector.mjs',
+  'src/domain/evidence-source-companion-policy.mjs',
   'src/domain/evidence-source-verifier.mjs',
   'src/domain/mineru-document.mjs',
   'src/domain/official-market-api-discovery-evidence.mjs',
   'src/domain/official-model-variant-policy.mjs',
+  'src/domain/official-product-material-discovery-evidence.mjs',
+  'src/domain/official-product-page-discovery-evidence.mjs',
   'src/domain/official-support-api-discovery-evidence.mjs',
   'src/domain/smeg-pdf-dimensions.mjs',
 ]);
@@ -90,7 +113,7 @@ export function claimParserImplementationIdentity(files) {
   return canonicalJsonSha256(implementationManifest(files, [...files.keys()]));
 }
 
-export function historicalAttemptProcessorCapability({ brand, sourceUrl, failureCode }) {
+export function historicalAttemptProcessorCapability({ brand, model, category, sourceUrl, failureCode }) {
   let url;
   try { url = new URL(sourceUrl); } catch { return null; }
   const normalized = normalizedBrand(brand);
@@ -107,7 +130,21 @@ export function historicalAttemptProcessorCapability({ brand, sourceUrl, failure
     return SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY;
   }
   const host = url.hostname.toLowerCase();
-  if (normalized === 'miele' && ['identity', 'mineru'].includes(failureCode)
+  let samsungManualPath = '';
+  try { samsungManualPath = decodeURIComponent(url.searchParams.get('VPath') ?? ''); } catch {}
+  if (normalized === 'samsung' && ['claim_semantics', 'identity', 'mineru'].includes(failureCode)
+    && normalizedBrand(category) === 'fridge'
+    && url.protocol === 'https:' && !url.username && !url.password
+    && host === 'org.downloadcenter.samsung.com'
+    && url.pathname.toLowerCase() === '/downloadfile/contentsfile.aspx'
+    && normalizedBrand(url.searchParams.get('CDSite')) === 'uniau'
+    && normalizedBrand(url.searchParams.get('CDCttType')) === 'um'
+    && normalizedBrand(url.searchParams.get('ModelName')) === normalizedBrand(model)
+    && /^\d+$/.test(url.searchParams.get('CttFileID') ?? '')
+    && /(?:^|\/)DA68-04024C-\d+_MANUAL_USERS_F-Hub_EN\.pdf$/i.test(samsungManualPath)) {
+    return SAMSUNG_AU_RF71A_SUPPORT_FAMILY_CAPABILITY;
+  }
+  if (normalized === 'miele' && ['claim_semantics', 'identity', 'mineru'].includes(failureCode)
     && url.protocol === 'https:' && !url.username && !url.password && !url.search
     && host === 'www.miele.com.au'
     && /^\/media\/ex\/au\/specsheets\/\d{6,14}\.pdf$/i.test(url.pathname)) {
@@ -118,8 +155,24 @@ export function historicalAttemptProcessorCapability({ brand, sourceUrl, failure
     try { path = decodeURIComponent(url.pathname); } catch { return null; }
     if (url.protocol === 'https:' && !url.username && !url.password
       && host === 'esatto.house'
-      && /\/Esatto_ProductCard_[^/]+\.pdf$/i.test(path)) {
-      return ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY;
+      && !url.search && !url.hash) {
+      const match = path.match(
+        /^\/s\/Esatto_ProductCard([_-])([A-Z0-9][A-Z0-9.-]*)\.pdf$/i,
+      );
+      if (match) {
+        return match[1] === '_' && /^EDW[A-Z0-9.-]*$/i.test(match[2])
+          ? ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY
+          : ESATTO_AU_PRODUCT_CARD_DIMENSIONS_CAPABILITY;
+      }
+    }
+  }
+  if (normalized === 'omega' && failureCode === 'mineru') {
+    let path;
+    try { path = decodeURIComponent(url.pathname); } catch { return null; }
+    if (url.protocol === 'https:' && !url.username && !url.password
+      && host === 'omegaappliances.com.au'
+      && /^\/s\/[A-Z0-9.-]+_Specsheet[^/]*\.pdf$/i.test(path)) {
+      return OMEGA_AU_PRODUCT_CARD_DIMENSIONS_CAPABILITY;
     }
   }
   return null;

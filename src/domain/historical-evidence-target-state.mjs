@@ -164,6 +164,9 @@ function deferredBinding(target) {
     sourceArtifact: EXECUTABLE_QUEUE_PATH,
     targetId: target.targetId,
     dispositionReason: target.dispositionReason,
+    ...(target.terminalReasonCodes?.length ? {
+      terminalReasonCodes: [...target.terminalReasonCodes],
+    } : {}),
   };
 }
 
@@ -233,6 +236,20 @@ function stateForRecord({
     };
   }
   if (deferredTarget?.dispositionReason === 'NO_CANDIDATE_COMPLETE') {
+    if (deferredTarget.terminalReasonCodes?.includes('official_non_appliance_accessory')) {
+      return {
+        ...base,
+        state: 'IDENTITY_QUARANTINE',
+        stateClass: 'BLOCKED',
+        actionable: false,
+        terminal: true,
+        binding: {
+          ...deferredBinding(deferredTarget),
+          terminalReasonCode: 'official_non_appliance_accessory',
+        },
+        reopeningConditions: ['OFFICIAL_PRODUCT_CLASSIFICATION_CHANGED'],
+      };
+    }
     return {
       ...base,
       state: 'NO_OFFICIAL_SOURCE',
@@ -408,7 +425,7 @@ export function buildHistoricalEvidenceTargetState(input) {
   const completed = records.filter((record) => record.stateClass === 'COMPLETED').length;
   const blocked = records.filter((record) => record.stateClass === 'BLOCKED').length;
   const targetSuppressed = records.filter((record) => (
-    ['BLOCKED_SAME_EPOCH', 'NO_OFFICIAL_SOURCE'].includes(record.state)
+    ['BLOCKED_SAME_EPOCH', 'NO_OFFICIAL_SOURCE', 'IDENTITY_QUARANTINE'].includes(record.state)
   )).length;
   if (actionable !== executableQueue.summary.targets) throw new Error('actionable target accounting mismatch');
   const excluded = countObject(executableQueue.summary.excluded, 'executable excluded counts');

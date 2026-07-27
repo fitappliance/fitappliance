@@ -17,6 +17,7 @@ const MANIFEST_STATES = new Set([
   'NO_CANDIDATE_COMPLETE',
 ]);
 const ACQUISITION_SEED_STRATEGY_ID = 'acquisition-queue-seed@1:classified_document_link';
+const TERMINAL_REASON_CODES = new Set(['official_non_appliance_accessory']);
 const RESOLVER_CONTRACT_KEYS = new Set([
   'schemaVersion',
   'resolverId',
@@ -733,6 +734,7 @@ function resolverOutcome(contract, latest) {
   }
   return {
     results,
+    requiredResolverIds: required.map((descriptor) => descriptor.resolverId).sort(),
     requiredResolverCount: required.length,
     requiredResolversComplete: required.length > 0 && incompleteResolverIds.length === 0,
     incompleteResolverIds: incompleteResolverIds.sort(),
@@ -741,13 +743,26 @@ function resolverOutcome(contract, latest) {
   };
 }
 
-function manifestState(record, candidateEdges, outcome) {
+function manifestState(record, candidateEdges, outcome, reasonCodes) {
   if (record.executionReadiness === 'RESEARCH_REQUIRED'
     || record.executionReadiness === 'RESOLVER_GAP'
     || outcome.requiredResolverCount === 0) return 'RESEARCH_REQUIRED';
   if (!outcome.requiredResolversComplete) return 'DISCOVERY_RETRYABLE';
+  if (reasonCodes.length > 0) return 'NO_CANDIDATE_COMPLETE';
   if (candidateEdges.length > 0) return 'CANDIDATES_READY';
   return 'NO_CANDIDATE_COMPLETE';
+}
+
+function terminalReasonCodes(outcome) {
+  if (!outcome.requiredResolversComplete) return [];
+  const requiredResolverIds = new Set(outcome.requiredResolverIds);
+  return [...new Set(outcome.results
+    .filter((resolver) => requiredResolverIds.has(resolver.resolverId))
+    .flatMap((resolver) => (
+      resolver.failures
+        .map((failure) => failure.code)
+        .filter((code) => TERMINAL_REASON_CODES.has(code))
+    )))].sort();
 }
 
 export function buildHistoricalOfficialCandidateManifest(input) {
@@ -875,12 +890,13 @@ export function buildHistoricalOfficialCandidateManifest(input) {
     });
     validateSourceLaneTargetBindings(record, latest, officialCandidateValidator);
     const outcome = resolverOutcome(resolverContract, latest);
-    const candidateEdges = rankEdges(
+    const reasonCodes = terminalReasonCodes(outcome);
+    const candidateEdges = reasonCodes.length ? [] : rankEdges(
       record,
       accumulators.edgesByReference.get(record.referenceId) ?? new Map(),
       candidateByKey,
     );
-    const state = manifestState(record, candidateEdges, outcome);
+    const state = manifestState(record, candidateEdges, outcome, reasonCodes);
     if (!MANIFEST_STATES.has(state)) throw new Error(`unknown candidate manifest state: ${state}`);
     return {
       referenceId: record.referenceId,
@@ -894,6 +910,7 @@ export function buildHistoricalOfficialCandidateManifest(input) {
       executionReadiness: record.executionReadiness,
       state,
       terminal: state === 'NO_CANDIDATE_COMPLETE',
+      ...(reasonCodes.length ? { terminalReasonCodes: reasonCodes } : {}),
       retryableDiscovery: outcome.incompleteResolverIds.length > 0,
       resolverContract,
       resolverResults: outcome.results,
@@ -919,23 +936,26 @@ export function buildHistoricalOfficialCandidateManifest(input) {
       ranksByCandidate.set(edge.candidateId, ranks);
     }
   }
-  const candidates = [...candidateByKey.values()].map((candidate) => ({
-    candidateId: candidate.candidateId,
-    sourceUrl: candidate.sourceUrl,
-    authorityBrand: candidate.authorityBrand,
-    expectedContentType: candidate.expectedContentType,
-    categories: [...candidate.categories].sort(),
-    documentTypes: [...candidate.documentTypes].sort(),
-    sourceRoles: [...candidate.sourceRoles].sort(),
-    applicableReferenceIds: [...candidate.applicableReferenceIds].sort(),
-    sourceRanks: (ranksByCandidate.get(candidate.candidateId) ?? [])
-      .sort((left, right) => left.referenceId.localeCompare(right.referenceId)),
-    discoveries: [...candidate.discoveries.values()].sort((left, right) => (
-      left.retrievedAt.localeCompare(right.retrievedAt)
-        || left.resolverId.localeCompare(right.resolverId)
-        || left.discoveryMethod.localeCompare(right.discoveryMethod)
-    )),
-  })).sort((left, right) => left.candidateId.localeCompare(right.candidateId));
+  const candidates = [...candidateByKey.values()]
+    .filter((candidate) => ranksByCandidate.has(candidate.candidateId))
+    .map((candidate) => ({
+      candidateId: candidate.candidateId,
+      sourceUrl: candidate.sourceUrl,
+      authorityBrand: candidate.authorityBrand,
+      expectedContentType: candidate.expectedContentType,
+      categories: [...candidate.categories].sort(),
+      documentTypes: [...candidate.documentTypes].sort(),
+      sourceRoles: [...candidate.sourceRoles].sort(),
+      applicableReferenceIds: [...new Set(ranksByCandidate.get(candidate.candidateId)
+        .map((rank) => rank.referenceId))].sort(),
+      sourceRanks: (ranksByCandidate.get(candidate.candidateId) ?? [])
+        .sort((left, right) => left.referenceId.localeCompare(right.referenceId)),
+      discoveries: [...candidate.discoveries.values()].sort((left, right) => (
+        left.retrievedAt.localeCompare(right.retrievedAt)
+          || left.resolverId.localeCompare(right.resolverId)
+          || left.discoveryMethod.localeCompare(right.discoveryMethod)
+      )),
+    })).sort((left, right) => left.candidateId.localeCompare(right.candidateId));
   const semanticPayload = {
     sourceAcquisitionQueueSha256: queueSha256,
     ...(sourceBindings ? { sourceBindings } : {}),

@@ -94,15 +94,28 @@ test('Beko finder uses the exact AU manual result and binds every PDF to stored 
   );
   assert.equal(result.sourceUrl, specification);
   assert.equal(result.productPageUrl, productPage);
-  assert.equal(result.resources.length, 3);
+  assert.equal(result.resources.length, 5);
   assert.equal(result.resources.every((resource) => resource.discoveryProvenance?.requestedModel === 'BDF1640AX'), true);
   assert.equal(result.resources.every((resource) => resource.discoveryProvenance?.matchedModel === 'BDF1640AX'), true);
   assert.equal(result.resources.every((resource) => resource.discoveryProvenance?.artifactUrl === resource.url), true);
   assert.equal(result.resources.find((resource) => resource.url === specification).requiredAttempt, true);
   assert.equal(result.resources.find((resource) => resource.url === manual).requiredAttempt, false);
-  assert.equal(writes.length, 2);
+  assert.deepEqual(result.sourceLanes.map((lane) => [
+    lane.laneId, lane.required, lane.supported, lane.status,
+  ]), [
+    ['current_product', false, true, 'complete'],
+    ['discontinued_archive', false, false, 'unsupported'],
+    ['support_search_api', true, true, 'complete'],
+    ['official_document_cdn', true, true, 'complete'],
+    ['official_product_detail', true, true, 'complete'],
+  ]);
+  assert.equal(result.resources.filter((resource) => resource.sourceLaneId === 'official_document_cdn').length, 3);
+  assert.equal(result.resources.filter((resource) => resource.sourceLaneId === 'official_product_detail').length, 2);
+  assert.equal(writes.length, 3);
   assert.ok(writes.every((write) => /^evidence\/web\/sha256\/[a-f0-9]{2}\/[a-f0-9]{2}\/[a-f0-9]{64}\.html$/.test(write.path)));
-  assert.deepEqual(new Set(writes.map((write) => write.bytes.toString())), new Set([discoveryHtml, productHtml]));
+  assert.deepEqual(new Set(writes.map((write) => write.bytes.toString())), new Set([
+    supportApiHtml, discoveryHtml, productHtml,
+  ]));
   assert.equal(calls[0], supportApiUrl);
   assert.equal(calls.some((url) => String(url).includes('bing.com')), false);
 });
@@ -111,6 +124,7 @@ test('Beko finder extracts SKU-specific product pages from category HTML', () =>
   const html = `
     <a href="/au-en/home-appliances/washing-machines/front-loading-machine-8-kg-1400-rpm-bflb8020w">BFLB8020W</a>
     <a href="/au-en/home-appliances/washing-machines/front-loading-machine-9-kg-bflb902adw">BFLB902ADW</a>
+    <a href="/au-en/home-appliances/washing-machines/front-loading-machine-8-kg-1400-rpm-bflb8020wx">BFLB8020WX</a>
   `;
   const urls = extractProductPageUrlsForSku(
     html,

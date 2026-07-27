@@ -5,6 +5,7 @@ import {
   activeHistoricalAttemptSuppressions,
   activeHistoricalResolverSuppressions,
   activeHistoricalSourceAcceptances,
+  activeHistoricalTargetConflicts,
   buildHistoricalEvidenceRecoveryAttemptLedger,
   historicalResolverContractSha256,
   migrateHistoricalAttemptLedgerProcessorEpochs,
@@ -260,6 +261,70 @@ test('a complete exhausted inventory of reference and terminal candidates suppre
     policySha256: SHA('9'),
     resolverContractSha256: historicalResolverContractSha256(result.candidateInventory.resolvers),
   }), []);
+});
+
+test('a complete target-level reconciliation conflict persists until a later accepted result resolves it', () => {
+  const input = fixture();
+  const result = input.results.outcomes[0];
+  result.status = 'conflict_quarantined';
+  result.failureCode = 'conflict';
+  result.reconciliation = {
+    conflictingFields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm'],
+  };
+  result.candidateInventory.completionStatus = 'complete';
+  result.candidateInventory.incompleteResolvers = [];
+  result.candidateInventory.missingBatchCandidateJobIds = [];
+  result.candidateInventory.resolvers = [{
+    resolverId: 'official-material-pair', version: '1', required: true,
+    scope: 'official_product_page_and_pdf', completion: 'complete', candidateCount: 2,
+  }];
+  result.candidateInventory.candidates = [
+    {
+      sourceUrl: 'https://manufacturer.example/product/model-a',
+      authorityMode: 'official', requiredAttempt: true, batchJobIds: [],
+      outcome: { status: 'accepted', failureCode: null, source: { contentSha256: SHA('1') } },
+    },
+    {
+      sourceUrl: 'https://manufacturer.example/specs/model-a.pdf',
+      authorityMode: 'official', requiredAttempt: true, batchJobIds: [],
+      outcome: { status: 'accepted', failureCode: null, source: { contentSha256: SHA('2') } },
+    },
+  ];
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+
+  const conflicted = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  assert.equal(conflicted.targetAttempts.length, 1);
+  assert.equal(conflicted.targetAttempts[0].reason, 'complete_conflicting_candidate_inventory');
+  assert.equal(conflicted.targetAttempts[0].disposition, 'RUN_CONFLICT_CLOSURE');
+  assert.deepEqual(conflicted.targetAttempts[0].conflictingFields, [
+    'closedEnvelope.heightMm', 'closedEnvelope.widthMm',
+  ]);
+  assert.deepEqual(
+    activeHistoricalTargetConflicts({ ledger: conflicted }).map((entry) => entry.referenceId),
+    ['reference-fp'],
+  );
+
+  const resolvedInput = structuredClone(input);
+  resolvedInput.results.runId = 'run-fp-conflict-resolved';
+  resolvedInput.results.completedAt = '2026-07-16T02:00:00.000Z';
+  resolvedInput.results.outcomes[0].status = 'accepted';
+  resolvedInput.results.outcomes[0].failureCode = null;
+  resolvedInput.results.outcomes[0].reconciliation = { conflictingFields: [] };
+  resolvedInput.audit.resultsSha256 = canonicalJsonSha256(resolvedInput.results);
+  resolvedInput.audit.semanticAuditSha256 = SHA('9');
+  const resolved = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...resolvedInput,
+    priorLedger: conflicted,
+    generatedAt: '2026-07-16T02:01:00.000Z',
+  });
+  assert.equal(resolved.targetAttemptResolutions.length, 1);
+  assert.equal(
+    resolved.targetAttemptResolutions[0].targetAttemptId,
+    conflicted.targetAttempts[0].targetAttemptId,
+  );
+  assert.deepEqual(activeHistoricalTargetConflicts({ ledger: resolved }), []);
 });
 
 test('an incomplete zero-candidate resolver pass remains retryable', () => {

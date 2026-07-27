@@ -5,6 +5,7 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 import {
   applyAcceptanceReceiptReplayAudit,
   applyHistoricalPdfImageAudit,
+  applyRecoveryAttemptConflicts,
   buildCurrentReceiptIndex,
   deriveHistoricalModelEvidenceClassificationGeneratedAt,
   receiptDocumentLink,
@@ -18,11 +19,49 @@ test('classification generation time is the latest bound input time, never wall 
     legacyAudit: { generatedAt: '2026-07-15T14:53:39.566Z' },
     acceptanceBundle: { generatedAt: '2026-07-19T19:19:53.552Z' },
     acceptanceReceiptReplayAudit: { generatedAt: '2026-07-19T19:32:08.439Z' },
-  }), '2026-07-19T19:32:08.439Z');
+    recoveryAttemptLedger: { generatedAt: '2026-07-19T20:00:00.000Z' },
+  }), '2026-07-19T20:00:00.000Z');
   assert.throws(
     () => deriveHistoricalModelEvidenceClassificationGeneratedAt({}),
     /timestamp/i,
   );
+});
+
+test('only unresolved target-level reconciliation conflicts enter classification quarantine', () => {
+  const conflictAttempt = {
+    targetAttemptId: 'target-attempt-conflict',
+    targetId: 'target-one',
+    referenceId: 'ref-one',
+    status: 'conflict_quarantined',
+    failureCode: 'conflict',
+    reason: 'complete_conflicting_candidate_inventory',
+  };
+  const conflicts = new Map();
+  const active = applyRecoveryAttemptConflicts({
+    conflictsByReference: conflicts,
+    attemptLedger: {
+      schemaVersion: 1,
+      targetAttempts: [conflictAttempt],
+      targetAttemptResolutions: [],
+    },
+  });
+  assert.equal(active.applied, 1);
+  assert.equal(conflicts.get('ref-one'), 'SOURCE_CONFLICT');
+
+  const resolved = new Map();
+  const result = applyRecoveryAttemptConflicts({
+    conflictsByReference: resolved,
+    attemptLedger: {
+      schemaVersion: 1,
+      targetAttempts: [conflictAttempt],
+      targetAttemptResolutions: [{
+        targetAttemptResolutionId: 'resolution-one',
+        targetAttemptId: conflictAttempt.targetAttemptId,
+      }],
+    },
+  });
+  assert.equal(result.applied, 0);
+  assert.equal(resolved.has('ref-one'), false);
 });
 
 function source(model) {

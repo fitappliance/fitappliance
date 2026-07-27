@@ -306,7 +306,7 @@ async function defaultVerifyTools(policy) {
     implementationFiles.get(path),
   ]));
   return {
-    runnerVersion: '4',
+    runnerVersion: '5',
     nodeVersion: process.version,
     mineruVersion: version,
     modelRevision: revision,
@@ -373,10 +373,17 @@ export function officialResolverOptionsForObjectStore(objectStore) {
   return {
     bosch: { finderOptions },
     beko: { finderOptions },
+    chiq: { finderOptions },
+    electrolux: { finderOptions },
     haier: { finderOptions },
+    hisense: { finderOptions },
     asko: { finderOptions },
     esatto: { finderOptions },
     miele: { finderOptions },
+    omega: { finderOptions },
+    samsung: { finderOptions },
+    smeg: { finderOptions },
+    westinghouse: { finderOptions },
     fisherPaykel: { finderOptions },
   };
 }
@@ -410,6 +417,19 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
               finalUrl: url,
               redirectChain: [],
               contentType: 'application/json',
+              bytes: await objectStore.readObject(provenance.discoveryObjectPath),
+              transport: 'content_addressed_discovery_object',
+            };
+          }
+          if (provenance?.method === 'official_product_material'
+            && provenance.discoveryUrl === provenance.artifactUrl
+            && provenance.discoveryUrl === url
+            && provenance.discoveryObjectPath) {
+            return {
+              requestedUrl: url,
+              finalUrl: url,
+              redirectChain: [],
+              contentType: 'text/html',
               bytes: await objectStore.readObject(provenance.discoveryObjectPath),
               transport: 'content_addressed_discovery_object',
             };
@@ -457,7 +477,7 @@ export function recoveryCandidateResolversForTarget(target, options = {}) {
   const coreResolver = options.coreResolver ?? ((caseRecord) => discoverRankedEvidenceCandidates(caseRecord));
   return [{
       resolverId: 'architecture-v2-core-official-discovery',
-      version: '1',
+      version: '2',
       scope: 'explicit_urls_product_pages_templates_and_bounded_sitemaps',
       required: coreRequired,
       resolve: async (caseRecord) => ({
@@ -486,7 +506,7 @@ function repeatedRunHistoryError(conflicts) {
   const remainder = conflicts.length > 8 ? `; plus ${conflicts.length - 8} more` : '';
   return new Error(
     `completed run history blocks repeated targets: ${details}${remainder}. `
-      + 'Audit/promote the prior run, or change the bound policy, resolver contract or toolchain epoch.',
+      + 'Audit/promote the prior run, or change the bound policy, resolver contract or relevant failed-candidate processor epoch.',
   );
 }
 
@@ -604,7 +624,10 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
       selectedBatch: batch,
       currentPolicySha256: batch.policy.sha256,
       currentToolchainSha256: canonicalJsonSha256(toolchain),
+      currentProcessorEpochs: toolchain.evidenceProcessorEpochs,
       resolverContractForTarget: recoveryResolverContractForTarget,
+      currentBoundedManifest: boundedManifest,
+      currentScaleControl: scaleControl,
       excludeRunId: runId,
       fs,
     });

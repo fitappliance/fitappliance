@@ -13,6 +13,9 @@ import {
   buildHistoricalEvidenceProgramStatus,
   renderHistoricalEvidenceProgramStatusMarkdown,
 } from '../../src/domain/historical-evidence-program-status.mjs';
+import {
+  filterHistoricalAcceptanceBundleByReceiptReplayAudit,
+} from '../../src/domain/historical-evidence-recovery-audit.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -70,6 +73,10 @@ export async function runCli(args = process.argv.slice(2)) {
     readJson('historicalAcceptanceReceiptReplayAudit'),
   ]);
   const { replacementAudit, fitPublicationAudit } = activeAudits;
+  const effectiveAcceptanceBundle = filterHistoricalAcceptanceBundleByReceiptReplayAudit(
+    acceptanceBundle,
+    receiptReplayAudit,
+  ).bundle;
   const artifacts = [
     classification,
     knowledge,
@@ -92,7 +99,8 @@ export async function runCli(args = process.argv.slice(2)) {
     documentGraph,
     acquisitionQueue,
     executableQueue,
-    acceptanceBundle,
+    acceptanceBundle: effectiveAcceptanceBundle,
+    receiptReplaySourceEntryCount: acceptanceBundle.entries.length,
     attemptLedger,
     targetState,
     mineruBackfillAudit,

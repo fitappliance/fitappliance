@@ -14,8 +14,8 @@
   },
   "sourceBindings": {
     "dimensionKnowledgeSha256": "ffec2d4a5908b0b34a01f1f1f4dfca9d55dde7832d9380f2081b113b2e6e9e3d",
-    "documentGraphSha256": "428c7356b010eac74bc836d13967a9a9b091bd64b73950200ef4f5c457299116",
-    "classificationSha256": "1287f671cabbd743b919508441cd9b288f4a2f8322da23e19a491032c7770706",
+    "documentGraphSha256": "628d094cb61ef7691cbcce5eed9052f7b0d4cd0e9be3b1f3d18af71f1b563853",
+    "classificationSha256": "a0fc70431e98beff5fe9bef96306eb7b115da3c22e99b9565a604b50cb4c0a70",
     "fixtureCorpusSha256": "dfd5e59d69a554b5a226ef1816eec23f3af20cb8c341277bcd304fbff206afc3"
   },
   "summary": {
@@ -534,13 +534,228 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_4967c6f0b6b5bc1682b03d0c",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
+      "lane": "REPAIR_READY",
+      "rank": 9,
+      "score": 1360,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 100,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_90fc8a14a91c4647f92d2174"
+      ],
+      "affectedModels": [
+        "WH1060DG5"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "6ba6540e310628c18a7b4a8f85773b75e6c5c00a2ced390ea92fc4f05ee18139"
+      ],
+      "documentIds": [
+        "pdf_document_240b7414b116622857e8413e"
+      ],
+      "pdfSha256s": [
+        "6ba6540e310628c18a7b4a8f85773b75e6c5c00a2ced390ea92fc4f05ee18139"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "OFFICIAL": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_49701ddfc648207dd3679d5f",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "marketing_series",
+      "groupName": "Series 7",
+      "lane": "REPAIR_READY",
+      "rank": 10,
+      "score": 1360,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 100,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_f69519c3a0704595e291379f"
+      ],
+      "affectedModels": [
+        "WH1260RG5"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "848d799c19412cb980199e1c52d97b18e4c212d622174ed4e7059afa37d544b6"
+      ],
+      "documentIds": [
+        "pdf_document_052b953156268fd694b37fac"
+      ],
+      "pdfSha256s": [
+        "848d799c19412cb980199e1c52d97b18e4c212d622174ed4e7059afa37d544b6"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "OFFICIAL": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_a2dab338b62bebf56f72d2dd",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_72cc319d973c51a6",
+      "lane": "REPAIR_READY",
+      "rank": 11,
+      "score": 1360,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 100,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_dae0d6eaef8645eab79f97ba"
+      ],
+      "affectedModels": [
+        "WH9060P5"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
+      ],
+      "documentIds": [
+        "pdf_document_205878a0950628ed57de9a5d"
+      ],
+      "pdfSha256s": [
+        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "OFFICIAL": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_d449b384c7bf9a7787aed1a1",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_3c28d9e9e031905b",
+      "lane": "REPAIR_READY",
+      "rank": 12,
+      "score": 1360,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 100,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_90fc8a14a91c4647f92d2174"
+      ],
+      "affectedModels": [
+        "WH1060DG5"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9"
+      ],
+      "documentIds": [
+        "pdf_document_311278ccedbd366514333d2b"
+      ],
+      "pdfSha256s": [
+        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "PARSED_PARTIAL"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "OFFICIAL": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_dcd9620ad418fe22ecfc053d",
       "category": "dryer",
       "brand": "Fisher & Paykel",
       "groupType": "marketing_series",
       "groupName": "Series 5",
       "lane": "REPAIR_READY",
-      "rank": 9,
+      "rank": 13,
       "score": 1360,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -595,7 +810,7 @@
       "groupType": "model_specific",
       "groupName": "DW60CDW2",
       "lane": "REPAIR_READY",
-      "rank": 10,
+      "rank": 14,
       "score": 1350,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -659,7 +874,7 @@
       "groupType": "model_specific",
       "groupName": "DW60CHW1",
       "lane": "REPAIR_READY",
-      "rank": 11,
+      "rank": 15,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -718,7 +933,7 @@
       "groupType": "model_specific",
       "groupName": "DH9060HG1",
       "lane": "REPAIR_READY",
-      "rank": 12,
+      "rank": 16,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -777,7 +992,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
       "lane": "REPAIR_READY",
-      "rank": 13,
+      "rank": 17,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -827,7 +1042,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7e33a76b59add102",
       "lane": "REPAIR_READY",
-      "rank": 14,
+      "rank": 18,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -876,123 +1091,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_4967c6f0b6b5bc1682b03d0c",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
-      "lane": "REPAIR_READY",
-      "rank": 15,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_90fc8a14a91c4647f92d2174"
-      ],
-      "affectedModels": [
-        "WH1060DG5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "6ba6540e310628c18a7b4a8f85773b75e6c5c00a2ced390ea92fc4f05ee18139"
-      ],
-      "documentIds": [
-        "pdf_document_240b7414b116622857e8413e"
-      ],
-      "pdfSha256s": [
-        "6ba6540e310628c18a7b4a8f85773b75e6c5c00a2ced390ea92fc4f05ee18139"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_49701ddfc648207dd3679d5f",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "marketing_series",
-      "groupName": "Series 7",
-      "lane": "REPAIR_READY",
-      "rank": 16,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_f69519c3a0704595e291379f"
-      ],
-      "affectedModels": [
-        "WH1260RG5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "848d799c19412cb980199e1c52d97b18e4c212d622174ed4e7059afa37d544b6"
-      ],
-      "documentIds": [
-        "pdf_document_052b953156268fd694b37fac"
-      ],
-      "pdfSha256s": [
-        "848d799c19412cb980199e1c52d97b18e4c212d622174ed4e7059afa37d544b6"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_66119b03e082985c821b006e",
       "category": "dishwasher",
       "brand": "Bosch",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
       "lane": "REPAIR_READY",
-      "rank": 17,
+      "rank": 19,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1044,111 +1149,6 @@
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_a2dab338b62bebf56f72d2dd",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_72cc319d973c51a6",
-      "lane": "REPAIR_READY",
-      "rank": 18,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_dae0d6eaef8645eab79f97ba"
-      ],
-      "affectedModels": [
-        "WH9060P5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
-      ],
-      "documentIds": [
-        "pdf_document_205878a0950628ed57de9a5d"
-      ],
-      "pdfSha256s": [
-        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_d449b384c7bf9a7787aed1a1",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3c28d9e9e031905b",
-      "lane": "REPAIR_READY",
-      "rank": 19,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_90fc8a14a91c4647f92d2174"
-      ],
-      "affectedModels": [
-        "WH1060DG5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9"
-      ],
-      "documentIds": [
-        "pdf_document_311278ccedbd366514333d2b"
-      ],
-      "pdfSha256s": [
-        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "PARSED_PARTIAL"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -16913,6 +16913,6 @@
       "fixtureProfileIds": []
     }
   ],
-  "generatedAt": "2026-07-26T14:40:12.165Z",
-  "semanticQueueSha256": "308fd90507fb2819ff97ab824995a15ae4be81a51c5896ba66436ca5f70e6f19"
+  "generatedAt": "2026-07-27T02:48:07.966Z",
+  "semanticQueueSha256": "23e0f6b80bfa0ea2621c6681f537de1f380a35c738a6f01acdb5d07c6079d337"
 }
