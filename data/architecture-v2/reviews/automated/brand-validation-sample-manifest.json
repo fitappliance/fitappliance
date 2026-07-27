@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": null,
+  "samplePolicy": {
+    "frozen": true,
+    "expectedProducts": 100,
+    "identityPolicy": "exact_brand_model_suffix_preserved",
+    "dimensionPolicy": "receipt_bound_or_explicit_catalog_hint"
+  },
+  "sourceFiles": [
+    {
+      "path": "data/architecture-v2/generated/canonical-registry.json",
+      "sha256": "72fc1904ed31d388b5e5c2764666d4b12a7d1d8687317aeae43d080fae81968e"
+    },
+    {
+      "path": "data/architecture-v2/generated/installation-knowledge-pilot.json",
+      "sha256": "7c3210dc9773db79f80cb5074e9b004ee9ecb0d53fa6988868beedecfa1c1601"
+    },
+    {
+      "path": "data/architecture-v2/generated/public-catalog-projection.json",
+      "sha256": "50e6f7e1d5bde1a0721e864ec6d215d988645fc82b162d9123f1c0d25e00176c"
+    },
+    {
+      "path": "data/architecture-v2/generated/source-documents.json",
+      "sha256": "d87d4491bf20136e31515e7d2aafd511d1eff7208833431a7614026c619283eb"
+    }
+  ],
+  "csv": {
+    "path": "data/architecture-v2/generated/brand-validation-sample-100.csv",
+    "rowCount": 100,
+    "columns": [
+      "canonical_product_id",
+      "legacy_runtime_id",
+      "category",
+      "brand",
+      "model",
+      "gtin",
+      "market_state",
+      "catalog_availability",
+      "width_min_mm",
+      "width_max_mm",
+      "height_min_mm",
+      "height_max_mm",
+      "depth_min_mm",
+      "depth_max_mm",
+      "dimension_scope",
+      "dimension_source_class",
+      "dimension_evidence_level",
+      "missing_for_verified_fit",
+      "registry_reconciliation_state",
+      "reason_codes",
+      "official_product_url",
+      "official_manual_url",
+      "official_installation_guide_url",
+      "official_qrg_url",
+      "official_cad_url",
+      "official_evidence_url",
+      "source_document_ids",
+      "source_receipt_hashes",
+      "conflict_state"
+    ],
+    "sha256": "a33627be2502ce8b87b3bd5950542a5ced47597237dc096f4b6f971db247b55f"
+  },
+  "summary": {
+    "total": 100,
+    "byCategory": {
+      "dishwasher": 50,
+      "fridge": 50
+    },
+    "byReconciliationState": {
+      "AXIS_SUSPECT": 3,
+      "EXACT_CONSISTENT": 39,
+      "EXACT_DIMENSION_CONFLICT": 25,
+      "EXACT_NO_DIMENSIONS": 10,
+      "NO_EXACT_REGISTRY_MATCH": 20,
+      "REGISTRY_INTERNAL_CONFLICT": 3
+    },
+    "withGtin": 0,
+    "receiptBoundDimensions": 7,
+    "catalogHintDimensions": 93,
+    "unresolvedConflicts": 31
+  }
+}

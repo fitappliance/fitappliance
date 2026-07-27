@@ -42,6 +42,10 @@ test('historical reference artifacts follow identity before publication ordering
     architectureV2Paths.historicalReplacementAudit,
     'data/architecture-v2/reviews/automated/historical-replacement-audit.json',
   );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryQueue,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json',
+  );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalApplianceReference,
     ['officialRegistrySnapshots', 'publicProjection'],
@@ -53,6 +57,10 @@ test('historical reference artifacts follow identity before publication ordering
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalReplacementAudit,
     ['historicalReferencePublicationManifest', 'publicProjection'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryQueue,
+    ['sourceDocuments', 'historicalApplianceReference'],
   );
 });
 

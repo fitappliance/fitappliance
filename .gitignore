@@ -1,4 +1,7 @@
 .env
+.env.local
+.private-outreach/
+outreach-private/
 .tmp/
 /tmp
 .worktrees/

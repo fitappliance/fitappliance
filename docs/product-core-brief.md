@@ -621,6 +621,56 @@ Measured release facts:
   dimensions win while the government conflict remains visible internally;
   HDW15F3S1 remains confirmation-only, not auto-fill.
 
+### 9.3 Coverage-recovery diagnosis (2026-07-13)
+
+The `11 / 4,940 / 3,054 / 90` split is not an acceptable steady state. It is
+also not evidence that MinerU succeeds on only 11 products. The current release
+mix combines three separate conditions:
+
+- 4,951 records, or 61.2%, already expose a complete W/H/D triplet: 11 from
+  receipt-bound catalogue evidence and 4,940 from internally consistent Energy
+  Rating rows that still require user confirmation;
+- 3,054 records have no publishable triplet. Of these, 1,630 have registry rows
+  with missing dimensions and 1,424 have catalogue dimensions without a V2
+  receipt;
+- only 69 unique historical PDF files had been passed through the current MinerU
+  cache at the time of this audit. The 11 auto-fill records therefore measure
+  completed evidence migration, not parser capability.
+
+The historical source-document registry contains a much larger recoverable
+backlog. The deterministic recovery queue currently identifies:
+
+- 1,600 legacy documents with exact identity and complete legacy W/H/D hints;
+- 1,556 unique fetch jobs after URL deduplication;
+- 1,591 unique historical references, including 1,093 `MEASURE_REQUIRED`, 478
+  `CONFIRM_REQUIRED`, and 29 quarantined conflict targets;
+- 1,065 of the 1,115 current-retail `MEASURE_REQUIRED` references, or 95.5%, as
+  having at least one exact-identity, complete legacy document candidate;
+- only 23 jobs ready for direct official receipt rebuilding, 254 requiring
+  official-host author validation, 1,223 retailer mirrors that must lead to an
+  official equivalent, and 56 requiring new official-source discovery.
+
+This establishes an architecture and throughput failure: historical acquisition
+found many candidates, but legacy source discovery, content-addressed fetching,
+MinerU extraction, field receipts, and historical publication were never joined
+into one resumable production path.
+
+The conservative publication policy remains necessary. Among 1,897
+registry-confirmation records that also have complete catalogue W/H/D, 262
+disagree and 28 are direct axis permutations. Registry consistency means that
+registry rows agree with each other; it does not prove that width, height and
+depth are physically correct. Legacy dimensions therefore remain hints until
+the exact-model document proves axis meaning and measurement scope.
+
+The repair programme is defined in
+[Historical Evidence Coverage Recovery Plan](superpowers/plans/2026-07-13-historical-evidence-coverage-recovery.md).
+Its first artifact is
+`data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json`.
+The queue downloads a shared document once but retains separate model targets,
+and every target must pass fetch/hash, MinerU JSON, exact identity, axis/range
+semantics, official authority, conflict checks, and receipt-bound projection.
+Queue inclusion never makes a dimension public.
+
 Runtime catalogue ownership:
 
 - `data/catalog-final.json`, Architecture V2 evidence artifacts and
@@ -670,6 +720,44 @@ Refresh and rollback:
   meta file and audit as one commit, then redeploying that exact commit. Immutable
   source snapshots remain available for replay.
 
+### 9.4 Brand-data and PDF-yield checkpoint (2026-07-27)
+
+The direct-data and PDF work now shares one durable execution programme:
+[Brand Data and PDF Yield Program](superpowers/plans/2026-07-27-brand-data-and-pdf-yield-program.md).
+Its current controls and measured results are:
+
+- the product field dictionary separates exact AU identity, closed and packaged
+  envelopes, adjustable ranges, installation and operation space, ventilation,
+  utility connections and document lifecycle fields. Each geometry field has an
+  axis, unit, value shape, evidence scope, Fit role and unknown policy;
+- reuse rights are field-, source- and action-bound. Caching, public display,
+  quotation, document linking, attribution, audit retention and withdrawal are
+  blocked until the provider confirms them;
+- eight Australian data-owning organizations cover the 13 priority brands. The
+  contact matrix stores official ownership and route URLs, never inferred email
+  patterns or private recipient details;
+- two organization-level requests have been sent. Six further organization
+  drafts are validated, canonical-content hashed and exact-file hashed in the
+  external private outreach store. Git retains only public route metadata,
+  state, dates and hashes;
+- the first frozen PDF diagnostic sample contains 100 unique source URLs: 25
+  dishwashers, 25 dryers, 25 refrigerators and 25 washing machines. It covers
+  30 brands, 25 source hosts and all four recovery acquisition routes;
+- 95 sampled candidates fail first at acquisition because the legacy source
+  record has no immutable PDF object. Five already have a valid PDF object and
+  policy-compatible MinerU JSON but fail at page/table association because the
+  old fields are not bound to structured page regions;
+- filename and URL tokens are retained only as unconfirmed source-family hints.
+  They cannot prove scanned, tabular, family-manual or diagram-only layout;
+- parser-family prioritization is therefore gated by WP7A: acquire, validate and
+  content-address the frozen 100 candidates, rerun the unchanged classifier,
+  and then confirm document families from MinerU regions. Shared parser work
+  still requires a projected and replayed yield of at least ten exact-model
+  receipts.
+
+The generated baseline and its interpretation are recorded in
+[PDF Failure Baseline: 100 Stratified Candidates](architecture-v2/pdf-failure-baseline-100.md).
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:
@@ -682,6 +770,12 @@ Track coverage and truth separately:
 - unknown reasons by category and field;
 - source conflicts, axis anomalies, duplicate registrations and quarantines;
 - false acceptance count, which must remain zero in adversarial fixtures;
+- current-retail `MEASURE_REQUIRED` rate and its reason distribution;
+- recovery funnel counts from candidate URL through fetch, MinerU, exact-model
+  binding, per-axis extraction, official authority, conflict resolution and
+  receipt-bound publication;
+- recovery yield and failure reasons by brand, category, transport host and
+  lifecycle state;
 - source freshness and successful delta-replay rate;
 - retailer in-stock coverage and affiliate-link freshness;
 - user measurement completion, result-to-retailer click-through, and returns or

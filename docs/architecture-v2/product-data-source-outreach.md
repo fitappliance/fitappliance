@@ -1,7 +1,21 @@
 # Product Data Source and Brand Outreach Package
 
 **Date:** 2026-07-12
-**Status:** Pilot-ready; no messages sent and no commercial provider purchased
+**Status:** Active pilot; two organization requests sent, six reviewed drafts ready, no commercial provider purchased
+**Execution plan:** [Brand Data and PDF Yield Program](../superpowers/plans/2026-07-27-brand-data-and-pdf-yield-program.md)
+
+This document records source and outreach research. The linked execution plan is the canonical task order, dependency gate, and recovery checkpoint for the active program.
+
+The official route inventory is machine-readable in
+`data/architecture-v2/policies/brand-data-contact-matrix.json`. Full message bodies,
+recipient details, replies and provider files remain in the private external outreach
+store. The Git-safe ledger records only organization metadata, public route URLs,
+states and content hashes.
+
+As of 2026-07-27, Fisher & Paykel Australia and Electrolux Home Products have been
+contacted. Organization-specific drafts for Residentia Group, LG Electronics Australia,
+Hisense Australia, Smeg Australia, Miele Australia and CHiQ Australia have passed the
+private draft audit. A `draft_ready` state does not mean the message was sent.
 
 ## Current Source Decision
 
