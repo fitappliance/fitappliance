@@ -616,10 +616,16 @@ const HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR =
   'haier-au-hbm-technical-data-family-v1';
 const LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR =
   'lg-au-dryer-dimension-diagram-v1';
+const LG_AU_WASHER_EXACT_MODEL_SIZE_GRAMMAR =
+  'lg-au-washer-exact-model-size-wdh-v1';
+const LG_AU_FRIDGE_ABC_DIAGRAM_GRAMMAR =
+  'lg-au-fridge-a-b-c-dimension-diagram-v1';
 const ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR =
   'electrolux-au-washer-product-total-depth-v1';
 const ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR =
   'esatto-au-dishwasher-technical-information-d1-d2-v1';
+const ESATTO_AU_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR =
+  'esatto-au-product-card-physical-wdh-v1';
 const LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS = Object.freeze({
   '22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957': Object.freeze([
     'DVH1-08WP',
@@ -627,6 +633,16 @@ const LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS = Object.freeze({
   '521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462': Object.freeze([
     'DVH10-10B', 'DVH10-10W', 'DVH9-10B', 'DVH5-10G',
   ]),
+});
+const LG_AU_FRIDGE_ABC_DIAGRAM_DOCUMENTS = Object.freeze({
+  '5ceaeaaafb54c39b263672efb8dd54b24e4302aea61a18de6134758ab5f54ca1': Object.freeze({
+    models: Object.freeze([
+      'GS-D635PLC', 'GS-D635MBLC', 'GS-L635PLF', 'GS-L635PL', 'GS-L635MBL',
+      'GS-N635PL', 'GS-N635MBL', 'GS-V635PLC', 'GS-V635MBLC', 'GS-D600PLC',
+      'GS-D600MBLC', 'GS-V600MBLC', 'GS-L600PL', 'GS-N600PL', 'GS-L600MBL',
+    ]),
+    values: Object.freeze({ A: 913, B: 1790, C: 735, D: 620, E: 691, F: 735, G: 1180, H: 1635 }),
+  }),
 });
 
 function explicitDimensionRowsWithInheritedUnit(text, {
@@ -2940,6 +2956,192 @@ function lgDryerExactModelSizeScope(document, caseIdentity) {
   return matches.length === 1 ? matches[0] : null;
 }
 
+function lgWasherExactModelSizeScope(document, caseIdentity) {
+  if (canonicalModel(caseIdentity?.brand) !== 'LG'
+    || normalizedText(caseIdentity?.category) !== 'washing_machine') return null;
+  const model = normalizedText(caseIdentity?.model);
+  if (!model || siblingModelCandidates(document, model).length > 0) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items.filter((item) => item.type === 'table')) {
+      const modelRows = fragment.cells.filter((cells) => {
+        if (!/^model$/i.test(normalizedText(cells[0]))) return false;
+        const tokens = cells.slice(1).flatMap((cell) => modelExpressionTokens(cell));
+        return tokens.length === 1 && !tokens[0].includes('*')
+          && canonicalModel(tokens[0]) === canonicalModel(model);
+      });
+      const sizeRows = fragment.cells.filter((cells) => (
+        /^size\s*\(\s*mm\s*\)$/i.test(normalizedText(cells[0]))
+      ));
+      if (modelRows.length !== 1 || sizeRows.length !== 1 || sizeRows[0].length !== 2) continue;
+      const value = normalizedText(sizeRows[0][1]);
+      const parts = [...value.matchAll(/(\d+)\s*\(\s*([WDH])\s*\)/gi)];
+      if (parts.length !== 3) continue;
+      const prefix = value.slice(0, parts[0].index);
+      const suffix = value.slice(parts.at(-1).index + parts.at(-1)[0].length);
+      if (prefix.trim() || suffix.trim()) continue;
+      let separated = true;
+      for (let index = 0; index < parts.length - 1; index += 1) {
+        const between = value.slice(parts[index].index + parts[index][0].length, parts[index + 1].index);
+        if (!/^\s*[x×]\s*$/.test(between)) separated = false;
+      }
+      const axes = parts.map((part) => ({ W: 'width', D: 'depth', H: 'height' })[part[2].toUpperCase()]);
+      if (!separated || axes.join(',') !== 'width,depth,height') continue;
+      const values = parts.map((part) => Number(part[1]));
+      matches.push({
+        fragment,
+        page: pageIndex + 1,
+        grammarProfileId: LG_AU_WASHER_EXACT_MODEL_SIZE_GRAMMAR,
+        rows: [{
+          label: 'Size (W x D x H)',
+          value: `${values.join(' x ')} mm`,
+          quote: `Size (mm) ${value}`,
+          grammarProfileId: LG_AU_WASHER_EXACT_MODEL_SIZE_GRAMMAR,
+        }],
+      });
+    }
+  });
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function lgAuFridgeAbcDiagramScope(document, caseIdentity, pdfSha256) {
+  if (canonicalModel(caseIdentity?.brand) !== 'LG'
+    || normalizedText(caseIdentity?.category) !== 'fridge') return null;
+  const configured = LG_AU_FRIDGE_ABC_DIAGRAM_DOCUMENTS[pdfSha256];
+  const model = normalizedText(caseIdentity?.model);
+  if (!configured || !configured.models.includes(model)) return null;
+  const coverLists = (document.pages[0] ?? []).filter((fragment) => (
+    fragment.type === 'paragraph'
+      && sameModelSet(modelExpressionTokens(fragment.text), configured.models)
+  ));
+  if (coverLists.length !== 1) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    const titles = items.filter((fragment) => (
+      fragment.type === 'title' && /^Dimensions and Clearances$/i.test(fragment.text)
+    ));
+    const images = items.filter((fragment) => fragment.type === 'image');
+    const tables = items.filter((fragment) => {
+      if (fragment.type !== 'table' || fragment.cells.length !== 9) return false;
+      const cells = fragment.cells.map((row) => row.map(normalizedText));
+      if (cells.some((row) => row.length !== 2)
+        || !/^size\s*\(\s*mm\s*\)$/i.test(cells[0][1])) return false;
+      const values = {};
+      for (let index = 1; index < cells.length; index += 1) {
+        const expectedAxis = String.fromCharCode(64 + index);
+        if (cells[index][0] !== expectedAxis || !/^\d+$/.test(cells[index][1])) return false;
+        values[expectedAxis] = Number(cells[index][1]);
+      }
+      return Object.entries(configured.values).every(([axis, value]) => values[axis] === value);
+    });
+    if (titles.length !== 1 || images.length !== 2 || tables.length !== 1) return;
+    const fragment = tables[0];
+    const values = configured.values;
+    matches.push({
+      fragment,
+      coverFragment: coverLists[0],
+      page: pageIndex + 1,
+      grammarProfileId: LG_AU_FRIDGE_ABC_DIAGRAM_GRAMMAR,
+      rows: [
+        ['width', 'Width (diagram A)', values.A, 'A'],
+        ['height', 'Height (diagram B)', values.B, 'B'],
+        ['depth', 'Depth (diagram C)', values.C, 'C'],
+      ].map(([axis, label, value, sourceAxis]) => ({
+        label,
+        value: `${value} mm`,
+        quote: `${sourceAxis} ${value} mm from audited Dimensions and Clearances diagram`,
+        semanticBasis: 'lg_audited_fridge_dimension_diagram',
+        axisOrder: [axis],
+        grammarProfileId: LG_AU_FRIDGE_ABC_DIAGRAM_GRAMMAR,
+      })),
+    });
+  });
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function parseEsattoWdhTuple(value) {
+  const match = /^\s*(?:→\s*)?(\d[\d,]*)\s*[x×]\s*(\d[\d,]*)\s*[x×]\s*(\d[\d,]*)\s*mm\s*$/i
+    .exec(value);
+  if (!match) return null;
+  const result = match.slice(1).map((entry) => Number(entry.replaceAll(',', '')));
+  return result.every((entry) => Number.isInteger(entry) && entry > 0) ? result : null;
+}
+
+function esattoAuProductCardPhysicalScope(document, caseIdentity, sourceUrls) {
+  if (canonicalModel(caseIdentity?.brand) !== 'ESATTO'
+    || normalizedText(caseIdentity?.category) !== 'washing_machine') return null;
+  const model = normalizedText(caseIdentity?.model);
+  const exactDocumentUrl = exactModelSourceUrl(sourceUrls, model);
+  if (!model || !exactDocumentUrl || siblingModelCandidates(document, model).length > 0) return null;
+  const identityFragments = document.pages.flat().filter((fragment) => (
+    fragment.type === 'title'
+      && new RegExp(`^Model Code:\\s*${escapeRegExp(model)}$`, 'i').test(fragment.text)
+  ));
+  if (identityFragments.length !== 1) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    const headingIndex = items.findIndex((fragment) => (
+      fragment.type === 'paragraph' && /^Product Dimensions:\s*$/i.test(fragment.text)
+    ));
+    if (headingIndex < 0) return;
+    const heading = items[headingIndex];
+    const fragments = items.filter((fragment, index) => (
+      index > headingIndex
+        && fragment.type === 'paragraph'
+        && fragment.bbox[1] >= heading.bbox[1]
+        && fragment.bbox[1] - heading.bbox[3] <= 180
+        && Math.abs(fragment.bbox[0] - heading.bbox[0]) <= 40
+    )).slice(0, 4);
+    const expected = [
+      /^Packaged\s*\(\s*w\s*,\s*d\s*,\s*h\s+mm\s*\)$/i,
+      null,
+      /^Physical\s*\(\s*w\s*,\s*d\s*,\s*h\s+mm\s*\)$/i,
+      null,
+    ];
+    if (fragments.length !== 4 || fragments.some((fragment) => fragment.type !== 'paragraph')
+      || !expected[0].test(fragments[0].text) || !expected[2].test(fragments[2].text)) return;
+    const packaged = parseEsattoWdhTuple(fragments[1].text);
+    const physical = parseEsattoWdhTuple(fragments[3].text);
+    if (!packaged || !physical || packaged.some((value, index) => value < physical[index])) return;
+    if (fragments.some((fragment, index) => index > 0
+      && (fragment.bbox[1] < fragments[index - 1].bbox[1]
+        || Math.abs(fragment.bbox[0] - fragments[0].bbox[0]) > 40))) return;
+    const sourceFragments = [heading, ...fragments];
+    const fragment = {
+      type: 'derived_esatto_product_card_physical_dimensions',
+      bbox: [
+        Math.min(...sourceFragments.map((entry) => entry.bbox[0])),
+        Math.min(...sourceFragments.map((entry) => entry.bbox[1])),
+        Math.max(...sourceFragments.map((entry) => entry.bbox[2])),
+        Math.max(...sourceFragments.map((entry) => entry.bbox[3])),
+      ],
+      fragmentSha256: sha256(JSON.stringify({
+        grammarProfileId: ESATTO_AU_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+        sourceFragmentSha256s: sourceFragments.map((entry) => entry.fragmentSha256),
+        physical,
+      })),
+    };
+    const axes = ['width', 'depth', 'height'];
+    matches.push({
+      exactDocumentUrl,
+      identityFragment: identityFragments[0],
+      fragment,
+      page: pageIndex + 1,
+      grammarProfileId: ESATTO_AU_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+      rows: axes.map((axis, index) => ({
+        label: `Physical ${axis}`,
+        value: `${physical[index]} mm`,
+        quote: `Physical ${axis} ${physical[index]} mm from explicit Physical (w, d, h mm) row`,
+        semanticBasis: 'esatto_product_card_physical_dimension',
+        axisOrder: axes,
+        sourceAxis: axis,
+        grammarProfileId: ESATTO_AU_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+      })),
+    });
+  });
+  return matches.length === 1 ? matches[0] : null;
+}
+
 function electroluxAuWasherProductDimensionScope(document, caseIdentity) {
   if (canonicalModel(caseIdentity?.brand) !== 'ELECTROLUX'
     || normalizedText(caseIdentity?.category) !== 'washing_machine') {
@@ -3308,6 +3510,28 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'Exactly one table contains one exact target Model row and one Size row whose three values each carry the same explicit unit plus a unique W, D or H axis label.',
     semanticBoundary: 'Only the three Size values are projected in their written W/D/H order; unitless tuples, packaged or installation sizes, conflicting label orders and tables with multiple matching model or size rows are excluded.',
   }),
+  [LG_AU_WASHER_EXACT_MODEL_SIZE_GRAMMAR]: Object.freeze({
+    parserProfileId: LG_AU_WASHER_EXACT_MODEL_SIZE_GRAMMAR,
+    grammarFamilyId: 'lg_au_washer_exact_model_size_wdh_v1',
+    grammarFamilyName: 'LG Australia top-loader exact-model specification table',
+    variantName: 'Same-table Model row and Size (mm) values with W/D/H suffixes',
+    brand: 'LG',
+    category: 'washing_machine',
+    documentType: 'user_manual',
+    detectionSummary: 'Exactly one table contains one exact target Model row and one Size (mm) row whose three integer values carry unique W, D and H suffixes in that exact order.',
+    semanticBoundary: 'The Size (mm) W/D/H tuple is the closed product envelope. Packaged, installation, unitless, duplicate-model, duplicate-axis and reordered variants fail closed.',
+  }),
+  [LG_AU_FRIDGE_ABC_DIAGRAM_GRAMMAR]: Object.freeze({
+    parserProfileId: LG_AU_FRIDGE_ABC_DIAGRAM_GRAMMAR,
+    grammarFamilyId: 'lg_au_fridge_abc_dimension_diagram_v1',
+    grammarFamilyName: 'LG Australia side-by-side refrigerator installation diagram',
+    variantName: 'Audited A width, B height and C closed-depth diagram',
+    brand: 'LG',
+    category: 'fridge',
+    documentType: 'user_manual',
+    detectionSummary: 'A reviewed source-PDF hash binds the complete declared cover model list, one Dimensions and Clearances page, exactly two diagram images and the exact A-H Size (mm) table.',
+    semanticBoundary: 'Only audited A, B and C are projected as closed width, height and depth. D-H and the narrative rear clearance remain separate semantics. Unknown hashes, model-list drift, table drift or missing diagrams fail closed.',
+  }),
   [LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR]: Object.freeze({
     parserProfileId: LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR,
     grammarFamilyId: 'lg_au_dryer_dimension_diagram_v1',
@@ -3340,6 +3564,17 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'user_manual',
     detectionSummary: 'An exact-model Esatto EDW manual URL, one exact Model/s cover header, no sibling model, and one Technical Information page containing one Dimensions title, one four-row H/W/D1/D2 millimetre table and the same exact rating-label model.',
     semanticBoundary: 'Height and width are closed product dimensions; D1 is projected only when explicitly qualified as door closed. D2 must be present and explicitly qualified as door opened 90 degrees, but remains an operation envelope and is never projected as closed depth. Missing, duplicate, conflicting, unitless, sibling, cross-brand and cross-category variants fail closed.',
+  }),
+  [ESATTO_AU_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR]: Object.freeze({
+    parserProfileId: ESATTO_AU_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+    grammarFamilyId: 'esatto_au_product_card_physical_wdh_v1',
+    grammarFamilyName: 'Esatto Australia exact-model product card',
+    variantName: 'Separate Packaged and Physical W/D/H paragraph pairs',
+    brand: 'Esatto',
+    category: 'washing_machine',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model official product-card URL and Model Code title bind one Product Dimensions block containing unique Packaged and Physical (w, d, h mm) labels with adjacent tuples.',
+    semanticBoundary: 'Only Physical W/D/H is projected as the closed product envelope. Packaged values are required as an envelope-separation guard and excluded. Sibling models, missing units, duplicate labels and physical values larger than packaging fail closed.',
   }),
   [SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR]: Object.freeze({
     parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
@@ -3451,6 +3686,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, one Dimensions & Weights title, one complete min-height/max-height/W/D paragraph and one complete separate unpackaged-weight plus packaged-dimensions paragraph.',
     semanticBoundary: 'Only unpackaged W/D and the explicit minimum-to-maximum feet-adjustment height range are projected; the separate packaged values are required for envelope separation but excluded, and no door-open claim is inferred.',
   }),
+  beko_au_dishwasher_product_spec_truncated_labels_v1: Object.freeze({
+    parserProfileId: 'beko_au_dishwasher_product_spec_truncated_labels_v1',
+    grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
+    grammarFamilyName: 'Beko AU dishwasher product specification',
+    variantName: 'Complete unpackaged labels with truncated packaged labels and full value list',
+    brand: 'Beko',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model page contains one Dimensions & Weights title, exactly the first six ordered unpackaged labels, and one aligned ten-value list whose unpackaged and packaged unit pattern is complete.',
+    semanticBoundary: 'Only the first six explicitly labelled unpackaged values are interpreted. The four unlabeled tail values are used solely to prove the known list layout and are never published; malformed units, missing values or label drift fail closed.',
+  }),
   beko_au_dryer_product_spec_parallel_lists_v1: Object.freeze({
     parserProfileId: 'beko_au_dryer_product_spec_parallel_lists_v1',
     grammarFamilyId: 'beko_au_dryer_product_spec_v1',
@@ -3484,6 +3730,8 @@ const BEKO_AU_DISHWASHER_SPLIT_TITLE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_split_title_parallel_lists_v1.parserProfileId;
 const BEKO_AU_DISHWASHER_MIN_HEIGHT_INLINE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_min_height_inline_pairs_v1.parserProfileId;
+const BEKO_AU_DISHWASHER_TRUNCATED_LABELS_GRAMMAR = mineruGrammarProfiles
+  .beko_au_dishwasher_product_spec_truncated_labels_v1.parserProfileId;
 const BEKO_AU_DRYER_PARALLEL_GRAMMAR = mineruGrammarProfiles
   .beko_au_dryer_product_spec_parallel_lists_v1.parserProfileId;
 const BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR = mineruGrammarProfiles
@@ -3744,6 +3992,40 @@ function bekoMinHeightInlineSpecResult(items) {
   };
 }
 
+function bekoTruncatedLabelsSpecResult(items) {
+  const headings = items.filter((item) => (
+    item.type === 'title' && item.text === 'Dimensions & Weights'
+  ));
+  if (headings.length !== 1) return null;
+  const explicitLabels = BEKO_AU_SPEC_LABELS.slice(0, 6);
+  const labelCandidates = items.filter((item) => (
+    item.type === 'list'
+      && JSON.stringify(item.listEntries) === JSON.stringify(explicitLabels)
+      && item.bbox[1] >= headings[0].bbox[3]
+      && item.bbox[1] - headings[0].bbox[3] <= 50
+  ));
+  if (labelCandidates.length !== 1) return null;
+  const values = items.filter((item) => (
+    ['index', 'list'].includes(item.type)
+      && item !== labelCandidates[0]
+      && item.listEntries.length === BEKO_AU_SPEC_LABELS.length
+      && item.listEntries.every((value, index) => (
+        [5, 9].includes(index)
+          ? /^\d+(?:\.\d+)?\s*kg$/i.test(value)
+          : /^\d+(?:\.\d+)?\s*mm$/i.test(value)
+      ))
+      && Math.abs(item.bbox[1] - labelCandidates[0].bbox[1]) <= 50
+      && item.bbox[0] >= labelCandidates[0].bbox[2]
+      && item.bbox[0] - labelCandidates[0].bbox[2] <= 100
+  ));
+  if (values.length !== 1) return null;
+  return bekoSpecResult(
+    values[0].listEntries,
+    BEKO_AU_DISHWASHER_TRUNCATED_LABELS_GRAMMAR,
+    [headings[0], labelCandidates[0], values[0]],
+  );
+}
+
 function bekoAuDishwasherSpecRows(items, caseIdentity, identityScoped) {
   if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
     || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
@@ -3753,6 +4035,7 @@ function bekoAuDishwasherSpecRows(items, caseIdentity, identityScoped) {
     bekoInlineSpecResult(items),
     bekoSplitTitleParallelSpecResult(items),
     bekoMinHeightInlineSpecResult(items),
+    bekoTruncatedLabelsSpecResult(items),
   ].filter(Boolean);
   return matches.length === 1 ? matches[0] : null;
 }
@@ -4127,8 +4410,14 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const lgDryerSizeScope = claimSemanticsVersion === 2
     ? lgDryerExactModelSizeScope(document, caseIdentity)
     : null;
+  const lgWasherSizeScope = claimSemanticsVersion === 2
+    ? lgWasherExactModelSizeScope(document, caseIdentity)
+    : null;
   const lgDryerDimensionDiagramScope = claimSemanticsVersion === 2
     ? lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256)
+    : null;
+  const lgFridgeAbcDiagramScope = claimSemanticsVersion === 2
+    ? lgAuFridgeAbcDiagramScope(document, caseIdentity, pdfSha256)
     : null;
   const electroluxWasherDimensions = claimSemanticsVersion === 2
     ? electroluxAuWasherProductDimensionScope(document, caseIdentity)
@@ -4136,6 +4425,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const electroluxWasherDimensionScope = electroluxWasherDimensions.scope;
   const esattoDishwasherDimensionScope = claimSemanticsVersion === 2
     ? esattoAuDishwasherTechnicalDimensionScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const esattoProductCardPhysicalScope = claimSemanticsVersion === 2
+    ? esattoAuProductCardPhysicalScope(document, caseIdentity, options.sourceUrls)
     : null;
   const boschDimensionSectionScope = claimSemanticsVersion === 2
     ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
@@ -4168,6 +4460,14 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const lgDryerDimensionDiagramSignals = lgDryerDimensionDiagramScope ? [{
     type: 'mineru_lg_audited_dryer_dimension_diagram',
     value: `${model}:pdf:${pdfSha256}:page:${lgDryerDimensionDiagramScope.page}:${lgDryerDimensionDiagramScope.fragment.fragmentSha256}`,
+  }] : [];
+  const lgFridgeAbcDiagramSignals = lgFridgeAbcDiagramScope ? [{
+    type: 'mineru_lg_audited_fridge_dimension_diagram',
+    value: `${model}:pdf:${pdfSha256}:cover:${lgFridgeAbcDiagramScope.coverFragment.fragmentSha256}:page:${lgFridgeAbcDiagramScope.page}:${lgFridgeAbcDiagramScope.fragment.fragmentSha256}`,
+  }] : [];
+  const esattoProductCardPhysicalSignals = esattoProductCardPhysicalScope ? [{
+    type: 'mineru_esatto_exact_product_card_physical_dimensions',
+    value: `${model}:identity:${esattoProductCardPhysicalScope.identityFragment.fragmentSha256}:page:${esattoProductCardPhysicalScope.page}:${esattoProductCardPhysicalScope.fragment.fragmentSha256}:url:${esattoProductCardPhysicalScope.exactDocumentUrl}`,
   }] : [];
   const fisherPaykelDw60Scope = claimSemanticsVersion === 2
     ? fisherPaykelDw60ApplicabilityScope(document, caseIdentity, options.sourceUrls)
@@ -4229,8 +4529,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !hisenseLegacySpecScope
     && !hisenseNetPackageScope
     && !lgDryerDimensionDiagramScope
+    && !lgFridgeAbcDiagramScope
     && !electroluxWasherDimensionScope
     && !esattoDishwasherDimensionScope
+    && !esattoProductCardPhysicalScope
     && !boschDimensionSectionScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
@@ -4266,8 +4568,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...hisenseLegacySpecSignals,
     ...hisenseNetPackageSignals,
     ...lgDryerDimensionDiagramSignals,
+    ...lgFridgeAbcDiagramSignals,
     ...electroluxWasherDimensionSignals,
     ...esattoDishwasherDimensionSignals,
+    ...esattoProductCardPhysicalSignals,
     ...boschDimensionSectionSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
@@ -4317,8 +4621,31 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (lgDryerSizeScope) {
     appliedGrammarProfiles.add(lgDryerSizeScope.grammarProfileId);
   }
+  if (lgWasherSizeScope) {
+    appliedGrammarProfiles.add(lgWasherSizeScope.grammarProfileId);
+    for (const row of lgWasherSizeScope.rows) {
+      for (const claim of dimensionClaims(
+        row, lgWasherSizeScope.fragment, lgWasherSizeScope.page, fields, category,
+      )) candidates.get(claim.field)?.push(claim);
+    }
+  }
   if (lgDryerDimensionDiagramScope) {
     appliedGrammarProfiles.add(lgDryerDimensionDiagramScope.grammarProfileId);
+  }
+  if (lgFridgeAbcDiagramScope) {
+    appliedGrammarProfiles.add(lgFridgeAbcDiagramScope.grammarProfileId);
+    for (const row of lgFridgeAbcDiagramScope.rows) {
+      const claims = [
+        ...dimensionClaims(
+          row, lgFridgeAbcDiagramScope.fragment, lgFridgeAbcDiagramScope.page, fields, category,
+        ),
+        ...directClaims(
+          row, lgFridgeAbcDiagramScope.fragment, lgFridgeAbcDiagramScope.page,
+          fields, category, claimSemanticsVersion,
+        ),
+      ];
+      for (const claim of claims) candidates.get(claim.field)?.push(claim);
+    }
   }
   if (electroluxWasherDimensionScope) {
     appliedGrammarProfiles.add(electroluxWasherDimensionScope.grammarProfileId);
@@ -4341,6 +4668,22 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           fields,
           category,
           claimSemanticsVersion,
+        ),
+      ];
+      for (const claim of claims) candidates.get(claim.field)?.push(claim);
+    }
+  }
+  if (esattoProductCardPhysicalScope) {
+    appliedGrammarProfiles.add(esattoProductCardPhysicalScope.grammarProfileId);
+    for (const row of esattoProductCardPhysicalScope.rows) {
+      const claims = [
+        ...dimensionClaims(
+          row, esattoProductCardPhysicalScope.fragment,
+          esattoProductCardPhysicalScope.page, fields, category,
+        ),
+        ...directClaims(
+          row, esattoProductCardPhysicalScope.fragment,
+          esattoProductCardPhysicalScope.page, fields, category, claimSemanticsVersion,
         ),
       ];
       for (const claim of claims) candidates.get(claim.field)?.push(claim);

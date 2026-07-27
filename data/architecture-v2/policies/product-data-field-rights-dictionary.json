@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-07-27",
+  "canonicalUnitSystem": "millimetres",
+  "unknownRule": "Unknown values remain unknown and cannot be inferred as zero.",
+  "fields": [
+    { "id": "identity.brand", "kind": "identity", "valueShape": "string", "scope": "product", "fitRole": "identity", "requiredEvidence": ["explicit_brand", "au_market_context"] },
+    { "id": "identity.model", "kind": "identity", "valueShape": "string", "scope": "product", "fitRole": "identity", "requiredEvidence": ["exact_model_string", "au_market_context"] },
+    { "id": "identity.variantSuffix", "kind": "identity", "valueShape": "string", "scope": "product", "fitRole": "identity", "requiredEvidence": ["exact_suffix_or_receipt_bound_alias"] },
+    { "id": "identity.gtin", "kind": "identity", "valueShape": "string", "scope": "trade_item", "fitRole": "identity", "requiredEvidence": ["explicit_gtin", "exact_model_binding"] },
+    { "id": "lifecycle.marketStatus", "kind": "lifecycle", "valueShape": "enum", "scope": "au_market", "fitRole": "informational", "requiredEvidence": ["dated_market_status"] },
+    { "id": "lifecycle.replacementModel", "kind": "lifecycle", "valueShape": "string", "scope": "au_market", "fitRole": "informational", "requiredEvidence": ["explicit_supersession", "exact_model_binding"] },
+
+    { "id": "closedEnvelope.widthMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "product_closed", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_axis", "product_scope", "exact_model_binding"] },
+    { "id": "closedEnvelope.heightMm", "kind": "geometry", "axis": "height", "unit": "mm", "valueShape": "scalar", "scope": "product_closed", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_axis", "product_scope", "exact_model_binding"] },
+    { "id": "closedEnvelope.depthMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "scalar", "scope": "product_closed", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_axis", "product_scope", "door_state", "exact_model_binding"] },
+
+    { "id": "packagedEnvelope.widthMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "package", "fitRole": "informational", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_axis", "package_scope", "exact_model_binding"] },
+    { "id": "packagedEnvelope.heightMm", "kind": "geometry", "axis": "height", "unit": "mm", "valueShape": "scalar", "scope": "package", "fitRole": "informational", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_axis", "package_scope", "exact_model_binding"] },
+    { "id": "packagedEnvelope.depthMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "scalar", "scope": "package", "fitRole": "informational", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_axis", "package_scope", "exact_model_binding"] },
+
+    { "id": "adjustableRange.widthMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "range", "scope": "product_adjusted", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_min_max", "adjustment_context", "exact_model_binding"] },
+    { "id": "adjustableRange.heightMm", "kind": "geometry", "axis": "height", "unit": "mm", "valueShape": "range", "scope": "product_adjusted", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_min_max", "adjustment_context", "exact_model_binding"] },
+    { "id": "adjustableRange.depthMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "range", "scope": "product_adjusted", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_min_max", "adjustment_context", "exact_model_binding"] },
+
+    { "id": "installationClearance.leftMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "installation_clearance_left", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_side", "installation_scope", "exact_model_binding"] },
+    { "id": "installationClearance.rightMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "installation_clearance_right", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_side", "installation_scope", "exact_model_binding"] },
+    { "id": "installationClearance.topMm", "kind": "geometry", "axis": "height", "unit": "mm", "valueShape": "scalar", "scope": "installation_clearance_top", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_side", "installation_scope", "exact_model_binding"] },
+    { "id": "installationClearance.rearMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "scalar", "scope": "installation_clearance_rear", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_side", "installation_scope", "exact_model_binding"] },
+    { "id": "installationClearance.frontMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "scalar", "scope": "installation_clearance_front", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_side", "installation_or_service_scope", "exact_model_binding"] },
+
+    { "id": "operationEnvelope.widthMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "door_drawer_or_lid_open", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_open_state", "axis_or_diagram_label", "exact_model_binding"] },
+    { "id": "operationEnvelope.heightMm", "kind": "geometry", "axis": "height", "unit": "mm", "valueShape": "scalar", "scope": "door_drawer_or_lid_open", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_open_state", "axis_or_diagram_label", "exact_model_binding"] },
+    { "id": "operationEnvelope.depthMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "scalar", "scope": "door_drawer_or_lid_open", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_open_state", "axis_or_diagram_label", "exact_model_binding"] },
+
+    { "id": "ventilation.leftMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "ventilation_left", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["ventilation_context", "explicit_side", "exact_model_binding"] },
+    { "id": "ventilation.rightMm", "kind": "geometry", "axis": "width", "unit": "mm", "valueShape": "scalar", "scope": "ventilation_right", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["ventilation_context", "explicit_side", "exact_model_binding"] },
+    { "id": "ventilation.topMm", "kind": "geometry", "axis": "height", "unit": "mm", "valueShape": "scalar", "scope": "ventilation_top", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["ventilation_context", "explicit_side", "exact_model_binding"] },
+    { "id": "ventilation.rearMm", "kind": "geometry", "axis": "depth", "unit": "mm", "valueShape": "scalar", "scope": "ventilation_rear", "fitRole": "hard_space", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["ventilation_context", "explicit_side", "exact_model_binding"] },
+    { "id": "ventilation.openAreaMm2", "kind": "geometry", "axis": "area", "unit": "mm2", "valueShape": "scalar", "scope": "ventilation_open_area", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["ventilation_context", "explicit_area", "exact_model_binding"] },
+
+    { "id": "waterConnection.zone", "kind": "connection", "valueShape": "zone", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["connection_type", "zone_or_diagram", "exact_model_binding"] },
+    { "id": "waterConnection.reachMm", "kind": "connection", "valueShape": "range", "unit": "mm", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["connection_type", "explicit_reach", "exact_model_binding"] },
+    { "id": "powerConnection.zone", "kind": "connection", "valueShape": "zone", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["connection_type", "zone_or_diagram", "exact_model_binding"] },
+    { "id": "powerConnection.reachMm", "kind": "connection", "valueShape": "range", "unit": "mm", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["connection_type", "explicit_reach", "exact_model_binding"] },
+    { "id": "powerConnection.voltageV", "kind": "connection", "valueShape": "scalar", "unit": "V", "scope": "electrical_requirement", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_voltage", "exact_model_binding"] },
+    { "id": "powerConnection.currentA", "kind": "connection", "valueShape": "scalar", "unit": "A", "scope": "electrical_requirement", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["explicit_current", "exact_model_binding"] },
+    { "id": "drainConnection.zone", "kind": "connection", "valueShape": "zone", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["connection_type", "zone_or_diagram", "exact_model_binding"] },
+    { "id": "drainConnection.reachMm", "kind": "connection", "valueShape": "range", "unit": "mm", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["connection_type", "explicit_reach", "exact_model_binding"] },
+    { "id": "drainConnection.heightRangeMm", "kind": "connection", "valueShape": "range", "unit": "mm", "scope": "site_service", "fitRole": "conditional_service", "unknownPolicy": "preserve_unknown", "requiredEvidence": ["drain_height_context", "explicit_min_max", "exact_model_binding"] },
+
+    { "id": "documents.productPageUrl", "kind": "document", "valueShape": "uri", "scope": "source", "fitRole": "informational", "requiredEvidence": ["official_url", "au_market_context"] },
+    { "id": "documents.manualUrl", "kind": "document", "valueShape": "uri", "scope": "source", "fitRole": "informational", "requiredEvidence": ["official_url_or_verified_mirror", "model_membership"] },
+    { "id": "documents.installationGuideUrl", "kind": "document", "valueShape": "uri", "scope": "source", "fitRole": "informational", "requiredEvidence": ["official_url_or_verified_mirror", "model_membership"] },
+    { "id": "documents.qrgUrl", "kind": "document", "valueShape": "uri", "scope": "source", "fitRole": "informational", "requiredEvidence": ["official_url_or_verified_mirror", "model_membership"] },
+    { "id": "documents.cadUrl", "kind": "document", "valueShape": "uri", "scope": "source", "fitRole": "informational", "requiredEvidence": ["official_url", "model_membership"] },
+    { "id": "documents.revisionDate", "kind": "document", "valueShape": "date", "scope": "source_revision", "fitRole": "informational", "requiredEvidence": ["explicit_revision_or_publish_date"] },
+    { "id": "documents.withdrawalState", "kind": "document", "valueShape": "enum", "scope": "source_lifecycle", "fitRole": "informational", "requiredEvidence": ["dated_withdrawal_or_supersession_signal"] }
+  ],
+  "evidence": {
+    "requiredProvenance": ["sourceUrl", "contentSha256", "retrievedAt", "applicableModels", "identityOutcome", "scope", "originalValue", "originalUnit"],
+    "familyManualPolicy": "quarantine_until_exact_membership",
+    "variantSuffixPolicy": "exact_or_receipt_bound_alias_only",
+    "axisPolicy": "explicit_or_unambiguous_labeled_table_only",
+    "scopePolicy": "never_mix_product_package_cavity_or_operation"
+  },
+  "rights": {
+    "defaultDecision": "unknown_blocked",
+    "decisionStates": ["unknown", "granted", "granted_with_conditions", "denied", "withdrawn", "expired"],
+    "bindingKeys": ["providerId", "sourceId", "fieldId", "actionId"],
+    "actions": [
+      { "id": "cache_source", "description": "Store the supplied source file or payload." },
+      { "id": "cache_normalized_fields", "description": "Store normalized factual fields derived from the source." },
+      { "id": "public_display", "description": "Display normalized fields on FitAppliance public pages." },
+      { "id": "quote_excerpt", "description": "Display short source excerpts for provenance." },
+      { "id": "link_documents", "description": "Publish links to manuals, guides, QRGs or CAD files." },
+      { "id": "attribution", "description": "Required attribution wording, placement and linked party." },
+      { "id": "retain_audit_copy", "description": "Retain immutable evidence after update, termination or withdrawal." },
+      { "id": "delete_or_withdraw", "description": "Deletion, withdrawal and downstream removal obligations." }
+    ]
+  },
+  "fitDecisionPolicy": {
+    "hardConditionFailure": "NO_FIT",
+    "applicableHardConditionUnknown": "INSUFFICIENT_DATA",
+    "geometryPassServiceUnknown": "CONDITIONAL_FIT",
+    "allApplicableExactEvidencePass": "VERIFIED_FIT",
+    "estimatedGeometryPass": "LIKELY_FIT_ESTIMATED",
+    "scorePolicy": "Scores rank only within a Fit class and never override a hard condition."
+  }
+}

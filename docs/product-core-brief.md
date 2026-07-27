@@ -1034,6 +1034,44 @@ evidence scaling or legacy cleanup begins. The legacy runtime remains available
 only as the proven full-release rollback unit; it must not be deleted during
 this window.
 
+### 9.10 Brand-data and PDF-yield checkpoint (2026-07-27)
+
+The direct-data and PDF work now shares one durable execution programme:
+[Brand Data and PDF Yield Program](superpowers/plans/2026-07-27-brand-data-and-pdf-yield-program.md).
+Its current controls and measured results are:
+
+- the product field dictionary separates exact AU identity, closed and packaged
+  envelopes, adjustable ranges, installation and operation space, ventilation,
+  utility connections and document lifecycle fields. Each geometry field has an
+  axis, unit, value shape, evidence scope, Fit role and unknown policy;
+- reuse rights are field-, source- and action-bound. Caching, public display,
+  quotation, document linking, attribution, audit retention and withdrawal are
+  blocked until the provider confirms them;
+- eight Australian data-owning organizations cover the 13 priority brands. The
+  contact matrix stores official ownership and route URLs, never inferred email
+  patterns or private recipient details;
+- two organization-level requests have been sent. Six further organization
+  drafts are validated, canonical-content hashed and exact-file hashed in the
+  external private outreach store. Git retains only public route metadata,
+  state, dates and hashes;
+- the first frozen PDF diagnostic sample contains 100 unique source URLs: 25
+  dishwashers, 25 dryers, 25 refrigerators and 25 washing machines. It covers
+  30 brands, 25 source hosts and all four recovery acquisition routes;
+- 95 sampled candidates fail first at acquisition because the legacy source
+  record has no immutable PDF object. Five already have a valid PDF object and
+  policy-compatible MinerU JSON but fail at page/table association because the
+  old fields are not bound to structured page regions;
+- filename and URL tokens are retained only as unconfirmed source-family hints.
+  They cannot prove scanned, tabular, family-manual or diagram-only layout;
+- parser-family prioritization is therefore gated by WP7A: acquire, validate and
+  content-address the frozen 100 candidates, rerun the unchanged classifier,
+  and then confirm document families from MinerU regions. Shared parser work
+  still requires a projected and replayed yield of at least ten exact-model
+  receipts.
+
+The generated baseline and its interpretation are recorded in
+[PDF Failure Baseline: 100 Stratified Candidates](architecture-v2/pdf-failure-baseline-100.md).
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:

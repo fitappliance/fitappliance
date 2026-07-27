@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "researchedOn": "2026-07-27",
+  "policy": {
+    "officialSourcesOnly": true,
+    "inferredEmailAddressesAllowed": false,
+    "gitStoresRecipientAddresses": false,
+    "routeSelection": "Prefer a published trade, project, new-business, or product-support route owned by the Australian data-holding organization."
+  },
+  "organizations": [
+    {
+      "id": "fisher-paykel-australia",
+      "organization": "Fisher & Paykel Australia",
+      "coveredBrands": ["Fisher & Paykel", "Haier"],
+      "ownershipSourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Library-Sites-FisherPaykelSharedLibrary/default/dw72ff454b/pdfs/legal-documents/fpa-au-modern-slavery-act-statement-2023.pdf"
+      ],
+      "route": {
+        "type": "trade_support_form",
+        "publicSourceUrl": "https://www.fisherpaykel.com/au/trade-resources/",
+        "targetTeam": "design_support_or_product_data",
+        "discoveryMethod": "official_published_route"
+      },
+      "confidence": "high",
+      "state": "sent"
+    },
+    {
+      "id": "electrolux-home-products",
+      "organization": "Electrolux Home Products",
+      "coveredBrands": ["Electrolux", "Westinghouse"],
+      "ownershipSourceUrls": [
+        "https://www.electroluxgroup.com/en/news/westinghouse-launches-new-brand-equity-platform-and-appliance-range-to-celebrate-80-years-in-the-home/"
+      ],
+      "route": {
+        "type": "customer_support_form",
+        "publicSourceUrl": "https://www.electrolux.com.au/support/contact-us/",
+        "targetTeam": "product_master_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "consumer_support_routing_fallback"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "residentia-group",
+      "organization": "Residentia Group",
+      "coveredBrands": ["Sôlt", "Esatto", "InAlto", "MyKin"],
+      "ownershipSourceUrls": [
+        "https://residentia.group/solt",
+        "https://residentia.group/esatto",
+        "https://residentia.group/inalto/",
+        "https://www.mykin.house/warranty"
+      ],
+      "route": {
+        "type": "new_business_route",
+        "publicSourceUrl": "https://residentia.group/contact-us",
+        "targetTeam": "new_business_or_product_data",
+        "discoveryMethod": "official_published_route"
+      },
+      "confidence": "high",
+      "state": "sent"
+    },
+    {
+      "id": "lg-australia",
+      "organization": "LG Electronics Australia",
+      "coveredBrands": ["LG"],
+      "ownershipSourceUrls": [
+        "https://www.lg.com/au/privacy/"
+      ],
+      "route": {
+        "type": "business_showroom_route",
+        "publicSourceUrl": "https://www.lg.com/au/business/b2b-showroom/",
+        "targetTeam": "home_appliance_product_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "general_b2b_routing_requires_internal_assignment"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "hisense-australia",
+      "organization": "Hisense Australia",
+      "coveredBrands": ["Hisense"],
+      "ownershipSourceUrls": [
+        "https://hisense.com.au/about-hisense"
+      ],
+      "route": {
+        "type": "published_corporate_route",
+        "publicSourceUrl": "https://hisense.com.au/TermsOfUse",
+        "targetTeam": "home_appliance_product_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "general_corporate_routing_requires_internal_assignment"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "smeg-australia",
+      "organization": "Smeg Australia",
+      "coveredBrands": ["Smeg"],
+      "ownershipSourceUrls": [
+        "https://shop.smeg.com.au/pages/legal"
+      ],
+      "route": {
+        "type": "published_corporate_route",
+        "publicSourceUrl": "https://shop.smeg.com.au/pages/legal",
+        "targetTeam": "commercial_product_data_or_specification",
+        "discoveryMethod": "official_published_route",
+        "limitation": "general_corporate_routing_requires_internal_assignment"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "miele-australia",
+      "organization": "Miele Australia",
+      "coveredBrands": ["Miele"],
+      "ownershipSourceUrls": [
+        "https://www.miele.com.au/experiences/contact-us"
+      ],
+      "route": {
+        "type": "published_projects_route",
+        "publicSourceUrl": "https://www.miele.com.au/media/ex/au/pdf/Miele_Projects_Brochure.pdf",
+        "targetTeam": "projects_or_trade_product_data",
+        "discoveryMethod": "official_published_route"
+      },
+      "confidence": "high",
+      "state": "sent"
+    },
+    {
+      "id": "chiq-australia",
+      "organization": "CHiQ Australia",
+      "coveredBrands": ["CHiQ"],
+      "ownershipSourceUrls": [
+        "https://www.chiq.com.au/"
+      ],
+      "route": {
+        "type": "public_contact_page",
+        "publicSourceUrl": "https://www.chiq.com.au/pages/contact",
+        "targetTeam": "product_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "general_support_route_requires_internal_routing"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    }
+  ]
+}

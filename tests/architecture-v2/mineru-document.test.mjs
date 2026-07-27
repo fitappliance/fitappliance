@@ -1063,6 +1063,179 @@ test('MinerU rejects incomplete or cross-brand lookalikes of the Beko parallel-l
   }), /no exact-model MinerU evidence/i);
 });
 
+test('MinerU replays the Beko AU truncated-label product-card variant without mixing packaged values', () => {
+  const labels = [
+    'Unpackaged Height:',
+    'Height (max - feet adjustment):',
+    'Unpackaged Width:',
+    'Unpackaged Depth:',
+    'Depth with Door Opened:',
+    'Unpackaged Weight:',
+  ];
+  const values = [
+    '850 mm', '865 mm', '598 mm', '600 mm', '1150 mm',
+    '44.3 kg', '897 mm', '657 mm', '674 mm', '49.9 kg',
+  ];
+  const document = (labelEntries = labels, valueEntries = values) => Buffer.from(JSON.stringify([[
+    pageHeader('BDF1410X 14 Place Setting Freestanding Dishwasher Stainless'),
+    titleFragment('Dimensions & Weights', [529, 644, 710, 661]),
+    structuredListFragment(labelEntries, { bbox: [527, 663, 749, 770] }),
+    structuredListFragment(valueEntries, { type: 'index', bbox: [763, 662, 831, 844] }),
+  ]]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Beko', model: 'BDF1410X', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm',
+      'closedEnvelope.depthMm', 'operation.doorOpenDepthMm',
+    ],
+  };
+
+  const parsed = parseMineruContentListV2(document(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 850, maxMm: 865 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    'operation.doorOpenDepthMm': { kind: 'fixed', mm: 1150 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'beko_au_dishwasher_product_spec_truncated_labels_v1',
+  ]);
+  assert.throws(
+    () => parseMineruContentListV2(document(labels.slice(0, -1), values), options),
+    /no exact-model MinerU evidence/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(document(labels, values.with(8, '674 kg')), options),
+    /no exact-model MinerU evidence/i,
+  );
+});
+
+test('MinerU binds the exact LG top-loader Size (mm) W/D/H suffix row', () => {
+  const document = (model = 'WF-T8582', label = 'Size (mm)', value = '632(W) × 670(D) × 1020(H)') => (
+    Buffer.from(JSON.stringify([[
+      pageHeader('Specification'),
+      tableFragment(`<table>
+        <tr><td>Model</td><td>${model}</td></tr>
+        <tr><td>Power supply</td><td>220-240 V~, 50Hz</td></tr>
+        <tr><td>${label}</td><td>${value}</td></tr>
+      </table>`),
+    ]]))
+  );
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'WF-T8582', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const parsed = parseMineruContentListV2(document(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 632,
+    'closedEnvelope.heightMm': 1020,
+    'closedEnvelope.depthMm': 670,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['lg-au-washer-exact-model-size-wdh-v1']);
+  assert.throws(() => parseMineruContentListV2(document('WF-T8582 / WF-T8582B'), options), /identity|evidence|scope/i);
+  assert.throws(() => parseMineruContentListV2(
+    document('WF-T8582', 'Packaged Size (mm)', '700(W) × 750(D) × 1100(H)'), options,
+  ), /no exact-model MinerU evidence/i);
+});
+
+test('MinerU binds the audited LG fridge A/B/C diagram only to the complete declared manual model list', () => {
+  const sourceHash = '5ceaeaaafb54c39b263672efb8dd54b24e4302aea61a18de6134758ab5f54ca1';
+  const models = 'GS-D635PLC / GS-D635MBLC / GS-L635PLF / GS-L635PL / GS-L635MBL / '
+    + 'GS-N635PL / GS-N635MBL / GS-V635PLC / GS-V635MBLC / GS-D600PLC / '
+    + 'GS-D600MBLC / GS-V600MBLC / GS-L600PL / GS-N600PL / GS-L600MBL';
+  const image = (bbox) => ({
+    type: 'image', content: { image_source: { path: 'images/diagram.jpg' }, image_caption: [], image_footnote: [] }, bbox,
+  });
+  const dimensionTable = (c = 735) => tableFragment(`<table>
+    <tr><td>I</td><td>Size (mm)</td></tr>
+    <tr><td>A</td><td>913</td></tr><tr><td>B</td><td>1790</td></tr>
+    <tr><td>C</td><td>${c}</td></tr><tr><td>D</td><td>620</td></tr>
+    <tr><td>E</td><td>691</td></tr><tr><td>F</td><td>735</td></tr>
+    <tr><td>G</td><td>1180</td></tr><tr><td>H</td><td>1635</td></tr>
+  </table>`);
+  const contentList = (coverModels = models, c = 735) => {
+    const pages = Array.from({ length: 12 }, () => []);
+    pages[0] = [titleFragment("OWNER'S MANUAL FRIDGE & FREEZER"), paragraph(coverModels)];
+    pages[11] = [
+      titleFragment('Dimensions and Clearances'),
+      paragraph('Allow over 50 mm of clearance between the back of the appliance and the wall.'),
+      image([78, 280, 245, 465]), image([254, 307, 459, 426]), dimensionTable(c),
+    ];
+    return Buffer.from(JSON.stringify(pages));
+  };
+  const options = {
+    pdfSha256: sourceHash, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'GS-V600MBLC', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    sourceUrls: ['https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA'],
+  };
+  const parsed = parseMineruContentListV2(contentList(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 913,
+    'closedEnvelope.heightMm': 1790,
+    'closedEnvelope.depthMm': 735,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['lg-au-fridge-a-b-c-dimension-diagram-v1']);
+  for (const declaredModel of models.split(' / ')) {
+    const canary = parseMineruContentListV2(contentList(), {
+      ...options,
+      caseIdentity: { ...options.caseIdentity, model: declaredModel },
+    });
+    assert.deepEqual(canary.claims.map(({ field, value }) => [field, value.mm]), [
+      ['closedEnvelope.widthMm', 913],
+      ['closedEnvelope.heightMm', 1790],
+      ['closedEnvelope.depthMm', 735],
+    ], declaredModel);
+  }
+  assert.throws(() => parseMineruContentListV2(contentList(), {
+    ...options, pdfSha256: 'b'.repeat(64),
+  }), /identity|evidence|scope|unresolved family/i);
+  assert.throws(() => parseMineruContentListV2(contentList(`${models} / GS-UNKNOWN`), options), /identity|evidence|scope/i);
+});
+
+test('MinerU selects Esatto Physical W/D/H and rejects Packaged dimensions on exact product cards', () => {
+  const document = ({ model = 'ETLW55', physicalLabel = 'Physical (w, d, h mm)', physical = '530 × 542 × 925mm' } = {}) => (
+    Buffer.from(JSON.stringify([[
+      titleFragment(`Model Code: ${model}`),
+      paragraph('Product Dimensions:', [664, 154, 774, 174]),
+      paragraph('Packaged (w, d, h mm)', [664, 179, 777, 200]),
+      paragraph('→ 600 × 615 × 1,000mm', [664, 206, 787, 225]),
+      paragraph(physicalLabel, [664, 230, 771, 252]),
+      paragraph(`→ ${physical}`, [664, 257, 780, 277]),
+    ]]))
+  );
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Esatto', model: 'ETLW55', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    sourceUrls: ['https://esatto.house/s/Esatto_ProductCard-ETLW55.pdf'],
+  };
+  const parsed = parseMineruContentListV2(document(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 530,
+    'closedEnvelope.heightMm': 925,
+    'closedEnvelope.depthMm': 542,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['esatto-au-product-card-physical-wdh-v1']);
+  assert.ok(parsed.claims.every((claim) => !/packaged|600|615|1,000/i.test(claim.quote)));
+  assert.throws(() => parseMineruContentListV2(document({ model: 'ETLW55 / ETLW55B' }), options), /identity|evidence|scope/i);
+  assert.throws(() => parseMineruContentListV2(
+    document({ physicalLabel: 'Packaged (w, d, h mm)' }), options,
+  ), /no exact-model MinerU evidence/i);
+  assert.throws(() => parseMineruContentListV2(
+    document({ physical: '530 × 542 × 925' }), options,
+  ), /no exact-model MinerU evidence/i);
+  assert.throws(() => parseMineruContentListV2(
+    document({ physical: '630 × 700 × 1,100mm' }), options,
+  ), /no exact-model MinerU evidence/i);
+});
+
 test('MinerU binds Beko AU dryer unpacked dimensions from an exact aligned label-value block', () => {
   const labels = 'Unpacked Height: Unpacked Width: Unpacked Depth: Unpacked Weight: '
     + 'Packed Height: Packed Width: Packed Depth: Packed Weight:';
