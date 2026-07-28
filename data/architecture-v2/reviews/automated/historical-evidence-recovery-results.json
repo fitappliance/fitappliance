@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
-  "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
-  "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
-  "queueSha256": "b3974d0fa1ec43e7b627523aefd37a73901404866a82f4ef4ef237d6b409deee",
+  "runId": "historical-scale-p0-esatto-ebf129s-dimensions-20260728-v3-ak",
+  "batchId": "historical-recovery-4c57644aed17644e1c6caae7-slice-32d303fb2cfb",
+  "batchSha256": "bccf74edbdc66abf1ee0b449692dd8b51b1a6806f678913048413d1c34839c0b",
+  "queueSha256": "bca6f3aff6017e7368b48f7a5936ad49f18aa70ff237eb38c76a2925f18c4c8a",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
-  "startedAt": "2026-07-19T19:17:45.337Z",
-  "completedAt": "2026-07-19T19:18:58.376Z",
-  "semanticOutcomeSha256": "4b566dec6e448b169656fd1d755866127cfdf620ee24497a1174487233c91e7d",
+  "startedAt": "2026-07-28T15:43:10.991Z",
+  "completedAt": "2026-07-28T15:44:36.509Z",
+  "semanticOutcomeSha256": "a28f93d048f09614c34f3fbdb68ffcb98ed5926277cfa0aef20f2dbe00212555",
   "outcomes": [
     {
-      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
-      "status": "claims_incomplete",
-      "failureCode": "mineru",
-      "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637",
+      "targetId": "recovery_target_dd51a2d15d1f5aeb05d806f1",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "candidateInventorySha256": "a545c7a9e3f70f5959c5e3a593b75b15d22412ba8c16faeb7ef7771e8fb9a609",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+        "targetId": "recovery_target_dd51a2d15d1f5aeb05d806f1",
         "identity": {
           "brand": "Esatto",
-          "model": "EDW456S",
-          "category": "dishwasher"
+          "model": "EBF129S",
+          "category": "fridge"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -40,28 +40,40 @@
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
-            "candidateCount": 2
+            "candidateCount": 4
           },
           {
             "resolverId": "esatto-official-discovery",
-            "version": "1",
-            "scope": "esatto_legacy_discovery_only",
+            "version": "3",
+            "scope": "esatto_au_typed_current_archive_product_detail_and_document_lanes",
             "required": true,
             "completion": "complete",
-            "candidateCount": 2
+            "candidateCount": 4
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_261ad78de85b9fe0a1b83368",
-            "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+            "candidateId": "candidate_04bc0d72a49ab09ac53c3009",
+            "sourceUrl": "https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
-            "discoveryProvenance": null,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+              "requestedModel": "EBF129S",
+              "matchedModel": "EBF129S",
+              "artifactUrl": "https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf",
+              "artifactLinkUrl": "https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf",
+              "discoveryContentSha256": "656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e",
+              "discoveryObjectPath": "evidence/web/sha256/65/6b/656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e.html",
+              "discoveryByteSize": 320552
+            },
             "batchJobIds": [
-              "recovery_fcad85266f62f8d0d31f4a67"
+              "recovery_7f30b23ec14641c911571be2"
             ],
             "resolverRefs": [
               {
@@ -70,12 +82,67 @@
                 "scope": "recovery_batch_graph",
                 "discoveryMethod": "recovery_batch",
                 "sourceRole": "manufacturer_document",
-                "order": 1
+                "order": 2
               },
               {
                 "resolverId": "esatto-official-discovery",
+                "version": "3",
+                "scope": "esatto_au_typed_current_archive_product_detail_and_document_lanes",
+                "discoveryMethod": "esatto_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 3
+              }
+            ],
+            "outcome": {
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf",
+                "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd736683f56897cb22c3/1729464906791/EBF129S_QSG_V1.3_0723_FA.pdf",
+                "contentSha256": "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723",
+                "objectPath": "evidence/web/sha256/cb/b6/cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 321647
+              },
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_5b201e68433f303f7412d5a1",
+            "sourceUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+              "requestedModel": "EBF129S",
+              "matchedModel": "EBF129S",
+              "artifactUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+              "artifactLinkUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+              "discoveryContentSha256": "656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e",
+              "discoveryObjectPath": "evidence/web/sha256/65/6b/656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e.html",
+              "discoveryByteSize": 320552
+            },
+            "batchJobIds": [
+              "recovery_f9667880addbf241adc88bf2"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
                 "version": "1",
-                "scope": "esatto_legacy_discovery_only",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 3
+              },
+              {
+                "resolverId": "esatto-official-discovery",
+                "version": "3",
+                "scope": "esatto_au_typed_current_archive_product_detail_and_document_lanes",
                 "discoveryMethod": "esatto_legacy_finder",
                 "sourceRole": "manufacturer_product_page",
                 "order": 1
@@ -86,19 +153,19 @@
               "failureCode": "claim_semantics",
               "reason": "no supported evidence claims extracted",
               "artifactBinding": {
-                "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
-                "finalUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
-                "contentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
-                "objectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+                "sourceUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+                "finalUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+                "contentSha256": "656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e",
+                "objectPath": "evidence/web/sha256/65/6b/656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e.html",
                 "contentType": "text/html",
-                "byteSize": 369831
+                "byteSize": 320552
               },
               "source": null
             }
           },
           {
-            "candidateId": "candidate_d3a24d304983f7a0f8b226a7",
-            "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+            "candidateId": "candidate_6c5ee85b35b203925866dd05",
+            "sourceUrl": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
@@ -106,17 +173,72 @@
               "schemaVersion": 1,
               "method": "official_product_page",
               "market": "AU",
-              "discoveryUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
-              "requestedModel": "EDW456S",
-              "matchedModel": "EDW456S",
-              "artifactUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
-              "artifactLinkUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
-              "discoveryContentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
-              "discoveryObjectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
-              "discoveryByteSize": 369831
+              "discoveryUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+              "requestedModel": "EBF129S",
+              "matchedModel": "EBF129S",
+              "artifactUrl": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+              "artifactLinkUrl": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+              "discoveryContentSha256": "656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e",
+              "discoveryObjectPath": "evidence/web/sha256/65/6b/656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e.html",
+              "discoveryByteSize": 320552
             },
             "batchJobIds": [
-              "recovery_b8c839baf551e10c87370239"
+              "recovery_148886b92befd0b884b9e321"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 1
+              },
+              {
+                "resolverId": "esatto-official-discovery",
+                "version": "3",
+                "scope": "esatto_au_typed_current_archive_product_detail_and_document_lanes",
+                "discoveryMethod": "esatto_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "identity_rejected",
+              "failureCode": "identity",
+              "reason": "unresolved family manual or multiple models in identity scope",
+              "artifactBinding": {
+                "sourceUrl": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+                "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd8536493706dc50bc6e/1729464906791/EBF129W_EBF129S_UserManual_V1.4_0723_FA.pdf",
+                "contentSha256": "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+                "objectPath": "evidence/web/sha256/68/f7/68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 543303
+              },
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_c195a62a4454b72522f818ce",
+            "sourceUrl": "https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://esatto.house/refrigeration/p/129l-bar-fridge-stainless-steel-ebf129s",
+              "requestedModel": "EBF129S",
+              "matchedModel": "EBF129S",
+              "artifactUrl": "https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf",
+              "artifactLinkUrl": "https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf",
+              "discoveryContentSha256": "656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e",
+              "discoveryObjectPath": "evidence/web/sha256/65/6b/656b851126213220720f1b6f9ddda14578f605364b07d1858716790d40a53f1e.html",
+              "discoveryByteSize": 320552
+            },
+            "batchJobIds": [
+              "recovery_0d7dc0a125025107629fd33e"
             ],
             "resolverRefs": [
               {
@@ -129,11 +251,11 @@
               },
               {
                 "resolverId": "esatto-official-discovery",
-                "version": "1",
-                "scope": "esatto_legacy_discovery_only",
+                "version": "3",
+                "scope": "esatto_au_typed_current_archive_product_detail_and_document_lanes",
                 "discoveryMethod": "esatto_legacy_finder",
                 "sourceRole": "manufacturer_document",
-                "order": 0
+                "order": 2
               }
             ],
             "outcome": {
@@ -141,18 +263,18 @@
               "failureCode": "mineru",
               "reason": "no exact-model MinerU evidence with explicit axes extracted",
               "artifactBinding": {
-                "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
-                "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf",
-                "contentSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
-                "objectPath": "evidence/web/sha256/b3/26/b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93.pdf",
+                "sourceUrl": "https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf",
+                "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/619c4f5f23c8535dd38951c0/1637633888328/Esatto_ProductCard-EBF129S.pdf",
+                "contentSha256": "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+                "objectPath": "evidence/web/sha256/b9/70/b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 7039208
+                "byteSize": 351595
               },
               "source": null
             }
           }
         ],
-        "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637"
+        "candidateInventorySha256": "a545c7a9e3f70f5959c5e3a593b75b15d22412ba8c16faeb7ef7771e8fb9a609"
       },
       "sources": [],
       "geometryProjection": null,
@@ -165,7 +287,7 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "7bd35e5de4cf2cfc768a57a8f69691c6cfa2f95528e29277433e6bd63e139c2f"
+      "semanticOutcomeSha256": "c8d0c1442333a4b398fd7dc7037c56501f4368cfdf86f9d9f1a28d75ffc0722d"
     }
   ],
   "summary": {

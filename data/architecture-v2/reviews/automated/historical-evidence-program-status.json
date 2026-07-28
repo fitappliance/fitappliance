@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T10:48:12.405Z",
+  "generatedAt": "2026-07-28T15:53:54.152Z",
   "inventory": {
     "historicalModelReferences": 8089,
     "currentCatalogProducts": 3515,
     "acceptedRecoveryEntries": 382,
-    "targetAttempts": 84
+    "targetAttempts": 93
   },
   "controls": [
     {
@@ -99,9 +99,9 @@
       "id": "model.executable_targets",
       "label": "Executable model targets",
       "grain": "historical_model_reference",
-      "numerator": 4993,
+      "numerator": 4969,
       "denominator": 7688,
-      "rateBasisPoints": 6495,
+      "rateBasisPoints": 6463,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json"
     },
     {
@@ -126,9 +126,9 @@
       "id": "target_state.actionable",
       "label": "Models with scheduled evidence work",
       "grain": "historical_model_reference",
-      "numerator": 4993,
+      "numerator": 4969,
       "denominator": 8089,
-      "rateBasisPoints": 6173,
+      "rateBasisPoints": 6143,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -153,9 +153,9 @@
       "id": "target_state.blocked",
       "label": "Blocked model targets",
       "grain": "historical_model_reference",
-      "numerator": 2701,
+      "numerator": 2725,
       "denominator": 8089,
-      "rateBasisPoints": 3339,
+      "rateBasisPoints": 3369,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -180,8 +180,8 @@
       "id": "document.graph_indexed_nodes",
       "label": "Indexed PDF content graph nodes",
       "grain": "unique_pdf_content",
-      "numerator": 1029,
-      "denominator": 1029,
+      "numerator": 1039,
+      "denominator": 1039,
       "rateBasisPoints": 10000,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
@@ -189,9 +189,9 @@
       "id": "document.graph_valid_nodes",
       "label": "Valid indexed PDF graph nodes",
       "grain": "unique_pdf_content",
-      "numerator": 1015,
-      "denominator": 1029,
-      "rateBasisPoints": 9864,
+      "numerator": 1025,
+      "denominator": 1039,
+      "rateBasisPoints": 9865,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
@@ -199,17 +199,17 @@
       "label": "Document-model edges with exact or internal model-list proof",
       "grain": "document_model_edge",
       "numerator": 569,
-      "denominator": 3960,
-      "rateBasisPoints": 1437,
+      "denominator": 3973,
+      "rateBasisPoints": 1432,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
       "id": "document.knowledge_valid",
       "label": "Valid MinerU knowledge documents",
       "grain": "mineru_knowledge_document",
-      "numerator": 1015,
-      "denominator": 1029,
-      "rateBasisPoints": 9864,
+      "numerator": 1025,
+      "denominator": 1039,
+      "rateBasisPoints": 9865,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
@@ -217,8 +217,8 @@
       "label": "MinerU knowledge documents with recognized expressions",
       "grain": "mineru_knowledge_document",
       "numerator": 543,
-      "denominator": 1015,
-      "rateBasisPoints": 5350,
+      "denominator": 1025,
+      "rateBasisPoints": 5298,
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {
@@ -226,8 +226,8 @@
       "label": "Complete parser replays",
       "grain": "parser_replay",
       "numerator": 455,
-      "denominator": 1143,
-      "rateBasisPoints": 3981,
+      "denominator": 1156,
+      "rateBasisPoints": 3936,
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {

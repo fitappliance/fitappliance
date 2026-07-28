@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:32:08.439Z",
-  "semanticQueueSha256": "4712a15a9819b0874740b7260f6a5fbcdcabbb8adc2730c7b622bad9260a816d",
-  "sourceClassificationSha256": "4505f3a8f34bd1a5ac4936811267c28a7552fb8f5b4d138fb9340fb205a71ee2",
+  "generatedAt": "2026-07-28T15:53:54.152Z",
+  "semanticQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354",
+  "sourceClassificationSha256": "4338b060a64f140b12e469896a5e2f5aece80ef56854467d5111bb32cd38f8f1",
   "sourceIdentityMigrationSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
   "records": [
     {
@@ -727,8 +727,8 @@
       "model": "EDW7S",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 8778fb5a565e",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -758,8 +758,8 @@
       "model": "EDW7W",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 8778fb5a565e",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -5897,6 +5897,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_44658ac56a88ae42c1532711",
+      "referenceId": "fa_ref_8b8ec4deb4fd33ab401b20a0",
+      "category": "dryer",
+      "brand": "Esatto",
+      "model": "VDE45W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "unclassified",
+      "groupName": null,
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_fb26ee5e9fcf6abb16991e95"
+      ],
+      "resolverIds": [
+        "esatto-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_e190ff319e1acf8785149788"
+      ],
+      "legacyRuntimeIds": [
+        "ao-65007"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_6e953c0129775951e65231eb"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_341f77b792da6b70101b2de4",
       "referenceId": "fa_ref_1a6f1e29fc9a740350034e50",
       "category": "dryer",
@@ -5904,8 +5935,8 @@
       "model": "ECD7",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 4ab80d38fb8c",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -5935,8 +5966,8 @@
       "model": "EHPD7",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 4ab80d38fb8c",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -5954,37 +5985,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_c4caf61d7d900f6baf03221c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_44658ac56a88ae42c1532711",
-      "referenceId": "fa_ref_8b8ec4deb4fd33ab401b20a0",
-      "category": "dryer",
-      "brand": "Esatto",
-      "model": "VDE45W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_fb26ee5e9fcf6abb16991e95"
-      ],
-      "resolverIds": [
-        "esatto-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e190ff319e1acf8785149788"
-      ],
-      "legacyRuntimeIds": [
-        "ao-65007"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6e953c0129775951e65231eb"
       ],
       "offlineReplayOutcome": null
     },
@@ -10386,37 +10386,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_96e6ec3f1dfb733e95dfa434",
-      "referenceId": "fa_ref_cfe4328c1e1497f73f604a58",
-      "category": "fridge",
-      "brand": "Esatto",
-      "model": "EBF129S",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_c1b27415a1a2eb0f34bf9436"
-      ],
-      "resolverIds": [
-        "esatto-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_dd51a2d15d1f5aeb05d806f1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-73356"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8338ac98e056dc55451256fa"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_02f1d723b51c2ab48ec06963",
       "referenceId": "fa_ref_a73943f62a001e25f7e133ac",
       "category": "fridge",
@@ -11187,6 +11156,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ef3807de6af0a06c5717bf83"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_96e6ec3f1dfb733e95dfa434",
+      "referenceId": "fa_ref_cfe4328c1e1497f73f604a58",
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF129S",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "EBF129S",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_c1b27415a1a2eb0f34bf9436"
+      ],
+      "resolverIds": [
+        "esatto-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_dd51a2d15d1f5aeb05d806f1"
+      ],
+      "legacyRuntimeIds": [
+        "ao-73356"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_8338ac98e056dc55451256fa"
       ],
       "offlineReplayOutcome": null
     },

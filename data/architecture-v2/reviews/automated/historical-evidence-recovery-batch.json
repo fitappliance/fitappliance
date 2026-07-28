@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-96dac564a55e8e18c43c5db9",
-  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "batchId": "historical-recovery-8784c65b765a2a1d69ef0eef",
+  "generatedAt": "2026-07-28T15:53:54.152Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "40a366f9ec30ba2debdf1090b6753722f06e9fd6ad3118de4565772ba9ec2de2"
+    "sha256": "c7a00e0d67628e16412ac3983035c9637f777f94fe17a594c751dd26e9a28528"
   },
   "policy": {
     "version": "2026-07-19.20",
@@ -18,12 +18,83 @@
     "targetIds": [],
     "limit": null
   },
-  "artifactJobs": [],
-  "targets": [],
+  "artifactJobs": [
+    {
+      "jobId": "recovery_1ba248b727aa38ed7bf1b2be",
+      "sourceUrl": "https://esatto.house/discontinued-products/p/46l-bar-fridge-stainless-steel-ebf46s",
+      "authorityBrand": "Esatto",
+      "authorityMode": "official",
+      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "targetIds": [
+        "recovery_target_c4f55caff6f8eb75550d5439"
+      ]
+    },
+    {
+      "jobId": "recovery_3eeb84f3b3f4081895bf7815",
+      "sourceUrl": "https://esatto.house/s/Esatto_ProductCard-EBF46S.pdf",
+      "authorityBrand": "Esatto",
+      "authorityMode": "official",
+      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "targetIds": [
+        "recovery_target_c4f55caff6f8eb75550d5439"
+      ]
+    },
+    {
+      "jobId": "recovery_58023e51ca3e14c3d5aabbe7",
+      "sourceUrl": "https://esatto.house/s/Esatto_UM_EBF46S-W_FA.pdf",
+      "authorityBrand": "Esatto",
+      "authorityMode": "official",
+      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "targetIds": [
+        "recovery_target_c4f55caff6f8eb75550d5439"
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "targetId": "recovery_target_c4f55caff6f8eb75550d5439",
+      "referenceId": "fa_ref_a73943f62a001e25f7e133ac",
+      "legacyRuntimeId": "ao-62311",
+      "canonicalProductId": "fa_prod_1a911cb4979be428b3fed3e8",
+      "brand": "Esatto",
+      "model": "EBF46S",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": "recovery_3eeb84f3b3f4081895bf7815",
+      "candidateJobIds": [
+        "recovery_3eeb84f3b3f4081895bf7815",
+        "recovery_58023e51ca3e14c3d5aabbe7",
+        "recovery_1ba248b727aa38ed7bf1b2be"
+      ],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_9f32126224ba062239b1fee1",
+            "dimensionsMm": {
+              "width": 472,
+              "height": 492,
+              "depth": 450
+            }
+          }
+        ]
+      }
+    }
+  ],
   "summary": {
-    "artifactJobs": 0,
-    "targets": 0,
-    "candidateEdges": 0,
+    "artifactJobs": 3,
+    "targets": 1,
+    "candidateEdges": 3,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
   }

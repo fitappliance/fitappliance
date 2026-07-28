@@ -17,17 +17,17 @@
     "historicalRecords": 8089,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 1029,
-    "validMineruDocuments": 1015,
+    "mineruDocuments": 1039,
+    "validMineruDocuments": 1025,
     "invalidMineruDocuments": 14,
     "documentsWithObservations": 543,
-    "documentsWithoutObservations": 472,
-    "mappedMineruDocuments": 958,
-    "unmappedMineruDocuments": 57,
+    "documentsWithoutObservations": 482,
+    "mappedMineruDocuments": 969,
+    "unmappedMineruDocuments": 56,
     "observations": 1272,
-    "researchGaps": 1089,
+    "researchGaps": 1099,
     "parserProfiles": 231,
-    "parserReplays": 1143,
+    "parserReplays": 1156,
     "completeParserReplays": 455
   },
   "indexedDocuments": [
@@ -1439,6 +1439,35 @@
         "objectPath": "evidence/derived/mineru-json/sha256/c5/15/c515c1cd2523a70891b967f863a24a081f9753488c8339268e2666d7204693a0.json",
         "byteSize": 159997,
         "pageCount": 48
+      }
+    },
+    {
+      "pdfSha256": "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+      "contentSha256": "8f60bedaa37ea315c6d2b21ca7bf0518e64f23df57c7b0c9926a508c19e5f3ed",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_ProductCard-EDW456S-smk3.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/647d7be2088efb3de2d5fdcc/1685945317169/Esatto_ProductCard-EDW456S.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EDW456S",
+          "category": "dishwasher"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+        "contentSha256": "8f60bedaa37ea315c6d2b21ca7bf0518e64f23df57c7b0c9926a508c19e5f3ed",
+        "objectPath": "evidence/derived/mineru-json/sha256/8f/60/8f60bedaa37ea315c6d2b21ca7bf0518e64f23df57c7b0c9926a508c19e5f3ed.json",
+        "byteSize": 24142,
+        "pageCount": 1
       }
     },
     {
@@ -4060,9 +4089,18 @@
       "pdfSha256": "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0",
       "contentSha256": "85890295652ab21e90695d3a1b3e4ed6f31897cebc1145112b8fc5407cb87729",
       "validity": "VALID",
-      "mappingStatus": "UNMAPPED_SOURCE_PDF",
-      "sourceUrls": [],
-      "identities": [],
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_ProductCard-ECD7.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/60d2bdac9da8807ace627c2f/1624423852940/Esatto_ProductCard-ECD7.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "ECD7",
+          "category": "dryer"
+        }
+      ],
       "mineruObject": {
         "schemaVersion": 1,
         "format": "content_list_v2",
@@ -4258,6 +4296,35 @@
         "objectPath": "evidence/derived/mineru-json/sha256/91/ee/91eeead91920ee1b4a061d99f3a75d8ad5084fc9bc65ca1337fae1043a48d1f4.json",
         "byteSize": 39528,
         "pageCount": 3
+      }
+    },
+    {
+      "pdfSha256": "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83",
+      "contentSha256": "957e153879e05be2561fbe45754c3a9eb1b8fbad7374048a26a0d243944c5523",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/EDW456S_QSG_V11.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb39e0ef686655f98803/1685515066829/EDW456S_QSG_V1.1.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EDW456S",
+          "category": "dishwasher"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83",
+        "contentSha256": "957e153879e05be2561fbe45754c3a9eb1b8fbad7374048a26a0d243944c5523",
+        "objectPath": "evidence/derived/mineru-json/sha256/95/7e/957e153879e05be2561fbe45754c3a9eb1b8fbad7374048a26a0d243944c5523.json",
+        "byteSize": 18306,
+        "pageCount": 2
       }
     },
     {
@@ -8284,6 +8351,35 @@
       }
     },
     {
+      "pdfSha256": "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde",
+      "contentSha256": "3538596767f2e3421fa8d4ed794d9fb366e87620c5048a2fb276ca188cfdc7bd",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_ProductCard-EDW7S-n5j7.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6189cba297f0c65dce313726/1636420515255/Esatto_ProductCard-EDW7S.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EDW7S",
+          "category": "dishwasher"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde",
+        "contentSha256": "3538596767f2e3421fa8d4ed794d9fb366e87620c5048a2fb276ca188cfdc7bd",
+        "objectPath": "evidence/derived/mineru-json/sha256/35/38/3538596767f2e3421fa8d4ed794d9fb366e87620c5048a2fb276ca188cfdc7bd.json",
+        "byteSize": 23705,
+        "pageCount": 1
+      }
+    },
+    {
       "pdfSha256": "47bcbafa127b710c823a35adaa441da63ee9ae530205bbe8c09a22bca34078ea",
       "contentSha256": "2a2271a6d7a6152a312dd70b4c616a15e55df8f2ec6c6c1f154e381c16332598",
       "validity": "VALID",
@@ -8553,6 +8649,69 @@
         "objectPath": "evidence/derived/mineru-json/sha256/68/07/6807994af2faa950ab0c9b364bf1fba8d93309c7ee78dd1c71a948cf5bd53b58.json",
         "byteSize": 15675,
         "pageCount": 2
+      }
+    },
+    {
+      "pdfSha256": "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29",
+      "contentSha256": "517934a43412893695b5be4f8e296e06c7cedf0c2129b012813d6e05ceb51a1b",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_UserManual_ECD7-EHPD7_FA.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/610b886688f4647b74ef94b7/1628145774292/Esatto_UserManual_ECD7-EHPD7_FA.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "ECD7",
+          "category": "dryer"
+        },
+        {
+          "brand": "Esatto",
+          "model": "EHPD7",
+          "category": "dryer"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29",
+        "contentSha256": "517934a43412893695b5be4f8e296e06c7cedf0c2129b012813d6e05ceb51a1b",
+        "objectPath": "evidence/derived/mineru-json/sha256/51/79/517934a43412893695b5be4f8e296e06c7cedf0c2129b012813d6e05ceb51a1b.json",
+        "byteSize": 181583,
+        "pageCount": 20
+      }
+    },
+    {
+      "pdfSha256": "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84",
+      "contentSha256": "31dd44c01487e4189038326bccc9b70ac5a255bd105eb28b955f0c5a51faf931",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_ProductCard-EHPD7.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/610b8902fa8bd67622750752/1628145922808/Esatto_ProductCard-EHPD7.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EHPD7",
+          "category": "dryer"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84",
+        "contentSha256": "31dd44c01487e4189038326bccc9b70ac5a255bd105eb28b955f0c5a51faf931",
+        "objectPath": "evidence/derived/mineru-json/sha256/31/dd/31dd44c01487e4189038326bccc9b70ac5a255bd105eb28b955f0c5a51faf931.json",
+        "byteSize": 20708,
+        "pageCount": 1
       }
     },
     {
@@ -12032,6 +12191,35 @@
       }
     },
     {
+      "pdfSha256": "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+      "contentSha256": "ca3b11721cc4650a39ba91b35db72533d01ec9e6013bc033bf53acee9355e3b8",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd8536493706dc50bc6e/1729464906791/EBF129W_EBF129S_UserManual_V1.4_0723_FA.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EBF129S",
+          "category": "fridge"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+        "contentSha256": "ca3b11721cc4650a39ba91b35db72533d01ec9e6013bc033bf53acee9355e3b8",
+        "objectPath": "evidence/derived/mineru-json/sha256/ca/3b/ca3b11721cc4650a39ba91b35db72533d01ec9e6013bc033bf53acee9355e3b8.json",
+        "byteSize": 176102,
+        "pageCount": 20
+      }
+    },
+    {
       "pdfSha256": "697c7c674ca3114daa765635bb49b8880a78cca75a8b3c8b27ab9694a6cdc470",
       "contentSha256": "bbf6bb99ef1b6c6fd02b7fa7ae65d4d7d3fa9b4afa9a0c7dae9102329a045e49",
       "validity": "VALID",
@@ -15350,6 +15538,40 @@
         "objectPath": "evidence/derived/mineru-json/sha256/b8/d6/b8d655eccfb3eaf87c549db1eab60905f942667409f5da66768ae8647a976318.json",
         "byteSize": 6792,
         "pageCount": 2
+      }
+    },
+    {
+      "pdfSha256": "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5",
+      "contentSha256": "3675c69d978f7e73863f9c7a5f5610b8688755c1f465c588f6fc2752930e3720",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/EDW7S-EDW7W_UserManual_V51-1121.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/61846c8ab416375e367aa92f/1636068495999/EDW7S-EDW7W_UserManual_V5.1+1121.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EDW7S",
+          "category": "dishwasher"
+        },
+        {
+          "brand": "Esatto",
+          "model": "EDW7W",
+          "category": "dishwasher"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5",
+        "contentSha256": "3675c69d978f7e73863f9c7a5f5610b8688755c1f465c588f6fc2752930e3720",
+        "objectPath": "evidence/derived/mineru-json/sha256/36/75/3675c69d978f7e73863f9c7a5f5610b8688755c1f465c588f6fc2752930e3720.json",
+        "byteSize": 309435,
+        "pageCount": 36
       }
     },
     {
@@ -21093,6 +21315,35 @@
       }
     },
     {
+      "pdfSha256": "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+      "contentSha256": "464c13fa1e21df0ce211ae4776512189e358a5323522bbd247d12a1429e18573",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/619c4f5f23c8535dd38951c0/1637633888328/Esatto_ProductCard-EBF129S.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EBF129S",
+          "category": "fridge"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+        "contentSha256": "464c13fa1e21df0ce211ae4776512189e358a5323522bbd247d12a1429e18573",
+        "objectPath": "evidence/derived/mineru-json/sha256/46/4c/464c13fa1e21df0ce211ae4776512189e358a5323522bbd247d12a1429e18573.json",
+        "byteSize": 8283,
+        "pageCount": 1
+      }
+    },
+    {
       "pdfSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
       "contentSha256": "15b97d62343b25b7444a9938dc62151808fe4695b200908cf3a220e72659207c",
       "validity": "VALID",
@@ -21704,6 +21955,35 @@
         "objectPath": "evidence/derived/mineru-json/sha256/f4/ea/f4ea6cc72be444306d2797a254b28b0a726423b9373d318d97ea5ef9ee9e916c.json",
         "byteSize": 69334,
         "pageCount": 20
+      }
+    },
+    {
+      "pdfSha256": "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825",
+      "contentSha256": "1c69fecd6446b0c9c9e2681c961c2759c08c78617ab2356bb2d1b75d45d107fc",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/Esatto_ProductCard-EDW7W-z5bn.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6189cb89931dca1cff814c25/1636420490067/Esatto_ProductCard-EDW7W.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EDW7W",
+          "category": "dishwasher"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825",
+        "contentSha256": "1c69fecd6446b0c9c9e2681c961c2759c08c78617ab2356bb2d1b75d45d107fc",
+        "objectPath": "evidence/derived/mineru-json/sha256/1c/69/1c69fecd6446b0c9c9e2681c961c2759c08c78617ab2356bb2d1b75d45d107fc.json",
+        "byteSize": 23677,
+        "pageCount": 1
       }
     },
     {
@@ -23214,6 +23494,35 @@
         "objectPath": "evidence/derived/mineru-json/sha256/12/7e/127e49f98931fb372c385ccba7f3f825ebf0a8c0b789dfa6522097518c8ba08a.json",
         "byteSize": 43111,
         "pageCount": 3
+      }
+    },
+    {
+      "pdfSha256": "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723",
+      "contentSha256": "236657e9060f809e04bc1fde13d18f2d8fa53177dff26546e7083b2f5bf1820a",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd736683f56897cb22c3/1729464906791/EBF129S_QSG_V1.3_0723_FA.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EBF129S",
+          "category": "fridge"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723",
+        "contentSha256": "236657e9060f809e04bc1fde13d18f2d8fa53177dff26546e7083b2f5bf1820a",
+        "objectPath": "evidence/derived/mineru-json/sha256/23/66/236657e9060f809e04bc1fde13d18f2d8fa53177dff26546e7083b2f5bf1820a.json",
+        "byteSize": 13901,
+        "pageCount": 2
       }
     },
     {
@@ -40800,7 +41109,7 @@
             "Esatto"
           ],
           "modelCount": 84,
-          "observedMineruDocuments": 3,
+          "observedMineruDocuments": 6,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
           "observedParserProfileCount": 1,
@@ -40809,6 +41118,90 @@
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
+            {
+              "groupType": "model_specific",
+              "groupName": "EBF129S",
+              "models": [
+                "EBF129S"
+              ],
+              "pdfSha256s": [
+                "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+                "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+                "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf",
+                "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+                "https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/619c4f5f23c8535dd38951c0/1637633888328/Esatto_ProductCard-EBF129S.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd736683f56897cb22c3/1729464906791/EBF129S_QSG_V1.3_0723_FA.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd8536493706dc50bc6e/1729464906791/EBF129W_EBF129S_UserManual_V1.4_0723_FA.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+                  "category": "fridge",
+                  "brand": "Esatto",
+                  "model": "EBF129S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
+                },
+                {
+                  "pdfSha256": "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+                  "category": "fridge",
+                  "brand": "Esatto",
+                  "model": "EBF129S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                },
+                {
+                  "pdfSha256": "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723",
+                  "category": "fridge",
+                  "brand": "Esatto",
+                  "model": "EBF129S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+                  "contentSha256": "464c13fa1e21df0ce211ae4776512189e358a5323522bbd247d12a1429e18573",
+                  "page": 1,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+                  "contentSha256": "ca3b11721cc4650a39ba91b35db72533d01ec9e6013bc033bf53acee9355e3b8",
+                  "page": 16,
+                  "quote": "Model: EBF129W / EBF129S Product Dimensions: W501× D 540×H860 (mm) Net / Gross Weight: 23.6kg / 26.6kg Net / Gross Capacity: 123L / 129L Other Features: 123 capacity, separate chilling compartment, reversible door, 3 × tempered glass shelves, adjustable temperature controls Energy Rating: 2.5 Stars MEPS"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723",
+                  "contentSha256": "236657e9060f809e04bc1fde13d18f2d8fa53177dff26546e7083b2f5bf1820a",
+                  "page": 2,
+                  "quote": "text_list unordered text Dimensions (W, D, H mm) / 860 × 501 × 540 text Capacity / 123L text Energy Rating / 2.5 Stars text Warranty / 2 Years"
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
             {
               "groupType": "model_specific",
               "groupName": "EUF172W",
@@ -110460,15 +110853,132 @@
             "Esatto"
           ],
           "modelCount": 21,
-          "observedMineruDocuments": 4,
+          "observedMineruDocuments": 9,
           "observedMarketingSeriesCount": 0,
-          "observedDocumentFamilyCount": 0,
+          "observedDocumentFamilyCount": 1,
           "observedParserProfileCount": 1,
           "completeParserReplayCount": 1,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 8778fb5a565e",
+              "models": [
+                "EDW7S",
+                "EDW7W"
+              ],
+              "pdfSha256s": [
+                "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/EDW7S-EDW7W_UserManual_V51-1121.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/61846c8ab416375e367aa92f/1636068495999/EDW7S-EDW7W_UserManual_V5.1+1121.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW7S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                },
+                {
+                  "pdfSha256": "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW7W",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5",
+                  "contentSha256": "3675c69d978f7e73863f9c7a5f5610b8688755c1f465c588f6fc2752930e3720",
+                  "page": null,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "EDW456S",
+              "models": [
+                "EDW456S"
+              ],
+              "pdfSha256s": [
+                "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+                "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/EDW456S_QSG_V11.pdf",
+                "https://esatto.house/s/Esatto_ProductCard-EDW456S-smk3.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb39e0ef686655f98803/1685515066829/EDW456S_QSG_V1.1.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/647d7be2088efb3de2d5fdcc/1685945317169/Esatto_ProductCard-EDW456S.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW456S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                },
+                {
+                  "pdfSha256": "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW456S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+                  "contentSha256": "8f60bedaa37ea315c6d2b21ca7bf0518e64f23df57c7b0c9926a508c19e5f3ed",
+                  "page": 1,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83",
+                  "contentSha256": "957e153879e05be2561fbe45754c3a9eb1b8fbad7374048a26a0d243944c5523",
+                  "page": 2,
+                  "quote": "text_list unordered text Dimensions (W, D, H mm) / 448 × 600 × 845 text Energy Rating (MEPS/WELS) / 3 Stars / 3 Stars text Capacity / 9 Place Settings text Warranty / 2 Years"
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
             {
               "groupType": "model_specific",
               "groupName": "EDW7CS",
@@ -110547,6 +111057,90 @@
                   "contentSha256": "01e336c9c11d23cdee2f0a1c91fe9eb45e1419c7d64ed9f1962b8adfa9f4e9d8",
                   "page": 2,
                   "quote": "text_list unordered text Dimensions (W, D, H mm) / 598 × 610 × 845 text Energy Rating (MEPS/WELS) / 3.5 Stars / 4.5 Stars text Capacity / 14 Place Settings text Warranty / 2 Years"
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "EDW7S",
+              "models": [
+                "EDW7S"
+              ],
+              "pdfSha256s": [
+                "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/Esatto_ProductCard-EDW7S-n5j7.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6189cba297f0c65dce313726/1636420515255/Esatto_ProductCard-EDW7S.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW7S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde",
+                  "contentSha256": "3538596767f2e3421fa8d4ed794d9fb366e87620c5048a2fb276ca188cfdc7bd",
+                  "page": 1,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "EDW7W",
+              "models": [
+                "EDW7W"
+              ],
+              "pdfSha256s": [
+                "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/Esatto_ProductCard-EDW7W-z5bn.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6189cb89931dca1cff814c25/1636420490067/Esatto_ProductCard-EDW7W.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW7W",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825",
+                  "contentSha256": "1c69fecd6446b0c9c9e2681c961c2759c08c78617ab2356bb2d1b75d45d107fc",
+                  "page": 1,
+                  "quote": ""
                 }
               ],
               "parserProfileIds": [],
@@ -161494,15 +162088,154 @@
             "Esatto"
           ],
           "modelCount": 56,
-          "observedMineruDocuments": 0,
+          "observedMineruDocuments": 3,
           "observedMarketingSeriesCount": 0,
-          "observedDocumentFamilyCount": 0,
+          "observedDocumentFamilyCount": 1,
           "observedParserProfileCount": 0,
           "completeParserReplayCount": 0,
           "seriesCountStatus": "UNKNOWN",
-          "coverageStatus": "NO_MINERU_SAMPLE",
-          "expressionCoverageStatus": "NO_MINERU_SAMPLE",
-          "families": []
+          "coverageStatus": "MINERU_SAMPLE_OBSERVED",
+          "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+          "families": [
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 4ab80d38fb8c",
+              "models": [
+                "ECD7",
+                "EHPD7"
+              ],
+              "pdfSha256s": [
+                "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/Esatto_UserManual_ECD7-EHPD7_FA.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/610b886688f4647b74ef94b7/1628145774292/Esatto_UserManual_ECD7-EHPD7_FA.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29",
+                  "category": "dryer",
+                  "brand": "Esatto",
+                  "model": "ECD7",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                },
+                {
+                  "pdfSha256": "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29",
+                  "category": "dryer",
+                  "brand": "Esatto",
+                  "model": "EHPD7",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29",
+                  "contentSha256": "517934a43412893695b5be4f8e296e06c7cedf0c2129b012813d6e05ceb51a1b",
+                  "page": 15,
+                  "quote": "ModelParameter EHPD7 ECD7 Dimension(L*W*H) 622*595*845(mm) 622*595*845(mm) Ambient temperature +5°℃~+35°℃ +5°℃~+35°C Rated input power 850W 2000W Rated voltage 220-240V~ 220-240V~ Rated frequency 50Hz 50Hz Refrigerant R134a Weight of product 51kg 41kg Rated capacity 7.0kg 7.0kg"
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "ECD7",
+              "models": [
+                "ECD7"
+              ],
+              "pdfSha256s": [
+                "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/Esatto_ProductCard-ECD7.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/60d2bdac9da8807ace627c2f/1624423852940/Esatto_ProductCard-ECD7.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0",
+                  "category": "dryer",
+                  "brand": "Esatto",
+                  "model": "ECD7",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0",
+                  "contentSha256": "85890295652ab21e90695d3a1b3e4ed6f31897cebc1145112b8fc5407cb87729",
+                  "page": 1,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "EHPD7",
+              "models": [
+                "EHPD7"
+              ],
+              "pdfSha256s": [
+                "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/Esatto_ProductCard-EHPD7.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/610b8902fa8bd67622750752/1628145922808/Esatto_ProductCard-EHPD7.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84",
+                  "category": "dryer",
+                  "brand": "Esatto",
+                  "model": "EHPD7",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84",
+                  "contentSha256": "31dd44c01487e4189038326bccc9b70ac5a255bd105eb28b955f0c5a51faf931",
+                  "page": 1,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            }
+          ]
         },
         {
           "canonicalBrand": "EURO",
@@ -168442,12 +169175,6 @@
     {
       "pdfSha256": "21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3",
       "contentSha256": "2a3bc268596798fba1cefbc5bb0f8c0641c278d133ffa0c7c8f86072828cdd7e",
-      "sourceUrls": [],
-      "mappingStatus": "UNMAPPED_SOURCE_PDF"
-    },
-    {
-      "pdfSha256": "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0",
-      "contentSha256": "85890295652ab21e90695d3a1b3e4ed6f31897cebc1145112b8fc5407cb87729",
       "sourceUrls": [],
       "mappingStatus": "UNMAPPED_SOURCE_PDF"
     },

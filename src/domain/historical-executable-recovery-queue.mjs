@@ -406,6 +406,9 @@ export function buildHistoricalExecutableRecoveryQueue({
       ...(priorAttemptSuppressions.length > 0 ? { priorAttemptSuppressions } : {}),
       ...(priorSourceAcceptances.length > 0 ? { priorSourceAcceptances } : {}),
     };
+    const legacyAggregateResolverIds = sortedUnique(
+      candidateTarget.legacyAggregateResolverIds ?? [],
+    );
 
     const defer = (dispositionReason) => {
       if (dispositionReason === 'ACTIVE_RESOLVER_SUPPRESSION') {
@@ -421,6 +424,9 @@ export function buildHistoricalExecutableRecoveryQueue({
         candidateIds: candidateTarget.candidateEdges.map((edge) => edge.candidateId),
         resolverContract: structuredClone(candidateTarget.resolverContract),
         incompleteResolverIds: [...candidateTarget.incompleteResolverIds],
+        ...(legacyAggregateResolverIds.length > 0 ? {
+          legacyAggregateResolverIds,
+        } : {}),
       });
     };
 
@@ -433,6 +439,10 @@ export function buildHistoricalExecutableRecoveryQueue({
       continue;
     }
     if (candidateTarget.state === 'DISCOVERY_RETRYABLE') {
+      if (legacyAggregateResolverIds.length > 0) {
+        defer('LEGACY_RESOLVER_CONTRACT');
+        continue;
+      }
       if (priorResolverSuppressions.length > 0) {
         defer('ACTIVE_RESOLVER_SUPPRESSION');
         continue;

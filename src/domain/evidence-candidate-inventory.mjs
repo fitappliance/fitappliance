@@ -199,6 +199,9 @@ function classifyAcquisitionFailure(error) {
   if (/mineru|conversion|parser/.test(haystack)) {
     return { status: 'mineru_failure', failureCode: 'mineru', reason: message };
   }
+  if (/\bhttp(?:_|[\s-])?(?:404|410)\b/.test(haystack)) {
+    return { status: 'terminal_failure', failureCode: 'payload', reason: message };
+  }
   if (/payload|magic byte|content type|maximum bytes/.test(haystack)) {
     return { status: 'payload_rejected', failureCode: 'payload', reason: message };
   }

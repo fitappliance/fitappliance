@@ -1,6 +1,6 @@
 # Historical Evidence Programme Status
 
-Generated: 2026-07-28T10:48:12.405Z
+Generated: 2026-07-28T15:53:54.152Z
 
 > Counts are deliberately separated by grain. A PDF or MinerU document is not a model receipt, and W/H/D is not Verified Fit.
 
@@ -13,7 +13,7 @@ Generated: 2026-07-28T10:48:12.405Z
 | Models without document links | Historical Model Reference | 6321 | 8089 | 78.14% |
 | Models with current valid receipts | Historical Model Reference | 401 | 8089 | 4.96% |
 | Models queued for acquisition | Historical Model Reference | 7688 | 8089 | 95.04% |
-| Executable model targets | Historical Model Reference | 4993 | 7688 | 64.95% |
+| Executable model targets | Historical Model Reference | 4969 | 7688 | 64.63% |
 | Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8089 | 4.72% |
 | Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8089 | 3.97% |
 
@@ -21,10 +21,10 @@ Generated: 2026-07-28T10:48:12.405Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Models with scheduled evidence work | Historical Model Reference | 4993 | 8089 | 61.73% |
+| Models with scheduled evidence work | Historical Model Reference | 4969 | 8089 | 61.43% |
 | Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8089 | 0.07% |
 | Completed model targets | Historical Model Reference | 401 | 8089 | 4.96% |
-| Blocked model targets | Historical Model Reference | 2701 | 8089 | 33.39% |
+| Blocked model targets | Historical Model Reference | 2725 | 8089 | 33.69% |
 
 ## Document and parser funnel
 
@@ -32,12 +32,12 @@ Generated: 2026-07-28T10:48:12.405Z
 | --- | --- | ---: | ---: | ---: |
 | Unique PDF content | Physical Pdf File | 516 | 530 | 97.36% |
 | Unique PDF content indexed | Unique Pdf Content | 516 | 516 | 100.00% |
-| Indexed PDF content graph nodes | Unique Pdf Content | 1029 | 1029 | 100.00% |
-| Valid indexed PDF graph nodes | Unique Pdf Content | 1015 | 1029 | 98.64% |
-| Document-model edges with exact or internal model-list proof | Document Model Edge | 569 | 3960 | 14.37% |
-| Valid MinerU knowledge documents | Mineru Knowledge Document | 1015 | 1029 | 98.64% |
-| MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 543 | 1015 | 53.50% |
-| Complete parser replays | Parser Replay | 455 | 1143 | 39.81% |
+| Indexed PDF content graph nodes | Unique Pdf Content | 1039 | 1039 | 100.00% |
+| Valid indexed PDF graph nodes | Unique Pdf Content | 1025 | 1039 | 98.65% |
+| Document-model edges with exact or internal model-list proof | Document Model Edge | 569 | 3973 | 14.32% |
+| Valid MinerU knowledge documents | Mineru Knowledge Document | 1025 | 1039 | 98.65% |
+| MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 543 | 1025 | 52.98% |
+| Complete parser replays | Parser Replay | 455 | 1156 | 39.36% |
 
 ## Accepted source lanes
 

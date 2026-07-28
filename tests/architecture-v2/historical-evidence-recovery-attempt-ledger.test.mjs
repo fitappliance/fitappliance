@@ -164,6 +164,42 @@ test('transient transport failures remain retryable and suppressed candidates ar
   assert.deepEqual(ledger.targetAttempts, []);
 });
 
+test('permanent HTTP absence suppresses the URL without fabricating an artifact hash', () => {
+  const input = fixture();
+  const result = input.results.outcomes[0];
+  const candidate = result.candidateInventory.candidates[0];
+  delete candidate.outcome.artifactBinding;
+  candidate.outcome = {
+    status: 'terminal_failure', failureCode: 'payload', reason: 'http_404', source: null,
+  };
+  result.status = 'claims_incomplete';
+  result.failureCode = 'claim_semantics';
+  result.candidateInventory.completionStatus = 'complete';
+  result.candidateInventory.incompleteResolvers = [];
+  result.candidateInventory.missingBatchCandidateJobIds = [];
+  result.candidateInventory.resolvers = [{
+    resolverId: 'fixture-resolver', version: '1', required: true,
+    scope: 'exact-model', completion: 'complete', candidateCount: 1,
+  }];
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+
+  const ledger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  const attempt = ledger.entries[0];
+
+  assert.equal(attempt.contentSha256, null);
+  assert.equal(attempt.suppressesSamePolicySource, true);
+  assert.equal(attempt.disposition, 'SEEK_ALTERNATIVE_OR_CHANGED_CONTENT');
+  assert.equal(ledger.targetAttempts.length, 1);
+  assert.deepEqual(activeHistoricalAttemptSuppressions({
+    ledger,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: SHA('b'),
+  }).map((entry) => entry.sourceUrl), [input.sourceUrl]);
+});
+
 test('a complete zero-candidate resolver pass creates one source-bound target suppression', () => {
   const input = fixture();
   const result = input.results.outcomes[0];

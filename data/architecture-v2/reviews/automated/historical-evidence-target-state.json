@@ -1,38 +1,39 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "generatedAt": "2026-07-28T15:53:54.152Z",
   "sourceBindings": {
-    "classificationSha256": "4a77486a1d6bddc84f230747532734bf5ad7cff2f17b4f4bdcbf6a292329d777",
-    "acquisitionQueueSha256": "401b5b330c51f06aa095a8c5ca6a61a778494eb1bd0ebf05a925575f40e6a9ec",
-    "executableQueueSha256": "57a72b2b4195ff5faf81cb663158b5398b7001003154d41f7f5bf14302e9f924",
-    "acceptanceBundleSha256": "4540695de8470de76dfed64713f5e5989d90e63e196ff08f45142744d6936982",
-    "attemptLedgerSha256": "5ab203d81931c5ebfaf83d71b5d989622cd007e5e49be7648645c6f98b8c792e"
+    "classificationSha256": "6ca67a1bed129135a383c133f63dcc88e156216b197a2a957a0cc072e6355903",
+    "acquisitionQueueSha256": "1b77204c2c71943f1c66f16d51de173d4118e2765b98b3a872277bf2ef700249",
+    "executableQueueSha256": "2bd61f62694fa8b38348bbd293a5c7cca72dbbb3edaa8a5b41db9f585a4bba2f",
+    "acceptanceBundleSha256": "d947f8bcf15173ceb23fbba98a62459140f8ed9b93bf15c7d5fc5314f6785550",
+    "attemptLedgerSha256": "a49c67c92b97fd3aa56feb7dfddf0d271b5f4aef563b2bcc80cd07b924cdb64b"
   },
-  "sourceClassificationGeneratedAt": "2026-07-19T19:32:08.439Z",
-  "sourceExecutableQueueGeneratedAt": "2026-07-19T19:32:08.439Z",
+  "sourceClassificationGeneratedAt": "2026-07-28T15:53:54.152Z",
+  "sourceExecutableQueueGeneratedAt": "2026-07-28T15:53:54.152Z",
   "summary": {
     "records": 8089,
-    "actionable": 4993,
+    "actionable": 4969,
     "actionableBlockedOverlap": 6,
-    "acquisitionWork": 0,
-    "discoveryWork": 4993,
-    "deferred": 2695,
+    "acquisitionWork": 1,
+    "discoveryWork": 4968,
+    "deferred": 2719,
     "completed": 401,
-    "blocked": 2701,
-    "terminal": 3102,
+    "blocked": 2725,
+    "terminal": 3126,
     "byState": {
-      "BLOCKED_SAME_EPOCH": 2,
+      "BLOCKED_SAME_EPOCH": 25,
+      "CANDIDATE_READY": 1,
       "CONFLICT_QUARANTINE": 83,
       "DIMENSIONS_RECEIPT": 401,
       "IDENTITY_RESEARCH": 134,
-      "NO_OFFICIAL_SOURCE": 34,
+      "NO_OFFICIAL_SOURCE": 35,
       "RETRYABLE": 10,
-      "SOURCE_DISCOVERY_REQUIRED": 4843,
+      "SOURCE_DISCOVERY_REQUIRED": 4818,
       "UNSEEN": 2582
     },
     "byStateClass": {
-      "ACTIONABLE": 4987,
-      "BLOCKED": 2701,
+      "ACTIONABLE": 4963,
+      "BLOCKED": 2725,
       "COMPLETED": 401
     }
   },
@@ -2341,27 +2342,18 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "NO_OFFICIAL_SOURCE",
+      "state": "BLOCKED_SAME_EPOCH",
       "stateClass": "BLOCKED",
       "actionable": false,
       "terminal": true,
       "binding": {
-        "type": "target_attempt",
-        "targetAttemptId": "historical_target_attempt_6e6c5f09007e9d6b5ba71d9b",
-        "reason": "complete_zero_candidate_inventory",
-        "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
-        "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
-        "runId": "historical-asko-legacy-dishwashers-20260716-d",
-        "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
-        "attemptedAt": "2026-07-16T12:16:49.118Z",
-        "evidenceProcessorEpochs": {
-          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
-          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
-        }
+        "type": "control_plane_disposition",
+        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+        "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
       "reopeningConditions": [
-        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+        "RESOLVER_CONTRACT_CHANGED"
       ]
     },
     {
@@ -2375,27 +2367,18 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "NO_OFFICIAL_SOURCE",
+      "state": "BLOCKED_SAME_EPOCH",
       "stateClass": "BLOCKED",
       "actionable": false,
       "terminal": true,
       "binding": {
-        "type": "target_attempt",
-        "targetAttemptId": "historical_target_attempt_60667f8220bcc7bd933e2ea2",
-        "reason": "complete_zero_candidate_inventory",
-        "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
-        "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
-        "runId": "historical-asko-legacy-dishwashers-20260716-d",
-        "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
-        "attemptedAt": "2026-07-16T12:16:49.118Z",
-        "evidenceProcessorEpochs": {
-          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
-          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
-        }
+        "type": "control_plane_disposition",
+        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+        "targetId": "recovery_target_97381d6cbf479dddedf9e15c",
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
       "reopeningConditions": [
-        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+        "RESOLVER_CONTRACT_CHANGED"
       ]
     },
     {
@@ -12051,21 +12034,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 2,
+        "activeTerminal": 5,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_7a50316ea4755af4af1637cc",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "187d8c1e6816c6096d521f3dc0794e9df694bba779cd87ec2031dd0cad1390f3",
+        "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260728-v3-d",
+        "batchId": "historical-recovery-3221f6fdfa3686318d0e4f67-slice-293d8d09be4a",
+        "attemptedAt": "2026-07-28T14:17:35.548Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_9128bbf72dce70b38063d024",
@@ -12294,18 +12290,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_3460eea918b1604f3adefc9c",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_ba08c9a08baaa5e5b4e74e5d",
@@ -12318,18 +12315,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_80db96b796e61908327eb342",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_1521ace8bfc9a54835d11c55",
@@ -12342,18 +12340,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_38a3f3112e0fee5d688f8e2c",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_f23d4b7888e39e5b296855de",
@@ -12363,21 +12362,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_7ceff703d667e94a16a184fb",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_955493ca461f040a8d991f7e",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "5ffc992ccc1eb0844980ea4dbcff3fb9a62c1a09f73bc38005c5b489f05fb3f5",
+        "runId": "historical-scale-p0-esatto-edw7cs-dimensions-20260728-v3-i",
+        "batchId": "historical-recovery-32d56ea32adb884835e7a7a4-slice-5d25088533d2",
+        "attemptedAt": "2026-07-28T14:26:58.724Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_41ef8521c589378dcbd72916",
@@ -12387,21 +12399,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_26f08b4b553ffc13803af03d",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_787c403dbb566de4cf909950",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "9d5226417df7458689294f952d44887b758402536325f60a5254a0e548536db8",
+        "runId": "historical-scale-p0-esatto-edw7s-dimensions-20260728-v3-k",
+        "batchId": "historical-recovery-9aea696c6adaf27a9dd5226a-slice-05d945db757b",
+        "attemptedAt": "2026-07-28T14:32:23.062Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_b44ef3fb4bb633701f45d629",
@@ -12411,21 +12436,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_8bc7ebad077d57c664617ecd",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_29b19c34115ae81950e7d30f",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "9d5226417df7458689294f952d44887b758402536325f60a5254a0e548536db8",
+        "runId": "historical-scale-p0-esatto-edw7w-dimensions-20260728-v3-m",
+        "batchId": "historical-recovery-0fdb51d18ad7d9cbc7e00fe4-slice-1829ac20712f",
+        "attemptedAt": "2026-07-28T14:35:57.718Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_4b681915947fcb1420b61500",
@@ -15213,18 +15251,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_16b918e68d48076bd93a0700",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_969dc63a29a3d245cd590d44",
@@ -21756,18 +21795,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_b1064a520d56c0f6b64e3dc9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_0a40601f1777fe6319132f91",
@@ -21780,18 +21820,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_91d308352ff165c81e418ba9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_213e1031e4bc66748bb7d644",
@@ -22803,18 +22844,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_3d73a66f898fdff72ef5bc84",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_2ff2b8cfbca6a32026502559",
@@ -24483,18 +24525,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_00077a3067d9d045511b65d3",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_09ff2d07b0fd94b9bc983817",
@@ -26793,18 +26836,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_e72297807f94f9eb1da3d872",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_b9ec6016c3ba8d2b1ddc834d",
@@ -29067,18 +29111,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_842b7bcf9d5f282653074a9d",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_b3534e51b8ea23db7fd5d632",
@@ -30621,18 +30666,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_11467bb7b5baacdb0d4a98bb",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_d4882bcd8310511f8d2c62eb",
@@ -35799,18 +35845,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_dff0e4612235cc7ffbc879e9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_6542d1f4345a5d96a917d9a1",
@@ -42545,21 +42592,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_9457752622cd76c35a283424",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_6fadcce2a392969fd6963b7b",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "9d5226417df7458689294f952d44887b758402536325f60a5254a0e548536db8",
+        "runId": "historical-scale-p0-esatto-ecd7-dimensions-20260728-v3-y",
+        "batchId": "historical-recovery-93e7bc0e79e85f08600875fd-slice-b881633dbd11",
+        "attemptedAt": "2026-07-28T15:10:36.125Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_50bab78b444b4ea60aa69dfe",
@@ -42665,21 +42725,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_f209e481ab4e2db1e2ef5721",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_7632a6147496846411a09f48",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "9d5226417df7458689294f952d44887b758402536325f60a5254a0e548536db8",
+        "runId": "historical-scale-p0-esatto-ehpd7-dimensions-20260728-v3-aa",
+        "batchId": "historical-recovery-95b4e3ae54b679be3bb97473-slice-19bbdedabdd6",
+        "attemptedAt": "2026-07-28T15:14:15.430Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_94d2efc57cdc119fc575afa3",
@@ -46996,18 +47069,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_3b195e93eac55e762db67f4d",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_35de2e9e3488adafa1ee0411",
@@ -61430,18 +61504,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_0be27ae58da88e5c8aa83aa8",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_b5d1ca94c5c712fcb8bbdcc7",
@@ -64733,18 +64808,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_273ca47d74649ed50760fced",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "LEGACY_RESOLVER_CONTRACT"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_3a83183e3c8f773ead5a2020",
@@ -74598,22 +74674,35 @@
       "model": "EBF112S",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeRetryable": 2,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_10377e7a00ddcf856ade949d",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_4b571960f16c0facd94a088a",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "59deb35297211ba9b95a5fa1946b0b685c5ceee041ff2858b6edec455e0531f7",
+        "runId": "historical-scale-p0-esatto-ebf112s-dimensions-20260728-v3-ag",
+        "batchId": "historical-recovery-f8271f6438d5353f2932ce77-slice-83a7f401ca10",
+        "attemptedAt": "2026-07-28T15:35:54.144Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_9e8a646c4237c000402e274a",
@@ -74623,21 +74712,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 3,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_63ce08d45dab00d38e828d64",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_fb674201a34d1911c04098d0",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "9d5226417df7458689294f952d44887b758402536325f60a5254a0e548536db8",
+        "runId": "historical-scale-p0-esatto-ebf112w-dimensions-20260728-v3-ai",
+        "batchId": "historical-recovery-c10dc001efbb027eeb0eac2f-slice-6852f4578cda",
+        "attemptedAt": "2026-07-28T15:39:52.229Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_0bf75f9cfa12cc6e182e8a1f",
@@ -74743,21 +74845,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 4,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_dd51a2d15d1f5aeb05d806f1",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_5f4fba40eee8fb9654a49864",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "5ffc992ccc1eb0844980ea4dbcff3fb9a62c1a09f73bc38005c5b489f05fb3f5",
+        "runId": "historical-scale-p0-esatto-ebf129s-dimensions-20260728-v3-ak",
+        "batchId": "historical-recovery-4c57644aed17644e1c6caae7-slice-32d303fb2cfb",
+        "attemptedAt": "2026-07-28T15:44:36.509Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_3f8ea258c6d9f3a343c07815",
@@ -74866,7 +74981,7 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
+      "state": "CANDIDATE_READY",
       "stateClass": "ACTIONABLE",
       "actionable": true,
       "terminal": false,
@@ -74874,8 +74989,12 @@
         "type": "executable_queue",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_c4f55caff6f8eb75550d5439",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "executionLane": "ACQUISITION",
+        "candidateJobIds": [
+          "recovery_1ba248b727aa38ed7bf1b2be",
+          "recovery_3eeb84f3b3f4081895bf7815",
+          "recovery_58023e51ca3e14c3d5aabbe7"
+        ]
       },
       "reopeningConditions": []
     },

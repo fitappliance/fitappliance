@@ -3,6 +3,8 @@ import test from 'node:test';
 
 import {
   buildEvidenceProcessorEpochs,
+  CLAIM_PARSER_IMPLEMENTATION_PATHS,
+  claimParserImplementationIdentity,
   EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS,
   historicalAttemptProcessorCapability,
   legacyEvidenceProcessorEpoch,
@@ -12,6 +14,17 @@ import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from '../../src/domain/beko-produ
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from '../../src/domain/smeg-pdf-dimensions.mjs';
 
 const implementationPaths = [...new Set(Object.values(EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS).flat())];
+
+test('candidate acquisition semantics are bound into the recovery toolchain identity', () => {
+  const files = new Map(CLAIM_PARSER_IMPLEMENTATION_PATHS.map((path) => [path, `first:${path}`]));
+  assert.equal(CLAIM_PARSER_IMPLEMENTATION_PATHS.includes(
+    'src/domain/evidence-candidate-inventory.mjs',
+  ), true);
+
+  const first = claimParserImplementationIdentity(files);
+  files.set('src/domain/evidence-candidate-inventory.mjs', 'changed');
+  assert.notEqual(claimParserImplementationIdentity(files), first);
+});
 
 test('Beko AU claim parser capability is exact to brand, route, and failure class', () => {
   const sourceUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x';
