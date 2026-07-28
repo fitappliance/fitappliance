@@ -73,6 +73,27 @@ export function validateFrozenPdfBaseline(baseline) {
   return baseline;
 }
 
+export function selectFrozenPdfBaselineSamples(samples, { sampleIds = [], limit = null } = {}) {
+  if (!Array.isArray(samples) || samples.length === 0) throw new TypeError('frozen samples required');
+  if (!Array.isArray(sampleIds)) throw new TypeError('sample IDs must be an array');
+  if (sampleIds.length && limit != null) throw new TypeError('cannot combine sample IDs with limit');
+  if (limit != null && (!Number.isInteger(limit) || limit < 1)) {
+    throw new TypeError('sample limit must be a positive integer');
+  }
+  if (!sampleIds.length) return limit == null ? [...samples] : samples.slice(0, limit);
+
+  const requested = new Set();
+  for (const value of sampleIds) {
+    const sampleId = requiredText(value, 'sample ID');
+    if (requested.has(sampleId)) throw new TypeError(`duplicate sample ID ${sampleId}`);
+    requested.add(sampleId);
+  }
+  const known = new Set(samples.map(({ sampleId }) => sampleId));
+  const unknown = [...requested].filter((sampleId) => !known.has(sampleId));
+  if (unknown.length) throw new TypeError(`unknown sample ID: ${unknown.sort().join(', ')}`);
+  return samples.filter(({ sampleId }) => requested.has(sampleId));
+}
+
 function exactCandidateIdentity(sample, candidate) {
   const target = exactIdentity(sample.model);
   if (!candidate?.sourceModelHint || exactIdentity(candidate.sourceModelHint) !== target) return false;

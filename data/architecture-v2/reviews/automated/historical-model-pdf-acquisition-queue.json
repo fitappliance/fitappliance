@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "generatedAt": "2026-07-19T19:32:08.439Z",
-  "semanticQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
-  "sourceClassificationSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
-  "sourceIdentityMigrationSha256": "66d56bf4f5840ed79d8c6af7c6566595594abe1af6458398d3ea4f69c9368a9f",
+  "semanticQueueSha256": "4712a15a9819b0874740b7260f6a5fbcdcabbb8adc2730c7b622bad9260a816d",
+  "sourceClassificationSha256": "4505f3a8f34bd1a5ac4936811267c28a7552fb8f5b4d138fb9340fb205a71ee2",
+  "sourceIdentityMigrationSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
   "records": [
     {
       "schemaVersion": 1,
@@ -720,37 +720,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d671a7af1df3e77c32cb0145",
-      "referenceId": "fa_ref_f23d4b7888e39e5b296855de",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "EDW7CS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_58012deaaae5609105370527"
-      ],
-      "resolverIds": [
-        "esatto-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7ceff703d667e94a16a184fb"
-      ],
-      "legacyRuntimeIds": [
-        "ao-57868"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1fc59180f23a9f00f0b5c903"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c9422ab6618f306d27a75590",
       "referenceId": "fa_ref_41ef8521c589378dcbd72916",
       "category": "dishwasher",
@@ -808,6 +777,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_13dbb58fe628aaf3a9b61ed7"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_d671a7af1df3e77c32cb0145",
+      "referenceId": "fa_ref_f23d4b7888e39e5b296855de",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDW7CS",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "EDW7CS",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_58012deaaae5609105370527"
+      ],
+      "resolverIds": [
+        "esatto-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_7ceff703d667e94a16a184fb"
+      ],
+      "legacyRuntimeIds": [
+        "ao-57868"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_1fc59180f23a9f00f0b5c903"
       ],
       "offlineReplayOutcome": null
     },
@@ -2908,99 +2908,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9798c6c55f3eddd99b04479b",
-      "referenceId": "fa_ref_5ff3b96f4a175d479c616a4b",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7130SCCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e8d542d90d4cc4da10daa250"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f0827f1ae03b68ff3da038e7"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162456"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8a03825239ae3e515800f2ab"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0853cf07ee49fd856b54bd4e",
-      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7130SCICLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_7399d2b75738b8b57b4575fb"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_dd3b9bd51a13b88d018181a9"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162457"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b780b38233ccc022a4132275"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3c0831ed4deacf14a670b66a",
-      "referenceId": "fa_ref_1b57c49fa3b17396b3f7230e",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7130SCUCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e1868dc6e3a5c71cdff8f566"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a530631a12a65f9f17f008de"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162458"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_eec492d7d0d55e92bf7c974e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c33d2bda76e20dc61d34081c",
       "referenceId": "fa_ref_6b7f62a2589a98de37fd582b",
       "category": "dishwasher",
@@ -3027,99 +2934,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_bad81bb681220804908547e7"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8f456125e9deb08221721d20",
-      "referenceId": "fa_ref_9fe799828a1d8a918c5988c5",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7604SCUCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2e4be44e67535cab7a730c2b"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_ef8b30be4717118934672934"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162461"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_50d1cb721bfb011a7ddbaaca"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7ce1d449f113907907d836a9",
-      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7609SCIXXLCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cab6686b638a40c0bfcb6842"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_bdaf2f9b5e16cc27f2b8de9d"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162462"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_01ddfa3e27e24a42ca8428fe"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_32eaf5680198e6a2ef4172fd",
-      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7609SCUXXLCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_fe17b02f34991853c29ccdea"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_565604ed4eb83ec2928204a6"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162463"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_953126750c9f4430a34c44ff"
       ],
       "offlineReplayOutcome": null
     },
@@ -3156,6 +2970,223 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_d88a3d603f4941c4a3236dfe",
+      "referenceId": "fa_ref_ddd0ede774fe989b77c02120",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "PG8133SCVI",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "unclassified",
+      "groupName": null,
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_b0b72b3c230acbb471058149"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_67c506e7e8637416ed68738c"
+      ],
+      "legacyRuntimeIds": [
+        "ao-71530"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_f2642cc482aac802cb7aba95"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_9798c6c55f3eddd99b04479b",
+      "referenceId": "fa_ref_5ff3b96f4a175d479c616a4b",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7130SCCLST",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_e8d542d90d4cc4da10daa250"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_f0827f1ae03b68ff3da038e7"
+      ],
+      "legacyRuntimeIds": [
+        "ao-162456"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_8a03825239ae3e515800f2ab"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_3c0831ed4deacf14a670b66a",
+      "referenceId": "fa_ref_1b57c49fa3b17396b3f7230e",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7130SCUCLST",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_e1868dc6e3a5c71cdff8f566"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_a530631a12a65f9f17f008de"
+      ],
+      "legacyRuntimeIds": [
+        "ao-162458"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_eec492d7d0d55e92bf7c974e"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_8f456125e9deb08221721d20",
+      "referenceId": "fa_ref_9fe799828a1d8a918c5988c5",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7604SCUCLST",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_2e4be44e67535cab7a730c2b"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_ef8b30be4717118934672934"
+      ],
+      "legacyRuntimeIds": [
+        "ao-162461"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_50d1cb721bfb011a7ddbaaca"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_32eaf5680198e6a2ef4172fd",
+      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7609SCUXXLCLST",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_fe17b02f34991853c29ccdea"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_565604ed4eb83ec2928204a6"
+      ],
+      "legacyRuntimeIds": [
+        "ao-162463"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_953126750c9f4430a34c44ff"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0853cf07ee49fd856b54bd4e",
+      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7130SCICLST",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_7399d2b75738b8b57b4575fb"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_dd3b9bd51a13b88d018181a9"
+      ],
+      "legacyRuntimeIds": [
+        "ao-162457"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b780b38233ccc022a4132275"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_7ce1d449f113907907d836a9",
+      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "model": "G7609SCIXXLCLST",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_cab6686b638a40c0bfcb6842"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_bdaf2f9b5e16cc27f2b8de9d"
+      ],
+      "legacyRuntimeIds": [
+        "ao-162462"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_01ddfa3e27e24a42ca8428fe"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_51290fc4a823097e31fed19e",
       "referenceId": "fa_ref_e521131ce4fe1e20081230b2",
       "category": "dishwasher",
@@ -3163,8 +3194,8 @@
       "model": "G7719SCIXXLOBSW",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -3194,8 +3225,8 @@
       "model": "G7939SCIXXLOBSW",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -3225,8 +3256,8 @@
       "model": "G7989SCVIXXLK2O",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -3244,37 +3275,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_50ed08717125a498e90f26b4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d88a3d603f4941c4a3236dfe",
-      "referenceId": "fa_ref_ddd0ede774fe989b77c02120",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "PG8133SCVI",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b0b72b3c230acbb471058149"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_67c506e7e8637416ed68738c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-71530"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f2642cc482aac802cb7aba95"
       ],
       "offlineReplayOutcome": null
     },
@@ -3337,37 +3337,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_eb6a8ce5857bd7877ca841aa"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_874f64cf2a5cb2d660b04803",
-      "referenceId": "fa_ref_9d12f4bd501f96bd747d062f",
-      "category": "dishwasher",
-      "brand": "Omega",
-      "model": "ODW101W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0fcfee7dfc5ad6a05d9dd4e7"
-      ],
-      "resolverIds": [
-        "omega-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2f40b1e7ac6aa3c821cb178d"
-      ],
-      "legacyRuntimeIds": [
-        "ao-53107"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3f8db77aebf88bc370c18e91"
       ],
       "offlineReplayOutcome": null
     },
@@ -3652,37 +3621,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e18d3c6770b6cca07af17d75",
-      "referenceId": "fa_ref_9572ce64edcd65ad387a4ebd",
-      "category": "dishwasher",
-      "brand": "Omega",
-      "model": "OFI101XKIT",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_351c60ba8d0a5e942087ce8f"
-      ],
-      "resolverIds": [
-        "omega-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1f3195f0d134d997e011fdc2"
-      ],
-      "legacyRuntimeIds": [
-        "ao-68634"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f84ca874b8b0fa63233f116c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_a2a37ab39162e90850ffd236",
       "referenceId": "fa_ref_455f8556499b36c92691ae29",
       "category": "dishwasher",
@@ -3833,6 +3771,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_33032bee197c60ac66145559"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_874f64cf2a5cb2d660b04803",
+      "referenceId": "fa_ref_9d12f4bd501f96bd747d062f",
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "ODW101W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "ODW101W",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_0fcfee7dfc5ad6a05d9dd4e7"
+      ],
+      "resolverIds": [
+        "omega-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_2f40b1e7ac6aa3c821cb178d"
+      ],
+      "legacyRuntimeIds": [
+        "ao-53107"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_3f8db77aebf88bc370c18e91"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_e18d3c6770b6cca07af17d75",
+      "referenceId": "fa_ref_9572ce64edcd65ad387a4ebd",
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "OFI101XKIT",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "OFI101XKIT",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_351c60ba8d0a5e942087ce8f"
+      ],
+      "resolverIds": [
+        "omega-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_1f3195f0d134d997e011fdc2"
+      ],
+      "legacyRuntimeIds": [
+        "ao-68634"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_f84ca874b8b0fa63233f116c"
       ],
       "offlineReplayOutcome": null
     },
@@ -5295,37 +5295,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0c5058541ca33d60da1bf44e",
-      "referenceId": "fa_ref_84bd2b01f23011d0f2d724f6",
-      "category": "dishwasher",
-      "brand": "Westinghouse",
-      "model": "WSF6608XA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_38fc1877aa9476303bc6a1ea"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f5e3462fb74d11a2574fced4"
-      ],
-      "legacyRuntimeIds": [
-        "ao-84366"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2b16ed6b6438aa90f7e0195f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c3c194aeb9d02482f63aa098",
       "referenceId": "fa_ref_c7af10c0492637c6617b5be5",
       "category": "dishwasher",
@@ -5412,6 +5381,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_a05f72f3de35ab9b5b63551e"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0c5058541ca33d60da1bf44e",
+      "referenceId": "fa_ref_84bd2b01f23011d0f2d724f6",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6608XA",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_18d3fb848d41715e",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_38fc1877aa9476303bc6a1ea"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_f5e3462fb74d11a2574fced4"
+      ],
+      "legacyRuntimeIds": [
+        "ao-84366"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_2b16ed6b6438aa90f7e0195f"
       ],
       "offlineReplayOutcome": null
     },
@@ -7133,37 +7133,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0ae6a968ef9b4841bcf71f69",
-      "referenceId": "fa_ref_6eeff26f0cf820a6a66bc953",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BFR575PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_41529e4285ac9d8f640203ce"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_26c882086c89d90a7cb07770"
-      ],
-      "legacyRuntimeIds": [
-        "ao-154130"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ff0f203af96d53ce8cc58b20"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_044be591831269abb2305c1b",
       "referenceId": "fa_ref_97c6d34ead1e21fdcd97d95c",
       "category": "fridge",
@@ -7500,68 +7469,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_0aeba47e5e4450fe1ae9ee0d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_65a3dac587450b9c155e05d0",
-      "referenceId": "fa_ref_cfe43c2d3aeff7765751ddba",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BVF290W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_c51d97036317eac648eb3f09"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6c4e16f31d7a020ec5dd17dc"
-      ],
-      "legacyRuntimeIds": [
-        "ao-80587"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5c5cdd0761edcd65264b8973"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0b52d216888ce10f3c2fa320",
-      "referenceId": "fa_ref_0fc75fe30a4a37a81e5931ab",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BVF404W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8b8c0104194ad0198e9ad03e"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_db29ae3a74b977aa20ffc90e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-105187"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d9a6294af4fca998d0c8618a"
       ],
       "offlineReplayOutcome": null
     },
@@ -8058,6 +7965,99 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d2cc72d2b1a0ac12f236b2f4"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_65a3dac587450b9c155e05d0",
+      "referenceId": "fa_ref_cfe43c2d3aeff7765751ddba",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BVF290W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "BVF290W",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_c51d97036317eac648eb3f09"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_6c4e16f31d7a020ec5dd17dc"
+      ],
+      "legacyRuntimeIds": [
+        "ao-80587"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_5c5cdd0761edcd65264b8973"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0b52d216888ce10f3c2fa320",
+      "referenceId": "fa_ref_0fc75fe30a4a37a81e5931ab",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BVF404W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_299b36867a7a0ee3",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_8b8c0104194ad0198e9ad03e"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_db29ae3a74b977aa20ffc90e"
+      ],
+      "legacyRuntimeIds": [
+        "ao-105187"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_d9a6294af4fca998d0c8618a"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0ae6a968ef9b4841bcf71f69",
+      "referenceId": "fa_ref_6eeff26f0cf820a6a66bc953",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BFR575PX",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_69887d7f846cfe4e",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_41529e4285ac9d8f640203ce"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_26c882086c89d90a7cb07770"
+      ],
+      "legacyRuntimeIds": [
+        "ao-154130"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_ff0f203af96d53ce8cc58b20"
       ],
       "offlineReplayOutcome": null
     },
@@ -9023,37 +9023,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_781d48c874655ebfabbeeb06",
-      "referenceId": "fa_ref_6f75b8917e336f41b6dc57d0",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CSR125DW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1a1f5e8094dd5c3efae59897"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2771f6b33f1e140a5202e900"
-      ],
-      "legacyRuntimeIds": [
-        "ao-103161"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1d026a2dfb529df792f24ef6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_2da446eea6a7e65021cb2ea5",
       "referenceId": "fa_ref_816e5cd59e3faf00cba5263c",
       "category": "fridge",
@@ -9735,6 +9704,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_781d48c874655ebfabbeeb06",
+      "referenceId": "fa_ref_6f75b8917e336f41b6dc57d0",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CSR125DW",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_1a1f5e8094dd5c3efae59897"
+      ],
+      "resolverIds": [
+        "chiq-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_2771f6b33f1e140a5202e900"
+      ],
+      "legacyRuntimeIds": [
+        "ao-103161"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_1d026a2dfb529df792f24ef6"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_95865b1c9be26ef6308143ff",
       "referenceId": "fa_ref_94da5188b2a36653d094e753",
       "category": "fridge",
@@ -9952,37 +9952,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b0f102d0b55ead28e6e4137f",
-      "referenceId": "fa_ref_a4966aef1a04be5958c8d233",
-      "category": "fridge",
-      "brand": "Electrolux",
-      "model": "EFE4227SC-L",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2d835b9744e69d59ac1e6e61"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_5838a3c2c43a6a4aca3751ba"
-      ],
-      "legacyRuntimeIds": [
-        "ao-86300"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a20e30b7beda3bd2f7b076f5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_100087feafe75e2ee8ccad02",
       "referenceId": "fa_ref_e2d7daf7cf27a08da2fc024e",
       "category": "fridge",
@@ -10169,37 +10138,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f8bf44c6984f68d5555b4946",
-      "referenceId": "fa_ref_e04d3327902dd4b8b6fdd179",
-      "category": "fridge",
-      "brand": "Electrolux",
-      "model": "ERE5047SC-R",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_7949fa6674724bcdb6a28c7c"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_15767e663a438dc4bed37aa9"
-      ],
-      "legacyRuntimeIds": [
-        "ao-86303"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b06eb9bb9cebe99c662b4ec5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_904c80cab0ab9942709a3960",
       "referenceId": "fa_ref_6b86779551acd0625a34bd1f",
       "category": "fridge",
@@ -10262,6 +10200,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_f8bf44c6984f68d5555b4946",
+      "referenceId": "fa_ref_e04d3327902dd4b8b6fdd179",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "ERE5047SC-R",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family fb58322ec3a2",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_7949fa6674724bcdb6a28c7c"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_15767e663a438dc4bed37aa9"
+      ],
+      "legacyRuntimeIds": [
+        "ao-86303"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b06eb9bb9cebe99c662b4ec5"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_f86b7218b4e77f44bb25940c",
       "referenceId": "fa_ref_00cc6e53a913629d8b005678",
       "category": "fridge",
@@ -10319,6 +10288,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1d9b0ed35f4f7ea803e9bb36"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_b0f102d0b55ead28e6e4137f",
+      "referenceId": "fa_ref_a4966aef1a04be5958c8d233",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EFE4227SC-L",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_2d835b9744e69d59ac1e6e61"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_5838a3c2c43a6a4aca3751ba"
+      ],
+      "legacyRuntimeIds": [
+        "ao-86300"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_a20e30b7beda3bd2f7b076f5"
       ],
       "offlineReplayOutcome": null
     },
@@ -11006,37 +11006,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a2ea331d7d3cac385ab8e327",
-      "referenceId": "fa_ref_339501789578146b5030ea9a",
-      "category": "fridge",
-      "brand": "Esatto",
-      "model": "EUF172W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_89269328843746ecd7180301"
-      ],
-      "resolverIds": [
-        "esatto-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_28d090a9e40935bc404c49e9"
-      ],
-      "legacyRuntimeIds": [
-        "ao-57882"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d39ab741f5ed7fd971897199"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_59ca3c8b9f95528990928fca",
       "referenceId": "fa_ref_cf3ff9b7a551ce8e9032d4dd",
       "category": "fridge",
@@ -11218,6 +11187,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ef3807de6af0a06c5717bf83"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_a2ea331d7d3cac385ab8e327",
+      "referenceId": "fa_ref_339501789578146b5030ea9a",
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EUF172W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "EUF172W",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_89269328843746ecd7180301"
+      ],
+      "resolverIds": [
+        "esatto-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_28d090a9e40935bc404c49e9"
+      ],
+      "legacyRuntimeIds": [
+        "ao-57882"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_d39ab741f5ed7fd971897199"
       ],
       "offlineReplayOutcome": null
     },
@@ -15805,99 +15805,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_2a06d4531d956a5efcf8819a",
-      "referenceId": "fa_ref_7815e52e51f6b1e204354b2b",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HRF580YHC",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e353d512e7a025cd0a1e0564"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1279cb8210f776f3223adaa8"
-      ],
-      "legacyRuntimeIds": [
-        "ao-119645"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4f1b17332e98ff48b3833c01"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_028ca48a1d5f3b44931b0c9e",
-      "referenceId": "fa_ref_61c56b941f00f29713cde015",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HRF580YPC",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ae65ba10bba01c71c96ecc11"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2d68c6c9eb21d41a3ee94647"
-      ],
-      "legacyRuntimeIds": [
-        "ao-129001"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_aa49c79122a50554720d5564"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8ba16a4f86ba9f7063ea753e",
-      "referenceId": "fa_ref_3da5985a2b93006bda04eefb",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HRF680YPC",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_7660c24df50ffa704721e7fe"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4d96223ddb8716713c2eb81e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-132914"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2b9473fc283959ba41e0aca4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_7dbcbec69cf4585b6979530c",
       "referenceId": "fa_ref_3245d35a9d0690e2335b89a4",
       "category": "fridge",
@@ -16394,37 +16301,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c62cad30aa726cbb714d5e9a",
-      "referenceId": "fa_ref_00a4fd550cdf41d3fc07916b",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HWC90UC",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8632f98c187f32ff5c3e6e27"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_eac72ab179f55dd59cb4f538"
-      ],
-      "legacyRuntimeIds": [
-        "ao-160880"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_00cef2f9c64fec20ec3e3793"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_a7afc2ef70d3f01759350ac4",
       "referenceId": "fa_ref_5f7b6dbc4f7c4c57c9152c2b",
       "category": "fridge",
@@ -16452,6 +16328,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_68d7810d7cb2acf101260e38"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_2a06d4531d956a5efcf8819a",
+      "referenceId": "fa_ref_7815e52e51f6b1e204354b2b",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF580YHC",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_08bae037fd286cc6",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_e353d512e7a025cd0a1e0564"
+      ],
+      "resolverIds": [
+        "haier-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_1279cb8210f776f3223adaa8"
+      ],
+      "legacyRuntimeIds": [
+        "ao-119645"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_4f1b17332e98ff48b3833c01"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_c62cad30aa726cbb714d5e9a",
+      "referenceId": "fa_ref_00a4fd550cdf41d3fc07916b",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HWC90UC",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_8632f98c187f32ff5c3e6e27"
+      ],
+      "resolverIds": [
+        "haier-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_eac72ab179f55dd59cb4f538"
+      ],
+      "legacyRuntimeIds": [
+        "ao-160880"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_00cef2f9c64fec20ec3e3793"
       ],
       "offlineReplayOutcome": null
     },
@@ -16488,6 +16426,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_8ba16a4f86ba9f7063ea753e",
+      "referenceId": "fa_ref_3da5985a2b93006bda04eefb",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF680YPC",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_7660c24df50ffa704721e7fe"
+      ],
+      "resolverIds": [
+        "haier-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_4d96223ddb8716713c2eb81e"
+      ],
+      "legacyRuntimeIds": [
+        "ao-132914"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_2b9473fc283959ba41e0aca4"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_a862d6c24cf1e4ecd33d271d",
       "referenceId": "fa_ref_30609783681807f617dae3b1",
       "category": "fridge",
@@ -16514,6 +16483,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_f491bf00786fabb93ac9861f"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_028ca48a1d5f3b44931b0c9e",
+      "referenceId": "fa_ref_61c56b941f00f29713cde015",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF580YPC",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8289a498ede8df44",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_ae65ba10bba01c71c96ecc11"
+      ],
+      "resolverIds": [
+        "haier-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_2d68c6c9eb21d41a3ee94647"
+      ],
+      "legacyRuntimeIds": [
+        "ao-129001"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_aa49c79122a50554720d5564"
       ],
       "offlineReplayOutcome": null
     },
@@ -20544,6 +20544,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_218f160c000c585a01fdc269",
+      "referenceId": "fa_ref_d1fc3a6f0df0f76054859bf5",
+      "category": "fridge",
+      "brand": "Miele",
+      "model": "KS4783EDETCCS",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "KS4783EDETCCS",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_299ade2fb963e526236a2cef"
+      ],
+      "resolverIds": [
+        "miele-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_b7db4bc5eb0bc3b28f4efdfe"
+      ],
+      "legacyRuntimeIds": [
+        "ao-154868"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9d137ef6a13b971d70adaee0"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_b0dbd04f47e0266007003f75",
       "referenceId": "fa_ref_fc439f4515c47040c4fd4a13",
       "category": "fridge",
@@ -20551,8 +20582,8 @@
       "model": "FNS4782EBS",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -20582,8 +20613,8 @@
       "model": "KS4783EDBS",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -20601,37 +20632,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_7cbca1b4db0bf49536a89216"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_218f160c000c585a01fdc269",
-      "referenceId": "fa_ref_d1fc3a6f0df0f76054859bf5",
-      "category": "fridge",
-      "brand": "Miele",
-      "model": "KS4783EDETCCS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_299ade2fb963e526236a2cef"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_b7db4bc5eb0bc3b28f4efdfe"
-      ],
-      "legacyRuntimeIds": [
-        "ao-154868"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9d137ef6a13b971d70adaee0"
       ],
       "offlineReplayOutcome": null
     },
@@ -21502,37 +21502,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b2244d75deff443b89e5e2c9",
-      "referenceId": "fa_ref_4414a56a5a364e5e78412031",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF7500BB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_15a7d32a92aa8aadd236c554"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_b0ee84dba24c9ae6249873fa"
-      ],
-      "legacyRuntimeIds": [
-        "ao-102267"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_dfc620e57eed5e0b3eddbd3a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_e5d73c03301f9f52a44b028d",
       "referenceId": "fa_ref_404b5deb0cab91b39391143c",
       "category": "fridge",
@@ -21559,37 +21528,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_503caf0d70f04bc0ae2e98db"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ff1cc686255490da1003a282",
-      "referenceId": "fa_ref_a30d97e8b5d66df690298a53",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF7900BFH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2460dd354b805b2bc3d96d51"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_764002319c78e620b230fe0f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-121960"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b6ab3751d2af635d8c2216b1"
       ],
       "offlineReplayOutcome": null
     },
@@ -21626,99 +21564,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d74ff90d3216e391efa4538a",
-      "referenceId": "fa_ref_52a2ba13254bf6b4a1572bed",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF9400BFH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d67abb6cab41e5dd73859fdc"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_b12024854cac2c50af8d48aa"
-      ],
-      "legacyRuntimeIds": [
-        "ao-159862"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2b52267ef5cc4245360ef589"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b49b1ab4a804e34cab671df0",
-      "referenceId": "fa_ref_973c2822b6794dc7c0b0f312",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF9700BFH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_3dda8b413d5b79d0bb69d714"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_97a42c78ffe2dfc4c76217ff"
-      ],
-      "legacyRuntimeIds": [
-        "ao-105547"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4cc6a22292d4437b55ed62ec"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_4e84cb535e1f958c14bb9331",
-      "referenceId": "fa_ref_998274b933c86670d842a3f4",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF9800BFH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_756195964d3a7def0c8331ab"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4e0c094f77e02225b54e5875"
-      ],
-      "legacyRuntimeIds": [
-        "ao-159863"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_70dc2c6fcdf91e621419f21d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_5c51c1bda94844faab9e5188",
       "referenceId": "fa_ref_48557245df7151c1032a777c",
       "category": "fridge",
@@ -21745,68 +21590,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_6a3ff9fde3cabbd058bc21b1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_4904220ed2e53daffddf1359",
-      "referenceId": "fa_ref_cf804b20eb6442a5d71e36be",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRL334NMB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b0b7ff8dbb83c1a1860c4f0f"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d447e2da85532c5eb0a2ec70"
-      ],
-      "legacyRuntimeIds": [
-        "ao-141942"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9aaf3ffe06abf1ed63bb76cf"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1a1106cffd5f163b90bb1778",
-      "referenceId": "fa_ref_69115d64d7661cac09bb1628",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRL4200B",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2b0c88151005df20023535d2"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d438f5a7523e3f79aad37348"
-      ],
-      "legacyRuntimeIds": [
-        "ao-163069"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b4a0fbcb9062bcdb3af75244"
       ],
       "offlineReplayOutcome": null
     },
@@ -22029,6 +21812,223 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_d74ff90d3216e391efa4538a",
+      "referenceId": "fa_ref_52a2ba13254bf6b4a1572bed",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF9400BFH",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family d4506d776937",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_d67abb6cab41e5dd73859fdc"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_b12024854cac2c50af8d48aa"
+      ],
+      "legacyRuntimeIds": [
+        "ao-159862"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_2b52267ef5cc4245360ef589"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_4e84cb535e1f958c14bb9331",
+      "referenceId": "fa_ref_998274b933c86670d842a3f4",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF9800BFH",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family d4506d776937",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_756195964d3a7def0c8331ab"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_4e0c094f77e02225b54e5875"
+      ],
+      "legacyRuntimeIds": [
+        "ao-159863"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_70dc2c6fcdf91e621419f21d"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_b2244d75deff443b89e5e2c9",
+      "referenceId": "fa_ref_4414a56a5a364e5e78412031",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7500BB",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "SRF7500BB",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_15a7d32a92aa8aadd236c554"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_b0ee84dba24c9ae6249873fa"
+      ],
+      "legacyRuntimeIds": [
+        "ao-102267"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_dfc620e57eed5e0b3eddbd3a"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_ff1cc686255490da1003a282",
+      "referenceId": "fa_ref_a30d97e8b5d66df690298a53",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7900BFH",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "SRF7900BFH",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_2460dd354b805b2bc3d96d51"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_764002319c78e620b230fe0f"
+      ],
+      "legacyRuntimeIds": [
+        "ao-121960"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b6ab3751d2af635d8c2216b1"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_b49b1ab4a804e34cab671df0",
+      "referenceId": "fa_ref_973c2822b6794dc7c0b0f312",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF9700BFH",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "SRF9700BFH",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_3dda8b413d5b79d0bb69d714"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_97a42c78ffe2dfc4c76217ff"
+      ],
+      "legacyRuntimeIds": [
+        "ao-105547"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_4cc6a22292d4437b55ed62ec"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_4904220ed2e53daffddf1359",
+      "referenceId": "fa_ref_cf804b20eb6442a5d71e36be",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRL334NMB",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "SRL334NMB",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_b0b7ff8dbb83c1a1860c4f0f"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_d447e2da85532c5eb0a2ec70"
+      ],
+      "legacyRuntimeIds": [
+        "ao-141942"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9aaf3ffe06abf1ed63bb76cf"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_1a1106cffd5f163b90bb1778",
+      "referenceId": "fa_ref_69115d64d7661cac09bb1628",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRL4200B",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "SRL4200B",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_2b0c88151005df20023535d2"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_d438f5a7523e3f79aad37348"
+      ],
+      "legacyRuntimeIds": [
+        "ao-163069"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b4a0fbcb9062bcdb3af75244"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_03673249eb4eb7e30bfc3084",
       "referenceId": "fa_ref_171bfee13fe4fe7d42ddb21a",
       "category": "fridge",
@@ -22036,8 +22036,8 @@
       "model": "SRT4200S",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRT4200S",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -23052,37 +23052,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d0f755378d52d5f36159f623",
-      "referenceId": "fa_ref_c64bf17adf7f867c0fd586c3",
-      "category": "fridge",
-      "brand": "Smeg",
-      "model": "FAB32RWH5AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d73f168ce901c03f24592504"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_082a385d730fbff8e7ba1d2b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-101316"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_e429957e568d66573be8a4e5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_d1bd8ea90b9de62ff3444f30",
       "referenceId": "fa_ref_2bc530a1b5127304eefe8af4",
       "category": "fridge",
@@ -23424,37 +23393,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ef2b7af9c5134a534a8d92d8",
-      "referenceId": "fa_ref_dc953441da6057602d950fec",
-      "category": "fridge",
-      "brand": "Smeg",
-      "model": "SABI221FF",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b0f1c2647cb103a3e9ae28d9"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_cd29e0a837bf66a6ee0c788f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-110391"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_50c73beb20c506db9de119a5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c5c175487c1ea94acfa2732d",
       "referenceId": "fa_ref_ee85f46cbfff3ce1518b8f89",
       "category": "fridge",
@@ -23481,6 +23419,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_9a0b9589cb82eb28eeb9055a"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_ef2b7af9c5134a534a8d92d8",
+      "referenceId": "fa_ref_dc953441da6057602d950fec",
+      "category": "fridge",
+      "brand": "Smeg",
+      "model": "SABI221FF",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_009e7612e9ed183f",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_b0f1c2647cb103a3e9ae28d9"
+      ],
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_cd29e0a837bf66a6ee0c788f"
+      ],
+      "legacyRuntimeIds": [
+        "ao-110391"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_50c73beb20c506db9de119a5"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_d0f755378d52d5f36159f623",
+      "referenceId": "fa_ref_c64bf17adf7f867c0fd586c3",
+      "category": "fridge",
+      "brand": "Smeg",
+      "model": "FAB32RWH5AU",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_41a63e0b82890f46",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_d73f168ce901c03f24592504"
+      ],
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_082a385d730fbff8e7ba1d2b"
+      ],
+      "legacyRuntimeIds": [
+        "ao-101316"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_e429957e568d66573be8a4e5"
       ],
       "offlineReplayOutcome": null
     },
@@ -23973,37 +23973,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7915ae11ebf4dd2c3b2c8666",
-      "referenceId": "fa_ref_7c936edb103f7762189bfd5d",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE5300BC-R",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f06689404ec0073ee5986a7f"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_04de1bfe9e9719affced76c6"
-      ],
-      "legacyRuntimeIds": [
-        "ao-86336"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9936ef51612b0183de625c8d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_9d77426042ae7de5ba68ac61",
       "referenceId": "fa_ref_51e4eb943c191b7740209f91",
       "category": "fridge",
@@ -24123,37 +24092,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_f3295d6e5592da03206d21bd"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_2cdf263bbe585e6bb254e7b1",
-      "referenceId": "fa_ref_341c132a1ba2d4377a0dd0fe",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE5300SC-L",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_64f849b55ce61202d9956232"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_407fec6a355954f67a5470bc"
-      ],
-      "legacyRuntimeIds": [
-        "ao-86337"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a311bc48195b18a9d3708066"
       ],
       "offlineReplayOutcome": null
     },
@@ -25988,6 +25926,68 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_7915ae11ebf4dd2c3b2c8666",
+      "referenceId": "fa_ref_7c936edb103f7762189bfd5d",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5300BC-R",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_f06689404ec0073ee5986a7f"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_04de1bfe9e9719affced76c6"
+      ],
+      "legacyRuntimeIds": [
+        "ao-86336"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9936ef51612b0183de625c8d"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_2cdf263bbe585e6bb254e7b1",
+      "referenceId": "fa_ref_341c132a1ba2d4377a0dd0fe",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5300SC-L",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_64f849b55ce61202d9956232"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_407fec6a355954f67a5470bc"
+      ],
+      "legacyRuntimeIds": [
+        "ao-86337"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_a311bc48195b18a9d3708066"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_f556edb5183456168c13cab7",
       "referenceId": "fa_ref_69e68a9d064ae20ddf620714",
       "category": "fridge",
@@ -25995,8 +25995,8 @@
       "model": "WTM2500WA-X",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7d3a04e61a6bc0ad",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -26232,37 +26232,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d3e52ecc4b31a0069fcbd389",
-      "referenceId": "fa_ref_2d8057087ded2a2a46ab6b41",
-      "category": "washing_machine",
-      "brand": "Beko",
-      "model": "BWD7541W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_409e695fa6ce0aa41fa26f18"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_cb31f8071db3044e56e70b94"
-      ],
-      "legacyRuntimeIds": [
-        "ao-103526"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5bcdf43ee15f35b91de7d929"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_23500beac849f7890f2bc21c",
       "referenceId": "fa_ref_75a5621cf854e498c3681f0d",
       "category": "washing_machine",
@@ -26444,6 +26413,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_da3acd301b7457af38044418"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_d3e52ecc4b31a0069fcbd389",
+      "referenceId": "fa_ref_2d8057087ded2a2a46ab6b41",
+      "category": "washing_machine",
+      "brand": "Beko",
+      "model": "BWD7541W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_f7d7d6dab34a6731",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_409e695fa6ce0aa41fa26f18"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_cb31f8071db3044e56e70b94"
+      ],
+      "legacyRuntimeIds": [
+        "ao-103526"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_5bcdf43ee15f35b91de7d929"
       ],
       "offlineReplayOutcome": null
     },
@@ -27809,6 +27809,68 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_7a7eafdb64c62a84d0ee55ea",
+      "referenceId": "fa_ref_b75d68ac2af262e6fe53a3b9",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060P5",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 3924d1301519",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_683a13562dc3b0fb21ed5fa7"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_7c019913330fc717686c0d76"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-washing-machine-fisher-paykel-wh1060p5"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_7ebf94dfe0ef9e0f5acd32be"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_237f7d6614a3a22a19f9c8b3",
+      "referenceId": "fa_ref_dae0d6eaef8645eab79f97ba",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH9060P5",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 3924d1301519",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_63d67120be596c6dae053547"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_501c698cfc9db824aad3dc55"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-washing-machine-fisher-paykel-wh9060p5"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_0a9112214aa6c56e20d3f83a"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_d124ed94316b3dc7f9101f6a",
       "referenceId": "fa_ref_90fc8a14a91c4647f92d2174",
       "category": "washing_machine",
@@ -27816,8 +27878,8 @@
       "model": "WH1060DG5",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
+      "groupType": "document_family",
+      "groupName": "Document family 65d9ee96a612",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
       "executionReadiness": "DISCOVERY_READY",
@@ -27835,6 +27897,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_86d39d004a761ef39a2a351b"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0dd93bbe86999cb0d1859800",
+      "referenceId": "fa_ref_e5939436047fd2d843b16e90",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260H5",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 74aba7e73318",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_a2d12981107856b2b25743fb"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_080286f47c7922da0fdde65c"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-washing-machine-fisher-paykel-wh1260h5"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_180aae07fda63c6f03c7c175"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_bdee7b95c2305af9f79ad4d6",
+      "referenceId": "fa_ref_af1771fa5a70d4714b9be6f0",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260HG5",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family a8d9d2457a45",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_0aa4a22bd0877f7afbf9ae75"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_299a623c4c89537b1263353a"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-washing-machine-fisher-paykel-wh1260hg5"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_64b489233ebdf4a516209dbe"
       ],
       "offlineReplayOutcome": null
     },
@@ -27871,37 +27995,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7a7eafdb64c62a84d0ee55ea",
-      "referenceId": "fa_ref_b75d68ac2af262e6fe53a3b9",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1060P5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_43e089d3d7017530",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_683a13562dc3b0fb21ed5fa7"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7c019913330fc717686c0d76"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh1060p5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7ebf94dfe0ef9e0f5acd32be"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_e23820fe16c157149a8b170f",
       "referenceId": "fa_ref_c98a85d6ccada04ca8e60691",
       "category": "washing_machine",
@@ -27933,37 +28026,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_bdee7b95c2305af9f79ad4d6",
-      "referenceId": "fa_ref_af1771fa5a70d4714b9be6f0",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1260HG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0aa4a22bd0877f7afbf9ae75"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_299a623c4c89537b1263353a"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh1260hg5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_64b489233ebdf4a516209dbe"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_4f087ba4a3d8d9f42dc01396",
       "referenceId": "fa_ref_d5b6f21af6aaa261c508ac02",
       "category": "washing_machine",
@@ -27990,37 +28052,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_a9e2a984a39d89afece799ec"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_237f7d6614a3a22a19f9c8b3",
-      "referenceId": "fa_ref_dae0d6eaef8645eab79f97ba",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH9060P5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_6c24f0329d3740aa",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_63d67120be596c6dae053547"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_501c698cfc9db824aad3dc55"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh9060p5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0a9112214aa6c56e20d3f83a"
       ],
       "offlineReplayOutcome": null
     },
@@ -28176,37 +28207,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_7e1ed79251c3eaf2620ea2ac"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0dd93bbe86999cb0d1859800",
-      "referenceId": "fa_ref_e5939436047fd2d843b16e90",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1260H5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a2d12981107856b2b25743fb"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_080286f47c7922da0fdde65c"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh1260h5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_180aae07fda63c6f03c7c175"
       ],
       "offlineReplayOutcome": null
     },
@@ -28925,37 +28925,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_37abf7f847d9f0fcc3057b26",
-      "referenceId": "fa_ref_77aa37d3c00ecbafa5175c65",
-      "category": "washing_machine",
-      "brand": "Hisense",
-      "model": "HWF5I1015",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8f1a836b08bd116057ce63c2"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_5468e581ed8a2c3df9da236b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-178019"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_44b68ed8f86972e4d506c814"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_8ed7f3af9bd3d6bd35a9abf0",
       "referenceId": "fa_ref_1b796c0c3a361d8822ff07f0",
       "category": "washing_machine",
@@ -29044,6 +29013,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_73374c1cd548ba724a612e2e"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_37abf7f847d9f0fcc3057b26",
+      "referenceId": "fa_ref_77aa37d3c00ecbafa5175c65",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF5I1015",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_8f1a836b08bd116057ce63c2"
+      ],
+      "resolverIds": [
+        "hisense-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_5468e581ed8a2c3df9da236b"
+      ],
+      "legacyRuntimeIds": [
+        "ao-178019"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_44b68ed8f86972e4d506c814"
       ],
       "offlineReplayOutcome": null
     },
@@ -59474,99 +59474,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e4204ecbe473a208f770f757",
-      "referenceId": "fa_ref_d1624ad9e6bec65448ab9485",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GS-D600MBLC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_589909d35e1be9b74f08e4b6"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_8c8517742fa87d0f8d6acaa4"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3255"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a61a08640c2e2dd21f19a35c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_92a75a00e40f0de70d1130b0",
-      "referenceId": "fa_ref_934bdd8880799f88b2b55ed5",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GS-N600PL",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_589909d35e1be9b74f08e4b6"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_004f63a9c29f504086fecb37"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3215"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7c50fc7f980ba97087aba4e1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ef80ca4e964a8ab7b69b2000",
-      "referenceId": "fa_ref_6dcc63b63357bdc04ed74847",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GS-V600MBLC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_589909d35e1be9b74f08e4b6"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_69f1d71463b7f0e9709c302c"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3257"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_69d388b96ccc99219e75015d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_baf877a1b260924801096b2b",
       "referenceId": "fa_ref_49fc0ffbeaa9f87742999691",
       "category": "fridge",
@@ -60306,6 +60213,99 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ae4ec87d7216ebb521ac6d65"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_e4204ecbe473a208f770f757",
+      "referenceId": "fa_ref_d1624ad9e6bec65448ab9485",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-D600MBLC",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_589909d35e1be9b74f08e4b6"
+      ],
+      "resolverIds": [
+        "lg-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_8c8517742fa87d0f8d6acaa4"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3255"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_a61a08640c2e2dd21f19a35c"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_92a75a00e40f0de70d1130b0",
+      "referenceId": "fa_ref_934bdd8880799f88b2b55ed5",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-N600PL",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_589909d35e1be9b74f08e4b6"
+      ],
+      "resolverIds": [
+        "lg-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_004f63a9c29f504086fecb37"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3215"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_7c50fc7f980ba97087aba4e1"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_ef80ca4e964a8ab7b69b2000",
+      "referenceId": "fa_ref_6dcc63b63357bdc04ed74847",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-V600MBLC",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_589909d35e1be9b74f08e4b6"
+      ],
+      "resolverIds": [
+        "lg-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_69f1d71463b7f0e9709c302c"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3257"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_69d388b96ccc99219e75015d"
       ],
       "offlineReplayOutcome": null
     },
@@ -187697,6 +187697,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_f181f28b790ff8116d46fd03",
+      "referenceId": "fa_ref_c65dbb6328398b9a13ef4f89",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "ERE5047SC",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P3_CONFLICT",
+      "groupType": "document_family",
+      "groupName": "Document family fb58322ec3a2",
+      "operationalClass": "CONFLICT_QUARANTINE",
+      "route": "CONFLICT_CLOSURE",
+      "executionReadiness": "RESEARCH_REQUIRED",
+      "candidateSourceIds": [
+        "historical_source_145a13796cec3e4a09d96143"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_40f068dae2262c0c6ea240fc"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3869"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_ca014167f979a0beb26322a4"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_094504d3df5705c6db0aed48",
       "referenceId": "fa_ref_c3d91bb090c9c1a61725976c",
       "category": "fridge",
@@ -187816,37 +187847,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_b0257d1a5c5bbabc09622e7d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f181f28b790ff8116d46fd03",
-      "referenceId": "fa_ref_c65dbb6328398b9a13ef4f89",
-      "category": "fridge",
-      "brand": "Electrolux",
-      "model": "ERE5047SC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P3_CONFLICT",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
-      "operationalClass": "CONFLICT_QUARANTINE",
-      "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_145a13796cec3e4a09d96143"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_40f068dae2262c0c6ea240fc"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3869"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ca014167f979a0beb26322a4"
       ],
       "offlineReplayOutcome": null
     },
@@ -188498,6 +188498,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_b4ef86457bff6b3ddd56e290",
+      "referenceId": "fa_ref_1de5d63ebd2beb35a740fa2a",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4500WC",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P3_CONFLICT",
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
+      "operationalClass": "CONFLICT_QUARANTINE",
+      "route": "CONFLICT_CLOSURE",
+      "executionReadiness": "RESEARCH_REQUIRED",
+      "candidateSourceIds": [
+        "historical_source_5bc8aff57b8c3eb77338aef8"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_5fc552e87b5a3ff8b0e6983d"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3826"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_1cc22c63d7953781ef67b3c1"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_ffaec814e109a495d867017d",
       "referenceId": "fa_ref_ebc2e54849fb51f7b0109aca",
       "category": "fridge",
@@ -189144,37 +189175,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_3c18b8ecbd1aefb2f1c15eae"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b4ef86457bff6b3ddd56e290",
-      "referenceId": "fa_ref_1de5d63ebd2beb35a740fa2a",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4500WC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P3_CONFLICT",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3d4a6e7607c06952",
-      "operationalClass": "CONFLICT_QUARANTINE",
-      "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_5bc8aff57b8c3eb77338aef8"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_5fc552e87b5a3ff8b0e6983d"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3826"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1cc22c63d7953781ef67b3c1"
       ],
       "offlineReplayOutcome": null
     },

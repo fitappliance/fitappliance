@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.6",
+  "policyVersion": "2026-07-28.1",
   "supportedReceiptPolicyVersions": [
     "2026-07-13.2",
     "2026-07-14.1",
@@ -11,7 +11,8 @@
     "2026-07-16.3",
     "2026-07-16.4",
     "2026-07-16.5",
-    "2026-07-16.6"
+    "2026-07-16.6",
+    "2026-07-28.1"
   ],
   "market": "AU",
   "brandGlobalArtifactHosts": {
@@ -34,8 +35,19 @@
     "esatto": [
       "static1.squarespace.com"
     ],
+    "inalto": [
+      "static1.squarespace.com"
+    ],
     "bosch": [
       "media3.bsh-group.com"
+    ]
+  },
+  "brandProvenanceRequiredArtifactPathPatterns": {
+    "esatto": [
+      "^/s/"
+    ],
+    "inalto": [
+      "^/s/"
     ]
   },
   "brandApiEndpoints": {

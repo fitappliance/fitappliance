@@ -1,0 +1,1920 @@
+{
+  "schemaVersion": 1,
+  "sourceBindings": {
+    "wp7aReportSha256": "6050a0ee7f0cf0ab7198d8993e47b54b704aaa371b439a83e3a8d3837fa3b169",
+    "checkpointSha256": "cf1f0f3376a46d34240c63c5eecb7249e4f4542b66f13d3ec6dec9c8ebec528c",
+    "checkpointPolicySha256": "8a990ba19339788d57dd8c60168e78bd4296d8098e281ef1f7379c7733bd35ac",
+    "manufacturerStrategySha256": "8ff339b3f253ffca5d9f152af2313a1f1505148d28d972ffb1eccbf240ebf7c9",
+    "manufacturerSourcePolicySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+    "contactMatrixSha256": "b60928f14f9349e1665df3429267493a4327437f670261893745c9a6a667aa98"
+  },
+  "records": [
+    {
+      "sampleId": "pdf_baseline_0091f6e0fab54efeff6261c7",
+      "category": "dishwasher",
+      "brand": "Robinhood",
+      "model": "RHDW45PS",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "cdn.shopify.com",
+      "organization": {
+        "key": "brand-fallback:robinhood",
+        "label": "Brand-level fallback: Robinhood",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "robinhood-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "cdn.shopify.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_01737849db8a8248fd5fe7a6",
+      "category": "dishwasher",
+      "brand": "ASKO",
+      "model": "D5646SSXXL",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:asko",
+        "label": "Brand-level fallback: ASKO",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+asko-official-manuals-api",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "asko-official-manuals-api"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_09fbd20c658705a1cea51837",
+      "category": "dishwasher",
+      "brand": "Ilve",
+      "model": "IVFSD60",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:ilve",
+        "label": "Brand-level fallback: Ilve",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_13c9a33b90fdf24653846e50",
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "ODW717XB",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:omega",
+        "label": "Brand-level fallback: Omega",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+omega-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "omega-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_3ccbee9cef21a2ad69eaf7dc",
+      "category": "dishwasher",
+      "brand": "Samsung",
+      "model": "DW60H6050FW",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:samsung",
+        "label": "Brand-level fallback: Samsung",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+samsung-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "samsung-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 1,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au",
+        "www.samsung.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_4066ef965fbff1b3b658b8e4",
+      "category": "dishwasher",
+      "brand": "Whirlpool",
+      "model": "ADP5000MT",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:whirlpool",
+        "label": "Brand-level fallback: Whirlpool",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_4ff2baa8fd61b2dd045ec892",
+      "category": "dishwasher",
+      "brand": "Euromaid",
+      "model": "EDW6014X",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "www.euromaid.com",
+      "organization": {
+        "key": "brand-fallback:euromaid",
+        "label": "Brand-level fallback: Euromaid",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+euromaid-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "euromaid-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 4,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 4
+      },
+      "candidateHosts": [
+        "www.euromaid.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_b10098c89b1b7927d6a8cff9",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDWI605S",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "esatto.house",
+      "organization": {
+        "key": "residentia-group",
+        "label": "Residentia Group",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "REDIRECT_PROVENANCE_REJECTED",
+          "host": "esatto.house"
+        }
+      ],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_01140f452c716ec932965544",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE5060M1",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+fisher-paykel-official-support",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "fisher-paykel-official-support"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0e746d20e35d14aa4686701b",
+      "category": "dryer",
+      "brand": "Beko",
+      "model": "DPE7400",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:beko",
+        "label": "Brand-level fallback: Beko",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+beko-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "beko-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_105611e6562fa32994e4e387",
+      "category": "dryer",
+      "brand": "Midea",
+      "model": "MDHP07",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:midea",
+        "label": "Brand-level fallback: Midea",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+midea-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "midea-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_139ba19eda53a6eec1a697cb",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE4560M1",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+fisher-paykel-official-support",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "fisher-paykel-official-support"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_1bea4418046e98b8df3645af",
+      "category": "dryer",
+      "brand": "Whirlpool",
+      "model": "HSCR80420",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:whirlpool",
+        "label": "Brand-level fallback: Whirlpool",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_26e2a824176892049c69d7aa",
+      "category": "dryer",
+      "brand": "Samsung",
+      "model": "DV90N8289AW",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:samsung",
+        "label": "Brand-level fallback: Samsung",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+samsung-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "samsung-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 3,
+        "officialDocuments": 0,
+        "officialProductPages": 2,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au",
+        "www.samsung.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_271006272e40f3fd69e5c2bb",
+      "category": "dryer",
+      "brand": "Samsung",
+      "model": "DV80M5010QW",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:samsung",
+        "label": "Brand-level fallback: Samsung",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+samsung-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "samsung-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 1,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au",
+        "www.samsung.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_2c559af6ed099395e696b9e5",
+      "category": "dryer",
+      "brand": "Beko",
+      "model": "DCY7402GXB2",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:beko",
+        "label": "Brand-level fallback: Beko",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+beko-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "beko-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_3201eb3887b67704b0943efc",
+      "category": "dryer",
+      "brand": "Haier",
+      "model": "HDY-M40",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+haier-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "haier-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_39a5920605e1b6d8fe160502",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060P1",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+fisher-paykel-official-support",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "fisher-paykel-official-support"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_5dd015c14682b50ddfb66c5e",
+      "category": "dryer",
+      "brand": "Miele",
+      "model": "TWD364",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "miele-australia",
+        "label": "Miele Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+miele-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "miele-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_6a4388cba7257dd4d9613a23",
+      "category": "dryer",
+      "brand": "Omega",
+      "model": "OCD7HP",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:omega",
+        "label": "Brand-level fallback: Omega",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+omega-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "omega-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 2
+      },
+      "candidateHosts": [
+        "cdn.shopify.com",
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_c3803a0f3b9196ea12abb89c",
+      "category": "dryer",
+      "brand": "Robinhood",
+      "model": "RHSD7W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+      "sourceHost": "cdn.shopify.com",
+      "organization": {
+        "key": "brand-fallback:robinhood",
+        "label": "Brand-level fallback: Robinhood",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "robinhood-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 4,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 4
+      },
+      "candidateHosts": [
+        "cdn.shopify.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_01dace5f644854a73bf18dd4",
+      "category": "fridge",
+      "brand": "Smeg",
+      "model": "FAB32RWH5AU",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "smeg-australia",
+        "label": "Smeg Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "OFFICIAL_AUTHORITY_REJECTED",
+          "host": "pi-exchange.smeg.it"
+        },
+        {
+          "code": "HTTP_NOT_FOUND",
+          "host": "sys.smeg.com.au"
+        }
+      ],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0628a4f689af28d321e7bed6",
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF69W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+      "sourceHost": "esatto.house",
+      "organization": {
+        "key": "residentia-group",
+        "label": "Residentia Group",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "REDIRECT_PROVENANCE_REJECTED",
+          "host": "esatto.house"
+        }
+      ],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_071032fa7bd7a1ef5fbb6aee",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BTM345PX",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:beko",
+        "label": "Brand-level fallback: Beko",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+beko-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "beko-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0d0ee9fa596dcc6363943645",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ECFR145W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "www.euromaid.com",
+      "organization": {
+        "key": "brand-fallback:euromaid",
+        "label": "Brand-level fallback: Euromaid",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+euromaid-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "euromaid-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 5,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 5
+      },
+      "candidateHosts": [
+        "www.euromaid.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0f210c22a8ac7b6768d401df",
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "ICF142B2",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "inalto.house",
+      "organization": {
+        "key": "residentia-group",
+        "label": "Residentia Group",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "REDIRECT_PROVENANCE_REJECTED",
+          "host": "inalto.house"
+        }
+      ],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_160d49bf7e5d139a6c8c71f6",
+      "category": "fridge",
+      "brand": "Miele",
+      "model": "KS 7793 D",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "media.miele.com",
+      "organization": {
+        "key": "miele-australia",
+        "label": "Miele Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+miele-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "miele-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 6,
+        "officialDocuments": 0,
+        "officialProductPages": 1,
+        "references": 5
+      },
+      "candidateHosts": [
+        "media.miele.com",
+        "shop.miele.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_19c5d120bfd5cfec31440901",
+      "category": "fridge",
+      "brand": "Ilve",
+      "model": "ILREF256I/L",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:ilve",
+        "label": "Brand-level fallback: Ilve",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_2d6e398d03ab287029618ce3",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7300BSS",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+      "sourceHost": "downloadcenter.samsung.com",
+      "organization": {
+        "key": "brand-fallback:samsung",
+        "label": "Brand-level fallback: Samsung",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+samsung-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "samsung-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 1,
+        "references": 1
+      },
+      "candidateHosts": [
+        "downloadcenter.samsung.com",
+        "www.samsung.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_3423bb79229de813906cec06",
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHBFD121W",
+      "representedTargetCount": 2,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "cdn.shopify.com",
+      "organization": {
+        "key": "brand-fallback:robinhood",
+        "label": "Brand-level fallback: Robinhood",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "robinhood-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 3,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 3
+      },
+      "candidateHosts": [
+        "cdn.shopify.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_4fdbca7853d4fac48cd971ed",
+      "category": "fridge",
+      "brand": "Mitsubishi Electric",
+      "model": "MR-BF325EK-W-A",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:mitsubishi-electric",
+        "label": "Brand-level fallback: Mitsubishi Electric",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_6be4ca7b1a33d478852258f1",
+      "category": "fridge",
+      "brand": "Liebherr",
+      "model": "ICNh 5133",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:liebherr",
+        "label": "Brand-level fallback: Liebherr",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+liebherr-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "liebherr-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 9,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 9
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au",
+        "www.winningcommercial.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_6e182534e33df68020f9e8be",
+      "category": "fridge",
+      "brand": "TCL",
+      "model": "P421CDN",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P2_CURRENT_CONFIRMATION",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:tcl",
+        "label": "Brand-level fallback: TCL",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_8e11d56025b2146584b26002",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EFE4227SC",
+      "representedTargetCount": 2,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "www.electrolux.com.au",
+      "organization": {
+        "key": "electrolux-home-products",
+        "label": "Electrolux Home Products",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "TRANSPORT_COMMAND_FAILED",
+          "host": "www.electrolux.com.au"
+        }
+      ],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_00c8eccc7446588d0897e3e0",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WA8060E1",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+fisher-paykel-official-support",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "fisher-paykel-official-support"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 2
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au",
+        "www.fisherpaykel.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0403d1697666a642c1a4a18b",
+      "category": "washing_machine",
+      "brand": "Beko",
+      "model": "WMY9046LB2",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:beko",
+        "label": "Brand-level fallback: Beko",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+beko-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "beko-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0a55e053bf92fdae5d7e2080",
+      "category": "washing_machine",
+      "brand": "Midea",
+      "model": "MTW70",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:midea",
+        "label": "Brand-level fallback: Midea",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+midea-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "midea-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0ab3a01c58a50efa12cf760a",
+      "category": "washing_machine",
+      "brand": "Haier",
+      "model": "HWD8040BW1",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+haier-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "haier-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_123a43881bec524ab70e5ee1",
+      "category": "washing_machine",
+      "brand": "Omega",
+      "model": "OWD735W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:omega",
+        "label": "Brand-level fallback: Omega",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+omega-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "omega-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 2
+      },
+      "candidateHosts": [
+        "cdn.shopify.com",
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_208777d115ce2da4ab7757b4",
+      "category": "washing_machine",
+      "brand": "ASKO",
+      "model": "W4104C.W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:asko",
+        "label": "Brand-level fallback: ASKO",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "identity_unproven",
+      "primaryMechanism": "EXACT_MODEL_IDENTITY_UNPROVEN",
+      "resolverContract": "architecture-v2-core-official-discovery+asko-official-manuals-api",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "asko-official-manuals-api"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 1,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "asko.hgecdn.net",
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_33243bb829eba191ce7f8e1f",
+      "category": "washing_machine",
+      "brand": "VOGUE",
+      "model": "360113",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+      "sourceHost": "trade-depot.s3.ap-southeast-2.amazonaws.com",
+      "organization": {
+        "key": "brand-fallback:vogue",
+        "label": "Brand-level fallback: VOGUE",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+vogue-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "vogue-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 2,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 2
+      },
+      "candidateHosts": [
+        "trade-depot.s3.ap-southeast-2.amazonaws.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_44d15198a65cbeeb60b1a647",
+      "category": "washing_machine",
+      "brand": "Whirlpool",
+      "model": "WWEB9602IW",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "brand-fallback:whirlpool",
+        "label": "Brand-level fallback: Whirlpool",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_b16ef12feeb12e8b1cfa500d",
+      "category": "washing_machine",
+      "brand": "CHIQ",
+      "model": "WDFL8T48W2",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P2_CURRENT_CONFIRMATION",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "chiq-australia",
+        "label": "CHiQ Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+chiq-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "chiq-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false
+    }
+  ],
+  "inventoryId": "pdf_acquisition_failure_inventory_e9c8830a5fd98dda28de51bc",
+  "summary": {
+    "totalFailures": 43,
+    "representedTargets": 45,
+    "publicationEligible": 0,
+    "unmappedOrganizationSamples": 29,
+    "byMechanism": {
+      "OFFICIAL_ROUTE_ABSENT": 7,
+      "OFFICIAL_CANDIDATE_ABSENT": 25,
+      "OFFICIAL_ARTIFACT_ABSENT": 5,
+      "OFFICIAL_TRANSPORT_FAILED": 5,
+      "EXACT_MODEL_IDENTITY_UNPROVEN": 1,
+      "SOURCE_CONTENT_ERROR": 0
+    }
+  },
+  "recoveryRanking": [
+    {
+      "mechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "samples": 25,
+      "representedTargets": 26
+    },
+    {
+      "mechanism": "OFFICIAL_ROUTE_ABSENT",
+      "samples": 7,
+      "representedTargets": 7
+    },
+    {
+      "mechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "samples": 5,
+      "representedTargets": 6
+    },
+    {
+      "mechanism": "OFFICIAL_ARTIFACT_ABSENT",
+      "samples": 5,
+      "representedTargets": 5
+    },
+    {
+      "mechanism": "EXACT_MODEL_IDENTITY_UNPROVEN",
+      "samples": 1,
+      "representedTargets": 1
+    }
+  ],
+  "groups": {
+    "byOrganization": [
+      {
+        "key": "chiq-australia",
+        "label": "CHiQ Australia",
+        "mapping": "contact_matrix",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "electrolux-home-products",
+        "label": "Electrolux Home Products",
+        "mapping": "contact_matrix",
+        "samples": 1,
+        "representedTargets": 2
+      },
+      {
+        "key": "fisher-paykel-australia",
+        "label": "Fisher & Paykel Australia",
+        "mapping": "contact_matrix",
+        "samples": 6,
+        "representedTargets": 6
+      },
+      {
+        "key": "miele-australia",
+        "label": "Miele Australia",
+        "mapping": "contact_matrix",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "residentia-group",
+        "label": "Residentia Group",
+        "mapping": "contact_matrix",
+        "samples": 3,
+        "representedTargets": 3
+      },
+      {
+        "key": "smeg-australia",
+        "label": "Smeg Australia",
+        "mapping": "contact_matrix",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "brand-fallback:asko",
+        "label": "Brand-level fallback: ASKO",
+        "mapping": "brand_fallback",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "brand-fallback:beko",
+        "label": "Brand-level fallback: Beko",
+        "mapping": "brand_fallback",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "brand-fallback:euromaid",
+        "label": "Brand-level fallback: Euromaid",
+        "mapping": "brand_fallback",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "brand-fallback:ilve",
+        "label": "Brand-level fallback: Ilve",
+        "mapping": "brand_fallback",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "brand-fallback:liebherr",
+        "label": "Brand-level fallback: Liebherr",
+        "mapping": "brand_fallback",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "brand-fallback:midea",
+        "label": "Brand-level fallback: Midea",
+        "mapping": "brand_fallback",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "brand-fallback:mitsubishi-electric",
+        "label": "Brand-level fallback: Mitsubishi Electric",
+        "mapping": "brand_fallback",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "brand-fallback:omega",
+        "label": "Brand-level fallback: Omega",
+        "mapping": "brand_fallback",
+        "samples": 3,
+        "representedTargets": 3
+      },
+      {
+        "key": "brand-fallback:robinhood",
+        "label": "Brand-level fallback: Robinhood",
+        "mapping": "brand_fallback",
+        "samples": 3,
+        "representedTargets": 4
+      },
+      {
+        "key": "brand-fallback:samsung",
+        "label": "Brand-level fallback: Samsung",
+        "mapping": "brand_fallback",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "brand-fallback:tcl",
+        "label": "Brand-level fallback: TCL",
+        "mapping": "brand_fallback",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "brand-fallback:vogue",
+        "label": "Brand-level fallback: VOGUE",
+        "mapping": "brand_fallback",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "brand-fallback:whirlpool",
+        "label": "Brand-level fallback: Whirlpool",
+        "mapping": "brand_fallback",
+        "samples": 3,
+        "representedTargets": 3
+      }
+    ],
+    "byBrand": [
+      {
+        "key": "asko",
+        "label": "ASKO",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "beko",
+        "label": "Beko",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "chiq",
+        "label": "CHIQ",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "electrolux",
+        "label": "Electrolux",
+        "samples": 1,
+        "representedTargets": 2
+      },
+      {
+        "key": "esatto",
+        "label": "Esatto",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "euromaid",
+        "label": "Euromaid",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "fisher-paykel",
+        "label": "Fisher & Paykel",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "haier",
+        "label": "Haier",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "ilve",
+        "label": "Ilve",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "inalto",
+        "label": "Inalto",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "liebherr",
+        "label": "Liebherr",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "midea",
+        "label": "Midea",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "miele",
+        "label": "Miele",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "mitsubishi-electric",
+        "label": "Mitsubishi Electric",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "omega",
+        "label": "Omega",
+        "samples": 3,
+        "representedTargets": 3
+      },
+      {
+        "key": "robinhood",
+        "label": "Robinhood",
+        "samples": 3,
+        "representedTargets": 4
+      },
+      {
+        "key": "samsung",
+        "label": "Samsung",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "smeg",
+        "label": "Smeg",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "tcl",
+        "label": "TCL",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "vogue",
+        "label": "VOGUE",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "whirlpool",
+        "label": "Whirlpool",
+        "samples": 3,
+        "representedTargets": 3
+      }
+    ],
+    "byHost": [
+      {
+        "key": "cdn.shopify.com",
+        "label": "cdn.shopify.com",
+        "samples": 3,
+        "representedTargets": 4
+      },
+      {
+        "key": "downloadcenter.samsung.com",
+        "label": "downloadcenter.samsung.com",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "esatto.house",
+        "label": "esatto.house",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "inalto.house",
+        "label": "inalto.house",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "media.miele.com",
+        "label": "media.miele.com",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "trade-depot.s3.ap-southeast-2.amazonaws.com",
+        "label": "trade-depot.s3.ap-southeast-2.amazonaws.com",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "www.appliancesonline.com.au",
+        "label": "www.appliancesonline.com.au",
+        "samples": 31,
+        "representedTargets": 31
+      },
+      {
+        "key": "www.electrolux.com.au",
+        "label": "www.electrolux.com.au",
+        "samples": 1,
+        "representedTargets": 2
+      },
+      {
+        "key": "www.euromaid.com",
+        "label": "www.euromaid.com",
+        "samples": 2,
+        "representedTargets": 2
+      }
+    ],
+    "byCategory": [
+      {
+        "key": "dishwasher",
+        "label": "dishwasher",
+        "samples": 8,
+        "representedTargets": 8
+      },
+      {
+        "key": "dryer",
+        "label": "dryer",
+        "samples": 13,
+        "representedTargets": 13
+      },
+      {
+        "key": "fridge",
+        "label": "fridge",
+        "samples": 13,
+        "representedTargets": 15
+      },
+      {
+        "key": "washing_machine",
+        "label": "washing_machine",
+        "samples": 9,
+        "representedTargets": 9
+      }
+    ],
+    "byResolverContract": [
+      {
+        "key": "architecture-v2-core-official-discovery",
+        "label": "architecture-v2-core-official-discovery",
+        "samples": 7,
+        "representedTargets": 7
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+asko-official-manuals-api",
+        "label": "architecture-v2-core-official-discovery+asko-official-manuals-api",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+beko-official-discovery",
+        "label": "architecture-v2-core-official-discovery+beko-official-discovery",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+chiq-official-discovery",
+        "label": "architecture-v2-core-official-discovery+chiq-official-discovery",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+euromaid-official-discovery",
+        "label": "architecture-v2-core-official-discovery+euromaid-official-discovery",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+fisher-paykel-official-support",
+        "label": "architecture-v2-core-official-discovery+fisher-paykel-official-support",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+haier-official-discovery",
+        "label": "architecture-v2-core-official-discovery+haier-official-discovery",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+liebherr-official-discovery",
+        "label": "architecture-v2-core-official-discovery+liebherr-official-discovery",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+midea-official-discovery",
+        "label": "architecture-v2-core-official-discovery+midea-official-discovery",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+miele-official-discovery",
+        "label": "architecture-v2-core-official-discovery+miele-official-discovery",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+omega-official-discovery",
+        "label": "architecture-v2-core-official-discovery+omega-official-discovery",
+        "samples": 3,
+        "representedTargets": 3
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+        "label": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+        "samples": 3,
+        "representedTargets": 4
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+samsung-official-discovery",
+        "label": "architecture-v2-core-official-discovery+samsung-official-discovery",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
+        "key": "architecture-v2-core-official-discovery+vogue-official-discovery",
+        "label": "architecture-v2-core-official-discovery+vogue-official-discovery",
+        "samples": 1,
+        "representedTargets": 1
+      },
+      {
+        "key": "none",
+        "label": "none",
+        "samples": 5,
+        "representedTargets": 6
+      }
+    ]
+  }
+}

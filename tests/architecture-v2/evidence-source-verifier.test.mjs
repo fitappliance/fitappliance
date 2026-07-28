@@ -11,6 +11,7 @@ import {
   isOfficialBrandMarketUrl,
   isSourceFresh,
   normalizeOfficialArtifactDiscoveryProvenance,
+  officialArtifactUrlNeedsDiscoveryProvenance,
   officialHtmlModelVariant,
   officialMarketApiModelVariant,
   validateTrustedSourceMetadata,
@@ -244,6 +245,53 @@ test('Esatto CDN redirects require product-page-bound discovery provenance', () 
   }), false);
 });
 
+test('Residentia Squarespace shortlinks must be rediscovered through an exact product page', () => {
+  assert.equal(officialArtifactUrlNeedsDiscoveryProvenance(
+    'https://esatto.house/s/EDWI605S-User-Manual.pdf', 'Esatto',
+  ), true);
+  assert.equal(officialArtifactUrlNeedsDiscoveryProvenance(
+    'https://inalto.house/s/ICF142B2-User-Manual.pdf', 'InAlto',
+  ), true);
+  assert.equal(officialArtifactUrlNeedsDiscoveryProvenance(
+    'https://inalto.house/en-au/chilling/p/142l-hybrid-chest-fridge-freezer-icf142b2', 'InAlto',
+  ), false);
+  assert.equal(officialArtifactUrlNeedsDiscoveryProvenance(
+    'https://evil.example/s/ICF142B2-User-Manual.pdf', 'InAlto',
+  ), false);
+  assert.equal(officialArtifactUrlNeedsDiscoveryProvenance(
+    'https://inalto.house/s/ICF142B2-User-Manual.pdf', 'Esatto',
+  ), false);
+});
+
+test('Inalto Squarespace artifacts require exact-model Australian product-page provenance', () => {
+  const artifactUrl = 'https://inalto.house/s/ICF142B2-User-Manual.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://inalto.house/en-au/chilling/p/142l-hybrid-chest-fridge-freezer-icf142b2',
+    requestedModel: 'ICF142B2',
+    matchedModel: 'ICF142B2',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: 'd'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+    discoveryByteSize: 987,
+  };
+  const cdnUrl = 'https://static1.squarespace.com/static/site/t/file/ICF142B2-User-Manual.pdf';
+
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'InAlto', {
+    model: 'ICF142B2', category: 'fridge', artifactUrl, discoveryProvenance: provenance,
+  }), true);
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'InAlto', {
+    model: 'ICF142B2', category: 'fridge', artifactUrl,
+  }), false);
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'InAlto', {
+    model: 'ICF142B2', category: 'fridge', artifactUrl,
+    discoveryProvenance: { ...provenance, matchedModel: 'ICF142B3' },
+  }), false);
+});
+
 test('market-scoped requests may redirect within the same official brand host family', () => {
   const redirected = pdfSource({
     sourceUrl: 'https://org.downloadcenter.samsung.com/file?CDSite=UNI_AU&ModelName=WHE6874BA',
@@ -290,7 +338,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.6');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-28.1');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);

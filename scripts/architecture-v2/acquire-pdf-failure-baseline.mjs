@@ -11,6 +11,7 @@ import { architectureV2Paths } from '../../src/domain/architecture-v2-paths.mjs'
 import {
   buildWp7aBaselineRerun,
   pdfObjectPath,
+  selectFrozenPdfBaselineSamples,
   selectExactOfficialPdfCandidates,
   validateFrozenPdfBaseline,
 } from '../../src/domain/pdf-baseline-acquisition.mjs';
@@ -19,7 +20,10 @@ import {
   createEvidenceObjectStore,
   verifyEvidenceStorageRoot,
 } from '../../src/domain/evidence-recovery-state-store.mjs';
-import { isOfficialBrandArtifactUrl } from '../../src/domain/evidence-source-verifier.mjs';
+import {
+  isOfficialBrandArtifactUrl,
+  officialArtifactUrlNeedsDiscoveryProvenance,
+} from '../../src/domain/evidence-source-verifier.mjs';
 import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { fetchOfficialArtifactResilient } from '../../src/domain/official-artifact-transport.mjs';
 import {
@@ -62,11 +66,12 @@ function parseArgs(argv) {
     resolverTimeoutMs: 120_000,
     maximumCandidates: 3,
     retryTerminal: false,
+    sampleIds: [],
   };
   for (let index = 0; index < argv.length; index += 1) {
     const flag = argv[index];
     if (flag === '--retry-terminal') { options.retryTerminal = true; continue; }
-    if (!['--storage-root', '--run-id', '--limit', '--network-concurrency', '--resolver-timeout-ms', '--maximum-candidates'].includes(flag)) {
+    if (!['--storage-root', '--run-id', '--limit', '--network-concurrency', '--resolver-timeout-ms', '--maximum-candidates', '--sample-id'].includes(flag)) {
       throw new TypeError(`unknown argument: ${flag}`);
     }
     const value = requiredText(argv[index + 1], flag);
@@ -77,6 +82,7 @@ function parseArgs(argv) {
     if (flag === '--network-concurrency') options.networkConcurrency = positiveInteger(value, flag);
     if (flag === '--resolver-timeout-ms') options.resolverTimeoutMs = positiveInteger(value, flag);
     if (flag === '--maximum-candidates') options.maximumCandidates = positiveInteger(value, flag);
+    if (flag === '--sample-id') options.sampleIds.push(value);
   }
   options.storageRoot = requiredText(options.storageRoot, '--storage-root or FITAPPLIANCE_STORAGE_ROOT');
   if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(options.runId)) throw new TypeError('run ID invalid');
@@ -115,6 +121,7 @@ async function mountedVolumeUuid(path) {
 }
 
 function directOfficialCandidate(sample) {
+  if (officialArtifactUrlNeedsDiscoveryProvenance(sample.sourceUrl, sample.brand)) return null;
   const context = {
     model: sample.model,
     category: sample.category,
@@ -157,7 +164,10 @@ async function priorDiscoveryCandidates(storageRoot, objectStore, baseline) {
       const sample = samplesByKey.get(identityKey(target.brand, target.model, target.category));
       if (!sample) continue;
       const candidates = (target.resolvers ?? []).flatMap((resolver) => resolver.candidates ?? []);
-      const selected = selectExactOfficialPdfCandidates(sample, candidates);
+      const selected = selectExactOfficialPdfCandidates(sample, candidates).filter((candidate) => (
+        !officialArtifactUrlNeedsDiscoveryProvenance(candidate.sourceUrl, sample.brand)
+        || candidate.discoveryProvenance
+      ));
       if (!selected.length) continue;
       candidatesBySample.set(sample.sampleId, [
         ...(candidatesBySample.get(sample.sampleId) ?? []),
@@ -176,6 +186,7 @@ function resolverOptions(objectStore) {
     haier: { finderOptions },
     asko: { finderOptions },
     esatto: { finderOptions },
+    inalto: { finderOptions },
     fisherPaykel: { finderOptions },
   };
 }
@@ -431,7 +442,10 @@ async function main(argv) {
   const acquisitionQueue = await readJson(join(root, architectureV2Paths.historicalModelPdfAcquisitionQueue));
   const acquisitionByReference = new Map(acquisitionQueue.records.map((record) => [record.referenceId, record]));
   const evidenceObjectIndex = await readJson(join(root, architectureV2Paths.evidenceObjectIndex));
-  const selectedSamples = options.limit ? baseline.samples.slice(0, options.limit) : baseline.samples;
+  const selectedSamples = selectFrozenPdfBaselineSamples(baseline.samples, {
+    sampleIds: options.sampleIds,
+    limit: options.limit,
+  });
 
   let writeChain = Promise.resolve();
   let mineruChain = Promise.resolve();

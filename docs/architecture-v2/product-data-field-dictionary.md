@@ -9,7 +9,7 @@ This contract defines what FitAppliance may request, ingest, compare and publish
 
 | Layer | Examples | Publication rule |
 | --- | --- | --- |
-| Exact AU identity | brand, complete model suffix, GTIN | Exact string or receipt-bound alias only. Country variants are separate until proven equivalent. |
+| Exact AU identity | supported product category, brand, complete model suffix, market, GTIN | Category, brand, model and Australian market must all match. Exact string or receipt-bound alias only. Country variants are separate until proven equivalent. |
 | Lifecycle | current, discontinued, replacement model | A dated Australian market source is required. Lifecycle does not establish geometry. |
 | Closed product envelope | W/H/D with doors and controls in the stated closed position | Product scope and each axis must be explicit. Package, cavity and open-door values cannot substitute. |
 | Packaged envelope | carton W/H/D | Delivery information only. Never used as product dimensions. |

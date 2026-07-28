@@ -193,7 +193,14 @@ test('private outreach initializer creates only the approved external layout and
   const result = await initializePrivateOutreachStore(storageRoot);
 
   assert.equal(result.root, join(storageRoot, 'outreach'));
-  for (const directory of ['messages', 'attachments/sha256', 'provider-samples/sha256', 'rights', 'drafts']) {
+  for (const directory of [
+    'messages',
+    'attachments/sha256',
+    'provider-samples/sha256',
+    'provider-samples/receipts',
+    'rights',
+    'drafts',
+  ]) {
     assert.equal((await stat(join(result.root, directory))).isDirectory(), true);
   }
   const marker = JSON.parse(await readFile(join(result.root, '.fitappliance-outreach-store.json'), 'utf8'));

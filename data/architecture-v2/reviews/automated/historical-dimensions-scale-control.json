@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "generatedAt": "2026-07-28T10:48:12.405Z",
   "policy": {
     "schemaVersion": 2,
     "confidence": {
@@ -41,13 +41,13 @@
     "receiptReplayAndZeroPublicationViolationsRequired": true
   },
   "sourceBindings": {
-    "ledgerSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
-    "nextBatchesSha256": "2e51ac427383f8ac0eca492ae20721f5326cb056a188e638080b3a3017bb3a84",
-    "programStatusSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
-    "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+    "ledgerSha256": "d933be1c03fcc42b7dc2edd0d2829a86f0a1cd393209191d7e67ed8e0b4c100d",
+    "nextBatchesSha256": "049812f680f1c71a5b2b7c0fed2d671f4d2e9b30047abb220499cbc7c4f68bd8",
+    "programStatusSha256": "51c66e8a773b3c283f62f3efe0ca439b74a801412ebf63b7b0eca444ed50871d",
+    "receiptAuditSha256": "5b88fb897f87bccdaaba2f99de6655f437acea6cffa1eb5ca7fd211d2e85f0d0",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
     "fitPublicationAuditSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
-    "epochsSha256": "6b212fb5cea99d35dfb856cbcd76ae0bc03d31885bef9d5f1ddd1ff37d504794"
+    "epochsSha256": "699e903db3efbf9ef24f84981c2e7dbc0d7b265a412748c2a64bb3bd7c5456ac"
   },
   "epochs": [
     {
@@ -84,7 +84,7 @@
     },
     {
       "id": "resolver-contract",
-      "semanticSha256": "94fc01ff3faea78c6ca3f2053a31a696c63d520c9c8832b4aae0bc1ed2c73767"
+      "semanticSha256": "f6fa98fd467ee8456ea2b4f13297c99fcfe42f405d03ee25f23dfbd77d17d2f0"
     },
     {
       "id": "source-authority-policy",
@@ -102,22 +102,22 @@
     "receiptSourcesPassed": 408,
     "fitReceiptBoundDimensions": 332,
     "fitReceiptBoundVerified": 0,
-    "p0AssignedTargets": 957,
-    "p0EligibleTargets": 947,
+    "p0AssignedTargets": 956,
+    "p0EligibleTargets": 936,
     "p1AssignedTargets": 3974,
-    "p1EligibleTargets": 3939
+    "p1EligibleTargets": 3938
   },
-  "checkpointCount": 5,
-  "rebaselineCount": 1,
+  "checkpointCount": 6,
+  "rebaselineCount": 2,
   "latestRebaseline": {
-    "rebaselineId": "historical-dimensions-rebaseline-134e9fa257a30f9d3039888d",
-    "activatedAt": "2026-07-20T18:29:13.000Z",
+    "rebaselineId": "historical-dimensions-rebaseline-0be79ad0ca9dff3b09fe96d9",
+    "activatedAt": "2026-07-28T10:08:57.000Z",
     "reason": "RELEASE_DAG_RECONCILIATION",
     "queueCounterDeltas": {
-      "p0AssignedTargets": 4,
-      "p0EligibleTargets": 4,
+      "p0AssignedTargets": -1,
+      "p0EligibleTargets": -11,
       "p1AssignedTargets": 0,
-      "p1EligibleTargets": 0
+      "p1EligibleTargets": -1
     },
     "changedArtifactBindings": [
       "nextBatchesSha256",
@@ -126,7 +126,27 @@
   },
   "haltedCohorts": [],
   "reopenedCohorts": [],
-  "stageSummaries": [],
+  "stageSummaries": [
+    {
+      "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
+      "stage": "DISCOVERY",
+      "epochSha256": "36a69a249cfb27001e335f05d9c611d35b7c4643208c9b38d1036d65329c4c4a",
+      "checkpointIds": [
+        "historical-dimensions-checkpoint-b412d3658a003a4c030eb956"
+      ],
+      "manifestIds": [
+        "historical_batch_7cf4d9ad9d3efdd48f07e3c4"
+      ],
+      "numerator": 0,
+      "denominator": 1,
+      "conclusiveNumerator": 0,
+      "conclusiveDenominator": 1,
+      "retryableUnits": 0,
+      "structuralTerminalUnits": 1,
+      "completedManifests": 1,
+      "currentEpochSha256": "36a69a249cfb27001e335f05d9c611d35b7c4643208c9b38d1036d65329c4c4a"
+    }
+  ],
   "legacyDiagnostics": [
     {
       "checkpointId": "historical-dimensions-checkpoint-3804ee7dce26c1d2af9c3a59",
@@ -168,6 +188,15 @@
       "dimensionsReceipted": 0,
       "terminalTargets": 4,
       "retryableTargets": 0
+    },
+    {
+      "isoWeek": "2026-W31",
+      "completedBatches": 1,
+      "selectedTargets": 1,
+      "targetsWithOfficialCandidates": 0,
+      "dimensionsReceipted": 0,
+      "terminalTargets": 1,
+      "retryableTargets": 0
     }
   ],
   "projection": {
@@ -180,12 +209,12 @@
   },
   "decision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_7cf4d9ad9d3efdd48f07e3c4",
+    "allowedManifestId": "historical_batch_0bc627ff63fcb781f82803b5",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
-    "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e"
+    "cohortKey": "historical_cohort_0ccb277067ed23ed89e67b8a"
   },
-  "controlId": "historical-dimensions-scale-692c81adcdf0a5bba1374834",
-  "semanticControlSha256": "692c81adcdf0a5bba13748347bbdbb5a4e9b08a7f6c9b67dc6951d5ef80fa479"
+  "controlId": "historical-dimensions-scale-3d9e0a8490fa6412850db8d9",
+  "semanticControlSha256": "3d9e0a8490fa6412850db8d981add690963ca64298f4b541988f7d539dcf67fe"
 }

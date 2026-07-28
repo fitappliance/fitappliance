@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedAt": "2026-07-19T19:32:08.439Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+  "semanticClassificationSha256": "4505f3a8f34bd1a5ac4936811267c28a7552fb8f5b4d138fb9340fb205a71ee2",
   "summary": {
     "records": 8089,
     "uniqueReferenceIds": 8089,
@@ -22094,8 +22094,8 @@
       "canonicalBrand": "Esatto",
       "model": "EDW7CS",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "EDW7CS",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -22147,7 +22147,13 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "EDW7CS",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -43961,8 +43967,8 @@
       "canonicalBrand": "Miele",
       "model": "G7130SCCLST",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44014,8 +44020,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+          "grammarProfileIds": [
+            "pdf_grammar_d1b7e7e1a25ab864"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d1b7e7e1a25ab864"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44024,8 +44040,8 @@
       "canonicalBrand": "Miele",
       "model": "G7130SCICLST",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44077,8 +44093,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+          "grammarProfileIds": [
+            "pdf_grammar_d4c48f1dc4a2e003"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d4c48f1dc4a2e003"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44087,8 +44113,8 @@
       "canonicalBrand": "Miele",
       "model": "G7130SCUCLST",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44140,8 +44166,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+          "grammarProfileIds": [
+            "pdf_grammar_d1b7e7e1a25ab864"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d1b7e7e1a25ab864"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44449,8 +44485,8 @@
       "canonicalBrand": "Miele",
       "model": "G7604SCUCLST",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44502,8 +44538,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+          "grammarProfileIds": [
+            "pdf_grammar_d1b7e7e1a25ab864"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d1b7e7e1a25ab864"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44512,8 +44558,8 @@
       "canonicalBrand": "Miele",
       "model": "G7609SCIXXLCLST",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44565,8 +44611,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+          "grammarProfileIds": [
+            "pdf_grammar_d4c48f1dc4a2e003"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d4c48f1dc4a2e003"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44575,8 +44631,8 @@
       "canonicalBrand": "Miele",
       "model": "G7609SCUXXLCLST",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44628,8 +44684,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+          "grammarProfileIds": [
+            "pdf_grammar_d1b7e7e1a25ab864"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d1b7e7e1a25ab864"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44702,8 +44768,8 @@
       "canonicalBrand": "Miele",
       "model": "G7719SCIXXLOBSW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44755,8 +44821,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+          "grammarProfileIds": [
+            "pdf_grammar_d4c48f1dc4a2e003"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d4c48f1dc4a2e003"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44791,8 +44867,8 @@
       "canonicalBrand": "Miele",
       "model": "G7939SCIXXLOBSW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44844,8 +44920,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+          "grammarProfileIds": [
+            "pdf_grammar_d4c48f1dc4a2e003"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d4c48f1dc4a2e003"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -44881,8 +44967,8 @@
       "canonicalBrand": "Miele",
       "model": "G7989SCVIXXLK2O",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -44934,8 +45020,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+          "grammarProfileIds": [
+            "pdf_grammar_d4c48f1dc4a2e003"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d4c48f1dc4a2e003"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -46590,8 +46686,8 @@
       "canonicalBrand": "Omega",
       "model": "ODW101W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "ODW101W",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -46643,7 +46739,13 @@
       "rawBrandVariants": [
         "Omega"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "ODW101W",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -48230,8 +48332,8 @@
       "canonicalBrand": "Omega",
       "model": "OFI101XKIT",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "OFI101XKIT",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -48283,7 +48385,13 @@
       "rawBrandVariants": [
         "Omega"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "OFI101XKIT",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -59817,8 +59925,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WSF6608XA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_18d3fb848d41715e",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -59870,8 +59978,31 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WSF6608XA",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_18d3fb848d41715e",
+          "grammarProfileIds": [
+            "pdf_grammar_18d3fb848d41715e"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_60d8089619712779",
+          "grammarProfileIds": [
+            "pdf_grammar_60d8089619712779"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_18d3fb848d41715e",
+        "pdf_grammar_60d8089619712779"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -91818,8 +91949,8 @@
       "canonicalBrand": "Beko",
       "model": "BFR575PX",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_69887d7f846cfe4e",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -91872,8 +92003,23 @@
         "Beko",
         "BEKO"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "BFR575PX",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_69887d7f846cfe4e",
+          "grammarProfileIds": [
+            "pdf_grammar_69887d7f846cfe4e"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_69887d7f846cfe4e"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -92575,8 +92721,8 @@
       "canonicalBrand": "Beko",
       "model": "BVF290W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "BVF290W",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -92629,7 +92775,13 @@
         "Beko",
         "BEKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "BVF290W",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -92639,8 +92791,8 @@
       "canonicalBrand": "Beko",
       "model": "BVF404W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_299b36867a7a0ee3",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -92692,8 +92844,23 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "BVF404W",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_299b36867a7a0ee3",
+          "grammarProfileIds": [
+            "pdf_grammar_299b36867a7a0ee3"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_299b36867a7a0ee3"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -103557,8 +103724,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CSR125DW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -103610,8 +103777,18 @@
       "rawBrandVariants": [
         "CHIQ"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -110839,8 +111016,8 @@
       "canonicalBrand": "Electrolux",
       "model": "EFE4227SC-L",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -110892,8 +111069,18 @@
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
+          "grammarProfileIds": [
+            "pdf_grammar_fd6fd1396552b04a"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_fd6fd1396552b04a"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -112321,8 +112508,8 @@
       "canonicalBrand": "Electrolux",
       "model": "ERE5047SC",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
+      "groupType": "document_family",
+      "groupName": "Document family fb58322ec3a2",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
@@ -112399,8 +112586,8 @@
       ],
       "groups": [
         {
-          "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
+          "groupType": "document_family",
+          "groupName": "Document family fb58322ec3a2",
           "grammarProfileIds": [
             "pdf_grammar_fd6fd1396552b04a"
           ]
@@ -112417,8 +112604,8 @@
       "canonicalBrand": "Electrolux",
       "model": "ERE5047SC-R",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family fb58322ec3a2",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -112470,8 +112657,25 @@
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family fb58322ec3a2",
+          "grammarProfileIds": [
+            "pdf_grammar_fd6fd1396552b04a"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
+          "grammarProfileIds": [
+            "pdf_grammar_fd6fd1396552b04a"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_fd6fd1396552b04a"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -115712,8 +115916,8 @@
       "canonicalBrand": "Esatto",
       "model": "EUF172W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "EUF172W",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -115765,7 +115969,13 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "EUF172W",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -150006,8 +150216,8 @@
       "canonicalBrand": "Haier",
       "model": "HRF580YHC",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_08bae037fd286cc6",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -150059,8 +150269,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_08bae037fd286cc6",
+          "grammarProfileIds": [
+            "pdf_grammar_08bae037fd286cc6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_08bae037fd286cc6"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -150147,8 +150367,8 @@
       "canonicalBrand": "Haier",
       "model": "HRF580YPC",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8289a498ede8df44",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -150200,8 +150420,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8289a498ede8df44",
+          "grammarProfileIds": [
+            "pdf_grammar_8289a498ede8df44"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8289a498ede8df44"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -150262,8 +150492,8 @@
       "canonicalBrand": "Haier",
       "model": "HRF680YPC",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -150315,8 +150545,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
+          "grammarProfileIds": [
+            "pdf_grammar_718ca7091dba535a"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_718ca7091dba535a"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -152234,8 +152474,8 @@
       "canonicalBrand": "Haier",
       "model": "HWC90UC",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -152287,8 +152527,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
+          "grammarProfileIds": [
+            "pdf_grammar_2358d2487e9939bc"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2358d2487e9939bc"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -188814,8 +189064,8 @@
       "canonicalBrand": "LG",
       "model": "GS-D600MBLC",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -188892,12 +189142,16 @@
       ],
       "groups": [
         {
-          "groupType": "document_family",
-          "groupName": "Document family 5ceaeaaafb54",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "LG Australia side-by-side refrigerator installation diagram",
+          "grammarProfileIds": [
+            "lg-au-fridge-a-b-c-dimension-diagram-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "lg-au-fridge-a-b-c-dimension-diagram-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -189470,8 +189724,8 @@
       "canonicalBrand": "LG",
       "model": "GS-N600PL",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -189548,12 +189802,16 @@
       ],
       "groups": [
         {
-          "groupType": "document_family",
-          "groupName": "Document family 5ceaeaaafb54",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "LG Australia side-by-side refrigerator installation diagram",
+          "grammarProfileIds": [
+            "lg-au-fridge-a-b-c-dimension-diagram-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "lg-au-fridge-a-b-c-dimension-diagram-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -189614,8 +189872,8 @@
       "canonicalBrand": "LG",
       "model": "GS-V600MBLC",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -189692,12 +189950,16 @@
       ],
       "groups": [
         {
-          "groupType": "document_family",
-          "groupName": "Document family 5ceaeaaafb54",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "LG Australia side-by-side refrigerator installation diagram",
+          "grammarProfileIds": [
+            "lg-au-fridge-a-b-c-dimension-diagram-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "lg-au-fridge-a-b-c-dimension-diagram-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -198168,8 +198430,8 @@
       "canonicalBrand": "Miele",
       "model": "FNS4782EBS",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -198221,8 +198483,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
+          "grammarProfileIds": [
+            "pdf_grammar_9d21a813e7212515"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_9d21a813e7212515"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -199198,8 +199470,8 @@
       "canonicalBrand": "Miele",
       "model": "KS4783EDBS",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -199251,8 +199523,18 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
+          "grammarProfileIds": [
+            "pdf_grammar_9d21a813e7212515"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_9d21a813e7212515"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -199261,8 +199543,8 @@
       "canonicalBrand": "Miele",
       "model": "KS4783EDETCCS",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "KS4783EDETCCS",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -199314,7 +199596,13 @@
       "rawBrandVariants": [
         "Miele"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "KS4783EDETCCS",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -209803,8 +210091,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRF7500BB",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRF7500BB",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -209855,7 +210143,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SRF7500BB",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -209953,8 +210247,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRF7900BFH",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRF7900BFH",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210005,7 +210299,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SRF7900BFH",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -210078,8 +210378,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRF9400BFH",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family d4506d776937",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210131,7 +210431,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family d4506d776937",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -210141,8 +210447,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRF9700BFH",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRF9700BFH",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210193,7 +210499,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SRF9700BFH",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -210203,8 +210515,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRF9800BFH",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family d4506d776937",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210256,7 +210568,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family d4506d776937",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -210329,8 +210647,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRL334NMB",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRL334NMB",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210382,7 +210700,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SRL334NMB",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -210392,8 +210716,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRL4200B",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRL4200B",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210444,7 +210768,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SRL4200B",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -210895,8 +211225,8 @@
       "canonicalBrand": "Samsung",
       "model": "SRT4200S",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SRT4200S",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -210948,7 +211278,13 @@
       "rawBrandVariants": [
         "Samsung"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SRT4200S",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -219136,8 +219472,8 @@
       "canonicalBrand": "Smeg",
       "model": "FAB32RWH5AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_41a63e0b82890f46",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -219189,8 +219525,18 @@
       "rawBrandVariants": [
         "Smeg"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_41a63e0b82890f46",
+          "grammarProfileIds": [
+            "pdf_grammar_41a63e0b82890f46"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_41a63e0b82890f46"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -220386,8 +220732,8 @@
       "canonicalBrand": "Smeg",
       "model": "SABI221FF",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_009e7612e9ed183f",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -220439,8 +220785,18 @@
       "rawBrandVariants": [
         "Smeg"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_009e7612e9ed183f",
+          "grammarProfileIds": [
+            "pdf_grammar_009e7612e9ed183f"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_009e7612e9ed183f"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -233423,8 +233779,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WBE4500WC",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3d4a6e7607c06952",
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -233521,17 +233877,17 @@
       ],
       "groups": [
         {
-          "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_3d4a6e7607c06952",
+          "groupType": "document_family",
+          "groupName": "Document family 4d63434cb246",
           "grammarProfileIds": [
-            "pdf_grammar_3d4a6e7607c06952"
+            "pdf_grammar_46e7687d8947bc3b"
           ]
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_46e7687d8947bc3b",
+          "groupName": "PDF grammar pdf_grammar_3d4a6e7607c06952",
           "grammarProfileIds": [
-            "pdf_grammar_46e7687d8947bc3b"
+            "pdf_grammar_3d4a6e7607c06952"
           ]
         }
       ],
@@ -234209,8 +234565,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WBE5300BC-R",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -234262,8 +234618,39 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4d63434cb246",
+          "grammarProfileIds": [
+            "pdf_grammar_46e7687d8947bc3b"
+          ]
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family fa26f03a3244",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_21df91cb83574c95",
+          "grammarProfileIds": [
+            "pdf_grammar_21df91cb83574c95"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_3d4a6e7607c06952",
+          "grammarProfileIds": [
+            "pdf_grammar_3d4a6e7607c06952"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_21df91cb83574c95",
+        "pdf_grammar_3d4a6e7607c06952",
+        "pdf_grammar_46e7687d8947bc3b"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -234550,8 +234937,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WBE5300SC-L",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -234603,8 +234990,39 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4d63434cb246",
+          "grammarProfileIds": [
+            "pdf_grammar_46e7687d8947bc3b"
+          ]
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family fa26f03a3244",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_21df91cb83574c95",
+          "grammarProfileIds": [
+            "pdf_grammar_21df91cb83574c95"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_3d4a6e7607c06952",
+          "grammarProfileIds": [
+            "pdf_grammar_3d4a6e7607c06952"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_21df91cb83574c95",
+        "pdf_grammar_3d4a6e7607c06952",
+        "pdf_grammar_46e7687d8947bc3b"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -247031,8 +247449,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WTM2500WA-X",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7d3a04e61a6bc0ad",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -247084,8 +247502,39 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WTM2500WA-X",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_7d3a04e61a6bc0ad",
+          "grammarProfileIds": [
+            "pdf_grammar_7d3a04e61a6bc0ad"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_cbeebbb22544f144",
+          "grammarProfileIds": [
+            "pdf_grammar_cbeebbb22544f144"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_f3e6f2eb6a8e042a",
+          "grammarProfileIds": [
+            "pdf_grammar_f3e6f2eb6a8e042a"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_7d3a04e61a6bc0ad",
+        "pdf_grammar_cbeebbb22544f144",
+        "pdf_grammar_f3e6f2eb6a8e042a"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251601,8 +252050,8 @@
       "canonicalBrand": "Beko",
       "model": "BWD7541W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_f7d7d6dab34a6731",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -251654,8 +252103,23 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "BWD7541W",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_f7d7d6dab34a6731",
+          "grammarProfileIds": [
+            "pdf_grammar_f7d7d6dab34a6731"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_f7d7d6dab34a6731"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -264087,8 +264551,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1060DG5",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
+      "groupType": "document_family",
+      "groupName": "Document family 65d9ee96a612",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -264226,6 +264690,31 @@
         "FISHER & PAYKEL"
       ],
       "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 65d9ee96a612",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 74aba7e73318",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family a8d9d2457a45",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family db191f88c7ad",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family dc5bddc2c1c6",
+          "grammarProfileIds": []
+        },
         {
           "groupType": "model_specific",
           "groupName": "WH1060DG5",
@@ -264418,8 +264907,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1060P5",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_43e089d3d7017530",
+      "groupType": "document_family",
+      "groupName": "Document family 3924d1301519",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -264516,6 +265005,43 @@
       ],
       "groups": [
         {
+          "groupType": "document_family",
+          "groupName": "Document family 3924d1301519",
+          "grammarProfileIds": [
+            "pdf_grammar_72cc319d973c51a6"
+          ]
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 65d9ee96a612",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 74aba7e73318",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family a8d9d2457a45",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family db191f88c7ad",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family dc5bddc2c1c6",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family e74b64a95bd9",
+          "grammarProfileIds": []
+        },
+        {
           "groupType": "model_specific",
           "groupName": "WH1060P5",
           "grammarProfileIds": []
@@ -264529,7 +265055,8 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_43e089d3d7017530"
+        "pdf_grammar_43e089d3d7017530",
+        "pdf_grammar_72cc319d973c51a6"
       ]
     },
     {
@@ -265484,8 +266011,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1260H5",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
+      "groupType": "document_family",
+      "groupName": "Document family 74aba7e73318",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -265602,8 +266129,13 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "WH1260H5",
+          "groupType": "document_family",
+          "groupName": "Document family 74aba7e73318",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family db191f88c7ad",
           "grammarProfileIds": []
         },
         {
@@ -265625,8 +266157,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1260HG5",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
+      "groupType": "document_family",
+      "groupName": "Document family a8d9d2457a45",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -265803,6 +266335,11 @@
         "FISHER & PAYKEL"
       ],
       "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family a8d9d2457a45",
+          "grammarProfileIds": []
+        },
         {
           "groupType": "model_specific",
           "groupName": "WH1260HG5",
@@ -266478,6 +267015,31 @@
         "FISHER & PAYKEL"
       ],
       "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 65d9ee96a612",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 74aba7e73318",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family a8d9d2457a45",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family db191f88c7ad",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family dc5bddc2c1c6",
+          "grammarProfileIds": []
+        },
         {
           "groupType": "marketing_series",
           "groupName": "Series 7",
@@ -268181,8 +268743,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH9060P5",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_6c24f0329d3740aa",
+      "groupType": "document_family",
+      "groupName": "Document family 3924d1301519",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -268320,6 +268882,43 @@
       ],
       "groups": [
         {
+          "groupType": "document_family",
+          "groupName": "Document family 3924d1301519",
+          "grammarProfileIds": [
+            "pdf_grammar_72cc319d973c51a6"
+          ]
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 65d9ee96a612",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 74aba7e73318",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family a8d9d2457a45",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family db191f88c7ad",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family dc5bddc2c1c6",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family e74b64a95bd9",
+          "grammarProfileIds": []
+        },
+        {
           "groupType": "model_specific",
           "groupName": "WH9060P5",
           "grammarProfileIds": []
@@ -268329,13 +268928,6 @@
           "groupName": "PDF grammar pdf_grammar_6c24f0329d3740aa",
           "grammarProfileIds": [
             "pdf_grammar_6c24f0329d3740aa"
-          ]
-        },
-        {
-          "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_72cc319d973c51a6",
-          "grammarProfileIds": [
-            "pdf_grammar_72cc319d973c51a6"
           ]
         }
       ],
@@ -272538,8 +273130,8 @@
       "canonicalBrand": "Hisense",
       "model": "HWF5I1015",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -272591,8 +273183,23 @@
       "rawBrandVariants": [
         "Hisense"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "HWF5I1015",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
+          "grammarProfileIds": [
+            "pdf_grammar_ceaa1c5c4d5fa4ff"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_ceaa1c5c4d5fa4ff"
+      ]
     },
     {
       "schemaVersion": 1,

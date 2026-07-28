@@ -1,3 +1,5 @@
+const { createHash } = require('node:crypto');
+
 const DEFAULT_TIMEOUT_MS = 20_000;
 const SITEMAP_URL = 'https://inalto.house/sitemap.xml';
 const SITE_BASE_URL = 'https://inalto.house/';
@@ -78,6 +80,33 @@ function scorePdfUrl(url, target = {}) {
   return score;
 }
 
+function resourceType(url) {
+  if (/manual/i.test(url)) return 'user_manual';
+  if (/product.?card|spec/i.test(url)) return 'product_card';
+  return 'pdf';
+}
+
+async function productPageProvenance(html, productPageUrl, sku, artifactUrl, writeObject) {
+  if (typeof writeObject !== 'function') return null;
+  const bytes = Buffer.from(html, 'utf8');
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const objectPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`;
+  await writeObject(objectPath, bytes);
+  return {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productPageUrl,
+    requestedModel: sku,
+    matchedModel: sku,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: objectPath,
+    discoveryByteSize: bytes.length,
+  };
+}
+
 async function fetchText(url, {
   fetchImpl = globalThis.fetch,
   timeoutMs = DEFAULT_TIMEOUT_MS
@@ -105,7 +134,8 @@ async function fetchText(url, {
 
 async function findInaltoOfficialPdf(target = {}, {
   fetchImpl = globalThis.fetch,
-  timeoutMs = DEFAULT_TIMEOUT_MS
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  writeObject = null,
 } = {}) {
   const sku = String(target.sku || target.model || target.product?.model || '').trim();
   const errors = [];
@@ -117,7 +147,12 @@ async function findInaltoOfficialPdf(target = {}, {
       try {
         const html = await fetchText(pageUrl, { fetchImpl, timeoutMs });
         for (const pdfUrl of extractPdfUrlsFromProductPage(html, pageUrl)) {
-          candidatePdfs.push({ sourceUrl: pdfUrl, productPageUrl: pageUrl });
+          candidatePdfs.push({
+            sourceUrl: pdfUrl,
+            productPageUrl: pageUrl,
+            resourceType: resourceType(pdfUrl),
+            discoveryProvenance: await productPageProvenance(html, pageUrl, sku, pdfUrl, writeObject),
+          });
         }
       } catch (error) {
         errors.push(`${pageUrl}: ${error.message}`);
@@ -142,7 +177,12 @@ async function findInaltoOfficialPdf(target = {}, {
   return {
     sourceUrl: ranked[0].sourceUrl,
     source: 'inalto-official',
-    productPageUrl: ranked[0].productPageUrl
+    resourceType: ranked[0].resourceType,
+    productPageUrl: ranked[0].productPageUrl,
+    resources: ranked,
+    ...(ranked[0].discoveryProvenance
+      ? { discoveryProvenance: ranked[0].discoveryProvenance }
+      : {}),
   };
 }
 
