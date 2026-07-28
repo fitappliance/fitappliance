@@ -142,6 +142,14 @@ function isApprovedGlobalArtifactHost(value, brand) {
   return approvedHosts.some((approved) => host === String(approved).toLowerCase().replace(/\.$/, ''));
 }
 
+export function officialArtifactUrlNeedsDiscoveryProvenance(value, brand) {
+  if (!isOfficialBrandHostUrl(value, brand)) return false;
+  let url;
+  try { url = new URL(value); } catch { return false; }
+  const patterns = discoverySeedPolicy.brandProvenanceRequiredArtifactPathPatterns?.[brandKey(brand)] ?? [];
+  return patterns.some((pattern) => new RegExp(pattern, 'i').test(url.pathname));
+}
+
 export function isOfficialBrandArtifactHostUrl(value, brand, context = {}) {
   if (isOfficialBrandHostUrl(value, brand)) return true;
   if (!isApprovedGlobalArtifactHost(value, brand)) return false;

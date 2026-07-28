@@ -202,7 +202,14 @@ export function assertDraftAuditMatchesLedger(auditEntries, ledger) {
 
 export async function initializePrivateOutreachStore(storageRoot) {
   const root = resolvePrivateOutreachRoot(storageRoot);
-  const directories = ['messages', 'attachments/sha256', 'provider-samples/sha256', 'rights', 'drafts'];
+  const directories = [
+    'messages',
+    'attachments/sha256',
+    'provider-samples/sha256',
+    'provider-samples/receipts',
+    'rights',
+    'drafts',
+  ];
   await Promise.all(directories.map((directory) => mkdir(join(root, directory), { recursive: true })));
   const markerPath = join(root, '.fitappliance-outreach-store.json');
   const serialized = `${JSON.stringify(MARKER, null, 2)}\n`;

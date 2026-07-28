@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import {
   buildWp7aBaselineRerun,
   pdfObjectPath,
+  selectFrozenPdfBaselineSamples,
   selectExactOfficialPdfCandidates,
   validateFrozenPdfBaseline,
 } from '../../src/domain/pdf-baseline-acquisition.mjs';
@@ -178,4 +179,24 @@ test('WP7A rerun rejects sample drift and unknown attempt ids', () => {
   assert.throws(() => buildWp7aBaselineRerun(frozen, [{
     sampleId: 'unknown', status: 'official_candidate_not_found',
   }], { baselineSha256: 'ef'.repeat(32), builtOn: '2026-07-27' }), /unknown sample/i);
+});
+
+test('targeted WP7A replay preserves frozen order and rejects unknown sample IDs', () => {
+  const samples = [
+    sample({ sampleId: 'sample_a', sourceUrl: 'https://www.westinghouse.com.au/a.pdf' }),
+    sample({ sampleId: 'sample_b', sourceUrl: 'https://www.westinghouse.com.au/b.pdf' }),
+    sample({ sampleId: 'sample_c', sourceUrl: 'https://www.westinghouse.com.au/c.pdf' }),
+  ];
+
+  assert.deepEqual(
+    selectFrozenPdfBaselineSamples(samples, { sampleIds: ['sample_c', 'sample_a'] })
+      .map(({ sampleId }) => sampleId),
+    ['sample_a', 'sample_c'],
+  );
+  assert.throws(() => selectFrozenPdfBaselineSamples(samples, {
+    sampleIds: ['sample_missing'],
+  }), /unknown sample ID/i);
+  assert.throws(() => selectFrozenPdfBaselineSamples(samples, {
+    sampleIds: ['sample_a'], limit: 1,
+  }), /cannot combine/i);
 });

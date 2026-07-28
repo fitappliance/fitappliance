@@ -1,10 +1,14 @@
 # Product Data Source and Brand Outreach Package
 
 **Date:** 2026-07-12
-**Status:** Active pilot; two organization requests sent, six reviewed drafts ready, no commercial provider purchased
+**Status:** Active pilot; eight organization requests sent, replies pending, no commercial provider purchased
 **Execution plan:** [Brand Data and PDF Yield Program](../superpowers/plans/2026-07-27-brand-data-and-pdf-yield-program.md)
 
 This document records source and outreach research. The linked execution plan is the canonical task order, dependency gate, and recovery checkpoint for the active program.
+
+Incoming CSV, JSON and XLSX replies use the fail-closed
+[Provider Response Quarantine](provider-response-quarantine.md). A successful
+quarantine run creates shadow claims only; it does not authorize publication or Fit.
 
 The official route inventory is machine-readable in
 `data/architecture-v2/policies/brand-data-contact-matrix.json`. Full message bodies,
@@ -12,10 +16,11 @@ recipient details, replies and provider files remain in the private external out
 store. The Git-safe ledger records only organization metadata, public route URLs,
 states and content hashes.
 
-As of 2026-07-27, Fisher & Paykel Australia and Electrolux Home Products have been
-contacted. Organization-specific drafts for Residentia Group, LG Electronics Australia,
-Hisense Australia, Smeg Australia, Miele Australia and CHiQ Australia have passed the
-private draft audit. A `draft_ready` state does not mean the message was sent.
+As of 2026-07-27, eight deduplicated organization threads covering all target brands
+have been sent from `hello@fitappliance.com.au`. The private evidence store retains the
+captured messages; the Git-safe ledger retains only lifecycle state, public route URLs,
+byte sizes and hashes. Follow-ups are due on 2026-08-01 and 2026-08-06 only where no
+human reply has arrived.
 
 ## Current Source Decision
 

@@ -13,24 +13,24 @@
     "completeReplayDiagnosticsCanEnterRepair": false
   },
   "sourceBindings": {
-    "dimensionKnowledgeSha256": "ffec2d4a5908b0b34a01f1f1f4dfca9d55dde7832d9380f2081b113b2e6e9e3d",
-    "documentGraphSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8",
-    "classificationSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+    "dimensionKnowledgeSha256": "c68374b127500eec8e10e7f0ce4240ff75e507dc2e306c57b975a8e0a8eb2aa5",
+    "documentGraphSha256": "0861b1ea110e617c0d71cd557433e1a1b435312b875c90833985596f7896720b",
+    "classificationSha256": "4505f3a8f34bd1a5ac4936811267c28a7552fb8f5b4d138fb9340fb205a71ee2",
     "fixtureCorpusSha256": "b747eda86941bbeef8be4bd681d00c087a123b0d55c61c7b05df7e10920632db"
   },
   "summary": {
-    "rows": 410,
-    "repairReady": 43,
-    "affectedExactModels": 113,
+    "rows": 450,
+    "repairReady": 49,
+    "affectedExactModels": 122,
     "fixtureProfiles": 2,
     "fixtureCoveredFamilies": 2,
     "byLane": {
-      "REPAIR_READY": 43,
-      "IDENTITY_BLOCKED": 279,
+      "REPAIR_READY": 49,
+      "IDENTITY_BLOCKED": 310,
       "MINERU_BLOCKED": 0,
       "IMAGE_SEMANTICS_REQUIRED": 5,
-      "AMBIGUITY_RESEARCH": 23,
-      "COMPLETE_DIAGNOSTIC_ONLY": 60
+      "AMBIGUITY_RESEARCH": 24,
+      "COMPLETE_DIAGNOSTIC_ONLY": 62
     }
   },
   "selectedFamilyId": "document_family_b163ff29c7a5bf78bd56457c",
@@ -425,13 +425,126 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_4778dbf21c0a26c672bd24d8",
+      "category": "fridge",
+      "brand": "Haier",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
+      "lane": "REPAIR_READY",
+      "rank": 7,
+      "score": 2625,
+      "scoreComponents": {
+        "affectedExactModels": 2000,
+        "lifecyclePriority": 400,
+        "familyReuse": 125,
+        "sourceAuthority": 80,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 2,
+      "affectedReferenceIds": [
+        "fa_ref_04a345e880c854cbab89ab64",
+        "fa_ref_3da5985a2b93006bda04eefb"
+      ],
+      "affectedModels": [
+        "HBM450WH1",
+        "HRF680YPC"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "736d4706d78bf6569b32ec9a87607457fca4da3b9bc7ff8fed210059bab8dc44",
+        "8cd361e1a23e30e4e5f79a4a5a0b7604bb9c6bbee499a4df86c62ca6ec3d79b0"
+      ],
+      "documentIds": [
+        "pdf_document_042df63826b43a6dc4498319",
+        "pdf_document_b9ae2ebc068f9a6847f5a026"
+      ],
+      "pdfSha256s": [
+        "736d4706d78bf6569b32ec9a87607457fca4da3b9bc7ff8fed210059bab8dc44",
+        "8cd361e1a23e30e4e5f79a4a5a0b7604bb9c6bbee499a4df86c62ca6ec3d79b0"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 2
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1,
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_629b4e801013b248a522123a",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family 3924d1301519",
+      "lane": "REPAIR_READY",
+      "rank": 8,
+      "score": 2485,
+      "scoreComponents": {
+        "affectedExactModels": 2000,
+        "lifecyclePriority": 400,
+        "familyReuse": 75,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 2,
+      "affectedReferenceIds": [
+        "fa_ref_b75d68ac2af262e6fe53a3b9",
+        "fa_ref_dae0d6eaef8645eab79f97ba"
+      ],
+      "affectedModels": [
+        "WH1060P5",
+        "WH9060P5"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
+      ],
+      "documentIds": [
+        "pdf_document_205878a0950628ed57de9a5d"
+      ],
+      "pdfSha256s": [
+        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 2
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 2
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_5c794c804c31d4431ad1fcc6",
       "category": "fridge",
       "brand": "TECO",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_4292fef22850d0bc",
       "lane": "REPAIR_READY",
-      "rank": 7,
+      "rank": 9,
       "score": 2345,
       "scoreComponents": {
         "affectedExactModels": 2000,
@@ -486,7 +599,7 @@
       "groupType": "model_specific",
       "groupName": "DH9060HG1",
       "lane": "REPAIR_READY",
-      "rank": 8,
+      "rank": 10,
       "score": 1480,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -545,7 +658,7 @@
       "groupType": "model_specific",
       "groupName": "DW60CDW2",
       "lane": "REPAIR_READY",
-      "rank": 9,
+      "rank": 11,
       "score": 1450,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -609,7 +722,7 @@
       "groupType": "model_specific",
       "groupName": "DW60CHW1",
       "lane": "REPAIR_READY",
-      "rank": 10,
+      "rank": 12,
       "score": 1380,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -668,7 +781,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
       "lane": "REPAIR_READY",
-      "rank": 11,
+      "rank": 13,
       "score": 1360,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -731,7 +844,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7",
       "lane": "REPAIR_READY",
-      "rank": 12,
+      "rank": 14,
       "score": 1360,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -785,7 +898,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 5",
       "lane": "REPAIR_READY",
-      "rank": 13,
+      "rank": 15,
       "score": 1360,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -834,13 +947,68 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_4bf5095ad6d701f5bcbdbdfd",
+      "category": "fridge",
+      "brand": "Smeg",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_41a63e0b82890f46",
+      "lane": "REPAIR_READY",
+      "rank": 16,
+      "score": 1340,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 100,
+        "sourceAuthority": 20,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_c64bf17adf7f867c0fd586c3"
+      ],
+      "affectedModels": [
+        "FAB32RWH5AU"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "e7ed257d7131eaf65504812646536cde63c4e2591d9383e85f160daebfd4da5a",
+        "efe5abbadd0d3aae03092465770263123122821f907334dba23e3ff545df18af"
+      ],
+      "documentIds": [
+        "pdf_document_aab65dbe4ade07bb67c2a71d",
+        "pdf_document_ff1068964f5b1f37e6ff2fbe"
+      ],
+      "pdfSha256s": [
+        "e7ed257d7131eaf65504812646536cde63c4e2591d9383e85f160daebfd4da5a",
+        "efe5abbadd0d3aae03092465770263123122821f907334dba23e3ff545df18af"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_15bec17bf8b205aa0145c179",
       "category": "dishwasher",
       "brand": "Bosch",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_ccc9b452cf840127",
       "lane": "REPAIR_READY",
-      "rank": 14,
+      "rank": 17,
       "score": 1330,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -896,7 +1064,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_8cdd223e96c1e64c",
       "lane": "REPAIR_READY",
-      "rank": 15,
+      "rank": 18,
       "score": 1320,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -942,63 +1110,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_4778dbf21c0a26c672bd24d8",
-      "category": "fridge",
-      "brand": "Haier",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
-      "lane": "REPAIR_READY",
-      "rank": 16,
-      "score": 1320,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_04a345e880c854cbab89ab64"
-      ],
-      "affectedModels": [
-        "HBM450WH1"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "8cd361e1a23e30e4e5f79a4a5a0b7604bb9c6bbee499a4df86c62ca6ec3d79b0"
-      ],
-      "documentIds": [
-        "pdf_document_042df63826b43a6dc4498319"
-      ],
-      "pdfSha256s": [
-        "8cd361e1a23e30e4e5f79a4a5a0b7604bb9c6bbee499a4df86c62ca6ec3d79b0"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_57486a67df12029591162c83",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_3eadbf6aab0d27da",
       "lane": "REPAIR_READY",
-      "rank": 17,
+      "rank": 19,
       "score": 1320,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1048,7 +1166,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d4b23eb44a06a21f",
       "lane": "REPAIR_READY",
-      "rank": 18,
+      "rank": 20,
       "score": 1320,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1098,7 +1216,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b94a8ec4bd6366a0",
       "lane": "REPAIR_READY",
-      "rank": 19,
+      "rank": 21,
       "score": 1320,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1148,7 +1266,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_bcf89084114e25c7",
       "lane": "REPAIR_READY",
-      "rank": 20,
+      "rank": 22,
       "score": 1320,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1196,13 +1314,66 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_d449b384c7bf9a7787aed1a1",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_3c28d9e9e031905b",
+      "lane": "REPAIR_READY",
+      "rank": 23,
+      "score": 1320,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 100,
+        "sourceAuthority": 0,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_90fc8a14a91c4647f92d2174"
+      ],
+      "affectedModels": [
+        "WH1060DG5"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9",
+        "c7d01e298628d878966dca8ebf08ae5d58a509608d3b98a03468d2117f2eb908"
+      ],
+      "documentIds": [
+        "pdf_document_278f740eb98cab35e94d0592",
+        "pdf_document_311278ccedbd366514333d2b"
+      ],
+      "pdfSha256s": [
+        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9",
+        "c7d01e298628d878966dca8ebf08ae5d58a509608d3b98a03468d2117f2eb908"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "PARSED_PARTIAL"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_e93cae8cf19d610d3e9c979f",
       "category": "washing_machine",
       "brand": "BOSCH",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
       "lane": "REPAIR_READY",
-      "rank": 21,
+      "rank": 24,
       "score": 1310,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1255,13 +1426,67 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_4df9004fb8faa875ea475e6c",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
+      "lane": "REPAIR_READY",
+      "rank": 25,
+      "score": 1300,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 30,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_77aa37d3c00ecbafa5175c65"
+      ],
+      "affectedModels": [
+        "HWF5I1015"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010"
+      ],
+      "documentIds": [
+        "pdf_document_5918424c2de6c9b8cb465a4e",
+        "pdf_document_92e753941c5885fd3483c838",
+        "pdf_document_9f9e63f8ae79651a0b5a8c65"
+      ],
+      "pdfSha256s": [
+        "46c3f5da82e539defc45678187c002bacde6009f4813303af0db93fc203fc010",
+        "a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06",
+        "cb84db8a4d42398a25be0cadd50dbe7b590083ce6facbf349438fa15448b727e"
+      ],
+      "validMineruDocuments": 3,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_e91cf155c2359bc75c480f45",
       "category": "washing_machine",
       "brand": "BOSCH",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
       "lane": "REPAIR_READY",
-      "rank": 22,
+      "rank": 26,
       "score": 1290,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1309,13 +1534,113 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_173a557ce66c4596dc1bd76c",
+      "category": "washing_machine",
+      "brand": "BEKO",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_f7d7d6dab34a6731",
+      "lane": "REPAIR_READY",
+      "rank": 27,
+      "score": 1280,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_2d8057087ded2a2a46ab6b41"
+      ],
+      "affectedModels": [
+        "BWD7541W"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "d409eaa9b9a793d53ed24ccb2b1953bdc6b7bbf6c04f070ea6923f3a19e5929a"
+      ],
+      "documentIds": [
+        "pdf_document_8f7f06e2cceed852e677b8e7"
+      ],
+      "pdfSha256s": [
+        "d409eaa9b9a793d53ed24ccb2b1953bdc6b7bbf6c04f070ea6923f3a19e5929a"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_27c28f69aae8c21e96bc7da5",
+      "category": "fridge",
+      "brand": "Beko",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_69887d7f846cfe4e",
+      "lane": "REPAIR_READY",
+      "rank": 28,
+      "score": 1280,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_6eeff26f0cf820a6a66bc953"
+      ],
+      "affectedModels": [
+        "BFR575PX"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "7d4892e3d7915d284502b9d49dad9169d0b174d4ba46016cb112d7257f2ef0c3"
+      ],
+      "documentIds": [
+        "pdf_document_2fad4727206c3413463c2e1b"
+      ],
+      "pdfSha256s": [
+        "7d4892e3d7915d284502b9d49dad9169d0b174d4ba46016cb112d7257f2ef0c3"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_80f351d893729f497ead0adb",
       "category": "washing_machine",
       "brand": "BOSCH",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_454fce858734044e",
       "lane": "REPAIR_READY",
-      "rank": 23,
+      "rank": 29,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1361,13 +1686,63 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_9540ef1435ac8701a1c5b9a7",
+      "category": "fridge",
+      "brand": "Smeg",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_009e7612e9ed183f",
+      "lane": "REPAIR_READY",
+      "rank": 30,
+      "score": 1280,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_dc953441da6057602d950fec"
+      ],
+      "affectedModels": [
+        "SABI221FF"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "3ee09bb1ec526e377647440ed2bb47941325d847657d6be087e7ef83faa1b99c"
+      ],
+      "documentIds": [
+        "pdf_document_da7aeb048b151f4bb52a578c"
+      ],
+      "pdfSha256s": [
+        "3ee09bb1ec526e377647440ed2bb47941325d847657d6be087e7ef83faa1b99c"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_e967f9c8d9df118446b77f70",
       "category": "washing_machine",
       "brand": "BOSCH",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
       "lane": "REPAIR_READY",
-      "rank": 24,
+      "rank": 31,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1413,13 +1788,63 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_fa0ea597f4ba0d23ca925445",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_60d8089619712779",
+      "lane": "REPAIR_READY",
+      "rank": 32,
+      "score": 1280,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_84bd2b01f23011d0f2d724f6"
+      ],
+      "affectedModels": [
+        "WSF6608XA"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "0b13aa711ba1530567c43db04e22728bbb9bfcd2646ab0cdcece81b0a330443c"
+      ],
+      "documentIds": [
+        "pdf_document_175467a63e4420c49cf34ede"
+      ],
+      "pdfSha256s": [
+        "0b13aa711ba1530567c43db04e22728bbb9bfcd2646ab0cdcece81b0a330443c"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_096b0553f091526485078260",
       "category": "washing_machine",
       "brand": "Hisense",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7fbb3482f967fc40",
       "lane": "REPAIR_READY",
-      "rank": 25,
+      "rank": 33,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1471,7 +1896,7 @@
       "groupType": "model_specific",
       "groupName": "HRCD610TS",
       "lane": "REPAIR_READY",
-      "rank": 26,
+      "rank": 34,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1523,7 +1948,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7e33a76b59add102",
       "lane": "REPAIR_READY",
-      "rank": 27,
+      "rank": 35,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1578,7 +2003,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_4134bce35c24bce3",
       "lane": "REPAIR_READY",
-      "rank": 28,
+      "rank": 36,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1628,7 +2053,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_626913e6286d74b0",
       "lane": "REPAIR_READY",
-      "rank": 29,
+      "rank": 37,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1678,7 +2103,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
       "lane": "REPAIR_READY",
-      "rank": 30,
+      "rank": 38,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1733,7 +2158,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 7",
       "lane": "REPAIR_READY",
-      "rank": 31,
+      "rank": 39,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1782,68 +2207,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_a2dab338b62bebf56f72d2dd",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_72cc319d973c51a6",
-      "lane": "REPAIR_READY",
-      "rank": 32,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_dae0d6eaef8645eab79f97ba"
-      ],
-      "affectedModels": [
-        "WH9060P5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
-      ],
-      "documentIds": [
-        "pdf_document_205878a0950628ed57de9a5d"
-      ],
-      "pdfSha256s": [
-        "3924d1301519acda995f11be5e0667bd27b9916660b32c1a2390c478abac7f61"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_bd7a5d5090b768db1556e0e1",
       "category": "washing_machine",
       "brand": "Hisense",
       "groupType": "marketing_series",
       "groupName": "Series 5",
       "lane": "REPAIR_READY",
-      "rank": 33,
+      "rank": 40,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1895,7 +2265,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
       "lane": "REPAIR_READY",
-      "rank": 34,
+      "rank": 41,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1944,63 +2314,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_d449b384c7bf9a7787aed1a1",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3c28d9e9e031905b",
-      "lane": "REPAIR_READY",
-      "rank": 35,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_90fc8a14a91c4647f92d2174"
-      ],
-      "affectedModels": [
-        "WH1060DG5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9"
-      ],
-      "documentIds": [
-        "pdf_document_311278ccedbd366514333d2b"
-      ],
-      "pdfSha256s": [
-        "1f5621975d569dd8f7f9965c5147b3c3a19a1ea1b500ee5e858eacb14f192bc9"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "PARSED_PARTIAL"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_f7a2d8feffabfc4e09e1b3cb",
       "category": "dishwasher",
       "brand": "Haier",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b8fc98139a3cc065",
       "lane": "REPAIR_READY",
-      "rank": 36,
+      "rank": 42,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2050,7 +2370,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
       "lane": "REPAIR_READY",
-      "rank": 37,
+      "rank": 43,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2100,7 +2420,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_df944d3206f56151",
       "lane": "REPAIR_READY",
-      "rank": 38,
+      "rank": 44,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2155,7 +2475,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
       "lane": "REPAIR_READY",
-      "rank": 39,
+      "rank": 45,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2207,7 +2527,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_a90dbefa9352a2ea",
       "lane": "REPAIR_READY",
-      "rank": 40,
+      "rank": 46,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2257,7 +2577,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
       "lane": "REPAIR_READY",
-      "rank": 41,
+      "rank": 47,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2307,7 +2627,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 9",
       "lane": "REPAIR_READY",
-      "rank": 42,
+      "rank": 48,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2360,7 +2680,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
       "lane": "REPAIR_READY",
-      "rank": 43,
+      "rank": 49,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -3770,6 +4090,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_17fff8dc670e6fe6db261215",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family 65d9ee96a612",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 4,
+      "incompletePdfSha256s": [
+        "65d9ee96a6129596daed3ad12cfb72523caede02c3bc653d6d63c62e750f51d6"
+      ],
+      "documentIds": [
+        "pdf_document_c00106ed3ff5c9b27ea3de1b"
+      ],
+      "pdfSha256s": [
+        "65d9ee96a6129596daed3ad12cfb72523caede02c3bc653d6d63c62e750f51d6"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_18104e4267395c137b02ab8f",
       "category": "washing_machine",
       "brand": "Samsung",
@@ -3834,6 +4191,43 @@
       ],
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_18ee153f529342e1dd716821",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "model_specific",
+      "groupName": "SRL334NMB",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "1cfea54c97defb77c45d8eeb175a45cd815dc228c686b8a3fe72833e8ef5ab19"
+      ],
+      "documentIds": [
+        "pdf_document_530d5c7269d4e3d3a4e197b3"
+      ],
+      "pdfSha256s": [
+        "1cfea54c97defb77c45d8eeb175a45cd815dc228c686b8a3fe72833e8ef5ab19"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
       ],
       "riskFlags": [],
       "lifecycleCounts": {},
@@ -4476,6 +4870,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_2ab668a39f63d87ee38ac7ae",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family dc5bddc2c1c6",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 4,
+      "incompletePdfSha256s": [
+        "dc5bddc2c1c6898d70159e5a2334c483c5e949a115c130eeaeb1fc7b710b733f"
+      ],
+      "documentIds": [
+        "pdf_document_cf3ba640b2a48cce866f2859"
+      ],
+      "pdfSha256s": [
+        "dc5bddc2c1c6898d70159e5a2334c483c5e949a115c130eeaeb1fc7b710b733f"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_2c41b80337e60826a94d3f37",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -4576,6 +5007,48 @@
         "NO_COMPLETE_EXPLICIT_AXES"
       ],
       "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_2d3504630a8d904425d16317",
+      "category": "dishwasher",
+      "brand": "Omega",
+      "groupType": "model_specific",
+      "groupName": "OFI101XKIT",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "6f9fa0d884f8d8a41284e32d04f73897d62f7e505bccdb3343d2819857233cbe",
+        "bbc5c02fc54c788fad31226d0ee0239d0c595fa7ac5b1b22a5a35272cf1e044f"
+      ],
+      "documentIds": [
+        "pdf_document_7d51ddd23bdeb46dac5cb0e3",
+        "pdf_document_94517d4b659c4021f95c683d"
+      ],
+      "pdfSha256s": [
+        "6f9fa0d884f8d8a41284e32d04f73897d62f7e505bccdb3343d2819857233cbe",
+        "bbc5c02fc54c788fad31226d0ee0239d0c595fa7ac5b1b22a5a35272cf1e044f"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
@@ -4697,6 +5170,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_3052d8110a09807940093702",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "model_specific",
+      "groupName": "SRT4200S",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "1418c4f31af65b627fbdf0b457496488360c29c8c9f79f456138c804ec3f9ff5"
+      ],
+      "documentIds": [
+        "pdf_document_b616f070858b3155c3a6b1d6"
+      ],
+      "pdfSha256s": [
+        "1418c4f31af65b627fbdf0b457496488360c29c8c9f79f456138c804ec3f9ff5"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_313934ace3099322cc278c0d",
       "category": "fridge",
       "brand": "Hisense",
@@ -4760,6 +5270,43 @@
       "invalidMineruDocuments": 0,
       "reasonCodes": [
         "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_336b250dde7bb82f8a718b4a",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "groupType": "document_family",
+      "groupName": "Document family fa26f03a3244",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "fa26f03a32443d41ac94ba4cdbcb504173698494a48952e3ad66eafbfa5be2e6"
+      ],
+      "documentIds": [
+        "pdf_document_d0db2104f2a260a59cde05da"
+      ],
+      "pdfSha256s": [
+        "fa26f03a32443d41ac94ba4cdbcb504173698494a48952e3ad66eafbfa5be2e6"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
       ],
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
@@ -5037,6 +5584,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_37255d97514f01b816fa79f6",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "model_specific",
+      "groupName": "SRF9700BFH",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "9eb3fcce01c75ac722365df97823a419187442897dcdeca575fff6e49be9b3b3"
+      ],
+      "documentIds": [
+        "pdf_document_51c43faf3af29bb069284c23"
+      ],
+      "pdfSha256s": [
+        "9eb3fcce01c75ac722365df97823a419187442897dcdeca575fff6e49be9b3b3"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_383567d39daf124658e8ce51",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -5066,44 +5650,6 @@
       ],
       "researchGapTypes": [],
       "riskFlags": [],
-      "lifecycleCounts": {},
-      "sourceAuthorityCounts": {},
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_38a52da5cb174eb2c5530f98",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_46e7687d8947bc3b",
-      "lane": "IDENTITY_BLOCKED",
-      "rank": null,
-      "score": null,
-      "scoreComponents": null,
-      "affectedExactModels": 0,
-      "affectedReferenceIds": [],
-      "affectedModels": [],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "4d63434cb2468d2c6fd64d2a38ad1f86518b85d4bceb991457001fd104e02a5d"
-      ],
-      "documentIds": [
-        "pdf_document_cae4793e9699e23e83b8a3ab"
-      ],
-      "pdfSha256s": [
-        "4d63434cb2468d2c6fd64d2a38ad1f86518b85d4bceb991457001fd104e02a5d"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION",
-        "UNRESOLVED_AXIS_AMBIGUITY"
-      ],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
       "fixtureCoverage": "NONE",
@@ -5144,6 +5690,44 @@
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_3cc70975f97a0a1b3d3adf87",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "groupType": "document_family",
+      "groupName": "Document family fb58322ec3a2",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "fb58322ec3a249089855c3a32e7d2bd3c840844dd1057c8b0369b30026a650b3"
+      ],
+      "documentIds": [
+        "pdf_document_64e6044ad3f75d3313a5df56"
+      ],
+      "pdfSha256s": [
+        "fb58322ec3a249089855c3a32e7d2bd3c840844dd1057c8b0369b30026a650b3"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION",
+        "UNRESOLVED_AXIS_AMBIGUITY"
+      ],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
       "fixtureCoverage": "NONE",
@@ -5693,6 +6277,43 @@
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION",
         "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_4f3a62dc5c2961c0ae86c8f6",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "model_specific",
+      "groupName": "SRL4200B",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "425072a2c1dbd56e04fc67604ad433e65b96e50ab04420920e2d73577c45ac4c"
+      ],
+      "documentIds": [
+        "pdf_document_e2467b278ed78262b20cf2ed"
+      ],
+      "pdfSha256s": [
+        "425072a2c1dbd56e04fc67604ad433e65b96e50ab04420920e2d73577c45ac4c"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
       "lifecycleCounts": {},
@@ -6365,6 +6986,44 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_5e796a019886515aecce4fdd",
+      "category": "fridge",
+      "brand": "Miele",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_9d21a813e7212515",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "871f85443418f9829e4b1a466af130c1f15d8c70c035a65bc5693446ce69a2ea",
+        "e2d42a7befa2f9381a32efe7825b95b8e4c64426acb83d3035ab593909f41492"
+      ],
+      "documentIds": [
+        "pdf_document_a1a6c2160e423b3ba15fa854",
+        "pdf_document_b52a8b060ad720786ef85fe5"
+      ],
+      "pdfSha256s": [
+        "871f85443418f9829e4b1a466af130c1f15d8c70c035a65bc5693446ce69a2ea",
+        "e2d42a7befa2f9381a32efe7825b95b8e4c64426acb83d3035ab593909f41492"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_618ff874cd599f77fb8c94b0",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -6530,6 +7189,48 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_6302a73f356f8371cad96c85",
+      "category": "fridge",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EUF172W",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "4bcdd98d4343bd734826a6786baecfeb65477fd00dd16006e88fa81a6d7a3365",
+        "ea458b8736eed3c9ecdc64adb9751d1167d04f1d6c72c7d55a92fe9decdd9570"
+      ],
+      "documentIds": [
+        "pdf_document_4f7f795b884e115222b8d9d6",
+        "pdf_document_7cb62f90063d1a33a304eaa3"
+      ],
+      "pdfSha256s": [
+        "4bcdd98d4343bd734826a6786baecfeb65477fd00dd16006e88fa81a6d7a3365",
+        "ea458b8736eed3c9ecdc64adb9751d1167d04f1d6c72c7d55a92fe9decdd9570"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED",
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_6389085ad6f9f41899398748",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -6575,6 +7276,43 @@
       "sourceAuthorityCounts": {
         "MIXED": 2
       },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_65295362574313785539a594",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7d3a04e61a6bc0ad",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "f804845bd7de08516cb588fa567e860a85d55aa52ff2ed3b3271b3bffab711fd"
+      ],
+      "documentIds": [
+        "pdf_document_def3910f0ee3a30db337954e"
+      ],
+      "pdfSha256s": [
+        "f804845bd7de08516cb588fa567e860a85d55aa52ff2ed3b3271b3bffab711fd"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
     },
@@ -6966,26 +7704,23 @@
       "affectedExactModels": 0,
       "affectedReferenceIds": [],
       "affectedModels": [],
-      "incompleteReplayCount": 4,
+      "incompleteReplayCount": 3,
       "incompletePdfSha256s": [
         "465d63d7221f27fbf0579e0535e495473b1868f5cf9fc6b56c2a81d570bdf859",
         "4d9933e0dbfcb91a73b572df28db359b089238f3cd8de96a2a384bd6dcddcfd8",
-        "a8d9d2457a4582cbb4790cc5a7c8fecb10e2ea1722e7ad5fc198b0b6fb4ce8db",
         "fdc147c311d6d11502c4e6f4320bcc82bad5dcb62122889d4cefa9b93a0dbbc3"
       ],
       "documentIds": [
         "pdf_document_534fac4823015eb1a138288c",
         "pdf_document_9dc510c7233d7389ef73891d",
-        "pdf_document_ba2449614d86f3f5613d469a",
         "pdf_document_f62c30542cbcbdab0ae795c9"
       ],
       "pdfSha256s": [
         "465d63d7221f27fbf0579e0535e495473b1868f5cf9fc6b56c2a81d570bdf859",
         "4d9933e0dbfcb91a73b572df28db359b089238f3cd8de96a2a384bd6dcddcfd8",
-        "a8d9d2457a4582cbb4790cc5a7c8fecb10e2ea1722e7ad5fc198b0b6fb4ce8db",
         "fdc147c311d6d11502c4e6f4320bcc82bad5dcb62122889d4cefa9b93a0dbbc3"
       ],
-      "validMineruDocuments": 4,
+      "validMineruDocuments": 3,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
         "EXACT_MODEL_IDENTITY_NOT_PROVEN",
@@ -7080,6 +7815,55 @@
         "IMAGE_ONLY_DIMENSION_DIAGRAM"
       ],
       "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_7247b6367dfdb96c72cacd5c",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4c48f1dc4a2e003",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 5,
+      "incompletePdfSha256s": [
+        "08cc660bc8a53422b20cb701ee2d153ca33a111747cb9619937b3de1fc0e4199",
+        "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+        "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+        "9f8629467740cba33aa778c5b7dcf11dd540c0b1053bf4b864ce6962fe875cf8",
+        "ef6fd3b3ea5879791a1feab64f8f1cec103aa070640b1f36cdf66b43f9911168"
+      ],
+      "documentIds": [
+        "pdf_document_1178dd6a3aaf4e5f9868dc42",
+        "pdf_document_589424de427578acbb65b1bd",
+        "pdf_document_6fb18810b3d394bd0052572f",
+        "pdf_document_95e095e9b564229ac73c44de",
+        "pdf_document_e3d34fe57fa4139fa6e3290d"
+      ],
+      "pdfSha256s": [
+        "08cc660bc8a53422b20cb701ee2d153ca33a111747cb9619937b3de1fc0e4199",
+        "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+        "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+        "9f8629467740cba33aa778c5b7dcf11dd540c0b1053bf4b864ce6962fe875cf8",
+        "ef6fd3b3ea5879791a1feab64f8f1cec103aa070640b1f36cdf66b43f9911168"
+      ],
+      "validMineruDocuments": 5,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
       "fixtureCoverage": "NONE",
@@ -7780,11 +8564,48 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_80712a31acfdf3856116aea7",
-      "category": "fridge",
-      "brand": "LG",
+      "familyId": "document_family_807fbda845e3516e919f1e05",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
       "groupType": "document_family",
-      "groupName": "Document family 5ceaeaaafb54",
+      "groupName": "Document family a8d9d2457a45",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 5,
+      "incompletePdfSha256s": [
+        "a8d9d2457a4582cbb4790cc5a7c8fecb10e2ea1722e7ad5fc198b0b6fb4ce8db"
+      ],
+      "documentIds": [
+        "pdf_document_ba2449614d86f3f5613d469a"
+      ],
+      "pdfSha256s": [
+        "a8d9d2457a4582cbb4790cc5a7c8fecb10e2ea1722e7ad5fc198b0b6fb4ce8db"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_80e84b0f17001b485a8e02f7",
+      "category": "fridge",
+      "brand": "Beko",
+      "groupType": "model_specific",
+      "groupName": "BVF290W",
       "lane": "IDENTITY_BLOCKED",
       "rank": null,
       "score": null,
@@ -7794,22 +8615,28 @@
       "affectedModels": [],
       "incompleteReplayCount": 3,
       "incompletePdfSha256s": [
-        "5ceaeaaafb54c39b263672efb8dd54b24e4302aea61a18de6134758ab5f54ca1"
+        "3840a421728845ca7658baff1edadd2770fa7c67e3bc1fb0dfd05d59b306d781",
+        "79518fc52f5b1aa9fa98ee113577654a68e1a4cf1ffa6c4c046a290815edf9a0",
+        "99d540c3d1691add16ee987fdc5bb8c04a1138f1073e7c3108751d9ac02b2314"
       ],
       "documentIds": [
-        "pdf_document_338a5a986c9e03a3fb14c099"
+        "pdf_document_25fc321b48915b3f0f694932",
+        "pdf_document_9a873a2bb2fd4094c072c7c6",
+        "pdf_document_e6654e566a43e7303d787f6e"
       ],
       "pdfSha256s": [
-        "5ceaeaaafb54c39b263672efb8dd54b24e4302aea61a18de6134758ab5f54ca1"
+        "3840a421728845ca7658baff1edadd2770fa7c67e3bc1fb0dfd05d59b306d781",
+        "79518fc52f5b1aa9fa98ee113577654a68e1a4cf1ffa6c4c046a290815edf9a0",
+        "99d540c3d1691add16ee987fdc5bb8c04a1138f1073e7c3108751d9ac02b2314"
       ],
-      "validMineruDocuments": 1,
+      "validMineruDocuments": 3,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED",
         "NO_COMPLETE_EXPLICIT_AXES"
       ],
       "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
       "lifecycleCounts": {},
@@ -7904,24 +8731,20 @@
       "affectedExactModels": 0,
       "affectedReferenceIds": [],
       "affectedModels": [],
-      "incompleteReplayCount": 2,
+      "incompleteReplayCount": 1,
       "incompletePdfSha256s": [
-        "e74b64a95bd9662507397fe8231d6b06d10e3d020db20c8deaee9ca0552db8c1",
         "efcf9af15e72efb60ce95660ca1c2229f146099cf1bbc5f9c52c1fd4439c6061"
       ],
       "documentIds": [
-        "pdf_document_54ff9a999a150fcb138ef5db",
         "pdf_document_65f711fdd6bcfe0f3c8aee94"
       ],
       "pdfSha256s": [
-        "e74b64a95bd9662507397fe8231d6b06d10e3d020db20c8deaee9ca0552db8c1",
         "efcf9af15e72efb60ce95660ca1c2229f146099cf1bbc5f9c52c1fd4439c6061"
       ],
-      "validMineruDocuments": 2,
+      "validMineruDocuments": 1,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
-        "FAMILY_SCOPE_UNRESOLVED"
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
       ],
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
@@ -8551,6 +9374,47 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_8cbe2b80185f0ca8a59ad220",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_21df91cb83574c95",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "5e6a6c65361d6ab3e21281213c2cf6026682ffa859ffa37b674c70837885b4ce",
+        "d393307841a8cc67facb4f9907065d124fdaa0d98d213a6261608b2e2f17d6a1"
+      ],
+      "documentIds": [
+        "pdf_document_48ffe34ba17dcb04d8dfb375",
+        "pdf_document_fce68f38addc046ec2dc531f"
+      ],
+      "pdfSha256s": [
+        "5e6a6c65361d6ab3e21281213c2cf6026682ffa859ffa37b674c70837885b4ce",
+        "d393307841a8cc67facb4f9907065d124fdaa0d98d213a6261608b2e2f17d6a1"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION",
+        "UNRESOLVED_AXIS_AMBIGUITY"
+      ],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_8eb4927dccb23b24f05e2ffd",
       "category": "washing_machine",
       "brand": "BOSCH",
@@ -8729,6 +9593,47 @@
       "invalidMineruDocuments": 0,
       "reasonCodes": [
         "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_961df72411705bd108cbe15c",
+      "category": "washing_machine",
+      "brand": "BEKO",
+      "groupType": "model_specific",
+      "groupName": "BWD7541W",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "5fb23344184b5f5d2218cef396aa6d5940d0d83c85a03f9c28e6c47d2c8b853b",
+        "765b42397df084709cc1dd97d7ce65cd00d003b737fa252ddd842e6a84b524a4"
+      ],
+      "documentIds": [
+        "pdf_document_598cdbb48855535fbb10f180",
+        "pdf_document_73f1445db20a36946a6e395b"
+      ],
+      "pdfSha256s": [
+        "5fb23344184b5f5d2218cef396aa6d5940d0d83c85a03f9c28e6c47d2c8b853b",
+        "765b42397df084709cc1dd97d7ce65cd00d003b737fa252ddd842e6a84b524a4"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
+        "NO_COMPLETE_EXPLICIT_AXES"
       ],
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
@@ -9143,47 +10048,6 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_9f27bc444e68b1d2fff09b57",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "model_specific",
-      "groupName": "WH1260H5",
-      "lane": "IDENTITY_BLOCKED",
-      "rank": null,
-      "score": null,
-      "scoreComponents": null,
-      "affectedExactModels": 0,
-      "affectedReferenceIds": [],
-      "affectedModels": [],
-      "incompleteReplayCount": 2,
-      "incompletePdfSha256s": [
-        "74aba7e73318e66fe3a728d9783e9d2348ccf19b3f9fd19f6a9295cd151abfeb",
-        "db191f88c7adb31203874a3bc40481597530db2a7e7850969f1e3a933a1d7ae2"
-      ],
-      "documentIds": [
-        "pdf_document_0c53e9495b5c4cf8ae61a74e",
-        "pdf_document_a945a1c8117266b5a50bc14d"
-      ],
-      "pdfSha256s": [
-        "74aba7e73318e66fe3a728d9783e9d2348ccf19b3f9fd19f6a9295cd151abfeb",
-        "db191f88c7adb31203874a3bc40481597530db2a7e7850969f1e3a933a1d7ae2"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {},
-      "sourceAuthorityCounts": {},
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_9fdabe9600aafa5fd3147e83",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -9498,6 +10362,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_a458ffc760510032be124edd",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "model_specific",
+      "groupName": "SRF7500BB",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "6a6d2dcb18d750df6d10c25973ed5fe2d8683c89c08bbc9a3cf35ed2908edf8a"
+      ],
+      "documentIds": [
+        "pdf_document_2bb992a1df341563ee336718"
+      ],
+      "pdfSha256s": [
+        "6a6d2dcb18d750df6d10c25973ed5fe2d8683c89c08bbc9a3cf35ed2908edf8a"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_a49ddc42a710dfd5ad979ae7",
       "category": "fridge",
       "brand": "Fisher & Paykel",
@@ -9653,6 +10554,43 @@
       "invalidMineruDocuments": 0,
       "reasonCodes": [
         "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_a7a7472a5a1d4a0a85f87e27",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "groupType": "model_specific",
+      "groupName": "WTM2500WA-X",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "af40bea73579501296f88f6ce04d8802cc033d3ad03277eae5f896e5a1c9465b"
+      ],
+      "documentIds": [
+        "pdf_document_43439313b43e50af621415d1"
+      ],
+      "pdfSha256s": [
+        "af40bea73579501296f88f6ce04d8802cc033d3ad03277eae5f896e5a1c9465b"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
       ],
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
@@ -10105,6 +11043,44 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_af73eaea6525b6d4906f9e15",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_f3e6f2eb6a8e042a",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "5d85b864f7d94b383320355434aae044049bfce86e7d5f00b75b19fcf74ba29d"
+      ],
+      "documentIds": [
+        "pdf_document_7fb57af8beea3325f67c0a91"
+      ],
+      "pdfSha256s": [
+        "5d85b864f7d94b383320355434aae044049bfce86e7d5f00b75b19fcf74ba29d"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION",
+        "UNRESOLVED_AXIS_AMBIGUITY"
+      ],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_b0015ec1b50ae90f81769d42",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -10417,6 +11393,121 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_b213056525a2c23ea6a7f3c7",
+      "category": "dishwasher",
+      "brand": "Omega",
+      "groupType": "model_specific",
+      "groupName": "ODW101W",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "3a1d19736695e3b183b1d90ccfcfd829a59223d66127e179426ccb2feb6caefb",
+        "b0791bcdf67a3ec85071d33b03b0f775775bb33cf65e26952ccbcf83dbfcefe3"
+      ],
+      "documentIds": [
+        "pdf_document_2b9dd69081700f0909ef99d2",
+        "pdf_document_c2b2ccad74e29455937e6cf0"
+      ],
+      "pdfSha256s": [
+        "3a1d19736695e3b183b1d90ccfcfd829a59223d66127e179426ccb2feb6caefb",
+        "b0791bcdf67a3ec85071d33b03b0f775775bb33cf65e26952ccbcf83dbfcefe3"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_b3b453ab1d2a70fc8e40c4dc",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family e74b64a95bd9",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "e74b64a95bd9662507397fe8231d6b06d10e3d020db20c8deaee9ca0552db8c1"
+      ],
+      "documentIds": [
+        "pdf_document_54ff9a999a150fcb138ef5db"
+      ],
+      "pdfSha256s": [
+        "e74b64a95bd9662507397fe8231d6b06d10e3d020db20c8deaee9ca0552db8c1"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_b46e8cbdcb253c0cf10ae6e5",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "groupType": "model_specific",
+      "groupName": "HWF5I1015",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "8aff5ce2224b95e9de52b7e861993fc63c812cdabcc25187c1b8d4b0e714134d"
+      ],
+      "documentIds": [
+        "pdf_document_4b20d4926d577c6fe2d7c12a"
+      ],
+      "pdfSha256s": [
+        "8aff5ce2224b95e9de52b7e861993fc63c812cdabcc25187c1b8d4b0e714134d"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_b52c82a8b08110859883b109",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -10564,6 +11655,43 @@
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION",
         "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_b74a90d99b75514c738f9fe6",
+      "category": "fridge",
+      "brand": "Beko",
+      "groupType": "model_specific",
+      "groupName": "BFR575PX",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "ea32c74d03bd933a1b39c912559d9c3a726d55b806203f9953ce6c3f23f83111"
+      ],
+      "documentIds": [
+        "pdf_document_4e536193ce33b9ee444bd383"
+      ],
+      "pdfSha256s": [
+        "ea32c74d03bd933a1b39c912559d9c3a726d55b806203f9953ce6c3f23f83111"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
       "lifecycleCounts": {},
@@ -11005,6 +12133,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_bd46cec5b6a2376d32b20760",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family 74aba7e73318",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 5,
+      "incompletePdfSha256s": [
+        "74aba7e73318e66fe3a728d9783e9d2348ccf19b3f9fd19f6a9295cd151abfeb"
+      ],
+      "documentIds": [
+        "pdf_document_0c53e9495b5c4cf8ae61a74e"
+      ],
+      "pdfSha256s": [
+        "74aba7e73318e66fe3a728d9783e9d2348ccf19b3f9fd19f6a9295cd151abfeb"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_bdeba732f1c2cd5e51654fa7",
       "category": "dryer",
       "brand": "Fisher & Paykel",
@@ -11222,6 +12387,43 @@
         "DOOR_OPEN_OR_OPERATION",
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_c522dd2a02f308eb1647b74d",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "model_specific",
+      "groupName": "SRF7900BFH",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "e42c93c503276a93f8097b500e4fdcbd1c91a69136f2715f2ab65490e385d308"
+      ],
+      "documentIds": [
+        "pdf_document_c6cdcf12804db6b5e86a93dc"
+      ],
+      "pdfSha256s": [
+        "e42c93c503276a93f8097b500e4fdcbd1c91a69136f2715f2ab65490e385d308"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
       "fixtureCoverage": "NONE",
@@ -11680,6 +12882,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_ce64f2881a8ddeb804676687",
+      "category": "fridge",
+      "brand": "Miele",
+      "groupType": "model_specific",
+      "groupName": "KS4783EDETCCS",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "677193232bca2c7d87e599346658e9af54a4db6303a47af7344f21cc288d8059"
+      ],
+      "documentIds": [
+        "pdf_document_20df01b15317c06eee6338db"
+      ],
+      "pdfSha256s": [
+        "677193232bca2c7d87e599346658e9af54a4db6303a47af7344f21cc288d8059"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_d0b53e004e77d8e1e303c7d9",
       "category": "fridge",
       "brand": "Fisher & Paykel",
@@ -12018,6 +13257,44 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_d8fdeaf19b9514307f315e2e",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "groupType": "document_family",
+      "groupName": "Document family 4d63434cb246",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 3,
+      "incompletePdfSha256s": [
+        "4d63434cb2468d2c6fd64d2a38ad1f86518b85d4bceb991457001fd104e02a5d"
+      ],
+      "documentIds": [
+        "pdf_document_cae4793e9699e23e83b8a3ab"
+      ],
+      "pdfSha256s": [
+        "4d63434cb2468d2c6fd64d2a38ad1f86518b85d4bceb991457001fd104e02a5d"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION",
+        "UNRESOLVED_AXIS_AMBIGUITY"
+      ],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_db8608dbee71c6ab07397495",
       "category": "washing_machine",
       "brand": "Samsung",
@@ -12081,6 +13358,43 @@
         "EXACT_MODEL_IDENTITY_NOT_PROVEN"
       ],
       "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_dec998de5c525c2ad132aff8",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "groupType": "model_specific",
+      "groupName": "WSF6608XA",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "c4ba44123e09c49dbd04d608f3c599a01f53a63f80d50b42ac82a6745a2d2d47"
+      ],
+      "documentIds": [
+        "pdf_document_ca21d45ccff0c5913fd0b5ae"
+      ],
+      "pdfSha256s": [
+        "c4ba44123e09c49dbd04d608f3c599a01f53a63f80d50b42ac82a6745a2d2d47"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
       "riskFlags": [],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
@@ -12152,6 +13466,43 @@
       ],
       "researchGapTypes": [
         "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_e138851bfb280d89dd178c3e",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family db191f88c7ad",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 5,
+      "incompletePdfSha256s": [
+        "db191f88c7adb31203874a3bc40481597530db2a7e7850969f1e3a933a1d7ae2"
+      ],
+      "documentIds": [
+        "pdf_document_a945a1c8117266b5a50bc14d"
+      ],
+      "pdfSha256s": [
+        "db191f88c7adb31203874a3bc40481597530db2a7e7850969f1e3a933a1d7ae2"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
       "lifecycleCounts": {},
@@ -12279,6 +13630,97 @@
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_e49e41e3e99fef5f548191ee",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EDW7CS",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 3,
+      "incompletePdfSha256s": [
+        "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+        "bee9c199364d74295e05e60d2c33b0de3a0f2fafb2e18bd7842d6f35c751e9db",
+        "f705fd06713ffd9130e50cbbc3ac8509c860f48e9960fc374460df31105b689e"
+      ],
+      "documentIds": [
+        "pdf_document_2e8c517ee4c9d9b524c18db3",
+        "pdf_document_5010e1e7a509ee0a37a34feb",
+        "pdf_document_5fe1b6df2c43e1edf9c64a0b"
+      ],
+      "pdfSha256s": [
+        "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+        "bee9c199364d74295e05e60d2c33b0de3a0f2fafb2e18bd7842d6f35c751e9db",
+        "f705fd06713ffd9130e50cbbc3ac8509c860f48e9960fc374460df31105b689e"
+      ],
+      "validMineruDocuments": 3,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_e813ae1da801ff04ddc5f4ac",
+      "category": "dishwasher",
+      "brand": "Miele",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d1b7e7e1a25ab864",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 4,
+      "incompletePdfSha256s": [
+        "7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297",
+        "871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea",
+        "ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e",
+        "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170"
+      ],
+      "documentIds": [
+        "pdf_document_173ea082f1c771f5325fcc98",
+        "pdf_document_3e73d2d4c510c278a52bd837",
+        "pdf_document_54694f3338e0e2691fe56376",
+        "pdf_document_73dca18851ca823f278a889a"
+      ],
+      "pdfSha256s": [
+        "7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297",
+        "871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea",
+        "ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e",
+        "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170"
+      ],
+      "validMineruDocuments": 4,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
       "fixtureCoverage": "NONE",
@@ -13033,6 +14475,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_fc971dff45e628cd1286c5b3",
+      "category": "fridge",
+      "brand": "Samsung",
+      "groupType": "document_family",
+      "groupName": "Document family d4506d776937",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "d4506d7769378ad766ebafb02a1d72789bfb09260554eb67be47774a322da248"
+      ],
+      "documentIds": [
+        "pdf_document_e540a5b94408fb39ff6b5f48"
+      ],
+      "pdfSha256s": [
+        "d4506d7769378ad766ebafb02a1d72789bfb09260554eb67be47774a322da248"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_fcdd3eed2992e4b6cd2765af",
       "category": "fridge",
       "brand": "Fisher & Paykel",
@@ -13138,6 +14617,46 @@
         "99bb8a9ddfa2d3dc724c23d33ddaef8395666f54fa3d6f1413656c3535a7eccc"
       ],
       "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_fe8d156a418c7e7c982733fc",
+      "category": "fridge",
+      "brand": "Beko",
+      "groupType": "model_specific",
+      "groupName": "BVF404W",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "24aad681674ce819388897d20fa683ba3459e7e297c70b26b7d43da2793bb6d9",
+        "b5aefcaeca71606aff93e6593f2d6eb0e7099289817863884fd0bb0f1b3247bd"
+      ],
+      "documentIds": [
+        "pdf_document_79b9d6b95625aaab416ad0b4",
+        "pdf_document_e8c20d12a724507f741ede2e"
+      ],
+      "pdfSha256s": [
+        "24aad681674ce819388897d20fa683ba3459e7e297c70b26b7d43da2793bb6d9",
+        "b5aefcaeca71606aff93e6593f2d6eb0e7099289817863884fd0bb0f1b3247bd"
+      ],
+      "validMineruDocuments": 2,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
         "NO_COMPLETE_EXPLICIT_AXES"
@@ -13786,6 +15305,53 @@
       },
       "sourceAuthorityCounts": {
         "NONE": 3
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_73291dd37284e0e2fa7600ed",
+      "category": "fridge",
+      "brand": "Beko",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_299b36867a7a0ee3",
+      "lane": "AMBIGUITY_RESEARCH",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_0fc75fe30a4a37a81e5931ab"
+      ],
+      "affectedModels": [
+        "BVF404W"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "8c9d46f5985992c2df9bef8a0bca7df2170904c4473243670df4da254b578375"
+      ],
+      "documentIds": [
+        "pdf_document_2a54d3199f29914802cc9ed7"
+      ],
+      "pdfSha256s": [
+        "8c9d46f5985992c2df9bef8a0bca7df2170904c4473243670df4da254b578375"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [
+        "UNRESOLVED_AXIS_AMBIGUITY"
+      ],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -14917,6 +16483,41 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_34f638d1aefb435e778a8a3f",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_18d3fb848d41715e",
+      "lane": "COMPLETE_DIAGNOSTIC_ONLY",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 0,
+      "incompletePdfSha256s": [],
+      "documentIds": [
+        "pdf_document_6b24c5b55337910574f77228"
+      ],
+      "pdfSha256s": [
+        "d80b9b8c1c50d342327c132bdb9d88ad1a431815c0161195e3b17db84214574f"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "PACKAGE_OR_DELIVERY"
+      ],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_3877f04b5a53d14be26a4663",
       "category": "fridge",
       "brand": "Westinghouse",
@@ -15863,6 +17464,39 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_aa9b3ce048c7f4ea9defee0d",
+      "category": "fridge",
+      "brand": "LG",
+      "groupType": "parser_family",
+      "groupName": "LG Australia side-by-side refrigerator installation diagram",
+      "lane": "COMPLETE_DIAGNOSTIC_ONLY",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 0,
+      "incompletePdfSha256s": [],
+      "documentIds": [
+        "pdf_document_338a5a986c9e03a3fb14c099"
+      ],
+      "pdfSha256s": [
+        "5ceaeaaafb54c39b263672efb8dd54b24e4302aea61a18de6134758ab5f54ca1"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_afb51986ab615635012bbedf",
       "category": "dishwasher",
       "brand": "Smeg",
@@ -16142,12 +17776,14 @@
       "incompleteReplayCount": 0,
       "incompletePdfSha256s": [],
       "documentIds": [
+        "pdf_document_3f11f0004c3a29fbfd4e1062",
         "pdf_document_41440be6a602e409f409bc0c"
       ],
       "pdfSha256s": [
-        "33f8c00bc8633fd3b0f1f06239f657fb817312ef9f3cc2cc5b06a7256dd3509b"
+        "33f8c00bc8633fd3b0f1f06239f657fb817312ef9f3cc2cc5b06a7256dd3509b",
+        "6c780ecb245cf917ee97b5e21f61749920bd71dbf3b1284d43892e0028994abe"
       ],
-      "validMineruDocuments": 1,
+      "validMineruDocuments": 2,
       "invalidMineruDocuments": 0,
       "reasonCodes": [],
       "researchGapTypes": [
@@ -16781,6 +18417,7 @@
         "pdf_document_436ac51021f152ca35098d76",
         "pdf_document_4d359fa192c2e6e85ba6a36c",
         "pdf_document_4e84a9d5bf9c537ee028c5cd",
+        "pdf_document_67d6f53ff8313f9699fe8936",
         "pdf_document_6966ee094877610186e765dc",
         "pdf_document_6b49844e48017e10e298525f",
         "pdf_document_7ea4463552be4511db56725d",
@@ -16806,6 +18443,7 @@
         "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
         "44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
         "47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
+        "570be421fd2c97f58cd13225a406d5b60dd72d32fd822a36989c4d92c3737925",
         "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
         "780aec85a8e6b4f2a7affb8a083774446de3bcc896d3f9c734813daeea8c6402",
         "783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
@@ -16823,7 +18461,7 @@
         "ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
         "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6"
       ],
-      "validMineruDocuments": 24,
+      "validMineruDocuments": 25,
       "invalidMineruDocuments": 0,
       "reasonCodes": [],
       "researchGapTypes": [
@@ -16910,5 +18548,5 @@
     }
   ],
   "generatedAt": "2026-07-19T19:32:08.439Z",
-  "semanticQueueSha256": "3838dc3e6d748444b1e42c72399749d0fa1bd71c6f4bbe3f2fad3ad0093e2b86"
+  "semanticQueueSha256": "ce7261a4754b6bd0746ad9e730690a4913a371280c7283ee0e9f18c2e0315ab6"
 }

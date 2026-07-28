@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:32:08.439Z",
-  "semanticManifestSha256": "f673061e4fc6d0043d3aaa428b18c044b2361ddf25862cb00a75ae968c29c87d",
+  "generatedAt": "2026-07-28T10:07:00.432Z",
+  "semanticManifestSha256": "c4c85535d077156bf6146377cec2c0a15218d3954528e0dc74b5e4df2f6b8565",
   "policy": {
     "discoveryOnly": true,
     "candidatesAreNotEvidenceReceipts": true,
@@ -11,7 +11,7 @@
     "candidatesRequireRequiredSourceLanesComplete": true,
     "legacyAggregateCompletionCannotAuthorizeTerminal": true
   },
-  "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+  "sourceAcquisitionQueueSha256": "4712a15a9819b0874740b7260f6a5fbcdcabbb8adc2730c7b622bad9260a816d",
   "runBindings": [
     {
       "runId": "task3-asko-dishwasher-canary-20260719-a",
@@ -135,6 +135,26 @@
         "contentSha256": "e88383541799d407b4685efdd6838d9c363e8f921694eb92d3ebd23c67d7f494",
         "byteSize": 3576,
         "objectPath": "evidence/discovery/sha256/e8/83/e88383541799d407b4685efdd6838d9c363e8f921694eb92d3ebd23c67d7f494.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "p0-esatto-dw42cs-provenance-epoch-20260728",
+      "startedAt": "2026-07-28T10:06:59.458Z",
+      "completedAt": "2026-07-28T10:07:00.432Z",
+      "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+      "selection": {
+        "manifestId": "historical_batch_7cf4d9ad9d3efdd48f07e3c4",
+        "semanticManifestSha256": "7cf4d9ad9d3efdd48f07e3c4338ca1c9838279bf8f44508a154c00ecc7d938a3",
+        "selectedReferenceIds": [
+          "fa_ref_fd1cddcdc50d2622c30e7b3c"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "4d147369937834fa8f6bbc3362319b49736f7e26f36229cbbc49a01f7c38ee25",
+        "byteSize": 9788,
+        "objectPath": "evidence/discovery/sha256/4d/14/4d147369937834fa8f6bbc3362319b49736f7e26f36229cbbc49a01f7c38ee25.json",
         "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
       },
       "targets": 1
@@ -1323,9 +1343,9 @@
       "priority": "P0_CURRENT_RETAIL",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
-      "terminal": false,
-      "retryableDiscovery": true,
+      "state": "NO_CANDIDATE_COMPLETE",
+      "terminal": true,
+      "retryableDiscovery": false,
       "resolverContract": [
         {
           "schemaVersion": 1,
@@ -1394,23 +1414,150 @@
           "failures": []
         },
         {
-          "schemaVersion": 1,
+          "schemaVersion": 2,
           "resolverId": "esatto-official-discovery",
-          "version": "1",
-          "scope": "esatto_legacy_discovery_only",
+          "version": "2",
+          "scope": "esatto_au_current_archive_product_detail_and_document_lanes",
           "required": true,
           "completion": "complete",
+          "sourceLanes": [
+            {
+              "laneId": "current_product",
+              "required": true,
+              "supported": true,
+              "status": "complete",
+              "candidateCount": 0,
+              "provenance": [
+                {
+                  "schemaVersion": 1,
+                  "method": "official_sitemap",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/sitemap.xml",
+                  "requestedModel": "DW42CS",
+                  "contentType": "application/xml",
+                  "contentSha256": "6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240",
+                  "objectPath": "evidence/web/sha256/6a/74/6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240.xml",
+                  "byteSize": 380470
+                }
+              ],
+              "reason": null
+            },
+            {
+              "laneId": "discontinued_archive",
+              "required": true,
+              "supported": true,
+              "status": "complete",
+              "candidateCount": 0,
+              "provenance": [
+                {
+                  "schemaVersion": 1,
+                  "method": "official_sitemap",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/sitemap.xml",
+                  "requestedModel": "DW42CS",
+                  "contentType": "application/xml",
+                  "contentSha256": "6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240",
+                  "objectPath": "evidence/web/sha256/6a/74/6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240.xml",
+                  "byteSize": 380470
+                }
+              ],
+              "reason": null
+            },
+            {
+              "laneId": "support_search_api",
+              "required": true,
+              "supported": true,
+              "status": "complete",
+              "candidateCount": 0,
+              "provenance": [
+                {
+                  "schemaVersion": 1,
+                  "method": "official_site_search",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/search?q=DW42CS",
+                  "requestedModel": "DW42CS",
+                  "contentType": "text/html",
+                  "contentSha256": "73cd68b3514a6bb5bbd1317faa7ffa1c29a30cdda57588d6fc0d961669c02bc3",
+                  "objectPath": "evidence/web/sha256/73/cd/73cd68b3514a6bb5bbd1317faa7ffa1c29a30cdda57588d6fc0d961669c02bc3.html",
+                  "byteSize": 201088
+                }
+              ],
+              "reason": null
+            },
+            {
+              "laneId": "official_document_cdn",
+              "required": true,
+              "supported": true,
+              "status": "complete",
+              "candidateCount": 0,
+              "provenance": [
+                {
+                  "schemaVersion": 1,
+                  "method": "official_site_search",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/search?q=DW42CS",
+                  "requestedModel": "DW42CS",
+                  "contentType": "text/html",
+                  "contentSha256": "73cd68b3514a6bb5bbd1317faa7ffa1c29a30cdda57588d6fc0d961669c02bc3",
+                  "objectPath": "evidence/web/sha256/73/cd/73cd68b3514a6bb5bbd1317faa7ffa1c29a30cdda57588d6fc0d961669c02bc3.html",
+                  "byteSize": 201088
+                },
+                {
+                  "schemaVersion": 1,
+                  "method": "official_sitemap",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/sitemap.xml",
+                  "requestedModel": "DW42CS",
+                  "contentType": "application/xml",
+                  "contentSha256": "6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240",
+                  "objectPath": "evidence/web/sha256/6a/74/6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240.xml",
+                  "byteSize": 380470
+                }
+              ],
+              "reason": null
+            },
+            {
+              "laneId": "official_product_detail",
+              "required": true,
+              "supported": true,
+              "status": "complete",
+              "candidateCount": 0,
+              "provenance": [
+                {
+                  "schemaVersion": 1,
+                  "method": "official_site_search",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/search?q=DW42CS",
+                  "requestedModel": "DW42CS",
+                  "contentType": "text/html",
+                  "contentSha256": "73cd68b3514a6bb5bbd1317faa7ffa1c29a30cdda57588d6fc0d961669c02bc3",
+                  "objectPath": "evidence/web/sha256/73/cd/73cd68b3514a6bb5bbd1317faa7ffa1c29a30cdda57588d6fc0d961669c02bc3.html",
+                  "byteSize": 201088
+                },
+                {
+                  "schemaVersion": 1,
+                  "method": "official_sitemap",
+                  "market": "AU",
+                  "discoveryUrl": "https://esatto.house/sitemap.xml",
+                  "requestedModel": "DW42CS",
+                  "contentType": "application/xml",
+                  "contentSha256": "6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240",
+                  "objectPath": "evidence/web/sha256/6a/74/6a74f5a681bede6678f8e58a87e9aaa140046b98749f46b0b259dc135c5fc240.xml",
+                  "byteSize": 380470
+                }
+              ],
+              "reason": null
+            }
+          ],
           "candidates": [],
           "failures": []
         }
       ],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
-      ],
+      "incompleteResolverIds": [],
       "incompleteSourceLaneIds": [],
       "legacyAggregateResolverIds": [],
-      "lastDiscoveryRunId": "historical-scale-p0-esatto-dw42cs-20260719-a",
-      "lastDiscoveryAt": "2026-07-19T19:11:29.870Z",
+      "lastDiscoveryRunId": "p0-esatto-dw42cs-provenance-epoch-20260728",
+      "lastDiscoveryAt": "2026-07-28T10:07:00.432Z",
       "referenceHintSourceIds": [
         "historical_source_b421d74f54907cf5e2190a6c"
       ],
@@ -50599,8 +50746,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -50639,8 +50786,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -50679,8 +50826,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -50719,8 +50866,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -56767,8 +56914,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -56807,8 +56954,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -56847,8 +56994,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -56887,8 +57034,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74626,8 +74773,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74668,8 +74815,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74710,8 +74857,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74750,8 +74897,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74790,8 +74937,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74830,8 +74977,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74872,8 +75019,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74914,8 +75061,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74956,8 +75103,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -74996,8 +75143,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75036,8 +75183,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75076,8 +75223,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75116,8 +75263,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75156,8 +75303,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75196,8 +75343,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75238,8 +75385,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75278,8 +75425,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -75318,8 +75465,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102676,8 +102823,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102716,8 +102863,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102756,8 +102903,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102796,8 +102943,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102836,8 +102983,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102876,8 +103023,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102916,8 +103063,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102956,8 +103103,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -102996,8 +103143,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -103036,8 +103183,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -103076,8 +103223,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -103116,8 +103263,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -103156,8 +103303,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -103196,8 +103343,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -103236,8 +103383,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121931,8 +122078,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121971,8 +122118,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122011,8 +122158,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122051,8 +122198,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122091,8 +122238,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122131,8 +122278,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122171,8 +122318,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122211,8 +122358,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122251,8 +122398,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122291,8 +122438,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122331,8 +122478,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -122371,8 +122518,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -146876,8 +147023,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -146916,8 +147063,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -146956,8 +147103,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -146996,8 +147143,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147036,8 +147183,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147076,8 +147223,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147116,8 +147263,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147156,8 +147303,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147196,8 +147343,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147236,8 +147383,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147276,8 +147423,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147316,8 +147463,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147356,8 +147503,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147396,8 +147543,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -147436,8 +147583,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192428,8 +192575,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192468,8 +192615,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192508,8 +192655,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192548,8 +192695,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192588,8 +192735,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192628,8 +192775,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192668,8 +192815,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192708,8 +192855,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192748,8 +192895,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192788,8 +192935,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192828,8 +192975,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192868,8 +193015,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192908,8 +193055,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192948,8 +193095,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192988,8 +193135,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193028,8 +193175,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193068,8 +193215,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193108,8 +193255,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193148,8 +193295,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -249874,8 +250021,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -249914,8 +250061,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -249954,8 +250101,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -249994,8 +250141,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250034,8 +250181,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250074,8 +250221,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250114,8 +250261,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250154,8 +250301,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250194,8 +250341,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250234,8 +250381,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250274,8 +250421,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250314,8 +250461,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250354,8 +250501,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250394,8 +250541,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250434,8 +250581,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250474,8 +250621,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250514,8 +250661,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250554,8 +250701,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250594,8 +250741,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250634,8 +250781,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250674,8 +250821,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250714,8 +250861,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250754,8 +250901,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250794,8 +250941,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250834,8 +250981,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250874,8 +251021,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250914,8 +251061,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250954,8 +251101,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -250994,8 +251141,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -251034,8 +251181,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -251074,8 +251221,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -251114,8 +251261,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -251154,8 +251301,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -251194,8 +251341,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -251234,8 +251381,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -270491,15 +270638,18 @@
     "targets": 7688,
     "candidates": 8,
     "candidateEdges": 8,
-    "runBindings": 6,
+    "runBindings": 7,
     "byState": {
-      "DISCOVERY_RETRYABLE": 5029,
+      "DISCOVERY_RETRYABLE": 5028,
+      "NO_CANDIDATE_COMPLETE": 1,
       "RESEARCH_REQUIRED": 2659
     },
-    "schemaV2Targets": 0,
+    "schemaV2Targets": 1,
     "legacyAggregateTargets": 2,
     "incompleteRequiredSourceLanes": 0,
-    "sourceLaneProvenanceObjects": 0,
-    "bySourceLaneStatus": {}
+    "sourceLaneProvenanceObjects": 7,
+    "bySourceLaneStatus": {
+      "complete": 5
+    }
   }
 }

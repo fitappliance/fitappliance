@@ -5,8 +5,10 @@ import { readFile } from 'node:fs/promises';
 const dictionaryPath = 'data/architecture-v2/policies/product-data-field-rights-dictionary.json';
 
 const requiredFieldIds = Object.freeze([
+  'identity.category',
   'identity.brand',
   'identity.model',
+  'identity.market',
   'identity.variantSuffix',
   'identity.gtin',
   'lifecycle.marketStatus',

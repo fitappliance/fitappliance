@@ -413,6 +413,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
         haier: { finderOptions: { writeObject: objectStore.writeObject } },
         asko: { finderOptions: { writeObject: objectStore.writeObject } },
         esatto: { finderOptions: { writeObject: objectStore.writeObject } },
+        inalto: { finderOptions: { writeObject: objectStore.writeObject } },
         fisherPaykel: { finderOptions: { writeObject: objectStore.writeObject } },
       },
     }),

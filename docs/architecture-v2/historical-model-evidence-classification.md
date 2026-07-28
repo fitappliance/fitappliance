@@ -30,7 +30,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Brand | Group type | Group | Models |
 | --- | --- | --- | --- | --- |
-| fridge | CHIQ | parser_family | CHIQ Australia exact-model specification sheet | 24 |
+| fridge | CHIQ | parser_family | CHIQ Australia exact-model specification sheet | 25 |
 | fridge | Hisense | parser_family | PDF grammar pdf_grammar_f96902bad0e838aa | 21 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_100af9c8141cceb2 | 16 |
 | dishwasher | Bosch | marketing_series | Series 6 | 15 |
@@ -64,12 +64,12 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Bosch | document_family | Document family 2dc618f4e502 | 5 |
 | dishwasher | Bosch | parser_family | PDF grammar pdf_grammar_d0a7cfc9cb0c3200 | 5 |
 | dishwasher | Fisher & Paykel | document_family | Document family 3031e527077f | 5 |
+| dishwasher | Miele | parser_family | PDF grammar pdf_grammar_d4c48f1dc4a2e003 | 5 |
+| fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 5 |
 | fridge | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_fa4e96e9408d0085 | 5 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_0b598fa8b30e9c42 | 5 |
-| dishwasher | Bosch | document_family | Document family 5ab48d9a2642 | 4 |
-| dishwasher | Bosch | marketing_series | Series 2 | 4 |
-| dishwasher | Fisher & Paykel | document_family | Document family 24cc9cefd1e2 | 4 |
-| dishwasher | Fisher & Paykel | document_family | Document family 4c6a3e96a150 | 4 |
+| washing_machine | Fisher & Paykel | document_family | Document family 74aba7e73318 | 5 |
+| washing_machine | Fisher & Paykel | document_family | Document family a8d9d2457a45 | 5 |
 
 ## Highest-Impact Gaps
 

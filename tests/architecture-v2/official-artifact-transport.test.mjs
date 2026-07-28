@@ -464,6 +464,44 @@ test('native manufacturer URL cannot redirect to a global artifact host without 
   }), /redirect escaped official brand hosts|provenance/i);
 });
 
+test('Inalto shortlink may reach Squarespace only with exact product-page provenance', async () => {
+  const native = 'https://inalto.house/s/ICF142B2-User-Manual.pdf';
+  const cdn = 'https://static1.squarespace.com/static/site/t/file/ICF142B2-User-Manual.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://inalto.house/en-au/chilling/p/142l-hybrid-chest-fridge-freezer-icf142b2',
+    requestedModel: 'ICF142B2',
+    matchedModel: 'ICF142B2',
+    artifactUrl: native,
+    artifactLinkUrl: native,
+    discoveryContentSha256: 'd'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+    discoveryByteSize: 987,
+  };
+  const fetchImpl = async (url) => {
+    if (url === native) return new Response(null, { status: 302, headers: { location: cdn } });
+    if (url === cdn) return new Response(PDF, { headers: { 'content-type': 'application/pdf' } });
+    throw new Error(`unexpected URL ${url}`);
+  };
+
+  await assert.rejects(() => fetchOfficialArtifactResilient(native, 'InAlto', {
+    expectedModel: 'ICF142B2', expectedCategory: 'fridge', fetchImpl,
+  }), /redirect escaped official brand hosts|provenance/i);
+
+  const result = await fetchOfficialArtifactResilient(native, 'InAlto', {
+    expectedModel: 'ICF142B2', expectedCategory: 'fridge', discoveryProvenance: provenance, fetchImpl,
+  });
+  assert.equal(result.finalUrl, cdn);
+  assert.deepEqual(result.bytes, PDF);
+
+  await assert.rejects(() => fetchOfficialArtifactResilient(native, 'InAlto', {
+    expectedModel: 'ICF142B2', expectedCategory: 'fridge', fetchImpl,
+    discoveryProvenance: { ...provenance, matchedModel: 'ICF142B3' },
+  }), /redirect escaped official brand hosts|provenance|model/i);
+});
+
 test('generic binary response is accepted only when PDF magic bytes agree', async () => {
   await assert.rejects(() => fetchOfficialArtifactResilient(LG_DISCOVERY.artifactUrl, 'LG', {
     expectedModel: 'WD1275A1',

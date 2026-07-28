@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-07-19T19:32:08.439Z",
-  "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
-  "sourceOfficialCandidateManifestSha256": "f673061e4fc6d0043d3aaa428b18c044b2361ddf25862cb00a75ae968c29c87d",
+  "sourceAcquisitionQueueSha256": "4712a15a9819b0874740b7260f6a5fbcdcabbb8adc2730c7b622bad9260a816d",
+  "sourceOfficialCandidateManifestSha256": "c4c85535d077156bf6146377cec2c0a15218d3954528e0dc74b5e4df2f6b8565",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-    "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
+    "smeg_au_techspec_pdf_dimensions_v1": "e572fc1438f7a7c33187ee16cb0b55f499ee46337cc1e10ba4744d80ec8579d9"
   },
   "policy": {
     "resolverOnlyTargetsAllowed": false,
@@ -18,25 +18,25 @@
   "summary": {
     "acquisitionRecords": 7688,
     "fetchJobs": 0,
-    "targets": 4994,
+    "targets": 4993,
     "acquisitionTargets": 0,
-    "discoveryTargets": 4994,
-    "deferredTargets": 2694,
+    "discoveryTargets": 4993,
+    "deferredTargets": 2695,
     "resolverOnlyTargets": 0,
     "candidateEdges": 0,
     "observedCandidateEdges": 8,
     "isolatedNonReadyCandidateEdges": 8,
-    "uniqueReferences": 4994,
+    "uniqueReferences": 4993,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1131,
-      "CURRENT_RETAIL": 970,
+      "CURRENT_RETAIL": 969,
       "REGISTRY_ONLY": 2893
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 780,
+      "P0_CURRENT_MISSING_DIMENSIONS": 779,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1044,
       "P2_CURRENT_CONFIRMATION": 179,
       "P3_HISTORICAL_CONFIRMATION": 2934,
@@ -44,106 +44,21 @@
     },
     "byExecutionLane": {
       "ACQUISITION": 0,
-      "BOUNDED_DISCOVERY": 4994
+      "BOUNDED_DISCOVERY": 4993
     },
     "deferredByReason": {
       "ACTIVE_RESOLVER_SUPPRESSION": 35,
+      "NO_CANDIDATE_COMPLETE": 1,
       "RESEARCH_REQUIRED": 2659
     },
     "excluded": {
+      "NO_CANDIDATE_COMPLETE": 1,
       "RESEARCH_REQUIRED": 2659
     }
   },
   "jobs": [],
   "targets": [],
   "discoveryTargets": [
-    {
-      "targetId": "recovery_target_24ed948d4390531eefa18311",
-      "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
-      "legacyRuntimeId": "ao-57863",
-      "canonicalProductId": "fa_prod_8521b276431c5f76e2ccd87c",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "DW42CS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1913f75a80e61c656b60c659",
-        "legacy:data/pdf-evidence-raw/DW42CS.json",
-        "source:doc_1913f75a80e61c656b60c659"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1913f75a80e61c656b60c659",
-          "dimensionsMm": {
-            "width": 448,
-            "height": 845,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "observedCandidateIds": [],
-      "resolverContract": [
-        {
-          "schemaVersion": 1,
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "schemaVersion": 2,
-          "resolverId": "esatto-official-discovery",
-          "version": "2",
-          "scope": "esatto_au_current_archive_product_detail_and_document_lanes",
-          "required": true,
-          "sourceLanes": [
-            {
-              "laneId": "current_product",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "discontinued_archive",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "support_search_api",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "official_document_cdn",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "official_product_detail",
-              "required": true,
-              "supported": true
-            }
-          ]
-        }
-      ],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
-      ]
-    },
     {
       "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
       "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
@@ -49168,8 +49083,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -49215,8 +49130,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -49262,8 +49177,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -49309,8 +49224,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -67860,8 +67775,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -67907,8 +67822,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121026,8 +120941,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121083,8 +120998,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121140,8 +121055,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121197,8 +121112,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121254,8 +121169,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121311,8 +121226,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121368,8 +121283,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121425,8 +121340,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121482,8 +121397,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121539,8 +121454,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121596,8 +121511,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -121653,8 +121568,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144008,8 +143923,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144065,8 +143980,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144122,8 +144037,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144179,8 +144094,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144236,8 +144151,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144293,8 +144208,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144350,8 +144265,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144407,8 +144322,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144464,8 +144379,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144521,8 +144436,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144578,8 +144493,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144635,8 +144550,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144692,8 +144607,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144749,8 +144664,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144806,8 +144721,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144863,8 +144778,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144920,8 +144835,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -144977,8 +144892,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -145034,8 +144949,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191349,8 +191264,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191406,8 +191321,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191476,8 +191391,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191533,8 +191448,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191590,8 +191505,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191647,8 +191562,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191704,8 +191619,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191761,8 +191676,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191818,8 +191733,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191888,8 +191803,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -191945,8 +191860,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192002,8 +191917,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192059,8 +191974,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192116,8 +192031,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192173,8 +192088,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192230,8 +192145,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192287,8 +192202,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192344,8 +192259,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192401,8 +192316,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192458,8 +192373,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192528,8 +192443,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192598,8 +192513,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192668,8 +192583,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192725,8 +192640,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192782,8 +192697,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192839,8 +192754,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192896,8 +192811,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -192953,8 +192868,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193010,8 +192925,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193067,8 +192982,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193124,8 +193039,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193181,8 +193096,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193238,8 +193153,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193295,8 +193210,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -193365,8 +193280,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -262724,8 +262639,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -262781,8 +262696,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -262838,8 +262753,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -262895,8 +262810,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -262952,8 +262867,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263009,8 +262924,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263066,8 +262981,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263123,8 +263038,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263180,8 +263095,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263237,8 +263152,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263294,8 +263209,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263351,8 +263266,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263408,8 +263323,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263465,8 +263380,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263522,8 +263437,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263579,8 +263494,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263636,8 +263551,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263693,8 +263608,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263750,8 +263665,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263807,8 +263722,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263864,8 +263779,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263921,8 +263836,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -263978,8 +263893,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264035,8 +263950,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264092,8 +264007,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264149,8 +264064,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264206,8 +264121,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264263,8 +264178,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264320,8 +264235,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264377,8 +264292,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264434,8 +264349,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264491,8 +264406,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264548,8 +264463,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264605,8 +264520,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264662,8 +264577,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264719,8 +264634,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264776,8 +264691,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264833,8 +264748,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264890,8 +264805,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -264947,8 +264862,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265004,8 +264919,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265061,8 +264976,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265118,8 +265033,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265175,8 +265090,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265232,8 +265147,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265289,8 +265204,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265346,8 +265261,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265403,8 +265318,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265460,8 +265375,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -265517,8 +265432,8 @@
         {
           "schemaVersion": 1,
           "resolverId": "inalto-official-discovery",
-          "version": "1",
-          "scope": "inalto_legacy_discovery_only",
+          "version": "2",
+          "scope": "inalto_au_exact_product_page_and_document_provenance",
           "required": true
         }
       ],
@@ -285596,6 +285511,89 @@
       "incompleteResolverIds": [
         "beko-official-discovery"
       ]
+    },
+    {
+      "targetId": "recovery_target_24ed948d4390531eefa18311",
+      "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
+      "legacyRuntimeId": "ao-57863",
+      "canonicalProductId": "fa_prod_8521b276431c5f76e2ccd87c",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "DW42CS",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_1913f75a80e61c656b60c659",
+        "legacy:data/pdf-evidence-raw/DW42CS.json",
+        "source:doc_1913f75a80e61c656b60c659"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_1913f75a80e61c656b60c659",
+          "dimensionsMm": {
+            "width": 448,
+            "height": 845,
+            "depth": 600
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "DEFERRED",
+      "candidateManifestState": "NO_CANDIDATE_COMPLETE",
+      "dispositionReason": "NO_CANDIDATE_COMPLETE",
+      "candidateIds": [],
+      "resolverContract": [
+        {
+          "schemaVersion": 1,
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "schemaVersion": 2,
+          "resolverId": "esatto-official-discovery",
+          "version": "2",
+          "scope": "esatto_au_current_archive_product_detail_and_document_lanes",
+          "required": true,
+          "sourceLanes": [
+            {
+              "laneId": "current_product",
+              "required": true,
+              "supported": true
+            },
+            {
+              "laneId": "discontinued_archive",
+              "required": true,
+              "supported": true
+            },
+            {
+              "laneId": "support_search_api",
+              "required": true,
+              "supported": true
+            },
+            {
+              "laneId": "official_document_cdn",
+              "required": true,
+              "supported": true
+            },
+            {
+              "laneId": "official_product_detail",
+              "required": true,
+              "supported": true
+            }
+          ]
+        }
+      ],
+      "incompleteResolverIds": []
     },
     {
       "targetId": "recovery_target_182fad898d1f99f9d6565274",

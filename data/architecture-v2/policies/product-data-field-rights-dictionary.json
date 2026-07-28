@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-07-27",
+  "reviewedAt": "2026-07-28",
   "canonicalUnitSystem": "millimetres",
   "unknownRule": "Unknown values remain unknown and cannot be inferred as zero.",
   "fields": [
+    { "id": "identity.category", "kind": "identity", "valueShape": "enum", "scope": "product", "fitRole": "identity", "requiredEvidence": ["explicit_product_category", "au_market_context"] },
     { "id": "identity.brand", "kind": "identity", "valueShape": "string", "scope": "product", "fitRole": "identity", "requiredEvidence": ["explicit_brand", "au_market_context"] },
     { "id": "identity.model", "kind": "identity", "valueShape": "string", "scope": "product", "fitRole": "identity", "requiredEvidence": ["exact_model_string", "au_market_context"] },
+    { "id": "identity.market", "kind": "identity", "valueShape": "string", "scope": "market", "fitRole": "identity", "requiredEvidence": ["explicit_market", "australian_market_context"] },
     { "id": "identity.variantSuffix", "kind": "identity", "valueShape": "string", "scope": "product", "fitRole": "identity", "requiredEvidence": ["exact_suffix_or_receipt_bound_alias"] },
     { "id": "identity.gtin", "kind": "identity", "valueShape": "string", "scope": "trade_item", "fitRole": "identity", "requiredEvidence": ["explicit_gtin", "exact_model_binding"] },
     { "id": "lifecycle.marketStatus", "kind": "lifecycle", "valueShape": "enum", "scope": "au_market", "fitRole": "informational", "requiredEvidence": ["dated_market_status"] },

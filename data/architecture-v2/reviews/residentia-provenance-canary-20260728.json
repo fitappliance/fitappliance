@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "residentia-provenance-canary-20260728",
+  "reviewMode": "bounded_structured_review",
+  "runId": "wp7a-residentia-provenance-canary-20260728",
+  "startedAt": "2026-07-28T10:00:55.000Z",
+  "completedAt": "2026-07-28T10:01:43.320Z",
+  "sourceBindings": {
+    "checkpointPath": "runs/wp7a-pdf-baseline/wp7a-residentia-provenance-canary-20260728/checkpoint.json",
+    "checkpointSha256": "5e52a0d9595f12d2e6f337bf08a6ef08199e85fbc87c0616b3afee02604dabea",
+    "frozenBaselineId": "pdf-failure-baseline-100-2026-07-27",
+    "frozenBaselineSha256": "adce6cbaad3e212e9f4f0535406cde8dfadf47aa59f7c1f0b23e536e24ab67cc",
+    "recoveryPolicySha256": "8a990ba19339788d57dd8c60168e78bd4296d8098e281ef1f7379c7733bd35ac",
+    "discoveryPolicyVersion": "2026-07-28.1",
+    "discoveryPolicySha256": "2272f2a70e6468b7cd94e022c72f61b6f7ad3ff1b2113a6f654dec91172d8e58",
+    "esattoResolverSha256": "c54fa22b92d5213ad75dbcba954928b62ef09604db816230b77d8bc846b653ae",
+    "inaltoResolverSha256": "3d83ffee4340f5b192a43dd116a84f31f7e43cb53eb99a673f8821cc1f2b7c41",
+    "resolverAdapterSha256": "e56a365c91329ed89788ca3fac3e4323c9eb76237453bdcc87f29117454c54f6"
+  },
+  "summary": {
+    "selectedSamples": 3,
+    "exactModelProductPages": 3,
+    "immutableOfficialPdfs": 3,
+    "mineruContentListV2": 3,
+    "exactModelTextSignals": 3,
+    "explicitPhysicalWdhTuples": 1,
+    "parserStructureGaps": 2,
+    "publicationEligible": 0,
+    "fitPromotions": 0,
+    "goGate": "PASS_THREE_FROZEN_EXACT_MODELS"
+  },
+  "records": [
+    {
+      "sampleId": "pdf_baseline_b10098c89b1b7927d6a8cff9",
+      "brand": "Esatto",
+      "model": "EDWI605S",
+      "category": "dishwasher",
+      "status": "indexed",
+      "officialSourceUrl": "https://esatto.house/s/Esatto_ProductCard-EDWI605S-7ayc.pdf",
+      "finalHost": "static1.squarespace.com",
+      "productPageUrl": "https://esatto.house/dishwashers/p/60cm-integrated-dishwasher-edwi605s",
+      "productPageSha256": "05d045e5a809d04f0f920b6b595affd7b66d62ba6e3622ad191f03a2668d48de",
+      "sourcePdfSha256": "1b783246ca5f9e4b58cbffbacd13d96de99cecd0e964604a1c650f9777fcc858",
+      "mineruContentSha256": "b1f6fbbf9faa5e3ac7884905e27ac819fde2397a8cfa7c6e2eae0e0683193f4a",
+      "parserObservation": {
+        "exactModelText": true,
+        "physicalDimensionStatus": "LABEL_WITHOUT_COMPLETE_TUPLE",
+        "issueCode": "PHYSICAL_DIMENSIONS_VALUE_NOT_EXTRACTED"
+      },
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0628a4f689af28d321e7bed6",
+      "brand": "Esatto",
+      "model": "EBF69W",
+      "category": "fridge",
+      "status": "indexed",
+      "officialSourceUrl": "https://esatto.house/s/Esatto_ProductCard-EBF69W-klmk.pdf",
+      "finalHost": "static1.squarespace.com",
+      "productPageUrl": "https://esatto.house/refrigeration/p/65l-bar-fridge-white-ebf69w",
+      "productPageSha256": "47b57e67356e20e0e254461681f66c4880717137602ef31aca4221d5425381e8",
+      "sourcePdfSha256": "891472a6c581b638b30e62ef9cd7ef6af956fe442d8d729bd35880a0045ea7e1",
+      "mineruContentSha256": "9e86df31554b85874f0a50800a7f46bfaebd0010adc9aa878599dbe7e9b7c0f2",
+      "parserObservation": {
+        "exactModelText": true,
+        "physicalDimensionStatus": "NOT_IN_EXTRACTED_TEXT",
+        "issueCode": "PHYSICAL_DIMENSIONS_IMAGE_ONLY_OR_UNEXTRACTED"
+      },
+      "publicationEligible": false
+    },
+    {
+      "sampleId": "pdf_baseline_0f210c22a8ac7b6768d401df",
+      "brand": "Inalto",
+      "model": "ICF142B2",
+      "category": "fridge",
+      "status": "indexed",
+      "officialSourceUrl": "https://inalto.house/s/Inalto_ProductCard-ICF142B2-dmss.pdf",
+      "finalHost": "static1.squarespace.com",
+      "productPageUrl": "https://inalto.house/en-au/chilling/p/142l-hybrid-chest-fridge-freezer-icf142b2",
+      "productPageSha256": "14239106116f92d584704ca6f532ac339cd3f2f561b6d532a307809119cde15d",
+      "sourcePdfSha256": "a84579cea0ff8e65ceec513ef52b0b477ba18b1fcfbec007a97d80a90e9c6a95",
+      "mineruContentSha256": "8140dc6cfb72f76724388841040023344e3ec5c72c897ba2ed8a9f9f2ea3b2fd",
+      "parserObservation": {
+        "exactModelText": true,
+        "physicalDimensionStatus": "EXPLICIT_AXIS_TUPLE",
+        "axisOrder": [
+          "width",
+          "depth",
+          "height"
+        ],
+        "valuesMm": [
+          600,
+          560,
+          850
+        ],
+        "sourceText": "Physical (w, d, h mm) 600 x 560 x 850"
+      },
+      "publicationEligible": false
+    }
+  ],
+  "decision": {
+    "acquisitionEpoch": "ACCEPTED_FOR_BOUNDED_EXPANSION",
+    "parserEpoch": "PARTIAL_YIELD_REQUIRES_SEPARATE_WORK",
+    "publicProjection": "BLOCKED",
+    "fitDecision": "BLOCKED"
+  }
+}

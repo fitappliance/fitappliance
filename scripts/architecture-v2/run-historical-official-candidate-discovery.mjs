@@ -132,6 +132,7 @@ function resolverOptions(objectStore) {
     haier: { finderOptions },
     asko: { finderOptions },
     esatto: { finderOptions },
+    inalto: { finderOptions },
     fisherPaykel: { finderOptions },
   };
 }

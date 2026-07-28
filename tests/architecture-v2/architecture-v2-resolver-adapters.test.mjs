@@ -601,6 +601,36 @@ test('Esatto adapter preserves distinct current and archive observations of the 
   ]);
 });
 
+test('Inalto adapter exposes the exact-product-page provenance resolver epoch', async () => {
+  const sourceUrl = 'https://inalto.house/s/ICF142B2-User-Manual.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://inalto.house/en-au/chilling/p/142l-hybrid-chest-fridge-freezer-icf142b2',
+    requestedModel: 'ICF142B2',
+    matchedModel: 'ICF142B2',
+    artifactUrl: sourceUrl,
+    artifactLinkUrl: sourceUrl,
+    discoveryContentSha256: 'd'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+    discoveryByteSize: 987,
+  };
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'InAlto', model: 'ICF142B2', category: 'fridge' },
+    { inalto: { finder: async () => ({
+      sourceUrl,
+      resourceType: 'user_manual',
+      discoveryProvenance: provenance,
+    }) } },
+  );
+
+  const result = await adapter.resolve({ brand: 'InAlto', model: 'ICF142B2', category: 'fridge' });
+  assert.equal(result.version, '2');
+  assert.equal(result.scope, 'inalto_au_exact_product_page_and_document_provenance');
+  assert.equal(result.candidates[0].discoveryProvenance.discoveryUrl, provenance.discoveryUrl);
+});
+
 test('generic adapter preserves exact, regional, sibling, family and retailer discovery boundaries', async () => {
   const adapter = createLegacyFinderResolverAdapter({
     brandKey: 'samsung',
