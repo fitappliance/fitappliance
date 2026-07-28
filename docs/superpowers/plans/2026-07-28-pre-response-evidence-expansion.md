@@ -2,7 +2,7 @@
 
 **Created:** 2026-07-28
 
-**Status:** Task 5 complete; commit and push pending
+**Status:** Complete; branch pushed; merge requires an explicit decision
 
 **Branch:** `codex/pre-response-evidence-expansion`
 
@@ -243,7 +243,8 @@ Acceptance:
 - [x] Run Architecture V2, receipt replay, publication isolation, schema, lint,
   build and generated-output drift gates.
 - [x] Update measured results and the recovery checkpoint below.
-- [ ] Commit, push, review and merge only after all required checks pass.
+- [x] Review, commit and push only after all required checks pass.
+- [ ] Merge only after an explicit integration decision.
 
 Measured result:
 
@@ -268,10 +269,10 @@ Measured result:
 
 **Last completed:** Task 5, verification and closeout
 
-**Current task:** commit, push and independent review
+**Current task:** complete on `codex/pre-response-evidence-expansion`
 
-**Next allowed action:** review the final diff, commit and push the isolated
-branch; merge requires a separate explicit decision
+**Next allowed action:** review and merge the isolated branch, then execute only
+the controller-authorized current P0 manifest
 
 **Blocked action:** open historical P1 or publish any canary-derived dimensions
 
