@@ -515,12 +515,16 @@ test('Esatto adapter preserves the schema-v2 source-lane contract and candidate 
   const result = await adapter.resolve({ brand: 'Esatto', model: 'EDW456S', category: 'dishwasher' });
 
   assert.equal(result.schemaVersion, 2);
-  assert.equal(result.version, '2');
+  assert.equal(result.version, '3');
   assert.equal(result.completion, 'complete');
   assert.deepEqual(result.sourceLanes, sourceLanes);
   assert.deepEqual(result.candidates.map((candidate) => [candidate.sourceLaneId, candidate.sourceUrl]), [
     ['official_document_cdn', documentUrl],
     ['official_product_detail', productUrl],
+  ]);
+  assert.deepEqual(result.candidates.map((candidate) => [candidate.documentType, candidate.sourceRole]), [
+    ['user_manual', 'manufacturer_document'],
+    ['product_page', 'manufacturer_product_page'],
   ]);
 });
 

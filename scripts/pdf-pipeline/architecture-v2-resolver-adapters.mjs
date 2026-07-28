@@ -76,6 +76,7 @@ function hasLowerAuthorityDimensionConflict(caseRecord) {
 
 function normalizeDocumentType(value) {
   const text = String(value ?? '').toLowerCase().replace(/[\s-]+/g, '_');
+  if (/(?:^|_)product_page(?:_|$)/.test(text)) return 'product_page';
   if (/structured_product_data|product_api|pim_data/.test(text)) return 'structured_product_data';
   if (/(?:^|_)parts?(?:_|$)|(?:^|_)spare(?:_|$)/.test(text)) return 'parts_manual';
   if (/family/.test(text)) return 'family_manual';
@@ -682,8 +683,8 @@ const LEGACY_RESOLVER_PROFILES = new Map([
     optionKey: 'esatto',
     brandKey: 'esatto',
     resolverId: 'esatto-official-discovery',
-    version: '2',
-    scope: 'esatto_au_current_archive_product_detail_and_document_lanes',
+    version: '3',
+    scope: 'esatto_au_typed_current_archive_product_detail_and_document_lanes',
     sourceLanes: ESATTO_OFFICIAL_SOURCE_LANES,
     finder: findEsattoOfficialPdf,
   }],
