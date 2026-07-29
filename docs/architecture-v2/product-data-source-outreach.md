@@ -1,7 +1,7 @@
 # Product Data Source and Brand Outreach Package
 
 **Date:** 2026-07-29
-**Status:** Active pilot; all frozen-brand routes contacted, two provider probes submitted, no commercial provider purchased
+**Status:** Active pilot; all frozen-brand routes contacted, Open Icecat coverage study pending, no commercial provider purchased
 **Execution plan:** [Brand Data and PDF Yield Program](../superpowers/plans/2026-07-27-brand-data-and-pdf-yield-program.md)
 
 This document records source and outreach research. The linked execution plan is the canonical task order, dependency gate, and recovery checkpoint for the active program.
@@ -32,6 +32,15 @@ request hashes bind the frozen 100-model CSV and manifest hashes. They are never
 included in brand response rates and carry no authority to purchase or accept
 provider terms.
 
+Open Icecat replied on 2026-07-29 and confirmed that its coverage study is
+no-obligation. FitAppliance then sent a reviewed provider-input CSV containing all
+100 frozen manufacturer and exact-MPN pairs. All GTIN cells remain blank because no
+validated GTIN evidence exists yet. The reply requests JSON output, exact/ambiguous/
+no-match status, Australian-locale coverage, retained model suffixes, provider IDs,
+GTINs, available attributes and document links, update dates, and explicit Open
+versus Full Icecat rights. The coverage result remains private and ineligible for
+publication or Fit until those rights and exact-SKU matches are verified.
+
 ## Current Source Decision
 
 | Channel | Current decision | Measured or verified reason |
@@ -40,7 +49,7 @@ provider terms.
 | WELS | Adopt for dishwasher identity/status shadow | The public register exposes a complete overnight CSV. In the frozen 50-dishwasher pilot, 42 models match a current Registered identity, 4 match only Expired records, 3 have identity conflicts and 1 has no exact match. WELS supplies no installation geometry. |
 | EESS | Research on demand | Useful for responsible supplier and electrical registration corroboration; no product geometry is expected. |
 | GS1 Australia NPC | Request sample and terms | GS1 confirms product names, GTINs, descriptions, dimensions and images are available through supplier/retailer data exchange. It does not establish that the target AU appliance models or installation clearances are available to FitAppliance under acceptable display rights. |
-| Open Icecat | Probe after registration | Open Icecat is free and brand-authorized for sponsoring brands, with structured XML/CSV/JSON/HTML and manuals. Exact AU model-suffix coverage is unmeasured. |
+| Open Icecat | Await 100-model coverage study | Icecat requested the manufacturer/MPN sample and confirmed that the study is no-obligation; FitAppliance sent the reviewed 100-row input. Exact AU model-suffix coverage, returned fields and display rights remain unmeasured until its JSON result arrives. |
 | Full Icecat | Do not purchase yet | Current published entry pricing starts around EUR 375 per month. Headline catalogue size does not prove exact AU appliance coverage or installation-field quality. |
 | Direct manufacturer trade/PIM | Prioritize | Fisher & Paykel's AU Trade Resources prove that comprehensive dimensions, CAD and installation guides can be exposed through a trade/specification channel. Other pilot brands need official contact-route research. |
 

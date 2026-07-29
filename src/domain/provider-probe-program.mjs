@@ -124,6 +124,66 @@ export function assertGitSafeProviderProbeLedger(ledger) {
         throw new TypeError(`${provider.id} needs a message byte size`);
       }
     }
+    const hasResponse = [
+      provider.responseReceivedOn,
+      provider.responseClass,
+      provider.responseCaptureState,
+      provider.responseObjectSha256,
+      provider.responseObjectByteSize,
+    ].some((value) => value != null);
+    if (hasResponse) {
+      const responseReceivedOn = dateOnly(provider.responseReceivedOn, `${provider.id} response date`);
+      if (provider.state === 'draft_ready' || responseReceivedOn < provider.sentOn) {
+        throw new TypeError(`${provider.id} response cannot predate the provider request`);
+      }
+      if (provider.responseClass !== 'sample_offer_no_obligation') {
+        throw new TypeError(`${provider.id} has an unsupported response class`);
+      }
+      if (provider.responseCaptureState !== 'gmail_dom_message_body') {
+        throw new TypeError(`${provider.id} has an unsupported response capture state`);
+      }
+      assertHash(provider.responseObjectSha256, `${provider.id} response object`);
+      if (!Number.isInteger(provider.responseObjectByteSize) || provider.responseObjectByteSize < 1) {
+        throw new TypeError(`${provider.id} needs a response object byte size`);
+      }
+    }
+    const hasSharedSample = [
+      provider.sampleSharedOn,
+      provider.providerInputCsvSha256,
+      provider.providerInputSourceCsvSha256,
+      provider.providerInputCsvByteSize,
+      provider.providerInputRows,
+      provider.providerInputKnownGtinRows,
+      provider.sampleMessageObjectSha256,
+      provider.sampleMessageObjectByteSize,
+    ].some((value) => value != null);
+    if (hasSharedSample) {
+      if (!hasResponse) throw new TypeError(`${provider.id} cannot share a sample before a recorded response`);
+      const sampleSharedOn = dateOnly(provider.sampleSharedOn, `${provider.id} sample shared date`);
+      if (sampleSharedOn < provider.responseReceivedOn) {
+        throw new TypeError(`${provider.id} sample cannot predate the provider response`);
+      }
+      assertHash(provider.providerInputCsvSha256, `${provider.id} provider input CSV`);
+      assertHash(provider.providerInputSourceCsvSha256, `${provider.id} provider input source CSV`);
+      if (provider.providerInputSourceCsvSha256 !== provider.sampleCsvSha256) {
+        throw new TypeError(`${provider.id} provider input must derive from the frozen sample CSV`);
+      }
+      if (!Number.isInteger(provider.providerInputCsvByteSize) || provider.providerInputCsvByteSize < 1) {
+        throw new TypeError(`${provider.id} needs a provider input CSV byte size`);
+      }
+      if (provider.providerInputRows !== provider.sampleRows) {
+        throw new TypeError(`${provider.id} provider input must retain all frozen sample rows`);
+      }
+      if (!Number.isInteger(provider.providerInputKnownGtinRows)
+        || provider.providerInputKnownGtinRows < 0
+        || provider.providerInputKnownGtinRows > provider.providerInputRows) {
+        throw new TypeError(`${provider.id} has invalid known GTIN rows`);
+      }
+      assertHash(provider.sampleMessageObjectSha256, `${provider.id} sample message object`);
+      if (!Number.isInteger(provider.sampleMessageObjectByteSize) || provider.sampleMessageObjectByteSize < 1) {
+        throw new TypeError(`${provider.id} needs a sample message object byte size`);
+      }
+    }
     if (['sample_received', 'comparison_ready'].includes(provider.state)) {
       dateOnly(provider.receivedOn, `${provider.id} received date`);
       assertHash(provider.sampleReceiptSha256, `${provider.id} sample receipt`);

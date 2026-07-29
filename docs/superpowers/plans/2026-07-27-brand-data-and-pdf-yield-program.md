@@ -440,16 +440,16 @@ Never skip ahead because a downstream task is easier. Never mark a work package 
 
 **Last updated:** 2026-07-29
 
-**Last completed:** P0 recovery PR #198, all frozen-cohort initial requests, provider quarantine-to-shadow receipt tooling, and independent GS1/Open Icecat submissions
+**Last completed:** P0 recovery PR #198, all frozen-cohort initial requests, provider quarantine-to-shadow receipt tooling, independent GS1/Open Icecat submissions, and the reviewed 100-model Icecat coverage input sent after its no-obligation response
 
-**Active blocker:** no real provider reply or sample exists. Intake tooling is ready, but no result can become comparison-ready without a rights-bound sample and metrics receipt.
+**Active blocker:** the Open Icecat coverage study and GS1 response are pending. Icecat has not yet returned data or confirmed caching, public-display, attribution, update and withdrawal rights, so no result can become comparison-ready.
 
-**Next executable without a provider reply:** monitor replies, preserve incoming bytes in quarantine, and run the date-gate command before any follow-up. Do not rerun the same PDF cohort unless a source, transport or parser epoch changes.
+**Next executable without a provider sample:** monitor replies, preserve incoming bytes in quarantine, and run the date-gate command before any follow-up. Do not follow up the active Icecat thread while its coverage study is pending, and do not rerun the same PDF cohort unless a source, transport or parser epoch changes.
 
 **Next scheduled outreach actions:** for the original eight threads, first/final follow-ups are due 2026-08-01 and 2026-08-06. For the six threads sent on 2026-07-29, they are due 2026-08-03 and 2026-08-08. Send only where the date gate authorizes the exact thread and no reply has arrived. Evaluate WP12 no earlier than 2026-08-10.
 
-**External-message state:** fourteen deduplicated organization threads were sent from `hello@fitappliance.com.au`; eight are bound to private EML objects and six to private Gmail confirmation receipts. GS1 and Open Icecat were submitted independently and have private confirmation receipts. No private retailer feed data was disclosed.
+**External-message state:** fourteen deduplicated organization threads were sent from `hello@fitappliance.com.au`; eight are bound to private EML objects and six to private Gmail confirmation receipts. GS1 and Open Icecat were submitted independently. Icecat's no-obligation response and the reviewed CSV reply are preserved as separate private, content-addressed captures; the Git-safe ledger records only hashes, byte sizes and lifecycle state. No private retailer feed data was disclosed.
 
-**Verification at checkpoint:** `npm test` passes 2,963/2,963, `npm run lint` passes, and `npm run build` passes with 349 current-retail products and zero Fit-publication violations. Sixteen private outbound confirmation/EML objects match their Git-safe hashes and byte sizes. WP7A indexed 57 exact-model official PDFs and typed-stopped 43 attempts.
+**Verification at checkpoint:** `npm test` passes 2,963/2,963, `npm run lint` passes, and `npm run build` passes with 349 current-retail products and zero Fit-publication violations. Sixteen initial private outbound confirmation/EML objects match their Git-safe hashes and byte sizes; the later Icecat response and sample-reply captures also match their new ledger hashes and byte sizes. WP7A indexed 57 exact-model official PDFs and typed-stopped 43 attempts.
 
 **Do not do next:** resend an already-sent request, send a follow-up before its date gate, count exploratory brands in the frozen denominator, buy or register for provider data without approval, weaken identity/parser rules, publish any frozen result, or trust a provider response before rights, identity, conflict and receipt checks pass.
