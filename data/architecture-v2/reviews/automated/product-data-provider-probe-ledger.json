@@ -36,9 +36,22 @@
       "bodySha256": "616c664569b1a089ca8e41869f3ee272860b0ee48a450366eae53bd6af10af42",
       "messageObjectSha256": "0f23a0189f095f80df8f131c29391eb24c9bd3d9b4cb3cb04f6ef309ec54d08c",
       "messageObjectByteSize": 765,
+      "responseReceivedOn": "2026-07-29",
+      "responseClass": "sample_offer_no_obligation",
+      "responseCaptureState": "gmail_dom_message_body",
+      "responseObjectSha256": "5b042a9e9a7bc7c9ed0f1695ca05729e99e587557d70c9de7e15fafdc6180e6d",
+      "responseObjectByteSize": 2034,
+      "sampleSharedOn": "2026-07-29",
+      "providerInputCsvSha256": "138d4815b24abca2299c31f25938d1fef933d9e83ab93ec3a4bb048124fe4b5c",
+      "providerInputSourceCsvSha256": "a33627be2502ce8b87b3bd5950542a5ced47597237dc096f4b6f971db247b55f",
+      "providerInputCsvByteSize": 2563,
+      "providerInputRows": 100,
+      "providerInputKnownGtinRows": 0,
+      "sampleMessageObjectSha256": "193c42de0cc8f246649213a1cbf233e35f23b7c8dffe3430dd6490f051c19279",
+      "sampleMessageObjectByteSize": 2453,
       "commercialCommitment": "none",
       "rightsState": "unconfirmed",
-      "nextAction": "WAIT_FOR_SAMPLE_OR_RESPONSE"
+      "nextAction": "WAIT_FOR_COVERAGE_STUDY"
     }
   ]
 }

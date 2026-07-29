@@ -102,6 +102,49 @@ test('Git-safe provider probe ledger rejects private data and commercial approva
     }],
   };
   assert.doesNotThrow(() => assertGitSafeProviderProbeLedger(sent));
+  const replied = {
+    ...sent,
+    providers: [{
+      ...sent.providers[0],
+      responseReceivedOn: '2026-07-29',
+      responseClass: 'sample_offer_no_obligation',
+      responseCaptureState: 'gmail_dom_message_body',
+      responseObjectSha256: HASH,
+      responseObjectByteSize: 2034,
+      nextAction: 'SEND_REVIEWED_SAMPLE',
+    }],
+  };
+  assert.doesNotThrow(() => assertGitSafeProviderProbeLedger(replied));
+  assert.throws(
+    () => assertGitSafeProviderProbeLedger({
+      ...replied,
+      providers: [{ ...replied.providers[0], responseObjectSha256: null }],
+    }),
+    /response object/i,
+  );
+  const sampleShared = {
+    ...replied,
+    providers: [{
+      ...replied.providers[0],
+      sampleSharedOn: '2026-07-29',
+      providerInputCsvSha256: HASH,
+      providerInputSourceCsvSha256: HASH,
+      providerInputCsvByteSize: 2563,
+      providerInputRows: 100,
+      providerInputKnownGtinRows: 0,
+      sampleMessageObjectSha256: HASH,
+      sampleMessageObjectByteSize: 1024,
+      nextAction: 'WAIT_FOR_COVERAGE_STUDY',
+    }],
+  };
+  assert.doesNotThrow(() => assertGitSafeProviderProbeLedger(sampleShared));
+  assert.throws(
+    () => assertGitSafeProviderProbeLedger({
+      ...sampleShared,
+      providers: [{ ...sampleShared.providers[0], providerInputKnownGtinRows: 101 }],
+    }),
+    /known GTIN rows/i,
+  );
   assert.throws(
     () => assertGitSafeProviderProbeLedger({
       ...sent,
@@ -141,6 +184,10 @@ test('committed provider probes remain independent of the brand-outreach denomin
     'utf8',
   ));
   assert.doesNotThrow(() => assertGitSafeProviderProbeLedger(ledger));
+  const icecat = ledger.providers.find(({ id }) => id === 'open-icecat');
+  assert.equal(icecat.providerInputRows, 100);
+  assert.equal(icecat.providerInputKnownGtinRows, 0);
+  assert.equal(icecat.nextAction, 'WAIT_FOR_COVERAGE_STUDY');
 
   const status = buildProviderProbeStatus({ ledger, asOf: '2026-07-29' });
   assert.deepEqual(status.summary, {
