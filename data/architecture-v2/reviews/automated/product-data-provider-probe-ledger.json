@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-07-29",
+  "classification": "git_safe_provider_probe_ledger",
+  "frozenQueueSha256": "148fad5da8dce61e44f420c35d97b0f27419ce831bbaee6301cbc842428ac20d",
+  "providers": [
+    {
+      "id": "gs1-trusted-content",
+      "channelId": "gs1-npc",
+      "provider": "GS1 Australia Trusted Content",
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "publicRouteSourceUrl": "https://www.gs1au.org/resources/faqs/trusted-data",
+      "sampleRows": 100,
+      "sampleCsvSha256": "a33627be2502ce8b87b3bd5950542a5ced47597237dc096f4b6f971db247b55f",
+      "sampleManifestSha256": "67d095ff3261ad84c56c86e6b514baf2c14cb1811442323af51bb1c3a81a5568",
+      "subjectSha256": "03f5b7547222efa042d085ee182003ae2fb73b939866680bd89efb2ac89fd2e9",
+      "bodySha256": "7e76df9802ee7a87e3cdb8fa5b4549b43d7bc796a74b57fddf79c63d5bcc25c8",
+      "messageObjectSha256": "604797e4bf06869d09154923f7915f79761905ad26dd4ae774cc3218739f409f",
+      "messageObjectByteSize": 798,
+      "commercialCommitment": "none",
+      "rightsState": "unconfirmed",
+      "nextAction": "WAIT_FOR_SAMPLE_OR_RESPONSE"
+    },
+    {
+      "id": "open-icecat",
+      "channelId": "icecat",
+      "provider": "Open Icecat",
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "publicRouteSourceUrl": "https://icecat.com/demo/",
+      "sampleRows": 100,
+      "sampleCsvSha256": "a33627be2502ce8b87b3bd5950542a5ced47597237dc096f4b6f971db247b55f",
+      "sampleManifestSha256": "67d095ff3261ad84c56c86e6b514baf2c14cb1811442323af51bb1c3a81a5568",
+      "subjectSha256": "927ca1dd7d2c2122ca1d002a2a1f7d357f654202c94728a5bf3bd1873c69d59c",
+      "bodySha256": "616c664569b1a089ca8e41869f3ee272860b0ee48a450366eae53bd6af10af42",
+      "messageObjectSha256": "0f23a0189f095f80df8f131c29391eb24c9bd3d9b4cb3cb04f6ef309ec54d08c",
+      "messageObjectByteSize": 765,
+      "commercialCommitment": "none",
+      "rightsState": "unconfirmed",
+      "nextAction": "WAIT_FOR_SAMPLE_OR_RESPONSE"
+    }
+  ]
+}

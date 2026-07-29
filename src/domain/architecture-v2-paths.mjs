@@ -52,6 +52,7 @@ export const architectureV2Paths = Object.freeze({
   fitV3ShadowAudit: `${base}/reviews/automated/fit-v3-shadow-audit.json`,
   brandDataOutreachQueue: `${base}/reviews/automated/brand-data-outreach-queue.json`,
   brandDataOutreachLedger: `${base}/reviews/automated/brand-data-outreach-ledger.json`,
+  productDataProviderProbeLedger: `${base}/reviews/automated/product-data-provider-probe-ledger.json`,
   pdfFailureBaseline100: `${base}/reviews/automated/pdf-failure-baseline-100.json`,
   pdfFailureBaseline100Sha256: `${base}/reviews/automated/pdf-failure-baseline-100.sha256`,
   pdfFailureBaselineWp7a: `${base}/reviews/automated/pdf-failure-baseline-100-wp7a.json`,

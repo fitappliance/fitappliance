@@ -15,6 +15,10 @@ import {
   parseAndQuarantineProviderResponse,
   persistQuarantinedProviderResponse,
 } from '../../src/domain/provider-response-quarantine.mjs';
+import {
+  buildProviderShadowAcceptance,
+  persistProviderShadowAcceptance,
+} from '../../src/domain/provider-response-shadow-acceptance.mjs';
 
 const RIGHTS_BYTES = Buffer.from('Example provider written cache and display grant, 2026-07-28.');
 const HASH = createHash('sha256').update(RIGHTS_BYTES).digest('hex');
@@ -637,4 +641,97 @@ test('CLI reports partial rights as typed blocked intake without persisting prov
   assert.equal(summary.counts.blockedRights, 1);
   assert.equal(failure.stdout.includes('FBF7573SBB'), false);
   assert.equal(failure.stdout.includes(root), false);
+});
+
+test('sealed provider quarantine issues field receipts into private shadow acceptance only', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-provider-shadow-'));
+  const bytes = csvBytes();
+  const report = await ingest('csv', bytes);
+  const persisted = await persistQuarantinedProviderResponse(storageRoot, bytes, report, {
+    rightsEvidence: RIGHTS_EVIDENCE,
+  });
+  const quarantineReceiptBytes = await readFile(persisted.receiptPath);
+  const result = buildProviderShadowAcceptance({
+    quarantineReceiptBytes,
+    quarantineReceiptSha256: persisted.receiptSha256,
+    sourceBytes: bytes,
+    rightsEvidence: RIGHTS_EVIDENCE,
+    acceptedAt: '2026-07-29T13:00:00.000Z',
+  });
+
+  assert.equal(result.status, 'SHADOW_ACCEPTED');
+  assert.equal(result.fieldReceipts.length, 5);
+  assert.equal(result.shadowAcceptance.fieldReceiptIds.length, 5);
+  assert.ok(result.fieldReceipts.every((receipt) => receipt.status === 'RECEIPT_ISSUED'));
+  assert.ok(result.fieldReceipts.every((receipt) => receipt.publicationEligible === false));
+  assert.ok(result.fieldReceipts.every((receipt) => receipt.fitEligible === false));
+  assert.equal(result.shadowAcceptance.publicProjection, null);
+  assert.deepEqual(
+    result.fieldReceipts.filter(({ fieldId }) => fieldId.startsWith('closedEnvelope.')).map(({ fieldId }) => fieldId).sort(),
+    ['closedEnvelope.depthMm', 'closedEnvelope.heightMm', 'closedEnvelope.widthMm'],
+  );
+
+  const shadowObjects = await persistProviderShadowAcceptance(storageRoot, result);
+  assert.equal(shadowObjects.fieldReceiptPaths.length, 5);
+  assert.equal((await stat(shadowObjects.shadowAcceptancePath)).isFile(), true);
+  assert.ok(shadowObjects.fieldReceiptPaths.every((path) => path.startsWith(join(storageRoot, 'outreach'))));
+});
+
+test('provider shadow acceptance rejects source, rights, and sealed-receipt drift', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-provider-shadow-drift-'));
+  const bytes = csvBytes();
+  const report = await ingest('csv', bytes);
+  const persisted = await persistQuarantinedProviderResponse(storageRoot, bytes, report, {
+    rightsEvidence: RIGHTS_EVIDENCE,
+  });
+  const quarantineReceiptBytes = await readFile(persisted.receiptPath);
+  const input = {
+    quarantineReceiptBytes,
+    quarantineReceiptSha256: persisted.receiptSha256,
+    sourceBytes: bytes,
+    rightsEvidence: RIGHTS_EVIDENCE,
+    acceptedAt: '2026-07-29T13:00:00.000Z',
+  };
+
+  assert.throws(
+    () => buildProviderShadowAcceptance({ ...input, sourceBytes: Buffer.from('changed') }),
+    /source.*hash|source.*bytes/i,
+  );
+  assert.throws(
+    () => buildProviderShadowAcceptance({ ...input, rightsEvidence: [] }),
+    /rights evidence/i,
+  );
+  const forged = JSON.parse(quarantineReceiptBytes);
+  forged.claims[0].normalizedValue = 'forged';
+  assert.throws(
+    () => buildProviderShadowAcceptance({
+      ...input,
+      quarantineReceiptBytes: Buffer.from(`${JSON.stringify(forged)}\n`),
+    }),
+    /receipt hash|sealed.*receipt|report.*binding/i,
+  );
+});
+
+test('provider shadow CLI replays private objects without exposing product rows', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-provider-shadow-cli-'));
+  const bytes = csvBytes();
+  const report = await ingest('csv', bytes);
+  const persisted = await persistQuarantinedProviderResponse(storageRoot, bytes, report, {
+    rightsEvidence: RIGHTS_EVIDENCE,
+  });
+
+  const { stdout } = await execFileAsync(process.execPath, [
+    'scripts/architecture-v2/accept-provider-response-shadow.mjs',
+    '--receipt', persisted.receiptPath,
+    '--storage-root', storageRoot,
+    '--accepted-at', '2026-07-29T13:00:00.000Z',
+  ], { cwd: process.cwd() });
+  const summary = JSON.parse(stdout);
+
+  assert.equal(summary.status, 'SHADOW_ACCEPTED');
+  assert.equal(summary.counts.fieldReceipts, 5);
+  assert.equal(summary.publicationEligible, false);
+  assert.equal(summary.fitEligible, false);
+  assert.equal(stdout.includes('EXD600AU'), false);
+  assert.equal(stdout.includes(storageRoot), false);
 });

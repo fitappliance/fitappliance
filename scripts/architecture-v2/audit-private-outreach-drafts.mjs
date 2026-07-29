@@ -52,7 +52,7 @@ assertDraftAuditMatchesLedger(results, ledger);
 
 process.stdout.write(`${JSON.stringify({
   schemaVersion: 1,
-  auditedOn: '2026-07-27',
+  auditedOn: matrix.researchedOn,
   draftCount: results.length,
   drafts: results,
 }, null, 2)}\n`);
