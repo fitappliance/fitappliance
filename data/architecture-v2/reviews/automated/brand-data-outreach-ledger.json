@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedOn": "2026-07-27",
+  "reviewedOn": "2026-07-29",
   "externalEvidence": {
     "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
     "relativeRoot": "outreach",
@@ -171,6 +171,132 @@
       "externalCaptureState": "captured_eml",
       "messageObjectSha256": "b22e70eb242f8f873316d012b777c7e7a8ffa215b092a48f27035e9dc3901036",
       "messageObjectByteSize": 3601
+    },
+    {
+      "id": "beko-australia",
+      "organization": "Beko Australia",
+      "coveredBrands": [
+        "Beko"
+      ],
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "firstFollowUpDueOn": "2026-08-03",
+      "finalFollowUpDueOn": "2026-08-08",
+      "subjectSha256": "1c6303f0babe719fa92ecf46ab22808355cef564a2e24c3928530b1101dd32a0",
+      "bodySha256": "1f6b85bfae70648eb0818c75710eb3792b599e9094549194ad7fbbbf0919d2fe",
+      "attachmentSha256": [],
+      "publicRouteSourceUrl": "https://www.beko.com/au-en/support/contact-us",
+      "responseClass": null,
+      "nextAction": "WAIT_FOR_RESPONSE_OR_FIRST_FOLLOW_UP",
+      "terminalReason": null,
+      "externalCaptureState": "confirmation_receipt",
+      "messageObjectSha256": "7634d49d1a5397a8cb9a1b5411f9f9f76f1b2c9d612d7fd1d06877c0b310ee04",
+      "messageObjectByteSize": 709
+    },
+    {
+      "id": "bsh-home-appliances-australia",
+      "organization": "BSH Home Appliances Australia",
+      "coveredBrands": [
+        "Bosch"
+      ],
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "firstFollowUpDueOn": "2026-08-03",
+      "finalFollowUpDueOn": "2026-08-08",
+      "subjectSha256": "de11edd98c51395b87ef54be8540dd5a3be9854391714607ab0d737b5f770a1c",
+      "bodySha256": "8a66a088a3df5801e0140287a0f4685702cc781bbafd92d3711686241599199d",
+      "attachmentSha256": [],
+      "publicRouteSourceUrl": "https://www.bosch-home.com.au/service/book-a-repair-online",
+      "responseClass": null,
+      "nextAction": "WAIT_FOR_RESPONSE_OR_FIRST_FOLLOW_UP",
+      "terminalReason": null,
+      "externalCaptureState": "confirmation_receipt",
+      "messageObjectSha256": "81c5491eb1c779634e56fa6fdede963ec94c8c4ed781138661eabb82923900d0",
+      "messageObjectByteSize": 738
+    },
+    {
+      "id": "samsung-electronics-australia",
+      "organization": "Samsung Electronics Australia",
+      "coveredBrands": [
+        "Samsung"
+      ],
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "firstFollowUpDueOn": "2026-08-03",
+      "finalFollowUpDueOn": "2026-08-08",
+      "subjectSha256": "4fbed82a0ca9af877758fb5c10899891df5c8784e9678800d3b1eb23d15a8ec1",
+      "bodySha256": "12ff25abc6539e27ebf5b924a5a2a94485c0faccde10ba2fa022a2786ec6c4f4",
+      "attachmentSha256": [],
+      "publicRouteSourceUrl": "https://www.samsung.com/au/business/contact-us/",
+      "responseClass": null,
+      "nextAction": "WAIT_FOR_RESPONSE_OR_FIRST_FOLLOW_UP",
+      "terminalReason": null,
+      "externalCaptureState": "confirmation_receipt",
+      "messageObjectSha256": "80ca3f3be772b40c1e7232ee8fccf6fb00d3f49c67d250516c1295701e64e59e",
+      "messageObjectByteSize": 735
+    },
+    {
+      "id": "midea-electronics-australia",
+      "organization": "Midea Electronics Australia",
+      "coveredBrands": [
+        "Midea"
+      ],
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "firstFollowUpDueOn": "2026-08-03",
+      "finalFollowUpDueOn": "2026-08-08",
+      "subjectSha256": "5ee854cd24c8bea1b522d889ee85b5a0f6a0072d4530de092ebe6cc2d6e51977",
+      "bodySha256": "11e2ab1b501267750d7bbd22068c19399775d4fa2ec182a0278ae4d7f5ef8628",
+      "attachmentSha256": [],
+      "publicRouteSourceUrl": "https://www.midea.com/au/support/contact-us",
+      "responseClass": null,
+      "nextAction": "WAIT_FOR_RESPONSE_OR_FIRST_FOLLOW_UP",
+      "terminalReason": null,
+      "externalCaptureState": "confirmation_receipt",
+      "messageObjectSha256": "2e5700c352fc05c7b28803f3a0987fe740f9b2f0ac0cefe93751083d64248f95",
+      "messageObjectByteSize": 742
+    },
+    {
+      "id": "asko-appliances-australia",
+      "organization": "ASKO Appliances Australia",
+      "coveredBrands": [
+        "ASKO"
+      ],
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "firstFollowUpDueOn": "2026-08-03",
+      "finalFollowUpDueOn": "2026-08-08",
+      "subjectSha256": "f36e0690828b9e649e8cbc45456f7a2afa2af44e7158f864e3eda6cfdd187984",
+      "bodySha256": "12568d4f9b8d7e01ac5992a47c0137314109cf54c925465368c3d65482d8fedd",
+      "attachmentSha256": [],
+      "publicRouteSourceUrl": "https://au.asko.com/contact-us?lang=en_AU",
+      "responseClass": null,
+      "nextAction": "WAIT_FOR_RESPONSE_OR_FIRST_FOLLOW_UP",
+      "terminalReason": null,
+      "externalCaptureState": "confirmation_receipt",
+      "messageObjectSha256": "dd35744d7b2281f5ec94289e22b2e15debf4693568514f9c9752d433433ca89d",
+      "messageObjectByteSize": 726
+    },
+    {
+      "id": "ilve-australia",
+      "organization": "ILVE Australia",
+      "coveredBrands": [
+        "Ilve"
+      ],
+      "state": "sent",
+      "sentOn": "2026-07-29",
+      "firstFollowUpDueOn": "2026-08-03",
+      "finalFollowUpDueOn": "2026-08-08",
+      "subjectSha256": "1905ea95a0ae2332215ff11e226425efb616ddad17ea953a04eff08d3676a4c4",
+      "bodySha256": "018b798661227d5fe33539bdbec80adc849e7f5050aa787a4dc81d9dc9781842",
+      "attachmentSha256": [],
+      "publicRouteSourceUrl": "https://www.ilve.com/en-au/ilve-australia-new-zealand-contact/",
+      "responseClass": null,
+      "nextAction": "WAIT_FOR_RESPONSE_OR_FIRST_FOLLOW_UP",
+      "terminalReason": null,
+      "externalCaptureState": "confirmation_receipt",
+      "messageObjectSha256": "77eb3e5a30da640ae08ea291a50eab23d1e3935a0734c37d41a7e8ecc16e7d0f",
+      "messageObjectByteSize": 713
     }
   ]
 }

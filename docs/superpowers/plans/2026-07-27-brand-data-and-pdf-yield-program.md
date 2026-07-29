@@ -2,7 +2,7 @@
 
 **Created:** 2026-07-27
 
-**Status:** WP0-WP10 execution checkpoint complete; WP11 and WP12 await replies and the Day-14 gate
+**Status:** WP0-WP10 complete; WP11 intake tooling complete and awaiting real replies; WP12 date-gated to 2026-08-10
 
 **Owner:** FitAppliance
 
@@ -19,12 +19,14 @@ The program is complete only when both tracks have comparable measured outputs. 
 
 ## Current Truth Snapshot
 
-As of the 2026-07-27 execution checkpoint:
+As of the 2026-07-29 execution checkpoint:
 
 - `data/architecture-v2/reviews/automated/brand-data-outreach-queue.json` contains a frozen 100-model pilot across 12 brands.
-- The queue has one confirmed official trade route and 11 brands requiring contact-route research.
+- Every frozen brand has one researched official organization route.
 - Brevo preserved `From: hello@fitappliance.com.au`; SPF, aligned DKIM and DMARC passed in the delivered original-message audit.
-- Eight deduplicated organization requests covering all 13 target brands were sent and captured as private EML objects. The Git-safe ledger contains only public organization metadata, lifecycle state and hashes.
+- The frozen comparison cohort remains exactly 100 models across 12 brands, and all 12 brands have now been contacted through 14 deduplicated organization threads.
+- Seven brands in four of those threads are exploratory and remain excluded from the frozen comparison denominator. Eight original messages are private EML objects; six newer sends use hash-bound Gmail confirmation receipts.
+- GS1 Trusted Content and Open Icecat are submitted and tracked in an independent provider-probe ledger. Both no-obligation requests bind the same frozen sample hashes and make no purchase or contract commitment.
 - WP7A terminated all 100 frozen acquisition attempts: 57 exact-model official PDFs were integrity-checked and MinerU-indexed, while 43 attempts ended in typed acquisition or identity failures.
 - The frozen parser replay now yields 33 complete three-axis samples, up from 29 before WP10. Parser grammar gaps fell from 11 to 7.
 - Four eligible real document variants were repaired: LG washer exact-model W/D/H suffix rows, LG refrigerator audited A/B/C diagrams, Beko dishwasher truncated-label cards and Esatto physical-versus-packaged product cards.
@@ -57,14 +59,15 @@ Calendar-based outreach timing starts only after the outbound authentication gat
 | WP2 | Export frozen 100-model validation sample | WP0 | data-quality analysis | generated CSV + manifest hash | complete |
 | WP3 | Publish field and rights dictionary | WP0 | architecture review | `docs/architecture-v2/product-data-field-dictionary.md` | complete |
 | WP4 | Establish private outreach evidence storage | WP0 | repository/data-governance review | external private directory + Git-safe ledger | complete |
-| WP5 | Research and deduplicate official contact routes | WP0 | official web research / Agent Reach fallback | organization contact matrix with source URLs | complete |
+| WP5 | Research and deduplicate official contact routes | WP0 | official web research / Agent Reach fallback | organization contact matrix with source URLs | complete: all 12 frozen brands routed |
 | WP6 | Tailor and humanize organization-level drafts | WP2, WP3, WP5 | humanizer + evidence review | private draft set + body and file hashes | complete |
 | WP7 | Run stratified 100-PDF failure baseline | WP0 | MinerU PDF skill + data-quality audit | frozen sample and baseline report | complete |
 | WP7A | Acquire, validate and content-address the frozen 100 PDF candidates | WP7 | bounded official acquisition + PDF integrity checks | immutable PDF objects and rerun baseline | complete: 57 indexed, 43 typed stops |
 | WP8 | Prioritize top five confirmed PDF document families | WP7A | metric diagnostics | ranked family backlog | complete: four grammar gaps; fifth is source error |
-| WP9 | Send first organization requests | WP1, WP2, WP3, WP4, WP6 | Gmail | private sent messages + Git-safe status hashes | complete: 8 organization threads sent |
+| WP9 | Send first organization requests | WP1, WP2, WP3, WP4, WP6 | Gmail | private sent messages + Git-safe status hashes | complete: 100 frozen models / 12 brands contacted; exploratory threads tracked separately |
+| WP9A | Probe GS1 and Open Icecat independently | WP1, WP2, WP3, WP4 | official provider routes | private confirmations + independent Git-safe provider ledger | submitted; replies and samples pending |
 | WP10 | Implement reusable parser rules with TDD | WP8 | TDD + MinerU + replay audit | tests, parser changes, receipts | complete for four eligible variants; publication remains blocked |
-| WP11 | Ingest and validate provider responses | WP9 | Evidence Broker + data quality | quarantined source objects and receipts | pending |
+| WP11 | Ingest and validate provider responses | WP9 | Evidence Broker + data quality | quarantined source objects, field receipts and shadow acceptance | tooling complete; no real response received |
 | WP12 | Day-14 investment decision | WP10, WP11 | product/business analysis | decision record and next allocation | pending |
 
 ## Phase 1: Work That Proceeds While Email Is Gated
@@ -235,7 +238,8 @@ Authentication gate result (2026-07-27):
 - DKIM passed with signing domain `fitappliance.com.au` and selector `brevo2`;
 - DMARC passed with `header.from=fitappliance.com.au`.
 
-Eight organization-level requests were then sent without attachments:
+Eight organization-level requests were then sent without attachments. Their brands
+must not be treated as one comparison denominator:
 
 | Organization thread | State | Subject SHA-256 | Body SHA-256 |
 | --- | --- | --- | --- |
@@ -249,6 +253,19 @@ Eight organization-level requests were then sent without attachments:
 | CHiQ Australia | sent | `f8ebe158c353ad42404c935fe47dfe0d6bc5ecccd8d77df523de27f6346ea653` | `3356ebe13fe306b82f95425b4a4f2a92a3501fde5e377ddbfe58457972fcb9c7` |
 
 All eight EML object hashes and byte sizes are recorded in the Git-safe ledger and verified against the private evidence store. First follow-up is due 2026-08-01 and final follow-up is due 2026-08-06 only when no human response exists.
+
+Frozen-cohort accounting is generated by `status:brand-data-program`:
+
+- 100 models across all 12 frozen brands: initial request sent;
+- 0 frozen brands remain route-only or draft-ready;
+- 7 extra sent brands across 4 threads: exploratory only and excluded from the denominator;
+- original queue SHA-256 remains `148fad5da8dce61e44f420c35d97b0f27419ce831bbaee6301cbc842428ac20d`.
+
+GS1 Trusted Content and Open Icecat use
+`product-data-provider-probe-ledger.json`, not the brand ledger. Their submitted
+requests and private confirmations bind the frozen CSV and manifest hashes, ask for
+no-obligation samples, and explicitly withhold authority to purchase, register,
+contract or accept a licence.
 
 - `T+0`: send one tailored request per data-owning organization;
 - `T+5 days`: one concise follow-up only where no human response exists;
@@ -281,6 +298,19 @@ RECEIVED
 ```
 
 Each accepted field retains original value, unit, axis definition, scope, applicable model, revision, source hash, rights scope and receipt binding. Family data, silent suffix collapse, or unresolved product/package mixing remains quarantined.
+
+The implemented private-only transition is:
+
+```bash
+npm run accept:provider-response-shadow -- \
+  --receipt /private/quarantine-receipt.json \
+  --storage-root /Volumes/UGREEN-1TB/FitAppliance \
+  --accepted-at 2026-07-29T12:00:00.000Z
+```
+
+It re-hashes the source, rights objects and sealed quarantine report before issuing
+field receipts. The resulting shadow bundle remains `publicationEligible: false`,
+`fitEligible: false`, and has no public projection.
 
 ## Phase 5: PDF Family Improvements
 
@@ -362,6 +392,21 @@ At the decision point, compare:
 
 The output is a written allocation decision, not an automatic purchase or contract.
 
+Before any follow-up, run:
+
+```bash
+npm run status:brand-data-program -- \
+  --as-of YYYY-MM-DD \
+  --authorize-follow-up organization-thread-id
+```
+
+The command exits non-zero unless that exact thread is due and has no recorded
+response. WP12 returns `NOT_DUE` before 2026-08-10 and
+`INSUFFICIENT_COMPARABLE_EVIDENCE` after that date unless both provider and PDF
+tracks have comparable metrics. A 100-row PDF report alone is insufficient: the PDF
+track must also record exact-model receipt yield, requested-field coverage, conflict
+rate, engineering hours and recurring cost.
+
 ## Verification Commands
 
 Use the narrowest relevant checks first, then the repository gates for changed behavior:
@@ -393,18 +438,18 @@ Never skip ahead because a downstream task is easier. Never mark a work package 
 
 ## Checkpoint
 
-**Last updated:** 2026-07-27
+**Last updated:** 2026-07-29
 
-**Last completed:** WP10, including the terminal WP7A acquisition pass, frozen WP8 replay, eight organization-level outreach threads and four TDD parser-family repairs
+**Last completed:** P0 recovery PR #198, all frozen-cohort initial requests, provider quarantine-to-shadow receipt tooling, and independent GS1/Open Icecat submissions
 
-**Active blocker:** WP11 is response-driven. No technical work package is blocked, but provider data cannot be ingested or rights-reviewed until a reply or file is received.
+**Active blocker:** no real provider reply or sample exists. Intake tooling is ready, but no result can become comparison-ready without a rights-bound sample and metrics receipt.
 
-**Next executable without a provider reply:** monitor delivery and preserve the frozen WP7A/WP8 artifacts. Do not rerun the same 100-sample cohort unless a source, transport or parser epoch changes.
+**Next executable without a provider reply:** monitor replies, preserve incoming bytes in quarantine, and run the date-gate command before any follow-up. Do not rerun the same PDF cohort unless a source, transport or parser epoch changes.
 
-**Next scheduled outreach actions:** send the first follow-up on 2026-08-01 and the final follow-up on 2026-08-06 only where no reply has arrived. Evaluate WP12 no earlier than the Day-14 gate on 2026-08-10.
+**Next scheduled outreach actions:** for the original eight threads, first/final follow-ups are due 2026-08-01 and 2026-08-06. For the six threads sent on 2026-07-29, they are due 2026-08-03 and 2026-08-08. Send only where the date gate authorizes the exact thread and no reply has arrived. Evaluate WP12 no earlier than 2026-08-10.
 
-**External-message state:** eight deduplicated organization threads were sent from `hello@fitappliance.com.au`; all private `.eml` files are byte-bound to the Git-safe ledger, and no private retailer feed data was disclosed.
+**External-message state:** fourteen deduplicated organization threads were sent from `hello@fitappliance.com.au`; eight are bound to private EML objects and six to private Gmail confirmation receipts. GS1 and Open Icecat were submitted independently and have private confirmation receipts. No private retailer feed data was disclosed.
 
-**Verification at checkpoint:** `npm test` 2,916/2,916 passing; PR #195 checks all passing; WP7A indexed 57 exact-model official PDFs and typed-stopped 43 attempts; WP8 increased complete three-axis samples from 29 to 33 and reduced parser grammar gaps from 11 to 7; publication and Fit-promotion violations remain zero.
+**Verification at checkpoint:** `npm test` passes 2,963/2,963, `npm run lint` passes, and `npm run build` passes with 349 current-retail products and zero Fit-publication violations. Sixteen private outbound confirmation/EML objects match their Git-safe hashes and byte sizes. WP7A indexed 57 exact-model official PDFs and typed-stopped 43 attempts.
 
-**Do not do next:** resend the initial requests, weaken identity or parser rules for the Westinghouse error payload, publish any frozen-sample result, or treat a provider response as trusted before rights, identity, conflict and receipt checks pass.
+**Do not do next:** resend an already-sent request, send a follow-up before its date gate, count exploratory brands in the frozen denominator, buy or register for provider data without approval, weaken identity/parser rules, publish any frozen result, or trust a provider response before rights, identity, conflict and receipt checks pass.

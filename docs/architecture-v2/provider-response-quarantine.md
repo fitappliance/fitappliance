@@ -138,4 +138,24 @@ for `cache_source`, `cache_normalized_fields` and `public_display`. A
 provider allowed source caching but did not grant the other required actions.
 The original inbound message remains in the separately controlled mailbox.
 
-The public site and ordinary build do not depend on these files. Moving a claim beyond quarantine requires a separate Evidence Broker conflict check and receipt issuance; provider intake alone can never produce `VERIFIED_FIT`.
+After quarantine, the private shadow acceptance command re-verifies the receipt,
+original source bytes, rights objects, report seal, exact AU identity and every claim
+binding before issuing one immutable field receipt per accepted claim:
+
+```bash
+npm run accept:provider-response-shadow -- \
+  --receipt /private/quarantine-receipt.json \
+  --storage-root /Volumes/UGREEN-1TB/FitAppliance \
+  --accepted-at 2026-07-29T12:00:00.000Z
+```
+
+Additional private objects are stored at:
+
+```text
+provider-samples/field-receipts/<prefix>/<receipt-sha256>.json
+provider-samples/shadow-acceptance/<prefix>/<bundle-sha256>.json
+```
+
+Both layers remain `publicationEligible: false`, `fitEligible: false`, and carry a
+null public projection. The public site and ordinary build do not depend on these
+files. Provider intake or shadow acceptance alone can never produce `VERIFIED_FIT`.

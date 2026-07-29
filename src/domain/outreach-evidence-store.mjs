@@ -11,6 +11,7 @@ const MARKER = Object.freeze({
 const PRIVATE_KEY_PATTERN = /(^|_)(private|email|recipient|contact|body|mime|message_text|attachment_path)($|_)/i;
 const EMAIL_PATTERN = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+const OUTREACH_STATES = new Set(['draft_ready', 'sent']);
 
 function sha256(value) {
   return createHash('sha256').update(value, 'utf8').digest('hex');
@@ -140,6 +141,7 @@ export function assertGitSafeOutreachLedger(ledger) {
   for (const thread of ledger.threads) {
     if (!thread.id || ids.has(thread.id)) throw new TypeError(`duplicate or missing outreach thread id: ${thread.id}`);
     ids.add(thread.id);
+    if (!OUTREACH_STATES.has(thread.state)) throw new TypeError(`${thread.id} has an unsupported outreach state`);
     if (!thread.organization || !Array.isArray(thread.coveredBrands) || thread.coveredBrands.length === 0) {
       throw new TypeError(`${thread.id} needs organization and covered brands`);
     }
@@ -156,7 +158,10 @@ export function assertGitSafeOutreachLedger(ledger) {
       for (const hash of thread.attachmentSha256 ?? []) {
         if (!SHA256_PATTERN.test(hash)) throw new TypeError(`${thread.id} has an invalid attachment hash`);
       }
-      if (thread.externalCaptureState === 'captured_eml') {
+      if (thread.externalCaptureState != null) {
+        if (!['captured_eml', 'confirmation_receipt'].includes(thread.externalCaptureState)) {
+          throw new TypeError(`${thread.id} has an unsupported capture state`);
+        }
         if (!SHA256_PATTERN.test(thread.messageObjectSha256 ?? '')) throw new TypeError(`${thread.id} needs a message object hash`);
         if (!Number.isInteger(thread.messageObjectByteSize) || thread.messageObjectByteSize < 1) {
           throw new TypeError(`${thread.id} needs a message object byte size`);
@@ -207,6 +212,11 @@ export async function initializePrivateOutreachStore(storageRoot) {
     'attachments/sha256',
     'provider-samples/sha256',
     'provider-samples/receipts',
+    'provider-samples/field-receipts',
+    'provider-samples/shadow-acceptance',
+    'provider-probes/drafts',
+    'provider-probes/messages',
+    'provider-probes/samples',
     'rights',
     'drafts',
   ];

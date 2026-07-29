@@ -85,6 +85,9 @@ test('committed outreach ledger contains no private message or contact data', as
 
 test('Git-safe outreach ledger rejects schedule drift and unbound sent messages', () => {
   assert.throws(() => assertGitSafeOutreachLedger(safeLedger({
+    threads: [{ ...safeLedger().threads[0], state: 'send' }],
+  })), /unsupported.*state/i);
+  assert.throws(() => assertGitSafeOutreachLedger(safeLedger({
     threads: [{ ...safeLedger().threads[0], firstFollowUpDueOn: '2026-08-03' }],
   })), /follow-up schedule/i);
   assert.throws(() => assertGitSafeOutreachLedger(safeLedger({
@@ -93,6 +96,20 @@ test('Git-safe outreach ledger rejects schedule drift and unbound sent messages'
   assert.throws(() => assertGitSafeOutreachLedger(safeLedger({
     threads: [{ ...safeLedger().threads[0], externalCaptureState: 'captured_eml' }],
   })), /message object hash/i);
+  assert.doesNotThrow(() => assertGitSafeOutreachLedger(safeLedger({
+    threads: [{
+      ...safeLedger().threads[0],
+      externalCaptureState: 'confirmation_receipt',
+      messageObjectSha256: HASH,
+      messageObjectByteSize: 512,
+    }],
+  })));
+  assert.throws(() => assertGitSafeOutreachLedger(safeLedger({
+    threads: [{ ...safeLedger().threads[0], externalCaptureState: 'confirmation_receipt' }],
+  })), /message object hash/i);
+  assert.throws(() => assertGitSafeOutreachLedger(safeLedger({
+    threads: [{ ...safeLedger().threads[0], externalCaptureState: 'screenshot_only' }],
+  })), /capture state/i);
 });
 
 test('private organization drafts retain required scope, rights, provenance, and identity details', () => {
@@ -198,6 +215,11 @@ test('private outreach initializer creates only the approved external layout and
     'attachments/sha256',
     'provider-samples/sha256',
     'provider-samples/receipts',
+    'provider-samples/field-receipts',
+    'provider-samples/shadow-acceptance',
+    'provider-probes/drafts',
+    'provider-probes/messages',
+    'provider-probes/samples',
     'rights',
     'drafts',
   ]) {

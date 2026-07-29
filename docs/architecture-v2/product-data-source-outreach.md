@@ -1,7 +1,7 @@
 # Product Data Source and Brand Outreach Package
 
-**Date:** 2026-07-12
-**Status:** Active pilot; eight organization requests sent, replies pending, no commercial provider purchased
+**Date:** 2026-07-29
+**Status:** Active pilot; all frozen-brand routes contacted, two provider probes submitted, no commercial provider purchased
 **Execution plan:** [Brand Data and PDF Yield Program](../superpowers/plans/2026-07-27-brand-data-and-pdf-yield-program.md)
 
 This document records source and outreach research. The linked execution plan is the canonical task order, dependency gate, and recovery checkpoint for the active program.
@@ -16,11 +16,21 @@ recipient details, replies and provider files remain in the private external out
 store. The Git-safe ledger records only organization metadata, public route URLs,
 states and content hashes.
 
-As of 2026-07-27, eight deduplicated organization threads covering all target brands
-have been sent from `hello@fitappliance.com.au`. The private evidence store retains the
-captured messages; the Git-safe ledger retains only lifecycle state, public route URLs,
-byte sizes and hashes. Follow-ups are due on 2026-08-01 and 2026-08-06 only where no
-human reply has arrived.
+As of 2026-07-29, fourteen deduplicated organization threads have been sent from
+`hello@fitappliance.com.au`. The frozen comparison cohort is fully contacted: 100
+models across 12 brands. Seven additional brands in four of those threads are
+exploratory and remain excluded from the frozen denominator. The private evidence
+store retains eight original EML objects and six Gmail confirmation receipts; the
+Git-safe ledger retains only lifecycle state, public route URLs, byte sizes and
+hashes. The original eight threads are due on 2026-08-01 and 2026-08-06. The six
+threads sent on 2026-07-29 are due on 2026-08-03 and 2026-08-08. A follow-up is
+permitted only where no human reply has arrived.
+
+GS1 Trusted Content and Open Icecat are separate submitted provider probes in
+`product-data-provider-probe-ledger.json`. Their private confirmation receipts and
+request hashes bind the frozen 100-model CSV and manifest hashes. They are never
+included in brand response rates and carry no authority to purchase or accept
+provider terms.
 
 ## Current Source Decision
 
@@ -61,6 +71,17 @@ Before any GS1 or Icecat contract, send the frozen pilot's 100 exact brand/model
 - price, rate limits, refresh method and termination/deletion obligations.
 
 Reject the sample if suffixes are silently collapsed, product and package dimensions are mixed, AU market identity is absent, or rights are described only as general catalogue access.
+
+Before sending or following up, inspect the deterministic gate:
+
+```bash
+npm run status:brand-data-program -- --as-of YYYY-MM-DD
+```
+
+The Day-14 decision remains `INSUFFICIENT_COMPARABLE_EVIDENCE` until both channels
+record comparable metrics. A 100-row PDF report alone does not qualify; receipt yield,
+requested-field coverage, conflict rate, engineering hours and recurring cost are all
+required.
 
 ## Manufacturer Data Request
 

@@ -5,17 +5,28 @@ import { readFile } from 'node:fs/promises';
 const MATRIX_PATH = 'data/architecture-v2/policies/brand-data-contact-matrix.json';
 
 const EXPECTED_ORGANIZATIONS = [
+  'asko-appliances-australia',
+  'beko-australia',
+  'bsh-home-appliances-australia',
   'chiq-australia',
   'electrolux-home-products',
   'fisher-paykel-australia',
   'hisense-australia',
+  'ilve-australia',
   'lg-australia',
+  'midea-electronics-australia',
   'miele-australia',
   'residentia-group',
+  'samsung-electronics-australia',
   'smeg-australia',
 ];
 
+const SENT_ORGANIZATIONS = EXPECTED_ORGANIZATIONS;
+
 const EXPECTED_BRANDS = [
+  'ASKO',
+  'Beko',
+  'Bosch',
   'CHiQ',
   'Electrolux',
   'Esatto',
@@ -24,8 +35,11 @@ const EXPECTED_BRANDS = [
   'Hisense',
   'InAlto',
   'LG',
+  'Ilve',
+  'Midea',
   'Miele',
   'MyKin',
+  'Samsung',
   'Smeg',
   'Sôlt',
   'Westinghouse',
@@ -44,7 +58,7 @@ function assertPublicHttpsUrl(value) {
 test('contact matrix covers each target organization and brand exactly once', async () => {
   const matrix = await readMatrix();
   assert.equal(matrix.schemaVersion, 1);
-  assert.equal(matrix.researchedOn, '2026-07-27');
+  assert.equal(matrix.researchedOn, '2026-07-29');
   assert.deepEqual(
     matrix.organizations.map(({ id }) => id).sort(),
     EXPECTED_ORGANIZATIONS,
@@ -84,15 +98,25 @@ test('contact matrix dispatch state matches the Git-safe outreach ledger', async
   );
   assert.deepEqual(
     ledger.threads.filter(({ state }) => state === 'sent').map(({ id }) => id).sort(),
-    EXPECTED_ORGANIZATIONS,
+    SENT_ORGANIZATIONS,
   );
   const ledgerById = new Map(ledger.threads.map((thread) => [thread.id, thread]));
   for (const organization of matrix.organizations) {
     const ledgerThread = ledgerById.get(organization.id);
-    assert.equal(
-      new URL(organization.route.publicSourceUrl).toString().replace(/\/$/, ''),
-      new URL(ledgerThread.publicRouteSourceUrl).toString().replace(/\/$/, ''),
-      organization.id,
-    );
+    if (organization.state === 'sent') {
+      assert.equal(
+        new URL(organization.route.publicSourceUrl).toString().replace(/\/$/, ''),
+        new URL(ledgerThread.publicRouteSourceUrl).toString().replace(/\/$/, ''),
+        organization.id,
+      );
+    } else {
+      assert.equal(organization.state, 'route_verified');
+      assert.equal(ledgerThread?.state, 'draft_ready');
+      assert.equal(
+        new URL(organization.route.publicSourceUrl).toString().replace(/\/$/, ''),
+        new URL(ledgerThread.publicRouteSourceUrl).toString().replace(/\/$/, ''),
+        organization.id,
+      );
+    }
   }
 });

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "researchedOn": "2026-07-27",
+  "researchedOn": "2026-07-29",
   "policy": {
     "officialSourcesOnly": true,
     "inferredEmailAddressesAllowed": false,
@@ -142,6 +142,117 @@
         "limitation": "general_support_route_requires_internal_routing"
       },
       "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "beko-australia",
+      "organization": "Beko Australia",
+      "coveredBrands": [
+        "Beko"
+      ],
+      "ownershipSourceUrls": [
+        "https://www.beko.com/au-en/support/contact-us"
+      ],
+      "route": {
+        "type": "customer_support_email_route",
+        "publicSourceUrl": "https://www.beko.com/au-en/support/contact-us",
+        "targetTeam": "product_master_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "consumer_support_routing_fallback"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "bsh-home-appliances-australia",
+      "organization": "BSH Home Appliances Australia",
+      "coveredBrands": [
+        "Bosch"
+      ],
+      "ownershipSourceUrls": [
+        "https://www.bosch-home.com.au/metapages/imprint"
+      ],
+      "route": {
+        "type": "customer_support_email_route",
+        "publicSourceUrl": "https://www.bosch-home.com.au/service/book-a-repair-online",
+        "targetTeam": "product_master_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "customer_support_routing_fallback"
+      },
+      "confidence": "high",
+      "state": "sent"
+    },
+    {
+      "id": "samsung-electronics-australia",
+      "organization": "Samsung Electronics Australia",
+      "coveredBrands": [
+        "Samsung"
+      ],
+      "ownershipSourceUrls": [
+        "https://www.samsung.com/au/about-us/company-info/"
+      ],
+      "route": {
+        "type": "business_email_route",
+        "publicSourceUrl": "https://www.samsung.com/au/business/contact-us/",
+        "targetTeam": "home_appliance_product_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route"
+      },
+      "confidence": "high",
+      "state": "sent"
+    },
+    {
+      "id": "midea-electronics-australia",
+      "organization": "Midea Electronics Australia",
+      "coveredBrands": [
+        "Midea"
+      ],
+      "ownershipSourceUrls": [
+        "https://www.midea.com/au"
+      ],
+      "route": {
+        "type": "customer_support_email_route",
+        "publicSourceUrl": "https://www.midea.com/au/support/contact-us",
+        "targetTeam": "product_master_data_or_ecommerce_content",
+        "discoveryMethod": "official_published_route",
+        "limitation": "general_support_route_requires_internal_routing"
+      },
+      "confidence": "medium",
+      "state": "sent"
+    },
+    {
+      "id": "asko-appliances-australia",
+      "organization": "ASKO Appliances Australia",
+      "coveredBrands": [
+        "ASKO"
+      ],
+      "ownershipSourceUrls": [
+        "https://au.asko.com/contact-us?lang=en_AU"
+      ],
+      "route": {
+        "type": "customer_support_email_route",
+        "publicSourceUrl": "https://au.asko.com/contact-us?lang=en_AU",
+        "targetTeam": "product_data_or_technical_publications",
+        "discoveryMethod": "official_published_route"
+      },
+      "confidence": "high",
+      "state": "sent"
+    },
+    {
+      "id": "ilve-australia",
+      "organization": "ILVE Australia",
+      "coveredBrands": [
+        "Ilve"
+      ],
+      "ownershipSourceUrls": [
+        "https://www.ilve.com/en-au/ilve-australia-new-zealand-contact/"
+      ],
+      "route": {
+        "type": "corporate_sales_email_route",
+        "publicSourceUrl": "https://www.ilve.com/en-au/ilve-australia-new-zealand-contact/",
+        "targetTeam": "product_data_or_technical_publications",
+        "discoveryMethod": "official_published_route"
+      },
+      "confidence": "high",
       "state": "sent"
     }
   ]
