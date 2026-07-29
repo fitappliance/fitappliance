@@ -268,6 +268,29 @@ test('failed attestation retains the immutable artifact binding for retry adjudi
   assert.deepEqual(inventory.candidates[0].outcome.artifactBinding, artifactBinding);
 });
 
+test('classifies HTTP absence as terminal while keeping a timeout retryable', async () => {
+  const missingUrl = 'https://www.westinghouse.com.au/manuals/missing.pdf';
+  const timeoutUrl = 'https://www.westinghouse.com.au/manuals/timeout.pdf';
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(missingUrl), candidate(timeoutUrl)] })],
+    acquireAndAttest: async (entry) => {
+      if (entry.sourceUrl === missingUrl) throw new Error('http_404');
+      throw Object.assign(new Error('network timeout'), { retriable: true });
+    },
+  });
+
+  const missing = inventory.candidates.find((entry) => entry.sourceUrl === missingUrl).outcome;
+  const timeout = inventory.candidates.find((entry) => entry.sourceUrl === timeoutUrl).outcome;
+  assert.deepEqual(missing, {
+    status: 'terminal_failure', failureCode: 'payload', reason: 'http_404', source: null,
+  });
+  assert.deepEqual(timeout, {
+    status: 'transport_failure', failureCode: 'transport', reason: 'network timeout', source: null,
+  });
+});
+
 test('prior terminal source is suppressed while a newly discovered official source remains executable', async () => {
   const oldUrl = 'https://www.westinghouse.com.au/manuals/family.pdf';
   const newUrl = 'https://www.westinghouse.com.au/manuals/exact-model.pdf';

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "generatedAt": "2026-07-28T15:53:54.152Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "4505f3a8f34bd1a5ac4936811267c28a7552fb8f5b4d138fb9340fb205a71ee2",
+  "semanticClassificationSha256": "4338b060a64f140b12e469896a5e2f5aece80ef56854467d5111bb32cd38f8f1",
   "summary": {
     "records": 8089,
     "uniqueReferenceIds": 8089,
@@ -21653,6 +21653,11 @@
       ],
       "groups": [
         {
+          "groupType": "model_specific",
+          "groupName": "EDW456S",
+          "grammarProfileIds": []
+        },
+        {
           "groupType": "parser_family",
           "groupName": "Esatto Australia EDW dishwasher technical information",
           "grammarProfileIds": [
@@ -22163,8 +22168,8 @@
       "canonicalBrand": "Esatto",
       "model": "EDW7S",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 8778fb5a565e",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -22216,7 +22221,18 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8778fb5a565e",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "EDW7S",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -22226,8 +22242,8 @@
       "canonicalBrand": "Esatto",
       "model": "EDW7W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 8778fb5a565e",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -22279,7 +22295,18 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8778fb5a565e",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "EDW7W",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -68408,8 +68435,8 @@
       "canonicalBrand": "Esatto",
       "model": "ECD7",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 4ab80d38fb8c",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -68461,7 +68488,18 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4ab80d38fb8c",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "ECD7",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -68575,8 +68613,8 @@
       "canonicalBrand": "Esatto",
       "model": "EHPD7",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 4ab80d38fb8c",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -68628,7 +68666,18 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4ab80d38fb8c",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "EHPD7",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -113102,8 +113151,8 @@
       "canonicalBrand": "Esatto",
       "model": "EBF129S",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "EBF129S",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -113154,7 +113203,13 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "EBF129S",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {

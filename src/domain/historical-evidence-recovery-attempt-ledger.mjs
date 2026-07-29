@@ -11,8 +11,13 @@ const SKIPPED_STATUSES = new Set([
 ]);
 const EXHAUSTED_CANDIDATE_STATUSES = new Set([
   'claims_incomplete', 'identity_rejected', 'mineru_failure',
-  'previous_terminal_suppressed', 'reference_only',
+  'previous_terminal_suppressed', 'reference_only', 'terminal_failure',
 ]);
+
+function isPermanentHttpAbsence(failureCode, reason) {
+  return failureCode === 'payload'
+    && /\bhttp(?:_|[\s-])?(?:404|410)\b/i.test(String(reason ?? ''));
+}
 
 function text(value, label) {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -134,6 +139,7 @@ function attemptEntry({ target, candidate, outcome, batch, results, audit, bindi
     ?? null;
   if (contentSha256 !== null) sha256(contentSha256, 'candidate content SHA-256');
   const reason = text(outcome.reason ?? `${outcome.status}:${failureCode}`, 'candidate failure reason');
+  const permanentHttpAbsence = isPermanentHttpAbsence(failureCode, reason);
   const processorCapability = historicalAttemptProcessorCapability({
     brand: target.brand,
     sourceUrl: normalizedSourceUrl,
@@ -174,7 +180,8 @@ function attemptEntry({ target, candidate, outcome, batch, results, audit, bindi
     reason,
     reasonSha256: seed.reasonSha256,
     disposition: disposition(failureCode),
-    suppressesSamePolicySource: !TRANSIENT_FAILURES.has(failureCode) && contentSha256 !== null,
+    suppressesSamePolicySource: !TRANSIENT_FAILURES.has(failureCode)
+      && (contentSha256 !== null || permanentHttpAbsence),
     policySha256: results.policySha256,
     ...(processorCapability ? { processorCapability, evidenceProcessorSha256 } : {}),
     candidateInventorySha256: sha256(
@@ -544,7 +551,9 @@ export function activeHistoricalAttemptSuppressions({
   return ledger.entries
     .filter((entry) => {
       if (entry.suppressesSamePolicySource !== true) return false;
-      if (resolvedAttemptIds.has(entry.attemptId) || entry.contentSha256 === null
+      const permanentHttpAbsence = isPermanentHttpAbsence(entry.failureCode, entry.reason);
+      if (resolvedAttemptIds.has(entry.attemptId)
+        || (entry.contentSha256 === null && !permanentHttpAbsence)
         || entry.policySha256 !== policySha256
         || (entry.targetId !== targetId && entry.referenceId !== referenceId)) return false;
       const capability = historicalAttemptProcessorCapability(entry);

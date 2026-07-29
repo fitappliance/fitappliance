@@ -13,20 +13,20 @@
     "completeReplayDiagnosticsCanEnterRepair": false
   },
   "sourceBindings": {
-    "dimensionKnowledgeSha256": "c68374b127500eec8e10e7f0ce4240ff75e507dc2e306c57b975a8e0a8eb2aa5",
-    "documentGraphSha256": "0861b1ea110e617c0d71cd557433e1a1b435312b875c90833985596f7896720b",
-    "classificationSha256": "4505f3a8f34bd1a5ac4936811267c28a7552fb8f5b4d138fb9340fb205a71ee2",
+    "dimensionKnowledgeSha256": "dc83a990e2634d36e2eb31521def0b4f575020de2dccd8e26e1599d37f513ab2",
+    "documentGraphSha256": "c600d75069106ee70882285070b0ba057cd7495b70cab05889cf1a00b1bcdefe",
+    "classificationSha256": "4338b060a64f140b12e469896a5e2f5aece80ef56854467d5111bb32cd38f8f1",
     "fixtureCorpusSha256": "b747eda86941bbeef8be4bd681d00c087a123b0d55c61c7b05df7e10920632db"
   },
   "summary": {
-    "rows": 450,
+    "rows": 458,
     "repairReady": 49,
     "affectedExactModels": 122,
     "fixtureProfiles": 2,
     "fixtureCoveredFamilies": 2,
     "byLane": {
       "REPAIR_READY": 49,
-      "IDENTITY_BLOCKED": 310,
+      "IDENTITY_BLOCKED": 318,
       "MINERU_BLOCKED": 0,
       "IMAGE_SEMANTICS_REQUIRED": 5,
       "AMBIGUITY_RESEARCH": 24,
@@ -3220,6 +3220,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_073e5c9d6f09a9ffcb0c7ad3",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "document_family",
+      "groupName": "Document family 8778fb5a565e",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5"
+      ],
+      "documentIds": [
+        "pdf_document_037fe672a61c03ca774288c2"
+      ],
+      "pdfSha256s": [
+        "8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_090b2defa100c23471d8ae59",
       "category": "fridge",
       "brand": "Fisher & Paykel",
@@ -4347,6 +4384,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_1dbe5efd7a8c27785b3388eb",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EDW7W",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825"
+      ],
+      "documentIds": [
+        "pdf_document_655036bba7744d834b19281b"
+      ],
+      "pdfSha256s": [
+        "bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_1eb4bc7d296777129deffb1b",
       "category": "dishwasher",
       "brand": "Bosch",
@@ -5235,6 +5309,47 @@
         "NO_COMPLETE_EXPLICIT_AXES"
       ],
       "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_31bbc23a0aa5a23a63b8ff21",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EDW456S",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+        "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83"
+      ],
+      "documentIds": [
+        "pdf_document_c895c9aaf88905bce70f3e47",
+        "pdf_document_f34dcb02a8dd3eae1f71271a"
+      ],
+      "pdfSha256s": [
+        "0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10",
+        "26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
         "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
@@ -8183,6 +8298,51 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_78096ab4595457e6b64470e1",
+      "category": "fridge",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EBF129S",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 3,
+      "incompletePdfSha256s": [
+        "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+        "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+        "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723"
+      ],
+      "documentIds": [
+        "pdf_document_26f179a83f0c6a72724a48cc",
+        "pdf_document_5d77c2e09cf1ac6e6f978cbd",
+        "pdf_document_c49cf08f106de300e4e74777"
+      ],
+      "pdfSha256s": [
+        "68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386",
+        "b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45",
+        "cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723"
+      ],
+      "validMineruDocuments": 3,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED",
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_7909c908802ad50595d5089b",
       "category": "dishwasher",
       "brand": "ASKO",
@@ -8793,6 +8953,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_83593f0862e022c19de5eb72",
+      "category": "dryer",
+      "brand": "Esatto",
+      "groupType": "document_family",
+      "groupName": "Document family 4ab80d38fb8c",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29"
+      ],
+      "documentIds": [
+        "pdf_document_38fe838d8f5122def6b45330"
+      ],
+      "pdfSha256s": [
+        "4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_837819867c83b1c734801308",
       "category": "dishwasher",
       "brand": "Bosch",
@@ -8822,6 +9019,43 @@
       ],
       "researchGapTypes": [
         "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_83884c5f3c24b0406f330e58",
+      "category": "dryer",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "ECD7",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0"
+      ],
+      "documentIds": [
+        "pdf_document_fd02428b8eac65f1c986866a"
+      ],
+      "pdfSha256s": [
+        "23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
       ],
       "riskFlags": [],
       "lifecycleCounts": {},
@@ -11848,6 +12082,43 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_bae8b341134da5567352bb84",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EDW7S",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde"
+      ],
+      "documentIds": [
+        "pdf_document_60291b3daf3c0be7c19a9994"
+      ],
+      "pdfSha256s": [
+        "47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_baeab754977944d8cd0cb929",
       "category": "fridge",
       "brand": "Beko",
@@ -12198,6 +12469,43 @@
         "EXACT_MODEL_IDENTITY_NOT_PROVEN"
       ],
       "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {},
+      "sourceAuthorityCounts": {},
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_be16fa71eed28c85e01cf26f",
+      "category": "dryer",
+      "brand": "Esatto",
+      "groupType": "model_specific",
+      "groupName": "EHPD7",
+      "lane": "IDENTITY_BLOCKED",
+      "rank": null,
+      "score": null,
+      "scoreComponents": null,
+      "affectedExactModels": 0,
+      "affectedReferenceIds": [],
+      "affectedModels": [],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84"
+      ],
+      "documentIds": [
+        "pdf_document_7c8aa859347adfb9c01348c9"
+      ],
+      "pdfSha256s": [
+        "4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
       "riskFlags": [],
       "lifecycleCounts": {},
       "sourceAuthorityCounts": {},
@@ -18547,6 +18855,6 @@
       "fixtureProfileIds": []
     }
   ],
-  "generatedAt": "2026-07-19T19:32:08.439Z",
-  "semanticQueueSha256": "ce7261a4754b6bd0746ad9e730690a4913a371280c7283ee0e9f18c2e0315ab6"
+  "generatedAt": "2026-07-28T15:53:54.152Z",
+  "semanticQueueSha256": "ce1e97f709734a432a501146e905c08da33bde8f007791ef4f8d8e7fd5abad27"
 }

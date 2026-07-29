@@ -245,6 +245,94 @@ test('keeps retryable candidate observations non-executable until required resol
   assert.equal(queue.summary.isolatedNonReadyCandidateEdges, 1);
 });
 
+test('stops rerunning a legacy aggregate resolver after its diagnostic discovery', () => {
+  const record = acquisition('legacy-resolver');
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records: [record],
+    sources: [],
+  };
+  const manifest = candidateManifestFor(acquisitionQueue);
+  manifest.targets[0].legacyAggregateResolverIds = ['fixture-resolver'];
+  manifest.targets[0].lastDiscoveryRunId = 'legacy-resolver-diagnostic-run';
+  manifest.targets[0].lastDiscoveryAt = '2026-07-14T00:01:00.000Z';
+  manifest.semanticManifestSha256 = canonicalJsonSha256({
+    sourceAcquisitionQueueSha256: manifest.sourceAcquisitionQueueSha256,
+    runBindings: manifest.runBindings,
+    candidates: manifest.candidates,
+    targets: manifest.targets,
+  });
+
+  const queue = buildQueue({
+    acquisitionQueue,
+    candidateManifest: manifest,
+    historicalReference: { records: [reference('legacy-resolver')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.equal(queue.discoveryTargets.length, 0);
+  assert.equal(queue.deferredTargets.length, 1);
+  assert.equal(queue.deferredTargets[0].dispositionReason, 'LEGACY_RESOLVER_CONTRACT');
+  assert.equal(queue.summary.excluded.LEGACY_RESOLVER_CONTRACT, 1);
+});
+
+test('stops only the diagnosed legacy target without suppressing unresolved siblings or ready candidates', () => {
+  const records = [
+    acquisition('legacy-diagnostic'),
+    acquisition('legacy-unseen'),
+    acquisition('legacy-revised'),
+    acquisition('legacy-positive', { candidateSourceIds: ['source-positive'] }),
+  ];
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records,
+    sources: [{
+      sourceId: 'source-positive',
+      sourceUrl: 'https://example.com/positive.pdf',
+      sourceAuthority: 'OFFICIAL',
+      receiptEligible: true,
+      documentIds: ['doc-positive'],
+      referenceIds: ['legacy-positive'],
+    }],
+  };
+  const manifest = candidateManifestFor(acquisitionQueue);
+  const diagnostic = manifest.targets.find((target) => target.referenceId === 'legacy-diagnostic');
+  diagnostic.legacyAggregateResolverIds = ['fixture-resolver'];
+  diagnostic.lastDiscoveryRunId = 'legacy-resolver-diagnostic-run';
+  diagnostic.lastDiscoveryAt = '2026-07-14T00:01:00.000Z';
+  const revised = manifest.targets.find((target) => target.referenceId === 'legacy-revised');
+  revised.resolverContract[0].version = '2';
+  manifest.semanticManifestSha256 = canonicalJsonSha256({
+    sourceAcquisitionQueueSha256: manifest.sourceAcquisitionQueueSha256,
+    runBindings: manifest.runBindings,
+    candidates: manifest.candidates,
+    targets: manifest.targets,
+  });
+
+  const queue = buildQueue({
+    acquisitionQueue,
+    candidateManifest: manifest,
+    historicalReference: { records: records.map((record) => reference(record.referenceId)) },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.deepEqual(queue.discoveryTargets.map((target) => target.referenceId).sort(), [
+    'legacy-revised',
+    'legacy-unseen',
+  ]);
+  assert.deepEqual(queue.deferredTargets.map((target) => target.referenceId), [
+    'legacy-diagnostic',
+  ]);
+  assert.deepEqual(queue.deferredTargets[0].legacyAggregateResolverIds, ['fixture-resolver']);
+  assert.equal(queue.summary.excluded.LEGACY_RESOLVER_CONTRACT, 1);
+  assert.equal(queue.targets.length, 1);
+  assert.equal(queue.targets[0].referenceId, 'legacy-positive');
+});
+
 test('separates resolver-backed identity discovery and keeps unresolved identity research deferred', () => {
   const records = [
     acquisition('identity-resolved', {
@@ -419,6 +507,51 @@ test('same-policy terminal source moves to bounded discovery and preserves alter
   });
   assert.equal(changedPolicy.jobs.length, 1);
   assert.equal(changedPolicy.targets[0].priorAttemptSuppressions, undefined);
+});
+
+test('a permanent missing source and exhausted resolver defer the target instead of rerunning acquisition', () => {
+  const sourceUrl = 'https://example.com/missing.pdf';
+  const policySha256 = 'b'.repeat(64);
+  const resolverContract = [{
+    resolverId: 'fixture-resolver', version: '1', scope: 'exact-model', required: true,
+  }];
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records: [acquisition('missing', { candidateSourceIds: ['source-missing'] })],
+    sources: [{
+      sourceId: 'source-missing', sourceUrl, sourceAuthority: 'OFFICIAL', receiptEligible: true,
+      documentIds: ['doc-missing'], referenceIds: ['missing'],
+    }],
+  };
+  const queue = buildQueue({
+    acquisitionQueue,
+    historicalReference: { records: [reference('missing')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    recoveryPolicySha256: policySha256,
+    resolverContractSha256ForTarget: () => historicalResolverContractSha256(resolverContract),
+    priorAttemptLedger: {
+      schemaVersion: 1,
+      resolutions: [],
+      sourceAcceptances: [],
+      entries: [{
+        attemptId: 'attempt-missing', targetId: 'different-target', referenceId: 'missing',
+        sourceUrl, contentSha256: null, status: 'terminal_failure', failureCode: 'payload',
+        reason: 'http_404', policySha256, suppressesSamePolicySource: true,
+      }],
+      targetAttempts: [{
+        targetAttemptId: 'target-attempt-missing', targetId: 'different-target', referenceId: 'missing',
+        reason: 'complete_exhausted_candidate_inventory', policySha256,
+        suppressesSamePolicyResolverOnly: true, resolvers: resolverContract,
+      }],
+    },
+  });
+
+  assert.equal(queue.targets.length, 0);
+  assert.equal(queue.discoveryTargets.length, 0);
+  assert.equal(queue.deferredTargets.length, 1);
+  assert.equal(queue.deferredTargets[0].dispositionReason, 'ACTIVE_RESOLVER_SUPPRESSION');
 });
 
 test('a bounded Beko HTML processor change reopens only the product page and keeps its PDF identity rejection closed', () => {

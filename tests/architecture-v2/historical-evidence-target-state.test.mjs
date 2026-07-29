@@ -200,6 +200,28 @@ test('binds only complete target inventory terminals and records accurate reopen
   assert.deepEqual(noSource.reopeningConditions, ['EXPLICIT_OFFICIAL_CANDIDATE_ADDED']);
 });
 
+test('projects a completed legacy-resolver diagnostic as blocked until the resolver contract changes', () => {
+  const input = fixture();
+  input.executableQueue.discoveryTargets = input.executableQueue.discoveryTargets
+    .filter((target) => target.referenceId !== 'ref-5');
+  input.executableQueue.deferredTargets.push({
+    targetId: 'target-5',
+    referenceId: 'ref-5',
+    dispositionReason: 'LEGACY_RESOLVER_CONTRACT',
+  });
+  input.executableQueue.summary.targets -= 1;
+  input.executableQueue.summary.discoveryTargets -= 1;
+  input.executableQueue.summary.deferredTargets += 1;
+  input.executableQueue.summary.excluded.LEGACY_RESOLVER_CONTRACT = 1;
+
+  const state = buildHistoricalEvidenceTargetState(input);
+  const blocked = byReference(state, 'ref-5');
+
+  assert.equal(blocked.state, 'BLOCKED_SAME_EPOCH');
+  assert.equal(blocked.binding.dispositionReason, 'LEGACY_RESOLVER_CONTRACT');
+  assert.deepEqual(blocked.reopeningConditions, ['RESOLVER_CONTRACT_CHANGED']);
+});
+
 test('an executable target outranks a stale target-level terminal attempt', () => {
   const input = fixture();
   input.executableQueue.discoveryTargets.push({

@@ -13,16 +13,16 @@ Generated: 2026-07-12T12:40:00.000Z
 | Historical records | 8089 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 1029 |
-| Valid MinerU documents | 1015 |
+| MinerU documents | 1039 |
+| Valid MinerU documents | 1025 |
 | Invalid or orphaned MinerU documents | 14 |
 | Documents with recognised expressions | 543 |
-| Documents without recognised expressions | 472 |
-| Mapped MinerU documents | 958 |
-| Unmapped MinerU documents | 57 |
+| Documents without recognised expressions | 482 |
+| Mapped MinerU documents | 969 |
+| Unmapped MinerU documents | 56 |
 | Dimension-expression observations | 1272 |
 | Reusable PDF grammar profiles | 231 |
-| Research gaps | 1089 |
+| Research gaps | 1099 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -87,7 +87,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Devanti | 33 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Dometic | 24 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Electrolux | 79 | 13 | 0 | 5 | `MINERU_SAMPLE_OBSERVED` |
-| Esatto | 84 | 3 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
+| Esatto | 84 | 6 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
 | EURO | 12 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Euromaid | 25 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EUROMATIC | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -211,7 +211,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Duos | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Electrolux | 20 | 9 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
 | Emilia | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Esatto | 21 | 4 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
+| Esatto | 21 | 9 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
 | EURO | 33 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Euromaid | 15 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EUROMATIC | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -383,7 +383,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | CHIQ | 16 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Devanti | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Electrolux | 43 | 9 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
-| Esatto | 56 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
+| Esatto | 56 | 3 | 0 | 0 | `MINERU_SAMPLE_OBSERVED` |
 | EURO | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Euroclean | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Euromaid | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -1359,10 +1359,25 @@ Research gaps:
 
 - Raw brand variants: `Esatto`
 - Inventory models: 84
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 3
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 6
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 1
 - Complete exact-model parser replays: 1
+
+#### EBF129S
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `EBF129S`
+- PDF SHA-256: `68f7706528e84c99b459fec3538072792cd100cb7df89d4e5d617ee573b51386`, `b970849a6efe2032ad7806795859041c62be097747a81bde943c7c638073ec45`, `cbb6543f3246c750f8e66fd0a135fad280d2782d12b1bbcc2029a812db481723`
+- Official/source URLs: <https://esatto.house/s/EBF129S_QSG_V13_0723_FA.pdf>, <https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf>, <https://esatto.house/s/Esatto_ProductCard-EBF129S-azf6.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/619c4f5f23c8535dd38951c0/1637633888328/Esatto_ProductCard-EBF129S.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd736683f56897cb22c3/1729464906791/EBF129S_QSG_V1.3_0723_FA.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/64b0bd8536493706dc50bc6e/1729464906791/EBF129W_EBF129S_UserManual_V1.4_0723_FA.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 16: Model: EBF129W / EBF129S Product Dimensions: W501× D 540×H860 (mm) Net / Gross Weight: 23.6kg / 26.6kg Net / Gross Capacity: 123L / 129L Other Features: 123 ...
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: text_list unordered text Dimensions (W, D, H mm) / 860 × 501 × 540 text Capacity / 123L text Energy Rating / 2.5 Stars text Warranty / 2 Years
 
 #### EUF172W
 
@@ -6783,10 +6798,37 @@ Research gaps:
 
 - Raw brand variants: `Esatto`
 - Inventory models: 21
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 4
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 1
 - Complete exact-model parser replays: 1
+
+#### Document family 8778fb5a565e
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `EDW7S`, `EDW7W`
+- PDF SHA-256: `8778fb5a565e97d0e784463b8127f54cc917bf349dff39c89399449ddef2d0b5`
+- Official/source URLs: <https://esatto.house/s/EDW7S-EDW7W_UserManual_V51-1121.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/61846c8ab416375e367aa92f/1636068495999/EDW7S-EDW7W_UserManual_V5.1+1121.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### EDW456S
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `EDW456S`
+- PDF SHA-256: `0e3bd131bd3c3ff2e5cdd0068d044392477e8394ee8ca11e869e028b7c35eb10`, `26351de797731d68d8b1a1b7e899ba371ea042930de88de28a5b5115bc77ba83`
+- Official/source URLs: <https://esatto.house/s/EDW456S_QSG_V11.pdf>, <https://esatto.house/s/Esatto_ProductCard-EDW456S-smk3.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb39e0ef686655f98803/1685515066829/EDW456S_QSG_V1.1.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/647d7be2088efb3de2d5fdcc/1685945317169/Esatto_ProductCard-EDW456S.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: text_list unordered text Dimensions (W, D, H mm) / 448 × 600 × 845 text Energy Rating (MEPS/WELS) / 3 Stars / 3 Stars text Capacity / 9 Place Settings text W...
 
 #### EDW7CS
 
@@ -6802,6 +6844,32 @@ Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: text_list unordered text Dimensions (W, D, H mm) / 598 × 610 × 845 text Energy Rating (MEPS/WELS) / 3.5 Stars / 4.5 Stars text Capacity / 14 Place Settings t...
+
+#### EDW7S
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `EDW7S`
+- PDF SHA-256: `47b0f79139228467d0223f132d93f5bc54b4e03ce69f42b84ecc7fd0f04a3bde`
+- Official/source URLs: <https://esatto.house/s/Esatto_ProductCard-EDW7S-n5j7.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6189cba297f0c65dce313726/1636420515255/Esatto_ProductCard-EDW7S.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
+
+#### EDW7W
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `EDW7W`
+- PDF SHA-256: `bdfa03e0c000dda4c7685264b69d321071b4ea8c57a6e818214a83575636a825`
+- Official/source URLs: <https://esatto.house/s/Esatto_ProductCard-EDW7W-z5bn.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6189cb89931dca1cff814c25/1636420490067/Esatto_ProductCard-EDW7W.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
 
 #### Esatto Australia EDW dishwasher technical information
 
@@ -12484,12 +12552,49 @@ Research gaps:
 
 - Raw brand variants: `Esatto`
 - Inventory models: 56
-- Coverage: `NO_MINERU_SAMPLE`; MinerU documents: 0
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 3
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 0
 - Complete exact-model parser replays: 0
 
-`NO_MINERU_SAMPLE`: no PDF expression may be assumed for this brand.
+#### Document family 4ab80d38fb8c
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `ECD7`, `EHPD7`
+- PDF SHA-256: `4ab80d38fb8ce8e6cf6c061d611902669fae7c52208e8ae3e191af2f33ec9f29`
+- Official/source URLs: <https://esatto.house/s/Esatto_UserManual_ECD7-EHPD7_FA.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/610b886688f4647b74ef94b7/1628145774292/Esatto_UserManual_ECD7-EHPD7_FA.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 15: ModelParameter EHPD7 ECD7 Dimension(L*W*H) 622*595*845(mm) 622*595*845(mm) Ambient temperature +5°℃~+35°℃ +5°℃~+35°C Rated input power 850W 2000W Rated volta...
+
+#### ECD7
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `ECD7`
+- PDF SHA-256: `23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0`
+- Official/source URLs: <https://esatto.house/s/Esatto_ProductCard-ECD7.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/60d2bdac9da8807ace627c2f/1624423852940/Esatto_ProductCard-ECD7.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
+
+#### EHPD7
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `EHPD7`
+- PDF SHA-256: `4b8e0937e71884e481401c01c69f1135e392fdd168aa09fab86ede1959c60e84`
+- Official/source URLs: <https://esatto.house/s/Esatto_ProductCard-EHPD7.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/610b8902fa8bd67622750752/1628145922808/Esatto_ProductCard-EHPD7.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
 
 ### EURO
 
@@ -13714,7 +13819,6 @@ These documents remain in coverage accounting but cannot be assigned to a brand,
 | `1b783246ca5f9e4b58cbffbacd13d96de99cecd0e964604a1c650f9777fcc858` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `1dac9c99f44c58ed69201c9ab5d214a339887dbf884e2e7bc9c063d9c96b9857` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3` | `UNMAPPED_SOURCE_PDF` | unknown |
-| `23ab6c947beb07b0ec155e03ad240bc2e2430d5e98279cdce7794f2c015582e0` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `27ab7d8f999a700d3339530e5ff5f3b4a2151fe1f58acadec5f48fdeb2a40eda` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `2bdf9a140b5d81d8332a6a24f2f32c8e54f6044b9c82320d6f3df03533aace98` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee` | `UNMAPPED_SOURCE_PDF` | unknown |

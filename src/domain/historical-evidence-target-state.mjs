@@ -258,6 +258,17 @@ function stateForRecord({
       reopeningConditions: ['IDENTITY_RESEARCH_EVIDENCE_CHANGED'],
     };
   }
+  if (deferredTarget?.dispositionReason === 'LEGACY_RESOLVER_CONTRACT') {
+    return {
+      ...base,
+      state: 'BLOCKED_SAME_EPOCH',
+      stateClass: 'BLOCKED',
+      actionable: false,
+      terminal: true,
+      binding: deferredBinding(deferredTarget),
+      reopeningConditions: ['RESOLVER_CONTRACT_CHANGED'],
+    };
+  }
   const targetAttempt = targetAttemptFor(record.referenceId, attemptLedger);
   if (targetAttempt) {
     const noSource = targetAttempt.reason === 'complete_zero_candidate_inventory';

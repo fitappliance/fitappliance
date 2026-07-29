@@ -25,6 +25,7 @@ export const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
   'src/domain/dimension-evidence-claim.mjs',
   'src/domain/evidence-artifact-pipeline.mjs',
   'src/domain/evidence-artifact-verifier.mjs',
+  'src/domain/evidence-candidate-inventory.mjs',
   'src/domain/evidence-claim-reconciliation.mjs',
   'src/domain/evidence-claim-semantics.mjs',
   'src/domain/evidence-geometry-projector.mjs',
