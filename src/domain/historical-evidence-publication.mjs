@@ -13,6 +13,10 @@ import { inferApplianceFormFactor } from './appliance-form-factor.mjs';
 import { isStandaloneOfficialHtmlMarketingAlias } from './evidence-claim-reconciliation.mjs';
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
 import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
+import {
+  effectiveEvidencePublicationState,
+  validateEvidenceEpochState,
+} from './evidence-epoch-reconciliation.mjs';
 
 const AXIS_FIELDS = Object.freeze({
   width: 'closedEnvelope.widthMm',
@@ -263,6 +267,7 @@ export function buildHistoricalEvidencePublication({
   bundle,
   products,
   lifecycleMode = 'OBSERVATION_CUTOVER',
+  evidenceEpochState = null,
 }) {
   validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle);
   const offline = auditHistoricalEvidenceRecoveryBundle(bundle);
@@ -272,6 +277,13 @@ export function buildHistoricalEvidencePublication({
   if (!Array.isArray(products)) throw new TypeError('catalog products required');
   if (!LIFECYCLE_PUBLICATION_MODES.includes(lifecycleMode)) {
     throw new TypeError(`unsupported lifecycle publication mode: ${lifecycleMode}`);
+  }
+  const descriptorsByTarget = new Map();
+  if (evidenceEpochState !== null) {
+    validateEvidenceEpochState(evidenceEpochState);
+    for (const descriptor of evidenceEpochState.descriptors) {
+      descriptorsByTarget.set(descriptor.targetId, descriptor);
+    }
   }
 
   const productById = new Map();
@@ -293,6 +305,32 @@ export function buildHistoricalEvidencePublication({
     const product = productById.get(text(entry.legacyRuntimeId).toLowerCase());
     if (product) assertEntryIdentity(entry, product);
 
+    let epochPublishable = true;
+    if (evidenceEpochState !== null) {
+      const descriptor = descriptorsByTarget.get(entry.targetId);
+      if (descriptor) {
+        if (text(descriptor.identity.brand) !== text(entry.brand)
+          || text(descriptor.identity.model) !== text(entry.model)
+          || text(descriptor.identity.category) !== text(entry.category)) {
+          throw new Error(`current evidence epoch identity mismatch for ${entry.targetId}`);
+        }
+        const effective = effectiveEvidencePublicationState({
+          ledger: evidenceEpochState.ledger,
+          targetId: entry.targetId,
+          descriptorSha256: descriptor.semanticDescriptorSha256,
+        });
+        epochPublishable = effective.publishable;
+        if (epochPublishable) {
+          const receiptBindings = new Set(entry.sources
+            .map((source) => source.verificationReceipt?.bindingSha256));
+          if (!receiptBindings.has(descriptor.priorReceiptBindingSha256)
+            || !receiptBindings.has(effective.receiptBindingSha256)) {
+            throw new Error(`current evidence epoch receipt binding mismatch for ${entry.targetId}`);
+          }
+        }
+      }
+    }
+
     const lifecycleState = effectiveLifecycleState(entry, product, lifecycleMode);
     const currentProduct = lifecycleMode === 'LEGACY_BASELINE'
       ? isLegacyBaselineCurrentProduct(product)
@@ -302,7 +340,7 @@ export function buildHistoricalEvidencePublication({
       if (!currentProduct) {
         throw new Error(`current recovery lifecycle drift for ${entry.targetId}`);
       }
-      if (entry.acceptanceStatus === 'accepted') {
+      if (entry.acceptanceStatus === 'accepted' && epochPublishable) {
         if (currentAcceptanceByLegacyId.has(entry.legacyRuntimeId)) {
           throw new Error(`duplicate current recovery product ${entry.legacyRuntimeId}`);
         }
@@ -334,9 +372,9 @@ export function buildHistoricalEvidencePublication({
       category: entry.category,
       lifecycleState,
       acceptanceStatus: entry.acceptanceStatus,
-      dimensionsMm: scalarHistoricalDimensions(entry.geometryProjection),
-      geometryProjection: structuredClone(entry.geometryProjection),
-      modelReceipts: modelReceipts(entry),
+      dimensionsMm: epochPublishable ? scalarHistoricalDimensions(entry.geometryProjection) : null,
+      geometryProjection: epochPublishable ? structuredClone(entry.geometryProjection) : null,
+      modelReceipts: epochPublishable ? modelReceipts(entry) : [],
     }));
   }
 

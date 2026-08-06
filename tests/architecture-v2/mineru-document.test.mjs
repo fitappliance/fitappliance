@@ -592,7 +592,7 @@ test('MinerU binds a multi-model dimension matrix to the exact requested model r
     },
     {
       type: 'table', content: {
-        html: '<table><tr><td>Dimensions</td><td>Product Height (H)</td><td>Product Width (W)</td><td>Product Depth (D)</td><td>Product Depth (D2) (Door Open)</td></tr><tr><td>WBB3700AH/WH</td><td>1755</td><td>598</td><td>650</td><td>1199</td></tr><tr><td>WBB3400AH/WH</td><td>1645</td><td>598</td><td>650</td><td>1199</td></tr></table>',
+        html: '<table><tr><td>Dimensions</td><td>Product Height (H) (mm)</td><td>Product Width (W) (mm)</td><td>Product Depth (D) (mm)</td><td>Product Depth (D2) (Door Open) (mm)</td></tr><tr><td>WBB3700AH/WH</td><td>1755</td><td>598</td><td>650</td><td>1199</td></tr><tr><td>WBB3400AH/WH</td><td>1645</td><td>598</td><td>650</td><td>1199</td></tr></table>',
         table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
       }, bbox: [40, 100, 950, 500],
     },
@@ -1427,7 +1427,7 @@ test('MinerU scopes a separate dimension table to an exact Model row on the same
     },
     {
       type: 'table', content: {
-        html: '<table><tr><td>W</td><td>600</td><td>D</td><td>475</td><td>D&quot;</td><td>1015</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>535</td><td></td><td></td></tr></table>',
+        html: '<table><tr><td>W</td><td>600 mm</td><td>D</td><td>475 mm</td><td>D&quot;</td><td>1015 mm</td></tr><tr><td>H</td><td>850 mm</td><td>D&#x27;</td><td>535 mm</td><td></td><td></td></tr></table>',
         table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
       }, bbox: [52, 458, 945, 526],
     },
@@ -1456,7 +1456,7 @@ test('MinerU scopes shared dimensions to a strict same-page sibling model list a
   const bytes = Buffer.from(JSON.stringify([[
     tableFragment('<table><tr><td>Description</td><td>Value</td></tr><tr><td>Model</td><td>DVH10-10B / DVH10-10W / DVH9-10B / DVH5-10G</td></tr></table>'),
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
-    tableFragment('<table><tr><td>W</td><td>600</td><td>D</td><td>690</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>615</td><td></td><td></td></tr></table>'),
+    tableFragment('<table><tr><td>W</td><td>600 mm</td><td>D</td><td>690 mm</td><td>D&quot;</td><td>1115 mm</td></tr><tr><td>H</td><td>850 mm</td><td>D&#x27;</td><td>615 mm</td><td></td><td></td></tr></table>'),
   ]]));
 
   const parsed = parseMineruContentListV2(bytes, {
@@ -1527,7 +1527,7 @@ test('MinerU leaves D/D-prime diagram depth variants unresolved without a declar
       bbox: [200, 230, 800, 520],
     },
     {
-      ...tableFragment('<table><tr><td>W</td><td>600</td><td>D</td><td>660</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>614</td><td></td><td></td></tr></table>'),
+      ...tableFragment('<table><tr><td>W</td><td>600 mm</td><td>D</td><td>660 mm</td><td>D&quot;</td><td>1115 mm</td></tr><tr><td>H</td><td>850 mm</td><td>D&#x27;</td><td>614 mm</td><td></td><td></td></tr></table>'),
       bbox: [80, 550, 900, 760],
     },
   ]]));
@@ -1612,7 +1612,7 @@ test('LG dryer diagram profile accepts an explicit model list but rejects struct
     modelTable,
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
     image,
-    tableFragment(sourceTable),
+    captionedTableFragment(sourceTable, 'Dimensions (mm)'),
   ]);
   assert.equal(accepted.claims.find((claim) => claim.field === 'closedEnvelope.depthMm').value.mm, 690);
   assert.deepEqual(accepted.grammarProfileIds, ['lg-au-dryer-dimension-diagram-v1']);
@@ -1620,7 +1620,7 @@ test('LG dryer diagram profile accepts an explicit model list but rejects struct
   const noImage = parse([
     modelTable,
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
-    tableFragment(sourceTable),
+    captionedTableFragment(sourceTable, 'Dimensions (mm)'),
   ]);
   assert.equal(noImage.claims.some((claim) => claim.field === 'closedEnvelope.depthMm'), false);
   assert.deepEqual(noImage.grammarProfileIds, []);
@@ -1629,7 +1629,7 @@ test('LG dryer diagram profile accepts an explicit model list but rejects struct
     modelTable,
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
     image,
-    tableFragment(sourceTable),
+    captionedTableFragment(sourceTable, 'Dimensions (mm)'),
   ], 'DVH11-10B'), /identity|exact-model/i);
 });
 
@@ -1663,7 +1663,7 @@ test('MinerU scopes an LG trailing-wildcard family row to one shared dimension t
     paragraph('Asterisk means one model variant (0-9 or A-Z).'),
     tableFragment('<table><tr><td>Model</td><td>DVH45-08* / DVH5-08* / DVH9-08* / DVH9-09*</td></tr></table>'),
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
-    tableFragment('<table><tr><td>W</td><td>600</td><td>D</td><td>690</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>615</td><td></td><td></td></tr></table>'),
+    tableFragment('<table><tr><td>W</td><td>600 mm</td><td>D</td><td>690 mm</td><td>D&quot;</td><td>1115 mm</td></tr><tr><td>H</td><td>850 mm</td><td>D&#x27;</td><td>615 mm</td><td></td><td></td></tr></table>'),
   ]]));
 
   const parsed = parseMineruContentListV2(bytes, {
@@ -1684,9 +1684,9 @@ test('MinerU selects only the exact LG model-group dimension table on a shared p
     paragraph('WV9-1412B installation manual'),
     tableFragment('<table><tr><td>Model</td><td>WV9-1410B / WV9-1410W</td><td>WV9-1412W / WV9-1412B</td></tr></table>'),
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
-    captionedTableFragment('<table><tr><td>W</td><td>595</td><td>D</td><td>560</td><td>D&quot;</td><td>1100</td></tr><tr><td>H</td><td>845</td><td>D&#x27;</td><td>620</td><td></td><td></td></tr></table>', 'WV9-1410B / WV9-1410W'),
+    captionedTableFragment('<table><tr><td>W</td><td>595 mm</td><td>D</td><td>560 mm</td><td>D&quot;</td><td>1100 mm</td></tr><tr><td>H</td><td>845 mm</td><td>D&#x27;</td><td>620 mm</td><td></td><td></td></tr></table>', 'WV9-1410B / WV9-1410W'),
     paragraph('WV9-1412W / WV9-1412B', [80, 550, 400, 575]),
-    tableFragment('<table><tr><td>W</td><td>600</td><td>D</td><td>610</td><td>D&quot;</td><td>1135</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>660</td><td></td><td></td></tr></table>'),
+    tableFragment('<table><tr><td>W</td><td>600 mm</td><td>D</td><td>610 mm</td><td>D&quot;</td><td>1135 mm</td></tr><tr><td>H</td><td>850 mm</td><td>D&#x27;</td><td>660 mm</td><td></td><td></td></tr></table>'),
   ]]));
 
   const parsed = parseMineruContentListV2(bytes, {
@@ -1860,7 +1860,7 @@ test('page footer identity does not change receipts that already have structured
   ]);
 });
 
-test('MinerU parses alternating W H D cells only with explicit same-page unit context', () => {
+test('MinerU keeps alternating W H D cells with separate page unit context out of fresh claims', () => {
   const bytes = Buffer.from(JSON.stringify([[
     {
       type: 'table', content: {
@@ -1881,18 +1881,12 @@ test('MinerU parses alternating W H D cells only with explicit same-page unit co
     },
   ]]));
 
-  const parsed = parseMineruContentListV2(bytes, {
+  assert.throws(() => parseMineruContentListV2(bytes, {
     pdfSha256, parserVersion: '3.4.4', modelRevision,
     caseIdentity: { brand: 'LG', model: 'WD1275A1', category: 'washing_machine' },
     claimSemanticsVersion: 2,
     fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
-  });
-
-  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
-    'closedEnvelope.widthMm': 600,
-    'closedEnvelope.heightMm': 850,
-    'closedEnvelope.depthMm': 535,
-  });
+  }), /explicit unit|evidence/i);
 });
 
 test('MinerU parsing fails closed when dimensions lack an explicit axis order', () => {
@@ -2493,6 +2487,29 @@ test('MinerU rejects unsafe Hisense exact-spec variants instead of inferring dim
   ]), /evidence/i);
 });
 
+test('fresh V2 claims require an explicit unit in the bound fragment, not separate page context', () => {
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' },
+    claimSemanticsVersion: 2, fields,
+  };
+  const contextOnly = Buffer.from(JSON.stringify([[
+    pageHeader('Hisense HRCD640TBW'),
+    paragraph('Dimensions (mm)', [80, 90, 300, 120]),
+    tableFragment('<table><tr><td>H</td><td>850</td><td>W</td><td>600</td><td>D</td><td>635</td></tr></table>'),
+  ]]));
+  assert.throws(() => parseMineruContentListV2(contextOnly, options), /explicit unit|evidence/i);
+
+  const explicit = Buffer.from(JSON.stringify([[
+    pageHeader('Hisense HRCD640TBW'),
+    paragraph('Product dimensions (H x W x D): 850 mm x 600 mm x 635 mm'),
+  ]]));
+  const parsed = parseMineruContentListV2(explicit, options);
+  assert.deepEqual(parsed.claims.map((claim) => claim.value.mm), [600, 850, 635]);
+});
+
 test('MinerU binds concatenated colour variants to one exact model column using an explicit model list', () => {
   const specificationTable = `<table>
     <tr><td colspan="2">Model</td><td>ETM207XETM207W</td><td>ETM239XETM239W</td><td>ETM268XETM268W</td></tr>
@@ -2614,7 +2631,7 @@ test('MinerU binds Fisher and Paykel DW60 installation dimensions through its mo
     <tr><td>Inside height of cavity with top panel in place</td><td>855 - 875</td></tr>
     <tr><td>Minimum inside width of cavity</td><td>600</td></tr>
   </table>`);
-  const bytes = Buffer.from(JSON.stringify([
+  const contextOnlyBytes = Buffer.from(JSON.stringify([
     [{ type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'DW60 models' }] }, bbox: [450, 570, 550, 600] }],
     [],
     [modelTable],
@@ -2630,6 +2647,28 @@ test('MinerU binds Fisher and Paykel DW60 installation dimensions through its mo
       'closedEnvelope.depthMm',
     ],
   });
+
+  for (const model of ['DW60FC4W1', 'DW60FC4X1']) {
+    assert.throws(
+      () => parseMineruContentListV2(contextOnlyBytes, options(model)),
+      /explicit unit|evidence/i,
+    );
+  }
+
+  const boundProductDimensions = tableFragment(`<table>
+    <tr><td>PRODUCT DIMENSIONS</td><td>MM</td></tr>
+    <tr><td>A Overall height of product</td><td></td></tr>
+    <tr><td>with top panel in place with top panel removed*</td><td>850 - 870** 820 - 840**</td></tr>
+    <tr><td>B Overall width of product</td><td>597</td></tr>
+    <tr><td>C Overall depth of product</td><td>600</td></tr>
+    <tr><td>D Depth of open door (measured from front of kickstrip)</td><td>595</td></tr>
+  </table>`);
+  const bytes = Buffer.from(JSON.stringify([
+    [{ type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'DW60 models' }] }, bbox: [450, 570, 550, 600] }],
+    [],
+    [modelTable],
+    [boundProductDimensions, cabinetryDimensions],
+  ]));
 
   for (const model of ['DW60FC4W1', 'DW60FC4X1']) {
     const parsed = parseMineruContentListV2(bytes, options(model));
@@ -3202,7 +3241,7 @@ test('MinerU uses unique exact-model cover and source URL to scope a later Bosch
 test('MinerU expands an explicit Electrolux colour-suffix shorthand only inside an exact matrix row', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('WBB3700WH - 346L bottom freezer fridge - White'),
-    tableFragment('<table><tr><td>Dimensions</td><td>Product Height (H)</td><td>Product Width (W)</td><td>Product Depth (D)</td><td>Product Depth (D2) (Door Open)</td></tr><tr><td>WBB3700AH/ WH</td><td>1755</td><td>598</td><td>650</td><td>1199</td></tr><tr><td>WBB3400AH/ WH</td><td>1645</td><td>598</td><td>650</td><td>1199</td></tr></table>'),
+    tableFragment('<table><tr><td>Dimensions</td><td>Product Height (H) (mm)</td><td>Product Width (W) (mm)</td><td>Product Depth (D) (mm)</td><td>Product Depth (D2) (Door Open) (mm)</td></tr><tr><td>WBB3700AH/ WH</td><td>1755</td><td>598</td><td>650</td><td>1199</td></tr><tr><td>WBB3400AH/ WH</td><td>1645</td><td>598</td><td>650</td><td>1199</td></tr></table>'),
     paragraph('These dimensions are a guide only. All measurements are in millimetres (mm).'),
   ]]));
   const parsed = parseMineruContentListV2(bytes, {
@@ -3534,7 +3573,7 @@ test('MinerU prefers an exact-model dimension matrix over repeated-header scalar
     [
       pageHeader('KTM5402WC'),
       paragraph('Dimensions (mm)'),
-      tableFragment('<table><tr><td>Model Number</td><td>Product Height</td><td>Product Width</td><td>Product Depth</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>1718</td><td>796</td><td>727</td></tr></table>'),
+      tableFragment('<table><tr><td>Model Number</td><td>Product Height</td><td>Product Width</td><td>Product Depth</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>1718 mm</td><td>796 mm</td><td>727 mm</td></tr></table>'),
       tableFragment('<table><tr><td>Model Number</td><td>Airspace (Side - both)</td><td>Airspace (Top)</td><td>Airspace (Behind)</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>30</td><td>30</td><td>50</td></tr></table>'),
     ],
   ]));

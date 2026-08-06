@@ -12,6 +12,7 @@ import {
 } from '../../src/domain/historical-replacement-audit.mjs';
 import { HISTORICAL_REFERENCE_PUBLIC_FILES } from '../../src/domain/historical-reference-publication.mjs';
 import { hashHistoricalCatalogBinding } from '../../src/domain/historical-catalog-binding.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 
 function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
@@ -51,11 +52,19 @@ function runtimeCanary({ catalog, replacementEngineSource, searchCoreSource }) {
 
 export async function runHistoricalReplacementAudit({
   repoRoot,
-  referencePath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference'),
-  manifestPath = resolveArchitectureV2Path(repoRoot, 'historicalReferencePublicationManifest'),
-  catalogPath = resolveArchitectureV2Path(repoRoot, 'publicProjection'),
+  referencePath,
+  manifestPath,
+  catalogPath,
   auditPath = resolveArchitectureV2Path(repoRoot, 'historicalReplacementAudit'),
 }) {
+  if (!referencePath && !manifestPath && !catalogPath) {
+    const release = await loadActiveRetailRelease({ root: repoRoot });
+    referencePath = release.paths.reference;
+    catalogPath = release.paths.catalog;
+    manifestPath = resolve(release.releaseDirectory, 'historical-reference-publication-manifest.json');
+  } else if (!referencePath || !manifestPath || !catalogPath) {
+    throw new TypeError('explicit historical replacement audit paths must be provided together');
+  }
   const publicRoot = resolve(repoRoot, 'public/data/replacement-reference');
   const replacementEnginePath = resolve(repoRoot, 'public/scripts/replacement-match-engine.js');
   const searchCorePath = resolve(repoRoot, 'public/scripts/search-core.js');

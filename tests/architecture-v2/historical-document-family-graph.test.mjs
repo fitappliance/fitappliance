@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import { buildDimensionExpressionKnowledge } from '../../src/domain/dimension-expression-knowledge.mjs';
 import { buildHistoricalDocumentFamilyGraph } from '../../src/domain/historical-document-family-graph.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const PDF_A = 'a'.repeat(64);
 const PDF_B = 'b'.repeat(64);
@@ -398,8 +399,8 @@ test('generated graph is a deterministic replay of committed MinerU and model in
     `../../${relativePath}`,
     import.meta.url,
   ), 'utf8'));
-  const [historicalReference, dimensionKnowledge, legacyPdfAudit, classification, committed] = await Promise.all([
-    readJson('data/architecture-v2/generated/historical-appliance-reference.json'),
+  const [activeRecovery, dimensionKnowledge, legacyPdfAudit, classification, committed] = await Promise.all([
+    loadHistoricalRecoveryActiveRelease(),
     readJson('data/architecture-v2/generated/dimension-expression-observations.json'),
     readJson('data/architecture-v2/reviews/automated/legacy-pdf-library-audit.json'),
     readJson('data/architecture-v2/generated/historical-model-evidence-classification.json'),
@@ -407,7 +408,7 @@ test('generated graph is a deterministic replay of committed MinerU and model in
   ]);
   const replayed = buildHistoricalDocumentFamilyGraph({
     generatedAt: dimensionKnowledge.generatedAt,
-    historicalReference,
+    historicalReference: activeRecovery.reference,
     dimensionKnowledge,
     legacyPdfAudit,
     classification,

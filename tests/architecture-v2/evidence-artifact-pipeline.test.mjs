@@ -5,6 +5,8 @@ import { createHash } from 'node:crypto';
 import {
   acquireEvidenceArtifact,
   attestEvidenceArtifactForCase,
+  observeEvidenceArtifactDimensionsForCase,
+  preflightEvidenceArtifactForCase,
 } from '../../src/domain/evidence-artifact-pipeline.mjs';
 import { buildMineruDerivedArtifact } from '../../src/domain/mineru-document.mjs';
 
@@ -61,6 +63,7 @@ test('one shared URL causes one fetch and MinerU conversion but target-specific 
         finalUrl: url,
         redirectChain: [],
         contentType: 'application/pdf',
+        transport: 'fetch',
         bytes: pdfBytes,
       };
     },
@@ -83,7 +86,12 @@ test('one shared URL causes one fetch and MinerU conversion but target-specific 
     acquireEvidenceArtifact(candidate, options),
   ]);
   assert.equal(first, second);
+  assert.equal(first.transport, 'fetch');
   assert.deepEqual(counts, { fetch: 1, mineru: 1, writes: 2 });
+  const identityPreflight = await preflightEvidenceArtifactForCase(
+    caseRecord('HRCD640TBW'), first, { now: '2026-08-05T00:00:00.000Z' },
+  );
+  assert.ok(identityPreflight.signals.length > 0);
 
   await assert.rejects(() => attestEvidenceArtifactForCase(caseRecord('HRCD640TBX'), first, {
     now: '2026-07-13T00:00:00.000Z',
@@ -100,9 +108,254 @@ test('one shared URL causes one fetch and MinerU conversion but target-specific 
     requireRequestedFieldCoverage: true,
   });
   assert.equal(accepted.source.identity.model, 'HRCD640TBW');
+  assert.equal(accepted.source.transport, 'fetch');
   assert.equal(accepted.source.verificationReceipt.schemaVersion, 3);
   assert.equal(counts.fetch, 1);
   assert.equal(counts.mineru, 1);
+});
+
+test('HTML sibling identity fails before ambiguous dimension extraction', async () => {
+  const targetModel = 'HRCD640TBW';
+  const siblingModel = 'HRCD640TBX';
+  const artifactUrl = `https://hisense.com.au/product/${siblingModel.toLowerCase()}/`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>${siblingModel} refrigerator</title>
+    <link rel="canonical" href="${artifactUrl}">
+  </head><body data-product-model="${siblingModel}">
+    <dl><dt>Total width (mm)</dt><dd>600 mm</dd>
+    <dt>Total width (mm)</dt><dd>700 mm</dd></dl>
+  </body></html>`);
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+
+  await assert.rejects(() => attestEvidenceArtifactForCase(caseRecord(targetModel), {
+    authorityMode: 'official', authorityBrand: 'Hisense', requestedUrl: artifactUrl,
+    finalUrl: artifactUrl, redirectChain: [], contentType: 'text/html',
+    contentSha256, objectPath: `evidence/web/sha256/${contentSha256}.html`,
+    byteSize: bytes.length, bytes,
+  }, {
+    now: '2026-08-05T00:00:00.000Z',
+    requestedFields: ['closedEnvelope.widthMm'], claimSemanticsVersion: 2,
+  }), (error) => /exact model|identity/i.test(error.message)
+    && !/ambiguous extracted values/i.test(error.message));
+});
+
+test('MinerU sibling identity fails before ambiguous dimension extraction', async () => {
+  const targetModel = 'HRCD640TBW';
+  const siblingModel = 'HRCD640TBX';
+  const pdfBytes = Buffer.from('%PDF-1.7\nsibling artifact');
+  const pdfSha256 = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: `${siblingModel} Specifications` }] },
+      bbox: [80, 60, 400, 120],
+    },
+    {
+      type: 'table',
+      content: {
+        html: `<table><tr><td>Model Number</td><td>${siblingModel}</td></tr><tr><td>Width</td><td>600 mm</td></tr><tr><td>Width</td><td>700 mm</td></tr></table>`,
+      },
+      bbox: [80, 200, 800, 900],
+    },
+  ]]));
+  const artifactUrl = `https://dtc-aus-api.hisense.com/medias/${siblingModel}.pdf`;
+
+  await assert.rejects(() => attestEvidenceArtifactForCase(caseRecord(targetModel), {
+    authorityMode: 'official', authorityBrand: 'Hisense', requestedUrl: artifactUrl,
+    finalUrl: artifactUrl, redirectChain: [], contentType: 'application/pdf',
+    contentSha256: pdfSha256, objectPath: `evidence/web/sha256/${pdfSha256}.pdf`,
+    byteSize: pdfBytes.length, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision: MODEL_REVISION,
+    }),
+  }, {
+    now: '2026-08-05T00:00:00.000Z',
+    requestedFields: ['closedEnvelope.widthMm'], claimSemanticsVersion: 2,
+  }), (error) => /exact model|identity/i.test(error.message)
+    && !/ambiguous extracted values/i.test(error.message));
+});
+
+test('identity-gated artifact observation preserves unitless MinerU evidence as shadow only', async () => {
+  const model = 'HRCD640TBW';
+  const pdfBytes = Buffer.from('%PDF-1.7\nunit observation artifact');
+  const pdfSha256 = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: `${model} Specifications` }] },
+      bbox: [80, 60, 400, 90],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Dimensions (mm)' }] },
+      bbox: [80, 100, 300, 130],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Product dimensions (H x W x D): 850 x 600 x 635' }] },
+      bbox: [80, 150, 700, 190],
+    },
+  ]]));
+  const artifactUrl = `https://dtc-aus-api.hisense.com/medias/${model}.pdf`;
+  const artifact = {
+    authorityMode: 'official', authorityBrand: 'Hisense', requestedUrl: artifactUrl,
+    finalUrl: artifactUrl, redirectChain: [], contentType: 'application/pdf',
+    contentSha256: pdfSha256, objectPath: `evidence/web/sha256/${pdfSha256}.pdf`,
+    byteSize: pdfBytes.length, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision: MODEL_REVISION,
+    }),
+  };
+  const observed = await observeEvidenceArtifactDimensionsForCase(caseRecord(model), artifact, {
+    market: 'AU', policyVersion: 'dimension-unit-observation-v1',
+  });
+
+  assert.equal(observed.status, 'OBSERVED');
+  assert.equal(observed.dimensionUnitObservations.length, 1);
+  const [observation] = observed.dimensionUnitObservations;
+  assert.equal(observation.unitState, 'DOCUMENT_METRIC_CONTEXT');
+  assert.equal(observation.receiptEligible, false);
+  assert.equal(observation.rawLabel, 'Product dimensions (H x W x D)');
+  assert.equal(observation.rawTuple, '850 x 600 x 635');
+  assert.equal(observation.source.page, 1);
+  assert.deepEqual(observation.source.bbox, [80, 150, 700, 190]);
+  assert.match(observation.source.fragmentSha256, /^[a-f0-9]{64}$/);
+  assert.deepEqual(observation.axisOrder, ['height', 'width', 'depth']);
+  assert.deepEqual(observation.modelScope, {
+    modelBinding: 'SAME_PAGE_EXACT_MODEL', boundModels: [model],
+  });
+  assert.equal(observed.verificationReceipt, undefined);
+
+  await assert.rejects(() => observeEvidenceArtifactDimensionsForCase(
+    caseRecord('HRCD640TBX'), artifact,
+    { market: 'AU', policyVersion: 'dimension-unit-observation-v1' },
+  ), /exact model|identity/i);
+});
+
+test('unitless exact H W D observation preserves inferred dimensions without becoming receipt eligible', async () => {
+  const model = 'HRCD640TBW';
+  const pdfBytes = Buffer.from('%PDF-1.7\nunitless exact axes observation');
+  const pdfSha256 = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: `${model} Specifications` }] },
+      bbox: [80, 60, 400, 90],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Product dimensions (H x W x D): 850 x 600 x 635' }] },
+      bbox: [80, 150, 700, 190],
+    },
+  ]]));
+  const artifactUrl = `https://dtc-aus-api.hisense.com/medias/${model}.pdf`;
+  const artifact = {
+    authorityMode: 'official', authorityBrand: 'Hisense', requestedUrl: artifactUrl,
+    finalUrl: artifactUrl, redirectChain: [], contentType: 'application/pdf',
+    contentSha256: pdfSha256, objectPath: `evidence/web/sha256/${pdfSha256}.pdf`,
+    byteSize: pdfBytes.length, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision: MODEL_REVISION,
+    }),
+  };
+
+  const observed = await observeEvidenceArtifactDimensionsForCase(caseRecord(model), artifact, {
+    market: 'AU', policyVersion: 'dimension-unit-observation-v1',
+  });
+  const [observation] = observed.dimensionUnitObservations;
+  assert.equal(observation.unitState, 'DOMAIN_INFERRED_MM');
+  assert.equal(observation.axisState, 'EXPLICIT_DEPTH');
+  assert.deepEqual(observation.dimensionsMm, {
+    height: { min: 850, max: 850 },
+    width: { min: 600, max: 600 },
+    depth: { min: 635, max: 635 },
+  });
+  assert.equal(observation.receiptEligible, false);
+});
+
+test('explicit-unit dimension fragments do not produce duplicate shadow observations', async () => {
+  const model = 'HRCD640TBW';
+  const pdfBytes = Buffer.from('%PDF-1.7\nexplicit unit observation exclusion');
+  const pdfSha256 = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: `${model} Specifications` }] },
+      bbox: [80, 60, 400, 90],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Product dimensions (H x W x D): 850 mm x 600 mm x 635 mm' }] },
+      bbox: [80, 150, 700, 190],
+    },
+  ]]));
+  const artifactUrl = `https://dtc-aus-api.hisense.com/medias/${model}.pdf`;
+  const artifact = {
+    authorityMode: 'official', authorityBrand: 'Hisense', requestedUrl: artifactUrl,
+    finalUrl: artifactUrl, redirectChain: [], contentType: 'application/pdf',
+    contentSha256: pdfSha256, objectPath: `evidence/web/sha256/${pdfSha256}.pdf`,
+    byteSize: pdfBytes.length, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision: MODEL_REVISION,
+    }),
+  };
+
+  const observed = await observeEvidenceArtifactDimensionsForCase(caseRecord(model), artifact, {
+    market: 'AU', policyVersion: 'dimension-unit-observation-v1',
+  });
+  assert.deepEqual(observed, {
+    status: 'NO_OBSERVATION',
+    reasonCode: 'NO_SUPPORTED_DIMENSION_EXPRESSION',
+    dimensionUnitObservations: [],
+  });
+});
+
+test('supported transport value survives acquisition, persisted record and rehydration', async () => {
+  for (const transport of ['fetch', 'curl', 'scrapling', 'content_addressed_discovery_object']) {
+    const bytes = Buffer.from(`<html><body>${transport}</body></html>`);
+    const objects = new Map();
+    let record;
+    const sourceUrl = `https://dtc-aus-api.hisense.com/${transport}.html`;
+    const base = {
+      authorityBrand: 'Hisense', authorityMode: 'official', transportPolicySha256: POLICY_SHA,
+      artifactCache: new Map(), contentCache: new Map(),
+      fetchArtifact: async () => ({
+        requestedUrl: sourceUrl,
+        finalUrl: sourceUrl,
+        redirectChain: [],
+        contentType: 'text/html',
+        transport,
+        bytes,
+      }),
+      writeObject: async (path, value) => objects.set(path, Buffer.from(value)),
+      writeArtifactRecord: async (value) => { record = structuredClone(value); },
+    };
+    const acquired = await acquireEvidenceArtifact({ sourceUrl }, base);
+    assert.equal(acquired.transport, transport);
+    assert.equal(record.transport, transport);
+
+    const rehydrated = await acquireEvidenceArtifact({ sourceUrl }, {
+      ...base,
+      artifactCache: new Map(), contentCache: new Map(),
+      fetchArtifact: async () => assert.fail('network must not run'),
+      readArtifactRecord: async () => record,
+      readObject: async (path) => objects.get(path),
+    });
+    assert.equal(rehydrated.transport, transport);
+  }
+
+  for (const transport of ['browser', 'verified_legacy_content_addressed_object']) {
+    await assert.rejects(acquireEvidenceArtifact({
+      sourceUrl: `https://dtc-aus-api.hisense.com/${transport}.html`,
+    }, {
+      authorityBrand: 'Hisense', authorityMode: 'official', transportPolicySha256: POLICY_SHA,
+      fetchArtifact: async (sourceUrl) => ({
+        requestedUrl: sourceUrl, finalUrl: sourceUrl, redirectChain: [],
+        contentType: 'text/html', transport, bytes: Buffer.from('<html></html>'),
+      }),
+      writeObject: async () => {},
+    }), /transport/i);
+  }
 });
 
 test('transport cache never shares a host verdict across authority brands', async () => {
@@ -574,6 +827,7 @@ test('official ASKO AU product JSON attests only receipt-bound closed-envelope d
     authorityMode: 'official', authorityBrand: 'ASKO', requestedUrl: sourceUrl,
     finalUrl: sourceUrl, redirectChain: [], contentType: 'application/json',
     contentSha256: hash, objectPath, byteSize: bytes.length, bytes,
+    transport: 'content_addressed_discovery_object',
     derivedArtifact: null, derivedArtifactBytes: null,
   };
   const caseValue = {
@@ -596,6 +850,7 @@ test('official ASKO AU product JSON attests only receipt-bound closed-envelope d
   const result = await attestEvidenceArtifactForCase(caseValue, artifact, options);
 
   assert.equal(result.source.sourceType, 'official_model_variant_api');
+  assert.equal(result.source.transport, 'content_addressed_discovery_object');
   assert.deepEqual(result.source.identity, {
     brand: 'ASKO', model: targetModel, category: 'dishwasher',
     outcome: 'official_marketing_alias', sourceModel,

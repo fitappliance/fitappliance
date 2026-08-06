@@ -3213,6 +3213,134 @@
         "p1EligibleTargets": 1655
       },
       "semanticCheckpointSha256": "23d2a5add063234fe778d94b9b2c9c6985e4b376c8e3a81933160700184f7539"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-2624a385fe026a9bd64fd346",
+      "runId": "shadow-miele-g7609scuxxlclst-20260805-c-resolver",
+      "completedAt": "2026-08-05T16:19:55.259Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_3c79ecbacd674a2152571437",
+      "manifestSha256": "3c79ecbacd674a21525714375b05de79c34641955f07ec86ad55ed8811e50b69",
+      "cohortKey": "historical_cohort_9e17647b1b289e3333df248f",
+      "familyId": "document_family_e813ae1da801ff04ddc5f4ac",
+      "evidenceBindings": {
+        "runSha256": "5631b477642f3b508665cea837104965a484d29df5c9e3db538ff8bb71c8f218",
+        "auditSha256": null,
+        "storageContentSha256": "7f01873f1a0ff8e3c83f2b571f9b7dd8e9fd98ac03ee300997c1dec76ff05492",
+        "candidateManifestSha256": "03931466199fb5a07932b4b6a6f6f1b92c287db9682900664dcf00e7ec74a092"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 0,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 0,
+        "retryableTargets": 1
+      },
+      "stageMetrics": [
+        {
+          "stage": "DISCOVERY",
+          "metricId": "authority_candidate_targets_per_selected_target",
+          "numerator": 0,
+          "denominator": 1,
+          "conclusiveNumerator": 0,
+          "conclusiveDenominator": 0,
+          "retryableUnits": 1,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "550abe3abe6c773530db65f4756df5960c1939332cc8f536aed8cc843b42b293"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "semanticCheckpointSha256": "4db443bedb09d6729f315b4beb297a7d69536199505e9b945f0c4080bc46f254"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-9f2d4f25e51e1f05e07f46b2",
+      "runId": "shadow-beko-bfr575px-20260805-a-resolver",
+      "completedAt": "2026-08-05T16:29:12.582Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_2ba1ff927d34beca23a9aee0",
+      "manifestSha256": "2ba1ff927d34beca23a9aee01cb811fee9797644ce94e35d12e6f0bf4a652570",
+      "cohortKey": "historical_cohort_c1d03766991ecdc3ff1fbe5d",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "809351e30157d12e399221cb3f840a627cdaf8aa776216740d720b34b70cd6c5",
+        "auditSha256": null,
+        "storageContentSha256": "ba7990048baf6d9a0e64a51e256713e79a6d430929278b6ba8ae9881b2c7def3",
+        "candidateManifestSha256": "2aab1fe9dc52c4ae9e77d19e55bdddbdcfd95a692ca8ba3b22c0b54c5880da4e"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 0,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 0,
+        "retryableTargets": 1
+      },
+      "stageMetrics": [
+        {
+          "stage": "DISCOVERY",
+          "metricId": "authority_candidate_targets_per_selected_target",
+          "numerator": 0,
+          "denominator": 1,
+          "conclusiveNumerator": 0,
+          "conclusiveDenominator": 0,
+          "retryableUnits": 1,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "550abe3abe6c773530db65f4756df5960c1939332cc8f536aed8cc843b42b293"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "semanticCheckpointSha256": "7b075c093093ac29115ea73fd23ad2a0fcc88fb9ea6311fd5ad22142c3e1c925"
     }
   ],
   "rebaselines": [
@@ -3552,6 +3680,119 @@
         "p1EligibleTargets": 2283
       },
       "semanticRebaselineSha256": "82348aee1589f76bfe41e5b4bd390cb1cab6a1aa6d40fa4cec18ec540684f219"
+    },
+    {
+      "rebaselineId": "historical-dimensions-rebaseline-563af408bbbe33be26b84ae0",
+      "activatedAt": "2026-08-05T11:28:05Z",
+      "afterEntryCount": 43,
+      "reason": "RELEASE_DAG_RECONCILIATION",
+      "priorControlSha256": "8d042c77ab2b6c3201729b9c6be9344c2ed2c40c4e21a6f332927309eb4e8814",
+      "priorArtifactBindings": {
+        "nextBatchesSha256": "bf2d457f6c1f034336f6332826a733955e918b5972a86556688335e47971b8b7",
+        "programStatusSha256": "24510acbcff78ce634413271e3c93a0eb5f806d3e886c73863b8a268d08cd9be",
+        "receiptAuditSha256": "9d6a59db2ae91fd4b095d49732ffa58e17d6ff42eb9cf848652d23078930e339",
+        "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+        "fitPublicationAuditSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
+        "epochsSha256": "cfabe7d16f5047c1ff1105905ca692083e9d00c58982b817ab3ac1acd9d2c734"
+      },
+      "nextArtifactBindings": {
+        "nextBatchesSha256": "6b18412600b226b175dc29f402d9a31d405a24c498533c2e1017cfc83f316eb9",
+        "programStatusSha256": "f20ceacd5d370b7655268ead05aa638c28c5ba4268ab1819250216e9c707ccb4",
+        "receiptAuditSha256": "9d6a59db2ae91fd4b095d49732ffa58e17d6ff42eb9cf848652d23078930e339",
+        "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
+        "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
+        "epochsSha256": "cfabe7d16f5047c1ff1105905ca692083e9d00c58982b817ab3ac1acd9d2c734"
+      },
+      "changedArtifactBindings": [
+        "nextBatchesSha256",
+        "programStatusSha256",
+        "replacementAuditSha256",
+        "fitPublicationAuditSha256"
+      ],
+      "previousCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 932,
+        "p0EligibleTargets": 913,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3938
+      },
+      "nextCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "queueCounterDeltas": {
+        "p0AssignedTargets": -748,
+        "p0EligibleTargets": -744,
+        "p1AssignedTargets": 746,
+        "p1EligibleTargets": 742
+      },
+      "semanticRebaselineSha256": "ad5d717d0e269e333a47a4d15938f68c669c16a5f0732e51889d7f6c45bd39c2"
+    },
+    {
+      "rebaselineId": "historical-dimensions-rebaseline-d85128fd519577e842780e8b",
+      "activatedAt": "2026-08-05T16:12:33Z",
+      "afterEntryCount": 43,
+      "reason": "CAPABILITY_EPOCH_CHANGE",
+      "priorControlSha256": "3071d4910e1ca2c7c22694d3768a8eaf834cec551c6b0f3dfdca955f84a10f55",
+      "priorArtifactBindings": {
+        "nextBatchesSha256": "2bc5094f6a2d12d5d912e7c744ecbccacd880954877d4a8c9483a92e27b9ca97",
+        "programStatusSha256": "f20ceacd5d370b7655268ead05aa638c28c5ba4268ab1819250216e9c707ccb4",
+        "receiptAuditSha256": "4e49663416124255b41d267820f1f2a7553b5072cce9a8ee1536c4d84df1e315",
+        "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
+        "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
+        "epochsSha256": "cfabe7d16f5047c1ff1105905ca692083e9d00c58982b817ab3ac1acd9d2c734"
+      },
+      "nextArtifactBindings": {
+        "nextBatchesSha256": "2bc5094f6a2d12d5d912e7c744ecbccacd880954877d4a8c9483a92e27b9ca97",
+        "programStatusSha256": "f20ceacd5d370b7655268ead05aa638c28c5ba4268ab1819250216e9c707ccb4",
+        "receiptAuditSha256": "4e49663416124255b41d267820f1f2a7553b5072cce9a8ee1536c4d84df1e315",
+        "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
+        "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
+        "epochsSha256": "24cbcde2c78a43af8ecacc953d3ff97c974ad180ca4220beb70f8d2b70ec1699"
+      },
+      "changedArtifactBindings": [
+        "epochsSha256"
+      ],
+      "previousCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "nextCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "queueCounterDeltas": {
+        "p0AssignedTargets": 0,
+        "p0EligibleTargets": 0,
+        "p1AssignedTargets": 0,
+        "p1EligibleTargets": 0
+      },
+      "semanticRebaselineSha256": "fc8ae3e60f292da38531b47cf0bb01bf49e11d2588d8e68c65a6cf00202eff18"
     }
   ]
 }

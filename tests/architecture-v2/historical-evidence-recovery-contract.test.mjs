@@ -317,6 +317,28 @@ test('batch contract accepts complete inline receipt sources and rejects compact
   );
 });
 
+test('batch contract accepts only an exact evidence epoch binding', () => {
+  const value = batch();
+  value.targets[0].reconciliationContext.evidenceEpoch = {
+    epochId: `evidence_epoch_${'c'.repeat(24)}`,
+    descriptorSha256: SHA_C,
+  };
+  assert.equal(validateHistoricalEvidenceRecoveryBatch(value), value);
+
+  for (const evidenceEpoch of [
+    { epochId: 'epoch-loose', descriptorSha256: SHA_C },
+    { epochId: `evidence_epoch_${'c'.repeat(24)}`, descriptorSha256: 'not-a-hash' },
+    { epochId: `evidence_epoch_${'c'.repeat(24)}`, descriptorSha256: SHA_C, extra: true },
+  ]) {
+    const invalid = batch();
+    invalid.targets[0].reconciliationContext.evidenceEpoch = evidenceEpoch;
+    assert.throws(
+      () => validateHistoricalEvidenceRecoveryBatch(invalid),
+      /evidence epoch|unknown key|SHA-256/i,
+    );
+  }
+});
+
 test('resolver-only registry target is valid without a fabricated artifact URL', () => {
   const value = batch({
     artifactJobs: [],

@@ -108,6 +108,44 @@ test('ranked discovery extracts model-bound PDFs from official product pages', a
   assert.ok(urls.includes('https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse'));
 });
 
+test('exact product page is optional and ranks between exact documents and a family manual', async () => {
+  const productPageUrl = 'https://www.smeg.com/au/products/FAB32RWH5AU';
+  const familyManualUrl = 'https://sys.smeg.com.au/Product/Manuals/family-user-manual.pdf';
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge',
+    candidateUrls: [
+      productPageUrl,
+      'https://sys.smeg.com.au/Product/Manuals/FAB32RWH5AU-installation.pdf',
+      familyManualUrl,
+      'https://www.smeg.com/it/products/FAB32RWH5AU',
+      'https://retailer.example/FAB32RWH5AU.pdf',
+    ],
+    productPageUrls: [productPageUrl],
+  }, {
+    fetchImpl: async (url) => new Response('', { status: url === productPageUrl ? 200 : 404 }),
+  });
+
+  const official = result.candidates.filter((candidate) => candidate.authorityMode === 'official');
+  const productPage = official.find((candidate) => candidate.sourceUrl === productPageUrl);
+  assert.deepEqual({
+    documentType: productPage.documentType,
+    sourceRole: productPage.sourceRole,
+    requiredAttempt: productPage.requiredAttempt,
+  }, {
+    documentType: 'product_page',
+    sourceRole: 'manufacturer_product_page',
+    requiredAttempt: false,
+  });
+  assert.ok(official.findIndex((candidate) => candidate.documentType === 'installation_guide')
+    < official.indexOf(productPage));
+  assert.ok(official.findIndex((candidate) => candidate.documentType === 'specification_sheet')
+    < official.indexOf(productPage));
+  assert.ok(official.indexOf(productPage)
+    < official.findIndex((candidate) => candidate.sourceUrl === familyManualUrl));
+  assert.equal(result.candidates.find((candidate) => candidate.sourceUrl.includes('/it/products/'))?.authorityMode, 'reference');
+  assert.equal(result.candidates.find((candidate) => candidate.sourceUrl.includes('retailer.example'))?.authorityMode, 'reference');
+});
+
 test('typed discovery preserves ranking, resolver provenance and reference authority', async () => {
   const result = await discoverRankedEvidenceCandidates({
     brand: 'Electrolux',

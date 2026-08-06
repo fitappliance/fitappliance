@@ -325,6 +325,7 @@ function dimensionClaims(row, fragment, page, fields, category) {
     ...(row.semanticBasis ? { semanticBasis: row.semanticBasis } : {}),
     ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
     ...(row.grammarProfileId ? { grammarProfileId: row.grammarProfileId } : {}),
+    ...(row.unitBinding ? { unitBinding: row.unitBinding } : {}),
   }));
 }
 
@@ -426,6 +427,7 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
             semanticBasis: row.semanticBasis ?? 'explicit_label_range',
             ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
             ...(row.grammarProfileId ? { grammarProfileId: row.grammarProfileId } : {}),
+            ...(row.unitBinding ? { unitBinding: row.unitBinding } : {}),
             sourceUnit,
             sourceValues: values,
             sourceValuesMm,
@@ -448,6 +450,7 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
         ),
         ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
         ...(row.grammarProfileId ? { grammarProfileId: row.grammarProfileId } : {}),
+        ...(row.unitBinding ? { unitBinding: row.unitBinding } : {}),
       });
     } catch {
       // A row that cannot prove one unambiguous value is not evidence.
@@ -565,6 +568,10 @@ export function inspectMineruIdentityScope(jsonBytes, model) {
     )].sort()),
     unresolvedFamily: unresolvedFamilyScope(document, normalizedModel),
   });
+}
+
+export function hasMineruHaierTfe3ExactFinishIdentity(jsonBytes, caseIdentity) {
+  return Boolean(haierAuTfe3FinishFamilyScope(parseDocument(jsonBytes), caseIdentity));
 }
 
 function explicitInlineDimensionRow(text) {
@@ -1301,10 +1308,14 @@ function alternatingAxisRows(fragment, pageUnit) {
       const sourceValue = normalizedText(cells[index + 1]);
       if (!sourceAxis && !sourceValue) continue;
       const axis = /^(W|H|D)(['"′″]?)$/i.exec(sourceAxis);
-      if (!axis || !/^\d+(?:\.\d+)?$/.test(sourceValue)) return [];
+      const value = /^(\d+(?:\.\d+)?)(?:\s*(mm|cm))?$/i.exec(sourceValue);
+      if (!axis || !value) return [];
+      const sourceUnit = value[2]?.toLowerCase() ?? null;
+      if (sourceUnit && sourceUnit !== pageUnit.unit) return [];
       pairs.push({
         sourceAxis,
-        sourceValue,
+        sourceValue: value[1],
+        sourceUnit,
         axis: axis[1].toUpperCase(),
         qualifier: axis[2],
       });
@@ -1320,11 +1331,16 @@ function alternatingAxisRows(fragment, pageUnit) {
   ));
   if (new Set(unambiguous.map((pair) => pair.axis)).size !== unambiguous.length) return [];
   const axisMap = { W: 'width', H: 'height', D: 'depth' };
+  const unitBinding = unambiguous.every((pair) => pair.sourceUnit === pageUnit.unit)
+    || /(?<![A-Za-z])(?:mm|cm)(?![A-Za-z])/i.test(fragment.captionText)
+    ? 'bound_fragment'
+    : 'page_context';
   return unambiguous.map((pair) => ({
     label: `${labels[pair.axis]} (${pageUnit.unit})`,
     value: `${pair.sourceValue} ${pageUnit.unit}`,
     quote: `${pair.sourceAxis} ${pair.sourceValue}`,
     axisOrder: [axisMap[pair.axis]],
+    unitBinding,
   }));
 }
 
@@ -1538,12 +1554,17 @@ function exactModelMatrixRows(fragment, model, pageUnit) {
       const hasUnit = /(?<![A-Za-z])(?:mm|cm)\b/i.test(rawValue);
       if (!hasUnit && !pageUnit) continue;
       const sourceUnit = hasUnit ? /(?<![A-Za-z])cm\b/i.test(rawValue) ? 'cm' : 'mm' : pageUnit.unit;
+      const unitBinding = hasUnit
+        || /(?<![A-Za-z])(?:mm|cm)(?![A-Za-z])/i.test(fragment.rawText)
+        ? 'bound_fragment'
+        : 'page_context';
       rows.push({
         label: column.label,
         value: hasUnit ? rawValue : `${rawValue} ${sourceUnit}`,
         quote: `${column.label} ${rawValue} ${sourceUnit}`,
         semanticBasis: 'exact_model_matrix_row',
         axisOrder,
+        unitBinding,
       });
     }
     if (rows.length) break;
@@ -1956,6 +1977,9 @@ function dimensionUnitFromPageTables(items) {
 
 function fisherPaykelDw60InstallationRows(fragment, pageUnit) {
   if (fragment.type !== 'table' || !pageUnit || !Array.isArray(fragment.cells)) return [];
+  const unitBinding = /(?<![A-Za-z])(?:mm|cm)(?![A-Za-z])/i.test(fragment.rawText)
+    ? 'bound_fragment'
+    : 'page_context';
   const headerIndex = fragment.cells.findIndex((cells) => (
     /^product\s+dimensions?$/i.test(normalizedText(cells.find(Boolean)))
   ));
@@ -2012,6 +2036,7 @@ function fisherPaykelDw60InstallationRows(fragment, pageUnit) {
       quote: `Overall height of product with top panel in place ${height} ${pageUnit}`,
       semanticBasis: 'explicit_label_range',
       axisOrder: ['height'],
+      unitBinding,
     },
     {
       label: 'Overall width of product',
@@ -2019,6 +2044,7 @@ function fisherPaykelDw60InstallationRows(fragment, pageUnit) {
       quote: `Overall width of product ${width} ${pageUnit}`,
       semanticBasis: 'fisher_paykel_dw60_installation_matrix',
       axisOrder: ['width'],
+      unitBinding,
     },
     {
       label: 'Overall depth of product',
@@ -2026,6 +2052,7 @@ function fisherPaykelDw60InstallationRows(fragment, pageUnit) {
       quote: `Overall depth of product ${depth} ${pageUnit}`,
       semanticBasis: 'fisher_paykel_dw60_installation_matrix',
       axisOrder: ['depth'],
+      unitBinding,
     },
   ];
 }
@@ -5019,6 +5046,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const claims = [];
   for (const field of fields) {
     let fieldCandidates = candidates.get(field) ?? [];
+    if (claimSemanticsVersion === 2 && !expectedClaimsByField) {
+      fieldCandidates = fieldCandidates.filter((claim) => claim.unitBinding !== 'page_context');
+    }
     if (claimSemanticsVersion === 2 && field === 'closedEnvelope.depthMm'
       && fieldCandidates.some((claim) => claim.semanticBasis === 'explicit_including_handle')) {
       fieldCandidates = fieldCandidates.filter((claim) => claim.semanticBasis === 'explicit_including_handle');

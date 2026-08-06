@@ -10,6 +10,12 @@ import {
 import { applyReceiptBoundAcceptance } from '../../src/domain/accepted-evidence-publication.mjs';
 import { filterHistoricalAcceptanceBundleByReceiptReplayAudit } from '../../src/domain/historical-evidence-recovery-audit.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import {
+  appendPendingEvidenceEpoch,
+  completeEvidenceEpoch,
+  createEvidenceEpochDescriptor,
+  createEvidenceEpochLedger,
+} from '../../src/domain/evidence-epoch-reconciliation.mjs';
 
 const rawBundle = JSON.parse(readFileSync(new URL(
   '../../data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
@@ -95,6 +101,89 @@ test('current recovery evidence projects to both current and historical lanes', 
   assert.equal(historical.lifecycleState, 'CURRENT_RETAIL');
   assert.deepEqual(historical.dimensionsMm, { width: 600, height: 850, depth: 645 });
   assert.equal(historical.modelReceipts[0].fields.height.page, 1);
+});
+
+test('revoked epoch filters geometry and model receipts only from the shadow publication', () => {
+  const stored = structuredClone(currentBundle);
+  const storedSha256 = canonicalJsonSha256(stored);
+  const entry = stored.entries[0];
+  const descriptor = createEvidenceEpochDescriptor({
+    targetId: entry.targetId,
+    identity: { brand: entry.brand, model: entry.model, category: entry.category },
+    priorReceiptBindingSha256: entry.sources[0].verificationReceipt.bindingSha256,
+    candidateSourceIdentities: entry.sources.map((source) => source.sourceUrl),
+    requiredSourceHashes: entry.sources.map((source) => source.contentSha256),
+    conflictHashes: [],
+    policyVersions: [entry.sources[0].verificationReceipt.policyVersion],
+  });
+  const pending = appendPendingEvidenceEpoch({ ledger: createEvidenceEpochLedger(), descriptor });
+  const ledger = completeEvidenceEpoch({
+    ledger: pending,
+    descriptor,
+    outcome: 'ACCEPTANCE_REVOKED',
+    reasonCode: 'OFFICIAL_CONFLICT',
+    decisionEvidenceHashes: [entry.sources[0].contentSha256],
+  });
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: stored,
+    products: [wdProduct()],
+    evidenceEpochState: { ledger, descriptors: [descriptor] },
+  });
+  assert.equal(publication.currentAcceptanceByLegacyId.size, 0);
+  assert.equal(publication.historicalEvidenceProjection.records[0].dimensionsMm, null);
+  assert.equal(publication.historicalEvidenceProjection.records[0].geometryProjection, null);
+  assert.deepEqual(publication.historicalEvidenceProjection.records[0].modelReceipts, []);
+  assert.equal(canonicalJsonSha256(stored), storedSha256);
+});
+
+test('sparse epoch publication filters only the managed target and preserves unmanaged legacy projection', () => {
+  const unmanagedBundle = bundleFor('SRF5300SD');
+  const unmanagedEntry = unmanagedBundle.entries[0];
+  const unmanagedProduct = withRetailLifecycle(
+    catalog.products.find((product) => product.model === 'SRF5300SD'),
+    unmanagedEntry,
+  );
+  const legacy = buildHistoricalEvidencePublication({
+    bundle: unmanagedBundle,
+    products: [unmanagedProduct],
+  }).historicalEvidenceProjection.records[0];
+
+  const sparseBundle = structuredClone(bundle);
+  const targetIds = new Set([currentBundle.entries[0].targetId, unmanagedEntry.targetId]);
+  sparseBundle.entries = sparseBundle.entries.filter((entry) => targetIds.has(entry.targetId));
+  const batchIds = new Set(sparseBundle.entries.map((entry) => entry.sourceBatchId));
+  sparseBundle.lineage = sparseBundle.lineage.filter((row) => batchIds.has(row.batchId));
+  const managedEntry = sparseBundle.entries.find((entry) => entry.targetId === currentBundle.entries[0].targetId);
+  const descriptor = createEvidenceEpochDescriptor({
+    targetId: managedEntry.targetId,
+    identity: { brand: managedEntry.brand, model: managedEntry.model, category: managedEntry.category },
+    priorReceiptBindingSha256: managedEntry.sources[0].verificationReceipt.bindingSha256,
+    candidateSourceIdentities: managedEntry.sources.map((source) => source.sourceUrl),
+    requiredSourceHashes: managedEntry.sources.map((source) => source.contentSha256),
+    conflictHashes: [],
+    policyVersions: [managedEntry.sources[0].verificationReceipt.policyVersion],
+  });
+  let ledger = appendPendingEvidenceEpoch({ ledger: createEvidenceEpochLedger(), descriptor });
+  ledger = completeEvidenceEpoch({
+    ledger,
+    descriptor,
+    outcome: 'ACCEPTANCE_QUARANTINED',
+    reasonCode: 'IDENTITY_UNRESOLVED',
+    decisionEvidenceHashes: [managedEntry.sources[0].contentSha256],
+  });
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: sparseBundle,
+    products: [wdProduct(), unmanagedProduct],
+    evidenceEpochState: { ledger, descriptors: [descriptor] },
+  });
+  const managed = publication.historicalEvidenceProjection.records
+    .find((record) => record.targetId === managedEntry.targetId);
+  const unmanaged = publication.historicalEvidenceProjection.records
+    .find((record) => record.targetId === unmanagedEntry.targetId);
+  assert.equal(managed.geometryProjection, null);
+  assert.deepEqual(unmanaged, legacy);
 });
 
 test('current publication restores explicit catalog form factor before calculating Fit requirements', () => {

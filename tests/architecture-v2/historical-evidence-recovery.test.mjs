@@ -7,6 +7,7 @@ import {
   RECOVERY_CHECKPOINTS,
   buildHistoricalEvidenceRecoveryQueue,
 } from '../../src/domain/historical-evidence-recovery.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const COMPLETE_FIELDS = [
   { field: 'closedEnvelope.widthMm', value: 600, unit: 'mm', page: null, quote: null },
@@ -232,7 +233,7 @@ test('normal Architecture V2 build keeps the recovery queue frozen but replays i
   assert.doesNotMatch(packageJson.scripts['build:architecture-v2'], /historical-evidence-recovery-queue/);
   assert.match(
     packageJson.scripts['build:architecture-v2'],
-    /build:historical-document-family-graph && npm run build:historical-parser-gap-priority && npm run build:historical-evidence-family-canaries && npm run build:historical-evidence-target-state && npm run build:historical-evidence-bounded-batches && npm run build:historical-evidence-program-status/,
+    /build:historical-document-family-graph && npm run build:historical-parser-gap-priority && npm run build:historical-evidence-family-canaries && npm run build:historical-evidence-target-state && npm run audit:historical-recovery-active-release:pre-bounded && npm run build:historical-evidence-bounded-batches && npm run build:historical-evidence-program-status/,
   );
 });
 
@@ -248,7 +249,15 @@ test('normal Architecture V2 build seals publication audits before scale control
   assert.ok(position('audit:installation-evidence-receipts') < position('build:installation-evidence-pipeline'));
   assert.ok(position('build:installation-evidence-pipeline') < position('audit:fit-publication'));
   assert.ok(position('audit:fit-publication') < position('build:historical-dimensions-scale-control'));
+  assert.ok(position('build:historical-evidence-target-state')
+    < position('audit:historical-recovery-active-release:pre-bounded'));
+  assert.ok(position('audit:historical-recovery-active-release:pre-bounded')
+    < position('build:historical-evidence-bounded-batches'));
   assert.ok(position('build:historical-dimensions-scale-control') < position('build:historical-evidence-system-contract'));
+  const fullActiveReleaseAudit = build.lastIndexOf('audit:historical-recovery-active-release');
+  assert.notEqual(fullActiveReleaseAudit, -1);
+  assert.ok(position('build:historical-dimensions-scale-control') < fullActiveReleaseAudit);
+  assert.ok(fullActiveReleaseAudit < position('build:historical-evidence-system-contract'));
 });
 
 test('historical recovery refresh rebuilds dependent artifacts in topological order', async () => {
@@ -257,25 +266,19 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
     'scripts/architecture-v2/build-dimension-expression-knowledge.mjs',
     'utf8',
   );
-  const inputRefresh = 'node scripts/architecture-v2/build-public-projection.mjs'
-      + ' && npm run build:historical-reference'
+  const inputRefresh = 'npm run audit:active-retail-release'
       + ' && npm run build:dimension-expression-knowledge'
+      + ' && npm run build:historical-evidence-recovery-queue'
       + ' && npm run build:historical-model-evidence-classification'
       + ' && npm run build:historical-document-family-graph'
       + ' && npm run build:historical-parser-gap-priority'
-      + ' && npm run build:historical-evidence-recovery-queue'
       + ' && npm run build:historical-model-pdf-acquisition-queue'
       + ' && npm run build:historical-official-candidate-manifest'
       + ' && npm run build:historical-executable-recovery-queue'
       + ' && npm run build:historical-evidence-family-canaries'
       + ' && npm run build:historical-evidence-target-state'
+      + ' && npm run audit:historical-recovery-active-release:pre-bounded'
       + ' && npm run build:historical-evidence-bounded-batches'
-      + ' && npm run build:historical-evidence-recovery-batch'
-      + ' && npm run audit:installation-evidence-receipts'
-      + ' && npm run build:installation-evidence-pipeline'
-      + ' && npm run audit:fit-publication'
-      + ' && npm run publish:historical-reference'
-      + ' && npm run audit:historical-replacement'
       + ' && npm run build:historical-evidence-program-status';
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery:inputs'],
@@ -284,7 +287,9 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery'],
     'npm run refresh:historical-evidence-recovery:inputs'
-      + ' && npm run build:historical-dimensions-scale-control',
+      + ' && npm run build:historical-dimensions-scale-control'
+      + ' && npm run audit:historical-recovery-active-release'
+      + ' && npm run build:historical-evidence-system-contract',
   );
   assert.equal(
     packageJson.scripts['build:dimension-expression-knowledge'],
@@ -295,18 +300,18 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
 });
 
 test('committed source queue matches its audited epoch and excludes scalar promoted targets', async () => {
-  const [sourceRegistry, historicalReference, committedQueue] = await Promise.all([
+  const [sourceRegistry, activeRecovery, committedQueue] = await Promise.all([
     readFile('data/architecture-v2/generated/source-documents.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/generated/historical-appliance-reference.json', 'utf8').then(JSON.parse),
+    loadHistoricalRecoveryActiveRelease(),
     readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
   ]);
   const rebuilt = buildHistoricalEvidenceRecoveryQueue({
     sourceDocuments: sourceRegistry.documents,
-    historicalReference,
+    historicalReference: activeRecovery.reference,
   });
   const replayed = buildHistoricalEvidenceRecoveryQueue({
     sourceDocuments: sourceRegistry.documents,
-    historicalReference,
+    historicalReference: activeRecovery.reference,
   });
 
   assert.equal(jsonSha256(committedQueue), jsonSha256(rebuilt));

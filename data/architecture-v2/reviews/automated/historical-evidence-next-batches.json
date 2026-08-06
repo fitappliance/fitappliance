@@ -8,105 +8,105 @@
     "cohortKeyVersion": "1",
     "maximumManifestsPerWorkstream": 8,
     "manifestIds": [
-      "historical_batch_eece52785389de6009b8cddf",
-      "historical_batch_a72affe5cd6072769dc5f6df",
-      "historical_batch_f0f74f22fac1c8240d8c5335",
-      "historical_batch_fd097fa6bfd2bd48aba70e5b",
-      "historical_batch_d1497460c5204caad71f9839",
-      "historical_batch_5a89e91900087732b2ded5d5",
-      "historical_batch_b169f3a7cf77b50b05357651",
-      "historical_batch_8d4de72519d5236ea8d1b01f",
-      "historical_batch_093c69570887b5db65587d98",
-      "historical_batch_17377e2136379179d3236261",
-      "historical_batch_ea2a99d92faec389eb1c6c82",
-      "historical_batch_f368d1b844a01f784dfa9512",
-      "historical_batch_44761320248368ed11d36876",
-      "historical_batch_264b8fb0a52115c916d2add1",
-      "historical_batch_de480a0fb864a19a452f75b8",
-      "historical_batch_cb6f39c91d2b51175a78ca78",
-      "historical_batch_e07b42ebd30800ead06b96f3",
-      "historical_batch_632df21740f1825cfe31a805",
-      "historical_batch_87520cba5745102e11e5e1ec",
-      "historical_batch_34bdf43cad4af414994b0558",
-      "historical_batch_73d571ceb25e23345eefe799",
-      "historical_batch_ee9a7926affd3f0e328dce00",
-      "historical_batch_34dd11325f6d010f919f2a4b",
-      "historical_batch_b0181a5f23b96a0b495b8533"
+      "historical_batch_c3187c3e7f481304ba853a11",
+      "historical_batch_27e2d524e7cabf163858607d",
+      "historical_batch_553c8570fd61e52a43e50a84",
+      "historical_batch_00a5b3dff36b08ac9af22284",
+      "historical_batch_64c57c9457c3a25e1fff8bc7",
+      "historical_batch_126b7f395b807b63f10f603d",
+      "historical_batch_6d7106d087f3f1b1983878f9",
+      "historical_batch_10e1e6ea5bc31a03109cc04b",
+      "historical_batch_7838b4cba5dff6e873c52058",
+      "historical_batch_bfc9b97dfa22fe98287e479e",
+      "historical_batch_90681a814fda88ebf1b2a1ba",
+      "historical_batch_0409f8c719ef694fccb2c52a",
+      "historical_batch_a5f81baafc0e18974fbb4990",
+      "historical_batch_e49d98266a3cface7232033f",
+      "historical_batch_fdc5cee7376ae8b0f34f605c",
+      "historical_batch_a6c489823346e5072f75342f",
+      "historical_batch_905604b3130d10cc2c7157da",
+      "historical_batch_11807ecb4ac81cbcb8122626",
+      "historical_batch_1bc739a0b666c978d4b9339d",
+      "historical_batch_90c21b96faab951e6be7ee0a",
+      "historical_batch_1969698edbbc6911beef0956",
+      "historical_batch_c019d6afea0999a47453001b",
+      "historical_batch_739913cdb0b4fd22d3ac72c4",
+      "historical_batch_d0cb06a11a83f895a2673e69"
     ]
   },
   "sourceBindings": {
-    "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-    "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-    "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-    "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+    "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+    "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+    "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+    "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
   },
   "workstreams": [
     {
       "workstreamId": "CURRENT_DIMENSIONS",
       "description": "Current-retail dimensions recovery and confirmation",
-      "assignedTargets": 932,
-      "eligibleTargets": 913,
-      "suppressedTargets": 19,
+      "assignedTargets": 184,
+      "eligibleTargets": 169,
+      "suppressedTargets": 15,
       "suppressedByReason": {
-        "FAMILY_GATE_BLOCKED": 19
+        "FAMILY_GATE_BLOCKED": 15
       },
       "eligibleByPriority": {
-        "P0_CURRENT_MISSING_DIMENSIONS": 737,
-        "P2_CURRENT_CONFIRMATION": 176
+        "P0_CURRENT_MISSING_DIMENSIONS": 38,
+        "P2_CURRENT_CONFIRMATION": 131
       },
-      "eligibleCohorts": 125,
+      "eligibleCohorts": 65,
       "eligibleCohortsByPriority": {
-        "P0_CURRENT_MISSING_DIMENSIONS": 79,
-        "P2_CURRENT_CONFIRMATION": 46
+        "P0_CURRENT_MISSING_DIMENSIONS": 32,
+        "P2_CURRENT_CONFIRMATION": 33
       },
       "windowedCohorts": 8,
       "windowedCohortsByPriority": {
         "P0_CURRENT_MISSING_DIMENSIONS": 8
       },
-      "deferredCohorts": 117,
+      "deferredCohorts": 57,
       "manifestIds": [
-        "historical_batch_eece52785389de6009b8cddf",
-        "historical_batch_a72affe5cd6072769dc5f6df",
-        "historical_batch_f0f74f22fac1c8240d8c5335",
-        "historical_batch_fd097fa6bfd2bd48aba70e5b",
-        "historical_batch_d1497460c5204caad71f9839",
-        "historical_batch_5a89e91900087732b2ded5d5",
-        "historical_batch_b169f3a7cf77b50b05357651",
-        "historical_batch_8d4de72519d5236ea8d1b01f"
+        "historical_batch_c3187c3e7f481304ba853a11",
+        "historical_batch_27e2d524e7cabf163858607d",
+        "historical_batch_553c8570fd61e52a43e50a84",
+        "historical_batch_00a5b3dff36b08ac9af22284",
+        "historical_batch_64c57c9457c3a25e1fff8bc7",
+        "historical_batch_126b7f395b807b63f10f603d",
+        "historical_batch_6d7106d087f3f1b1983878f9",
+        "historical_batch_10e1e6ea5bc31a03109cc04b"
       ]
     },
     {
       "workstreamId": "HISTORICAL_DIMENSIONS",
       "description": "Archived and registry-only dimensions recovery and confirmation",
-      "assignedTargets": 3974,
-      "eligibleTargets": 3938,
-      "suppressedTargets": 36,
+      "assignedTargets": 4720,
+      "eligibleTargets": 4680,
+      "suppressedTargets": 40,
       "suppressedByReason": {
-        "FAMILY_GATE_BLOCKED": 36
+        "FAMILY_GATE_BLOCKED": 40
       },
       "eligibleByPriority": {
-        "P1_HISTORICAL_MISSING_DIMENSIONS": 1044,
-        "P3_HISTORICAL_CONFIRMATION": 2894
+        "P1_HISTORICAL_MISSING_DIMENSIONS": 1741,
+        "P3_HISTORICAL_CONFIRMATION": 2939
       },
-      "eligibleCohorts": 274,
+      "eligibleCohorts": 331,
       "eligibleCohortsByPriority": {
-        "P1_HISTORICAL_MISSING_DIMENSIONS": 91,
-        "P3_HISTORICAL_CONFIRMATION": 183
+        "P1_HISTORICAL_MISSING_DIMENSIONS": 129,
+        "P3_HISTORICAL_CONFIRMATION": 202
       },
       "windowedCohorts": 8,
       "windowedCohortsByPriority": {
         "P1_HISTORICAL_MISSING_DIMENSIONS": 8
       },
-      "deferredCohorts": 266,
+      "deferredCohorts": 323,
       "manifestIds": [
-        "historical_batch_093c69570887b5db65587d98",
-        "historical_batch_17377e2136379179d3236261",
-        "historical_batch_ea2a99d92faec389eb1c6c82",
-        "historical_batch_f368d1b844a01f784dfa9512",
-        "historical_batch_44761320248368ed11d36876",
-        "historical_batch_264b8fb0a52115c916d2add1",
-        "historical_batch_de480a0fb864a19a452f75b8",
-        "historical_batch_cb6f39c91d2b51175a78ca78"
+        "historical_batch_7838b4cba5dff6e873c52058",
+        "historical_batch_bfc9b97dfa22fe98287e479e",
+        "historical_batch_90681a814fda88ebf1b2a1ba",
+        "historical_batch_0409f8c719ef694fccb2c52a",
+        "historical_batch_a5f81baafc0e18974fbb4990",
+        "historical_batch_e49d98266a3cface7232033f",
+        "historical_batch_fdc5cee7376ae8b0f34f605c",
+        "historical_batch_a6c489823346e5072f75342f"
       ]
     },
     {
@@ -134,32 +134,32 @@
         "FAMILY_GATE_BLOCKED": 2
       },
       "eligibleByPriority": {
-        "P2_CURRENT_CONFIRMATION": 2,
-        "P3_HISTORICAL_CONFIRMATION": 3,
+        "P2_CURRENT_CONFIRMATION": 1,
+        "P3_HISTORICAL_CONFIRMATION": 4,
         "P4_CONFLICT_RESOLUTION": 56
       },
       "eligibleCohorts": 19,
       "eligibleCohortsByPriority": {
-        "P2_CURRENT_CONFIRMATION": 2,
-        "P3_HISTORICAL_CONFIRMATION": 3,
+        "P2_CURRENT_CONFIRMATION": 1,
+        "P3_HISTORICAL_CONFIRMATION": 4,
         "P4_CONFLICT_RESOLUTION": 14
       },
       "windowedCohorts": 8,
       "windowedCohortsByPriority": {
-        "P2_CURRENT_CONFIRMATION": 2,
-        "P3_HISTORICAL_CONFIRMATION": 3,
+        "P2_CURRENT_CONFIRMATION": 1,
+        "P3_HISTORICAL_CONFIRMATION": 4,
         "P4_CONFLICT_RESOLUTION": 3
       },
       "deferredCohorts": 11,
       "manifestIds": [
-        "historical_batch_e07b42ebd30800ead06b96f3",
-        "historical_batch_632df21740f1825cfe31a805",
-        "historical_batch_87520cba5745102e11e5e1ec",
-        "historical_batch_34bdf43cad4af414994b0558",
-        "historical_batch_73d571ceb25e23345eefe799",
-        "historical_batch_ee9a7926affd3f0e328dce00",
-        "historical_batch_34dd11325f6d010f919f2a4b",
-        "historical_batch_b0181a5f23b96a0b495b8533"
+        "historical_batch_905604b3130d10cc2c7157da",
+        "historical_batch_11807ecb4ac81cbcb8122626",
+        "historical_batch_1bc739a0b666c978d4b9339d",
+        "historical_batch_90c21b96faab951e6be7ee0a",
+        "historical_batch_1969698edbbc6911beef0956",
+        "historical_batch_c019d6afea0999a47453001b",
+        "historical_batch_739913cdb0b4fd22d3ac72c4",
+        "historical_batch_d0cb06a11a83f895a2673e69"
       ]
     }
   ],
@@ -169,312 +169,52 @@
       "plannerVersion": "2",
       "workstreamId": "CURRENT_DIMENSIONS",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_2f922ef1fca58313bc6ea201",
-      "cohortSha256": "2f922ef1fca58313bc6ea2013b7b43300dce05b166417f76f55d78163e16aac9",
+      "cohortKey": "historical_cohort_9e17647b1b289e3333df248f",
+      "cohortSha256": "9e17647b1b289e3333df248f596cc7131f6d810869215e2b085ccd8269e8795c",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CURRENT_DIMENSIONS",
         "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
         "lifecycleState": "CURRENT_RETAIL",
         "category": "dishwasher",
-        "brand": "LG",
-        "normalizedBrand": "lg",
-        "familyId": null,
+        "brand": "Miele",
+        "normalizedBrand": "miele",
+        "familyId": "document_family_e813ae1da801ff04ddc5f4ac",
         "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "SINGLETON"
+        "mode": "FAMILY_CANARY"
       },
-      "mode": "SINGLETON",
+      "mode": "FAMILY_CANARY",
       "executionLane": "BOUNDED_DISCOVERY",
       "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
         "lifecycleState": "CURRENT_RETAIL",
         "category": "dishwasher",
-        "brand": "LG",
+        "brand": "Miele",
         "executionLane": "BOUNDED_DISCOVERY"
       },
-      "familyId": null,
-      "familyState": null,
+      "familyId": "document_family_e813ae1da801ff04ddc5f4ac",
+      "familyState": "CANARY_READY",
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 932,
+      "reviewedTargetCount": 184,
       "targetBindings": [
         {
-          "targetId": "recovery_target_c702fc3f7a41c8cf6498a7b2",
-          "referenceId": "fa_ref_213e1031e4bc66748bb7d644",
+          "targetId": "recovery_target_565604ed4eb83ec2928204a6",
+          "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
           "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
+          "familyId": "document_family_e813ae1da801ff04ddc5f4ac",
+          "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_eece52785389de6009b8cddf",
-      "semanticManifestSha256": "eece52785389de6009b8cddffdbee277aecaf73de73ceb3a0674db8d57bf9c26"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "CURRENT_DIMENSIONS",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_5c70be5b26c4c80b02039fbf",
-      "cohortSha256": "5c70be5b26c4c80b02039fbf2b393b3a9cab9592d36c89ee7a2eae8c6d410671",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "CURRENT_DIMENSIONS",
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "dryer",
-        "brand": "Fisher & Paykel",
-        "normalizedBrand": "fisherpaykel",
-        "familyId": null,
-        "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "SINGLETON"
-      },
-      "mode": "SINGLETON",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
-      "constraints": {
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "dryer",
-        "brand": "Fisher & Paykel",
-        "executionLane": "BOUNDED_DISCOVERY"
-      },
-      "familyId": null,
-      "familyState": null,
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 932,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_8bb6f9f5b2e877e3f122686a",
-          "referenceId": "fa_ref_65a617ffe2d6e16da569b98e",
-          "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": null,
-          "assignment": "MULTI_FAMILY_SINGLETON"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_a72affe5cd6072769dc5f6df",
-      "semanticManifestSha256": "a72affe5cd6072769dc5f6dfd2a29973c43711de1dc50e5803abab8bcc5bc2b5"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "CURRENT_DIMENSIONS",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_37314e88376dd01c3b824a19",
-      "cohortSha256": "37314e88376dd01c3b824a194c84982fea2f99ff737fff318a4a465e176db7fb",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "CURRENT_DIMENSIONS",
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "fridge",
-        "brand": "Esatto",
-        "normalizedBrand": "esatto",
-        "familyId": null,
-        "executionLane": "ACQUISITION",
-        "mode": "SINGLETON"
-      },
-      "mode": "SINGLETON",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
-      "constraints": {
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "fridge",
-        "brand": "Esatto",
-        "executionLane": "ACQUISITION"
-      },
-      "familyId": null,
-      "familyState": null,
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 932,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_c4f55caff6f8eb75550d5439",
-          "referenceId": "fa_ref_a73943f62a001e25f7e133ac",
-          "executionLane": "ACQUISITION",
-          "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_f0f74f22fac1c8240d8c5335",
-      "semanticManifestSha256": "f0f74f22fac1c8240d8c5335a7fc1fc190da81ad36c5661e78a94814dcf4b97e"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "CURRENT_DIMENSIONS",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_702961cc22f5067d3c85fbbc",
-      "cohortSha256": "702961cc22f5067d3c85fbbc948ee6f81a5aaa49c48bd37f07488e5a8bd92bdc",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "CURRENT_DIMENSIONS",
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "washing_machine",
-        "brand": "Beko",
-        "normalizedBrand": "beko",
-        "familyId": null,
-        "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "SINGLETON"
-      },
-      "mode": "SINGLETON",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
-      "constraints": {
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "washing_machine",
-        "brand": "Beko",
-        "executionLane": "BOUNDED_DISCOVERY"
-      },
-      "familyId": null,
-      "familyState": null,
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 932,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_8316c64d26b05bb308c27222",
-          "referenceId": "fa_ref_7f99cb83f53ac38202b1f8f9",
-          "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_fd097fa6bfd2bd48aba70e5b",
-      "semanticManifestSha256": "fd097fa6bfd2bd48aba70e5b619d3350c130cf67261968b361f5b673cfca52d7"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "CURRENT_DIMENSIONS",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_10f95e3e5c3546b0ae553c8f",
-      "cohortSha256": "10f95e3e5c3546b0ae553c8f6f37dc35335344b28014859adbc5a2fd7f25e002",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "CURRENT_DIMENSIONS",
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "dishwasher",
-        "brand": "Midea",
-        "normalizedBrand": "midea",
-        "familyId": null,
-        "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "SINGLETON"
-      },
-      "mode": "SINGLETON",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
-      "constraints": {
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "dishwasher",
-        "brand": "Midea",
-        "executionLane": "BOUNDED_DISCOVERY"
-      },
-      "familyId": null,
-      "familyState": null,
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 932,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_a1e1efd206ce99bc454ca5dd",
-          "referenceId": "fa_ref_648341ccb1d52e548b100629",
-          "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_d1497460c5204caad71f9839",
-      "semanticManifestSha256": "d1497460c5204caad71f9839db9277b174558db9685244e55517e2c14f7f1306"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "CURRENT_DIMENSIONS",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_4d3bdf613435523bbd86eeb5",
-      "cohortSha256": "4d3bdf613435523bbd86eeb5d1bb891efbd8c5d19ead52b5754efb8094de992e",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "CURRENT_DIMENSIONS",
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "dryer",
-        "brand": "Haier",
-        "normalizedBrand": "haier",
-        "familyId": null,
-        "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "SINGLETON"
-      },
-      "mode": "SINGLETON",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
-      "constraints": {
-        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "dryer",
-        "brand": "Haier",
-        "executionLane": "BOUNDED_DISCOVERY"
-      },
-      "familyId": null,
-      "familyState": null,
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 932,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_80d8a867a58449693a7ec575",
-          "referenceId": "fa_ref_ef84a96624f4d003a873aac1",
-          "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_5a89e91900087732b2ded5d5",
-      "semanticManifestSha256": "5a89e91900087732b2ded5d5dd801a6b10fcb27306766cc3dd2c9327e32807a0"
+      "manifestId": "historical_batch_c3187c3e7f481304ba853a11",
+      "semanticManifestSha256": "c3187c3e7f481304ba853a11c79f4057411186af5b6021ce1541c1d1ef838a0d"
     },
     {
       "schemaVersion": 2,
@@ -508,42 +248,94 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 932,
+      "reviewedTargetCount": 184,
       "targetBindings": [
         {
-          "targetId": "recovery_target_c135602ae53c5df6295b1340",
-          "referenceId": "fa_ref_b2b14097dd66efbdb7e932e1",
+          "targetId": "recovery_target_26c882086c89d90a7cb07770",
+          "referenceId": "fa_ref_6eeff26f0cf820a6a66bc953",
           "executionLane": "BOUNDED_DISCOVERY",
           "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
+          "assignment": "MULTI_FAMILY_SINGLETON"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_b169f3a7cf77b50b05357651",
-      "semanticManifestSha256": "b169f3a7cf77b50b05357651aaa8e49ae9578964481ad90ee011359d72f08548"
+      "manifestId": "historical_batch_27e2d524e7cabf163858607d",
+      "semanticManifestSha256": "27e2d524e7cabf163858607dcca33ca58f163fbe9728e574e0cd6398b53f0955"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CURRENT_DIMENSIONS",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_cdfe13ef2a84cbec8203108d",
-      "cohortSha256": "cdfe13ef2a84cbec8203108daac934ea6c36addd03289272025068f43d25afa8",
+      "cohortKey": "historical_cohort_702961cc22f5067d3c85fbbc",
+      "cohortSha256": "702961cc22f5067d3c85fbbc948ee6f81a5aaa49c48bd37f07488e5a8bd92bdc",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CURRENT_DIMENSIONS",
         "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
         "lifecycleState": "CURRENT_RETAIL",
         "category": "washing_machine",
-        "brand": "Bosch",
-        "normalizedBrand": "bosch",
-        "familyId": "document_family_5542caafbb840718542d9cb0",
+        "brand": "Beko",
+        "normalizedBrand": "beko",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Beko",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 184,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_cb31f8071db3044e56e70b94",
+          "referenceId": "fa_ref_2d8057087ded2a2a46ab6b41",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "MULTI_FAMILY_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_553c8570fd61e52a43e50a84",
+      "semanticManifestSha256": "553c8570fd61e52a43e50a84e4eb69c053d9aff404eade753d9d45dd4320e5f8"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_572dbdab365d529a3add6d58",
+      "cohortSha256": "572dbdab365d529a3add6d58aa675ff9106c16341c32b13101d0979e80a56230",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Omega",
+        "normalizedBrand": "omega",
+        "familyId": "document_family_b213056525a2c23ea6a7f3c7",
         "executionLane": "BOUNDED_DISCOVERY",
         "mode": "FAMILY_CANARY"
       },
@@ -553,32 +345,240 @@
       "constraints": {
         "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
         "lifecycleState": "CURRENT_RETAIL",
-        "category": "washing_machine",
-        "brand": "Bosch",
+        "category": "dishwasher",
+        "brand": "Omega",
         "executionLane": "BOUNDED_DISCOVERY"
       },
-      "familyId": "document_family_5542caafbb840718542d9cb0",
+      "familyId": "document_family_b213056525a2c23ea6a7f3c7",
       "familyState": "CANARY_READY",
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 932,
+      "reviewedTargetCount": 184,
       "targetBindings": [
         {
-          "targetId": "recovery_target_3dd723bd8abaeee8a5cb3bfe",
-          "referenceId": "fa_ref_7ebf0a5d46911e6ae58fd6c4",
+          "targetId": "recovery_target_2f40b1e7ac6aa3c821cb178d",
+          "referenceId": "fa_ref_9d12f4bd501f96bd747d062f",
           "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": "document_family_5542caafbb840718542d9cb0",
+          "familyId": "document_family_b213056525a2c23ea6a7f3c7",
           "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_8d4de72519d5236ea8d1b01f",
-      "semanticManifestSha256": "8d4de72519d5236ea8d1b01f13cc5066ba87d8bec2286f6a68ac935a195a575e"
+      "manifestId": "historical_batch_00a5b3dff36b08ac9af22284",
+      "semanticManifestSha256": "00a5b3dff36b08ac9af2228499fd1fc50ca049aac1b4660532c703b8fb0cf903"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_eacac9f117ab8eb77ac029da",
+      "cohortSha256": "eacac9f117ab8eb77ac029dafc6ad3c795abaf9b0861d3d6f82d34df43a92166",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "CHIQ",
+        "normalizedBrand": "chiq",
+        "familyId": "document_family_f8bf14235da807afa372d066",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "CHIQ",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_f8bf14235da807afa372d066",
+      "familyState": "CANARY_READY",
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 184,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_2771f6b33f1e140a5202e900",
+          "referenceId": "fa_ref_6f75b8917e336f41b6dc57d0",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_f8bf14235da807afa372d066",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_64c57c9457c3a25e1fff8bc7",
+      "semanticManifestSha256": "64c57c9457c3a25e1fff8bc7eed9bf27903f31e948eab40fdf5e68bcf82bddf5"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_dd5e5b6f165367e21566524d",
+      "cohortSha256": "dd5e5b6f165367e21566524de49b058402bc49aad4f7b3a85be59e0adaaeea6c",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "normalizedBrand": "fisherpaykel",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 184,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_a194a336c7ff6633d8abec33",
+          "referenceId": "fa_ref_90fc8a14a91c4647f92d2174",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "MULTI_FAMILY_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_126b7f395b807b63f10f603d",
+      "semanticManifestSha256": "126b7f395b807b63f10f603d99e06f95d6da2a9236f2c2f4be9ecdce281cfde3"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_e7c267dd127ade613f3adf38",
+      "cohortSha256": "e7c267dd127ade613f3adf38bfbabb900de5ed059ce62d456ffa53f030d01a45",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Westinghouse",
+        "normalizedBrand": "westinghouse",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Westinghouse",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 184,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_f5e3462fb74d11a2574fced4",
+          "referenceId": "fa_ref_84bd2b01f23011d0f2d724f6",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "MULTI_FAMILY_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_6d7106d087f3f1b1983878f9",
+      "semanticManifestSha256": "6d7106d087f3f1b1983878f931dba9e405306a575bd04893ebf835d744c6a3ac"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_f163020a3d3565450b2cd2bf",
+      "cohortSha256": "f163020a3d3565450b2cd2bf0ca109901012ae760ac975e4f3248442206e5d84",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "Electrolux",
+        "normalizedBrand": "electrolux",
+        "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "Electrolux",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 184,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_5838a3c2c43a6a4aca3751ba",
+          "referenceId": "fa_ref_a4966aef1a04be5958c8d233",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_10e1e6ea5bc31a03109cc04b",
+      "semanticManifestSha256": "10e1e6ea5bc31a03109cc04b10e744cdb96067e2097cd58d6e4fab6c43f5adc5"
     },
     {
       "schemaVersion": 2,
@@ -612,12 +612,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
           "targetId": "recovery_target_c576bd4a2d9f6898def1d4ef",
@@ -629,8 +629,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_093c69570887b5db65587d98",
-      "semanticManifestSha256": "093c69570887b5db65587d983ad5c7e954ab721214bc7cffeeff7d0934d3bf38"
+      "manifestId": "historical_batch_7838b4cba5dff6e873c52058",
+      "semanticManifestSha256": "7838b4cba5dff6e873c520581e87b57626c890e452dea64d230e251d8c7e3560"
     },
     {
       "schemaVersion": 2,
@@ -664,12 +664,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
           "targetId": "recovery_target_403364051c7a6408639454e7",
@@ -681,60 +681,60 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_17377e2136379179d3236261",
-      "semanticManifestSha256": "17377e2136379179d3236261557fb794acadbdb29fa9537bae867e69bb4cc6b0"
+      "manifestId": "historical_batch_bfc9b97dfa22fe98287e479e",
+      "semanticManifestSha256": "bfc9b97dfa22fe98287e479e9789f551c3412dfd38b794640e29d5672a0f593a"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "HISTORICAL_DIMENSIONS",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_c4395fe7d8b51aee486e40a2",
-      "cohortSha256": "c4395fe7d8b51aee486e40a209c9d88448ea0e2f865a166f99d8eab8e8cb92ac",
+      "cohortKey": "historical_cohort_9a3d3a5275c229297f4a8127",
+      "cohortSha256": "9a3d3a5275c229297f4a812712964701a3e5bc01a10bafc1f4d81472f2a039ac",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "HISTORICAL_DIMENSIONS",
         "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
-        "brand": "Artusi",
-        "normalizedBrand": "artusi",
+        "brand": "Esatto",
+        "normalizedBrand": "esatto",
         "familyId": null,
-        "executionLane": "BOUNDED_DISCOVERY",
+        "executionLane": "ACQUISITION",
         "mode": "SINGLETON"
       },
       "mode": "SINGLETON",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
+      "executionLane": "ACQUISITION",
+      "executionCommand": "recover:historical-evidence",
       "constraints": {
         "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
-        "brand": "Artusi",
-        "executionLane": "BOUNDED_DISCOVERY"
+        "brand": "Esatto",
+        "executionLane": "ACQUISITION"
       },
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
-          "targetId": "recovery_target_705fb02c491ebabbffb65240",
-          "referenceId": "fa_ref_9f8d8891894bfedc171e5f70",
-          "executionLane": "BOUNDED_DISCOVERY",
+          "targetId": "recovery_target_c4f55caff6f8eb75550d5439",
+          "referenceId": "fa_ref_a73943f62a001e25f7e133ac",
+          "executionLane": "ACQUISITION",
           "familyId": null,
           "assignment": "UNSCOPED_SINGLETON"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_ea2a99d92faec389eb1c6c82",
-      "semanticManifestSha256": "ea2a99d92faec389eb1c6c8294bb7421dc9c1b31ca11073f6bdb884a0370baab"
+      "manifestId": "historical_batch_90681a814fda88ebf1b2a1ba",
+      "semanticManifestSha256": "90681a814fda88ebf1b2a1ba32d8e8ab55f570a7efb32814c8ace1e8b5a9cd6a"
     },
     {
       "schemaVersion": 2,
@@ -768,12 +768,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
           "targetId": "recovery_target_43d95e55aeb174f1b9f934f3",
@@ -785,8 +785,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_f368d1b844a01f784dfa9512",
-      "semanticManifestSha256": "f368d1b844a01f784dfa9512d5c1fd80baff0be07b489dbd5b8b17c9ed28bff7"
+      "manifestId": "historical_batch_0409f8c719ef694fccb2c52a",
+      "semanticManifestSha256": "0409f8c719ef694fccb2c52a82ca3fc9bdf00d5b43a13bd89aec0e6f432deaaf"
     },
     {
       "schemaVersion": 2,
@@ -820,12 +820,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
           "targetId": "recovery_target_5ee5a0c19cc2d86e4e973745",
@@ -837,8 +837,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_44761320248368ed11d36876",
-      "semanticManifestSha256": "44761320248368ed11d3687603436339ebc1770a8962f810176fd30ce786df19"
+      "manifestId": "historical_batch_a5f81baafc0e18974fbb4990",
+      "semanticManifestSha256": "a5f81baafc0e18974fbb4990c16740bf829cfc4407dce34eed0e2828274ec7d4"
     },
     {
       "schemaVersion": 2,
@@ -872,12 +872,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
           "targetId": "recovery_target_75505400ec67cea082606e13",
@@ -889,23 +889,75 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_264b8fb0a52115c916d2add1",
-      "semanticManifestSha256": "264b8fb0a52115c916d2add103807103f506a0cc642ec632c81a73cd148d4ec6"
+      "manifestId": "historical_batch_e49d98266a3cface7232033f",
+      "semanticManifestSha256": "e49d98266a3cface7232033ffd5ce062b55a8a8ab9b23d33d57865f7d707a8a3"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "HISTORICAL_DIMENSIONS",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_25633f2cb044bbf03ded43e6",
-      "cohortSha256": "25633f2cb044bbf03ded43e64cbca3bdf065ab6166522869f5188fb614e2ee46",
+      "cohortKey": "historical_cohort_c4395fe7d8b51aee486e40a2",
+      "cohortSha256": "c4395fe7d8b51aee486e40a209c9d88448ea0e2f865a166f99d8eab8e8cb92ac",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "HISTORICAL_DIMENSIONS",
         "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
-        "brand": "BEKO",
+        "brand": "Artusi",
+        "normalizedBrand": "artusi",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Artusi",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 4720,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_705fb02c491ebabbffb65240",
+          "referenceId": "fa_ref_9f8d8891894bfedc171e5f70",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_fdc5cee7376ae8b0f34f605c",
+      "semanticManifestSha256": "fdc5cee7376ae8b0f34f605c7480c245a5176667a967616689314b1bba742bd8"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_26faa28197cbafd8a5dd504d",
+      "cohortSha256": "26faa28197cbafd8a5dd504d2f8003b6893ef8d37b54827ddc8778925b59f3c5",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "washing_machine",
+        "brand": "Beko",
         "normalizedBrand": "beko",
         "familyId": null,
         "executionLane": "BOUNDED_DISCOVERY",
@@ -917,23 +969,23 @@
       "constraints": {
         "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
         "lifecycleState": "CATALOG_ARCHIVED",
-        "category": "fridge",
-        "brand": "BEKO",
+        "category": "washing_machine",
+        "brand": "Beko",
         "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
-      "reviewedTargetCount": 3974,
+      "reviewedTargetCount": 4720,
       "targetBindings": [
         {
-          "targetId": "recovery_target_9a11fc1c5c4500abf5ea08a6",
-          "referenceId": "fa_ref_ad6c6f6610727fff8927c4b8",
+          "targetId": "recovery_target_8316c64d26b05bb308c27222",
+          "referenceId": "fa_ref_7f99cb83f53ac38202b1f8f9",
           "executionLane": "BOUNDED_DISCOVERY",
           "familyId": null,
           "assignment": "UNSCOPED_SINGLETON"
@@ -941,112 +993,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_de480a0fb864a19a452f75b8",
-      "semanticManifestSha256": "de480a0fb864a19a452f75b8f99370a752e9abd1249897c7a407eb263b6e92f0"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "HISTORICAL_DIMENSIONS",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_20d00b1bd98d228a38ff8200",
-      "cohortSha256": "20d00b1bd98d228a38ff820022c6bea51c53aee0dd5f7c7a7255e7b1803c7979",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "HISTORICAL_DIMENSIONS",
-        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-        "lifecycleState": "REGISTRY_ONLY",
-        "category": "washing_machine",
-        "brand": "BOSCH",
-        "normalizedBrand": "bosch",
-        "familyId": null,
-        "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "SINGLETON"
-      },
-      "mode": "SINGLETON",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
-      "constraints": {
-        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-        "lifecycleState": "REGISTRY_ONLY",
-        "category": "washing_machine",
-        "brand": "BOSCH",
-        "executionLane": "BOUNDED_DISCOVERY"
-      },
-      "familyId": null,
-      "familyState": null,
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 3974,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_da56843677e6bd0d0cbe3c0a",
-          "referenceId": "fa_ref_f056f19d701eef642603328e",
-          "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": null,
-          "assignment": "UNSCOPED_SINGLETON"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_cb6f39c91d2b51175a78ca78",
-      "semanticManifestSha256": "cb6f39c91d2b51175a78ca78048cfcbae2b50508fdcfefe3ca2a2acc7ca7dc7a"
-    },
-    {
-      "schemaVersion": 2,
-      "plannerVersion": "2",
-      "workstreamId": "CONFLICT_CLOSURE",
-      "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_5d2b9b32a55aff7936167088",
-      "cohortSha256": "5d2b9b32a55aff7936167088400aded6dc6d4a040c51651e88bb6ae761070338",
-      "cohort": {
-        "schemaVersion": 1,
-        "workstreamId": "CONFLICT_CLOSURE",
-        "priorityClass": "P2_CURRENT_CONFIRMATION",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "washing_machine",
-        "brand": "Fisher & Paykel",
-        "normalizedBrand": "fisherpaykel",
-        "familyId": "document_family_82eed9fcc8fd21713fbf9017",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "mode": "FAMILY_CANARY"
-      },
-      "mode": "FAMILY_CANARY",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "executionCommand": "discover:historical-official-candidates",
-      "constraints": {
-        "priorityClass": "P2_CURRENT_CONFIRMATION",
-        "lifecycleState": "CURRENT_RETAIL",
-        "category": "washing_machine",
-        "brand": "Fisher & Paykel",
-        "executionLane": "BOUNDED_DISCOVERY"
-      },
-      "familyId": "document_family_82eed9fcc8fd21713fbf9017",
-      "familyState": "REOPENED",
-      "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
-      },
-      "reviewedTargetCount": 63,
-      "targetBindings": [
-        {
-          "targetId": "recovery_target_a677bacb6d68e1c58a543364",
-          "referenceId": "fa_ref_c913768fa64a93313207ce31",
-          "executionLane": "BOUNDED_DISCOVERY",
-          "familyId": "document_family_82eed9fcc8fd21713fbf9017",
-          "assignment": "FAMILY_CANARY"
-        }
-      ],
-      "estimatedSharedArtifactCount": 0,
-      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_e07b42ebd30800ead06b96f3",
-      "semanticManifestSha256": "e07b42ebd30800ead06b96f35175dd4f42f4016295c2cfeb2451ab9f39e24748"
+      "manifestId": "historical_batch_a6c489823346e5072f75342f",
+      "semanticManifestSha256": "a6c489823346e5072f75342f49bbd5d866bbc426807b29ce0ae243ac3fd1832f"
     },
     {
       "schemaVersion": 2,
@@ -1080,10 +1028,10 @@
       "familyId": "document_family_4df9004fb8faa875ea475e6c",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1097,8 +1045,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_632df21740f1825cfe31a805",
-      "semanticManifestSha256": "632df21740f1825cfe31a805ce8a8652671d0dc6f7267bb994f7d18a35535716"
+      "manifestId": "historical_batch_905604b3130d10cc2c7157da",
+      "semanticManifestSha256": "905604b3130d10cc2c7157dacdad2bc924c475cfb2fb64a78bcb0c8a4fde20b8"
     },
     {
       "schemaVersion": 2,
@@ -1132,10 +1080,10 @@
       "familyId": "document_family_25d95408b7219ac2211e1b63",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1149,8 +1097,60 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_87520cba5745102e11e5e1ec",
-      "semanticManifestSha256": "87520cba5745102e11e5e1ece80eedb0e99b4539247e0375c5271eb9fcf6b7e8"
+      "manifestId": "historical_batch_11807ecb4ac81cbcb8122626",
+      "semanticManifestSha256": "11807ecb4ac81cbcb8122626fb64a191d8c8aa4c7f9feb8ceea4b3c1b3237098"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_70374a6c1cc3446cf40b7ca8",
+      "cohortSha256": "70374a6c1cc3446cf40b7ca83dd27b85d66d857657a21c6ba8cc95720c7b292f",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "UNKNOWN_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "normalizedBrand": "fisherpaykel",
+        "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "UNKNOWN_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_a677bacb6d68e1c58a543364",
+          "referenceId": "fa_ref_c913768fa64a93313207ce31",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_1bc739a0b666c978d4b9339d",
+      "semanticManifestSha256": "1bc739a0b666c978d4b9339d755cc87ffaf4e8aeaf6a536fb12c83ee97ad4dec"
     },
     {
       "schemaVersion": 2,
@@ -1184,10 +1184,10 @@
       "familyId": "document_family_3877f04b5a53d14be26a4663",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1201,8 +1201,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_34bdf43cad4af414994b0558",
-      "semanticManifestSha256": "34bdf43cad4af414994b0558fb885cfc84dc7ae5523d8ceba07caa7a361e7cc2"
+      "manifestId": "historical_batch_90c21b96faab951e6be7ee0a",
+      "semanticManifestSha256": "90c21b96faab951e6be7ee0a28ab4011515b8b2947dab3820fc778edcd134250"
     },
     {
       "schemaVersion": 2,
@@ -1236,10 +1236,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1253,8 +1253,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_73d571ceb25e23345eefe799",
-      "semanticManifestSha256": "73d571ceb25e23345eefe799b1b0113b975ca88939e7f433e47b8877ca087664"
+      "manifestId": "historical_batch_1969698edbbc6911beef0956",
+      "semanticManifestSha256": "1969698edbbc6911beef09562baeecf37d3839f689e3799fc0b326de8f0f2465"
     },
     {
       "schemaVersion": 2,
@@ -1288,16 +1288,16 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
-          "targetId": "recovery_target_cf60f23f45a9bf9c8cd6d170",
-          "referenceId": "fa_ref_989a90fd26cef5186c53f412",
+          "targetId": "recovery_target_c1f84ca629d3b4722d9b97e9",
+          "referenceId": "fa_ref_8adf1afdb4033a49ee4f54ad",
           "executionLane": "BOUNDED_DISCOVERY",
           "familyId": null,
           "assignment": "MULTI_FAMILY_SINGLETON"
@@ -1305,8 +1305,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_ee9a7926affd3f0e328dce00",
-      "semanticManifestSha256": "ee9a7926affd3f0e328dce00007a17325ccde0ed1af6a76a95befc023294aa56"
+      "manifestId": "historical_batch_c019d6afea0999a47453001b",
+      "semanticManifestSha256": "c019d6afea0999a47453001b62b230b3020346f7e9f2e33b742dcae2d934d35f"
     },
     {
       "schemaVersion": 2,
@@ -1340,10 +1340,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1357,8 +1357,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_34dd11325f6d010f919f2a4b",
-      "semanticManifestSha256": "34dd11325f6d010f919f2a4b4143d4c8324abbfa3dc69d26452e8d1b74f7721f"
+      "manifestId": "historical_batch_739913cdb0b4fd22d3ac72c4",
+      "semanticManifestSha256": "739913cdb0b4fd22d3ac72c4b1343dd329c89d76073ad97a3247e7b46c5e9f60"
     },
     {
       "schemaVersion": 2,
@@ -1392,10 +1392,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "e5eeec62a83768249a2fccaa8066056e7278762854857f7dc28d7c1f00c2daf8",
-        "targetStateSha256": "d78d129213cf265b1abcce010ee68e6d545221cfa7d9f8b85f7b9b403d436fad",
-        "familyCanarySha256": "874c2f0518365822ed6e420f1f4996a219236b2d39f9a30222d315d666c463f4",
-        "sourceAcquisitionQueueSha256": "b8fa1723e42759c7c2254d9490f69953dab9c3aa8b27fb6ba37d731a21323354"
+        "executableQueueSha256": "dfde784fe0e2f4bd58951e1ba1c9e0a13f90e6917bada3cabbcc266e513357e7",
+        "targetStateSha256": "fa330e8ddf6d432fd027fb3d576dd8a23c256f077a5ab375f6b86efbee6ca15d",
+        "familyCanarySha256": "690dbf8c414d0a8178690cf0f43d995bd1066df854e5d525fc015e617d0ff756",
+        "sourceAcquisitionQueueSha256": "7a6e1ec86e56335b62c79b96b1888c4fe1cbe7c4aa54da86dc21f87bb90997e3"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1409,28 +1409,28 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_b0181a5f23b96a0b495b8533",
-      "semanticManifestSha256": "b0181a5f23b96a0b495b85339b3b787bd4ee2e9f76aeaab5ec2953491db6ac9e"
+      "manifestId": "historical_batch_d0cb06a11a83f895a2673e69",
+      "semanticManifestSha256": "d0cb06a11a83f895a2673e69894cf91abeb1aa563207449f08c3b5fe13f8babf"
     }
   ],
   "summary": {
-    "assignedTargets": 4969,
-    "eligibleTargets": 4912,
+    "assignedTargets": 4967,
+    "eligibleTargets": 4910,
     "suppressedTargets": 57,
     "suppressedByReason": {
       "FAMILY_GATE_BLOCKED": 57
     },
-    "eligibleCohorts": 418,
+    "eligibleCohorts": 415,
     "windowedCohorts": 24,
-    "deferredCohorts": 394,
+    "deferredCohorts": 391,
     "manifests": 24,
     "manifestedTargets": 24,
     "byWorkstream": {
-      "CURRENT_DIMENSIONS": 932,
-      "HISTORICAL_DIMENSIONS": 3974,
+      "CURRENT_DIMENSIONS": 184,
+      "HISTORICAL_DIMENSIONS": 4720,
       "PARSER_REPAIR": 0,
       "CONFLICT_CLOSURE": 63
     }
   },
-  "semanticBatchesSha256": "a7b0274914f1afa535b4c4f16157adbed4c2246d48f4828ed43a818c31f8b761"
+  "semanticBatchesSha256": "ee518d43e06c52b8bfee7b8e62467c36e749656e84379f44424769c3545faf6a"
 }

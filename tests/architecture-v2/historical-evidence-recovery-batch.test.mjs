@@ -1,13 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 import {
   buildHistoricalEvidenceRecoveryBatch,
   parseHistoricalEvidenceRecoveryBatchArgs,
 } from '../../src/domain/historical-evidence-recovery-batch.mjs';
-import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
-import { parseHistoricalEvidenceRecoveryBatchCliArgs } from '../../scripts/architecture-v2/build-historical-evidence-recovery-batch.mjs';
+import {
+  canonicalJsonSha256,
+  validateHistoricalEvidenceRecoveryBatch,
+} from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import {
+  appendPendingEvidenceEpoch,
+  completeEvidenceEpoch,
+  createEvidenceEpochDescriptor,
+  createEvidenceEpochLedger,
+} from '../../src/domain/evidence-epoch-reconciliation.mjs';
+import {
+  parseHistoricalEvidenceRecoveryBatchCliArgs,
+  runCli,
+} from '../../scripts/architecture-v2/build-historical-evidence-recovery-batch.mjs';
 
 const SHA_A = 'a'.repeat(64);
 const SHA_B = 'b'.repeat(64);
@@ -176,6 +190,30 @@ function receiptReplayAudit(bundle, outcomes) {
   };
 }
 
+function epochStateFor(queueTarget, outcome = 'RETAINED', overrides = {}) {
+  const descriptor = createEvidenceEpochDescriptor({
+    targetId: queueTarget.targetId,
+    identity: { brand: queueTarget.brand, model: queueTarget.model, category: queueTarget.category },
+    priorReceiptBindingSha256: SHA_B,
+    candidateSourceIdentities: queueTarget.candidateJobIds.map((id) => `candidate:${id}`),
+    requiredSourceHashes: [SHA_A],
+    conflictHashes: [],
+    policyVersions: [fixturePolicy().policyVersion],
+    ...overrides,
+  });
+  const pending = appendPendingEvidenceEpoch({ ledger: createEvidenceEpochLedger(), descriptor });
+  const ledger = outcome === null ? pending : completeEvidenceEpoch({
+    ledger: pending,
+    descriptor,
+    outcome,
+    ...(outcome.startsWith('ACCEPTANCE_') ? {
+      reasonCode: 'OFFICIAL_CONFLICT',
+      decisionEvidenceHashes: [SHA_A],
+    } : {}),
+  });
+  return { descriptor, state: { ledger, descriptors: [descriptor] } };
+}
+
 test('batch deterministically selects targets and preserves every alternate candidate edge', () => {
   const queue = fixtureQueue();
   const input = {
@@ -213,6 +251,92 @@ test('batch summary accounts for targets already covered by cumulative acceptanc
   assert.equal(batch.summary.excludedPriorAcceptedTargets, 1);
   assert.equal(batch.summary.excludedPriorCandidateJobs, 2);
   assert.ok(batch.targets.every((target) => target.targetId !== queue.targets[0].targetId));
+});
+
+test('explicit unchanged retained epoch skips accepted target while changed descriptors re-enter', () => {
+  const changes = [
+    { candidateSourceIdentities: ['candidate:changed'] },
+    { requiredSourceHashes: [SHA_B] },
+    { conflictHashes: [SHA_A] },
+    { policyVersions: ['changed-policy'] },
+  ];
+  const queue = fixtureQueue();
+  const queueTarget = queue.targets[0];
+  const prior = { entries: [{
+    ...queueTarget,
+    acceptanceStatus: 'accepted',
+    sources: [receiptSource()],
+  }] };
+  const unchanged = epochStateFor(queueTarget);
+  const skipped = buildHistoricalEvidenceRecoveryBatch({
+    queue, policy: fixturePolicy(), existingAcceptanceBundles: [prior],
+    selection: { targetIds: [queueTarget.targetId] }, evidenceEpochState: unchanged.state,
+  });
+  assert.equal(skipped.targets.length, 0);
+
+  for (const change of changes) {
+    const changed = createEvidenceEpochDescriptor({ ...unchanged.descriptor, ...change });
+    const changedLedger = appendPendingEvidenceEpoch({ ledger: unchanged.state.ledger, descriptor: changed });
+    const batch = buildHistoricalEvidenceRecoveryBatch({
+      queue, policy: fixturePolicy(), existingAcceptanceBundles: [prior],
+      selection: { targetIds: [queueTarget.targetId] },
+      evidenceEpochState: { ledger: changedLedger, descriptors: [changed] },
+    });
+    assert.equal(batch.targets.length, 1);
+    assert.equal(
+      batch.targets[0].reconciliationContext.evidenceEpoch.descriptorSha256,
+      changed.semanticDescriptorSha256,
+    );
+    assert.equal(
+      batch.targets[0].reconciliationContext.evidenceEpoch.epochId,
+      changedLedger.records.at(-1).epochId,
+    );
+    assert.equal(validateHistoricalEvidenceRecoveryBatch(batch), batch);
+  }
+});
+
+test('pending epoch resumes but a completed revoked epoch remains blocked from a batch', () => {
+  const queue = fixtureQueue();
+  const queueTarget = queue.targets[0];
+  const prior = { entries: [{
+    ...queueTarget, acceptanceStatus: 'accepted', sources: [receiptSource()],
+  }] };
+  const pending = epochStateFor(queueTarget, null);
+  const resumed = buildHistoricalEvidenceRecoveryBatch({
+    queue, policy: fixturePolicy(), existingAcceptanceBundles: [prior],
+    selection: { targetIds: [queueTarget.targetId] }, evidenceEpochState: pending.state,
+  });
+  assert.equal(resumed.targets.length, 1);
+  assert.equal(resumed.targets[0].reconciliationContext.evidenceEpoch.epochId, pending.state.ledger.records[0].epochId);
+
+  const revoked = epochStateFor(queueTarget, 'ACCEPTANCE_REVOKED');
+  const blocked = buildHistoricalEvidenceRecoveryBatch({
+    queue, policy: fixturePolicy(), existingAcceptanceBundles: [prior],
+    selection: { targetIds: [queueTarget.targetId] }, evidenceEpochState: revoked.state,
+  });
+  assert.equal(blocked.targets.length, 0);
+});
+
+test('sparse epoch state governs one accepted target while unmanaged targets retain legacy selection', () => {
+  const queue = fixtureQueue();
+  const managedTarget = queue.targets[0];
+  const managed = epochStateFor(managedTarget);
+  const prior = { entries: [{
+    ...managedTarget, acceptanceStatus: 'accepted', sources: [receiptSource()],
+  }] };
+
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [prior],
+    evidenceEpochState: managed.state,
+  });
+
+  assert.deepEqual(batch.targets.map((row) => row.targetId), [
+    queue.targets[1].targetId,
+    queue.targets[2].targetId,
+  ]);
+  assert.ok(batch.targets.every((row) => row.reconciliationContext.evidenceEpoch === undefined));
 });
 
 test('batch snapshots non-authoritative hints plus complete replayable active receipt sources', () => {
@@ -557,41 +681,48 @@ test('batch CLI keeps canary output separate from the canonical full batch', () 
   );
 });
 
-test('committed full batch is reproducible and isolates non-ready candidate observations', async () => {
-  const [queue, policy, cumulativeBundle, receiptReplayAudit, pdfBatch, pdfResults,
-    rangeBatch, rangeResults, committed] = await Promise.all([
-    readFile('data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/policies/historical-evidence-recovery-policy.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/pdf-brand-acceptance-batch.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/identity-range-recovery-acceptance-batch.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/identity-range-recovery-acceptance-results.json', 'utf8').then(JSON.parse),
-    readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json', 'utf8').then(JSON.parse),
-  ]);
-  const rebuilt = buildHistoricalEvidenceRecoveryBatch({
-    queue,
-    policy,
-    existingAcceptanceBundles: [
-      cumulativeBundle,
-      { batch: pdfBatch, results: pdfResults },
-      { batch: rangeBatch, results: rangeResults },
-    ],
-    receiptReplayAudit,
-    selection: {},
+test('batch CLI prohibits mixed manifest and ad hoc selector modes', () => {
+  assert.deepEqual(parseHistoricalEvidenceRecoveryBatchCliArgs([
+    '--manifest-id', 'historical_batch_aaaaaaaaaaaaaaaaaaaaaaaa',
+  ]), {
+    output: null,
+    manifestId: 'historical_batch_aaaaaaaaaaaaaaaaaaaaaaaa',
+    selection: null,
   });
-  assert.equal(canonicalJsonSha256(committed), canonicalJsonSha256(rebuilt));
-  assert.equal(committed.targets.length, queue.summary.acquisitionTargets);
-  assert.ok(committed.targets.every((target) => target.candidateJobIds.length > 0));
-  assert.equal(committed.summary.candidateEdges, queue.summary.candidateEdges);
-  if (queue.summary.acquisitionTargets === 0) {
-    assert.equal(queue.summary.candidateEdges, 0);
-    assert.ok(queue.summary.observedCandidateEdges > 0);
-    assert.equal(
-      queue.summary.isolatedNonReadyCandidateEdges,
-      queue.summary.observedCandidateEdges,
+  assert.throws(() => parseHistoricalEvidenceRecoveryBatchCliArgs([
+    '--manifest-id', 'historical_batch_aaaaaaaaaaaaaaaaaaaaaaaa',
+    '--target-id', 'target-a',
+  ]), /mixed selector|manifest.*target/i);
+  assert.throws(() => parseHistoricalEvidenceRecoveryBatchCliArgs([]), /manifest-id.*tracked/i);
+});
+
+test('recovery batch builder rejects a bounded discovery manifest', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'fitappliance-manifest-batch-'));
+  try {
+    const batches = await readFile(
+      'data/architecture-v2/reviews/automated/historical-evidence-next-batches.json',
+      'utf8',
+    ).then(JSON.parse);
+    const manifest = batches.manifests.find((row) => row.executionLane === 'BOUNDED_DISCOVERY');
+    const manifestId = manifest.manifestId;
+    const output = join(directory, 'batch.json');
+    assert.equal(manifest.executionLane, 'BOUNDED_DISCOVERY');
+    await assert.rejects(
+      runCli(['--manifest-id', manifestId, '--output', output]),
+      /execution lane mismatch|ACQUISITION/i,
     );
+  } finally {
+    await rm(directory, { recursive: true, force: true });
   }
+});
+
+test('committed recovery batch remains the last acquisition batch', async () => {
+  const committed = await readFile(
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json',
+    'utf8',
+  ).then(JSON.parse);
+  assert.equal(committed.batchId, 'historical-recovery-8784c65b765a2a1d69ef0eef');
+  assert.ok(committed.artifactJobs.length > 0);
+  assert.ok(committed.targets.every((row) => row.candidateJobIds.length > 0));
   assert.equal(new Set(committed.targets.map((row) => row.targetId)).size, committed.targets.length);
 });

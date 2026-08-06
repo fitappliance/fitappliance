@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rename, rm, symlink, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { promisify } from 'node:util';
 
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import {
@@ -14,6 +18,7 @@ import {
 
 const RELEASE_ID = 'historical-evidence-release-test';
 const GENERATED_AT = '2026-07-19T20:00:00.000Z';
+const execFileAsync = promisify(execFile);
 
 function sourceStage(overrides = {}) {
   const semanticPayload = { records: [{ referenceId: 'historical_a' }] };
@@ -253,6 +258,10 @@ test('tracked system contract replays from repository sources without external s
     'data/architecture-v2/reviews/automated/historical-evidence-target-state.json',
     'utf8',
   ));
+  const acquisitionQueueArtifact = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json',
+    'utf8',
+  ));
   const targetStateSourceFiles = {
     classificationSha256: 'data/architecture-v2/generated/historical-model-evidence-classification.json',
     acquisitionQueueSha256: 'data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json',
@@ -268,13 +277,13 @@ test('tracked system contract replays from repository sources without external s
     const bytes = await readFile(path);
     assert.equal(targetState.sourceBindings[binding], createHash('sha256').update(bytes).digest('hex'));
   }
-  assert.equal(first.stages.length, 38);
+  assert.equal(first.stages.length, 39);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
   ))));
-  assert.equal(first.baseline.historicalModelReferences, 8089);
-  assert.equal(first.baseline.currentProducts, 3515);
+  assert.equal(first.baseline.historicalModelReferences, 8087);
+  assert.equal(first.baseline.currentProducts, 3513);
   assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 0);
   assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
   assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
@@ -288,6 +297,26 @@ test('tracked system contract replays from repository sources without external s
   const lifecycleShadow = first.stages.find((stage) => stage.id === 'retail-lifecycle-shadow');
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
   const candidateRelease = first.stages.find((stage) => stage.id === 'candidate-release-gate');
+  const acquisitionQueue = first.stages.find((stage) => stage.id === 'candidate-acquisition-queue');
+  const activeRelease = first.stages.find((stage) => stage.id === 'active-release-recovery');
+  const classification = first.stages.find((stage) => stage.id === 'classification');
+  const dimensionKnowledge = first.stages.find((stage) => stage.id === 'mineru-knowledge');
+  const replacementAudit = first.stages.find((stage) => stage.id === 'historical-replacement-publication');
+  const fitAudit = first.stages.find((stage) => stage.id === 'fit-publication');
+  assert.equal(activeRelease.artifactKey, 'historicalRecoveryActiveReleaseAudit');
+  for (const stage of [classification, dimensionKnowledge, acquisitionQueue, replacementAudit, fitAudit]) {
+    assert.ok(stage.releaseDependencies.includes(activeRelease.id));
+    assert.ok(!stage.releaseDependencies.includes('lifecycle-reduction'));
+    assert.ok(!stage.releaseDependencies.includes('current-publication'));
+  }
+  assert.equal(
+    acquisitionQueue.declaredSemanticSha256,
+    acquisitionQueueArtifact.semanticQueueSha256,
+  );
+  assert.equal(
+    acquisitionQueueArtifact.activeReleaseSourceBinding.releaseCandidateId,
+    'retail_lifecycle_release_6c42c754aeb1ff49097b32b4',
+  );
   assert.deepEqual(canonicalIdentity.releaseDependencies, []);
   assert.deepEqual(canonicalIdentity.lifecycleVisibility, ['CURRENT_INPUT', 'HISTORICAL_INPUT']);
   assert.deepEqual(canonicalIdentityCandidate.releaseDependencies, [
@@ -360,4 +389,31 @@ test('tracked system contract replays from repository sources without external s
     false,
   );
   assert.doesNotMatch(JSON.stringify(first), /\/Volumes\/|FITAPPLIANCE_STORAGE_ROOT/);
+});
+
+test('repository system-contract builder rejects a stale active-release audit artifact', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'fitappliance-stale-active-audit-'));
+  try {
+    await execFileAsync('cp', ['-al', resolve('data'), join(root, 'data')]);
+    await Promise.all([
+      symlink(resolve('src'), join(root, 'src'), 'dir'),
+      symlink(resolve('scripts'), join(root, 'scripts'), 'dir'),
+    ]);
+    const auditPath = join(
+      root,
+      'data/architecture-v2/reviews/automated/historical-recovery-active-release-audit.json',
+    );
+    const stale = JSON.parse(await readFile(auditPath, 'utf8'));
+    stale.summary.issues += 1;
+    const replacement = `${auditPath}.stale`;
+    await writeFile(replacement, `${JSON.stringify(stale, null, 2)}\n`);
+    await rename(replacement, auditPath);
+
+    await assert.rejects(
+      buildHistoricalEvidenceSystemContractFromRepository({ root }),
+      /active.release audit.*replay|active.release audit.*stale/i,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });

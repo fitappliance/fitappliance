@@ -29,6 +29,8 @@ const discoverySeedPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/official-discovery-seed-policy.json', import.meta.url),
   'utf8',
 ));
+const OFFICIAL_TRANSPORTS = new Set(['fetch', 'curl', 'scrapling']);
+const DISCOVERY_OBJECT_TRANSPORT = 'content_addressed_discovery_object';
 
 function requiredText(value, label) {
   const result = String(value ?? '').trim();
@@ -38,6 +40,38 @@ function requiredText(value, label) {
 
 function brandKey(value) {
   return requiredText(value, 'brand').toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function isHashBoundMarketApiSelfSource(source) {
+  const provenance = source?.discoveryProvenance;
+  const redirects = source?.redirectChain ?? [];
+  return source?.contentType === 'application/json'
+    && provenance?.method === 'official_market_api'
+    && Array.isArray(redirects)
+    && redirects.length === 0
+    && source.sourceUrl === source.finalUrl
+    && source.sourceUrl === provenance.discoveryUrl
+    && source.sourceUrl === provenance.artifactUrl
+    && source.contentSha256 === provenance.discoveryContentSha256
+    && source.objectPath === provenance.discoveryObjectPath
+    && source.byteSize === provenance.discoveryByteSize;
+}
+
+function officialTransport(value, source = null) {
+  if (value == null) return null;
+  const transport = requiredText(value, 'official transport');
+  if (!OFFICIAL_TRANSPORTS.has(transport)
+    && !(transport === DISCOVERY_OBJECT_TRANSPORT && isHashBoundMarketApiSelfSource(source))) {
+    throw new TypeError('official transport invalid');
+  }
+  return transport;
+}
+
+function marketHostPathPatterns(brand, host) {
+  const configured = manufacturerPolicy.marketHostPathPatterns?.[brandKey(brand)] ?? {};
+  return Object.entries(configured)
+    .filter(([suffix]) => host === suffix || host.endsWith(`.${suffix}`))
+    .flatMap(([, patterns]) => patterns);
 }
 
 function parseTime(value, label) {
@@ -71,7 +105,10 @@ function trustedUrl(value, brand, label, options = {}) {
   if (!Array.isArray(allowed) || !allowed.some((suffix) => host === suffix || host.endsWith(`.${suffix}`))) {
     throw new TypeError(`${label} is not an official host for ${brand}`);
   }
-  const marketPatterns = manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? [];
+  const marketPatterns = [
+    ...(manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? []),
+    ...marketHostPathPatterns(brand, host),
+  ];
   const marketTarget = `${url.pathname}${url.search}`;
   if (!options.hostOnly && marketPatterns.length && !marketPatterns.some((pattern) => new RegExp(pattern, 'i').test(marketTarget))) {
     throw new TypeError(`${label} does not match the Australian market`);
@@ -121,6 +158,7 @@ export function isOfficialBrandMarketUrl(value, brand) {
     }
     const configuredPatterns = manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? [];
     if (configuredPatterns.length) return true;
+    if (marketHostPathPatterns(brand, host).length) return true;
     if (host.endsWith('.com.au') || host.endsWith('.au')) return true;
     const marketSegments = url.pathname.split('/').filter(Boolean);
     if (marketSegments.some((segment) => /^(?:au|en[-_]au|au[-_]en)$/i.test(segment))) return true;
@@ -150,8 +188,14 @@ export function officialArtifactUrlNeedsDiscoveryProvenance(value, brand) {
   return patterns.some((pattern) => new RegExp(pattern, 'i').test(url.pathname));
 }
 
+function isOfficialNativeArtifactHopUrl(value, brand) {
+  if (!isOfficialBrandHostUrl(value, brand)) return false;
+  const host = new URL(value).hostname.toLowerCase().replace(/\.$/, '');
+  return marketHostPathPatterns(brand, host).length === 0 || isOfficialBrandUrl(value, brand);
+}
+
 export function isOfficialBrandArtifactHostUrl(value, brand, context = {}) {
-  if (isOfficialBrandHostUrl(value, brand)) return true;
+  if (isOfficialNativeArtifactHopUrl(value, brand)) return true;
   if (!isApprovedGlobalArtifactHost(value, brand)) return false;
   try {
     normalizeOfficialArtifactDiscoveryProvenance(context.discoveryProvenance, {
@@ -441,7 +485,12 @@ function trustedArtifactUrl(value, identity, discoveryProvenance) {
 
 function trustedArtifactHopUrl(value, identity, sourceUrl, discoveryProvenance, label) {
   const normalized = canonicalHttpsUrl(value, label);
-  if (isOfficialBrandHostUrl(normalized, identity.brand)) return normalized;
+  if (isOfficialBrandHostUrl(normalized, identity.brand)) {
+    if (!isOfficialNativeArtifactHopUrl(normalized, identity.brand)) {
+      throw new TypeError(`${label} does not match the Australian market`);
+    }
+    return normalized;
+  }
   if (!isOfficialBrandArtifactHostUrl(normalized, identity.brand, {
     model: identity.model,
     category: identity.category,
@@ -784,6 +833,7 @@ function receiptPayload(
   const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
   const contract = receiptContract(claimSemanticsVersion);
   const requestedUrl = trustedArtifactUrl(source?.sourceUrl, identity, source?.discoveryProvenance);
+  const transport = officialTransport(source?.transport, source);
   return {
     schemaVersion: contract.schemaVersion,
     ...(contract.claimSemanticsVersion === null ? {} : {
@@ -815,6 +865,7 @@ function receiptPayload(
       objectPath: requiredText(source?.objectPath, 'object path'),
       contentType,
       byteSize: source?.byteSize,
+      ...(transport ? { transport } : {}),
       supersedesContentSha256: normalizedSupersededHashes(source?.supersedesContentSha256),
       derivedArtifact: normalizedDerivedArtifact(source),
       ...(source?.discoveryProvenance ? {
@@ -864,6 +915,7 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
     throw new TypeError('content-addressed object path required');
   }
   if (!Number.isInteger(source?.byteSize) || source.byteSize <= 0) throw new TypeError('positive byte size required');
+  officialTransport(source?.transport, source);
   if (normalizedSupersededHashes(source?.supersedesContentSha256).includes(source.contentSha256)) {
     throw new TypeError('source cannot supersede itself');
   }

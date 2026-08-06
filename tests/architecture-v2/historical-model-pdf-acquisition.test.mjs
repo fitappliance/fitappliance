@@ -2,7 +2,19 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 
-import { buildHistoricalModelPdfAcquisitionQueue } from '../../src/domain/historical-model-pdf-acquisition.mjs';
+import {
+  buildHistoricalModelPdfAcquisitionQueue as buildQueue,
+} from '../../src/domain/historical-model-pdf-acquisition.mjs';
+
+const ACTIVE_RELEASE_SOURCE_BINDING = Object.freeze({
+  releaseCandidateId: 'retail_lifecycle_release_aaaaaaaaaaaaaaaaaaaaaaaa',
+  publicProjectionSha256: 'b'.repeat(64),
+  historicalReferenceSha256: 'c'.repeat(64),
+});
+
+function buildHistoricalModelPdfAcquisitionQueue(input) {
+  return buildQueue({ activeReleaseSourceBinding: ACTIVE_RELEASE_SOURCE_BINDING, ...input });
+}
 
 function classified(referenceId, operationalClass, overrides = {}) {
   return {
@@ -55,6 +67,38 @@ test('acquisition queue accounts for every nonterminal model exactly once', () =
   assert.deepEqual(queue.summary.excluded, {
     COMPLETE_RECEIPT: 1, OFFICIAL_HTML_ONLY: 1, NO_OFFICIAL_SOURCE: 1,
   });
+  assert.deepEqual(queue.activeReleaseSourceBinding, ACTIVE_RELEASE_SOURCE_BINDING);
+});
+
+test('acquisition queue semantic contract requires the active release source binding', () => {
+  const record = classified('discover', 'OFFICIAL_DISCOVERY');
+  assert.throws(() => buildQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference(record.referenceId)] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  }), /active release source binding/i);
+
+  const first = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference(record.referenceId)] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  });
+  const second = buildQueue({
+    activeReleaseSourceBinding: {
+      ...ACTIVE_RELEASE_SOURCE_BINDING,
+      publicProjectionSha256: 'd'.repeat(64),
+    },
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference(record.referenceId)] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  });
+  assert.notEqual(second.semanticQueueSha256, first.semanticQueueSha256);
 });
 
 test('shared source is deduplicated without losing model edges or explicit authority', () => {

@@ -6,7 +6,7 @@
     "checkpointPolicySha256": "8a990ba19339788d57dd8c60168e78bd4296d8098e281ef1f7379c7733bd35ac",
     "manufacturerStrategySha256": "8ff339b3f253ffca5d9f152af2313a1f1505148d28d972ffb1eccbf240ebf7c9",
     "manufacturerSourcePolicySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
-    "contactMatrixSha256": "b60928f14f9349e1665df3429267493a4327437f670261893745c9a6a667aa98"
+    "contactMatrixSha256": "4acd1ecf66a49e3e846b1e5154cb44caa8945ab01c1258c7c36bbfe784d9c4fa"
   },
   "records": [
     {
@@ -48,13 +48,13 @@
       "brand": "ASKO",
       "model": "D5646SSXXL",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:asko",
-        "label": "Brand-level fallback: ASKO",
-        "mapping": "brand_fallback"
+        "key": "asko-appliances-australia",
+        "label": "ASKO Appliances Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -81,13 +81,13 @@
       "brand": "Ilve",
       "model": "IVFSD60",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:ilve",
-        "label": "Brand-level fallback: Ilve",
-        "mapping": "brand_fallback"
+        "key": "ilve-australia",
+        "label": "ILVE Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
@@ -113,8 +113,8 @@
       "brand": "Omega",
       "model": "ODW717XB",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:omega",
@@ -146,13 +146,13 @@
       "brand": "Samsung",
       "model": "DW60H6050FW",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:samsung",
-        "label": "Brand-level fallback: Samsung",
-        "mapping": "brand_fallback"
+        "key": "samsung-electronics-australia",
+        "label": "Samsung Electronics Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
@@ -180,8 +180,8 @@
       "brand": "Whirlpool",
       "model": "ADP5000MT",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:whirlpool",
@@ -278,8 +278,8 @@
       "brand": "Fisher & Paykel",
       "model": "DE5060M1",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "fisher-paykel-australia",
@@ -311,13 +311,13 @@
       "brand": "Beko",
       "model": "DPE7400",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:beko",
-        "label": "Brand-level fallback: Beko",
-        "mapping": "brand_fallback"
+        "key": "beko-australia",
+        "label": "Beko Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -344,13 +344,13 @@
       "brand": "Midea",
       "model": "MDHP07",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:midea",
-        "label": "Brand-level fallback: Midea",
-        "mapping": "brand_fallback"
+        "key": "midea-electronics-australia",
+        "label": "Midea Electronics Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -377,8 +377,8 @@
       "brand": "Fisher & Paykel",
       "model": "DE4560M1",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "fisher-paykel-australia",
@@ -410,8 +410,8 @@
       "brand": "Whirlpool",
       "model": "HSCR80420",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:whirlpool",
@@ -442,13 +442,13 @@
       "brand": "Samsung",
       "model": "DV90N8289AW",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:samsung",
-        "label": "Brand-level fallback: Samsung",
-        "mapping": "brand_fallback"
+        "key": "samsung-electronics-australia",
+        "label": "Samsung Electronics Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
@@ -476,13 +476,13 @@
       "brand": "Samsung",
       "model": "DV80M5010QW",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:samsung",
-        "label": "Brand-level fallback: Samsung",
-        "mapping": "brand_fallback"
+        "key": "samsung-electronics-australia",
+        "label": "Samsung Electronics Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
@@ -510,13 +510,13 @@
       "brand": "Beko",
       "model": "DCY7402GXB2",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:beko",
-        "label": "Brand-level fallback: Beko",
-        "mapping": "brand_fallback"
+        "key": "beko-australia",
+        "label": "Beko Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -543,8 +543,8 @@
       "brand": "Haier",
       "model": "HDY-M40",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "fisher-paykel-australia",
@@ -576,8 +576,8 @@
       "brand": "Fisher & Paykel",
       "model": "DE7060P1",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "fisher-paykel-australia",
@@ -609,8 +609,8 @@
       "brand": "Miele",
       "model": "TWD364",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "miele-australia",
@@ -642,8 +642,8 @@
       "brand": "Omega",
       "model": "OCD7HP",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:omega",
@@ -779,13 +779,13 @@
       "brand": "Beko",
       "model": "BTM345PX",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:beko",
-        "label": "Brand-level fallback: Beko",
-        "mapping": "brand_fallback"
+        "key": "beko-australia",
+        "label": "Beko Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -912,13 +912,13 @@
       "brand": "Ilve",
       "model": "ILREF256I/L",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:ilve",
-        "label": "Brand-level fallback: Ilve",
-        "mapping": "brand_fallback"
+        "key": "ilve-australia",
+        "label": "ILVE Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_ROUTE_ABSENT",
@@ -948,9 +948,9 @@
       "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "downloadcenter.samsung.com",
       "organization": {
-        "key": "brand-fallback:samsung",
-        "label": "Brand-level fallback: Samsung",
-        "mapping": "brand_fallback"
+        "key": "samsung-electronics-australia",
+        "label": "Samsung Electronics Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_ARTIFACT_ABSENT",
@@ -1011,8 +1011,8 @@
       "brand": "Mitsubishi Electric",
       "model": "MR-BF325EK-W-A",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:mitsubishi-electric",
@@ -1077,8 +1077,8 @@
       "brand": "TCL",
       "model": "P421CDN",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:tcl",
@@ -1142,8 +1142,8 @@
       "brand": "Fisher & Paykel",
       "model": "WA8060E1",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "fisher-paykel-australia",
@@ -1176,13 +1176,13 @@
       "brand": "Beko",
       "model": "WMY9046LB2",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:beko",
-        "label": "Brand-level fallback: Beko",
-        "mapping": "brand_fallback"
+        "key": "beko-australia",
+        "label": "Beko Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -1209,13 +1209,13 @@
       "brand": "Midea",
       "model": "MTW70",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:midea",
-        "label": "Brand-level fallback: Midea",
-        "mapping": "brand_fallback"
+        "key": "midea-electronics-australia",
+        "label": "Midea Electronics Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "official_candidate_not_found",
       "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
@@ -1242,8 +1242,8 @@
       "brand": "Haier",
       "model": "HWD8040BW1",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "fisher-paykel-australia",
@@ -1275,8 +1275,8 @@
       "brand": "Omega",
       "model": "OWD735W",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:omega",
@@ -1309,13 +1309,13 @@
       "brand": "ASKO",
       "model": "W4104C.W",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
-        "key": "brand-fallback:asko",
-        "label": "Brand-level fallback: ASKO",
-        "mapping": "brand_fallback"
+        "key": "asko-appliances-australia",
+        "label": "ASKO Appliances Australia",
+        "mapping": "contact_matrix"
       },
       "acquisitionStatus": "identity_unproven",
       "primaryMechanism": "EXACT_MODEL_IDENTITY_UNPROVEN",
@@ -1376,8 +1376,8 @@
       "brand": "Whirlpool",
       "model": "WWEB9602IW",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "brand-fallback:whirlpool",
@@ -1408,8 +1408,8 @@
       "brand": "CHIQ",
       "model": "WDFL8T48W2",
       "representedTargetCount": 1,
-      "lifecycleState": "CURRENT_RETAIL",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
       "sourceHost": "www.appliancesonline.com.au",
       "organization": {
         "key": "chiq-australia",
@@ -1436,12 +1436,239 @@
       "publicationEligible": false
     }
   ],
-  "inventoryId": "pdf_acquisition_failure_inventory_e9c8830a5fd98dda28de51bc",
+  "currentRetailDenominator": {
+    "records": 1,
+    "representedTargets": 1,
+    "byMechanism": {
+      "OFFICIAL_ROUTE_ABSENT": 0,
+      "OFFICIAL_CANDIDATE_ABSENT": 0,
+      "OFFICIAL_ARTIFACT_ABSENT": 0,
+      "OFFICIAL_TRANSPORT_FAILED": 1,
+      "EXACT_MODEL_IDENTITY_UNPROVEN": 0,
+      "SOURCE_CONTENT_ERROR": 0
+    },
+    "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+    "activeHistoricalReferences": 8087,
+    "activeCurrentReferences": 347
+  },
+  "currentCanaries": [
+    {
+      "sampleId": "pdf_baseline_01dace5f644854a73bf18dd4",
+      "category": "fridge",
+      "brand": "Smeg",
+      "model": "FAB32RWH5AU",
+      "representedTargetCount": 1,
+      "lifecycleState": "CURRENT_RETAIL",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "sourceHost": "www.appliancesonline.com.au",
+      "organization": {
+        "key": "smeg-australia",
+        "label": "Smeg Australia",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "OFFICIAL_AUTHORITY_REJECTED",
+          "host": "pi-exchange.smeg.it"
+        },
+        {
+          "code": "HTTP_NOT_FOUND",
+          "host": "sys.smeg.com.au"
+        }
+      ],
+      "publicationEligible": false,
+      "lane": "CURRENT_RETAIL_CANARY"
+    }
+  ],
+  "historicalFixtures": [
+    {
+      "sampleId": "pdf_baseline_0091f6e0fab54efeff6261c7",
+      "category": "dishwasher",
+      "brand": "Robinhood",
+      "model": "RHDW45PS",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "cdn.shopify.com",
+      "organization": {
+        "key": "brand-fallback:robinhood",
+        "label": "Brand-level fallback: Robinhood",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "robinhood-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 1,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 1
+      },
+      "candidateHosts": [
+        "cdn.shopify.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false,
+      "lane": "HISTORICAL_OFFLINE_FIXTURE"
+    },
+    {
+      "sampleId": "pdf_baseline_4ff2baa8fd61b2dd045ec892",
+      "category": "dishwasher",
+      "brand": "Euromaid",
+      "model": "EDW6014X",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "www.euromaid.com",
+      "organization": {
+        "key": "brand-fallback:euromaid",
+        "label": "Brand-level fallback: Euromaid",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+euromaid-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "euromaid-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 4,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 4
+      },
+      "candidateHosts": [
+        "www.euromaid.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false,
+      "lane": "HISTORICAL_OFFLINE_FIXTURE"
+    },
+    {
+      "sampleId": "pdf_baseline_b10098c89b1b7927d6a8cff9",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDWI605S",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+      "sourceHost": "esatto.house",
+      "organization": {
+        "key": "residentia-group",
+        "label": "Residentia Group",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "REDIRECT_PROVENANCE_REJECTED",
+          "host": "esatto.house"
+        }
+      ],
+      "publicationEligible": false,
+      "lane": "HISTORICAL_OFFLINE_FIXTURE"
+    },
+    {
+      "sampleId": "pdf_baseline_c3803a0f3b9196ea12abb89c",
+      "category": "dryer",
+      "brand": "Robinhood",
+      "model": "RHSD7W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+      "sourceHost": "cdn.shopify.com",
+      "organization": {
+        "key": "brand-fallback:robinhood",
+        "label": "Brand-level fallback: Robinhood",
+        "mapping": "brand_fallback"
+      },
+      "acquisitionStatus": "official_candidate_not_found",
+      "primaryMechanism": "OFFICIAL_CANDIDATE_ABSENT",
+      "resolverContract": "architecture-v2-core-official-discovery+robinhood-official-discovery",
+      "resolverIds": [
+        "architecture-v2-core-official-discovery",
+        "robinhood-official-discovery"
+      ],
+      "candidateCounts": {
+        "all": 4,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 4
+      },
+      "candidateHosts": [
+        "cdn.shopify.com"
+      ],
+      "transportFailures": [],
+      "publicationEligible": false,
+      "lane": "HISTORICAL_OFFLINE_FIXTURE"
+    },
+    {
+      "sampleId": "pdf_baseline_0628a4f689af28d321e7bed6",
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF69W",
+      "representedTargetCount": 1,
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+      "sourceHost": "esatto.house",
+      "organization": {
+        "key": "residentia-group",
+        "label": "Residentia Group",
+        "mapping": "contact_matrix"
+      },
+      "acquisitionStatus": "transport_failed",
+      "primaryMechanism": "OFFICIAL_TRANSPORT_FAILED",
+      "resolverContract": "none",
+      "resolverIds": [],
+      "candidateCounts": {
+        "all": 0,
+        "officialDocuments": 0,
+        "officialProductPages": 0,
+        "references": 0
+      },
+      "candidateHosts": [],
+      "transportFailures": [
+        {
+          "code": "REDIRECT_PROVENANCE_REJECTED",
+          "host": "esatto.house"
+        }
+      ],
+      "publicationEligible": false,
+      "lane": "HISTORICAL_OFFLINE_FIXTURE"
+    }
+  ],
+  "inventoryId": "pdf_acquisition_failure_inventory_28bb8e2eaae9d8bc95ee18c6",
   "summary": {
     "totalFailures": 43,
     "representedTargets": 45,
     "publicationEligible": 0,
-    "unmappedOrganizationSamples": 29,
+    "unmappedOrganizationSamples": 15,
     "byMechanism": {
       "OFFICIAL_ROUTE_ABSENT": 7,
       "OFFICIAL_CANDIDATE_ABSENT": 25,
@@ -1481,6 +1708,20 @@
   "groups": {
     "byOrganization": [
       {
+        "key": "asko-appliances-australia",
+        "label": "ASKO Appliances Australia",
+        "mapping": "contact_matrix",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "beko-australia",
+        "label": "Beko Australia",
+        "mapping": "contact_matrix",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
         "key": "chiq-australia",
         "label": "CHiQ Australia",
         "mapping": "contact_matrix",
@@ -1502,6 +1743,20 @@
         "representedTargets": 6
       },
       {
+        "key": "ilve-australia",
+        "label": "ILVE Australia",
+        "mapping": "contact_matrix",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
+        "key": "midea-electronics-australia",
+        "label": "Midea Electronics Australia",
+        "mapping": "contact_matrix",
+        "samples": 2,
+        "representedTargets": 2
+      },
+      {
         "key": "miele-australia",
         "label": "Miele Australia",
         "mapping": "contact_matrix",
@@ -1516,6 +1771,13 @@
         "representedTargets": 3
       },
       {
+        "key": "samsung-electronics-australia",
+        "label": "Samsung Electronics Australia",
+        "mapping": "contact_matrix",
+        "samples": 4,
+        "representedTargets": 4
+      },
+      {
         "key": "smeg-australia",
         "label": "Smeg Australia",
         "mapping": "contact_matrix",
@@ -1523,29 +1785,8 @@
         "representedTargets": 1
       },
       {
-        "key": "brand-fallback:asko",
-        "label": "Brand-level fallback: ASKO",
-        "mapping": "brand_fallback",
-        "samples": 2,
-        "representedTargets": 2
-      },
-      {
-        "key": "brand-fallback:beko",
-        "label": "Brand-level fallback: Beko",
-        "mapping": "brand_fallback",
-        "samples": 4,
-        "representedTargets": 4
-      },
-      {
         "key": "brand-fallback:euromaid",
         "label": "Brand-level fallback: Euromaid",
-        "mapping": "brand_fallback",
-        "samples": 2,
-        "representedTargets": 2
-      },
-      {
-        "key": "brand-fallback:ilve",
-        "label": "Brand-level fallback: Ilve",
         "mapping": "brand_fallback",
         "samples": 2,
         "representedTargets": 2
@@ -1556,13 +1797,6 @@
         "mapping": "brand_fallback",
         "samples": 1,
         "representedTargets": 1
-      },
-      {
-        "key": "brand-fallback:midea",
-        "label": "Brand-level fallback: Midea",
-        "mapping": "brand_fallback",
-        "samples": 2,
-        "representedTargets": 2
       },
       {
         "key": "brand-fallback:mitsubishi-electric",
@@ -1583,13 +1817,6 @@
         "label": "Brand-level fallback: Robinhood",
         "mapping": "brand_fallback",
         "samples": 3,
-        "representedTargets": 4
-      },
-      {
-        "key": "brand-fallback:samsung",
-        "label": "Brand-level fallback: Samsung",
-        "mapping": "brand_fallback",
-        "samples": 4,
         "representedTargets": 4
       },
       {

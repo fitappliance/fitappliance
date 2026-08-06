@@ -184,6 +184,48 @@ test('official source policy accepts only explicitly qualified Australian brand 
   ), false);
 });
 
+test('Smeg global host is Australian only under the AU path while AU hosts remain supported', () => {
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://www.smeg.com/au/products/FAB32RWH5AU', 'Smeg',
+  ), true);
+  for (const url of [
+    'https://www.smeg.com/it/products/FAB32RWH5AU',
+    'https://www.smeg.com/products/FAB32RWH5AU',
+    'https://pi-exchange.smeg.it/FAB32RWH5AU',
+  ]) {
+    assert.equal(isOfficialBrandMarketUrl(url, 'Smeg'), false);
+  }
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://www.smeg.com.au/products/FAB32RWH5AU', 'Smeg',
+  ), true);
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://sys.smeg.com.au/Product/Techspecs/FAB32RWH5AU.pdf', 'Smeg',
+  ), true);
+});
+
+test('Smeg AU evidence cannot finalize or redirect through a non-AU smeg.com path', () => {
+  const identity = { brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge' };
+  const auUrl = 'https://www.smeg.com/au/products/FAB32RWH5AU';
+  const italianUrl = 'https://www.smeg.com/it/products/FAB32RWH5AU';
+  const input = source({
+    sourceUrl: auUrl,
+    finalUrl: auUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'canonical_url', value: auUrl },
+      { type: 'product_model', value: identity.model },
+    ],
+  });
+
+  assert.equal(isOfficialBrandArtifactHostUrl(italianUrl, identity.brand), false);
+  assert.throws(() => validateTrustedSourceMetadata({
+    ...input, finalUrl: italianUrl,
+  }, identity, { asOf: '2026-07-11T15:00:00.000Z' }), /Australian market|approved official artifact/i);
+  assert.throws(() => validateTrustedSourceMetadata({
+    ...input, redirectChain: [italianUrl],
+  }, identity, { asOf: '2026-07-11T15:00:00.000Z' }), /Australian market|approved official artifact|redirect/i);
+});
+
 test('receipt creation cannot trust a caller-forged product-page relationship signal', () => {
   const identity = { brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' };
   const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2Ffixture&operationContext=DELIVERY&viewId=05HJw00000QE99JMAT';
@@ -725,6 +767,7 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   const input = source();
   input.verificationReceipt = createVerificationReceipt(input, caseIdentity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
+    manufacturerPolicyVersion: '2026-07-21.1',
   });
 
   assert.deepEqual(input.verificationReceipt, {
@@ -745,6 +788,58 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.throws(() => verifyVerificationReceipt(input, {
     ...caseIdentity, model: 'WHE6874SA',
   }, { asOf: '2026-07-11T15:00:00.000Z' }), /receipt digest|identity/i);
+});
+
+test('fresh transport is receipt-bound while legacy receipts remain byte-equivalent', () => {
+  const legacy = source();
+  legacy.verificationReceipt = createVerificationReceipt(legacy, caseIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    manufacturerPolicyVersion: '2026-07-21.1',
+  });
+  assert.deepEqual(legacy.verificationReceipt, {
+    schemaVersion: 2,
+    policyVersion: '2026-07-12.2',
+    manufacturerPolicyVersion: '2026-07-21.1',
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    bindingSha256: '45ea3788e765d351169ac3a737ce0d8e626ab2754b56f0bfb8dae4713b08a8b7',
+  });
+  assert.equal(verifyVerificationReceipt(legacy, caseIdentity, {
+    asOf: legacy.verificationReceipt.verifiedAt,
+  }), true);
+
+  for (const transport of ['fetch', 'curl', 'scrapling']) {
+    const input = source({ transport });
+    input.verificationReceipt = createVerificationReceipt(input, caseIdentity, {
+      verifiedAt: '2026-07-11T14:35:00.000Z',
+    });
+    assert.equal(verifyVerificationReceipt(input, caseIdentity, {
+      asOf: input.verificationReceipt.verifiedAt,
+    }), true);
+    assert.throws(() => verifyVerificationReceipt({
+      ...input, transport: transport === 'fetch' ? 'curl' : 'fetch',
+    }, caseIdentity, { asOf: input.verificationReceipt.verifiedAt }), /receipt digest/i);
+    const { transport: _transport, ...withoutTransport } = input;
+    assert.throws(() => verifyVerificationReceipt(withoutTransport, caseIdentity, {
+      asOf: input.verificationReceipt.verifiedAt,
+    }), /receipt digest/i);
+  }
+  assert.throws(() => createVerificationReceipt(source({ transport: 'browser' }), caseIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /transport/i);
+  for (const input of [
+    source({ transport: 'content_addressed_discovery_object' }),
+    pdfSource({ transport: 'content_addressed_discovery_object' }),
+    source({
+      transport: 'content_addressed_discovery_object',
+      contentType: 'application/json',
+      objectPath: `evidence/web/sha256/aa/aa/${HASH}.json`,
+    }),
+    source({ transport: 'verified_legacy_content_addressed_object' }),
+  ]) {
+    assert.throws(() => createVerificationReceipt(input, caseIdentity, {
+      verifiedAt: '2026-07-11T14:35:00.000Z',
+    }), /transport/i);
+  }
 });
 
 test('receipt schema v3 binds claim semantics v2 without invalidating schema v2 replay', () => {

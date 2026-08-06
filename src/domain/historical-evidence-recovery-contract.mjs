@@ -305,7 +305,7 @@ function validateReconciliationContext(value) {
     value,
     'reconciliation context',
     ['activeReceiptSources', 'registryHints', 'legacyHints'],
-    ['priorAttemptSuppressions'],
+    ['priorAttemptSuppressions', 'evidenceEpoch'],
   );
   if (!Array.isArray(value.activeReceiptSources) || !Array.isArray(value.registryHints) || !Array.isArray(value.legacyHints)) {
     throw new TypeError('reconciliation context arrays required');
@@ -326,6 +326,19 @@ function validateReconciliationContext(value) {
     text(prior.status, 'prior attempt status');
     text(prior.failureCode, 'prior attempt failure code');
     sha256(prior.policySha256, 'prior attempt policy SHA');
+  }
+  if (value.evidenceEpoch !== undefined) {
+    exactKeys(value.evidenceEpoch, 'evidence epoch binding', [
+      'epochId', 'descriptorSha256',
+    ]);
+    const descriptorSha256 = sha256(
+      value.evidenceEpoch.descriptorSha256,
+      'evidence epoch descriptor SHA',
+    );
+    const epochId = text(value.evidenceEpoch.epochId, 'evidence epoch ID');
+    if (epochId !== `evidence_epoch_${descriptorSha256.slice(0, 24)}`) {
+      throw new TypeError('evidence epoch ID must match its descriptor SHA-256');
+    }
   }
   for (const hint of value.registryHints) {
     exactKeys(hint, 'registry hint', ['sourceId', 'snapshotSha256', 'dimensionsMm']);

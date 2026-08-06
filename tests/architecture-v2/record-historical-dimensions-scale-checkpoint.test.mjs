@@ -35,3 +35,16 @@ test('discovery checkpoint rejects an audit path while dimensions permits one', 
   assert.equal(parsed.stage, 'DIMENSIONS');
   assert.equal(parsed.audit, '/tmp/audit.json');
 });
+
+test('discovery checkpoint accepts an isolated candidate manifest while dimensions rejects it', () => {
+  const parsed = parseHistoricalDimensionsScaleCheckpointArgs([
+    '--stage', 'discovery', '--run-id', 'a', '--storage-root', '/tmp/storage',
+    '--candidate-manifest', '/tmp/shadow/candidate-manifest.json',
+  ]);
+  assert.equal(parsed.candidateManifest, '/tmp/shadow/candidate-manifest.json');
+
+  assert.throws(() => parseHistoricalDimensionsScaleCheckpointArgs([
+    '--stage', 'dimensions', '--run-id', 'a', '--storage-root', '/tmp/storage',
+    '--candidate-manifest', '/tmp/shadow/candidate-manifest.json',
+  ]), /candidate-manifest is only valid for discovery/i);
+});

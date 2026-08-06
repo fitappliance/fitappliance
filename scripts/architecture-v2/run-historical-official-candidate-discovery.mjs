@@ -15,6 +15,7 @@ import {
   verifyEvidenceStorageRoot,
 } from '../../src/domain/evidence-recovery-state-store.mjs';
 import { buildHistoricalOfficialCandidateManifest } from '../../src/domain/historical-official-candidate-manifest.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { recoveryCandidateResolversForTarget } from './run-historical-evidence-recovery.mjs';
 
 const execFile = promisify(execFileCallback);
@@ -316,6 +317,23 @@ function selectionFor(options, selected, boundedManifest) {
   };
 }
 
+function validateInjectedBoundedManifest(value, requestedManifestId) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('bounded manifest snapshot required');
+  }
+  const { manifestId, semanticManifestSha256, ...semantic } = value;
+  const computed = canonicalJsonSha256(semantic);
+  if (manifestId !== requestedManifestId
+    || semanticManifestSha256 !== computed
+    || manifestId !== `historical_batch_${computed.slice(0, 24)}`
+    || value.executionLane !== 'BOUNDED_DISCOVERY'
+    || !Array.isArray(value.targetBindings)
+    || value.targetBindings.length < 1) {
+    throw new Error('bounded manifest snapshot binding drift');
+  }
+  return value;
+}
+
 async function readOptionalObject(objectStore, path) {
   try {
     return await objectStore.readObject(path);
@@ -423,27 +441,35 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     ?? resolveArchitectureV2Path(root, 'historicalModelPdfAcquisitionQueue'));
   const output = resolve(options.output
     ?? resolveArchitectureV2Path(root, 'historicalOfficialCandidateManifest'));
-  const acquisitionQueue = await readJson(acquisitionPath);
-  const controlPlane = dependencies.controlPlane ?? {
-    boundedBatches: await readJson(resolve(options.manifestInput
-      ?? resolveArchitectureV2Path(root, 'historicalEvidenceNextBatches'))),
-    executableQueue: await readJson(resolveArchitectureV2Path(
-      root,
-      'historicalExecutableEvidenceRecoveryQueue',
-    )),
-    targetState: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceTargetState')),
-    familyCanaries: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceFamilyCanaries')),
-    scaleControl: await readJson(resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl')),
-  };
-  const boundedManifest = resolveHistoricalEvidenceBoundedManifest({
-    batches: controlPlane.boundedBatches,
-    manifestId: options.manifestId,
-    expectedExecutionLane: 'BOUNDED_DISCOVERY',
-    executableQueue: controlPlane.executableQueue,
-    targetState: controlPlane.targetState,
-    familyCanaries: controlPlane.familyCanaries,
-    scaleControl: controlPlane.scaleControl ?? null,
-  });
+  const acquisitionQueue = dependencies.acquisitionQueue ?? await readJson(acquisitionPath);
+  let boundedManifest;
+  if (dependencies.boundedManifest) {
+    boundedManifest = validateInjectedBoundedManifest(
+      dependencies.boundedManifest,
+      options.manifestId,
+    );
+  } else {
+    const controlPlane = dependencies.controlPlane ?? {
+      boundedBatches: await readJson(resolve(options.manifestInput
+        ?? resolveArchitectureV2Path(root, 'historicalEvidenceNextBatches'))),
+      executableQueue: await readJson(resolveArchitectureV2Path(
+        root,
+        'historicalExecutableEvidenceRecoveryQueue',
+      )),
+      targetState: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceTargetState')),
+      familyCanaries: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceFamilyCanaries')),
+      scaleControl: await readJson(resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl')),
+    };
+    boundedManifest = resolveHistoricalEvidenceBoundedManifest({
+      batches: controlPlane.boundedBatches,
+      manifestId: options.manifestId,
+      expectedExecutionLane: 'BOUNDED_DISCOVERY',
+      executableQueue: controlPlane.executableQueue,
+      targetState: controlPlane.targetState,
+      familyCanaries: controlPlane.familyCanaries,
+      scaleControl: controlPlane.scaleControl ?? null,
+    });
+  }
   if (boundedManifest.targetBindings.length > MAXIMUM_TARGETS) {
     throw new Error(`bounded manifest exceeds discovery maximum ${MAXIMUM_TARGETS}`);
   }
@@ -452,9 +478,8 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     throw new Error('acquisition queue hash drift against bounded manifest');
   }
   const priorManifest = await readOptionalJson(output, null);
-  if (priorManifest?.runBindings?.some((binding) => binding.runId === options.runId)) {
-    throw new Error(`discovery run ID already exists: ${options.runId}`);
-  }
+  const priorRunBinding = priorManifest?.runBindings
+    ?.find((binding) => binding.runId === options.runId) ?? null;
   const selected = selectHistoricalOfficialCandidateTargets(acquisitionQueue, {
     referenceIds: boundedManifest.targetBindings.map((binding) => binding.referenceId),
     brand: null,
@@ -476,6 +501,9 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     selection,
     boundedManifest,
   });
+  if (priorRunBinding && !run) {
+    throw new Error(`discovery run pointer missing for prior manifest binding: ${options.runId}`);
+  }
   const resumed = Boolean(run);
   if (!run) {
     const resolverFactory = dependencies.resolversForRecord ?? resolversForRecord;

@@ -83,14 +83,7 @@ export async function publishHistoricalReference({
 }
 
 export async function runCli() {
-  const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-  const { manifest } = await publishHistoricalReference({ repoRoot });
-  process.stdout.write(`${JSON.stringify({
-    generatedAt: manifest.generatedAt,
-    files: manifest.files,
-    meta: manifest.meta,
-  }, null, 2)}\n`);
-  return manifest;
+  throw new Error('standalone historical publication prohibited; use publish-active-retail-release.mjs');
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {

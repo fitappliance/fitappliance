@@ -4,6 +4,7 @@ import { readFile, readdir, rename, mkdir, writeFile } from 'node:fs/promises';
 import { dirname, extname, relative, resolve, sep } from 'node:path';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 import { buildHistoricalPdfImageRepairQueue } from '../../src/domain/historical-pdf-image-repair.mjs';
 import { findMineruImageOnlyDimensionPages } from '../../src/domain/mineru-document.mjs';
 import { currentMineruEvidenceProfile } from '../../src/domain/evidence-source-verifier.mjs';
@@ -137,11 +138,12 @@ async function main(args) {
   const storageRoot = resolve(storageRootValue);
   const outputPath = resolve(option(args, '--output')
     ?? resolveArchitectureV2Path(root, 'historicalPdfImageRepairQueue'));
-  const [classification, historicalReference, baseline] = await Promise.all([
+  const [classification, activeRecovery, baseline] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalModelEvidenceClassification')),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson(resolveArchitectureV2Path(root, 'historicalModelPdfBaseline')),
   ]);
+  const historicalReference = activeRecovery.reference;
   const pdfDocuments = baseline.semantic?.pdfDocuments ?? [];
   const primaryValues = await mapLimit(pdfDocuments, 8, (document) => scanPrimary(storageRoot, document));
   const primaryScans = primaryValues.filter(Boolean);

@@ -4,6 +4,7 @@ import { mkdir, readFile, readdir, rename, writeFile } from 'node:fs/promises';
 import { basename, dirname, relative, resolve, sep } from 'node:path';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 import { buildLegacyPdfLibraryAudit } from '../../src/domain/legacy-pdf-library-audit.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
@@ -129,14 +130,15 @@ async function atomicWrite(path, value) {
 async function main(args) {
   const outputPath = resolve(option(args, '--output') ?? resolveArchitectureV2Path(root, 'legacyPdfLibraryAudit'));
   const generatedAt = option(args, '--generated-at') ?? new Date().toISOString();
-  const [baseline, historicalReference, sourceDocumentArtifact, knowledge, acceptanceBundle, legacySummaries] = await Promise.all([
+  const [baseline, activeRecovery, sourceDocumentArtifact, knowledge, acceptanceBundle, legacySummaries] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalModelPdfBaseline')),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson(resolveArchitectureV2Path(root, 'sourceDocuments')),
     readJson(resolve(root, 'data/architecture-v2/generated/dimension-expression-observations.json')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle')),
     readLegacySummaries(resolve(root, 'data/pdf-evidence-raw')),
   ]);
+  const historicalReference = activeRecovery.reference;
   const audit = buildLegacyPdfLibraryAudit({
     generatedAt,
     historicalRecords: historicalReference.records,

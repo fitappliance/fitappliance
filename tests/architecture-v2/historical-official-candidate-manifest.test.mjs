@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, unlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -194,7 +194,7 @@ function fixture() {
   };
 }
 
-function discoveryControlPlane(input) {
+function discoveryControlPlane(input, { familyReferenceIds = [] } = {}) {
   const records = input.acquisitionQueue.records.filter((record) => record.resolverIds.length > 0);
   const targets = records.map((record) => ({
     targetId: `target-${record.referenceId}`,
@@ -255,6 +255,72 @@ function discoveryControlPlane(input) {
       reopeningConditions: [],
     })),
   };
+  const familyTargetIds = familyReferenceIds.map((referenceId) => {
+    const value = targets.find((row) => row.referenceId === referenceId);
+    if (!value) throw new Error(`family fixture target missing: ${referenceId}`);
+    return value.targetId;
+  });
+  const families = [];
+  if (familyTargetIds.length) {
+    const contractValue = {
+      schemaVersion: 1,
+      family: {
+        familyId: 'family-alpha-fridge',
+        category: 'fridge',
+        brand: 'Alpha',
+        groupType: 'parser_family',
+        documentIds: ['doc-family-alpha-fridge'],
+        pdfSha256s: [SHA('8')],
+        grammarProfileIds: ['grammar-alpha-fridge'],
+      },
+      graphSourceUrls: ['https://manuals.alpha.example/family-alpha-fridge.pdf'],
+      candidateSourceUrls: [],
+      resolverContracts: [],
+      policySha256: SHA('d'),
+      parserContractSha256: SHA('e'),
+      processorEpochs: {},
+    };
+    families.push({
+      familyId: 'family-alpha-fridge',
+      category: 'fridge',
+      brand: 'Alpha',
+      groupType: 'parser_family',
+      groupName: 'family-alpha-fridge',
+      targetIds: familyTargetIds,
+      representativeTargetId: familyTargetIds[0],
+      provenRepresentativeTargetIds: [familyTargetIds[0]],
+      contract: { ...contractValue, sha256: canonicalJsonSha256(contractValue) },
+      state: 'PASSED',
+      stateReason: 'FIXTURE_PASSED',
+    });
+  }
+  const targetDecisions = targets.map((row) => {
+    const familyIndex = familyTargetIds.indexOf(row.targetId);
+    if (familyIndex < 0) {
+      return {
+        targetId: row.targetId,
+        referenceId: row.referenceId,
+        executionLane: row.executionLane,
+        familyIds: [],
+        assignment: 'UNSCOPED_SINGLETON',
+        runnerAllowed: true,
+        fanoutEligible: false,
+        reason: 'NO_CANONICAL_DOCUMENT_FAMILY',
+      };
+    }
+    return {
+      targetId: row.targetId,
+      referenceId: row.referenceId,
+      executionLane: row.executionLane,
+      familyIds: ['family-alpha-fridge'],
+      assignment: familyIndex === 0 ? 'FAMILY_CANARY' : 'FAMILY_MEMBER',
+      familyState: 'PASSED',
+      representativeTargetId: familyTargetIds[0],
+      runnerAllowed: true,
+      fanoutEligible: true,
+      reason: 'FAMILY_CANARY_PASSED',
+    };
+  });
   const canarySemantic = {
     schemaVersion: 2,
     generatedAt: input.acquisitionQueue.generatedAt,
@@ -263,17 +329,8 @@ function discoveryControlPlane(input) {
     policySha256: SHA('d'),
     parserContractSha256: SHA('e'),
     processorEpochs: {},
-    families: [],
-    targetDecisions: targets.map((row) => ({
-      targetId: row.targetId,
-      referenceId: row.referenceId,
-      executionLane: row.executionLane,
-      familyIds: [],
-      assignment: 'UNSCOPED_SINGLETON',
-      runnerAllowed: true,
-      fanoutEligible: false,
-      reason: 'NO_CANONICAL_DOCUMENT_FAMILY',
-    })),
+    families,
+    targetDecisions,
   };
   const familyCanaries = {
     ...canarySemantic,
@@ -843,6 +900,80 @@ test('online discovery resumes an externally indexed run after manifest persiste
     assert.equal(resumed.run.runId, 'alpha-fridge-resume-canary');
     const persisted = JSON.parse(await readFile(outputPath, 'utf8'));
     assert.equal(persisted.runBindings[0].runId, 'alpha-fridge-resume-canary');
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test('two-target discovery restart validates its run pointer before accepting exact prior-manifest replay', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'fitappliance-candidate-two-target-restart-'));
+  const storageRoot = join(directory, 'storage');
+  const inputPath = join(directory, 'acquisition.json');
+  const outputPath = join(directory, 'manifest.json');
+  const input = fixture();
+  input.acquisitionQueue.records.find((row) => row.referenceId === 'retry-9').resolverIds = [];
+  const controlPlane = discoveryControlPlane(input, {
+    familyReferenceIds: ['abc-123', 'no-100'],
+  });
+  const boundedManifest = controlPlane.boundedBatches.manifests.find(
+    (row) => row.targetBindings.length === 2,
+  );
+  assert.ok(boundedManifest, 'fixture must materialize an actual two-target manifest');
+  await writeFile(inputPath, `${JSON.stringify(input.acquisitionQueue)}\n`);
+  const runId = 'alpha-two-target-restart';
+  const argv = [
+    '--manifest-id', boundedManifest.manifestId,
+    '--run-id', runId,
+    '--storage-root', storageRoot,
+    '--input', inputPath,
+    '--output', outputPath,
+  ];
+  const times = [new Date('2026-07-19T03:30:00.000Z'), new Date('2026-07-19T03:31:00.000Z')];
+  let resolverCalls = 0;
+  const dependencies = {
+    controlPlane,
+    verifyStorageRoot: async () => ({
+      root: storageRoot,
+      markerSha256: SHA('e'),
+      volumeUuid: 'UNIT-TEST',
+    }),
+    now: () => {
+      const value = times.shift();
+      if (!value) throw new Error('network discovery unexpectedly restarted');
+      return value;
+    },
+    resolversForRecord: () => [{
+      resolverId: 'alpha-official',
+      version: '1',
+      scope: 'exact_model_documents',
+      required: true,
+      resolve: async () => {
+        resolverCalls += 1;
+        return resolverResult();
+      },
+    }],
+    resolverContractsByReference: input.resolverContractsByReference,
+    officialCandidateValidator: () => true,
+    writeOutput: () => {},
+  };
+  try {
+    const first = await runHistoricalOfficialCandidateDiscovery(argv, dependencies);
+    assert.equal(first.resumed, false);
+    assert.equal(first.run.targets.length, 2);
+    assert.equal(resolverCalls, 2);
+
+    const replay = await runHistoricalOfficialCandidateDiscovery(argv, dependencies);
+    assert.equal(replay.resumed, true);
+    assert.equal(replay.manifest.semanticManifestSha256, first.manifest.semanticManifestSha256);
+    assert.equal(resolverCalls, 2);
+    assert.equal(replay.manifest.runBindings.filter((row) => row.runId === runId).length, 1);
+
+    await unlink(join(storageRoot, 'evidence', 'discovery', 'runs', `${runId}.json`));
+    await assert.rejects(
+      () => runHistoricalOfficialCandidateDiscovery(argv, dependencies),
+      /run pointer.*missing|indexed.*pointer/i,
+    );
+    assert.equal(resolverCalls, 2);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

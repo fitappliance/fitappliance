@@ -36,6 +36,7 @@ export function parseHistoricalDimensionsScaleCheckpointArgs(args) {
     runId: null,
     storageRoot: null,
     audit: null,
+    candidateManifest: null,
     ledger: resolveArchitectureV2Path(root, 'historicalDimensionsScaleLedger'),
     control: resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl'),
     generatedAt: null,
@@ -45,6 +46,7 @@ export function parseHistoricalDimensionsScaleCheckpointArgs(args) {
     ['--run-id', 'runId'],
     ['--storage-root', 'storageRoot'],
     ['--audit', 'audit'],
+    ['--candidate-manifest', 'candidateManifest'],
     ['--ledger', 'ledger'],
     ['--control', 'control'],
     ['--generated-at', 'generatedAt'],
@@ -76,8 +78,12 @@ export function parseHistoricalDimensionsScaleCheckpointArgs(args) {
   options.ledger = resolve(options.ledger);
   options.control = resolve(options.control);
   if (options.audit) options.audit = resolve(options.audit);
+  if (options.candidateManifest) options.candidateManifest = resolve(options.candidateManifest);
   if (options.stage === 'DISCOVERY' && options.audit) {
     throw new TypeError('--audit is only valid for dimensions checkpoints');
+  }
+  if (options.stage === 'DIMENSIONS' && options.candidateManifest) {
+    throw new TypeError('--candidate-manifest is only valid for discovery checkpoints');
   }
   return options;
 }
@@ -206,7 +212,8 @@ export async function runCli(args = process.argv.slice(2)) {
       readJson(options.ledger),
       loadCurrentInput(options.generatedAt),
       options.stage === 'DISCOVERY'
-        ? readJson(resolveArchitectureV2Path(root, 'historicalOfficialCandidateManifest'))
+        ? readJson(options.candidateManifest
+          ?? resolveArchitectureV2Path(root, 'historicalOfficialCandidateManifest'))
         : Promise.resolve(null),
     ]);
     const advanced = recordHistoricalDimensionsScaleCheckpoint({

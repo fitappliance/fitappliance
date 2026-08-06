@@ -166,6 +166,33 @@ test('inventory groups by organization, host, category and resolver contract and
   ]);
 });
 
+test('inventory separates five archived fixtures and caps diverse current canaries at seven', () => {
+  const archivedModels = ['RHDW45PS', 'EDW6014X', 'EDWI605S', 'RHSD7W', 'EBF69W'];
+  const archived = archivedModels.map((model, index) => sample({
+    sampleId: `archived-${index}`,
+    model,
+    lifecycleState: 'CATALOG_ARCHIVED',
+    priorityClass: 'P3_HISTORICAL_CONFIRMATION',
+  }));
+  const current = Array.from({ length: 9 }, (_, index) => sample({
+    sampleId: `current-${index}`,
+    brand: `Brand ${index}`,
+    model: `CURRENT-${index}`,
+  }));
+  const rows = [...archived, ...current];
+  const attempts = rows.map((row) => attempt(row.sampleId, 'official_candidate_not_found', {
+    resolverOutcomes: [outcome(`${row.brand.toLowerCase().replaceAll(' ', '-')}-official-discovery`)],
+  }));
+
+  const inventory = build(rows, attempts);
+
+  assert.deepEqual(inventory.historicalFixtures.map((row) => row.model), archivedModels);
+  assert.equal(inventory.currentCanaries.length, 7);
+  assert.ok(inventory.currentCanaries.every((row) => row.lifecycleState === 'CURRENT_RETAIL'));
+  assert.equal(new Set(inventory.currentCanaries.map((row) => row.brand)).size, 7);
+  assert.equal(inventory.currentRetailDenominator.records, 9);
+});
+
 test('inventory fails closed on missing, duplicate or unsupported attempt state', () => {
   const row = sample();
   assert.throws(() => build([row], []), /one attempt per failure sample/i);

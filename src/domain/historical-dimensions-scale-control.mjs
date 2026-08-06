@@ -656,6 +656,8 @@ export function selectHistoricalDimensionsScaleDecision({
   nextBatches,
   counters,
   haltedCohorts = [],
+  checkpointedManifestIds = [],
+  checkpointedCohortKeys = [],
   operationalState = {},
 }) {
   const allowedOperational = {
@@ -685,11 +687,21 @@ export function selectHistoricalDimensionsScaleDecision({
   const stream = (id) => requiredArray(nextBatches.workstreams, 'bounded workstreams')
     .find((row) => row.workstreamId === id);
   const blocked = new Set(haltedCohorts.map((row) => requiredText(row.cohortKey, 'halted cohort key')));
+  const checkpointed = new Set(requiredArray(
+    checkpointedManifestIds,
+    'checkpointed manifest IDs',
+  ).map((id) => requiredText(id, 'checkpointed manifest ID')));
+  const checkpointedCohorts = new Set(requiredArray(
+    checkpointedCohortKeys,
+    'checkpointed cohort keys',
+  ).map((key) => requiredText(key, 'checkpointed cohort key')));
   const select = (workstreamId, priorityClass) => {
     const row = requiredObject(stream(workstreamId), `${workstreamId} workstream`);
     const candidates = requiredArray(row.manifestIds, `${workstreamId} manifest IDs`)
       .map((id) => manifests.get(id))
-      .filter((manifest) => manifest?.constraints?.priorityClass === priorityClass);
+      .filter((manifest) => manifest?.constraints?.priorityClass === priorityClass)
+      .filter((manifest) => !checkpointed.has(manifest.manifestId))
+      .filter((manifest) => !checkpointedCohorts.has(manifest.cohortKey));
     return { row, manifest: candidates.find((manifest) => !blocked.has(manifest.cohortKey)) ?? null };
   };
   const p0Eligible = requiredInteger(counters.p0EligibleTargets, 'P0 eligible targets');
@@ -858,7 +870,7 @@ function validateRebaseline(value, previousCounters, previousCompletedAt) {
   if (previousCompletedAt && Date.parse(activatedAt) < Date.parse(previousCompletedAt)) {
     throw new Error(`${rebaselineId} activation time is out of order`);
   }
-  if (rebaseline.reason !== 'RELEASE_DAG_RECONCILIATION') {
+  if (!['RELEASE_DAG_RECONCILIATION', 'CAPABILITY_EPOCH_CHANGE'].includes(rebaseline.reason)) {
     throw new TypeError(`${rebaselineId} rebaseline reason invalid`);
   }
   requiredInteger(rebaseline.afterEntryCount, `${rebaselineId} entry offset`);
@@ -905,7 +917,18 @@ function validateRebaseline(value, previousCounters, previousCompletedAt) {
     }
     if (delta !== 0) changedQueueCounters += 1;
   }
-  if (changedQueueCounters === 0) throw new Error(`${rebaselineId} rebaseline has no queue counter change`);
+  if (rebaseline.reason === 'RELEASE_DAG_RECONCILIATION') {
+    if (changedQueueCounters === 0) {
+      throw new Error(`${rebaselineId} rebaseline has no queue counter change`);
+    }
+  } else {
+    if (!canonicalEqual(before, after)) {
+      throw new Error(`${rebaselineId} capability rebaseline counters changed`);
+    }
+    if (!canonicalEqual(expectedChangedBindings, ['epochsSha256'])) {
+      throw new Error(`${rebaselineId} capability rebaseline artifact bindings invalid`);
+    }
+  }
   return { rebaseline, activatedAt, after };
 }
 
@@ -1079,6 +1102,13 @@ export function buildHistoricalDimensionsScaleControl(input) {
     policy: ledger.policy,
     currentEpochs: epochs,
   });
+  let capabilityWindowStart = 0;
+  for (const rebaseline of ledger.rebaselines) {
+    if (rebaseline.reason === 'CAPABILITY_EPOCH_CHANGE') {
+      capabilityWindowStart = rebaseline.afterEntryCount;
+    }
+  }
+  const capabilityWindowCheckpoints = ledger.checkpoints.slice(capabilityWindowStart);
   const operationalState = {
     safety: input.operationalState?.safety ?? 'PASSED',
     resourceBudget: input.operationalState?.resourceBudget ?? 'AVAILABLE',
@@ -1119,6 +1149,10 @@ export function buildHistoricalDimensionsScaleControl(input) {
       nextBatches: input.nextBatches,
       counters,
       haltedCohorts: circuits.haltedCohorts,
+      checkpointedManifestIds: capabilityWindowCheckpoints
+        .map((checkpoint) => checkpoint.manifestId),
+      checkpointedCohortKeys: capabilityWindowCheckpoints
+        .map((checkpoint) => checkpoint.cohortKey),
       operationalState,
     }),
   };
@@ -1403,10 +1437,17 @@ export function recordHistoricalDimensionsScaleRebaseline({
     priorControl.counters,
     'scale rebaseline prior control counters',
   ));
+  if (!['RELEASE_DAG_RECONCILIATION', 'CAPABILITY_EPOCH_CHANGE'].includes(reason)) {
+    throw new TypeError('scale rebaseline reason invalid');
+  }
+  const capabilityEpochChange = reason === 'CAPABILITY_EPOCH_CHANGE';
   const shared = requiredObject(currentInput, 'current scale-control input');
   const epochs = normalizedEpochRows(shared.epochs);
   const nextCounters = canonicalHistoricalDimensionsScaleCounters(shared);
   const previousCounters = structuredClone(priorControl.counters);
+  if (capabilityEpochChange && !canonicalEqual(nextCounters, previousCounters)) {
+    throw new Error('capability rebaseline counters must remain unchanged');
+  }
   for (const field of MONOTONIC_COUNTERS) {
     if (nextCounters[field] !== previousCounters[field]) {
       throw new Error(`coverage counters cannot change during release DAG rebaseline: ${field}`);
@@ -1419,20 +1460,21 @@ export function recordHistoricalDimensionsScaleRebaseline({
   const nextArtifactBindings = scaleArtifactBindings(shared, epochs);
   const changedArtifactBindings = SCALE_ARTIFACT_BINDING_FIELDS
     .filter((field) => priorArtifactBindings[field] !== nextArtifactBindings[field]);
-  if (!changedArtifactBindings.length) {
+  if (capabilityEpochChange) {
+    if (!canonicalEqual(changedArtifactBindings, ['epochsSha256'])) {
+      throw new Error('capability rebaseline requires only an epochs artifact binding change');
+    }
+  } else if (!changedArtifactBindings.length) {
     throw new Error('release DAG rebaseline requires a changed bound artifact');
   }
   const queueCounterDeltas = Object.fromEntries(QUEUE_COUNTERS.map((field) => [
     field,
     nextCounters[field] - previousCounters[field],
   ]));
-  if (Object.values(queueCounterDeltas).every((delta) => delta === 0)) {
+  if (!capabilityEpochChange && Object.values(queueCounterDeltas).every((delta) => delta === 0)) {
     throw new Error('release DAG rebaseline requires a queue counter change');
   }
   const activation = requiredTimestamp(activatedAt, 'scale rebaseline activation time');
-  if (reason !== 'RELEASE_DAG_RECONCILIATION') {
-    throw new TypeError('scale rebaseline reason invalid');
-  }
   const identitySha256 = canonicalJsonSha256({
     activatedAt: activation,
     afterEntryCount: ledger.entries.length,

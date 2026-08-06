@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildHistoricalDocumentFamilyGraph } from '../../src/domain/historical-document-family-graph.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -29,8 +30,8 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli(args = process.argv.slice(2)) {
-  const [historicalReference, dimensionKnowledge, legacyPdfAudit, classification] = await Promise.all([
-    readJson('historicalApplianceReference'),
+  const [activeRecovery, dimensionKnowledge, legacyPdfAudit, classification] = await Promise.all([
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson('dimensionExpressionObservations'),
     readJson('legacyPdfLibraryAudit'),
     readJson('historicalModelEvidenceClassification'),
@@ -38,7 +39,7 @@ export async function runCli(args = process.argv.slice(2)) {
   const generatedAt = option(args, '--generated-at') ?? dimensionKnowledge.generatedAt;
   const graph = buildHistoricalDocumentFamilyGraph({
     generatedAt,
-    historicalReference,
+    historicalReference: activeRecovery.reference,
     dimensionKnowledge,
     legacyPdfAudit,
     classification,

@@ -16,6 +16,10 @@ import {
   validateHistoricalEvidenceRecoveryResults,
 } from './historical-evidence-recovery-contract.mjs';
 import {
+  effectiveEvidencePublicationState,
+  validateEvidenceEpochState,
+} from './evidence-epoch-reconciliation.mjs';
+import {
   reconciliationDecisionSummary,
   recoveryOutcomeSemanticSha256,
 } from './receipt-bound-evidence-batch-runner.mjs';
@@ -444,13 +448,17 @@ export async function auditHistoricalEvidenceRecovery({
   generatedAt,
   readObject,
   replayPriorObjects = false,
+  evidenceEpochState = null,
 }) {
   if (mode !== 'online') throw new TypeError('run audit currently requires online mode');
   const at = requiredTimestamp(generatedAt, 'audit generation time');
   const violations = [];
   const repairs = [];
   const verifiedObjects = new Set();
-  try { validateHistoricalEvidenceRecoveryBatch(batch); } catch (error) {
+  try {
+    if (evidenceEpochState !== null) validateEvidenceEpochState(evidenceEpochState);
+    validateHistoricalEvidenceRecoveryBatch(batch);
+  } catch (error) {
     addViolation(violations, 'batch contract', error);
   }
   try { validateHistoricalEvidenceRecoveryResults(results); } catch (error) {
@@ -527,6 +535,41 @@ export async function auditHistoricalEvidenceRecovery({
         continue;
       }
       const identity = { brand: target.brand, model: target.model, category: target.category };
+      if (evidenceEpochState !== null) {
+        const descriptor = evidenceEpochState.descriptors
+          .find((candidate) => candidate.targetId === target.targetId);
+        const binding = target.reconciliationContext?.evidenceEpoch;
+        if (descriptor || binding) {
+          if (!descriptor || !binding
+            || binding.descriptorSha256 !== descriptor.semanticDescriptorSha256) {
+            throw new Error('accepted result evidence epoch descriptor binding missing or stale');
+          }
+          if (canonicalJsonSha256(descriptor.identity) !== canonicalJsonSha256(identity)) {
+            throw new Error('accepted result evidence epoch identity mismatch');
+          }
+          const effective = effectiveEvidencePublicationState({
+            ledger: evidenceEpochState.ledger,
+            targetId: target.targetId,
+            descriptorSha256: descriptor.semanticDescriptorSha256,
+          });
+          if (!effective.publishable || effective.epochId !== binding.epochId) {
+            throw new Error(`accepted result evidence epoch is not publishable: ${effective.status}`);
+          }
+          const acceptedContentHashes = new Set(outcome.sources
+            .map((source) => source.contentSha256));
+          if (descriptor.requiredSourceHashes.some((hash) => !acceptedContentHashes.has(hash))) {
+            throw new Error('accepted result evidence epoch acquired content binding is stale');
+          }
+          const acceptedReceiptBindings = new Set(outcome.sources
+            .map((source) => source.verificationReceipt?.bindingSha256));
+          if (!acceptedReceiptBindings.has(effective.receiptBindingSha256)) {
+            throw new Error('accepted result evidence epoch receipt binding mismatch');
+          }
+          if (!descriptor.policyVersions.includes(batch.policy.version)) {
+            throw new Error('accepted result evidence epoch policy binding is stale');
+          }
+        }
+      }
       const sourceHashes = new Set();
       for (const source of outcome.sources) {
         if (source.authority !== 'manufacturer') throw new Error('accepted source is not manufacturer authority');

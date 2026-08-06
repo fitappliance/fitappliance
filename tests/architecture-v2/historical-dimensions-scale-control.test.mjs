@@ -5,6 +5,7 @@ import {
   assertHistoricalDimensionsScaleManifestAllowed,
   buildHistoricalDimensionsScaleCheckpoint,
   buildHistoricalDimensionsDiscoveryFunnel,
+  buildHistoricalDimensionsDiscoveryStageMetrics,
   buildHistoricalDimensionsRecoveryFunnel,
   buildHistoricalDimensionsScaleControl,
   canonicalHistoricalDimensionsScaleCounters,
@@ -223,6 +224,120 @@ function inputs(options = {}) {
   };
 }
 
+function refreshBatchesHash(nextBatches) {
+  const { semanticBatchesSha256: ignored, ...semantic } = nextBatches;
+  nextBatches.semanticBatchesSha256 = canonicalJsonSha256(semantic);
+}
+
+function addSecondP0Manifest(input) {
+  const first = input.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  const second = manifest({
+    id: 'manifest-p0-second',
+    workstreamId: 'CURRENT_DIMENSIONS',
+    priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS',
+    lifecycleState: 'CURRENT_RETAIL',
+    familyId: 'family-current-second',
+    brand: 'Second Example',
+  });
+  const current = input.nextBatches.workstreams.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  input.nextBatches.manifests.splice(
+    input.nextBatches.manifests.indexOf(first) + 1, 0, second,
+  );
+  input.nextBatches.manifestWindow.manifestIds.splice(
+    input.nextBatches.manifestWindow.manifestIds.indexOf(first.manifestId) + 1,
+    0,
+    second.manifestId,
+  );
+  current.manifestIds.push(second.manifestId);
+  current.eligibleCohorts += 1;
+  current.eligibleCohortsByPriority.P0_CURRENT_MISSING_DIMENSIONS += 1;
+  current.windowedCohorts += 1;
+  current.windowedCohortsByPriority.P0_CURRENT_MISSING_DIMENSIONS += 1;
+  input.nextBatches.summary.eligibleCohorts += 1;
+  input.nextBatches.summary.windowedCohorts += 1;
+  input.nextBatches.summary.manifests += 1;
+  input.nextBatches.summary.manifestedTargets += second.targetBindings.length;
+  refreshBatchesHash(input.nextBatches);
+  return [first, second];
+}
+
+function regenerateManifestForSameCohort(input, priorManifest) {
+  const semantic = structuredClone(priorManifest);
+  delete semantic.manifestId;
+  delete semantic.semanticManifestSha256;
+  semantic.sourceBindings = {
+    ...semantic.sourceBindings,
+    targetStateSha256: '9'.repeat(64),
+    sourceAcquisitionQueueSha256: '8'.repeat(64),
+  };
+  semantic.targetBindings = semantic.targetBindings.map((binding) => ({
+    ...binding,
+    targetId: `${binding.targetId}-regenerated`,
+    referenceId: `${binding.referenceId}-regenerated`,
+  }));
+  const semanticManifestSha256 = canonicalJsonSha256(semantic);
+  const regenerated = {
+    ...semantic,
+    manifestId: `historical_batch_${semanticManifestSha256.slice(0, 24)}`,
+    semanticManifestSha256,
+  };
+  const manifestIndex = input.nextBatches.manifests.findIndex(
+    (row) => row.manifestId === priorManifest.manifestId,
+  );
+  input.nextBatches.manifests[manifestIndex] = regenerated;
+  input.nextBatches.manifestWindow.manifestIds = input.nextBatches.manifestWindow.manifestIds
+    .map((id) => id === priorManifest.manifestId ? regenerated.manifestId : id);
+  const current = input.nextBatches.workstreams.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  current.manifestIds = current.manifestIds
+    .map((id) => id === priorManifest.manifestId ? regenerated.manifestId : id);
+  refreshBatchesHash(input.nextBatches);
+  return regenerated;
+}
+
+function retryableDiscoveryCheckpoint({
+  id, manifest: boundedManifest, counters, completedAt = AT, epochRows = null,
+}) {
+  const funnel = {
+    selectedTargets: 1,
+    targetsWithOfficialCandidates: 0,
+    fetchedTargets: 0,
+    mineruValidTargets: 0,
+    identityProvenTargets: 0,
+    dimensionsReceipted: 0,
+    terminalTargets: 0,
+    retryableTargets: 1,
+  };
+  const semantic = {
+    checkpointId: id,
+    runId: `run-${id}`,
+    completedAt,
+    stage: 'DISCOVERY',
+    workstreamId: 'CURRENT_DIMENSIONS',
+    manifestId: boundedManifest.manifestId,
+    manifestSha256: boundedManifest.semanticManifestSha256,
+    cohortKey: boundedManifest.cohortKey,
+    familyId: boundedManifest.familyId,
+    evidenceBindings: {
+      runSha256: canonicalJsonSha256(`run:${id}`),
+      storageContentSha256: canonicalJsonSha256(`storage:${id}`),
+      candidateManifestSha256: canonicalJsonSha256(`candidates:${id}`),
+    },
+    funnel,
+    ...(epochRows ? {
+      stageMetrics: buildHistoricalDimensionsDiscoveryStageMetrics(funnel, epochRows),
+    } : {}),
+    beforeCounters: structuredClone(counters),
+    afterCounters: structuredClone(counters),
+  };
+  return { ...semantic, semanticCheckpointSha256: canonicalJsonSha256(semantic) };
+}
+
 function checkpoint({
   id,
   before,
@@ -286,6 +401,205 @@ test('P1 opens only after the P0 workstream reaches zero eligible targets', () =
   assert.equal(control.decision.status, 'RUN_P1');
   assert.equal(control.decision.allowedManifestId, p1.manifestId);
   assert.equal(control.decision.p1Blocked, false);
+});
+
+test('P0 decision advances after a checkpointed cohort is regenerated under a new manifest ID', () => {
+  const input = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  const [first, second] = addSecondP0Manifest(input);
+  input.ledger.entries = [retryableDiscoveryCheckpoint({
+    id: 'retryable-first', manifest: first, counters: input.ledger.baseline.counters,
+  })];
+  const regenerated = regenerateManifestForSameCohort(input, first);
+
+  assert.notEqual(regenerated.manifestId, first.manifestId);
+  assert.notEqual(regenerated.semanticManifestSha256, first.semanticManifestSha256);
+  assert.notDeepEqual(regenerated.targetBindings, first.targetBindings);
+  assert.notDeepEqual(regenerated.sourceBindings, first.sourceBindings);
+  assert.equal(regenerated.cohortKey, first.cohortKey);
+
+  const control = buildHistoricalDimensionsScaleControl(input);
+
+  assert.equal(control.decision.status, 'RUN_P0');
+  assert.equal(control.decision.allowedManifestId, second.manifestId);
+});
+
+test('P0 decision returns a typed stop when every cohort has a checkpoint across manifest regeneration', () => {
+  const input = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  const [first, second] = addSecondP0Manifest(input);
+  input.ledger.entries = [
+    retryableDiscoveryCheckpoint({
+      id: 'retryable-first', manifest: first, counters: input.ledger.baseline.counters,
+    }),
+    retryableDiscoveryCheckpoint({
+      id: 'retryable-second', manifest: second, counters: input.ledger.baseline.counters,
+      completedAt: '2026-07-19T20:05:00.000Z',
+    }),
+  ];
+  const regenerated = regenerateManifestForSameCohort(input, first);
+  assert.equal(regenerated.cohortKey, first.cohortKey);
+  assert.notEqual(regenerated.manifestId, first.manifestId);
+
+  const control = buildHistoricalDimensionsScaleControl(input);
+
+  assert.equal(control.decision.status, 'STOP_NO_RUNNABLE_MANIFESTS');
+  assert.equal(control.decision.allowedManifestId, null);
+  assert.equal(control.decision.allowedWorkstreamId, 'CURRENT_DIMENSIONS');
+  assert.equal(control.decision.p1Blocked, true);
+});
+
+test('capability rebaseline reopens a checkpointed cohort under its regenerated manifest', () => {
+  const prior = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const first = prior.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  prior.ledger.entries = [retryableDiscoveryCheckpoint({
+    id: 'before-capability-epoch',
+    manifest: first,
+    counters: prior.ledger.baseline.counters,
+    epochRows: prior.epochs,
+  })];
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const current = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  current.ledger = prior.ledger;
+  current.epochs.find((row) => row.id === 'resolver-contract').semanticSha256 = 'f'.repeat(64);
+  const advanced = recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: current,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'CAPABILITY_EPOCH_CHANGE',
+  });
+  current.ledger = advanced.ledger;
+  const currentFirst = current.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  const regenerated = regenerateManifestForSameCohort(current, currentFirst);
+
+  const control = buildHistoricalDimensionsScaleControl(current);
+
+  assert.ok(control.reopenedCohorts.some((row) => row.cohortKey === first.cohortKey));
+  assert.equal(control.decision.status, 'RUN_P0');
+  assert.equal(control.decision.allowedManifestId, regenerated.manifestId);
+  assert.equal(control.decision.cohortKey, first.cohortKey);
+});
+
+test('release DAG rebaseline does not reopen a checkpointed regenerated cohort', () => {
+  const prior = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const first = prior.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  prior.ledger.entries = [retryableDiscoveryCheckpoint({
+    id: 'before-release-dag', manifest: first, counters: prior.ledger.baseline.counters,
+  })];
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const current = inputs({
+    p0: 5, p1: 8, p0ExecutionLane: 'BOUNDED_DISCOVERY',
+  });
+  current.ledger = prior.ledger;
+  const advanced = recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: current,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  });
+  current.ledger = advanced.ledger;
+  const currentFirst = current.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  regenerateManifestForSameCohort(current, currentFirst);
+
+  const control = buildHistoricalDimensionsScaleControl(current);
+
+  assert.equal(control.decision.status, 'STOP_NO_RUNNABLE_MANIFESTS');
+  assert.equal(control.decision.allowedManifestId, null);
+});
+
+test('release DAG rebaseline after capability reopening preserves the post-capability cohort checkpoint', () => {
+  const original = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  original.ledger = {
+    ...original.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const originalManifest = original.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  original.ledger.entries = [retryableDiscoveryCheckpoint({
+    id: 'before-capability-sequence',
+    manifest: originalManifest,
+    counters: original.ledger.baseline.counters,
+    epochRows: original.epochs,
+  })];
+
+  const capabilityInput = inputs({ p0ExecutionLane: 'BOUNDED_DISCOVERY' });
+  capabilityInput.ledger = original.ledger;
+  capabilityInput.epochs.find((row) => row.id === 'resolver-contract').semanticSha256 = 'f'.repeat(64);
+  const capability = recordHistoricalDimensionsScaleRebaseline({
+    priorControl: buildHistoricalDimensionsScaleControl(original),
+    ledger: original.ledger,
+    currentInput: capabilityInput,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'CAPABILITY_EPOCH_CHANGE',
+  });
+  capabilityInput.ledger = capability.ledger;
+  const postCapabilityManifest = capabilityInput.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  capabilityInput.ledger.entries.push(retryableDiscoveryCheckpoint({
+    id: 'after-capability-sequence',
+    manifest: postCapabilityManifest,
+    counters: capabilityInput.ledger.rebaselines[0].nextCounters,
+    completedAt: '2026-07-19T20:06:00.000Z',
+    epochRows: capabilityInput.epochs,
+  }));
+  assert.equal(
+    buildHistoricalDimensionsScaleControl(capabilityInput).decision.status,
+    'STOP_NO_RUNNABLE_MANIFESTS',
+  );
+
+  const releaseInput = inputs({
+    p0: 5,
+    p1: 8,
+    p0ExecutionLane: 'BOUNDED_DISCOVERY',
+  });
+  releaseInput.ledger = capabilityInput.ledger;
+  releaseInput.epochs = structuredClone(capabilityInput.epochs);
+  const release = recordHistoricalDimensionsScaleRebaseline({
+    priorControl: buildHistoricalDimensionsScaleControl(capabilityInput),
+    ledger: capabilityInput.ledger,
+    currentInput: releaseInput,
+    activatedAt: '2026-07-19T20:10:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  });
+  releaseInput.ledger = release.ledger;
+  const releaseManifest = releaseInput.nextBatches.manifests.find(
+    (row) => row.workstreamId === 'CURRENT_DIMENSIONS',
+  );
+  const regenerated = regenerateManifestForSameCohort(releaseInput, releaseManifest);
+  assert.equal(regenerated.cohortKey, originalManifest.cohortKey);
+
+  const control = buildHistoricalDimensionsScaleControl(releaseInput);
+
+  assert.equal(control.latestRebaseline.reason, 'RELEASE_DAG_RECONCILIATION');
+  assert.equal(control.decision.status, 'STOP_NO_RUNNABLE_MANIFESTS');
+  assert.equal(control.decision.allowedManifestId, null);
 });
 
 test('legacy one-target low-yield checkpoints remain visible but cannot stop expansion', () => {
@@ -381,6 +695,104 @@ test('release DAG rebaseline preserves checkpoint history and only reopens queue
     activatedAt: '2026-07-19T20:05:00.000Z',
     reason: 'RELEASE_DAG_RECONCILIATION',
   }), /coverage.*rebaseline|rebaseline.*coverage/i);
+});
+
+test('capability epoch rebaseline permits only an epochs binding change with identical counters', () => {
+  const prior = inputs();
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const current = inputs();
+  current.ledger = prior.ledger;
+  current.epochs[3].semanticSha256 = 'a'.repeat(64);
+
+  const advanced = recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: current,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'CAPABILITY_EPOCH_CHANGE',
+  });
+
+  assert.equal(advanced.rebaseline.reason, 'CAPABILITY_EPOCH_CHANGE');
+  assert.deepEqual(advanced.rebaseline.changedArtifactBindings, ['epochsSha256']);
+  assert.deepEqual(advanced.rebaseline.previousCounters, advanced.rebaseline.nextCounters);
+  assert.ok(Object.values(advanced.rebaseline.queueCounterDeltas).every((delta) => delta === 0));
+  assert.equal(advanced.control.latestRebaseline.reason, 'CAPABILITY_EPOCH_CHANGE');
+  assert.deepEqual(advanced.control.latestRebaseline.changedArtifactBindings, ['epochsSha256']);
+});
+
+test('capability epoch rebaseline rejects counter, non-epoch, absent-epoch, time and reason drift', () => {
+  const prior = inputs();
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const capabilityInput = () => {
+    const current = inputs();
+    current.ledger = prior.ledger;
+    current.epochs[3].semanticSha256 = 'a'.repeat(64);
+    return current;
+  };
+  const record = (currentInput, overrides = {}) => recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'CAPABILITY_EPOCH_CHANGE',
+    ...overrides,
+  });
+
+  const queueDrift = inputs({ p0: 5, p1: 8 });
+  queueDrift.ledger = prior.ledger;
+  queueDrift.epochs[3].semanticSha256 = 'a'.repeat(64);
+  assert.throws(() => record(queueDrift), /capability.*counter|counter.*capability/i);
+
+  const artifactDrift = capabilityInput();
+  artifactDrift.fitPublicationAudit.reviewMarker = 'changed';
+  assert.throws(() => record(artifactDrift), /capability.*artifact|artifact.*capability/i);
+
+  const noEpochDrift = inputs();
+  noEpochDrift.ledger = prior.ledger;
+  assert.throws(() => record(noEpochDrift), /capability.*epoch|epoch.*capability/i);
+
+  assert.throws(
+    () => record(capabilityInput(), { activatedAt: 'not-a-timestamp' }),
+    /activation time.*invalid|timestamp/i,
+  );
+  assert.throws(
+    () => record(capabilityInput(), { reason: 'UNKNOWN_REASON' }),
+    /reason invalid/i,
+  );
+});
+
+test('scale-control CLI defaults release rebaseline reason and accepts explicit capability epoch reason', async () => {
+  const module = await import('../../scripts/architecture-v2/build-historical-dimensions-scale-control.mjs');
+  assert.equal(typeof module.parseHistoricalDimensionsScaleControlArgs, 'function');
+  const parse = module.parseHistoricalDimensionsScaleControlArgs;
+  const base = ['--record-rebaseline', '--rebaseline-at', '2026-07-19T20:05:00.000Z'];
+
+  assert.equal(parse(base).rebaselineReason, 'RELEASE_DAG_RECONCILIATION');
+  assert.equal(parse([
+    ...base, '--rebaseline-reason', 'CAPABILITY_EPOCH_CHANGE',
+  ]).rebaselineReason, 'CAPABILITY_EPOCH_CHANGE');
+  assert.throws(
+    () => parse([...base, '--rebaseline-reason', 'UNKNOWN_REASON']),
+    /rebaseline reason.*invalid/i,
+  );
+  assert.throws(
+    () => parse(['--rebaseline-reason', 'CAPABILITY_EPOCH_CHANGE']),
+    /rebaseline-reason.*record-rebaseline/i,
+  );
 });
 
 test('weekly throughput and projected batches use receipted target grain only', () => {

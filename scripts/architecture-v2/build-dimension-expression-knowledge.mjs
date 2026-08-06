@@ -5,6 +5,8 @@ import { promises as fs } from 'node:fs';
 import { basename, dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
+
 import {
   buildDimensionExpressionKnowledge,
   renderDimensionExpressionKnowledgeMarkdown,
@@ -257,14 +259,15 @@ export async function main(args = process.argv.slice(2), environment = process.e
   if (explicitGeneratedAt && useReferenceTimestamp) {
     throw new TypeError('choose either --generated-at or --generated-at-from-reference');
   }
-  const historical = await readJson(join(ROOT, 'data/architecture-v2/generated/historical-appliance-reference.json'));
+  const activeRecovery = await loadHistoricalRecoveryActiveRelease({ root: ROOT });
+  const historical = activeRecovery.reference;
   const generatedAt = explicitGeneratedAt ?? (useReferenceTimestamp ? historical.generatedAt : null);
   if (!generatedAt) throw new TypeError('--generated-at is required for deterministic output');
   const outputJson = resolve(option(args, '--output-json') ?? DEFAULT_JSON);
   const outputMarkdown = resolve(option(args, '--output-markdown') ?? DEFAULT_MARKDOWN);
 
   const [publicCatalog, evidenceIndex, brandCanon] = await Promise.all([
-    readJson(join(ROOT, 'data/architecture-v2/generated/public-catalog-projection.json')),
+    Promise.resolve(activeRecovery.catalog),
     readJson(join(ROOT, 'data/architecture-v2/generated/evidence-object-index.json')),
     readJson(join(ROOT, 'data/brand-canon.json')),
   ]);

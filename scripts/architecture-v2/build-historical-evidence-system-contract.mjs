@@ -45,6 +45,7 @@ import {
 import {
   buildRetailLifecycleRefreshInventory,
 } from '../../src/domain/retail-lifecycle-refresh-inventory.mjs';
+import { runHistoricalRecoveryActiveReleaseAudit } from './audit-historical-recovery-active-release.mjs';
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -70,6 +71,7 @@ const ARTIFACT_KEYS = Object.freeze([
   'historicalEvidenceRecoveryAcceptanceBundle',
   'historicalAcceptanceReceiptReplayAudit',
   'historicalEvidenceRecoveryAttemptLedger',
+  'historicalRecoveryActiveReleaseAudit',
   'publicProjection',
   'historicalApplianceReference',
   'historicalModelEvidenceClassification',
@@ -140,6 +142,7 @@ function documentGraphSemantic(value) {
 
 function acquisitionQueueSemantic(value) {
   return {
+    activeReleaseSourceBinding: value.activeReleaseSourceBinding,
     sourceClassificationSha256: value.sourceClassificationSha256,
     sourceIdentityMigrationSha256: value.sourceIdentityMigrationSha256,
     records: value.records,
@@ -435,10 +438,16 @@ async function fileInputs(root, paths, cache) {
 }
 
 export async function buildHistoricalEvidenceSystemContractFromRepository({ root = defaultRoot } = {}) {
-  const [artifacts, targetStateSourceBindings] = await Promise.all([
+  const [artifacts, targetStateSourceBindings, activeReleaseAudit] = await Promise.all([
     readArtifacts(root),
     readTargetStateSourceBindings(root),
+    runHistoricalRecoveryActiveReleaseAudit({ root, write: false }),
   ]);
+  assertCanonicalEqual(
+    'historical recovery active-release audit',
+    artifacts.historicalRecoveryActiveReleaseAudit,
+    activeReleaseAudit,
+  );
   const [
     projectionBytes,
     ledgerBytes,
@@ -533,18 +542,19 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     ['candidate-current-publication', 'publicProjectionReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-shadow.mjs'], [['candidate-publication-base', 'content'], ['candidate-lifecycle-shadow', 'semantic']], ['CURRENT_OUTPUT_CANDIDATE'], 'PENDING_NEXT', 2],
     ['candidate-lifecycle-reduction', 'historicalApplianceReferenceReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'scripts/architecture-v2/build-historical-appliance-reference.mjs', 'src/domain/historical-appliance-reference.mjs'], [['official-registry-snapshots', 'content'], ['candidate-current-publication', 'content'], ['receipt-reconciliation', 'content']], ['HISTORICAL_INPUT_CANDIDATE'], 'PENDING_NEXT', 2],
     ['candidate-release-gate', 'retailLifecycleReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-release-candidate.mjs'], [['current-publication', 'content'], ['candidate-publication-base', 'content'], ['candidate-current-publication', 'content'], ['candidate-lifecycle-shadow', 'semantic'], ['candidate-lifecycle-reduction', 'content'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
-    ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['lifecycle-reduction', 'content']], ['CONTROL_ONLY']],
+    ['active-release-recovery', 'historicalRecoveryActiveReleaseAudit', 'scripts/architecture-v2/audit-historical-recovery-active-release.mjs', ['scripts/architecture-v2/audit-historical-recovery-active-release.mjs', 'src/domain/historical-recovery-active-release.mjs', 'src/domain/active-retail-release.mjs'], [], ['CONTROL_INPUT']],
+    ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['active-release-recovery', 'content']], ['CONTROL_ONLY']],
     ['document-identity', 'historicalDocumentFamilyGraph', 'scripts/architecture-v2/build-historical-document-family-graph.mjs', ['scripts/architecture-v2/build-historical-document-family-graph.mjs', 'src/domain/historical-document-family-graph.mjs'], [['classification', 'semantic']], ['CONTROL_ONLY']],
-    ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['lifecycle-reduction', 'content'], ['document-identity', 'semantic']], ['CONTROL_ONLY']],
+    ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['active-release-recovery', 'content'], ['document-identity', 'semantic']], ['CONTROL_ONLY']],
     ['mineru-backfill-audit', 'historicalMineruBackfillAudit', 'scripts/architecture-v2/backfill-historical-mineru.mjs', ['scripts/architecture-v2/backfill-historical-mineru.mjs', 'src/domain/historical-mineru-backfill.mjs'], [], ['CONTROL_ONLY']],
-    ['candidate-acquisition-queue', 'historicalModelPdfAcquisitionQueue', 'scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', ['scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', 'src/domain/historical-model-pdf-acquisition.mjs'], [['classification', 'semantic'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY']],
+    ['candidate-acquisition-queue', 'historicalModelPdfAcquisitionQueue', 'scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', ['scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', 'src/domain/historical-model-pdf-acquisition.mjs'], [['active-release-recovery', 'content'], ['classification', 'semantic']], ['CONTROL_ONLY']],
     ['candidate-discovery', 'historicalOfficialCandidateManifest', 'scripts/architecture-v2/build-historical-official-candidate-manifest.mjs', ['scripts/architecture-v2/build-historical-official-candidate-manifest.mjs', 'src/domain/historical-official-candidate-manifest.mjs', 'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs'], [['candidate-acquisition-queue', 'semantic']], ['CONTROL_ONLY']],
     ['executable-queue', 'historicalExecutableEvidenceRecoveryQueue', 'scripts/architecture-v2/build-historical-executable-recovery-queue.mjs', ['scripts/architecture-v2/build-historical-executable-recovery-queue.mjs', 'src/domain/historical-executable-recovery-queue.mjs'], [['candidate-acquisition-queue', 'semantic'], ['candidate-discovery', 'semantic'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content']], ['CONTROL_ONLY']],
     ['family-canary', 'historicalEvidenceFamilyCanaries', 'scripts/architecture-v2/build-historical-evidence-family-canaries.mjs', ['scripts/architecture-v2/build-historical-evidence-family-canaries.mjs', 'src/domain/historical-evidence-family-canary.mjs'], [['document-identity', 'semantic'], ['executable-queue', 'content']], ['CONTROL_ONLY']],
     ['target-state', 'historicalEvidenceTargetState', 'scripts/architecture-v2/build-historical-evidence-target-state.mjs', ['scripts/architecture-v2/build-historical-evidence-target-state.mjs', 'src/domain/historical-evidence-target-state.mjs'], [['classification', 'semantic'], ['candidate-acquisition-queue', 'semantic'], ['executable-queue', 'content'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content']], ['CONTROL_ONLY']],
     ['bounded-planner', 'historicalEvidenceNextBatches', 'scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs', ['scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs', 'src/domain/historical-evidence-bounded-batch.mjs'], [['executable-queue', 'content'], ['target-state', 'content'], ['family-canary', 'semantic']], ['CONTROL_ONLY']],
-    ['historical-replacement-publication', 'historicalReplacementAudit', 'scripts/architecture-v2/audit-historical-replacement.mjs', ['scripts/architecture-v2/audit-historical-replacement.mjs', 'src/domain/historical-replacement-audit.mjs', 'src/domain/historical-reference-publication.mjs'], [['lifecycle-reduction', 'content'], ['current-publication', 'content']], ['HISTORICAL_OUTPUT']],
-    ['fit-publication', 'fitPublicationAudit', 'scripts/architecture-v2/audit-fit-publication.mjs', ['scripts/architecture-v2/audit-fit-publication.mjs', 'src/domain/installation-evidence-pipeline.mjs', 'src/domain/fit-v3.mjs'], [['current-publication', 'content'], ['receipt-reconciliation', 'content'], ['receipt-replay', 'content']], ['FIT_GUARD']],
+    ['historical-replacement-publication', 'historicalReplacementAudit', 'scripts/architecture-v2/audit-historical-replacement.mjs', ['scripts/architecture-v2/audit-historical-replacement.mjs', 'src/domain/historical-replacement-audit.mjs', 'src/domain/historical-reference-publication.mjs'], [['active-release-recovery', 'content']], ['HISTORICAL_OUTPUT']],
+    ['fit-publication', 'fitPublicationAudit', 'scripts/architecture-v2/audit-fit-publication.mjs', ['scripts/architecture-v2/audit-fit-publication.mjs', 'src/domain/installation-evidence-pipeline.mjs', 'src/domain/fit-v3.mjs'], [['active-release-recovery', 'content'], ['receipt-reconciliation', 'content'], ['receipt-replay', 'content']], ['FIT_GUARD']],
     ['program-status', 'historicalEvidenceProgramStatus', 'scripts/architecture-v2/build-historical-evidence-program-status.mjs', ['scripts/architecture-v2/build-historical-evidence-program-status.mjs', 'src/domain/historical-evidence-program-status.mjs'], [['classification', 'semantic'], ['mineru-knowledge', 'content'], ['document-identity', 'semantic'], ['candidate-acquisition-queue', 'semantic'], ['executable-queue', 'content'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content'], ['target-state', 'content'], ['mineru-backfill-audit', 'content'], ['receipt-replay', 'content'], ['historical-replacement-publication', 'content'], ['fit-publication', 'content']], ['CONTROL_ONLY']],
     ['scale-ledger', 'historicalDimensionsScaleLedger', 'src/domain/historical-dimensions-scale-control.mjs', ['src/domain/historical-dimensions-scale-control.mjs'], [], ['CONTROL_INPUT']],
     ['scale-control', 'historicalDimensionsScaleControl', 'scripts/architecture-v2/build-historical-dimensions-scale-control.mjs', ['scripts/architecture-v2/build-historical-dimensions-scale-control.mjs', 'src/domain/historical-dimensions-scale-control.mjs'], [['scale-ledger', 'content'], ['bounded-planner', 'content'], ['program-status', 'content'], ['receipt-replay', 'content'], ['historical-replacement-publication', 'content'], ['fit-publication', 'content']], ['CONTROL_ONLY']],

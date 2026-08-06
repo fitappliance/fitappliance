@@ -3,25 +3,25 @@
   "generatedAt": "2026-07-12T12:40:00.000Z",
   "ok": true,
   "summary": {
-    "referenceRecords": 8089,
-    "publicRecords": 8089,
-    "currentCatalogProducts": 3515,
+    "referenceRecords": 8087,
+    "publicRecords": 8087,
+    "currentCatalogProducts": 3513,
     "quarantinedRecords": 88,
     "inactiveAustralianRecords": 12,
     "byCategory": {
       "dishwasher": 1419,
       "dryer": 838,
-      "fridge": 4336,
+      "fridge": 4334,
       "washing_machine": 1496
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2130,
+      "CATALOG_ARCHIVED": 3163,
       "REGISTRY_ONLY": 4577,
-      "CURRENT_RETAIL": 1382
+      "UNKNOWN_RETAIL": 347
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2828,
+      "IDENTITY_ONLY": 2826,
       "MODEL_RECEIPT": 310,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
@@ -29,7 +29,7 @@
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2828,
+      "MEASURE_REQUIRED": 2826,
       "AUTO_FILL": 321,
       "QUARANTINED": 88
     },

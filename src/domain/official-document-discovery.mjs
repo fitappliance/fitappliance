@@ -35,7 +35,10 @@ function candidate(url, context, discoveryMethod, contextText = '') {
       : urlSignal !== 'none'
         ? urlSignal
         : contextExact ? 'exact_context' : 'none';
-  const classifiedType = classifyDocumentType(`${url} ${contextText}`);
+  const isPdfArtifact = /\.pdf(?:$|[?#])/i.test(new URL(url).toString());
+  const classifiedType = urlSignal !== 'none' && !isPdfArtifact
+    ? 'product_page'
+    : classifyDocumentType(`${url} ${contextText}`);
   return createOfficialDocumentCandidate({
     url,
     documentType: classifiedType === 'user_manual' && modelSignal === 'none' ? 'family_manual' : classifiedType,

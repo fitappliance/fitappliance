@@ -19,12 +19,12 @@
     "sourceVersions": 1219,
     "conflictingSourceUrls": 3,
     "modelEdges": 4034,
-    "mappedModelEdges": 3973,
+    "mappedModelEdges": 3972,
     "byProofLevel": {
       "EXACT_MODEL_PROVEN": 556,
-      "FAMILY_SCOPE_ONLY": 3404,
+      "FAMILY_SCOPE_ONLY": 3403,
       "MODEL_LIST_PROVEN": 13,
-      "UNMAPPED": 61
+      "UNMAPPED": 62
     },
     "nonIndexedClassificationLinks": 99,
     "nonIndexedClassificationLinksByLane": {
@@ -102430,23 +102430,12 @@
       ],
       "modelEdges": [
         {
-          "referenceId": "fa_ref_83c5f60ac235a30b67ab7701",
-          "proofLevel": "FAMILY_SCOPE_ONLY",
+          "referenceId": null,
+          "proofLevel": "UNMAPPED",
           "proofLocators": [
             {
-              "type": "CLASSIFICATION_ASSOCIATION",
-              "identityScope": "AMBIGUOUS",
-              "receiptState": "NONE"
-            },
-            {
-              "type": "INDEX_IDENTITY_HINT",
+              "type": "INDEX_MAPPING_STATUS",
               "mappingStatus": "MAPPED_TARGET_IDENTITY"
-            },
-            {
-              "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_8c42a202621fac2774045212",
-              "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_58d08a7f3d6f1923"
             }
           ]
         }
@@ -119919,9 +119908,7 @@
       "grammarProfileIds": [
         "pdf_grammar_58d08a7f3d6f1923"
       ],
-      "referenceIds": [
-        "fa_ref_83c5f60ac235a30b67ab7701"
-      ]
+      "referenceIds": []
     },
     {
       "familyId": "document_family_8c56abed5d684b98cf589d12",
@@ -125276,5 +125263,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "c600d75069106ee70882285070b0ba057cd7495b70cab05889cf1a00b1bcdefe"
+  "semanticGraphSha256": "a95be570addca60f2d21ca11fb1dd9ef3ddb8e110db797e0babc304c7b138391"
 }

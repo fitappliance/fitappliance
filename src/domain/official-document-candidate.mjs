@@ -1,5 +1,6 @@
 const DOCUMENT_TYPES = Object.freeze([
-  'installation_guide', 'quick_reference_guide', 'specification_sheet', 'user_manual', 'family_manual',
+  'installation_guide', 'quick_reference_guide', 'specification_sheet', 'user_manual',
+  'product_page', 'family_manual',
 ]);
 
 function requiredText(value, label) {

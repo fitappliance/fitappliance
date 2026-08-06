@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 
 import {
   extractClaimsFromHtml,
+  preflightEvidenceArtifactIdentity,
   verifyAndAttestResolutionArtifact,
   verifyAttestedResolutionArtifact,
 } from '../../src/domain/evidence-artifact-verifier.mjs';
@@ -297,6 +298,21 @@ test('HTML identity accepts an exact canonical path segment plus a matching stru
     bytes: relatedBytes,
     verifiedAt: '2026-07-12T10:00:00.000Z',
   }), /product model identity/i);
+});
+
+test('identity preflight exposes the same exact HTML identity contract used by attestation', () => {
+  const bytes = html();
+  const candidate = source(bytes);
+  const proof = preflightEvidenceArtifactIdentity({
+    source: { ...candidate, claims: undefined }, caseIdentity: identity, bytes,
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: candidate, caseIdentity: identity, bytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+
+  assert.deepEqual(proof.identity, attested.identity);
+  assert.deepEqual(proof.signals, attested.identitySignals);
 });
 
 test('HTML identity accepts an exact model followed only by a numeric product ID in the canonical slug', () => {
@@ -993,6 +1009,41 @@ test('PDF approval requires hash-bound MinerU JSON and replays claims from that 
   }), /claim.*MinerU|MinerU.*claim/i);
 });
 
+test('PDF identity preflight accepts an exact MinerU model but rejects an identity-less document', () => {
+  const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nidentity preflight artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const sourceFor = (jsonBytes) => ({
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: 'https://dtc-aus-api.hisense.com/medias/installation-guide.pdf',
+    finalUrl: 'https://dtc-aus-api.hisense.com/medias/installation-guide.pdf',
+    redirectChain: [], retrievedAt: '2026-08-06T00:00:00.000Z',
+    contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { ...pdfIdentity, outcome: 'exact' },
+    derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    }),
+  });
+  const mineru = (title) => Buffer.from(JSON.stringify([[
+    mineruTitle(title),
+    mineruParagraph('Product dimensions (H x W x D): 1790 x 914 x 730 mm'),
+  ]]));
+  const exactBytes = mineru('Hisense HRCD640TBW installation instructions');
+  const exact = preflightEvidenceArtifactIdentity({
+    source: sourceFor(exactBytes), caseIdentity: pdfIdentity,
+    bytes: pdfBytes, derivedArtifactBytes: exactBytes,
+  });
+  assert.ok(exact.signals.length > 0);
+
+  const genericBytes = mineru('Refrigerator installation instructions');
+  assert.throws(() => preflightEvidenceArtifactIdentity({
+    source: sourceFor(genericBytes), caseIdentity: pdfIdentity,
+    bytes: pdfBytes, derivedArtifactBytes: genericBytes,
+  }), /exact model identity|identity signal/i);
+});
+
 test('PDF claim semantics v2 trusts exact MinerU replay when source labels are normalized', () => {
   const pdfBytes = Buffer.from('%PDF-1.7\nalternating axis test artifact');
   const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
@@ -1015,7 +1066,7 @@ test('PDF claim semantics v2 trusts exact MinerU replay when source labels are n
     },
     {
       type: 'table', content: {
-        html: '<table><tr><td>W</td><td>914</td><td>D</td><td>730</td></tr><tr><td>H</td><td>1790</td><td></td><td></td></tr></table>',
+        html: '<table><tr><td>W</td><td>914 mm</td><td>D</td><td>730 mm</td></tr><tr><td>H</td><td>1790 mm</td><td></td><td></td></tr></table>',
         table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
       }, bbox: [80, 300, 800, 500],
     },
@@ -1334,7 +1385,7 @@ test('an exact Fisher and Paykel DW60 support document binds its applicability m
     }],
     [{
       type: 'table',
-      content: { html: '<table><tr><td>PRODUCT DIMENSIONS</td><td></td></tr><tr><td>A Overall height of product</td><td></td></tr><tr><td>with top panel in place with top panel removed*</td><td>850 - 870** 820 - 840**</td></tr><tr><td>B Overall width of product</td><td>597</td></tr><tr><td>C Overall depth of product</td><td>600</td></tr><tr><td>D Depth of open door</td><td>595</td></tr></table>' },
+      content: { html: '<table><tr><td>PRODUCT DIMENSIONS</td><td>MM</td></tr><tr><td>A Overall height of product</td><td></td></tr><tr><td>with top panel in place with top panel removed*</td><td>850 - 870** 820 - 840**</td></tr><tr><td>B Overall width of product</td><td>597</td></tr><tr><td>C Overall depth of product</td><td>600</td></tr><tr><td>D Depth of open door</td><td>595</td></tr></table>' },
       bbox: [580, 100, 970, 270],
     }, {
       type: 'table',
@@ -1801,6 +1852,13 @@ test('a hash-bound official product page can independently bind a model-scoped P
     derivedArtifactBytes: jsonBytes,
     discoveryArtifactBytes: genericDiscoveryBytes,
     verifiedAt: '2026-07-15T00:01:00.000Z',
+  }), /official discovery page does not prove the exact model/i);
+  assert.throws(() => preflightEvidenceArtifactIdentity({
+    source: { ...pdfSource, discoveryProvenance: genericDiscoveryProvenance, claims: undefined },
+    caseIdentity: pdfIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: genericDiscoveryBytes,
   }), /official discovery page does not prove the exact model/i);
 });
 

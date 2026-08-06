@@ -3,6 +3,11 @@ import {
   validateHistoricalEvidenceRecoveryBatch,
   validateHistoricalEvidenceRecoveryPolicy,
 } from './historical-evidence-recovery-contract.mjs';
+import {
+  effectiveEvidencePublicationState,
+  resolveEvidenceEpochBatchDisposition,
+  validateEvidenceEpochState,
+} from './evidence-epoch-reconciliation.mjs';
 
 const SELECTION_KEYS = new Set(['jobIds', 'routes', 'priorities', 'brands', 'targetIds', 'limit']);
 
@@ -163,6 +168,14 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
       return acceptedTargetIds.has(target.targetId) || acceptedIdentities.has(identityKey(target));
     },
     sourcesFor,
+    receiptBindingFor(target, expectedBinding) {
+      const bindings = [...new Set(sourcesFor(target)
+        .map((source) => source.verificationReceipt.bindingSha256))];
+      if (!bindings.includes(expectedBinding)) {
+        throw new Error(`accepted target prior receipt binding does not match evidence epoch: ${target.targetId}`);
+      }
+      return expectedBinding;
+    },
   };
 }
 
@@ -277,7 +290,7 @@ function matchesSelection(target, jobsById, selection) {
   return true;
 }
 
-function materializeTarget(target, prior, repair, policySha256) {
+function materializeTarget(target, prior, repair, policySha256, evidenceEpoch = null) {
   const priorAttemptSuppressions = (target.priorAttemptSuppressions ?? [])
     .filter((entry) => entry.policySha256 === policySha256);
   return {
@@ -307,6 +320,7 @@ function materializeTarget(target, prior, repair, policySha256) {
         dimensionsMm: hint.dimensionsMm,
       })),
       legacyHints: legacyHints(target),
+      ...(evidenceEpoch ? { evidenceEpoch } : {}),
     },
   };
 }
@@ -317,6 +331,7 @@ export function buildHistoricalEvidenceRecoveryBatch({
   existingAcceptanceBundles = [],
   receiptReplayAudit = null,
   selection = {},
+  evidenceEpochState = null,
 }) {
   if (queue?.schemaVersion !== 2 || !Array.isArray(queue.jobs) || !Array.isArray(queue.targets)) {
     throw new TypeError('historical evidence recovery queue schema v2 required');
@@ -329,14 +344,43 @@ export function buildHistoricalEvidenceRecoveryBatch({
     if (!jobsById.has(requestedJobId)) throw new TypeError(`unknown selected job ID: ${requestedJobId}`);
   }
   const prior = indexPriorAcceptance(existingAcceptanceBundles);
+  const descriptorsByTarget = new Map();
+  if (evidenceEpochState !== null) {
+    validateEvidenceEpochState(evidenceEpochState);
+    for (const descriptor of evidenceEpochState.descriptors) {
+      descriptorsByTarget.set(descriptor.targetId, descriptor);
+    }
+  }
   const selectionMatchedTargets = queue.targets
     .filter((target) => matchesSelection(target, jobsById, normalizedSelection));
+  if (evidenceEpochState !== null) {
+    for (const target of selectionMatchedTargets) {
+      const descriptor = descriptorsByTarget.get(target.targetId);
+      if (descriptor && identityKey(descriptor.identity) !== identityKey(target)) {
+        throw new Error(`current evidence epoch identity mismatch for ${target.targetId}`);
+      }
+    }
+  }
+  function disposition(target) {
+    if (target.repairExistingReceipt === true || !prior.isAccepted(target)) return 'REENTER';
+    if (evidenceEpochState === null) return 'SKIP';
+    const descriptor = descriptorsByTarget.get(target.targetId);
+    if (!descriptor) return 'SKIP';
+    return resolveEvidenceEpochBatchDisposition({
+      state: evidenceEpochState,
+      descriptor,
+      priorReceiptBindingSha256: prior.receiptBindingFor(
+        target,
+        descriptor.priorReceiptBindingSha256,
+      ),
+    });
+  }
   const excludedPriorTargets = selectionMatchedTargets
-    .filter((target) => target.repairExistingReceipt !== true && prior.isAccepted(target));
+    .filter((target) => disposition(target) !== 'REENTER');
   const excludedPriorCandidateJobIds = new Set(excludedPriorTargets
     .flatMap((target) => target.candidateJobIds));
   let selectedTargets = selectionMatchedTargets
-    .filter((target) => target.repairExistingReceipt === true || !prior.isAccepted(target));
+    .filter((target) => disposition(target) === 'REENTER');
   if (normalizedSelection.limit !== null) selectedTargets = selectedTargets.slice(0, normalizedSelection.limit);
   const repair = selectedTargets.some((target) => target.repairExistingReceipt === true)
     ? buildReceiptRepairIndex(receiptReplayAudit, existingAcceptanceBundles[0])
@@ -356,7 +400,18 @@ export function buildHistoricalEvidenceRecoveryBatch({
       targetIds: job.targetIds.filter((targetId) => targetIds.has(targetId)),
     }));
   const policySha256 = canonicalJsonSha256(policy);
-  const targets = selectedTargets.map((target) => materializeTarget(target, prior, repair, policySha256));
+  const targets = selectedTargets.map((target) => {
+    const descriptor = descriptorsByTarget.get(target.targetId);
+    const effective = descriptor ? effectiveEvidencePublicationState({
+      ledger: evidenceEpochState.ledger,
+      targetId: target.targetId,
+      descriptorSha256: descriptor.semanticDescriptorSha256,
+    }) : null;
+    return materializeTarget(target, prior, repair, policySha256, descriptor ? {
+      epochId: effective.epochId,
+      descriptorSha256: descriptor.semanticDescriptorSha256,
+    } : null);
+  });
   const candidateEdgeCount = artifactJobs.reduce((count, job) => count + job.targetIds.length, 0);
   if (targets.length > 0 && candidateEdgeCount === 0) {
     throw new Error('acquisition batch contains targets but no candidate edge');
@@ -368,6 +423,11 @@ export function buildHistoricalEvidenceRecoveryBatch({
     selection: normalizedSelection,
     targetIds: targets.map((target) => target.targetId),
     candidateEdges: artifactJobs.map((job) => [job.jobId, job.targetIds]),
+    ...(evidenceEpochState !== null ? {
+      evidenceEpochBindings: targets
+        .filter((target) => target.reconciliationContext.evidenceEpoch !== undefined)
+        .map((target) => target.reconciliationContext.evidenceEpoch),
+    } : {}),
   });
   const batch = {
     schemaVersion: 1,

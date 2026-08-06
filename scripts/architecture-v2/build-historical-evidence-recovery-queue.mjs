@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildHistoricalEvidenceRecoveryQueue } from '../../src/domain/historical-evidence-recovery.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
@@ -20,13 +21,13 @@ async function atomicJson(path, value) {
 
 export async function runCli() {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-  const [sourceDocumentRegistry, historicalReference] = await Promise.all([
+  const [sourceDocumentRegistry, activeRecovery] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'sourceDocuments')),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
+    loadHistoricalRecoveryActiveRelease({ root }),
   ]);
   const queue = buildHistoricalEvidenceRecoveryQueue({
     sourceDocuments: sourceDocumentRegistry.documents,
-    historicalReference,
+    historicalReference: activeRecovery.reference,
   });
   const outputPath = resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryQueue');
   await atomicJson(outputPath, queue);

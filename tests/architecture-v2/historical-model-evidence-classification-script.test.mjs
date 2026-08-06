@@ -236,6 +236,33 @@ test('hybrid range evidence retains range extraction state in classification', (
   assert.ok(links.get('ref-range').get(`pdf:${pdfHash}`).evidenceObjectIds.includes(`mineru-primary:${'6'.repeat(64)}`));
 });
 
+test('image audit quarantines generated-only identities outside the active release', () => {
+  const outcomes = [{
+    referenceId: 'generated-only',
+    sourcePdfSha256: 'a'.repeat(64),
+    decision: 'IDENTITY_SCOPE_UNRESOLVED',
+  }];
+  const audit = {
+    schemaVersion: 1,
+    sourceQueueSha256: '1'.repeat(64),
+    toleranceMm: 2,
+    outcomes,
+    semanticAuditSha256: canonicalJsonSha256({
+      sourceQueueSha256: '1'.repeat(64),
+      toleranceMm: 2,
+      outcomes,
+    }),
+  };
+
+  const result = applyHistoricalPdfImageAudit({
+    links: new Map(),
+    audit,
+    activeReferenceIds: new Set(['active-reference']),
+  });
+
+  assert.equal(result.quarantinedInactiveIdentities, 1);
+});
+
 test('failed current receipt replay downgrades the link into the standard parser repair lane', () => {
   const pdfHash = '8'.repeat(64);
   const receiptHash = '9'.repeat(64);

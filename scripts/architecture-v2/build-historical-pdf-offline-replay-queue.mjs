@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { buildHistoricalPdfOfflineReplayQueue } from '../../src/domain/historical-pdf-offline-replay.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -22,19 +23,18 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli(root = repoRoot) {
-  const [classification, historicalReference, publicProjection, legacyPdfAudit,
+  const [classification, activeRecovery, legacyPdfAudit,
     imageRepairAudit, priorAcceptanceBundle] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalModelEvidenceClassification')),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
-    readJson(resolveArchitectureV2Path(root, 'publicProjection')),
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson(resolveArchitectureV2Path(root, 'legacyPdfLibraryAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalPdfImageRepairAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle')),
   ]);
   const queue = buildHistoricalPdfOfflineReplayQueue({
     classification,
-    historicalReference,
-    publicProjection,
+    historicalReference: activeRecovery.reference,
+    publicProjection: activeRecovery.catalog,
     legacyPdfAudit,
     imageRepairAudit,
     priorAcceptanceBundle,

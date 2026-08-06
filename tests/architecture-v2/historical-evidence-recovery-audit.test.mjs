@@ -19,7 +19,14 @@ import { computeCandidateInventorySha256 } from '../../src/domain/evidence-candi
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { recoveryOutcomeSemanticSha256 } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
 import { createVerificationReceipt } from '../../src/domain/evidence-source-verifier.mjs';
+import {
+  appendPendingEvidenceEpoch,
+  completeEvidenceEpoch,
+  createEvidenceEpochDescriptor,
+  createEvidenceEpochLedger,
+} from '../../src/domain/evidence-epoch-reconciliation.mjs';
 import { selectRecoveryQueueSnapshot } from '../../scripts/architecture-v2/audit-historical-evidence-recovery.mjs';
+import { preserveEquivalentAuditGeneratedAt } from '../../scripts/architecture-v2/audit-historical-acceptance-receipts.mjs';
 import { runPromotionCli } from '../../scripts/architecture-v2/promote-historical-evidence-recovery.mjs';
 
 const QUEUE_SHA = 'a'.repeat(64);
@@ -200,7 +207,7 @@ function emptyRunFixture() {
   return { batch, results, state, objects: new Map() };
 }
 
-function runAudit(fixture, priorBundle = null, replayPriorObjects = false, policy = null) {
+function runAudit(fixture, priorBundle = null, replayPriorObjects = false, policy = null, evidenceEpochState = null) {
   return auditHistoricalEvidenceRecovery({
     mode: 'online',
     batch: fixture.batch,
@@ -210,11 +217,42 @@ function runAudit(fixture, priorBundle = null, replayPriorObjects = false, polic
     policy,
     generatedAt: '2026-07-13T00:04:00.000Z',
     replayPriorObjects,
+    evidenceEpochState,
     readObject: async (path) => {
       if (!fixture.objects.has(path)) throw new Error(`missing object ${path}`);
       return fixture.objects.get(path);
     },
   });
+}
+
+function bindEpoch(fixture, outcome = 'RETAINED', overrides = {}) {
+  const descriptor = createEvidenceEpochDescriptor({
+    targetId: fixture.target.targetId,
+    identity: fixture.identity,
+    priorReceiptBindingSha256: fixture.source.verificationReceipt.bindingSha256,
+    candidateSourceIdentities: [fixture.source.sourceUrl],
+    requiredSourceHashes: [fixture.source.contentSha256],
+    conflictHashes: [],
+    policyVersions: [fixture.batch.policy.version],
+    ...overrides,
+  });
+  const pending = appendPendingEvidenceEpoch({ ledger: createEvidenceEpochLedger(), descriptor });
+  const ledger = completeEvidenceEpoch({
+    ledger: pending,
+    descriptor,
+    outcome,
+    ...(outcome.startsWith('ACCEPTANCE_') ? {
+      reasonCode: 'OFFICIAL_CONFLICT',
+      decisionEvidenceHashes: [fixture.source.contentSha256],
+    } : {}),
+  });
+  fixture.target.reconciliationContext.evidenceEpoch = {
+    epochId: ledger.records[0].epochId,
+    descriptorSha256: descriptor.semanticDescriptorSha256,
+  };
+  fixture.results.batchSha256 = canonicalJsonSha256(fixture.batch);
+  fixture.state.input.batchSha256 = fixture.results.batchSha256;
+  return { ledger, descriptors: [descriptor] };
 }
 
 async function legacyMisparsedBundle(fixture, options = {}) {
@@ -277,6 +315,61 @@ test('online audit replays objects, inventory, receipt, semantics and geometry',
   assert.deepEqual(audit.violations, []);
 });
 
+test('accepted audit binds the batch target to a current publishable epoch outcome', async () => {
+  const retainedFixture = acceptedFixture();
+  const retained = bindEpoch(retainedFixture);
+  const passing = await runAudit(retainedFixture, null, false, null, retained);
+  assert.equal(passing.status, 'passed', passing.violations.join('\n'));
+
+  for (const outcome of ['ACCEPTANCE_REVOKED', 'ACCEPTANCE_QUARANTINED']) {
+    const fixture = acceptedFixture();
+    const state = bindEpoch(fixture, outcome);
+    const audit = await runAudit(fixture, null, false, null, state);
+    assert.equal(audit.status, 'failed');
+    assert.match(audit.violations.join('\n'), /evidence epoch.*not publishable/i);
+  }
+
+  const missingFixture = acceptedFixture();
+  const missing = bindEpoch(missingFixture);
+  missing.ledger = createEvidenceEpochLedger();
+  const missingAudit = await runAudit(missingFixture, null, false, null, missing);
+  assert.equal(missingAudit.status, 'failed');
+  assert.match(missingAudit.violations.join('\n'), /evidence epoch/i);
+});
+
+test('sparse epoch state leaves an unmanaged accepted audit target on the legacy path', async () => {
+  const fixture = acceptedFixture();
+  const descriptor = createEvidenceEpochDescriptor({
+    targetId: 'target-managed-elsewhere',
+    identity: { brand: 'Elsewhere', model: 'OTHER1', category: 'fridge' },
+    priorReceiptBindingSha256: 'd'.repeat(64),
+    candidateSourceIdentities: ['https://example.com/other.pdf'],
+    requiredSourceHashes: [],
+    conflictHashes: [],
+    policyVersions: [fixture.batch.policy.version],
+  });
+  let ledger = appendPendingEvidenceEpoch({ ledger: createEvidenceEpochLedger(), descriptor });
+  ledger = completeEvidenceEpoch({ ledger, descriptor, outcome: 'RETAINED' });
+
+  const audit = await runAudit(fixture, null, false, null, { ledger, descriptors: [descriptor] });
+  assert.equal(audit.status, 'passed', audit.violations.join('\n'));
+});
+
+test('accepted audit allows newly acquired hashes but rejects a missing required epoch-start hash', async () => {
+  const addedFixture = acceptedFixture();
+  const addedState = bindEpoch(addedFixture, 'RETAINED', { requiredSourceHashes: [] });
+  const addedAudit = await runAudit(addedFixture, null, false, null, addedState);
+  assert.equal(addedAudit.status, 'passed', addedAudit.violations.join('\n'));
+
+  const missingFixture = acceptedFixture();
+  const missingState = bindEpoch(missingFixture, 'RETAINED', {
+    requiredSourceHashes: ['e'.repeat(64)],
+  });
+  const missingAudit = await runAudit(missingFixture, null, false, null, missingState);
+  assert.equal(missingAudit.status, 'failed');
+  assert.match(missingAudit.violations.join('\n'), /acquired content binding is stale/i);
+});
+
 test('acceptance receipt replay emits structured pass and parser-drift outcomes', async () => {
   const fixture = acceptedFixture();
   const audit = await runAudit(fixture);
@@ -302,6 +395,34 @@ test('acceptance receipt replay emits structured pass and parser-drift outcomes'
   const filtered = filterHistoricalAcceptanceBundleByReceiptReplayAudit(drifted, failing);
   assert.equal(filtered.bundle.entries.length, 0);
   assert.deepEqual(filtered.excludedTargetIds, [fixture.target.targetId]);
+});
+
+test('receipt replay CLI preserves generatedAt when the semantic audit is unchanged', () => {
+  const sourceBundleSha256 = 'c'.repeat(64);
+  const outcomes = [{ targetId: 'target-a', status: 'passed' }];
+  const semanticAuditSha256 = canonicalJsonSha256({ sourceBundleSha256, outcomes });
+  const report = {
+    generatedAt: '2026-08-05T00:00:00.000Z',
+    sourceBundleSha256,
+    outcomes,
+    semanticAuditSha256,
+  };
+  const prior = {
+    generatedAt: '2026-07-28T00:00:00.000Z',
+    sourceBundleSha256,
+    outcomes,
+    semanticAuditSha256,
+  };
+
+  assert.deepEqual(preserveEquivalentAuditGeneratedAt(report, prior), prior);
+  assert.deepEqual(preserveEquivalentAuditGeneratedAt(report, {
+    ...prior,
+    semanticAuditSha256: 'b'.repeat(64),
+  }), report);
+  assert.deepEqual(preserveEquivalentAuditGeneratedAt(report, {
+    ...prior,
+    outcomes: [{ targetId: 'target-a', status: 'failed' }],
+  }), report);
 });
 
 test('claim, source, inventory, authority and batch mutations fail closed', async () => {

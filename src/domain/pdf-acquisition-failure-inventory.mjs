@@ -8,6 +8,13 @@ const FAILURE_STATUSES = new Set([
   'identity_unproven',
   'source_content_error',
 ]);
+const RETAINED_HISTORICAL_FIXTURE_IDS = Object.freeze([
+  'pdf_baseline_0091f6e0fab54efeff6261c7',
+  'pdf_baseline_4ff2baa8fd61b2dd045ec892',
+  'pdf_baseline_b10098c89b1b7927d6a8cff9',
+  'pdf_baseline_c3803a0f3b9196ea12abb89c',
+  'pdf_baseline_0628a4f689af28d321e7bed6',
+]);
 
 export const PDF_ACQUISITION_FAILURE_MECHANISMS = Object.freeze([
   'OFFICIAL_ROUTE_ABSENT',
@@ -168,11 +175,44 @@ function countByMechanism(records) {
   return counts;
 }
 
+function lifecyclePriority(sample, lifecycleState) {
+  if (lifecycleState === 'CURRENT_RETAIL') return sample.priorityClass ?? null;
+  if (sample.priorityClass === 'P0_CURRENT_MISSING_DIMENSIONS') {
+    return 'P1_HISTORICAL_MISSING_DIMENSIONS';
+  }
+  if (sample.priorityClass === 'P2_CURRENT_CONFIRMATION') return 'P3_HISTORICAL_CONFIRMATION';
+  return sample.priorityClass ?? null;
+}
+
+function selectCurrentCanaries(records, limit = 7) {
+  const remaining = records.filter((record) => record.lifecycleState === 'CURRENT_RETAIL');
+  const selected = [];
+  const mechanisms = new Set();
+  const brands = new Set();
+  while (remaining.length && selected.length < limit) {
+    remaining.sort((left, right) => {
+      const leftScore = (mechanisms.has(left.primaryMechanism) ? 0 : 4)
+        + (brands.has(normalizedKey(left.brand)) ? 0 : 2);
+      const rightScore = (mechanisms.has(right.primaryMechanism) ? 0 : 4)
+        + (brands.has(normalizedKey(right.brand)) ? 0 : 2);
+      return rightScore - leftScore
+        || right.representedTargetCount - left.representedTargetCount
+        || left.sampleId.localeCompare(right.sampleId);
+    });
+    const next = remaining.shift();
+    selected.push({ ...next, lane: 'CURRENT_RETAIL_CANARY' });
+    mechanisms.add(next.primaryMechanism);
+    brands.add(normalizedKey(next.brand));
+  }
+  return selected;
+}
+
 export function buildPdfAcquisitionFailureInventory({
   wp7aReport,
   checkpoint,
   contactMatrix,
   sourceBindings,
+  activeRecoveryView = null,
 }) {
   if (wp7aReport?.schemaVersion !== 1 || !Array.isArray(wp7aReport.samples)) {
     throw new TypeError('WP7A report schema v1 required');
@@ -198,6 +238,9 @@ export function buildPdfAcquisitionFailureInventory({
   }
 
   const organizationIndex = buildOrganizationIndex(contactMatrix);
+  const activeReferences = activeRecoveryView
+    ? new Map(activeRecoveryView.reference.records.map((row) => [row.referenceId, row]))
+    : null;
   const records = failedSamples.map((sample) => {
     const attempt = attempts.get(sample.sampleId);
     if (!FAILURE_STATUSES.has(attempt.status)) {
@@ -212,6 +255,10 @@ export function buildPdfAcquisitionFailureInventory({
       code: transportFailureCode(entry.reason),
       host: new URL(requiredText(entry.sourceUrl, 'transport source URL')).hostname.toLowerCase(),
     }));
+    const activeReference = activeReferences?.get(sample.referenceId) ?? null;
+    if (activeReferences && !activeReference) {
+      throw new Error(`failure inventory reference outside active release: ${sample.referenceId}`);
+    }
     return {
       sampleId: sample.sampleId,
       category: requiredText(sample.category, 'sample category'),
@@ -220,8 +267,11 @@ export function buildPdfAcquisitionFailureInventory({
       representedTargetCount: Number.isInteger(sample.representedTargetCount) && sample.representedTargetCount > 0
         ? sample.representedTargetCount
         : 1,
-      lifecycleState: sample.lifecycleState ?? null,
-      priorityClass: sample.priorityClass ?? null,
+      lifecycleState: activeReference?.lifecycleState ?? sample.lifecycleState ?? null,
+      priorityClass: lifecyclePriority(
+        sample,
+        activeReference?.lifecycleState ?? sample.lifecycleState ?? null,
+      ),
       sourceHost: requiredText(sample.sourceHost, 'sample source host').toLowerCase(),
       organization,
       acquisitionStatus: attempt.status,
@@ -241,6 +291,25 @@ export function buildPdfAcquisitionFailureInventory({
   });
 
   const byMechanism = countByMechanism(records);
+  const currentRecords = records.filter((record) => record.lifecycleState === 'CURRENT_RETAIL');
+  const currentCanaries = selectCurrentCanaries(records);
+  const archivedRecords = records.filter((record) => record.lifecycleState === 'CATALOG_ARCHIVED');
+  const retainedFixtures = RETAINED_HISTORICAL_FIXTURE_IDS
+    .map((sampleId) => archivedRecords.find((record) => record.sampleId === sampleId));
+  const historicalFixtures = (retainedFixtures.every(Boolean)
+    ? retainedFixtures
+    : archivedRecords.slice(0, 5))
+    .map((record) => ({ ...record, lane: 'HISTORICAL_OFFLINE_FIXTURE' }));
+  const currentRetailDenominator = {
+    records: currentRecords.length,
+    representedTargets: currentRecords.reduce((sum, row) => sum + row.representedTargetCount, 0),
+    byMechanism: countByMechanism(currentRecords),
+    ...(activeRecoveryView ? {
+      releaseCandidateId: activeRecoveryView.releaseCandidateId,
+      activeHistoricalReferences: activeRecoveryView.summary.references,
+      activeCurrentReferences: activeRecoveryView.summary.byLifecycle.CURRENT_RETAIL ?? 0,
+    } : {}),
+  };
   const recoveryRanking = PDF_ACQUISITION_FAILURE_MECHANISMS
     .map((mechanism) => {
       const matching = records.filter((entry) => entry.primaryMechanism === mechanism);
@@ -259,6 +328,9 @@ export function buildPdfAcquisitionFailureInventory({
     schemaVersion: 1,
     sourceBindings: bindings,
     records,
+    currentRetailDenominator,
+    currentCanaries,
+    historicalFixtures,
   };
   return {
     ...semantic,

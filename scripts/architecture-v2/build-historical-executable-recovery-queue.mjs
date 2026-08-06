@@ -13,6 +13,7 @@ import { historicalResolverContractSha256 } from '../../src/domain/historical-ev
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { recoveryResolverContractForTarget } from './run-historical-evidence-recovery.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -37,11 +38,11 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli() {
-  const [acquisitionQueue, candidateManifest, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle,
+  const [acquisitionQueue, candidateManifest, activeRecovery, legacyRecoveryQueue, priorAcceptanceBundle,
     priorAttemptLedger, recoveryPolicy] = await Promise.all([
     readJson('historicalModelPdfAcquisitionQueue'),
     readJson('historicalOfficialCandidateManifest'),
-    readJson('historicalApplianceReference'),
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalEvidenceRecoveryAcceptanceBundle'),
     readOptionalJson('historicalEvidenceRecoveryAttemptLedger', { schemaVersion: 1, entries: [] }),
@@ -56,7 +57,7 @@ export async function runCli() {
   const queue = buildHistoricalExecutableRecoveryQueue({
     acquisitionQueue,
     candidateManifest,
-    historicalReference,
+    historicalReference: activeRecovery.reference,
     legacyRecoveryQueue,
     priorAcceptanceBundle,
     priorAttemptLedger,

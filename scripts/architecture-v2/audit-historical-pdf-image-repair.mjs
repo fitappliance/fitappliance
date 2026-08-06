@@ -4,6 +4,7 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 import {
   buildHistoricalPdfImageRepairAudit,
   reconcileMineruProfileExtractions,
@@ -69,10 +70,11 @@ async function main(args) {
   const storageRoot = resolve(storageRootValue);
   const outputPath = resolve(option(args, '--output')
     ?? resolveArchitectureV2Path(root, 'historicalPdfImageRepairAudit'));
-  const [queue, historicalReference] = await Promise.all([
+  const [queue, activeRecovery] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalPdfImageRepairQueue')),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
+    loadHistoricalRecoveryActiveRelease({ root }),
   ]);
+  const historicalReference = activeRecovery.reference;
   const hybridProfile = evidenceSourcePolicy.resolutionPolicy.pdfEvidenceProfiles
     .find((profile) => profile.profileId === 'hybrid-image-high-v1');
   const primaryProfile = evidenceSourcePolicy.resolutionPolicy.pdfEvidenceProfiles

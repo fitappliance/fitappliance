@@ -8,6 +8,7 @@ import {
 import { basename, dirname, extname, join, relative, resolve, sep } from 'node:path';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 import { evidenceSourcePolicy } from '../../src/domain/evidence-source-verifier.mjs';
 import { buildHistoricalModelPdfBaseline } from '../../src/domain/historical-model-evidence-classification.mjs';
 
@@ -154,20 +155,21 @@ async function main(args) {
   if (!storageRoot || storageRoot === resolve('')) throw new TypeError('--storage-root or FITAPPLIANCE_STORAGE_ROOT required');
   const outputPath = resolve(option(args, '--output') ?? resolveArchitectureV2Path(root, 'historicalModelPdfBaseline'));
   const generatedAt = option(args, '--generated-at') ?? new Date().toISOString();
+  const activeRecovery = await loadHistoricalRecoveryActiveRelease({ root });
   const paths = {
-    historicalReference: resolveArchitectureV2Path(root, 'historicalApplianceReference'),
+    historicalReference: activeRecovery.paths.reference,
     sourceDocuments: resolveArchitectureV2Path(root, 'sourceDocuments'),
     acceptanceBundle: resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle'),
-    publicProjection: resolveArchitectureV2Path(root, 'publicProjection'),
-    historicalManifest: resolveArchitectureV2Path(root, 'historicalReferencePublicationManifest'),
+    publicProjection: activeRecovery.paths.catalog,
+    historicalManifest: resolve(activeRecovery.paths.reference, '../historical-reference-publication-manifest.json'),
     dimensionExpressions: resolve(root, 'data/architecture-v2/generated/dimension-expression-observations.json'),
   };
   const [historicalReference, sourceDocumentArtifact, acceptanceBundle, publicProjection,
     historicalManifest, pdfInventory, storageMarker, storageStats] = await Promise.all([
-    readJson(paths.historicalReference),
+    Promise.resolve(activeRecovery.reference),
     readJson(paths.sourceDocuments),
     readJson(paths.acceptanceBundle),
-    readJson(paths.publicProjection),
+    Promise.resolve(activeRecovery.catalog),
     readJson(paths.historicalManifest),
     inventoryPdfs(storageRoot),
     readJson(resolve(storageRoot, '.fitappliance-storage-root.json')),

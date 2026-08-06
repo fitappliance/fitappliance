@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { buildHistoricalModelPdfAcquisitionQueue } from '../../src/domain/historical-model-pdf-acquisition.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 import { resolverAdapterIdsForBrand } from '../pdf-pipeline/architecture-v2-resolver-adapters.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -23,16 +24,14 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli() {
-  const [classification, historicalReference, recoveryQueue, offlineReplayQueue,
-    offlineReplayResults, publicProjection, identityResearchQueue, identityMigration] = await Promise.all([
+  const [classification, activeRelease, recoveryQueue, offlineReplayQueue,
+    offlineReplayResults, identityResearchQueue] = await Promise.all([
     readJson('historicalModelEvidenceClassification'),
-    readJson('historicalApplianceReference'),
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalPdfOfflineReplayQueue'),
     readJson('historicalPdfOfflineReplayResults'),
-    readJson('publicProjection'),
     readJson('identityResearchQueue'),
-    readJson('retailerIdentityMigration'),
   ]);
   const brands = [...new Set(classification.records.map((record) => record.canonicalBrand))];
   const resolverIdsByBrand = new Map(brands.map((brand) => [
@@ -40,15 +39,18 @@ export async function runCli() {
     resolverAdapterIdsForBrand(brand),
   ]));
   const queue = buildHistoricalModelPdfAcquisitionQueue({
+    activeReleaseSourceBinding: {
+      releaseCandidateId: activeRelease.releaseCandidateId,
+      ...activeRelease.sourceBindings,
+    },
     classification,
-    historicalReference,
-    catalogProducts: publicProjection.products,
+    historicalReference: activeRelease.reference,
+    catalogProducts: activeRelease.catalog.products,
     recoveryQueue,
     offlineReplayQueue,
     offlineReplayResults,
     identityResearchQueue,
-    identityMigration,
-    catalogProjectionSemanticSha256: canonicalJsonSha256(publicProjection),
+    catalogProjectionSemanticSha256: canonicalJsonSha256(activeRelease.catalog),
     resolverIdsByBrand,
     generatedAt: classification.generatedAt,
   });

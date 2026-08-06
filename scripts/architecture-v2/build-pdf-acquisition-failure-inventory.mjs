@@ -6,6 +6,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { buildPdfAcquisitionFailureInventory } from '../../src/domain/pdf-acquisition-failure-inventory.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -47,12 +48,13 @@ export async function buildPdfAcquisitionFailureInventoryFromRepository({
     contactMatrix: resolve(root, 'data/architecture-v2/policies/brand-data-contact-matrix.json'),
     checkpoint: resolve(checkpointPath),
   };
-  const [wp7a, checkpoint, strategy, sourcePolicy, contactMatrix] = await Promise.all([
+  const [wp7a, checkpoint, strategy, sourcePolicy, contactMatrix, activeRecoveryView] = await Promise.all([
     readJsonWithHash(paths.wp7a),
     readJsonWithHash(paths.checkpoint),
     readJsonWithHash(paths.strategy),
     readJsonWithHash(paths.sourcePolicy),
     readJsonWithHash(paths.contactMatrix),
+    loadHistoricalRecoveryActiveRelease({ root }),
   ]);
   if (checkpoint.document.baselineId !== wp7a.document.sourceBaselineId
     || checkpoint.document.baselineSha256 !== wp7a.document.sourceBaselineSha256) {
@@ -62,6 +64,7 @@ export async function buildPdfAcquisitionFailureInventoryFromRepository({
     wp7aReport: wp7a.document,
     checkpoint: checkpoint.document,
     contactMatrix: contactMatrix.document,
+    activeRecoveryView,
     sourceBindings: {
       wp7aReportSha256: wp7a.sha256,
       checkpointSha256: checkpoint.sha256,

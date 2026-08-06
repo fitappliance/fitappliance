@@ -1,6 +1,6 @@
 # Historical Evidence Programme Status
 
-Generated: 2026-07-28T15:53:54.152Z
+Generated: 2026-08-05T12:11:28.783Z
 
 > Counts are deliberately separated by grain. A PDF or MinerU document is not a model receipt, and W/H/D is not Verified Fit.
 
@@ -8,23 +8,23 @@ Generated: 2026-07-28T15:53:54.152Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Inventory classified | Historical Model Reference | 8089 | 8089 | 100.00% |
-| Models with document links | Historical Model Reference | 1768 | 8089 | 21.86% |
-| Models without document links | Historical Model Reference | 6321 | 8089 | 78.14% |
-| Models with current valid receipts | Historical Model Reference | 401 | 8089 | 4.96% |
-| Models queued for acquisition | Historical Model Reference | 7688 | 8089 | 95.04% |
-| Executable model targets | Historical Model Reference | 4969 | 7688 | 64.63% |
-| Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8089 | 4.72% |
-| Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8089 | 3.97% |
+| Inventory classified | Historical Model Reference | 8087 | 8087 | 100.00% |
+| Models with document links | Historical Model Reference | 1766 | 8087 | 21.84% |
+| Models without document links | Historical Model Reference | 6321 | 8087 | 78.16% |
+| Models with current valid receipts | Historical Model Reference | 401 | 8087 | 4.96% |
+| Models queued for acquisition | Historical Model Reference | 7686 | 8087 | 95.04% |
+| Executable model targets | Historical Model Reference | 4967 | 7686 | 64.62% |
+| Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8087 | 4.72% |
+| Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8087 | 3.97% |
 
 ## Target outcome funnel
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Models with scheduled evidence work | Historical Model Reference | 4969 | 8089 | 61.43% |
-| Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8089 | 0.07% |
-| Completed model targets | Historical Model Reference | 401 | 8089 | 4.96% |
-| Blocked model targets | Historical Model Reference | 2725 | 8089 | 33.69% |
+| Models with scheduled evidence work | Historical Model Reference | 4967 | 8087 | 61.42% |
+| Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8087 | 0.07% |
+| Completed model targets | Historical Model Reference | 401 | 8087 | 4.96% |
+| Blocked model targets | Historical Model Reference | 2725 | 8087 | 33.70% |
 
 ## Document and parser funnel
 
@@ -34,7 +34,7 @@ Generated: 2026-07-28T15:53:54.152Z
 | Unique PDF content indexed | Unique Pdf Content | 516 | 516 | 100.00% |
 | Indexed PDF content graph nodes | Unique Pdf Content | 1039 | 1039 | 100.00% |
 | Valid indexed PDF graph nodes | Unique Pdf Content | 1025 | 1039 | 98.65% |
-| Document-model edges with exact or internal model-list proof | Document Model Edge | 569 | 3973 | 14.32% |
+| Document-model edges with exact or internal model-list proof | Document Model Edge | 569 | 3972 | 14.33% |
 | Valid MinerU knowledge documents | Mineru Knowledge Document | 1025 | 1039 | 98.65% |
 | MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 543 | 1025 | 52.98% |
 | Complete parser replays | Parser Replay | 455 | 1156 | 39.36% |
@@ -53,8 +53,8 @@ Generated: 2026-07-28T15:53:54.152Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Current products with receipt-bound dimensions | Current Catalog Product | 332 | 3515 | 9.45% |
-| Current products with receipt-bound Verified Fit | Current Catalog Product | 0 | 3515 | 0.00% |
+| Current products with receipt-bound dimensions | Current Catalog Product | 332 | 3513 | 9.45% |
+| Current products with receipt-bound Verified Fit | Current Catalog Product | 0 | 3513 | 0.00% |
 
 ## Cross-artifact controls
 

@@ -66,3 +66,21 @@ test('candidate discovery deduplicates URLs and rejects cross-brand product page
   assert.equal(rows.filter((row) => row.url === 'https://www.westinghouse.com.au/WHE5264SC.pdf').length, 1);
   assert.ok(rows.every((row) => !row.url.includes('evil.example')));
 });
+
+test('explicit exact-model non-PDF URL is an optional-ranked product page candidate', async () => {
+  const productPageUrl = 'https://www.smeg.com/au/products/FAB32RWH5AU';
+  const rows = await discoverOfficialDocumentCandidates({
+    brand: 'Smeg', model: 'FAB32RWH5AU', category: 'fridge',
+    explicitUrls: [
+      productPageUrl,
+      'https://www.smeg.com/it/products/FAB32RWH5AU',
+      'https://retailer.example/FAB32RWH5AU',
+    ],
+    productPageUrls: [],
+  }, { fetchImpl: async () => assert.fail('no page fetch expected') });
+
+  const productPage = rows.find((row) => row.url === productPageUrl);
+  assert.equal(productPage.documentType, 'product_page');
+  assert.equal(productPage.modelSignal, 'exact_url');
+  assert.ok(rows.every((row) => !row.url.includes('/it/products/') && !row.url.includes('retailer.example')));
+});

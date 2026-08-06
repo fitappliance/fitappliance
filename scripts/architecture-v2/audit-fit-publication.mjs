@@ -7,14 +7,18 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { auditPublicFitProjection } from '../../src/domain/geometry-publication.mjs';
 import { auditInstallationFitPublication } from '../../src/domain/installation-evidence-pipeline.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 
 const defaultRoot = resolve(new URL('../..', import.meta.url).pathname);
 
 export async function runFitPublicationAudit({
   root = defaultRoot,
-  projectionPath = resolveArchitectureV2Path(root, 'publicProjection'),
+  projectionPath,
   outputPath = resolveArchitectureV2Path(root, 'fitPublicationAudit'),
 } = {}) {
+  if (!projectionPath) {
+    projectionPath = (await loadActiveRetailRelease({ root })).paths.catalog;
+  }
   const projection = JSON.parse(await readFile(projectionPath, 'utf8'));
   const audit = auditPublicFitProjection(projection);
   const receiptBundle = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/reviews/automated/installation-evidence-receipts.json'), 'utf8'));

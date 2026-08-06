@@ -14,8 +14,8 @@
   },
   "sourceBindings": {
     "dimensionKnowledgeSha256": "dc83a990e2634d36e2eb31521def0b4f575020de2dccd8e26e1599d37f513ab2",
-    "documentGraphSha256": "c600d75069106ee70882285070b0ba057cd7495b70cab05889cf1a00b1bcdefe",
-    "classificationSha256": "4338b060a64f140b12e469896a5e2f5aece80ef56854467d5111bb32cd38f8f1",
+    "documentGraphSha256": "a95be570addca60f2d21ca11fb1dd9ef3ddb8e110db797e0babc304c7b138391",
+    "classificationSha256": "4dcb77d338257226530d465bcb5741eeb0166227d54fc783ee1a2f12d53cb327",
     "fixtureCorpusSha256": "b747eda86941bbeef8be4bd681d00c087a123b0d55c61c7b05df7e10920632db"
   },
   "summary": {
@@ -33,68 +33,8 @@
       "COMPLETE_DIAGNOSTIC_ONLY": 62
     }
   },
-  "selectedFamilyId": "document_family_b163ff29c7a5bf78bd56457c",
+  "selectedFamilyId": "document_family_373b0e3085e05474eda350b6",
   "rows": [
-    {
-      "familyId": "document_family_b163ff29c7a5bf78bd56457c",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_839d629ed03dd325",
-      "lane": "REPAIR_READY",
-      "rank": 1,
-      "score": 4130,
-      "scoreComponents": {
-        "affectedExactModels": 3000,
-        "lifecyclePriority": 600,
-        "familyReuse": 200,
-        "sourceAuthority": 300,
-        "mineruValidity": 30,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 3,
-      "affectedReferenceIds": [
-        "fa_ref_2b33eab14b5ba801450a6ac9",
-        "fa_ref_7e2dd65af9e61749792759f6",
-        "fa_ref_e8a9dd51253a5829b8256a13"
-      ],
-      "affectedModels": [
-        "WGG24403AU",
-        "WAN28288AU",
-        "WGG244ARAU"
-      ],
-      "incompleteReplayCount": 3,
-      "incompletePdfSha256s": [
-        "1bdc41cffdd8fa33684eeecd9eae4319fc6d755a9445f5ee3cf3f1c8aa60e355",
-        "98aa30cc7edb8b8018873e41174d82a9e67b7454a0c62363637d7d6d21a4d5fb",
-        "e921a047dd6a8d606544633bf44955648a181bbff9a2ed89fe60727cae345eb2"
-      ],
-      "documentIds": [
-        "pdf_document_4c823be3f16cedee5da006a5",
-        "pdf_document_ae792e8093f34bf379124653",
-        "pdf_document_e3b1bc2783ac0eb5371902c3"
-      ],
-      "pdfSha256s": [
-        "1bdc41cffdd8fa33684eeecd9eae4319fc6d755a9445f5ee3cf3f1c8aa60e355",
-        "98aa30cc7edb8b8018873e41174d82a9e67b7454a0c62363637d7d6d21a4d5fb",
-        "e921a047dd6a8d606544633bf44955648a181bbff9a2ed89fe60727cae345eb2"
-      ],
-      "validMineruDocuments": 3,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 3
-      },
-      "sourceAuthorityCounts": {
-        "OFFICIAL": 3
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
     {
       "familyId": "document_family_373b0e3085e05474eda350b6",
       "category": "fridge",
@@ -102,11 +42,11 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "lane": "REPAIR_READY",
-      "rank": 2,
-      "score": 4010,
+      "rank": 1,
+      "score": 4110,
       "scoreComponents": {
         "affectedExactModels": 3000,
-        "lifecyclePriority": 300,
+        "lifecyclePriority": 400,
         "familyReuse": 200,
         "sourceAuthority": 300,
         "mineruValidity": 210,
@@ -185,7 +125,69 @@
         "PACKAGE_OR_DELIVERY"
       ],
       "lifecycleCounts": {
-        "CATALOG_ARCHIVED": 3
+        "CATALOG_ARCHIVED": 2,
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "OFFICIAL": 3
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_b163ff29c7a5bf78bd56457c",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_839d629ed03dd325",
+      "lane": "REPAIR_READY",
+      "rank": 2,
+      "score": 3930,
+      "scoreComponents": {
+        "affectedExactModels": 3000,
+        "lifecyclePriority": 400,
+        "familyReuse": 200,
+        "sourceAuthority": 300,
+        "mineruValidity": 30,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 3,
+      "affectedReferenceIds": [
+        "fa_ref_2b33eab14b5ba801450a6ac9",
+        "fa_ref_7e2dd65af9e61749792759f6",
+        "fa_ref_e8a9dd51253a5829b8256a13"
+      ],
+      "affectedModels": [
+        "WGG24403AU",
+        "WAN28288AU",
+        "WGG244ARAU"
+      ],
+      "incompleteReplayCount": 3,
+      "incompletePdfSha256s": [
+        "1bdc41cffdd8fa33684eeecd9eae4319fc6d755a9445f5ee3cf3f1c8aa60e355",
+        "98aa30cc7edb8b8018873e41174d82a9e67b7454a0c62363637d7d6d21a4d5fb",
+        "e921a047dd6a8d606544633bf44955648a181bbff9a2ed89fe60727cae345eb2"
+      ],
+      "documentIds": [
+        "pdf_document_4c823be3f16cedee5da006a5",
+        "pdf_document_ae792e8093f34bf379124653",
+        "pdf_document_e3b1bc2783ac0eb5371902c3"
+      ],
+      "pdfSha256s": [
+        "1bdc41cffdd8fa33684eeecd9eae4319fc6d755a9445f5ee3cf3f1c8aa60e355",
+        "98aa30cc7edb8b8018873e41174d82a9e67b7454a0c62363637d7d6d21a4d5fb",
+        "e921a047dd6a8d606544633bf44955648a181bbff9a2ed89fe60727cae345eb2"
+      ],
+      "validMineruDocuments": 3,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 2,
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "OFFICIAL": 3
@@ -201,10 +203,10 @@
       "groupName": "PDF grammar pdf_grammar_d4b23eb44a06a21f",
       "lane": "REPAIR_READY",
       "rank": 3,
-      "score": 4010,
+      "score": 3710,
       "scoreComponents": {
         "affectedExactModels": 3000,
-        "lifecyclePriority": 600,
+        "lifecyclePriority": 300,
         "familyReuse": 200,
         "sourceAuthority": 180,
         "mineruValidity": 30,
@@ -245,181 +247,10 @@
       "researchGapTypes": [],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 3
+        "CATALOG_ARCHIVED": 3
       },
       "sourceAuthorityCounts": {
         "MIXED": 3
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_2836ecbbe8f837d09d9b41c0",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_8cdd223e96c1e64c",
-      "lane": "REPAIR_READY",
-      "rank": 4,
-      "score": 2665,
-      "scoreComponents": {
-        "affectedExactModels": 2000,
-        "lifecyclePriority": 400,
-        "familyReuse": 125,
-        "sourceAuthority": 120,
-        "mineruValidity": 20,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 2,
-      "affectedReferenceIds": [
-        "fa_ref_6e75cda6315744e9163d7a30",
-        "fa_ref_7017a73aa6952837bd428255"
-      ],
-      "affectedModels": [
-        "W4086C.W",
-        "W2084C.W"
-      ],
-      "incompleteReplayCount": 2,
-      "incompletePdfSha256s": [
-        "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
-        "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b"
-      ],
-      "documentIds": [
-        "pdf_document_c08ed4e7ba1bc4892451004e",
-        "pdf_document_cd04a1f208387ec4e0acd8a0"
-      ],
-      "pdfSha256s": [
-        "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
-        "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 2
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_438279c11260511c3f2b48ec",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_eae9667c949db76d",
-      "lane": "REPAIR_READY",
-      "rank": 5,
-      "score": 2665,
-      "scoreComponents": {
-        "affectedExactModels": 2000,
-        "lifecyclePriority": 400,
-        "familyReuse": 125,
-        "sourceAuthority": 120,
-        "mineruValidity": 20,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 2,
-      "affectedReferenceIds": [
-        "fa_ref_12a63ed5b8b7777b2bb31a14",
-        "fa_ref_f5d0b05f449b892711be2903"
-      ],
-      "affectedModels": [
-        "HDW15G3X",
-        "HDW15G3W"
-      ],
-      "incompleteReplayCount": 2,
-      "incompletePdfSha256s": [
-        "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
-        "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a"
-      ],
-      "documentIds": [
-        "pdf_document_1d778ea1eceab7aa6cbb5202",
-        "pdf_document_5be347fdd1bacacd156a7f23"
-      ],
-      "pdfSha256s": [
-        "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
-        "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 2
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_a908152122ffb1298169e41f",
-      "category": "dryer",
-      "brand": "ASKO",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_44da855f9fc7ab7c",
-      "lane": "REPAIR_READY",
-      "rank": 6,
-      "score": 2665,
-      "scoreComponents": {
-        "affectedExactModels": 2000,
-        "lifecyclePriority": 400,
-        "familyReuse": 125,
-        "sourceAuthority": 120,
-        "mineruValidity": 20,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 2,
-      "affectedReferenceIds": [
-        "fa_ref_1ac391fe8ec81d62e37edadf",
-        "fa_ref_bef91297ea3d15a34ff7e04c"
-      ],
-      "affectedModels": [
-        "T408HD.W",
-        "T208H.W"
-      ],
-      "incompleteReplayCount": 2,
-      "incompletePdfSha256s": [
-        "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
-        "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423"
-      ],
-      "documentIds": [
-        "pdf_document_38762df47ac230b4240497c2",
-        "pdf_document_3ae9a6a68c57fc386bc977e9"
-      ],
-      "pdfSha256s": [
-        "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
-        "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 2
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -431,11 +262,11 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
       "lane": "REPAIR_READY",
-      "rank": 7,
-      "score": 2625,
+      "rank": 4,
+      "score": 2525,
       "scoreComponents": {
         "affectedExactModels": 2000,
-        "lifecyclePriority": 400,
+        "lifecyclePriority": 300,
         "familyReuse": 125,
         "sourceAuthority": 80,
         "mineruValidity": 20,
@@ -471,7 +302,8 @@
       "researchGapTypes": [],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
+        "CATALOG_ARCHIVED": 1,
+        "CURRENT_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1,
@@ -487,7 +319,7 @@
       "groupType": "document_family",
       "groupName": "Document family 3924d1301519",
       "lane": "REPAIR_READY",
-      "rank": 8,
+      "rank": 5,
       "score": 2485,
       "scoreComponents": {
         "affectedExactModels": 2000,
@@ -533,6 +365,177 @@
       },
       "sourceAuthorityCounts": {
         "NONE": 2
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_2836ecbbe8f837d09d9b41c0",
+      "category": "washing_machine",
+      "brand": "ASKO",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8cdd223e96c1e64c",
+      "lane": "REPAIR_READY",
+      "rank": 6,
+      "score": 2465,
+      "scoreComponents": {
+        "affectedExactModels": 2000,
+        "lifecyclePriority": 200,
+        "familyReuse": 125,
+        "sourceAuthority": 120,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 2,
+      "affectedReferenceIds": [
+        "fa_ref_6e75cda6315744e9163d7a30",
+        "fa_ref_7017a73aa6952837bd428255"
+      ],
+      "affectedModels": [
+        "W4086C.W",
+        "W2084C.W"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+        "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b"
+      ],
+      "documentIds": [
+        "pdf_document_c08ed4e7ba1bc4892451004e",
+        "pdf_document_cd04a1f208387ec4e0acd8a0"
+      ],
+      "pdfSha256s": [
+        "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+        "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 2
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 2
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_438279c11260511c3f2b48ec",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_eae9667c949db76d",
+      "lane": "REPAIR_READY",
+      "rank": 7,
+      "score": 2465,
+      "scoreComponents": {
+        "affectedExactModels": 2000,
+        "lifecyclePriority": 200,
+        "familyReuse": 125,
+        "sourceAuthority": 120,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 2,
+      "affectedReferenceIds": [
+        "fa_ref_12a63ed5b8b7777b2bb31a14",
+        "fa_ref_f5d0b05f449b892711be2903"
+      ],
+      "affectedModels": [
+        "HDW15G3X",
+        "HDW15G3W"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
+        "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a"
+      ],
+      "documentIds": [
+        "pdf_document_1d778ea1eceab7aa6cbb5202",
+        "pdf_document_5be347fdd1bacacd156a7f23"
+      ],
+      "pdfSha256s": [
+        "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
+        "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 2
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 2
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_a908152122ffb1298169e41f",
+      "category": "dryer",
+      "brand": "ASKO",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_44da855f9fc7ab7c",
+      "lane": "REPAIR_READY",
+      "rank": 8,
+      "score": 2465,
+      "scoreComponents": {
+        "affectedExactModels": 2000,
+        "lifecyclePriority": 200,
+        "familyReuse": 125,
+        "sourceAuthority": 120,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 2,
+      "affectedReferenceIds": [
+        "fa_ref_1ac391fe8ec81d62e37edadf",
+        "fa_ref_bef91297ea3d15a34ff7e04c"
+      ],
+      "affectedModels": [
+        "T408HD.W",
+        "T208H.W"
+      ],
+      "incompleteReplayCount": 2,
+      "incompletePdfSha256s": [
+        "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
+        "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423"
+      ],
+      "documentIds": [
+        "pdf_document_38762df47ac230b4240497c2",
+        "pdf_document_3ae9a6a68c57fc386bc977e9"
+      ],
+      "pdfSha256s": [
+        "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
+        "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 2
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 2
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -593,258 +596,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_f7fbcea126548cdb3813e128",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
+      "familyId": "document_family_0c88d71c967ffc0163a66f43",
+      "category": "fridge",
+      "brand": "Hisense",
       "groupType": "model_specific",
-      "groupName": "DH9060HG1",
+      "groupName": "HRCD610TS",
       "lane": "REPAIR_READY",
       "rank": 10,
-      "score": 1480,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 150,
-        "sourceAuthority": 100,
-        "mineruValidity": 30,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_17b4e72272ac25833e45bd3d"
-      ],
-      "affectedModels": [
-        "DH9060HG1"
-      ],
-      "incompleteReplayCount": 3,
-      "incompletePdfSha256s": [
-        "21ed9146935191e7692188633d362cd2f96ed34264301bce7e59c9fa7d112b62",
-        "7e5127840872a989b4e6c97c0b02a8bf679fac8cb66ab41e212029c6cbcb24c0",
-        "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7"
-      ],
-      "documentIds": [
-        "pdf_document_2f3e18961d4dd3331a251a15",
-        "pdf_document_911e85862187cd0ab4caed8e",
-        "pdf_document_e86a8f1d89e4ec76373a120f"
-      ],
-      "pdfSha256s": [
-        "21ed9146935191e7692188633d362cd2f96ed34264301bce7e59c9fa7d112b62",
-        "7e5127840872a989b4e6c97c0b02a8bf679fac8cb66ab41e212029c6cbcb24c0",
-        "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7"
-      ],
-      "validMineruDocuments": 3,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "OFFICIAL": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_60e48410e2fd9bb1b37dcb16",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "groupType": "model_specific",
-      "groupName": "DW60CDW2",
-      "lane": "REPAIR_READY",
-      "rank": 11,
-      "score": 1450,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 150,
-        "sourceAuthority": 60,
-        "mineruValidity": 40,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_da8ad81fab1260fec2d8f8c4"
-      ],
-      "affectedModels": [
-        "DW60CDW2"
-      ],
-      "incompleteReplayCount": 3,
-      "incompletePdfSha256s": [
-        "a91793ec14aebb9f6a8f21fdc4fd6d5db5fc7eec7c12898b5ab76332bd982c16",
-        "c529f12422a9a146beddba1066d8dbffbd37532d2ff6c7883121c6600d70a110",
-        "dcc1c1bbdc692df0aafeac4d25eedc43f7bef8a0c22ec42b78d37b01fbd9b9df"
-      ],
-      "documentIds": [
-        "pdf_document_188c38b9be1af24e27f5ec10",
-        "pdf_document_6194c2ed7a18467e0916a8d3",
-        "pdf_document_ad1bd2c03541275a05713ebf",
-        "pdf_document_c5b2859ca31a63f6825aba9d"
-      ],
-      "pdfSha256s": [
-        "a41cd8cce6469668b7172cc82c09dd62fab735092fa287ddb9b2ef5670ecaa8c",
-        "a91793ec14aebb9f6a8f21fdc4fd6d5db5fc7eec7c12898b5ab76332bd982c16",
-        "c529f12422a9a146beddba1066d8dbffbd37532d2ff6c7883121c6600d70a110",
-        "dcc1c1bbdc692df0aafeac4d25eedc43f7bef8a0c22ec42b78d37b01fbd9b9df"
-      ],
-      "validMineruDocuments": 4,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED",
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_c99bd49a33b3a6af39c8e7d9",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "groupType": "model_specific",
-      "groupName": "DW60CHW1",
-      "lane": "REPAIR_READY",
-      "rank": 12,
-      "score": 1380,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 100,
-        "sourceAuthority": 60,
-        "mineruValidity": 20,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_619922b29f5c1471aed43305"
-      ],
-      "affectedModels": [
-        "DW60CHW1"
-      ],
-      "incompleteReplayCount": 2,
-      "incompletePdfSha256s": [
-        "0454c743b544eb844c0c78c7d0b5db926a2018907f1c43b77635b03c9aa6c3e9",
-        "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748"
-      ],
-      "documentIds": [
-        "pdf_document_37c82bd95cfe7a833db7b3ef",
-        "pdf_document_a62a0b98218a3f18a3a6770f"
-      ],
-      "pdfSha256s": [
-        "0454c743b544eb844c0c78c7d0b5db926a2018907f1c43b77635b03c9aa6c3e9",
-        "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_66119b03e082985c821b006e",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
-      "lane": "REPAIR_READY",
-      "rank": 13,
-      "score": 1360,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 50,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_8a1dba5262b338c28b0d95be"
-      ],
-      "affectedModels": [
-        "SMU50E05AU"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "fa9af5ceb711e65251719eca4abe537689a7ae0693f177f714cdc2ffc87cbf24"
-      ],
-      "documentIds": [
-        "pdf_document_1bc2b4d641f4d1643f1f8285",
-        "pdf_document_275c611071803a97cb84b96c",
-        "pdf_document_51e0e6c3c8a218cb7a8105a8",
-        "pdf_document_b796b55809a234df98fee3f0",
-        "pdf_document_ddf0adef223bc8de1d6c9bc7"
-      ],
-      "pdfSha256s": [
-        "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
-        "67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be",
-        "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f",
-        "b8d58bcbfdc5537077bd8a45f8a4066733b7e019be7b89209b5b1de74bca379e",
-        "fa9af5ceb711e65251719eca4abe537689a7ae0693f177f714cdc2ffc87cbf24"
-      ],
-      "validMineruDocuments": 5,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_a310329f53fe8003c9dc8aea",
-      "category": "dryer",
-      "brand": "Bosch",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7",
-      "lane": "REPAIR_READY",
-      "rank": 14,
       "score": 1360,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -856,20 +614,20 @@
       },
       "affectedExactModels": 1,
       "affectedReferenceIds": [
-        "fa_ref_8a08c1cb1f7ddf4fb5c84ae1"
+        "fa_ref_7f1ccb53d67541cf7a0fe03f"
       ],
       "affectedModels": [
-        "WTH83002AU"
+        "HRCD610TS"
       ],
       "incompleteReplayCount": 1,
       "incompletePdfSha256s": [
-        "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
+        "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
       ],
       "documentIds": [
-        "pdf_document_9ecea2e00e89b5b61803c0e8"
+        "pdf_document_99b0b5c8d61dfbce5849356f"
       ],
       "pdfSha256s": [
-        "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
+        "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
       ],
       "validMineruDocuments": 1,
       "invalidMineruDocuments": 0,
@@ -879,9 +637,7 @@
       "researchGapTypes": [
         "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
       ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
+      "riskFlags": [],
       "lifecycleCounts": {
         "CURRENT_RETAIL": 1
       },
@@ -898,7 +654,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 5",
       "lane": "REPAIR_READY",
-      "rank": 15,
+      "rank": 11,
       "score": 1360,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -947,13 +703,77 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_60e48410e2fd9bb1b37dcb16",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "groupType": "model_specific",
+      "groupName": "DW60CDW2",
+      "lane": "REPAIR_READY",
+      "rank": 12,
+      "score": 1350,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 150,
+        "sourceAuthority": 60,
+        "mineruValidity": 40,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_da8ad81fab1260fec2d8f8c4"
+      ],
+      "affectedModels": [
+        "DW60CDW2"
+      ],
+      "incompleteReplayCount": 3,
+      "incompletePdfSha256s": [
+        "a91793ec14aebb9f6a8f21fdc4fd6d5db5fc7eec7c12898b5ab76332bd982c16",
+        "c529f12422a9a146beddba1066d8dbffbd37532d2ff6c7883121c6600d70a110",
+        "dcc1c1bbdc692df0aafeac4d25eedc43f7bef8a0c22ec42b78d37b01fbd9b9df"
+      ],
+      "documentIds": [
+        "pdf_document_188c38b9be1af24e27f5ec10",
+        "pdf_document_6194c2ed7a18467e0916a8d3",
+        "pdf_document_ad1bd2c03541275a05713ebf",
+        "pdf_document_c5b2859ca31a63f6825aba9d"
+      ],
+      "pdfSha256s": [
+        "a41cd8cce6469668b7172cc82c09dd62fab735092fa287ddb9b2ef5670ecaa8c",
+        "a91793ec14aebb9f6a8f21fdc4fd6d5db5fc7eec7c12898b5ab76332bd982c16",
+        "c529f12422a9a146beddba1066d8dbffbd37532d2ff6c7883121c6600d70a110",
+        "dcc1c1bbdc692df0aafeac4d25eedc43f7bef8a0c22ec42b78d37b01fbd9b9df"
+      ],
+      "validMineruDocuments": 4,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED",
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_4bf5095ad6d701f5bcbdbdfd",
       "category": "fridge",
       "brand": "Smeg",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_41a63e0b82890f46",
       "lane": "REPAIR_READY",
-      "rank": 16,
+      "rank": 13,
       "score": 1340,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1002,325 +822,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_15bec17bf8b205aa0145c179",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_ccc9b452cf840127",
-      "lane": "REPAIR_READY",
-      "rank": 17,
-      "score": 1330,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 20,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_763861a2f422467dbe45ef2d"
-      ],
-      "affectedModels": [
-        "SMU88TS02A"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "3c22997e162ef8361bf02e5c0551d6d8cc0b48e7a7e412de5d66089c596bbccd"
-      ],
-      "documentIds": [
-        "pdf_document_666d270c61ca705d592d2cdb",
-        "pdf_document_dd20b25c0a2db696ae74229e"
-      ],
-      "pdfSha256s": [
-        "3c22997e162ef8361bf02e5c0551d6d8cc0b48e7a7e412de5d66089c596bbccd",
-        "63d6b068d7ac0aa852debd709acc288439295794f736501088f0e4bafb51c5e4"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_1a4d8ccc1621ac2993eacb7c",
-      "category": "dryer",
-      "brand": "ASKO",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_8cdd223e96c1e64c",
-      "lane": "REPAIR_READY",
-      "rank": 18,
-      "score": 1320,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_03275e6c7b751743089e8a9d"
-      ],
-      "affectedModels": [
-        "T410HD.W"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1"
-      ],
-      "documentIds": [
-        "pdf_document_76daa5c666a1f75af54537e7"
-      ],
-      "pdfSha256s": [
-        "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_57486a67df12029591162c83",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3eadbf6aab0d27da",
-      "lane": "REPAIR_READY",
-      "rank": 19,
-      "score": 1320,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_2d93ac8f6476007052a6cc88"
-      ],
-      "affectedModels": [
-        "WH8560P2"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "5783cf3f963970a3c350529b5e38dd2b6e8e79ac3ee61fc7200cac97419e3968"
-      ],
-      "documentIds": [
-        "pdf_document_9508a2a55beed27b46b83ba7"
-      ],
-      "pdfSha256s": [
-        "5783cf3f963970a3c350529b5e38dd2b6e8e79ac3ee61fc7200cac97419e3968"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_68cf3ca1f7dc39612582a8dc",
-      "category": "dryer",
-      "brand": "ASKO",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_d4b23eb44a06a21f",
-      "lane": "REPAIR_READY",
-      "rank": 20,
-      "score": 1320,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_03275e6c7b751743089e8a9d"
-      ],
-      "affectedModels": [
-        "T410HD.W"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "935d74b3b4811a89f93465692d612dddebf275b7176bb925d58919606dd15c21"
-      ],
-      "documentIds": [
-        "pdf_document_83c7252d4fcb0f6593570805"
-      ],
-      "pdfSha256s": [
-        "935d74b3b4811a89f93465692d612dddebf275b7176bb925d58919606dd15c21"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_a0e3a62ca6b8d7d3c8e9ac6a",
-      "category": "fridge",
-      "brand": "Haier",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b94a8ec4bd6366a0",
-      "lane": "REPAIR_READY",
-      "rank": 21,
-      "score": 1320,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_f9ea8af12560e15c4d4880cc"
-      ],
-      "affectedModels": [
-        "HBM450SA1"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "d821f41b7bc4a173d4209c80fcfd89d166d6bcc230416658d29918c0dee2ecd0"
-      ],
-      "documentIds": [
-        "pdf_document_d2b2279b6acba02972c6ea5c"
-      ],
-      "pdfSha256s": [
-        "d821f41b7bc4a173d4209c80fcfd89d166d6bcc230416658d29918c0dee2ecd0"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_a7e066561c46445f7939a377",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_bcf89084114e25c7",
-      "lane": "REPAIR_READY",
-      "rank": 22,
-      "score": 1320,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 60,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_72674c9aac920e4b91c89a7d"
-      ],
-      "affectedModels": [
-        "SMS88TI04A"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "6782258ba1e6277de863fc37010ac4817a9ce73e68521929330ae75573caebe7"
-      ],
-      "documentIds": [
-        "pdf_document_9b7b81b768cd3fe35293beb5"
-      ],
-      "pdfSha256s": [
-        "6782258ba1e6277de863fc37010ac4817a9ce73e68521929330ae75573caebe7"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "MIXED": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_d449b384c7bf9a7787aed1a1",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_3c28d9e9e031905b",
       "lane": "REPAIR_READY",
-      "rank": 23,
+      "rank": 14,
       "score": 1320,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1367,72 +875,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_e93cae8cf19d610d3e9c979f",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
-      "lane": "REPAIR_READY",
-      "rank": 24,
-      "score": 1310,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 20,
-        "mineruValidity": 40,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_1fb831e6b538f8b70b823166"
-      ],
-      "affectedModels": [
-        "WAK24162AU"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "cad121ced9f510c57c9d0e274c65c716e2f4c4c031c46ec1d2c7b85c14b038ec"
-      ],
-      "documentIds": [
-        "pdf_document_4befce5ae5d5f7338fd7c97e",
-        "pdf_document_5425f136be6feafe667e5079",
-        "pdf_document_6f09d82b93011ede030c7730",
-        "pdf_document_c82ab16fc6f6004475545b2f"
-      ],
-      "pdfSha256s": [
-        "0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d",
-        "7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7",
-        "cad121ced9f510c57c9d0e274c65c716e2f4c4c031c46ec1d2c7b85c14b038ec",
-        "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b"
-      ],
-      "validMineruDocuments": 4,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "REFERENCE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_4df9004fb8faa875ea475e6c",
       "category": "washing_machine",
       "brand": "Hisense",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
       "lane": "REPAIR_READY",
-      "rank": 25,
+      "rank": 15,
       "score": 1300,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1480,67 +929,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_e91cf155c2359bc75c480f45",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
-      "lane": "REPAIR_READY",
-      "rank": 26,
-      "score": 1290,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 20,
-        "mineruValidity": 20,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_89c81e01f803afa5e94914c7"
-      ],
-      "affectedModels": [
-        "WAW28640AU"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "566604bc37cf9e402140bcd623f9b8a8b34fe4610016c04cb14c88a68f625e34"
-      ],
-      "documentIds": [
-        "pdf_document_57606e3de6ab7cd71e843965",
-        "pdf_document_890d9dcce81631211bcced8e"
-      ],
-      "pdfSha256s": [
-        "566604bc37cf9e402140bcd623f9b8a8b34fe4610016c04cb14c88a68f625e34",
-        "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6"
-      ],
-      "validMineruDocuments": 2,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "REFERENCE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_173a557ce66c4596dc1bd76c",
       "category": "washing_machine",
       "brand": "BEKO",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f7d7d6dab34a6731",
       "lane": "REPAIR_READY",
-      "rank": 27,
+      "rank": 16,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1590,7 +985,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_69887d7f846cfe4e",
       "lane": "REPAIR_READY",
-      "rank": 28,
+      "rank": 17,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1634,65 +1029,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_80f351d893729f497ead0adb",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_454fce858734044e",
-      "lane": "REPAIR_READY",
-      "rank": 29,
-      "score": 1280,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 20,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_9e43516fe23c04d53e8503c3"
-      ],
-      "affectedModels": [
-        "WVH28490AU"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "84e8ad89931e5da62489b3805b069c585b92903a4fbcbe6ffa7b28c3e6cb85e9"
-      ],
-      "documentIds": [
-        "pdf_document_248773b636716605207b4441"
-      ],
-      "pdfSha256s": [
-        "84e8ad89931e5da62489b3805b069c585b92903a4fbcbe6ffa7b28c3e6cb85e9"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "REFERENCE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_9540ef1435ac8701a1c5b9a7",
       "category": "fridge",
       "brand": "Smeg",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_009e7612e9ed183f",
       "lane": "REPAIR_READY",
-      "rank": 30,
+      "rank": 18,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1736,53 +1079,119 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_e967f9c8d9df118446b77f70",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
+      "familyId": "document_family_c99bd49a33b3a6af39c8e7d9",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "groupType": "model_specific",
+      "groupName": "DW60CHW1",
       "lane": "REPAIR_READY",
-      "rank": 31,
+      "rank": 19,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 20,
-        "mineruValidity": 10,
+        "lifecyclePriority": 100,
+        "familyReuse": 100,
+        "sourceAuthority": 60,
+        "mineruValidity": 20,
         "ambiguityRisk": 0
       },
       "affectedExactModels": 1,
       "affectedReferenceIds": [
-        "fa_ref_1cb2e322795f94f6c50a5831"
+        "fa_ref_619922b29f5c1471aed43305"
       ],
       "affectedModels": [
-        "WVG28420AU"
+        "DW60CHW1"
       ],
-      "incompleteReplayCount": 1,
+      "incompleteReplayCount": 2,
       "incompletePdfSha256s": [
-        "f09c24a0e7afd714dc3a4e90d8f06bcd24908ca035ac9bcf26a93ac74577cb25"
+        "0454c743b544eb844c0c78c7d0b5db926a2018907f1c43b77635b03c9aa6c3e9",
+        "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748"
       ],
       "documentIds": [
-        "pdf_document_30d29954c770295e5d0d7442"
+        "pdf_document_37c82bd95cfe7a833db7b3ef",
+        "pdf_document_a62a0b98218a3f18a3a6770f"
       ],
       "pdfSha256s": [
-        "f09c24a0e7afd714dc3a4e90d8f06bcd24908ca035ac9bcf26a93ac74577cb25"
+        "0454c743b544eb844c0c78c7d0b5db926a2018907f1c43b77635b03c9aa6c3e9",
+        "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748"
       ],
-      "validMineruDocuments": 1,
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN",
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_f7fbcea126548cdb3813e128",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "groupType": "model_specific",
+      "groupName": "DH9060HG1",
+      "lane": "REPAIR_READY",
+      "rank": 20,
+      "score": 1280,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 150,
+        "sourceAuthority": 100,
+        "mineruValidity": 30,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_17b4e72272ac25833e45bd3d"
+      ],
+      "affectedModels": [
+        "DH9060HG1"
+      ],
+      "incompleteReplayCount": 3,
+      "incompletePdfSha256s": [
+        "21ed9146935191e7692188633d362cd2f96ed34264301bce7e59c9fa7d112b62",
+        "7e5127840872a989b4e6c97c0b02a8bf679fac8cb66ab41e212029c6cbcb24c0",
+        "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7"
+      ],
+      "documentIds": [
+        "pdf_document_2f3e18961d4dd3331a251a15",
+        "pdf_document_911e85862187cd0ab4caed8e",
+        "pdf_document_e86a8f1d89e4ec76373a120f"
+      ],
+      "pdfSha256s": [
+        "21ed9146935191e7692188633d362cd2f96ed34264301bce7e59c9fa7d112b62",
+        "7e5127840872a989b4e6c97c0b02a8bf679fac8cb66ab41e212029c6cbcb24c0",
+        "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7"
+      ],
+      "validMineruDocuments": 3,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
         "NO_COMPLETE_EXPLICIT_AXES"
       ],
       "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+        "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
-        "REFERENCE": 1
+        "OFFICIAL": 1
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -1794,7 +1203,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_60d8089619712779",
       "lane": "REPAIR_READY",
-      "rank": 32,
+      "rank": 21,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1838,13 +1247,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_096b0553f091526485078260",
-      "category": "washing_machine",
-      "brand": "Hisense",
+      "familyId": "document_family_09d8ae9ce3db6425809a5a8d",
+      "category": "dishwasher",
+      "brand": "LG",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_7fbb3482f967fc40",
+      "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
       "lane": "REPAIR_READY",
-      "rank": 33,
+      "rank": 22,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1856,87 +1265,33 @@
       },
       "affectedExactModels": 1,
       "affectedReferenceIds": [
-        "fa_ref_db0b9f6090d31125edee12b0"
+        "fa_ref_8a01d125e2690cf8464d28a9"
       ],
       "affectedModels": [
-        "HWFS7514S"
+        "XD3A25UMB"
       ],
       "incompleteReplayCount": 1,
       "incompletePdfSha256s": [
-        "e204a17de2750e310c90dec3599ab20fcf576cab714396064ef6ecf41fc6e3f7"
+        "118d88ef1194512f83bbf1f8277cca64905d0554c4a9a5bf479bb368cd98c153"
       ],
       "documentIds": [
-        "pdf_document_edcd6e9f4f6dfdbc86550c62"
+        "pdf_document_a9e7a76298ec31490dfa7845"
       ],
       "pdfSha256s": [
-        "e204a17de2750e310c90dec3599ab20fcf576cab714396064ef6ecf41fc6e3f7"
+        "118d88ef1194512f83bbf1f8277cca64905d0554c4a9a5bf479bb368cd98c153"
       ],
       "validMineruDocuments": 1,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
+        "FAMILY_SCOPE_UNRESOLVED"
       ],
       "researchGapTypes": [],
-      "riskFlags": [
-        "PACKAGE_OR_DELIVERY"
-      ],
+      "riskFlags": [],
       "lifecycleCounts": {
         "CURRENT_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_0c88d71c967ffc0163a66f43",
-      "category": "fridge",
-      "brand": "Hisense",
-      "groupType": "model_specific",
-      "groupName": "HRCD610TS",
-      "lane": "REPAIR_READY",
-      "rank": 34,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 100,
-        "familyReuse": 50,
-        "sourceAuthority": 100,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_7f1ccb53d67541cf7a0fe03f"
-      ],
-      "affectedModels": [
-        "HRCD610TS"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
-      ],
-      "documentIds": [
-        "pdf_document_99b0b5c8d61dfbce5849356f"
-      ],
-      "pdfSha256s": [
-        "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "NO_COMPLETE_EXPLICIT_AXES"
-      ],
-      "researchGapTypes": [
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CATALOG_ARCHIVED": 1
-      },
-      "sourceAuthorityCounts": {
-        "OFFICIAL": 1
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -1948,7 +1303,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7e33a76b59add102",
       "lane": "REPAIR_READY",
-      "rank": 35,
+      "rank": 23,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1997,113 +1352,13 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_37ccf7f69e1361133d2b9e0f",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4134bce35c24bce3",
-      "lane": "REPAIR_READY",
-      "rank": 36,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_b55c3a81127c98f7db0988a0"
-      ],
-      "affectedModels": [
-        "WH8060J3"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "c2feabec456c1b01970719aedff9fa4b466d444a296a85f21c77dc4d024c5b78"
-      ],
-      "documentIds": [
-        "pdf_document_f2f8a421141693744d39cf87"
-      ],
-      "pdfSha256s": [
-        "c2feabec456c1b01970719aedff9fa4b466d444a296a85f21c77dc4d024c5b78"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "PARSED_PARTIAL"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_389c73de4a23039bf80d05ae",
-      "category": "fridge",
-      "brand": "Hisense",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_626913e6286d74b0",
-      "lane": "REPAIR_READY",
-      "rank": 37,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_b2af4ca3a9862ebfb1520e95"
-      ],
-      "affectedModels": [
-        "HRSBS632BW"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "5cfc76a00d9e9ed3c09f974279142bf8e38c8c48f3b21d6dd26324787f172e1d"
-      ],
-      "documentIds": [
-        "pdf_document_2cc4d9ea0f412d1d4f49e96f"
-      ],
-      "pdfSha256s": [
-        "5cfc76a00d9e9ed3c09f974279142bf8e38c8c48f3b21d6dd26324787f172e1d"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "PARSED_PARTIAL"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
       "familyId": "document_family_4967c6f0b6b5bc1682b03d0c",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
       "lane": "REPAIR_READY",
-      "rank": 38,
+      "rank": 24,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2158,7 +1413,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 7",
       "lane": "REPAIR_READY",
-      "rank": 39,
+      "rank": 25,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2207,38 +1462,526 @@
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_bd7a5d5090b768db1556e0e1",
-      "category": "washing_machine",
-      "brand": "Hisense",
-      "groupType": "marketing_series",
-      "groupName": "Series 5",
+      "familyId": "document_family_66119b03e082985c821b006e",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
       "lane": "REPAIR_READY",
-      "rank": 40,
+      "rank": 26,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
+        "lifecyclePriority": 100,
         "familyReuse": 50,
-        "sourceAuthority": 0,
+        "sourceAuthority": 60,
+        "mineruValidity": 50,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_8a1dba5262b338c28b0d95be"
+      ],
+      "affectedModels": [
+        "SMU50E05AU"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "fa9af5ceb711e65251719eca4abe537689a7ae0693f177f714cdc2ffc87cbf24"
+      ],
+      "documentIds": [
+        "pdf_document_1bc2b4d641f4d1643f1f8285",
+        "pdf_document_275c611071803a97cb84b96c",
+        "pdf_document_51e0e6c3c8a218cb7a8105a8",
+        "pdf_document_b796b55809a234df98fee3f0",
+        "pdf_document_ddf0adef223bc8de1d6c9bc7"
+      ],
+      "pdfSha256s": [
+        "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+        "67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be",
+        "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f",
+        "b8d58bcbfdc5537077bd8a45f8a4066733b7e019be7b89209b5b1de74bca379e",
+        "fa9af5ceb711e65251719eca4abe537689a7ae0693f177f714cdc2ffc87cbf24"
+      ],
+      "validMineruDocuments": 5,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_15bec17bf8b205aa0145c179",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_ccc9b452cf840127",
+      "lane": "REPAIR_READY",
+      "rank": 27,
+      "score": 1230,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 60,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_763861a2f422467dbe45ef2d"
+      ],
+      "affectedModels": [
+        "SMU88TS02A"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "3c22997e162ef8361bf02e5c0551d6d8cc0b48e7a7e412de5d66089c596bbccd"
+      ],
+      "documentIds": [
+        "pdf_document_666d270c61ca705d592d2cdb",
+        "pdf_document_dd20b25c0a2db696ae74229e"
+      ],
+      "pdfSha256s": [
+        "3c22997e162ef8361bf02e5c0551d6d8cc0b48e7a7e412de5d66089c596bbccd",
+        "63d6b068d7ac0aa852debd709acc288439295794f736501088f0e4bafb51c5e4"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_1a4d8ccc1621ac2993eacb7c",
+      "category": "dryer",
+      "brand": "ASKO",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8cdd223e96c1e64c",
+      "lane": "REPAIR_READY",
+      "rank": 28,
+      "score": 1220,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 60,
         "mineruValidity": 10,
         "ambiguityRisk": 0
       },
       "affectedExactModels": 1,
       "affectedReferenceIds": [
-        "fa_ref_f98db34fefda26c15f6aadf2"
+        "fa_ref_03275e6c7b751743089e8a9d"
       ],
       "affectedModels": [
-        "HWF5S1214"
+        "T410HD.W"
       ],
       "incompleteReplayCount": 1,
       "incompletePdfSha256s": [
-        "63decb781c54d8031f99f83186b72dadb5d850ef8f9538cd5c042c77be385351"
+        "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1"
       ],
       "documentIds": [
-        "pdf_document_e86220bcc41523a72c1cc6d8"
+        "pdf_document_76daa5c666a1f75af54537e7"
       ],
       "pdfSha256s": [
-        "63decb781c54d8031f99f83186b72dadb5d850ef8f9538cd5c042c77be385351"
+        "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_57486a67df12029591162c83",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_3eadbf6aab0d27da",
+      "lane": "REPAIR_READY",
+      "rank": 29,
+      "score": 1220,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 60,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_2d93ac8f6476007052a6cc88"
+      ],
+      "affectedModels": [
+        "WH8560P2"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "5783cf3f963970a3c350529b5e38dd2b6e8e79ac3ee61fc7200cac97419e3968"
+      ],
+      "documentIds": [
+        "pdf_document_9508a2a55beed27b46b83ba7"
+      ],
+      "pdfSha256s": [
+        "5783cf3f963970a3c350529b5e38dd2b6e8e79ac3ee61fc7200cac97419e3968"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_68cf3ca1f7dc39612582a8dc",
+      "category": "dryer",
+      "brand": "ASKO",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d4b23eb44a06a21f",
+      "lane": "REPAIR_READY",
+      "rank": 30,
+      "score": 1220,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 60,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_03275e6c7b751743089e8a9d"
+      ],
+      "affectedModels": [
+        "T410HD.W"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "935d74b3b4811a89f93465692d612dddebf275b7176bb925d58919606dd15c21"
+      ],
+      "documentIds": [
+        "pdf_document_83c7252d4fcb0f6593570805"
+      ],
+      "pdfSha256s": [
+        "935d74b3b4811a89f93465692d612dddebf275b7176bb925d58919606dd15c21"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_a0e3a62ca6b8d7d3c8e9ac6a",
+      "category": "fridge",
+      "brand": "Haier",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_b94a8ec4bd6366a0",
+      "lane": "REPAIR_READY",
+      "rank": 31,
+      "score": 1220,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 60,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_f9ea8af12560e15c4d4880cc"
+      ],
+      "affectedModels": [
+        "HBM450SA1"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "d821f41b7bc4a173d4209c80fcfd89d166d6bcc230416658d29918c0dee2ecd0"
+      ],
+      "documentIds": [
+        "pdf_document_d2b2279b6acba02972c6ea5c"
+      ],
+      "pdfSha256s": [
+        "d821f41b7bc4a173d4209c80fcfd89d166d6bcc230416658d29918c0dee2ecd0"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_a7e066561c46445f7939a377",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_bcf89084114e25c7",
+      "lane": "REPAIR_READY",
+      "rank": 32,
+      "score": 1220,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 60,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_72674c9aac920e4b91c89a7d"
+      ],
+      "affectedModels": [
+        "SMS88TI04A"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "6782258ba1e6277de863fc37010ac4817a9ce73e68521929330ae75573caebe7"
+      ],
+      "documentIds": [
+        "pdf_document_9b7b81b768cd3fe35293beb5"
+      ],
+      "pdfSha256s": [
+        "6782258ba1e6277de863fc37010ac4817a9ce73e68521929330ae75573caebe7"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "MIXED": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_e93cae8cf19d610d3e9c979f",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
+      "lane": "REPAIR_READY",
+      "rank": 33,
+      "score": 1210,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 40,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_1fb831e6b538f8b70b823166"
+      ],
+      "affectedModels": [
+        "WAK24162AU"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "cad121ced9f510c57c9d0e274c65c716e2f4c4c031c46ec1d2c7b85c14b038ec"
+      ],
+      "documentIds": [
+        "pdf_document_4befce5ae5d5f7338fd7c97e",
+        "pdf_document_5425f136be6feafe667e5079",
+        "pdf_document_6f09d82b93011ede030c7730",
+        "pdf_document_c82ab16fc6f6004475545b2f"
+      ],
+      "pdfSha256s": [
+        "0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d",
+        "7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7",
+        "cad121ced9f510c57c9d0e274c65c716e2f4c4c031c46ec1d2c7b85c14b038ec",
+        "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b"
+      ],
+      "validMineruDocuments": 4,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_e91cf155c2359bc75c480f45",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
+      "lane": "REPAIR_READY",
+      "rank": 34,
+      "score": 1190,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 20,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_89c81e01f803afa5e94914c7"
+      ],
+      "affectedModels": [
+        "WAW28640AU"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "566604bc37cf9e402140bcd623f9b8a8b34fe4610016c04cb14c88a68f625e34"
+      ],
+      "documentIds": [
+        "pdf_document_57606e3de6ab7cd71e843965",
+        "pdf_document_890d9dcce81631211bcced8e"
+      ],
+      "pdfSha256s": [
+        "566604bc37cf9e402140bcd623f9b8a8b34fe4610016c04cb14c88a68f625e34",
+        "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6"
+      ],
+      "validMineruDocuments": 2,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_80f351d893729f497ead0adb",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_454fce858734044e",
+      "lane": "REPAIR_READY",
+      "rank": 35,
+      "score": 1180,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_9e43516fe23c04d53e8503c3"
+      ],
+      "affectedModels": [
+        "WVH28490AU"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "84e8ad89931e5da62489b3805b069c585b92903a4fbcbe6ffa7b28c3e6cb85e9"
+      ],
+      "documentIds": [
+        "pdf_document_248773b636716605207b4441"
+      ],
+      "pdfSha256s": [
+        "84e8ad89931e5da62489b3805b069c585b92903a4fbcbe6ffa7b28c3e6cb85e9"
       ],
       "validMineruDocuments": 1,
       "invalidMineruDocuments": 0,
@@ -2250,165 +1993,62 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
-        "NONE": 1
+        "REFERENCE": 1
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
     },
     {
-      "familyId": "document_family_cc76e91b70df5ec2526fb857",
+      "familyId": "document_family_e967f9c8d9df118446b77f70",
       "category": "washing_machine",
-      "brand": "Fisher & Paykel",
+      "brand": "BOSCH",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
+      "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
       "lane": "REPAIR_READY",
-      "rank": 41,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_af1771fa5a70d4714b9be6f0"
-      ],
-      "affectedModels": [
-        "WH1260HG5"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "88d10692427c71febbe13af96e48bd90a177c5654a7799f601f577f18001840f"
-      ],
-      "documentIds": [
-        "pdf_document_b0bf2c2ec3fca67ca0d1277f"
-      ],
-      "pdfSha256s": [
-        "88d10692427c71febbe13af96e48bd90a177c5654a7799f601f577f18001840f"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
-      ],
-      "researchGapTypes": [
-        "IMAGE_ONLY_DIMENSION_DIAGRAM",
-        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-      ],
-      "riskFlags": [
-        "DOOR_OPEN_OR_OPERATION"
-      ],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_f7a2d8feffabfc4e09e1b3cb",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b8fc98139a3cc065",
-      "lane": "REPAIR_READY",
-      "rank": 42,
-      "score": 1260,
-      "scoreComponents": {
-        "affectedExactModels": 1000,
-        "lifecyclePriority": 200,
-        "familyReuse": 50,
-        "sourceAuthority": 0,
-        "mineruValidity": 10,
-        "ambiguityRisk": 0
-      },
-      "affectedExactModels": 1,
-      "affectedReferenceIds": [
-        "fa_ref_5c71727a73d5f7d27315e0d0"
-      ],
-      "affectedModels": [
-        "HDW15V2B2"
-      ],
-      "incompleteReplayCount": 1,
-      "incompletePdfSha256s": [
-        "6febf17d417e8a001c6d6755556eef32dc232c4420b595a7169bf691961dff54"
-      ],
-      "documentIds": [
-        "pdf_document_e8a9af3f96c36d61192995f0"
-      ],
-      "pdfSha256s": [
-        "6febf17d417e8a001c6d6755556eef32dc232c4420b595a7169bf691961dff54"
-      ],
-      "validMineruDocuments": 1,
-      "invalidMineruDocuments": 0,
-      "reasonCodes": [
-        "PARSED_PARTIAL"
-      ],
-      "researchGapTypes": [],
-      "riskFlags": [],
-      "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
-      },
-      "sourceAuthorityCounts": {
-        "NONE": 1
-      },
-      "fixtureCoverage": "NONE",
-      "fixtureProfileIds": []
-    },
-    {
-      "familyId": "document_family_09d8ae9ce3db6425809a5a8d",
-      "category": "dishwasher",
-      "brand": "LG",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
-      "lane": "REPAIR_READY",
-      "rank": 43,
-      "score": 1160,
+      "rank": 36,
+      "score": 1180,
       "scoreComponents": {
         "affectedExactModels": 1000,
         "lifecyclePriority": 100,
         "familyReuse": 50,
-        "sourceAuthority": 0,
+        "sourceAuthority": 20,
         "mineruValidity": 10,
         "ambiguityRisk": 0
       },
       "affectedExactModels": 1,
       "affectedReferenceIds": [
-        "fa_ref_8a01d125e2690cf8464d28a9"
+        "fa_ref_1cb2e322795f94f6c50a5831"
       ],
       "affectedModels": [
-        "XD3A25UMB"
+        "WVG28420AU"
       ],
       "incompleteReplayCount": 1,
       "incompletePdfSha256s": [
-        "118d88ef1194512f83bbf1f8277cca64905d0554c4a9a5bf479bb368cd98c153"
+        "f09c24a0e7afd714dc3a4e90d8f06bcd24908ca035ac9bcf26a93ac74577cb25"
       ],
       "documentIds": [
-        "pdf_document_a9e7a76298ec31490dfa7845"
+        "pdf_document_30d29954c770295e5d0d7442"
       ],
       "pdfSha256s": [
-        "118d88ef1194512f83bbf1f8277cca64905d0554c4a9a5bf479bb368cd98c153"
+        "f09c24a0e7afd714dc3a4e90d8f06bcd24908ca035ac9bcf26a93ac74577cb25"
       ],
       "validMineruDocuments": 1,
       "invalidMineruDocuments": 0,
       "reasonCodes": [
-        "FAMILY_SCOPE_UNRESOLVED"
+        "NO_COMPLETE_EXPLICIT_AXES"
       ],
-      "researchGapTypes": [],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM"
+      ],
       "riskFlags": [],
       "lifecycleCounts": {
         "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
-        "NONE": 1
+        "REFERENCE": 1
       },
       "fixtureCoverage": "NONE",
       "fixtureProfileIds": []
@@ -2420,7 +2060,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_df944d3206f56151",
       "lane": "REPAIR_READY",
-      "rank": 44,
+      "rank": 37,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2475,7 +2115,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
       "lane": "REPAIR_READY",
-      "rank": 45,
+      "rank": 38,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2521,13 +2161,67 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_a310329f53fe8003c9dc8aea",
+      "category": "dryer",
+      "brand": "Bosch",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7",
+      "lane": "REPAIR_READY",
+      "rank": 39,
+      "score": 1160,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 50,
+        "sourceAuthority": 100,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_8a08c1cb1f7ddf4fb5c84ae1"
+      ],
+      "affectedModels": [
+        "WTH83002AU"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
+      ],
+      "documentIds": [
+        "pdf_document_9ecea2e00e89b5b61803c0e8"
+      ],
+      "pdfSha256s": [
+        "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "UNKNOWN_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "OFFICIAL": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_a809fa331c96bc46769bb2f1",
       "category": "fridge",
       "brand": "Kogan",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_a90dbefa9352a2ea",
       "lane": "REPAIR_READY",
-      "rank": 46,
+      "rank": 40,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2577,7 +2271,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
       "lane": "REPAIR_READY",
-      "rank": 47,
+      "rank": 41,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2627,7 +2321,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 9",
       "lane": "REPAIR_READY",
-      "rank": 48,
+      "rank": 42,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2680,7 +2374,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
       "lane": "REPAIR_READY",
-      "rank": 49,
+      "rank": 43,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2720,6 +2414,315 @@
       ],
       "lifecycleCounts": {
         "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_f7a2d8feffabfc4e09e1b3cb",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_b8fc98139a3cc065",
+      "lane": "REPAIR_READY",
+      "rank": 44,
+      "score": 1160,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 100,
+        "familyReuse": 50,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_5c71727a73d5f7d27315e0d0"
+      ],
+      "affectedModels": [
+        "HDW15V2B2"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "6febf17d417e8a001c6d6755556eef32dc232c4420b595a7169bf691961dff54"
+      ],
+      "documentIds": [
+        "pdf_document_e8a9af3f96c36d61192995f0"
+      ],
+      "pdfSha256s": [
+        "6febf17d417e8a001c6d6755556eef32dc232c4420b595a7169bf691961dff54"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "PARSED_PARTIAL"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CATALOG_ARCHIVED": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_096b0553f091526485078260",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7fbb3482f967fc40",
+      "lane": "REPAIR_READY",
+      "rank": 45,
+      "score": 1060,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 50,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_db0b9f6090d31125edee12b0"
+      ],
+      "affectedModels": [
+        "HWFS7514S"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "e204a17de2750e310c90dec3599ab20fcf576cab714396064ef6ecf41fc6e3f7"
+      ],
+      "documentIds": [
+        "pdf_document_edcd6e9f4f6dfdbc86550c62"
+      ],
+      "pdfSha256s": [
+        "e204a17de2750e310c90dec3599ab20fcf576cab714396064ef6ecf41fc6e3f7"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [
+        "PACKAGE_OR_DELIVERY"
+      ],
+      "lifecycleCounts": {
+        "UNKNOWN_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_37ccf7f69e1361133d2b9e0f",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4134bce35c24bce3",
+      "lane": "REPAIR_READY",
+      "rank": 46,
+      "score": 1060,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 50,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_b55c3a81127c98f7db0988a0"
+      ],
+      "affectedModels": [
+        "WH8060J3"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "c2feabec456c1b01970719aedff9fa4b466d444a296a85f21c77dc4d024c5b78"
+      ],
+      "documentIds": [
+        "pdf_document_f2f8a421141693744d39cf87"
+      ],
+      "pdfSha256s": [
+        "c2feabec456c1b01970719aedff9fa4b466d444a296a85f21c77dc4d024c5b78"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "PARSED_PARTIAL"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "UNKNOWN_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_389c73de4a23039bf80d05ae",
+      "category": "fridge",
+      "brand": "Hisense",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_626913e6286d74b0",
+      "lane": "REPAIR_READY",
+      "rank": 47,
+      "score": 1060,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 50,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_b2af4ca3a9862ebfb1520e95"
+      ],
+      "affectedModels": [
+        "HRSBS632BW"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "5cfc76a00d9e9ed3c09f974279142bf8e38c8c48f3b21d6dd26324787f172e1d"
+      ],
+      "documentIds": [
+        "pdf_document_2cc4d9ea0f412d1d4f49e96f"
+      ],
+      "pdfSha256s": [
+        "5cfc76a00d9e9ed3c09f974279142bf8e38c8c48f3b21d6dd26324787f172e1d"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "PARSED_PARTIAL"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "UNKNOWN_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_bd7a5d5090b768db1556e0e1",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "groupType": "marketing_series",
+      "groupName": "Series 5",
+      "lane": "REPAIR_READY",
+      "rank": 48,
+      "score": 1060,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 50,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_f98db34fefda26c15f6aadf2"
+      ],
+      "affectedModels": [
+        "HWF5S1214"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "63decb781c54d8031f99f83186b72dadb5d850ef8f9538cd5c042c77be385351"
+      ],
+      "documentIds": [
+        "pdf_document_e86220bcc41523a72c1cc6d8"
+      ],
+      "pdfSha256s": [
+        "63decb781c54d8031f99f83186b72dadb5d850ef8f9538cd5c042c77be385351"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "UNKNOWN_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "NONE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
+      "familyId": "document_family_cc76e91b70df5ec2526fb857",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
+      "lane": "REPAIR_READY",
+      "rank": 49,
+      "score": 1060,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 0,
+        "familyReuse": 50,
+        "sourceAuthority": 0,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_af1771fa5a70d4714b9be6f0"
+      ],
+      "affectedModels": [
+        "WH1260HG5"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "88d10692427c71febbe13af96e48bd90a177c5654a7799f601f577f18001840f"
+      ],
+      "documentIds": [
+        "pdf_document_b0bf2c2ec3fca67ca0d1277f"
+      ],
+      "pdfSha256s": [
+        "88d10692427c71febbe13af96e48bd90a177c5654a7799f601f577f18001840f"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "FAMILY_SCOPE_UNRESOLVED"
+      ],
+      "researchGapTypes": [
+        "IMAGE_ONLY_DIMENSION_DIAGRAM",
+        "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+      ],
+      "riskFlags": [
+        "DOOR_OPEN_OR_OPERATION"
+      ],
+      "lifecycleCounts": {
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "NONE": 1
@@ -6003,7 +6006,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CATALOG_ARCHIVED": 2
+        "CURRENT_RETAIL": 2
       },
       "sourceAuthorityCounts": {
         "NONE": 2
@@ -6829,7 +6832,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -7386,7 +7389,7 @@
         "DOOR_OPEN_OR_OPERATION"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
+        "CATALOG_ARCHIVED": 2
       },
       "sourceAuthorityCounts": {
         "MIXED": 2
@@ -8383,7 +8386,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CATALOG_ARCHIVED": 1,
+        "CURRENT_RETAIL": 1,
         "REGISTRY_ONLY": 2
       },
       "sourceAuthorityCounts": {
@@ -8587,7 +8590,7 @@
         "DOOR_OPEN_OR_OPERATION"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
+        "CATALOG_ARCHIVED": 2
       },
       "sourceAuthorityCounts": {
         "MIXED": 2
@@ -9919,7 +9922,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -15089,7 +15092,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -15134,7 +15137,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -15184,7 +15187,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "OFFICIAL": 1
@@ -15229,7 +15232,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -15278,7 +15281,7 @@
       ],
       "riskFlags": [],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -15324,7 +15327,7 @@
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "OFFICIAL": 1
@@ -15554,7 +15557,7 @@
         "UNRESOLVED_DEPTH_VARIANTS"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "NONE": 1
@@ -15747,7 +15750,7 @@
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -15844,7 +15847,7 @@
         "UNRESOLVED_DEPTH_VARIANTS"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 3
+        "UNKNOWN_RETAIL": 3
       },
       "sourceAuthorityCounts": {
         "OFFICIAL": 3
@@ -15891,7 +15894,7 @@
         "UNRESOLVED_DEPTH_VARIANTS"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
+        "UNKNOWN_RETAIL": 2
       },
       "sourceAuthorityCounts": {
         "OFFICIAL": 2
@@ -16040,7 +16043,8 @@
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
       "lifecycleCounts": {
-        "CATALOG_ARCHIVED": 2
+        "CATALOG_ARCHIVED": 1,
+        "CURRENT_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "NONE": 2
@@ -16175,7 +16179,7 @@
         "UNRESOLVED_DEPTH_VARIANTS"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "NONE": 1
@@ -16221,7 +16225,7 @@
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "OFFICIAL": 1
@@ -16315,7 +16319,7 @@
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 1
+        "CATALOG_ARCHIVED": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1
@@ -16412,7 +16416,8 @@
         "UNRESOLVED_AXIS_AMBIGUITY"
       ],
       "lifecycleCounts": {
-        "CURRENT_RETAIL": 2
+        "CATALOG_ARCHIVED": 1,
+        "UNKNOWN_RETAIL": 1
       },
       "sourceAuthorityCounts": {
         "MIXED": 1,
@@ -18856,5 +18861,5 @@
     }
   ],
   "generatedAt": "2026-07-28T15:53:54.152Z",
-  "semanticQueueSha256": "ce1e97f709734a432a501146e905c08da33bde8f007791ef4f8d8e7fd5abad27"
+  "semanticQueueSha256": "12c1418a0e0ac9bd5d800978cee1cfb6168ae1ab0fd457440d4bb9e83853fc55"
 }

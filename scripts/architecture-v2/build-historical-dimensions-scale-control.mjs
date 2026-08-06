@@ -33,10 +33,10 @@ function option(args, name) {
   return value;
 }
 
-function parseArgs(args) {
+export function parseHistoricalDimensionsScaleControlArgs(args) {
   const supported = new Set([
     '--output', '--ledger', '--generated-at', '--initialize-ledger',
-    '--record-rebaseline', '--rebaseline-at',
+    '--record-rebaseline', '--rebaseline-at', '--rebaseline-reason',
   ]);
   let initializeLedger = false;
   let recordRebaseline = false;
@@ -51,12 +51,25 @@ function parseArgs(args) {
     throw new TypeError('--initialize-ledger and --record-rebaseline are mutually exclusive');
   }
   const rebaselineAt = option(args, '--rebaseline-at');
+  const specifiedRebaselineReason = option(args, '--rebaseline-reason');
   if (recordRebaseline && !rebaselineAt) throw new TypeError('--rebaseline-at is required');
   if (!recordRebaseline && rebaselineAt) throw new TypeError('--rebaseline-at requires --record-rebaseline');
+  if (!recordRebaseline && specifiedRebaselineReason) {
+    throw new TypeError('--rebaseline-reason requires --record-rebaseline');
+  }
+  const rebaselineReason = recordRebaseline
+    ? specifiedRebaselineReason ?? 'RELEASE_DAG_RECONCILIATION'
+    : null;
+  if (rebaselineReason && ![
+    'RELEASE_DAG_RECONCILIATION', 'CAPABILITY_EPOCH_CHANGE',
+  ].includes(rebaselineReason)) {
+    throw new TypeError('rebaseline reason invalid');
+  }
   return {
     initializeLedger,
     recordRebaseline,
     rebaselineAt,
+    rebaselineReason,
     output: resolve(option(args, '--output')
       ?? resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl')),
     ledger: resolve(option(args, '--ledger')
@@ -87,7 +100,7 @@ async function currentEpochs() {
 }
 
 export async function runCli(args = process.argv.slice(2)) {
-  const options = parseArgs(args);
+  const options = parseHistoricalDimensionsScaleControlArgs(args);
   const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs] = await Promise.all([
     readJson('historicalEvidenceNextBatches'),
     readJson('historicalEvidenceProgramStatus'),
@@ -130,7 +143,7 @@ export async function runCli(args = process.argv.slice(2)) {
         generatedAt: options.generatedAt ?? programStatus.generatedAt ?? nextBatches.generatedAt,
       },
       activatedAt: options.rebaselineAt,
-      reason: 'RELEASE_DAG_RECONCILIATION',
+      reason: options.rebaselineReason,
     });
     await atomicJson(options.ledger, advanced.ledger);
     await atomicJson(options.output, advanced.control);

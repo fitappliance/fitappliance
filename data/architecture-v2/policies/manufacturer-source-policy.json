@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-21.1",
+  "policyVersion": "2026-08-05.1",
   "supportedReceiptPolicyVersions": [
     "2026-07-12.1",
     "2026-07-14.1",
@@ -9,7 +9,8 @@
     "2026-07-16.2",
     "2026-07-16.3",
     "2026-07-16.4",
-    "2026-07-21.1"
+    "2026-07-21.1",
+    "2026-08-05.1"
   ],
   "officialHtmlModelVariantSuffixes": {
     "westinghouse": {
@@ -42,6 +43,11 @@
     "lg": ["^/au(?:/|$)", "^/content/dam/channel/wcms/au(?:/|$)"],
     "samsung": ["^/au(?:/|$)", "[?&]CDSite=UNI_AU(?:&|$)"]
   },
+  "marketHostPathPatterns": {
+    "smeg": {
+      "smeg.com": ["^/au(?:/|$)"]
+    }
+  },
   "brands": {
     "artusi": ["artusi.com.au"],
     "asko": ["asko.com"],
@@ -64,7 +70,7 @@
     "omega": ["omegaappliances.com.au"],
     "robinhood": ["robinhood.com.au", "robinhood.co.nz"],
     "samsung": ["samsung.com"],
-    "smeg": ["smeg.com.au"],
+    "smeg": ["smeg.com.au", "smeg.com"],
     "subzero": ["subzero-wolf.com"],
     "teco": ["teco.com.au"],
     "vogue": ["vogue-appliances.com"],

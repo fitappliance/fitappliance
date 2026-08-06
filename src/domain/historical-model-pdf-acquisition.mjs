@@ -33,6 +33,29 @@ function text(value, label) {
   return normalized;
 }
 
+function activeReleaseBinding(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('active release source binding required');
+  }
+  const binding = {
+    releaseCandidateId: text(value.releaseCandidateId, 'active release candidate ID'),
+    publicProjectionSha256: text(
+      value.publicProjectionSha256,
+      'active public projection SHA-256',
+    ).toLowerCase(),
+    historicalReferenceSha256: text(
+      value.historicalReferenceSha256,
+      'active historical reference SHA-256',
+    ).toLowerCase(),
+  };
+  if (!/^retail_lifecycle_release_[a-f0-9]{24}$/.test(binding.releaseCandidateId)
+    || !/^[a-f0-9]{64}$/.test(binding.publicProjectionSha256)
+    || !/^[a-f0-9]{64}$/.test(binding.historicalReferenceSha256)) {
+    throw new TypeError('active release source binding invalid');
+  }
+  return Object.freeze(binding);
+}
+
 function normalizedBrand(value) {
   return text(value, 'brand').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
@@ -214,6 +237,7 @@ function readiness(route, candidateAuthorities, resolverIds) {
 }
 
 export function buildHistoricalModelPdfAcquisitionQueue({
+  activeReleaseSourceBinding,
   classification,
   historicalReference,
   catalogProducts,
@@ -231,6 +255,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   }
   if (!Array.isArray(historicalReference?.records)) throw new TypeError('historical reference records required');
   if (!(resolverIdsByBrand instanceof Map)) throw new TypeError('resolverIdsByBrand map required');
+  const releaseBinding = activeReleaseBinding(activeReleaseSourceBinding);
   const timestamp = new Date(generatedAt).toISOString();
   const references = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
   if (references.size !== historicalReference.records.length) throw new Error('duplicate historical reference ID');
@@ -366,6 +391,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
     referenceIds: [...source.referenceIds].sort(),
   })).sort((left, right) => left.sourceId.localeCompare(right.sourceId));
   const semanticPayload = {
+    activeReleaseSourceBinding: releaseBinding,
     sourceClassificationSha256: classification.semanticClassificationSha256,
     sourceIdentityMigrationSha256: canonicalMerge.semanticSha256,
     records,

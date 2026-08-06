@@ -1133,3 +1133,35 @@ product-success metrics.
 
 Any later document that conflicts with the locked principles must identify the
 conflict explicitly and update this brief rather than silently overriding it.
+
+## 12. Permanent Task Planning and Agent Governance
+
+Governance updated: 2026-08-05
+
+This section governs future FitAppliance implementation work unless the owner
+explicitly changes it. It applies to new tasks, continuations, resumed work and
+review rounds.
+
+1. The primary conversation owns the complete task definition and execution
+   plan. Before implementation it must read this brief, map the current code and
+   artifact contracts, order work by dependency, and define tests, publication
+   boundaries, rollback, resume/replay behaviour and typed stop conditions.
+2. A substantial plan remains `DRAFT` until one independent
+   `gpt-5.6-sol` subagent reviews it at reasoning effort `ultra` (the highest
+   available level). The review must try to disprove the plan across identity,
+   lifecycle, evidence, repeated-run, resume, conflict, publication and
+   Fit-safety paths. The primary conversation resolves or records every material
+   finding before marking the plan `READY`.
+3. Plan execution uses one bounded `gpt-5.6-sol` subagent at reasoning effort
+   `medium`. The primary conversation supplies only the approved task slice,
+   affected files, invariants and verification commands; it then reviews the
+   diff and evidence before accepting the result. Additional agents require an
+   explicit independent workstream and must not form implement-review-fix loops.
+4. Model choice never relaxes TDD, evidence provenance, fail-closed handling,
+   data-loss prevention, publication isolation or final verification. The
+   smallest direct implementation satisfying current repository contracts is
+   preferred; no abstraction, state machine, dependency or schema version is
+   added without a concrete acceptance case.
+5. Planning and auditing do not authorize execution, publication, deployment,
+   email, purchase, licence acceptance or other external mutation. Each such
+   action still requires its normal project gate and current user authorization.

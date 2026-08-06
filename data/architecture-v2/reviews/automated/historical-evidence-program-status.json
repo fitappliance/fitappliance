@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T15:53:54.152Z",
+  "generatedAt": "2026-08-05T12:11:28.783Z",
   "inventory": {
-    "historicalModelReferences": 8089,
-    "currentCatalogProducts": 3515,
+    "historicalModelReferences": 8087,
+    "currentCatalogProducts": 3513,
     "acceptedRecoveryEntries": 382,
     "targetAttempts": 93
   },
@@ -54,8 +54,8 @@
       "id": "model.inventory_classified",
       "label": "Inventory classified",
       "grain": "historical_model_reference",
-      "numerator": 8089,
-      "denominator": 8089,
+      "numerator": 8087,
+      "denominator": 8087,
       "rateBasisPoints": 10000,
       "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
     },
@@ -63,9 +63,9 @@
       "id": "model.with_document_links",
       "label": "Models with document links",
       "grain": "historical_model_reference",
-      "numerator": 1768,
-      "denominator": 8089,
-      "rateBasisPoints": 2186,
+      "numerator": 1766,
+      "denominator": 8087,
+      "rateBasisPoints": 2184,
       "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
     },
     {
@@ -73,8 +73,8 @@
       "label": "Models without document links",
       "grain": "historical_model_reference",
       "numerator": 6321,
-      "denominator": 8089,
-      "rateBasisPoints": 7814,
+      "denominator": 8087,
+      "rateBasisPoints": 7816,
       "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
     },
     {
@@ -82,7 +82,7 @@
       "label": "Models with current valid receipts",
       "grain": "historical_model_reference",
       "numerator": 401,
-      "denominator": 8089,
+      "denominator": 8087,
       "rateBasisPoints": 496,
       "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
     },
@@ -90,8 +90,8 @@
       "id": "model.queued_for_acquisition",
       "label": "Models queued for acquisition",
       "grain": "historical_model_reference",
-      "numerator": 7688,
-      "denominator": 8089,
+      "numerator": 7686,
+      "denominator": 8087,
       "rateBasisPoints": 9504,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json"
     },
@@ -99,9 +99,9 @@
       "id": "model.executable_targets",
       "label": "Executable model targets",
       "grain": "historical_model_reference",
-      "numerator": 4969,
-      "denominator": 7688,
-      "rateBasisPoints": 6463,
+      "numerator": 4967,
+      "denominator": 7686,
+      "rateBasisPoints": 6462,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json"
     },
     {
@@ -109,7 +109,7 @@
       "label": "Models in cumulative recovery acceptance",
       "grain": "historical_model_reference",
       "numerator": 382,
-      "denominator": 8089,
+      "denominator": 8087,
       "rateBasisPoints": 472,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
     },
@@ -118,7 +118,7 @@
       "label": "Historical models eligible for replacement auto-fill",
       "grain": "historical_model_reference",
       "numerator": 321,
-      "denominator": 8089,
+      "denominator": 8087,
       "rateBasisPoints": 397,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-replacement-audit.json"
     },
@@ -126,9 +126,9 @@
       "id": "target_state.actionable",
       "label": "Models with scheduled evidence work",
       "grain": "historical_model_reference",
-      "numerator": 4969,
-      "denominator": 8089,
-      "rateBasisPoints": 6143,
+      "numerator": 4967,
+      "denominator": 8087,
+      "rateBasisPoints": 6142,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -136,7 +136,7 @@
       "label": "Blocked models with scheduled evidence work",
       "grain": "historical_model_reference",
       "numerator": 6,
-      "denominator": 8089,
+      "denominator": 8087,
       "rateBasisPoints": 7,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
@@ -145,7 +145,7 @@
       "label": "Completed model targets",
       "grain": "historical_model_reference",
       "numerator": 401,
-      "denominator": 8089,
+      "denominator": 8087,
       "rateBasisPoints": 496,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
@@ -154,8 +154,8 @@
       "label": "Blocked model targets",
       "grain": "historical_model_reference",
       "numerator": 2725,
-      "denominator": 8089,
-      "rateBasisPoints": 3369,
+      "denominator": 8087,
+      "rateBasisPoints": 3370,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -199,8 +199,8 @@
       "label": "Document-model edges with exact or internal model-list proof",
       "grain": "document_model_edge",
       "numerator": 569,
-      "denominator": 3973,
-      "rateBasisPoints": 1432,
+      "denominator": 3972,
+      "rateBasisPoints": 1433,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
@@ -280,7 +280,7 @@
       "label": "Current products with receipt-bound dimensions",
       "grain": "current_catalog_product",
       "numerator": 332,
-      "denominator": 3515,
+      "denominator": 3513,
       "rateBasisPoints": 945,
       "sourceArtifact": "data/architecture-v2/reviews/automated/fit-publication-audit.json"
     },
@@ -289,7 +289,7 @@
       "label": "Current products with receipt-bound Verified Fit",
       "grain": "current_catalog_product",
       "numerator": 0,
-      "denominator": 3515,
+      "denominator": 3513,
       "rateBasisPoints": 0,
       "sourceArtifact": "data/architecture-v2/reviews/automated/fit-publication-audit.json"
     }

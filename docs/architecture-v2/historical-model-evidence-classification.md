@@ -2,8 +2,8 @@
 
 Generated: 2026-07-28T15:53:54.152Z
 
-Coverage: **8,089 / 8,089** unique historical models.
-Models with document links: **1,768**; without links: **6,321**.
+Coverage: **8,087 / 8,087** unique historical models.
+Models with document links: **1,766**; without links: **6,321**.
 
 This is a research and repair classification. It does not grant publication authority.
 
@@ -13,7 +13,7 @@ This is a research and repair classification. It does not grant publication auth
 | --- | --- | --- | --- |
 | dishwasher | 1419 | 94 | 1115 |
 | dryer | 838 | 72 | 275 |
-| fridge | 4336 | 121 | 2310 |
+| fridge | 4334 | 121 | 2303 |
 | washing_machine | 1496 | 88 | 680 |
 
 ## Operational Classes
@@ -22,7 +22,7 @@ This is a research and repair classification. It does not grant publication auth
 | --- | --- |
 | COMPLETE_RECEIPT | 401 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 134 |
+| IDENTITY_RESEARCH | 132 |
 | OFFICIAL_DISCOVERY | 6412 |
 | REFERENCE_REDISCOVERY | 1059 |
 

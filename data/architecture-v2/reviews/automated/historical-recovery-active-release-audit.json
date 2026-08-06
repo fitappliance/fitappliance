@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+  "sourceBindings": {
+    "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+    "historicalReferenceSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882"
+  },
+  "summary": {
+    "activeReferences": 8087,
+    "classifiedReferences": 8087,
+    "boundReferences": 3510,
+    "unboundReferences": 4577,
+    "generatedOnlyIdentities": 2,
+    "issues": 0
+  },
+  "identityDispositions": [
+    {
+      "referenceId": "fa_ref_4d4a2da195f10c8b3c625345",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QZUVX1 French Door 726L",
+      "disposition": "QUARANTINED_GENERATED_ONLY",
+      "receiptCount": 0
+    },
+    {
+      "referenceId": "fa_ref_83c5f60ac235a30b67ab7701",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF520BHS French Door 520L",
+      "disposition": "QUARANTINED_GENERATED_ONLY",
+      "receiptCount": 0
+    }
+  ],
+  "issues": []
+}

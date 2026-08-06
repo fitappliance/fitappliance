@@ -12,6 +12,7 @@ import {
   validateHistoricalModelEvidenceClassificationPolicy,
 } from '../../src/domain/historical-model-evidence-classification.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const policyPath = resolve(root, 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json');
@@ -205,7 +206,7 @@ function hybridAuditEvidenceObjectIds(outcome) {
   ];
 }
 
-export function applyHistoricalPdfImageAudit({ links, audit }) {
+export function applyHistoricalPdfImageAudit({ links, audit, activeReferenceIds = null }) {
   if (!(links instanceof Map) || audit?.schemaVersion !== 1 || !Array.isArray(audit?.outcomes)) {
     throw new TypeError('historical PDF image audit and classification links required');
   }
@@ -221,8 +222,13 @@ export function applyHistoricalPdfImageAudit({ links, audit }) {
   const conflictsByReference = new Map();
   let applied = 0;
   let skippedCurrentReceipts = 0;
+  let quarantinedInactiveIdentities = 0;
   for (const outcome of audit.outcomes) {
     const referenceId = String(outcome.referenceId ?? '');
+    if (activeReferenceIds instanceof Set && !activeReferenceIds.has(referenceId)) {
+      quarantinedInactiveIdentities += 1;
+      continue;
+    }
     const documentId = `pdf:${String(outcome.sourcePdfSha256 ?? '')}`;
     const documents = links.get(referenceId);
     const existing = documents?.get(documentId);
@@ -267,7 +273,7 @@ export function applyHistoricalPdfImageAudit({ links, audit }) {
     documents.set(documentId, next);
     applied += 1;
   }
-  return { conflictsByReference, applied, skippedCurrentReceipts };
+  return { conflictsByReference, applied, skippedCurrentReceipts, quarantinedInactiveIdentities };
 }
 
 export function applyAcceptanceReceiptReplayAudit({ links, audit }) {
@@ -367,22 +373,23 @@ async function main(args) {
   const outputPath = resolve(option(args, '--output') ?? resolveArchitectureV2Path(root, 'historicalModelEvidenceClassification'));
   const outputMarkdown = resolve(option(args, '--markdown') ?? markdownPath);
   const generatedAtOption = option(args, '--generated-at');
-  const [policyValue, historicalReference, sourceDocumentArtifact, knowledge, legacyAudit,
-    recoveryQueue, acceptanceBundle, publicProjection, pdfAcceptanceResults,
+  const [policyValue, activeRecovery, sourceDocumentArtifact, knowledge, legacyAudit,
+    recoveryQueue, acceptanceBundle, pdfAcceptanceResults,
     identityAcceptanceResults, imageRepairAudit, acceptanceReceiptReplayAudit] = await Promise.all([
     readJson(policyPath),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
+    loadHistoricalRecoveryActiveRelease({ root }),
     readJson(resolveArchitectureV2Path(root, 'sourceDocuments')),
     readJson(knowledgePath),
     readJson(resolveArchitectureV2Path(root, 'legacyPdfLibraryAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryQueue')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle')),
-    readJson(resolveArchitectureV2Path(root, 'publicProjection')),
     readJson(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'historicalPdfImageRepairAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
   ]);
+  const historicalReference = activeRecovery.reference;
+  const publicProjection = activeRecovery.catalog;
   const generatedAt = generatedAtOption ?? deriveHistoricalModelEvidenceClassificationGeneratedAt({
     historicalReference,
     sourceDocumentArtifact,
@@ -527,7 +534,11 @@ async function main(args) {
     }
   }
 
-  const imageAuditApplication = applyHistoricalPdfImageAudit({ links, audit: imageRepairAudit });
+  const imageAuditApplication = applyHistoricalPdfImageAudit({
+    links,
+    audit: imageRepairAudit,
+    activeReferenceIds: new Set(referenceById.keys()),
+  });
   applyAcceptanceReceiptReplayAudit({ links, audit: acceptanceReceiptReplayAudit });
 
   const snapshot = buildHistoricalModelEvidenceClassification({

@@ -136,7 +136,7 @@ test('committed classification policy is valid and covers every operational clas
     'utf8',
   )));
   assert.equal(policy.policyVersion, 'historical-model-evidence-classification-v2');
-  assert.equal(policy.expectedReferenceCount, 8089);
+  assert.equal(policy.expectedReferenceCount, 8087);
   assert.deepEqual(Object.keys(policy.actions).sort(), [...CLASSIFICATION_ENUMS.operationalClasses].sort());
 });
 

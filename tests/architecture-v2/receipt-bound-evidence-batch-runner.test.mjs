@@ -346,6 +346,33 @@ test('resolver case records retain reconciliation hints for conflict-driven disc
   assert.deepEqual(resolverCase.reconciliationContext, targetRecord.reconciliationContext);
 });
 
+test('runner entry validation accepts and preserves an evidence epoch binding', async () => {
+  const artifactJob = job('e'.repeat(32), 'https://official.example.com/epoch.pdf', ['target-epoch']);
+  const targetRecord = target('target-epoch', 'EX-EPOCH', [artifactJob.jobId]);
+  targetRecord.reconciliationContext.evidenceEpoch = {
+    epochId: `evidence_epoch_${'d'.repeat(24)}`,
+    descriptorSha256: 'd'.repeat(64),
+  };
+  let resolverCase = null;
+  await runReceiptBoundEvidenceBatch(batch({ jobs: [artifactJob], targets: [targetRecord] }), dependencies({
+    candidateResolversForTarget: () => [{
+      resolverId: 'epoch-aware-resolver', version: '1', scope: 'exact_model', required: true,
+      async resolve(caseRecord) {
+        resolverCase = caseRecord;
+        return {
+          resolverId: 'epoch-aware-resolver', version: '1', scope: 'exact_model', required: true,
+          completion: 'complete', candidates: [],
+        };
+      },
+    }],
+  }));
+
+  assert.deepEqual(
+    resolverCase.reconciliationContext.evidenceEpoch,
+    targetRecord.reconciliationContext.evidenceEpoch,
+  );
+});
+
 test('dynamically discovered artifact jobs preserve target model and category', async () => {
   const artifactJob = job('a'.repeat(32), 'https://official.example.com/primary.pdf', ['target-a']);
   artifactJob.authorityBrand = 'ASKO';

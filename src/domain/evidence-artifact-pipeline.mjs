@@ -1,8 +1,14 @@
 import { createHash } from 'node:crypto';
 
-import { extractClaimsFromHtml, verifyAndAttestResolutionArtifact } from './evidence-artifact-verifier.mjs';
+import { extractDimensionExpressions } from './dimension-expression-knowledge.mjs';
+import { createDimensionUnitObservation } from './dimension-unit-observation.mjs';
+import {
+  extractClaimsFromHtml,
+  preflightEvidenceArtifactIdentity,
+  verifyAndAttestResolutionArtifact,
+} from './evidence-artifact-verifier.mjs';
 import { upgradeLegacyDimensionClaim } from './dimension-evidence-claim.mjs';
-import { parseMineruContentListV2 } from './mineru-document.mjs';
+import { inspectMineruContentListV2, parseMineruContentListV2 } from './mineru-document.mjs';
 import {
   officialMarketApiDimensionClaims,
   officialMarketApiBoundExactCoverModel,
@@ -16,11 +22,21 @@ import { officialSupportApiBoundFamilyModel } from './official-support-api-disco
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
+const OFFICIAL_TRANSPORTS = new Set([
+  'fetch', 'curl', 'scrapling', 'content_addressed_discovery_object',
+]);
 
 function requiredText(value, label) {
   const normalized = String(value ?? '').trim();
   if (!normalized) throw new TypeError(`${label} required`);
   return normalized;
+}
+
+function officialTransport(value) {
+  if (value == null) return null;
+  const transport = requiredText(value, 'official transport');
+  if (!OFFICIAL_TRANSPORTS.has(transport)) throw new TypeError('official transport invalid');
+  return transport;
 }
 
 function brandKey(value) {
@@ -108,8 +124,10 @@ async function rehydrateArtifact(record, options, expected) {
       );
     }
   }
+  const transport = officialTransport(record.transport);
   return {
     ...record,
+    ...(transport ? { transport } : {}),
     bytes,
     derivedArtifactBytes,
     fallbackTriggerArtifactBytes,
@@ -194,6 +212,7 @@ export async function acquireEvidenceArtifact(candidate, options = {}) {
     }
 
     const fetched = await options.fetchArtifact(sourceUrl, expected.authorityBrand, options);
+    const transport = officialTransport(fetched?.transport);
     const fetchedBytes = Buffer.from(fetched?.bytes ?? []);
     if (!fetchedBytes.length) throw new TypeError('non-empty artifact bytes required');
     const hash = sha256(fetchedBytes);
@@ -219,6 +238,7 @@ export async function acquireEvidenceArtifact(candidate, options = {}) {
       contentSha256: content.contentSha256,
       objectPath: content.objectPath,
       byteSize: content.byteSize,
+      ...(transport ? { transport } : {}),
       bytes: content.bytes,
       derivedArtifact: content.derivedArtifact,
       derivedArtifactBytes: content.derivedArtifactBytes,
@@ -244,6 +264,191 @@ function sameResource(left, right) {
   } catch {
     return false;
   }
+}
+
+function artifactIdentitySource(caseRecord, artifact, now, discoveryProvenance) {
+  return {
+    authority: 'manufacturer',
+    sourceType: artifact.contentType === 'application/pdf'
+      ? 'official_exact_model_pdf'
+      : artifact.contentType === 'application/json'
+        ? 'official_exact_model_api'
+        : 'official_exact_model_product_page',
+    sourceUrl: artifact.requestedUrl,
+    finalUrl: artifact.finalUrl,
+    redirectChain: [...artifact.redirectChain],
+    retrievedAt: now,
+    contentSha256: artifact.contentSha256,
+    objectPath: artifact.objectPath,
+    contentType: artifact.contentType,
+    byteSize: artifact.byteSize,
+    identity: { brand: caseRecord.brand, model: caseRecord.model, outcome: 'exact' },
+    ...(discoveryProvenance ? { discoveryProvenance } : {}),
+    ...(artifact.derivedArtifact ? { derivedArtifact: artifact.derivedArtifact } : {}),
+  };
+}
+
+function preflightArtifactIdentity(caseRecord, artifact, options) {
+  return preflightEvidenceArtifactIdentity({
+    source: artifactIdentitySource(
+      caseRecord, artifact, options.now, options.discoveryProvenance,
+    ),
+    caseIdentity: {
+      brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category,
+    },
+    bytes: artifact.bytes,
+    derivedArtifactBytes: artifact.derivedArtifactBytes,
+    fallbackTriggerArtifactBytes: artifact.fallbackTriggerArtifactBytes,
+    discoveryArtifactBytes: options.discoveryArtifactBytes,
+  });
+}
+
+export async function preflightEvidenceArtifactForCase(caseRecord, artifact, options = {}) {
+  if (artifact?.authorityMode !== 'official') {
+    throw new TypeError('official artifact authority required for identity preflight');
+  }
+  if (brandKey(artifact.authorityBrand) !== brandKey(caseRecord?.brand)) {
+    throw new TypeError('artifact authority brand does not match target brand');
+  }
+  const discoveryProvenance = options.discoveryProvenance ?? null;
+  let discoveryArtifactBytes = options.discoveryArtifactBytes ?? null;
+  if (discoveryProvenance?.discoveryObjectPath && discoveryArtifactBytes == null) {
+    if (typeof options.readObject !== 'function') {
+      throw new TypeError('discovery evidence object reader required');
+    }
+    discoveryArtifactBytes = await options.readObject(discoveryProvenance.discoveryObjectPath);
+  }
+  return preflightArtifactIdentity(caseRecord, artifact, {
+    now: options.now ?? null,
+    discoveryProvenance,
+    discoveryArtifactBytes,
+  });
+}
+
+function metricUnit(value) {
+  const units = new Set([...String(value ?? '').matchAll(
+    /(?<![A-Za-z])(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)(?![A-Za-z])/gi,
+  )].map((match) => match[1].toLowerCase().startsWith('c') ? 'cm' : 'mm'));
+  return units.size === 1 ? [...units][0] : null;
+}
+
+function metricContextFragment(page) {
+  return page.fragments.find((fragment) => (
+    /\bdimensions?\s*\(\s*(?:mm|cm|millimet(?:re|er)s?|centimet(?:re|er)s?)\s*\)/i.test(fragment.rawText)
+      || /\b(?:all\s+)?measurements?\b[^.]{0,80}\b(?:mm|cm|millimet(?:re|er)s?|centimet(?:re|er)s?)\b/i.test(fragment.rawText)
+      || /\bproduct\s+dimensions?\b[^.]{0,80}\b(?:mm|cm|millimet(?:re|er)s?|centimet(?:re|er)s?)\b/i.test(fragment.rawText)
+  ));
+}
+
+export async function observeEvidenceArtifactDimensionsForCase(caseRecord, artifact, options = {}) {
+  if (artifact?.authorityMode !== 'official') {
+    throw new TypeError('official artifact authority required for observation');
+  }
+  if (brandKey(artifact.authorityBrand) !== brandKey(caseRecord?.brand)) {
+    throw new TypeError('artifact authority brand does not match target brand');
+  }
+  const market = requiredText(options.market, 'observation market').toUpperCase();
+  const policyVersion = requiredText(options.policyVersion, 'dimension unit policy version');
+  const discoveryProvenance = options.discoveryProvenance ?? null;
+  let discoveryArtifactBytes = options.discoveryArtifactBytes ?? null;
+  if (discoveryProvenance?.discoveryObjectPath && discoveryArtifactBytes == null) {
+    if (typeof options.readObject !== 'function') {
+      throw new TypeError('discovery evidence object reader required');
+    }
+    discoveryArtifactBytes = await options.readObject(discoveryProvenance.discoveryObjectPath);
+  }
+  await preflightEvidenceArtifactForCase(caseRecord, artifact, {
+    now: options.now ?? null,
+    discoveryProvenance,
+    discoveryArtifactBytes,
+  });
+  if (artifact.contentType !== 'application/pdf') {
+    return Object.freeze({
+      status: 'NO_OBSERVATION',
+      reasonCode: 'SHADOW_EXPRESSION_FORMAT_UNSUPPORTED',
+      dimensionUnitObservations: Object.freeze([]),
+    });
+  }
+
+  let contentList;
+  try {
+    contentList = JSON.parse(Buffer.from(artifact.derivedArtifactBytes).toString('utf8'));
+  } catch {
+    throw new TypeError('MinerU content_list_v2 JSON invalid');
+  }
+  const expressions = extractDimensionExpressions({
+    pdfSha256: artifact.contentSha256,
+    contentSha256: artifact.derivedArtifact.contentSha256,
+    contentList,
+    sourceUrls: [artifact.requestedUrl, artifact.finalUrl],
+    identities: [{
+      brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category,
+    }],
+  });
+  const inspection = inspectMineruContentListV2(artifact.derivedArtifactBytes);
+  const observations = expressions.observations.flatMap((expression) => {
+    if (expression.axisOrder.length !== 3
+      || new Set(expression.axisOrder).size !== 3
+      || !['height', 'width', 'depth'].every((axis) => expression.axisOrder.includes(axis))) return [];
+    const page = inspection.pages[expression.page - 1];
+    const fragment = page?.fragments.find((candidate) => (
+      candidate.fragmentSha256 === expression.fragmentSha256
+    ));
+    if (!fragment) throw new Error('dimension expression fragment does not replay');
+    const localUnit = metricUnit(fragment.rawText);
+    if (localUnit) return [];
+    const context = metricContextFragment(page);
+    const provenance = (candidate) => candidate ? {
+      rawText: candidate.rawText,
+      contentSha256: artifact.contentSha256,
+      fragmentSha256: candidate.fragmentSha256,
+      page: expression.page,
+      bbox: [...candidate.bbox],
+    } : null;
+    const axisValues = expression.axisValues.map((axisValue) => ({
+      axis: axisValue.axis,
+      value: String(axisValue.value).replace(
+        /\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\s*$/i, '',
+      ),
+    }));
+    return [createDimensionUnitObservation({
+      source: {
+        contentSha256: artifact.contentSha256,
+        rawText: fragment.rawText,
+        authority: 'OFFICIAL',
+        market,
+        page: expression.page,
+        fragmentSha256: fragment.fragmentSha256,
+        bbox: [...fragment.bbox],
+      },
+      target: {
+        referenceId: caseRecord.referenceId ?? caseRecord.id,
+        brand: caseRecord.brand,
+        model: caseRecord.model,
+        category: caseRecord.category,
+        market,
+        identityScope: 'EXACT_MODEL',
+      },
+      rawLabel: expression.sourceLabel,
+      rawTuple: expression.sourceValue,
+      axisValues,
+      axisOrder: [...expression.axisOrder],
+      axisAmbiguous: new Set(expression.axisOrder).size !== expression.axisOrder.length
+        || expression.depthVariants.length > 0,
+      scope: expression.scope,
+      policyVersion,
+      documentMetricContext: provenance(context),
+      modelScope: {
+        modelBinding: expression.modelBinding,
+        boundModels: [...expression.boundModels],
+      },
+    })];
+  }).sort((left, right) => left.observationId.localeCompare(right.observationId));
+  return Object.freeze({
+    status: observations.length ? 'OBSERVED' : 'NO_OBSERVATION',
+    ...(observations.length ? {} : { reasonCode: 'NO_SUPPORTED_DIMENSION_EXPRESSION' }),
+    dimensionUnitObservations: Object.freeze(observations),
+  });
 }
 
 export async function attestEvidenceArtifactForCase(caseRecord, artifact, options = {}) {
@@ -286,6 +491,12 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       // Re-attest immutable bytes when policy or claim semantics advance.
     }
   }
+
+  await preflightEvidenceArtifactForCase(caseRecord, artifact, {
+    now,
+    discoveryProvenance,
+    discoveryArtifactBytes,
+  });
 
   let claims;
   let boundVariantModel = null;
@@ -386,6 +597,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     .map((source) => source.contentSha256)
     .filter((value) => value !== artifact.contentSha256)
     .sort();
+  const transport = officialTransport(artifact.transport);
   const source = {
     authority: 'manufacturer',
     sourceType: artifact.contentType === 'application/pdf'
@@ -403,6 +615,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     objectPath: artifact.objectPath,
     contentType: artifact.contentType,
     byteSize: artifact.byteSize,
+    ...(transport ? { transport } : {}),
     supersedesContentSha256,
     identity: { brand: caseRecord.brand, model: caseRecord.model, outcome: 'exact' },
     claims,
