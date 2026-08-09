@@ -1072,6 +1072,40 @@ Its current controls and measured results are:
 The generated baseline and its interpretation are recorded in
 [PDF Failure Baseline: 100 Stratified Candidates](architecture-v2/pdf-failure-baseline-100.md).
 
+### 9.11 Engineering Fit V4 shadow implementation checkpoint (2026-08-08)
+
+Engineering and repository research for the next Fit standard is recorded in
+[Appliance Fit Engineering Standard Research](architecture-v2/appliance-fit-engineering-standard-research.md).
+The implementation sequence is recorded in
+[Engineering Fit Standard and Ranking Implementation Plan](superpowers/plans/2026-08-08-engineering-fit-standard-and-ranking.md).
+
+The implementation keeps installation truth separate from ranking. It introduces typed
+minimum, maximum, bounded-range and geometry relations; deterministic bounds
+separate from coverage intervals and estimates; exact-model V4 receipts;
+closed conditional/configuration rules; category-specific policies; separate
+installation and selected-delivery outcomes; and an isolated namespaced FitRank
+vector. Real household site profiles remain ephemeral by default.
+
+The first plan draft failed independent `gpt-5.6-sol` ultra review on 13
+material issues, including incomplete relation algebra, missing V4 receipt
+replay, publication-isolation leakage, circular dependencies, incomplete
+laundry evidence, delivery-outcome ambiguity, legacy score fallbacks and site
+privacy. The revised plan records and resolves every finding; the same reviewer
+returned `READY`. Twelve isolated implementation tasks were then completed and
+one final ultra audit found eleven additional trust, measurement, calibration,
+deployment, recovery and UX defects. Those defects are now closed through
+manifest-bound evidence replay, conservative repeated-measurement semantics,
+coherent placement composition, frozen independent label and consent evidence,
+complete Vercel deployment hashing, recoverable owned locks and stale-result
+invalidation.
+
+The current candidate remains intentionally `BLOCKED`: it has 11 typed blockers,
+zero source-backed calibration labels, zero eligible categories, no numeric
+total, no public adapter and no owner approval. Fit V4/UX tests pass 210/210 and
+the complete Architecture V2 suite passes 1,596/1,596. Public V2/V3 behavior,
+scores, runtime files and publication remain unchanged. Public V4 migration
+still requires the explicit cutover decision packet and owner approval.
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:

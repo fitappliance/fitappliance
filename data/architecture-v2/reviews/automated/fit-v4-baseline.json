@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "baseline": "fit-v4-migration-risks",
+  "generatedAt": "2026-08-08T00:00:03.000Z",
+  "diagnosticOnly": true,
+  "sourceInputs": [
+    {
+      "path": "data/architecture-v2/decisions/active-retail-release.json",
+      "sha256": "976a1463dd747763d20c959d52ecceaa1617a52eff6b06f17d9d8f59b2a6f222"
+    },
+    {
+      "path": "data/architecture-v2/generated/installation-knowledge-pilot.json",
+      "sha256": "88790c3c8858fa0ca63a4230b76f18033a841b7f63134359586bc93feebcf259"
+    },
+    {
+      "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
+      "sha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90"
+    },
+    {
+      "path": "data/architecture-v2/reviews/automated/fit-v3-shadow-audit.json",
+      "sha256": "d1c3fe680eeaaa3bcb7169413b5426048b45382e370c028d77b6885b95c85799"
+    },
+    {
+      "path": "data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json",
+      "sha256": "5b9e27f6d3be980cbaa7877a64a3f6534290ce95ff295649d329dc1682c7ff03"
+    },
+    {
+      "path": "public/scripts/search-core.js",
+      "sha256": "048bbdaafa3e407874114e34b77c552a894810b373cdbf19ecae0a49cec70d2e"
+    },
+    {
+      "path": "public/scripts/ui/fit-score-ring.js",
+      "sha256": "5c404734e3135e360df6b8ce8be0c1afeb5daf758f69f5c03847eb4110809301"
+    },
+    {
+      "path": "public/scripts/ui/fit-score.js",
+      "sha256": "ca31f2cbda5e6768f92630df1422f2cb9b98e6b11750ae9369bd5cd0283615e5"
+    },
+    {
+      "path": "public/scripts/ui/score-breakdown.js",
+      "sha256": "2a171ba8dbe770737b3d8bc88f0f387edc7994af2ff5ebb1687bba76508b6c3b"
+    },
+    {
+      "path": "public/scripts/ui/tooltips-dictionary.js",
+      "sha256": "ff630a1fd46d7d1c8f369133e2efe1ae812fe474ed1d633bac6db98bb92c6ff6"
+    },
+    {
+      "path": "scripts/architecture-v2/build-fit-v4-baseline.mjs",
+      "sha256": "a59bd070138e3244d3e966e42cc97c4b8ba694feacb847ffdde5f2d4eaf89556"
+    },
+    {
+      "path": "src/domain/fit-decision.mjs",
+      "sha256": "a45b2b16e1326245420f55e3d9c4bc4ce8ab8133e8fbfbfaf55dc3f554409671"
+    },
+    {
+      "path": "src/domain/fit-v3.mjs",
+      "sha256": "229a65c2e013d2bcf137fc2705ca0b4fbfb65af6038926fb85e6591dac69b3ab"
+    },
+    {
+      "path": "src/domain/installation-knowledge-v3.mjs",
+      "sha256": "847b023f930ada57a9874b60a9863ff3c49ddc06bb947e99dcf22a8c37b289e6"
+    },
+    {
+      "path": "src/shared/fit-engine.js",
+      "sha256": "09a605775d2adcaba1b647773195c5ca016d89a2a8be0be97936b5f06ec0e9fe"
+    },
+    {
+      "path": "tests/architecture-v2/fit-v4-migration-risks.test.mjs",
+      "sha256": "a02602c0ea90e0c685c5b578ae6f724083d8603f43b96997d15e2a2f7da866f2"
+    }
+  ],
+  "protectedFiles": {
+    "scope": [
+      "src/shared/fit-engine.js",
+      "src/domain/fit-decision.mjs",
+      "src/domain/fit-v3.mjs",
+      "src/domain/installation-knowledge-v3.mjs",
+      "public/**"
+    ],
+    "fileCount": 946,
+    "beforeSha256": "0ef3bbcc2ff01ef37ccb580d8b7e9a948df687a51f74c37bc736f93829af6f56",
+    "afterSha256": "0ef3bbcc2ff01ef37ccb580d8b7e9a948df687a51f74c37bc736f93829af6f56",
+    "unchanged": true
+  },
+  "risks": [
+    {
+      "id": "accepted-unevaluated-front-clearance",
+      "riskClass": "UNEVALUATED_ACCEPTED_FIELD",
+      "reproduced": true,
+      "fixture": {
+        "field": "installationClearance.frontMm",
+        "requiredMm": 5000,
+        "availableFrontMm": 1200
+      },
+      "fixtureSha256": "e51894d5d7ecdcd69ae3224c1dd97fd69a439bd37f1882a7b55b1cc7edd87001",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "outcome": "VERIFIED_FIT",
+        "frontClearanceCheckPresent": false
+      }
+    },
+    {
+      "id": "accepted-unevaluated-ventilation-capacity",
+      "riskClass": "UNEVALUATED_ACCEPTED_FIELD",
+      "reproduced": true,
+      "fixture": {
+        "openAreaMm2": 100000,
+        "minimumRoomVolumeM3": 80,
+        "siteOpenAreaMm2": null,
+        "siteRoomVolumeM3": null
+      },
+      "fixtureSha256": "ef930a597b1a6d7afa2be405e05fec91df8bd54dcd157d4568b12c19fc2be48f",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "outcome": "VERIFIED_FIT",
+        "ventilationCapacityCheckPresent": false
+      }
+    },
+    {
+      "id": "accepted-unevaluated-delivery-weight",
+      "riskClass": "UNEVALUATED_ACCEPTED_FIELD",
+      "reproduced": true,
+      "fixture": {
+        "deliveryWeightKg": 500,
+        "siteWeightCapacityKg": null
+      },
+      "fixtureSha256": "d051c2c3f84c225c507133ad9539faf5c1dea927d3eef7aa107a72e3d278065b",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "outcome": "VERIFIED_FIT",
+        "deliveryWeightCheckPresent": false
+      }
+    },
+    {
+      "id": "missing-clearance-hidden-by-maximum-known",
+      "riskClass": "UNKNOWN_COLLAPSE",
+      "reproduced": true,
+      "fixture": {
+        "missingField": "installationClearance.leftMm",
+        "knownVentilationLeftMm": 10
+      },
+      "fixtureSha256": "1dc9819e165679cc65626236fe16cde6586383253b5dc14e0023f7783f0f388e",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "outcome": "CONDITIONAL_FIT",
+        "placementWidthStatus": "PASS",
+        "productEvidenceGapPresent": true
+      }
+    },
+    {
+      "id": "additive-rear-service-space-undercounted",
+      "riskClass": "INVALID_GEOMETRY_COMPOSITION",
+      "reproduced": true,
+      "fixture": {
+        "geometry": {
+          "category": "dishwasher",
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "maximumMm": 850
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": 0,
+            "rightMm": 0,
+            "topMm": 0,
+            "rearMm": 20
+          },
+          "service": {
+            "rearServicesMm": 30
+          }
+        },
+        "cavity": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 630
+        },
+        "evidenceLevel": "verified",
+        "advisoryChecks": []
+      },
+      "fixtureSha256": "d596a133c3e5a52eb8b97feb522e021d0955482d864ed75fe0cf6c514444dd53",
+      "sourcePaths": [
+        "src/shared/fit-engine.js"
+      ],
+      "observation": {
+        "outcome": "VERIFIED_FIT",
+        "currentRequiredDepthMm": 630,
+        "additiveRequiredDepthMm": 650,
+        "depthStatus": "PASS"
+      }
+    },
+    {
+      "id": "invalid-site-profile-values-accepted",
+      "riskClass": "SITE_INPUT_VALIDATION_GAP",
+      "reproduced": true,
+      "fixture": {
+        "measuredAt": "1999-01-01T00:00:00.000Z",
+        "measurementUncertaintyMm": -5,
+        "cavityWidthMm": -1,
+        "estimatedFields": [
+          "arbitrary.not-a-schema-field"
+        ]
+      },
+      "fixtureSha256": "776aa2b750664aa421eabd645da57ac03a118d0910de05af6644e81857872de4",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "rejected": false,
+        "outcome": "INSUFFICIENT_DATA",
+        "arbitraryEstimatedFieldPreserved": true
+      }
+    },
+    {
+      "id": "opaque-rules-and-power-required-semantics",
+      "riskClass": "UNEXECUTED_RULE_AND_APPLICABILITY",
+      "reproduced": true,
+      "fixture": {
+        "normativeRules": [
+          {
+            "id": "task0-current-capacity",
+            "expression": "power.availableCurrentA >= 20"
+          }
+        ],
+        "powerRequired": false,
+        "availableCurrentA": 1
+      },
+      "fixtureSha256": "4fe10e62ab353dfcc93e13b56cc98fd01b1e2c54e4cc04dc9cb73da84fe8a14c",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "outcome": "VERIFIED_FIT",
+        "normativeRuleCheckPresent": false,
+        "powerCapacityCheckPresent": false
+      }
+    },
+    {
+      "id": "unselected-delivery-blocks-fit",
+      "riskClass": "CONTEXT_SELECTION_IGNORED",
+      "reproduced": true,
+      "fixture": {
+        "selected": false,
+        "packagedWidthMm": 650,
+        "minimumDoorwayWidthMm": 640
+      },
+      "fixtureSha256": "470b690eabda7cb17c423358246049ce6c77336f7ee46a91391673879f1cea7f",
+      "sourcePaths": [
+        "src/domain/fit-v3.mjs"
+      ],
+      "observation": {
+        "outcome": "NO_FIT",
+        "deliveryWidthStatus": "FAIL"
+      }
+    },
+    {
+      "id": "v2-advisory-failure-is-no-fit",
+      "riskClass": "ADVISORY_ESCALATED_TO_HARD_FAILURE",
+      "reproduced": true,
+      "fixture": {
+        "geometry": {
+          "category": "dishwasher",
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "maximumMm": 850
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": 0,
+            "rightMm": 0,
+            "topMm": 0,
+            "rearMm": 20
+          },
+          "service": {
+            "rearServicesMm": 30
+          }
+        },
+        "cavity": {
+          "widthMm": 700,
+          "heightMm": 900,
+          "depthMm": 700
+        },
+        "evidenceLevel": "verified",
+        "advisoryChecks": [
+          {
+            "id": "comfortable_working_space",
+            "applicable": true,
+            "status": "FAIL"
+          }
+        ]
+      },
+      "fixtureSha256": "59e539b57c33d26e408ce8130975d0df591e6670fd9e4820cdcb88f1625ccbfa",
+      "sourcePaths": [
+        "src/shared/fit-engine.js",
+        "public/scripts/fit-engine.js"
+      ],
+      "observation": {
+        "outcome": "NO_FIT",
+        "advisoryStatus": "FAIL"
+      }
+    },
+    {
+      "id": "legacy-score-cross-outcome-comparability",
+      "riskClass": "CROSS_OUTCOME_SCORE_COMPARABILITY",
+      "reproduced": true,
+      "fixture": {
+        "product": {
+          "w": 600,
+          "h": 850,
+          "d": 600
+        },
+        "cavity": {
+          "widthMm": 700,
+          "heightMm": 950,
+          "depthMm": 700
+        },
+        "clearance": {
+          "side": 20,
+          "top": 50,
+          "rear": 50
+        },
+        "renderedOutcomes": [
+          "NO_FIT",
+          "CONDITIONAL_FIT",
+          "INSUFFICIENT_DATA"
+        ]
+      },
+      "fixtureSha256": "3fec64f86a42a1a04945cc3976ee9265ea9a2d9f3d11eb1561ef8892f7b6f47a",
+      "sourcePaths": [
+        "src/domain/fit-decision.mjs",
+        "public/scripts/ui/fit-score.js",
+        "public/scripts/ui/fit-score-ring.js",
+        "public/scripts/ui/score-breakdown.js",
+        "public/scripts/ui/tooltips-dictionary.js",
+        "public/scripts/search-core.js"
+      ],
+      "observation": {
+        "score": 100,
+        "noFitRendersNumericScore": true,
+        "noFitRendersScoreRing": true,
+        "conditionalFitRendersNumericScore": true,
+        "conditionalFitRendersScoreRing": true,
+        "insufficientDataRendersNumericScore": false,
+        "insufficientDataRendersScoreRing": false,
+        "renderedHtmlSha256": {
+          "NO_FIT": "59caac937e615cd916bb73f9d40ba9d46e423f7cd4eeba796f686c17b5436f43",
+          "CONDITIONAL_FIT": "068bef6b4b6610cfb1801fec94d2b13c9410652dab6a5b220005db07a157f26c",
+          "INSUFFICIENT_DATA": "5f9080434328888533d8c222a8f875ed4d3dc8208533c650c33e6d208583d3cf"
+        }
+      }
+    },
+    {
+      "id": "dishwasher-front-loader-form-factor",
+      "riskClass": "CROSS_CATEGORY_FORM_FACTOR",
+      "reproduced": true,
+      "fixture": {
+        "artifactPath": "data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json",
+        "selection": "first accepted dishwasher with geometryProjection.geometry.formFactor=front_loader"
+      },
+      "fixtureSha256": "8e5e0a6ed938f0878c940f2974d9a933baf4371ef83b01c990c4c518337dc1f3",
+      "sourcePaths": [
+        "data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "acceptedRecordCount": 2,
+        "id": "haier-hdw15f4b1",
+        "model": "HDW15F4B1",
+        "category": "dishwasher",
+        "formFactor": "front_loader"
+      }
+    },
+    {
+      "id": "washtower-without-combination-policy",
+      "riskClass": "UNSUPPORTED_ACTIVE_CATEGORY",
+      "reproduced": true,
+      "fixture": {
+        "activeProjectionPath": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
+        "category": "washtower_combo"
+      },
+      "fixtureSha256": "c8590df95fcbd5ccf935fc57d3897b3ca00d63fd6197c1bb6cef2f41ea40541d",
+      "sourcePaths": [
+        "data/architecture-v2/decisions/active-retail-release.json",
+        "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
+        "src/domain/installation-knowledge-v3.mjs"
+      ],
+      "observation": {
+        "activeRecordCount": 3,
+        "sampleIds": [
+          "washing_machine-acw1453",
+          "discovery-washing-machine-lg-1910bx",
+          "discovery-washing-machine-lg-1910fgx"
+        ],
+        "policyCategories": [
+          "fridge",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "dedicatedPolicyPresent": false
+      }
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "reproduced": 12,
+    "notReproduced": [],
+    "publicOrRuntimeMutations": 0
+  },
+  "semanticSha256": "7e231fb7c3ce71d2b9c593596154ef4e34225ca2b9efbd2a4a1685def84f6788"
+}

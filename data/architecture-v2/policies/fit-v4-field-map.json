@@ -1,0 +1,4409 @@
+{
+  "schemaVersion": 1,
+  "version": "fit-v4-field-map-1.2.0",
+  "coordinateFrames": [
+    {
+      "id": "installed_appliance",
+      "origin": "rear-left-finished-support",
+      "axes": {
+        "x": "right",
+        "y": "front",
+        "z": "up"
+      }
+    },
+    {
+      "id": "site_cavity",
+      "origin": "rear-left-finished-support",
+      "axes": {
+        "x": "right",
+        "y": "front",
+        "z": "up"
+      }
+    },
+    {
+      "id": "service_route",
+      "origin": "declared-product-exit",
+      "axes": {
+        "x": "right",
+        "y": "front",
+        "z": "up"
+      }
+    },
+    {
+      "id": "delivery_path",
+      "origin": "declared-path-entry",
+      "axes": {
+        "x": "right",
+        "y": "forward",
+        "z": "up"
+      }
+    },
+    {
+      "id": "non_geometric",
+      "origin": "not-applicable",
+      "axes": {}
+    }
+  ],
+  "selectorDomains": {
+    "installationMode": [
+      "freestanding",
+      "recessed",
+      "under_bench",
+      "integrated",
+      "flush",
+      "proud",
+      "stacked",
+      "side_by_side",
+      "unknown"
+    ],
+    "hingeSide": [
+      "left",
+      "right",
+      "reversible_unselected",
+      "unknown"
+    ],
+    "waterMode": [
+      "none",
+      "cold",
+      "hot_and_cold",
+      "plumbed",
+      "unknown"
+    ],
+    "drainMode": [
+      "none",
+      "standpipe",
+      "spigot",
+      "tank",
+      "fixed_drain",
+      "unknown"
+    ],
+    "powerMode": [
+      "plug",
+      "hardwired",
+      "unknown"
+    ],
+    "dryerTechnology": [
+      "vented",
+      "condenser",
+      "heat_pump",
+      "combination",
+      "unknown"
+    ],
+    "panelMode": [
+      "none",
+      "integrated",
+      "custom",
+      "unknown"
+    ],
+    "deliverySelected": [
+      true,
+      false
+    ]
+  },
+  "configurationVariables": [
+    "adjustedHeightMm",
+    "hingeSide",
+    "installationMode",
+    "panelMode",
+    "toeKickDepthMm",
+    "dryerTechnology",
+    "drainMode",
+    "waterMode",
+    "powerMode",
+    "stackingKitId",
+    "companionModel"
+  ],
+  "allowedContextPaths": [
+    "product.category",
+    "product.formFactor",
+    "product.identity.market",
+    "configuration.installationMode",
+    "configuration.hingeSide",
+    "configuration.panelMode",
+    "configuration.dryerTechnology",
+    "configuration.drainMode",
+    "configuration.waterMode",
+    "configuration.powerMode",
+    "configuration.stackingKitId",
+    "configuration.companionModel",
+    "site.jurisdiction",
+    "site.cavity",
+    "site.operationZones",
+    "site.componentSelections",
+    "site.serviceEndpoints",
+    "site.serviceRoutes",
+    "site.serviceSpecifications",
+    "site.environment",
+    "site.support",
+    "site.professionalConfirmations",
+    "site.delivery.selected",
+    "site.delivery.path"
+  ],
+  "fields": [
+    {
+      "id": "envelope.closed.width",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "product_closed_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "closedEnvelope.widthMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "product_closed"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.category",
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement",
+      "v3Mapping": {
+        "fieldId": "closedEnvelope.widthMm",
+        "unit": "mm",
+        "relation": "CONTAINS",
+        "targetRelation": "MIN_REQUIRED",
+        "coordinateFrameId": "installed_appliance",
+        "scope": "product_closed"
+      }
+    },
+    {
+      "id": "envelope.closed.height",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "product_closed_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "closedEnvelope.heightMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "product_closed"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.category",
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement",
+      "v3Mapping": {
+        "fieldId": "closedEnvelope.heightMm",
+        "unit": "mm",
+        "relation": "CONTAINS",
+        "targetRelation": "MIN_REQUIRED",
+        "coordinateFrameId": "installed_appliance",
+        "scope": "product_closed"
+      }
+    },
+    {
+      "id": "envelope.closed.depth",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "product_closed_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "closedEnvelope.depthMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "product_closed"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.category",
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement",
+      "v3Mapping": {
+        "fieldId": "closedEnvelope.depthMm",
+        "unit": "mm",
+        "relation": "CONTAINS",
+        "targetRelation": "MIN_REQUIRED",
+        "coordinateFrameId": "installed_appliance",
+        "scope": "product_closed"
+      }
+    },
+    {
+      "id": "envelope.body.width",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "body_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.category",
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.body.height",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "body_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.category",
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.body.depth",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "body_extent_closed"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.category",
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.adjusted.heightRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "installed_adjustment_domain"
+      },
+      "permittedRelations": [
+        "CONTAINS",
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "adjustableRange.heightMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "range",
+          "scope": "product_adjusted"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [
+        "adjustedHeightMm"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.door.closedDepth",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "door_closed_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.handle.depth",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "handle_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.formFactor",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.panel.extent",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xyz",
+        "geometry": "installed_panel_extent"
+      },
+      "permittedRelations": [
+        "CONTAINS",
+        "NO_INTERSECTION"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "panelMode"
+      ],
+      "configurationVariables": [
+        "panelMode"
+      ],
+      "contextPaths": [
+        "configuration.panelMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "envelope.trim.extent",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xyz",
+        "geometry": "installed_trim_extent"
+      },
+      "permittedRelations": [
+        "CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.clearance.leftMin",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "left_clearance_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "installationClearance.leftMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "installation_clearance_left"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.clearance.rightMin",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "right_clearance_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "installationClearance.rightMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "installation_clearance_right"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.clearance.topMin",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "top_clearance_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "installationClearance.topMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "installation_clearance_top"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.clearance.rearMin",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "rear_clearance_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "installationClearance.rearMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "installation_clearance_rear"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.clearance.rearMax",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "rear_clearance_zone"
+      },
+      "permittedRelations": [
+        "MAX_ALLOWED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.niche.widthRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "x",
+        "geometry": "niche_extent"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in",
+          "under_bench"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.niche.heightRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "z",
+        "geometry": "niche_extent"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in",
+          "under_bench"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "adjustedHeightMm",
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "installation.niche.depthMin",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "y",
+        "geometry": "niche_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in",
+          "under_bench"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "operation.door.openDepth",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "door_open_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "operationEnvelope.depthMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "door_drawer_or_lid_open"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "hingeSide"
+      ],
+      "configurationVariables": [
+        "hingeSide"
+      ],
+      "contextPaths": [
+        "configuration.hingeSide",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "operation.door.openAngle",
+      "value": {
+        "type": "finite_number",
+        "unit": "degree"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xy",
+        "geometry": "door_sweep"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "hingeSide"
+      ],
+      "configurationVariables": [
+        "hingeSide"
+      ],
+      "contextPaths": [
+        "configuration.hingeSide",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "operation.door.sweep",
+      "value": {
+        "type": "polygon2",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xy",
+        "geometry": "door_sweep"
+      },
+      "permittedRelations": [
+        "CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "hingeSide"
+      ],
+      "configurationVariables": [
+        "hingeSide"
+      ],
+      "contextPaths": [
+        "configuration.hingeSide",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "operation.hinge.sideClearance",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "hinge_side_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "hingeSide"
+      ],
+      "configurationVariables": [
+        "hingeSide"
+      ],
+      "contextPaths": [
+        "configuration.hingeSide",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "operation.lid.openHeight",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "lid_open_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "operationEnvelope.heightMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "door_drawer_or_lid_open"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "washing_machine"
+        ],
+        "formFactors": [
+          "top_loader"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "product.formFactor",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "operation.component.removalZone",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xyz",
+        "geometry": "component_removal_zone"
+      },
+      "permittedRelations": [
+        "NO_INTERSECTION",
+        "CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "hingeSide"
+      ],
+      "configurationVariables": [
+        "hingeSide"
+      ],
+      "contextPaths": [
+        "configuration.hingeSide",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "ventilation.left.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "ventilation_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "ventilation.leftMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "ventilation_left"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.dryerTechnology",
+        "site.cavity"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "ventilation.right.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "x",
+        "geometry": "ventilation_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "ventilation.rightMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "ventilation_right"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.dryerTechnology",
+        "site.cavity"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "ventilation.top.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "ventilation_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "ventilation.topMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "ventilation_top"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.dryerTechnology",
+        "site.cavity"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "ventilation.rear.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "ventilation_zone"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "ventilation.rearMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "ventilation_rear"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.dryerTechnology",
+        "site.cavity"
+      ],
+      "fitClass": "hard_service",
+      "v3Mapping": {
+        "fieldId": "ventilation.rearMm",
+        "unit": "mm",
+        "relation": "MIN_REQUIRED",
+        "targetRelation": "MIN_REQUIRED",
+        "coordinateFrameId": "installed_appliance",
+        "scope": "ventilation_rear"
+      }
+    },
+    {
+      "id": "ventilation.openArea.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm2"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "area",
+        "geometry": "ventilation_opening"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "ventilation.openAreaMm2",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm2",
+          "valueShape": "scalar",
+          "scope": "ventilation_open_area"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in",
+          "under_bench",
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.dryerTechnology",
+        "site.cavity"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "ventilation.roomVolume.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "m3"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "room_volume"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "site.environment"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "water.connection.type",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "connector_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "water.connection.fitting",
+      "value": {
+        "type": "connector",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "connector_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "water.connection.pressureRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "kPa"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "pressure"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "water.connection.temperatureRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "C"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "temperature"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "water.hose.maximumLength",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "hose_route"
+      },
+      "permittedRelations": [
+        "MAX_ALLOWED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "water.route.permittedZone",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "xyz",
+        "geometry": "hose_permitted_zone"
+      },
+      "permittedRelations": [
+        "REQUIRED_CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "water.isolation.accessRequired",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "access"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "waterMode"
+      ],
+      "configurationVariables": [
+        "waterMode"
+      ],
+      "contextPaths": [
+        "configuration.waterMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.connection.type",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "connector_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.connection.voltageRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "V"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "voltage"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.connection.currentMinimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "A"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "current"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "powerConnection.currentA",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "A",
+          "valueShape": "scalar",
+          "scope": "electrical_requirement"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.connection.circuitDedicated",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "circuit"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.professionalConfirmations"
+      ],
+      "fitClass": "hard_professional"
+    },
+    {
+      "id": "power.lead.maximumLength",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "lead_route"
+      },
+      "permittedRelations": [
+        "MAX_ALLOWED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.socket.permittedZone",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xyz",
+        "geometry": "socket_zone"
+      },
+      "permittedRelations": [
+        "REQUIRED_CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.socket.prohibitedZone",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "xyz",
+        "geometry": "socket_zone"
+      },
+      "permittedRelations": [
+        "PROHIBITED_ZONE",
+        "NO_INTERSECTION"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "power.socket.accessRequired",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "access"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "powerMode"
+      ],
+      "configurationVariables": [
+        "powerMode"
+      ],
+      "contextPaths": [
+        "configuration.powerMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.connection.type",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "connector_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.connection.diameterRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "connector_diameter"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.connection.heightRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "z",
+        "geometry": "drain_endpoint_height"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "drainConnection.heightRangeMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "range",
+          "scope": "site_service"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.hose.maximumLength",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "drain_route"
+      },
+      "permittedRelations": [
+        "MAX_ALLOWED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.route.permittedZone",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "xyz",
+        "geometry": "drain_permitted_zone"
+      },
+      "permittedRelations": [
+        "REQUIRED_CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.route.kinkProhibited",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "drain_route"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.highLoop.required",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "z",
+        "geometry": "drain_route"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.insertion.depthRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "drain_insertion"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceEndpoints"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.fall.minimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "percent"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "drain_route"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "drain.backflow.protection",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "backflow_control"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher",
+          "washing_machine"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.drainMode",
+        "site.professionalConfirmations"
+      ],
+      "fitClass": "hard_professional"
+    },
+    {
+      "id": "cabinet.support.levelRequired",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "xy",
+        "geometry": "support_surface"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.support"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "cabinet.support.squareRequired",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "xyz",
+        "geometry": "cavity_datum"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.support"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "cabinet.support.minimumLoad",
+      "value": {
+        "type": "finite_number",
+        "unit": "kg"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "z",
+        "geometry": "support_surface"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.support"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "stability.anchoring.required",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "xyz",
+        "geometry": "anchor_points"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.professionalConfirmations"
+      ],
+      "fitClass": "hard_professional"
+    },
+    {
+      "id": "stability.transitBolts.removalRequired",
+      "value": {
+        "type": "boolean",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "installation_action"
+      },
+      "permittedRelations": [
+        "REQUIRES_TRUE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "washing_machine"
+        ],
+        "formFactors": [
+          "front_loader"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.professionalConfirmations"
+      ],
+      "fitClass": "hard_professional"
+    },
+    {
+      "id": "environment.ambientTemperatureRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "C"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "ambient_temperature"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "site.environment"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "environment.location.prohibited",
+      "value": {
+        "type": "enum_set",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "location_condition"
+      },
+      "permittedRelations": [
+        "NOT_MEMBER_OF"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.environment"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "dishwasher.panel.weightRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "kg"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "door_panel"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "panelMode"
+      ],
+      "configurationVariables": [
+        "panelMode"
+      ],
+      "contextPaths": [
+        "configuration.panelMode",
+        "site.componentSelections"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "dishwasher.panel.heightRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "door_panel"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "panelMode"
+      ],
+      "configurationVariables": [
+        "panelMode"
+      ],
+      "contextPaths": [
+        "configuration.panelMode",
+        "site.componentSelections"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "dishwasher.toeKick.depthRange",
+      "value": {
+        "type": "closed_range",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "y",
+        "geometry": "toe_kick_zone"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "panelMode"
+      ],
+      "configurationVariables": [
+        "panelMode",
+        "toeKickDepthMm"
+      ],
+      "contextPaths": [
+        "configuration.panelMode",
+        "site.operationZones"
+      ],
+      "fitClass": "hard_operation"
+    },
+    {
+      "id": "dishwasher.condensation.gapMinimum",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "condensation_gap"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher"
+        ],
+        "formFactors": [
+          "integrated",
+          "built_in",
+          "under_bench"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.cavity"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dishwasher.serviceHole.minimumDiameter",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "diameter",
+        "geometry": "service_hole"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dishwasher.serviceHole.permittedZone",
+      "value": {
+        "type": "box3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "site_cavity",
+        "axis": "xyz",
+        "geometry": "service_hole"
+      },
+      "permittedRelations": [
+        "REQUIRED_CONTAINS",
+        "PROHIBITED_ZONE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dishwasher"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.serviceRoutes"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "stacking.kit.exactId",
+      "value": {
+        "type": "string",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "configuration_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "front_loader"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "stackingKitId"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.stackingKitId"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "stacking.companion.exactModel",
+      "value": {
+        "type": "string",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "configuration_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "front_loader"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "companionModel"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.companionModel"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "stacking.total.height",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "stacked_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "front_loader"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "stackingKitId",
+        "companionModel"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "configuration.stackingKitId",
+        "configuration.companionModel",
+        "site.cavity"
+      ],
+      "fitClass": "hard_placement"
+    },
+    {
+      "id": "stacking.support.minimumLoad",
+      "value": {
+        "type": "finite_number",
+        "unit": "kg"
+      },
+      "coordinateFrame": {
+        "id": "installed_appliance",
+        "axis": "z",
+        "geometry": "stack_support"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "front_loader"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "installationMode"
+      ],
+      "configurationVariables": [
+        "installationMode",
+        "stackingKitId",
+        "companionModel"
+      ],
+      "contextPaths": [
+        "configuration.installationMode",
+        "site.support"
+      ],
+      "fitClass": "hard_environment"
+    },
+    {
+      "id": "dryer.technology",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "configuration_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_product_page",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dryer.duct.diameter",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "diameter",
+        "geometry": "duct_route"
+      },
+      "permittedRelations": [
+        "WITHIN_RANGE"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "site.serviceSpecifications"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dryer.duct.maximumLength",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "duct_route"
+      },
+      "permittedRelations": [
+        "MAX_ALLOWED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "site.serviceSpecifications"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dryer.duct.maximumElbows",
+      "value": {
+        "type": "integer",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "duct_route"
+      },
+      "permittedRelations": [
+        "MAX_ALLOWED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "site.serviceSpecifications"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dryer.duct.terminationType",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "service_route",
+        "axis": "route",
+        "geometry": "duct_termination"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "public_regulator_guidance"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology"
+      ],
+      "configurationVariables": [
+        "dryerTechnology"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "site.serviceSpecifications"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "dryer.condensate.mode",
+      "value": {
+        "type": "enum",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "configuration_identity"
+      },
+      "permittedRelations": [
+        "EXACT_MATCH"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "dryerTechnology",
+        "drainMode"
+      ],
+      "configurationVariables": [
+        "dryerTechnology",
+        "drainMode"
+      ],
+      "contextPaths": [
+        "configuration.dryerTechnology",
+        "configuration.drainMode"
+      ],
+      "fitClass": "hard_service"
+    },
+    {
+      "id": "delivery.package.width",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "delivery_path",
+        "axis": "x",
+        "geometry": "package_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "packagedEnvelope.widthMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "package"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_product_page",
+          "manufacturer_installation_guide",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "deliverySelected"
+      ],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.delivery.selected",
+        "site.delivery.path"
+      ],
+      "fitClass": "hard_delivery"
+    },
+    {
+      "id": "delivery.package.height",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "delivery_path",
+        "axis": "z",
+        "geometry": "package_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "packagedEnvelope.heightMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "package"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_product_page",
+          "manufacturer_installation_guide",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "deliverySelected"
+      ],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.delivery.selected",
+        "site.delivery.path"
+      ],
+      "fitClass": "hard_delivery"
+    },
+    {
+      "id": "delivery.package.depth",
+      "value": {
+        "type": "finite_number",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "delivery_path",
+        "axis": "y",
+        "geometry": "package_extent"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "EXACT",
+        "dictionaryFieldId": "packagedEnvelope.depthMm",
+        "requiredActions": [
+          "cache_source",
+          "cache_normalized_fields",
+          "retain_audit_copy"
+        ],
+        "compatibility": {
+          "unit": "mm",
+          "valueShape": "scalar",
+          "scope": "package"
+        }
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_product_page",
+          "manufacturer_installation_guide",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "deliverySelected"
+      ],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.delivery.selected",
+        "site.delivery.path"
+      ],
+      "fitClass": "hard_delivery"
+    },
+    {
+      "id": "delivery.package.weight",
+      "value": {
+        "type": "finite_number",
+        "unit": "kg"
+      },
+      "coordinateFrame": {
+        "id": "non_geometric",
+        "axis": null,
+        "geometry": "package_weight"
+      },
+      "permittedRelations": [
+        "MIN_REQUIRED"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_product_page",
+          "manufacturer_installation_guide",
+          "licensed_product_data"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "deliverySelected"
+      ],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.delivery.selected",
+        "site.delivery.path"
+      ],
+      "fitClass": "hard_delivery"
+    },
+    {
+      "id": "delivery.removableComponents",
+      "value": {
+        "type": "enum_set",
+        "unit": null
+      },
+      "coordinateFrame": {
+        "id": "delivery_path",
+        "axis": "xyz",
+        "geometry": "delivery_configuration"
+      },
+      "permittedRelations": [
+        "SET_CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "deliverySelected"
+      ],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.delivery.selected",
+        "site.delivery.path"
+      ],
+      "fitClass": "hard_delivery"
+    },
+    {
+      "id": "delivery.turningEnvelope",
+      "value": {
+        "type": "sweep3",
+        "unit": "mm"
+      },
+      "coordinateFrame": {
+        "id": "delivery_path",
+        "axis": "xyz",
+        "geometry": "delivery_sweep"
+      },
+      "permittedRelations": [
+        "NO_INTERSECTION",
+        "CONTAINS"
+      ],
+      "rights": {
+        "mappingStatus": "UNMAPPED_BLOCKED",
+        "dictionaryFieldId": null,
+        "requiredActions": []
+      },
+      "authority": {
+        "permittedSourceTypes": [
+          "manufacturer_installation_guide",
+          "manufacturer_cad"
+        ]
+      },
+      "applicability": {
+        "categories": [
+          "refrigerator",
+          "dishwasher",
+          "washing_machine",
+          "dryer"
+        ],
+        "formFactors": [
+          "*"
+        ],
+        "unknownPolicy": "PRESERVE_UNKNOWN_BLOCK_VERIFICATION"
+      },
+      "selectorDomains": [
+        "deliverySelected"
+      ],
+      "configurationVariables": [],
+      "contextPaths": [
+        "site.delivery.selected",
+        "site.delivery.path"
+      ],
+      "fitClass": "hard_delivery"
+    }
+  ]
+}

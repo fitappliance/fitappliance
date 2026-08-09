@@ -1,0 +1,82 @@
+{
+  "measurements": [
+    {
+      "datum": "cavity.front.opening.width",
+      "axis": "width",
+      "boundType": "MINIMUM_AVAILABLE",
+      "unit": "mm",
+      "readings": [602, 598, 600]
+    },
+    {
+      "datum": "service.rear.required.depth",
+      "axis": "depth",
+      "boundType": "MAXIMUM_REQUIRED",
+      "unit": "mm",
+      "readings": [48, 52, 50]
+    }
+  ],
+  "configurationQuestions": [
+    {
+      "id": "hinge-side",
+      "label": "Which side must the door hinge use in the installed configuration?"
+    }
+  ],
+  "serviceQuestions": [
+    {
+      "id": "water-route",
+      "label": "Is the water connection reachable without routing a hose through the appliance ventilation opening?"
+    }
+  ],
+  "result": {
+    "installationOutcome": {
+      "status": "CONDITIONAL_FIT",
+      "reasonCode": "UNRESOLVED_INSTALLATION_REQUIREMENT"
+    },
+    "deliveryOutcome": {
+      "status": "NO_FIT",
+      "reasonCode": "DELIVERY_PATH_BLOCKED"
+    },
+    "checks": [
+      {
+        "id": "installation.rear-clearance",
+        "scope": "installation",
+        "status": "FAIL",
+        "label": "Rear service and ventilation clearance at the nominated wall datum"
+      },
+      {
+        "id": "installation.hinge-side",
+        "scope": "installation",
+        "status": "UNKNOWN",
+        "label": "Door opening sweep with the selected hinge configuration"
+      }
+    ],
+    "gaps": [
+      {
+        "scope": "installation",
+        "fieldId": "service.power.outlet.location",
+        "reasonCode": "MISSING_SITE_OBSERVATION"
+      }
+    ],
+    "policyScope": {
+      "category": "refrigerator",
+      "version": "fit-policy-v4-test"
+    },
+    "evidenceScope": {
+      "model": "SYNTHETIC-RF-001",
+      "receiptCount": 3
+    },
+    "score": 98,
+    "total": 98,
+    "fit_score": 98
+  },
+  "rank": {
+    "fitV4Rank": {
+      "outcomeBand": {
+        "name": "CONDITIONAL_FIT",
+        "ordinal": 2
+      },
+      "total": 98,
+      "score": 98
+    }
+  }
+}

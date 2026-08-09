@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "fit_v4_labelled_cases_zero_source_backed_v1",
+  "frozenAt": "2026-08-08T00:00:00.000Z",
+  "labelRegistrySha256": "2945c7b5ab5da86a3199396405dcd1a38605dca32368e125cce135f5932979e5",
+  "minimumSourceBackedCasesPerEligibleCategory": 50,
+  "labelPolicy": {
+    "allowedOrigin": "SOURCE_BACKED_INDEPENDENT_REVIEW",
+    "evaluatorDerivedLabelsProhibited": true
+  },
+  "holdout": {
+    "strategy": "STRATIFIED_SHA256_V1",
+    "fraction": 0.3,
+    "strata": [
+      "category",
+      "installationOutcome",
+      "preferenceBand"
+    ],
+    "seed": "fit-v4-calibration-holdout-v1"
+  },
+  "categories": [
+    {
+      "category": "dishwasher",
+      "sourceBackedCaseCount": 0,
+      "eligible": false,
+      "blockingReasons": [
+        "MINIMUM_SOURCE_BACKED_CASES_NOT_MET",
+        "SUPPORTED_POLICY_BRANCH_COVERAGE_NOT_PROVEN",
+        "BOUNDARY_AND_ADVERSARIAL_COVERAGE_NOT_PROVEN"
+      ],
+      "policyBinding": {
+        "packVersion": "fit-v4-policy-pack-1.1.0",
+        "fieldMapVersion": "fit-v4-field-map-1.2.0",
+        "packSha256": "f1532d4418dc96c55fe7f53570746480c6667018690355206bc8fe3e0e295c73",
+        "coverageSha256": "6c001bffd257a84d05aca6ded06dedfc00b2555509a2f190047f5da875cadd32",
+        "supportedCoverageCaseCount": 6060
+      },
+      "cases": []
+    },
+    {
+      "category": "dryer",
+      "sourceBackedCaseCount": 0,
+      "eligible": false,
+      "blockingReasons": [
+        "MINIMUM_SOURCE_BACKED_CASES_NOT_MET",
+        "SUPPORTED_POLICY_BRANCH_COVERAGE_NOT_PROVEN",
+        "BOUNDARY_AND_ADVERSARIAL_COVERAGE_NOT_PROVEN"
+      ],
+      "policyBinding": {
+        "packVersion": "fit-v4-policy-pack-1.1.0",
+        "fieldMapVersion": "fit-v4-field-map-1.2.0",
+        "packSha256": "517d17f90f834053232b0855f346f0aa1def2b083958190913e80990c94dc23c",
+        "coverageSha256": "46d74007c5f5b6aebb01d8f2e6b9f6e4d5a5b637f4dbf04c26d1b80fb21fbc51",
+        "supportedCoverageCaseCount": 12027
+      },
+      "cases": []
+    },
+    {
+      "category": "refrigerator",
+      "sourceBackedCaseCount": 0,
+      "eligible": false,
+      "blockingReasons": [
+        "MINIMUM_SOURCE_BACKED_CASES_NOT_MET",
+        "SUPPORTED_POLICY_BRANCH_COVERAGE_NOT_PROVEN",
+        "BOUNDARY_AND_ADVERSARIAL_COVERAGE_NOT_PROVEN"
+      ],
+      "policyBinding": {
+        "packVersion": "fit-v4-policy-pack-1.1.0",
+        "fieldMapVersion": "fit-v4-field-map-1.2.0",
+        "packSha256": "79a97f9c25140f228b048ac40f4a677646c530fd00a0b2b4ff92a9f2f1007b35",
+        "coverageSha256": "b1c6c32805ee226a8269e57ccb21910125ef70449aa28cfd845a454b82dea475",
+        "supportedCoverageCaseCount": 6588
+      },
+      "cases": []
+    },
+    {
+      "category": "washing_machine",
+      "sourceBackedCaseCount": 0,
+      "eligible": false,
+      "blockingReasons": [
+        "MINIMUM_SOURCE_BACKED_CASES_NOT_MET",
+        "SUPPORTED_POLICY_BRANCH_COVERAGE_NOT_PROVEN",
+        "BOUNDARY_AND_ADVERSARIAL_COVERAGE_NOT_PROVEN"
+      ],
+      "policyBinding": {
+        "packVersion": "fit-v4-policy-pack-1.1.0",
+        "fieldMapVersion": "fit-v4-field-map-1.2.0",
+        "packSha256": "da7b94daaa8207baf8b3c36488d508ff899ff0c2d923fb35a6bee4256d97502b",
+        "coverageSha256": "5ca86698daea4e72f62836a00fed08b0e95799cb5a8edee43bd28f4cdbc16a06",
+        "supportedCoverageCaseCount": 7446
+      },
+      "cases": []
+    }
+  ]
+}
