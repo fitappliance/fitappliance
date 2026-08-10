@@ -188,8 +188,15 @@ test('B0 repository contract pins local tools and every output-affecting deploym
     'scripts/deployment/prepare-static-rights-signing-candidate.mjs',
     'scripts/deployment/prepare-owner-attestation-request.mjs',
     'deployment/static-owner-trust-anchor.json',
+    'src/domain/owner-attestation-request-contract.mjs',
+    'src/domain/offline-owner-signer-contract.mjs',
+    'scripts/deployment/offline-owner-secure-io.mjs',
+    'scripts/deployment/sign-owner-attestation.mjs',
+    'scripts/deployment/accept-owner-attestation.mjs',
+    'scripts/deployment/run-offline-owner-signer.sh',
+    'deployment/offline-owner-signer-contract.json',
   ]);
-  assert.equal(contract.executableBindingSetVersion, 1);
+  assert.equal(contract.executableBindingSetVersion, 2);
   assert.equal(contract.dependencyAvailability.offlinePackageBytesRetained, false);
   assert.equal(contract.dependencyAvailability.gapCode, 'OFFLINE_DEPENDENCY_BYTES_NOT_RETAINED');
   assert.equal(contract.environment.forbiddenDependencies.includes('/Volumes/UGREEN-1TB'), true);
@@ -218,6 +225,17 @@ test('B0 repository contract pins local tools and every output-affecting deploym
       assertCode('TOOLCHAIN_EXECUTABLE_BINDINGS_INVALID')
     );
   }
+
+  const historical = { ...contract, executableBindingSetVersion: 1, boundFiles: contract.boundFiles.slice(0, 10) };
+  assert.throws(() => validateToolchainContract({
+    repoRoot, contract: historical,
+    versions: { node: process.versions.node, npm: contract.npm, vercel: vercelPackage.version },
+  }), assertCode('TOOLCHAIN_EXECUTABLE_BINDINGS_HISTORICAL_ONLY'));
+  assert.equal(validateToolchainContract({
+    repoRoot, contract: historical,
+    versions: { node: process.versions.node, npm: contract.npm, vercel: vercelPackage.version },
+    historicalReadOnly: true,
+  }), true);
 });
 
 test('B1 rejects undeclared roots, dotfiles, traversal, and forbidden families', async () => {

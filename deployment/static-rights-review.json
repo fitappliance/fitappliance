@@ -16637,6 +16637,10 @@
       "scope": "public/scripts/vendor/web-vitals.js"
     },
     {
+      "code": "PRODUCTION_TRUST_ROOT_NOT_ENROLLED",
+      "scope": "ALL_ELIGIBLE_STATIC_SOURCES"
+    },
+    {
       "code": "WITHDRAWAL_HEAD_NOT_ESTABLISHED",
       "scope": "ALL_ELIGIBLE_STATIC_SOURCES"
     },
@@ -16648,7 +16652,7 @@
   "classifierId": "fitappliance.static-rights-classifier/v1",
   "decisionAsOf": "2026-08-10T00:00:00.000Z",
   "inventoryId": "8ef9c64b370ca7c85c1267f48d861ed01c63aa8bc4ee696084642bf7bd86f791",
-  "rightsReviewId": "018d4e645c73e017f0ecd5ed98efe9330571eba1d2bd1e6e277b9fbf975fa0b7",
+  "rightsReviewId": "530a8edfccfe1a27d834ae0c87fc251047859b7d531ed95db60ab459cec445c8",
   "rows": [
     {
       "blockers": [

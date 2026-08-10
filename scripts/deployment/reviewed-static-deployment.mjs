@@ -53,7 +53,7 @@ const DEFAULT_MANIFEST = 'deployment/reviewed-static-source-manifest.json';
 const DEFAULT_CONTRACT = 'deployment/toolchain-contract.json';
 const DEFAULT_OUTPUT_MANIFEST = '.deployment-private/deployment-output-manifest.json';
 const LEGACY_SERVICE_WORKER_WITNESS = 'public/service-worker.js';
-const REQUIRED_EXECUTABLE_BINDINGS = [
+const HISTORICAL_EXECUTABLE_BINDINGS_V1 = [
   'package-lock.json',
   'package.json',
   'vercel.json',
@@ -64,6 +64,16 @@ const REQUIRED_EXECUTABLE_BINDINGS = [
   'scripts/deployment/prepare-static-rights-signing-candidate.mjs',
   'scripts/deployment/prepare-owner-attestation-request.mjs',
   'deployment/static-owner-trust-anchor.json',
+];
+const REQUIRED_EXECUTABLE_BINDINGS = [
+  ...HISTORICAL_EXECUTABLE_BINDINGS_V1,
+  'src/domain/owner-attestation-request-contract.mjs',
+  'src/domain/offline-owner-signer-contract.mjs',
+  'scripts/deployment/offline-owner-secure-io.mjs',
+  'scripts/deployment/sign-owner-attestation.mjs',
+  'scripts/deployment/accept-owner-attestation.mjs',
+  'scripts/deployment/run-offline-owner-signer.sh',
+  'deployment/offline-owner-signer-contract.json',
 ];
 
 export class DeploymentContractError extends Error {
@@ -267,12 +277,18 @@ export function validateClosedBuildEnvironment({ env = process.env, repoRoot }) 
   return true;
 }
 
-export function validateToolchainContract({ repoRoot, contract, versions }) {
+export function validateToolchainContract({ repoRoot, contract, versions, historicalReadOnly = false }) {
   if (!contract || ![1, 2].includes(contract.schemaVersion) || !Array.isArray(contract.boundFiles)) {
     fail('TOOLCHAIN_CONTRACT_INVALID', 'Toolchain contract schema is invalid');
   }
-  if (contract.schemaVersion === 2 && contract.executableBindingSetVersion !== 1) {
+  if (contract.schemaVersion === 2 && ![1, 2].includes(contract.executableBindingSetVersion)) {
     fail('TOOLCHAIN_EXECUTABLE_BINDINGS_INVALID', 'Toolchain schema 2 requires the executable binding set');
+  }
+  if (contract.executableBindingSetVersion === 1 && !historicalReadOnly) {
+    fail('TOOLCHAIN_EXECUTABLE_BINDINGS_HISTORICAL_ONLY', 'Binding set v1 is historical read-only and cannot drive production');
+  }
+  if (contract.executableBindingSetVersion === 2 && historicalReadOnly) {
+    fail('TOOLCHAIN_EXECUTABLE_BINDINGS_INVALID', 'Current binding set cannot be replayed as historical v1');
   }
   if (contract.vercelNodeMajor !== '22.x'
     || contract.environment?.TZ !== 'UTC'
@@ -293,10 +309,13 @@ export function validateToolchainContract({ repoRoot, contract, versions }) {
       fail('TOOLCHAIN_VERSION_DRIFT', `${name} version drift: expected ${contract[name]}, received ${versions[name]}`);
     }
   }
-  if (contract.executableBindingSetVersion === 1) {
+  if ([1, 2].includes(contract.executableBindingSetVersion)) {
+    const expectedBindings = contract.executableBindingSetVersion === 1
+      ? HISTORICAL_EXECUTABLE_BINDINGS_V1
+      : REQUIRED_EXECUTABLE_BINDINGS;
     const actualPaths = contract.boundFiles.map((row) => row?.path);
-    if (actualPaths.length !== REQUIRED_EXECUTABLE_BINDINGS.length
-      || actualPaths.some((value, index) => value !== REQUIRED_EXECUTABLE_BINDINGS[index])
+    if (actualPaths.length !== expectedBindings.length
+      || actualPaths.some((value, index) => value !== expectedBindings[index])
       || new Set(actualPaths).size !== actualPaths.length) {
       fail('TOOLCHAIN_EXECUTABLE_BINDINGS_INVALID', 'Toolchain successor must bind the exact executable file set');
     }

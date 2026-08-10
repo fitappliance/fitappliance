@@ -36,11 +36,16 @@ import {
   validateRouteTerminations,
   validateToolchainContract,
 } from './reviewed-static-deployment.mjs';
+import {
+  canonicalOwnerJson,
+} from '../../src/domain/owner-attestation-request-contract.mjs';
+import { parseOfflineSignerContract } from '../../src/domain/offline-owner-signer-contract.mjs';
+import {
+  validateOwnerAttestationAcceptanceReceipt,
+} from './accept-owner-attestation.mjs';
 
 const HEX_64 = /^[0-9a-f]{64}$/;
-const CANDIDATE_SCHEMA_VERSION = 2;
-const OWNER_ATTESTATION_SCHEMA_VERSION = 2;
-const OWNER_ATTESTATION_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const CANDIDATE_SCHEMA_VERSION = 3;
 const CANDIDATE_SORTED_ARRAYS = [
   'allowedDependencies', 'attributionFulfillments', 'attributionObligationIds', 'blockers',
   'dependencies', 'evidenceHashes', 'forbiddenDependencies',
@@ -426,109 +431,49 @@ function validateWithdrawalGenesis({ withdrawalGenesisDraft, authoritySet }) {
   return log;
 }
 
-function replayOwnerAttestation({
-  ownerAttestation,
+function replayOwnerAcceptance({
+  ownerAcceptance,
   ownerTrustRoot,
-  ownerTrustAnchor,
-  ownerTrustAnchorSha256,
-  ownerAttestationAsOf,
+  offlineSignerContractId,
+  offlineSignerContractSha256,
   expected,
 }) {
-  if (ownerAttestation === null) return null;
-  exactKeys(ownerAttestation, ['path', 'sha256'], 'owner attestation', 'OWNER_ATTESTATION_INVALID');
-  exactKeys(ownerTrustRoot, ['source', 'publicKey'], 'owner trust root', 'OWNER_ATTESTATION_INVALID');
-  exactKeys(ownerTrustAnchor, [
-    'algorithm', 'authoritySetEnrollmentHash', 'environment',
-    'ownerPublicKeyFingerprintSha256', 'ownerPublicKeyPemSha256', 'ownerRootId',
-    'ownerRootMetadataSha256', 'schemaVersion', 'trustRootSha256',
-  ], 'owner trust anchor', 'OWNER_ATTESTATION_INVALID');
-  if (ownerTrustRoot.source !== 'INJECTED_READ_ONLY' || typeof ownerTrustRoot.publicKey !== 'string'
-    || !HEX_64.test(ownerAttestation.sha256 ?? '') || !HEX_64.test(ownerTrustAnchorSha256 ?? '')
-    || ownerTrustAnchor.schemaVersion !== 1 || ownerTrustAnchor.environment !== 'PRODUCTION'
-    || ownerTrustAnchor.algorithm !== 'Ed25519'
-    || ownerTrustAnchor.ownerRootId !== 'FITAPPLIANCE_OWNER_ROOT_2026_01'
-    || sha256(Buffer.from(canonicalJson(ownerTrustAnchor))) !== ownerTrustAnchorSha256) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation trust root or hash is invalid');
+  exactKeys(ownerAcceptance, ['path', 'sha256'], 'owner acceptance', 'OWNER_ACCEPTANCE_INVALID');
+  exactKeys(ownerTrustRoot, ['source', 'publicKey'], 'owner trust root', 'OWNER_ACCEPTANCE_INVALID');
+  if (!HEX_64.test(ownerAcceptance.sha256 ?? '') || !HEX_64.test(offlineSignerContractId ?? '')
+    || !HEX_64.test(offlineSignerContractSha256 ?? '') || ownerTrustRoot.source !== 'INJECTED_READ_ONLY') {
+    fail('OWNER_ACCEPTANCE_INVALID', 'Owner acceptance inputs are invalid');
   }
-  let ownerKey;
-  try {
-    ownerKey = createPublicKey(ownerTrustRoot.publicKey);
-  } catch {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner trust root public key is invalid');
-  }
-  const ownerKeyFingerprint = sha256(ownerKey.export({ type: 'spki', format: 'der' }));
-  const trustRootHash = sha256(Buffer.from(canonicalJson(ownerTrustRoot)));
-  if (ownerKey.asymmetricKeyType !== 'ed25519'
-    || ownerKeyFingerprint !== ownerTrustAnchor.ownerPublicKeyFingerprintSha256
-    || sha256(Buffer.from(ownerTrustRoot.publicKey)) !== ownerTrustAnchor.ownerPublicKeyPemSha256
-    || trustRootHash !== ownerTrustAnchor.trustRootSha256) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner trust root does not match the pinned production anchor');
-  }
-  const absolutePath = path.resolve(ownerAttestation.path);
+  const absolutePath = path.resolve(ownerAcceptance.path);
   const bytes = readSecureFileWithinRoot(
-    path.dirname(absolutePath),
-    path.basename(absolutePath),
-    'OWNER_ATTESTATION_INVALID',
-    'Owner attestation',
+    path.dirname(absolutePath), path.basename(absolutePath), 'OWNER_ACCEPTANCE_INVALID', 'Owner acceptance receipt',
   );
-  if (bytes.length === 0 || sha256(bytes) !== ownerAttestation.sha256) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation bytes do not match the declared hash');
+  if (sha256(bytes) !== ownerAcceptance.sha256) fail('OWNER_ACCEPTANCE_INVALID', 'Owner acceptance bytes do not match');
+  let receipt;
+  try { receipt = validateOwnerAttestationAcceptanceReceipt(bytes); } catch (error) {
+    fail('OWNER_ACCEPTANCE_INVALID', error.message);
   }
-  let envelope;
-  try {
-    envelope = JSON.parse(bytes.toString('utf8'));
-  } catch {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation must contain canonical JSON');
+  if (receipt.candidateId !== expected.candidateId || receipt.candidateSha256 !== expected.candidateSha256
+    || receipt.ownerTrustRootSha256 !== sha256(Buffer.from(canonicalJson(ownerTrustRoot)))
+    || receipt.offlineSignerContractId !== offlineSignerContractId
+    || receipt.offlineSignerContractSha256 !== offlineSignerContractSha256
+    || receipt.attestation.payload.inventoryId !== expected.inventoryId
+    || receipt.attestation.payload.scopeHash !== expected.scopeHash
+    || receipt.attestation.payload.sourceObjectHash !== expected.sourceObjectHash
+    || Object.entries(expected).some(([key, value]) => key in receipt.attestation.payload
+      && receipt.attestation.payload[key] !== value)) {
+    fail('OWNER_ACCEPTANCE_INVALID', 'Owner acceptance does not bind the exact unsigned candidate');
   }
-  if (canonicalJson(envelope) !== bytes.toString('utf8')) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation bytes must be canonical JSON');
-  }
-  exactKeys(envelope, ['payload', 'signature'], 'owner attestation envelope', 'OWNER_ATTESTATION_INVALID');
-  exactKeys(envelope.payload, [
-    'schemaVersion', 'environment', 'action', 'dependencyId', 'ownerId', 'inventoryId',
-    'scopeHash', 'sourceObjectHash', 'candidateId', 'candidateSha256', 'authoritySetId',
-    'authoritySetSha256', 'ownerRootId', 'ownerPublicKeyFingerprintSha256',
-    'ownerTrustAnchorSha256', 'toolchainContractSha256', 'candidateGeneratorSha256',
-    'routeConfigSha256', 'publicEvidenceManifestSha256', 'withdrawalGenesisSha256',
-    'issuedAt', 'expiresAt',
-  ], 'owner attestation payload', 'OWNER_ATTESTATION_INVALID');
-  const payload = envelope.payload;
-  exactIsoTimestamp(payload.issuedAt, 'OWNER_ATTESTATION_INVALID', 'Owner attestation issue time');
-  exactIsoTimestamp(payload.expiresAt, 'OWNER_ATTESTATION_INVALID', 'Owner attestation expiry time');
-  exactIsoTimestamp(ownerAttestationAsOf, 'OWNER_ATTESTATION_INVALID', 'Owner attestation verification time');
-  const issuedAtMs = Date.parse(payload.issuedAt);
-  const expiresAtMs = Date.parse(payload.expiresAt);
-  const asOfMs = Date.parse(ownerAttestationAsOf);
-  if (expiresAtMs <= issuedAtMs || expiresAtMs - issuedAtMs > OWNER_ATTESTATION_MAX_AGE_MS
-    || asOfMs < issuedAtMs || asOfMs > expiresAtMs) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation is outside its bounded validity window');
-  }
-  if (payload.schemaVersion !== OWNER_ATTESTATION_SCHEMA_VERSION || payload.environment !== 'PRODUCTION'
-    || payload.action !== STATIC_RIGHTS_ACTION || payload.dependencyId !== 'FIRST_PARTY'
-    || payload.ownerId !== 'FITAPPLIANCE_OWNER'
-    || Object.entries(expected).some(([key, value]) => payload[key] !== value)
-    || payload.ownerRootId !== ownerTrustAnchor.ownerRootId
-    || payload.ownerPublicKeyFingerprintSha256 !== ownerTrustAnchor.ownerPublicKeyFingerprintSha256
-    || payload.ownerTrustAnchorSha256 !== ownerTrustAnchorSha256
-    || typeof envelope.signature !== 'string' || !envelope.signature) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation does not bind the exact unsigned signing candidate');
-  }
-  let signatureValid = false;
-  try {
-    signatureValid = verify(
-      null,
-      Buffer.from(canonicalJson(payload)),
-      ownerTrustRoot.publicKey,
-      Buffer.from(envelope.signature, 'base64'),
-    );
-  } catch {
-    signatureValid = false;
-  }
-  if (!signatureValid) fail('OWNER_ATTESTATION_INVALID', 'Owner attestation signature is invalid');
-  return {
-    attestationHash: ownerAttestation.sha256,
-    trustRootHash,
-  };
+  let key;
+  try { key = createPublicKey(ownerTrustRoot.publicKey); } catch { fail('OWNER_ACCEPTANCE_INVALID', 'Owner key is invalid'); }
+  const valid = verify(
+    null,
+    Buffer.from(canonicalOwnerJson(receipt.attestation.payload)),
+    key,
+    Buffer.from(receipt.attestation.signature, 'base64'),
+  );
+  if (!valid) fail('OWNER_ACCEPTANCE_INVALID', 'Owner attestation signature in receipt is invalid');
+  return receipt;
 }
 
 function buildAttributionFulfillments({
@@ -607,12 +552,19 @@ export function buildStaticRightsSigningCandidate({
   ownerTrustAnchorSha256,
   attributionSpecs,
   attributionRouteResolutions,
-  ownerAttestation = null,
+  offlineSignerContractId,
+  offlineSignerContractSha256,
+  ownerAcceptance = null,
   ownerTrustRoot = null,
-  ownerAttestationAsOf = null,
+  ownerAttestation = undefined,
+  ownerAttestationAsOf = undefined,
 }) {
+  if (ownerAttestation !== undefined || ownerAttestationAsOf !== undefined) {
+    fail('SUPERSEDED_OWNER_ATTESTATION_INPUT', 'Direct owner attestation timestamps are forbidden; use a one-time acceptance receipt');
+  }
   if (!HEX_64.test(toolchainContractSha256 ?? '') || !HEX_64.test(candidateGeneratorSha256 ?? '')
-    || !HEX_64.test(authoritySetSha256 ?? '') || !HEX_64.test(ownerTrustAnchorSha256 ?? '')) {
+    || !HEX_64.test(authoritySetSha256 ?? '') || !HEX_64.test(ownerTrustAnchorSha256 ?? '')
+    || !HEX_64.test(offlineSignerContractId ?? '') || !HEX_64.test(offlineSignerContractSha256 ?? '')) {
     fail('TOOLCHAIN_BINDING_INVALID', 'Signing candidate must bind its reviewed generator and toolchain contract');
   }
   exactKeys(ownerTrustAnchor, [
@@ -710,13 +662,13 @@ export function buildStaticRightsSigningCandidate({
     { sortedArrays: ['authorities'] },
   );
   const withdrawalGenesisSha256 = sha256(Buffer.from(canonicalJson(withdrawalGenesis)));
-  const buildCandidate = ({ ownerAttestationHash = null, ownerTrustRootSha256 = null } = {}) => {
+  const buildCandidate = ({ ownerAcceptanceReceipt = null, ownerTrustRootSha256 = null } = {}) => {
     const blockers = ['EXPLICIT_SIGNING_APPROVAL_REQUIRED'];
-    if (!ownerAttestationHash) blockers.push('OWNER_ATTESTATION_REQUIRED');
+    if (!ownerAcceptanceReceipt) blockers.push('OWNER_ATTESTATION_REQUIRED');
     blockers.sort(byteSort);
     const payload = {
       schemaVersion: CANDIDATE_SCHEMA_VERSION,
-      status: ownerAttestationHash ? 'READY_FOR_EXPLICIT_SIGNING_APPROVAL' : 'BLOCKED_OWNER_ATTESTATION',
+      status: ownerAcceptanceReceipt ? 'READY_FOR_EXPLICIT_SIGNING_APPROVAL' : 'BLOCKED_OWNER_ATTESTATION',
       inventoryId: inventory.staticSourceInventoryId,
       classifierId: classification.classifierId,
       authoritySetId,
@@ -726,6 +678,9 @@ export function buildStaticRightsSigningCandidate({
       routeConfigSha256,
       toolchainContractSha256,
       candidateGeneratorSha256,
+      offlineSignerContractId,
+      offlineSignerContractSha256,
+      ownerAcceptance: ownerAcceptanceReceipt,
       ownerTrustRootSha256,
       withdrawalGenesis,
       constraints: {
@@ -735,7 +690,7 @@ export function buildStaticRightsSigningCandidate({
         signatureState: 'UNSIGNED',
         privateEvidenceAccess: 'PROHIBITED',
       },
-      dependencies: buildDependencies(ownerAttestationHash),
+      dependencies: buildDependencies(ownerAcceptanceReceipt?.acceptanceSha256 ?? null),
       attributionFulfillments,
       blockers,
     };
@@ -750,18 +705,17 @@ export function buildStaticRightsSigningCandidate({
     });
   };
   const unsignedCandidate = buildCandidate();
-  if (ownerAttestation === null) return unsignedCandidate;
+  if (ownerAcceptance === null) return unsignedCandidate;
 
   const firstPartyBinding = dependencyBindings.get('FIRST_PARTY');
   const unsignedCandidateBytes = Buffer.from(canonicalJson(unsignedCandidate, {
     sortedArrays: CANDIDATE_SORTED_ARRAYS,
   }));
-  const ownerReplay = replayOwnerAttestation({
-    ownerAttestation,
+  const ownerReplay = replayOwnerAcceptance({
+    ownerAcceptance,
     ownerTrustRoot,
-    ownerTrustAnchor,
-    ownerTrustAnchorSha256,
-    ownerAttestationAsOf,
+    offlineSignerContractId,
+    offlineSignerContractSha256,
     expected: {
       inventoryId: inventory.staticSourceInventoryId,
       scopeHash: firstPartyBinding.scopeHash,
@@ -783,8 +737,15 @@ export function buildStaticRightsSigningCandidate({
     fail('OWNER_ATTESTATION_INVALID', `Owner trust root is not the enrolled production root: ${error.message}`);
   }
   return buildCandidate({
-    ownerAttestationHash: ownerReplay.attestationHash,
-    ownerTrustRootSha256: ownerReplay.trustRootHash,
+    ownerAcceptanceReceipt: {
+      acceptanceId: ownerReplay.acceptanceId,
+      acceptanceSha256: ownerAcceptance.sha256,
+      requestId: ownerReplay.requestId,
+      attestationSha256: ownerReplay.attestationSha256,
+      acceptedAt: ownerReplay.acceptedAt,
+      expiresAt: ownerReplay.expiresAt,
+    },
+    ownerTrustRootSha256: ownerReplay.ownerTrustRootSha256,
   });
 }
 
@@ -936,6 +897,16 @@ function repoInputs(repoRoot) {
     'TOOLCHAIN_BINDING_INVALID',
     'Toolchain contract',
   );
+  const offlineSignerContractPath = path.join(repoRoot, 'deployment/offline-owner-signer-contract.json');
+  const offlineSignerContractBytes = regularFile(
+    offlineSignerContractPath,
+    'TOOLCHAIN_BINDING_INVALID',
+    'Offline signer contract',
+  );
+  let offlineSignerContract;
+  try { offlineSignerContract = parseOfflineSignerContract(offlineSignerContractBytes); } catch (error) {
+    fail('TOOLCHAIN_BINDING_INVALID', `Offline signer contract replay failed: ${error.message}`);
+  }
   const vercelPackage = readJsonFile(
     path.join(repoRoot, 'node_modules/vercel/package.json'),
     'TOOLCHAIN_BINDING_INVALID',
@@ -981,6 +952,8 @@ function repoInputs(repoRoot) {
       'TOOLCHAIN_BINDING_INVALID',
       'Signing candidate generator',
     )),
+    offlineSignerContractId: offlineSignerContract.contractId,
+    offlineSignerContractSha256: sha256(offlineSignerContractBytes),
   };
 }
 
@@ -1031,9 +1004,8 @@ export function replayCurrentUnsignedStaticRightsCandidate({
       'WITHDRAWAL_GENESIS_INVALID',
       'Withdrawal genesis draft',
     ).value,
-    ownerAttestation: null,
+    ownerAcceptance: null,
     ownerTrustRoot: null,
-    ownerAttestationAsOf: null,
   });
 }
 
@@ -1041,27 +1013,27 @@ async function main() {
   const repoRoot = process.cwd();
   const evidenceManifestPath = argValue('--evidence-manifest') ?? DEFAULT_EVIDENCE_MANIFEST;
   const withdrawalDraftPath = argValue('--withdrawal-draft') ?? DEFAULT_WITHDRAWAL_DRAFT;
-  const ownerAttestationPath = argValue('--owner-attestation');
+  const ownerAcceptancePath = argValue('--owner-acceptance');
   const ownerTrustRootPath = argValue('--owner-trust-root');
-  const ownerAttestationAsOf = argValue('--owner-attestation-as-of');
   const outputPath = path.resolve(argValue('--output') ?? DEFAULT_OUTPUT);
-  if (Boolean(ownerAttestationPath) !== Boolean(ownerTrustRootPath)) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation and injected trust root must be supplied together');
+  if (process.argv.some((value) => value.startsWith('--owner-attestation=')
+    || value.startsWith('--owner-attestation-as-of='))) {
+    fail('SUPERSEDED_OWNER_ATTESTATION_INPUT', 'Direct owner attestation timestamps are forbidden; use a one-time acceptance receipt');
   }
-  if (Boolean(ownerAttestationPath) !== Boolean(ownerAttestationAsOf)) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation and its frozen verification time must be supplied together');
+  if (Boolean(ownerAcceptancePath) !== Boolean(ownerTrustRootPath)) {
+    fail('OWNER_ACCEPTANCE_INVALID', 'Owner acceptance and injected trust root must be supplied together');
   }
-  const absoluteAttestationPath = ownerAttestationPath ? path.resolve(ownerAttestationPath) : null;
-  const ownerAttestationBytes = absoluteAttestationPath
+  const absoluteAcceptancePath = ownerAcceptancePath ? path.resolve(ownerAcceptancePath) : null;
+  const ownerAcceptanceBytes = absoluteAcceptancePath
     ? readSecureFileWithinRoot(
-        path.dirname(absoluteAttestationPath),
-        path.basename(absoluteAttestationPath),
-        'OWNER_ATTESTATION_INVALID',
-        'Owner attestation',
+        path.dirname(absoluteAcceptancePath),
+        path.basename(absoluteAcceptancePath),
+        'OWNER_ACCEPTANCE_INVALID',
+        'Owner acceptance receipt',
       )
     : null;
-  const ownerAttestation = absoluteAttestationPath
-    ? { path: absoluteAttestationPath, sha256: sha256(ownerAttestationBytes) }
+  const ownerAcceptance = absoluteAcceptancePath
+    ? { path: absoluteAcceptancePath, sha256: sha256(ownerAcceptanceBytes) }
     : null;
   let ownerTrustRoot = null;
   if (ownerTrustRootPath) {
@@ -1088,9 +1060,8 @@ async function main() {
     }),
     publicEvidence: replayPublicEvidenceManifest({ manifestPath: evidenceManifestPath }),
     withdrawalGenesisDraft: readJsonFile(path.resolve(withdrawalDraftPath), 'WITHDRAWAL_GENESIS_INVALID', 'Withdrawal genesis draft').value,
-    ownerAttestation,
+    ownerAcceptance,
     ownerTrustRoot,
-    ownerAttestationAsOf,
   });
   writeCanonicalCandidateFile(outputPath, candidate);
   process.stdout.write(canonicalJson({ candidateId: candidate.candidateId, outputPath, status: candidate.status }));

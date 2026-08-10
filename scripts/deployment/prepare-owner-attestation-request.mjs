@@ -21,6 +21,8 @@ import {
   replayCurrentUnsignedStaticRightsCandidate,
   writeCanonicalCandidateFile,
 } from './prepare-static-rights-signing-candidate.mjs';
+import { parseOfflineSignerContract } from '../../src/domain/offline-owner-signer-contract.mjs';
+import { ownerSemanticId } from '../../src/domain/owner-attestation-request-contract.mjs';
 
 const HEX_64 = /^[0-9a-f]{64}$/;
 const ISO_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
@@ -44,6 +46,7 @@ const CANDIDATE_KEYS = [
   'attributionFulfillments', 'authoritySetId', 'authoritySetSha256', 'blockers',
   'candidateGeneratorSha256', 'candidateId', 'classifierId', 'constraints', 'dependencies',
   'inventoryId', 'ownerTrustAnchorSha256', 'ownerTrustRootSha256',
+  'offlineSignerContractId', 'offlineSignerContractSha256', 'ownerAcceptance',
   'publicEvidenceManifestSha256', 'routeConfigSha256', 'schemaVersion', 'status',
   'toolchainContractSha256', 'withdrawalGenesis',
 ];
@@ -63,7 +66,7 @@ const TRUST_ANCHOR_KEYS = [
 const TRUST_ROOT_KEYS = ['publicKey', 'source'];
 const CLI_NAMES = new Set([
   '--authority-set', '--candidate', '--expires-at', '--issued-at', '--output', '--owner-metadata',
-  '--owner-public-key', '--owner-trust-root', '--trust-anchor',
+  '--owner-public-key', '--owner-trust-root', '--trust-anchor', '--signer-contract',
 ]);
 const PRIVATE_MARKER = /partnerize|performancehorizon|the[-_ ]?good[-_ ]?guys|1101l4116|private[-_ ]?feed/i;
 
@@ -146,8 +149,9 @@ function validateCandidate(candidateBytes, replayedCandidateBytes) {
     fail('CANDIDATE_REPLAY_MISMATCH', 'Signing candidate does not exactly match the current repository replay');
   }
   exactKeys(candidate, CANDIDATE_KEYS, 'CANDIDATE_SCHEMA_INVALID', 'Signing candidate');
-  if (candidate.schemaVersion !== 2 || candidate.status !== 'BLOCKED_OWNER_ATTESTATION'
+  if (candidate.schemaVersion !== 3 || candidate.status !== 'BLOCKED_OWNER_ATTESTATION'
     || candidate.ownerTrustRootSha256 !== null
+    || candidate.ownerAcceptance !== null
     || candidate.classifierId !== 'fitappliance.static-rights-classifier/v1'
     || !HEX_64.test(candidate.inventoryId ?? '') || !HEX_64.test(candidate.authoritySetId ?? '')
     || !HEX_64.test(candidate.authoritySetSha256 ?? '') || !HEX_64.test(candidate.candidateId ?? '')
@@ -207,7 +211,7 @@ function validateCandidate(candidateBytes, replayedCandidateBytes) {
   const { candidateId, ...candidatePayload } = candidate;
   const expectedCandidateId = semanticId(
     'fitappliance.static-rights-signing-candidate',
-    2,
+    3,
     candidatePayload,
     { sortedArrays: CANDIDATE_SORTED_ARRAYS },
   );
@@ -303,6 +307,7 @@ export function buildOwnerAttestationRequest({
   ownerPublicKeyPem,
   ownerTrustRootBytes,
   trustAnchorBytes,
+  offlineSignerContractBytes,
   issuedAt,
   expiresAt,
 }) {
@@ -326,8 +331,17 @@ export function buildOwnerAttestationRequest({
   const candidateSha256 = sha256(candidateBytes);
   const ownerTrustAnchorSha256 = sha256(trustAnchorBytes);
   const ownerTrustRootSha256 = sha256(ownerTrustRootBytes);
+  let signerContract;
+  try { signerContract = parseOfflineSignerContract(offlineSignerContractBytes); } catch (error) {
+    fail('OFFLINE_SIGNER_CONTRACT_INVALID', error.message);
+  }
+  const offlineSignerContractSha256 = sha256(offlineSignerContractBytes);
+  if (candidate.offlineSignerContractId !== signerContract.contractId
+    || candidate.offlineSignerContractSha256 !== offlineSignerContractSha256) {
+    fail('OFFLINE_SIGNER_CONTRACT_INVALID', 'Signing candidate does not bind the supplied offline signer contract');
+  }
   const payload = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     environment: 'PRODUCTION',
     action: STATIC_RIGHTS_ACTION,
     dependencyId: 'FIRST_PARTY',
@@ -347,11 +361,13 @@ export function buildOwnerAttestationRequest({
     routeConfigSha256: candidate.routeConfigSha256,
     publicEvidenceManifestSha256: candidate.publicEvidenceManifestSha256,
     withdrawalGenesisSha256: sha256(Buffer.from(canonicalJson(candidate.withdrawalGenesis))),
+    offlineSignerContractId: signerContract.contractId,
+    offlineSignerContractSha256,
     issuedAt,
     expiresAt,
   };
   const requestPayload = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     state: 'UNSIGNED',
     algorithm: 'Ed25519',
     encoding: 'base64',
@@ -363,11 +379,13 @@ export function buildOwnerAttestationRequest({
     ownerTrustRootSha256,
     authoritySetId: trust.authoritySetId,
     authoritySetSha256: trust.authoritySetSha256,
+    offlineSignerContractId: signerContract.contractId,
+    offlineSignerContractSha256,
     payload,
   };
   return Object.freeze({
     ...requestPayload,
-    requestId: semanticId('fitappliance.owner-attestation-request', 2, requestPayload),
+    requestId: ownerSemanticId('fitappliance.owner-attestation-request', 3, requestPayload),
   });
 }
 
@@ -493,6 +511,10 @@ export function runOwnerAttestationRequestCli({
     privateParent: false,
     allowedModes: [0o400, 0o444, 0o600, 0o644],
   });
+  const offlineSignerContractBytes = readStableInput(args.get('--signer-contract'), 'Offline signer contract', {
+    privateParent: false,
+    allowedModes: [0o400, 0o444, 0o600, 0o644],
+  });
   const replayedCandidate = replayUnsignedCandidate({ repoRoot });
   const replayedCandidateBytes = Buffer.from(canonicalJson(replayedCandidate, {
     sortedArrays: CANDIDATE_SORTED_ARRAYS,
@@ -505,6 +527,7 @@ export function runOwnerAttestationRequestCli({
     ownerPublicKeyPem,
     ownerTrustRootBytes,
     trustAnchorBytes,
+    offlineSignerContractBytes,
     issuedAt: args.get('--issued-at'),
     expiresAt: args.get('--expires-at'),
   });

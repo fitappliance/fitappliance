@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "executableBindingSetVersion": 1,
+  "executableBindingSetVersion": 2,
   "node": "22.23.1",
   "vercelNodeMajor": "22.x",
   "npm": "10.9.8",
@@ -46,7 +46,7 @@
     },
     {
       "path": "scripts/deployment/reviewed-static-deployment.mjs",
-      "sha256": "c9183437c609d7ad058509101d4e38dcdbd29c32bf81f6c5a57069f695b8782b"
+      "sha256": "92716ef2c787cfb136651e3f39767fd9a07c1bcc8b99f854f55c7fb87469621f"
     },
     {
       "path": "src/domain/static-publication-rights.mjs",
@@ -62,15 +62,43 @@
     },
     {
       "path": "scripts/deployment/prepare-static-rights-signing-candidate.mjs",
-      "sha256": "80be1d07f63bbcd1d6672233162285901fbbf729a507626a0cb98e582858b335"
+      "sha256": "eb0849edf292741f072f0f161ab5e00eb7d33d3fc38ac5c52e11223a70f2dd24"
     },
     {
       "path": "scripts/deployment/prepare-owner-attestation-request.mjs",
-      "sha256": "ad89e75e0c27d8689773b519bd9946d590e8cbb4cba501dc61616ab4f9d1940d"
+      "sha256": "392e463261f3146e7a46ff7267dd06e29440e70e3990ff4e258056c133d83e8d"
     },
     {
       "path": "deployment/static-owner-trust-anchor.json",
       "sha256": "d298732073573c978c252393a71ab67d4fbb63c35c57058c44e0d44c2ddeef21"
+    },
+    {
+      "path": "src/domain/owner-attestation-request-contract.mjs",
+      "sha256": "92c0b9605574f143aaf750fabbb86eef4f01fb771bd2e68ad372ab5c70d32e9d"
+    },
+    {
+      "path": "src/domain/offline-owner-signer-contract.mjs",
+      "sha256": "6985e5821a69108ebbb1712fa6c167abd2e47f2eee722b8d06579fa699f347bb"
+    },
+    {
+      "path": "scripts/deployment/offline-owner-secure-io.mjs",
+      "sha256": "3c1b1cce27eb9fda8d306b328cdfd1f34954df72226208a256a6fd2556043d58"
+    },
+    {
+      "path": "scripts/deployment/sign-owner-attestation.mjs",
+      "sha256": "31fcb6f114ad1bd212c639b9ec2295e51fa1e666128f3db9d7b8386f31ecf658"
+    },
+    {
+      "path": "scripts/deployment/accept-owner-attestation.mjs",
+      "sha256": "930d73466b15cdadaef26627830ef4efe80d0db182136749e8047ec21e19d9d6"
+    },
+    {
+      "path": "scripts/deployment/run-offline-owner-signer.sh",
+      "sha256": "f82b13a758703d8bc1b48147a661b1fab252236e72723aeebe97a623a50f372f"
+    },
+    {
+      "path": "deployment/offline-owner-signer-contract.json",
+      "sha256": "fb4cd62dec03904b785c5eb360bf2c0328833a896f58b1cf2a7ab0b0dd4d2bd5"
     }
   ]
 }

@@ -2126,6 +2126,188 @@ activation.
   excluded from public output and excluded from every static-publication
   signing dependency.
 
+### WP0B-B1 offline owner-signer implementation plan - 2026-08-11
+
+**Status:** `FROZEN_AFTER_MAX_REVIEW`. This slice prepares a bounded offline
+signer and a one-time acceptance protocol. It does not authorize or perform a
+production signature. The 2026-08-11 max review found one P0 and four P1
+defects in the draft; every finding is incorporated below.
+
+1. Use a one-time acceptance receipt, not descendant expiry. An owner
+   attestation is valid only while `issuedAt <= trustedNow < expiresAt` and may
+   be consumed once into an immutable acceptance receipt for the exact request
+   and candidate. The acceptance process captures `acceptedAt` from the system
+   clock, rechecks the clock immediately before durable publication, and binds
+   request ID, attestation hash, candidate ID, `issuedAt`, `expiresAt` and
+   `acceptedAt` into the successor candidate. Once that receipt is durably
+   accepted before expiry, descendants bind its ID and bytes and do not revive
+   or backdate the short-lived attestation. Remove production
+   `--owner-attestation-as-of`; test-only clocks stay dependency-injected below
+   the CLI. Exact-expiry, rollback, backdating and expiry-between-validation-
+   and-commit all fail closed.
+2. Extract a pure owner-request contract module. It owns exact schema keys,
+   canonicalization, semantic IDs and strict schema-3 request validation, and
+   imports no candidate replay, deployment, filesystem, network, browser,
+   dynamic-import or subprocess code. The online request generator and offline
+   signer both depend on this pure module; the signer never imports the online
+   generator. Schema-2 requests remain parseable only for an explicit
+   `UNSUPPORTED_SUPERSEDED_REQUEST` result and can never be upgraded or signed.
+3. Add a minimal offline-signer contract. It binds exact bytes for the signer,
+   pure validator/canonicalizer and tracked trust anchor, plus the exact Node
+   runtime version. The request and attestation schema bind this contract ID
+   and byte hash. The signer verifies the contract, its own source, dependency
+   hashes, runtime and trust-anchor bytes before opening the private key. Bump
+   the B0 executable binding set to version 2 while retaining read-only
+   validation of historical version 1. The dependency graph stays acyclic:
+   online replay -> pure contract <- offline signer.
+4. Add one offline owner-attestation signer. Its production CLI accepts only
+   the schema-3 request, pinned trust anchor, offline-signer contract, owner
+   metadata, owner public key, cold owner private key, absent output path,
+   exact expected request ID, exact expected candidate ID and literal token
+   `SIGN_EXACT_OWNER_ATTESTATION`. It rejects preload, inspector and dynamic
+   loader options. The production wrapper disables core dumps and runs with an
+   OS-level network-denial and child-process-denial boundary. The signer and
+   its transitive import graph are statically allowlisted and forbid network,
+   browser, shell, `child_process` and dynamic imports.
+5. Harden all signer I/O rather than reuse the existing direct writer. Traverse
+   inputs without following symlinks, hold and compare parent directory
+   descriptors, require private owner-only ancestors, regular single-link
+   `0600` files, and compare inode, link count, size, mtime and ctime before and
+   after reads. Publish complete canonical bytes through a same-directory
+   owner-only temporary file, fsync the file, atomically link it to an absent
+   final path without clobbering, fsync the parent, remove only the temporary
+   inode created by this process, then fsync the parent again. Any existing
+   output fails before key access. Injected tests replace ancestors, race
+   concurrent writers and fail every open/write/fsync/link/cleanup boundary.
+6. Finish every non-secret check before key access: request, authorization
+   token, expected IDs, clock, absent output, output parent, anchor, metadata,
+   public key, signer contract, runtime and import closure. Opening the private
+   key is the final pre-sign operation. Accept only canonical unencrypted
+   Ed25519; derive and match its public key against the independent anchor and
+   metadata. Recheck time before signing and again before durable publication.
+   Every rejected precondition must prove the key reader and signer were not
+   called. Zero caller-owned key buffers in `finally`, never export the
+   `KeyObject`, and document that internal key memory lasts for the deliberately
+   short signer process lifetime and cannot be promised zeroized by Node.
+7. Sign only the request's already-bound payload and emit exactly canonical
+   `{payload, signature}` bytes. Output and diagnostics exclude private-key
+   bytes and paths, request paths, Partnerize data and unrelated metadata.
+   Production key media stays absent from implementation and regression runs.
+   A real signing invocation remains forbidden without a new action-time user
+   authorization naming the exact request ID, candidate ID and output path.
+8. TDD covers ephemeral Ed25519 success; schema and canonical-byte failures;
+   request/candidate confirmation mismatch; semantic and nested binding drift;
+   old, expired and future requests; backdated production CLI attempts; signer
+   and dependency drift; Node runtime drift; anchor, metadata, public/private
+   key and trust-root substitution; non-Ed25519 and encrypted keys; unsafe and
+   racing paths; partial writes and crash points; fail-before-secret-read; and
+   absence of secret material in output/errors. Production keys are never read.
+9. Implement the separate one-time acceptance command and receipt tests before
+   declaring the signer usable. It validates the detached attestation with the
+   current system clock, writes the immutable acceptance receipt atomically,
+   and makes candidate generation consume that receipt rather than an
+   arbitrary caller timestamp. No signed attestation alone may advance B1.
+10. After hashes settle, bind every new executable and contract in B0,
+    supersede candidate v4/request v2, generate unsigned candidate v5 and
+    schema-3 request v3 twice, and retain older files as `MUST_NOT_SIGN` audit
+    history. Run focused/adversarial rights tests, selected B0/B1/B2 and PWA
+    regression, lint, schema validation, publication-boundary audit, syntax and
+    exact toolchain replay. The production gate must remain nonzero at
+    `WITHDRAWAL_HEAD_NOT_ESTABLISHED`. Commit locally only; do not push, deploy,
+    promote or activate.
+
+**Exit:** signer, one-time acceptance implementation and unsigned v5/v3
+preparation are complete; no production secret was read. The next external
+transition is a separately confirmed owner-signing action followed by bounded
+acceptance before expiry. Even a valid acceptance receipt does not approve B1:
+withdrawal genesis, five reviewer decisions, the approved manifest and
+detached static publication authorization remain subsequent signed artifacts.
+
+### WP0B-B1 offline owner-signer implementation checkpoint - 2026-08-11
+
+**Status:** `IMPLEMENTED_UNSIGNED_AWAITING_FINAL_VERIFICATION`. The pure
+schema-3 request contract, exact-runtime offline signer contract, hardened
+no-clobber I/O, production wrapper, one-time acceptance receipt and schema-3
+successor candidate path are implemented. B0 executable bindings are version
+2; version 1 is historical read-only. Production candidate generation rejects
+the superseded direct attestation and caller-supplied as-of paths.
+
+The wrapper verifies the host controls before use, disables core dumps, denies
+network through `sandbox-exec`, denies child processes through Node permission
+mode, and grants read access only to the four signer-closure modules plus the
+exact caller-supplied inputs. No production owner private key was located,
+opened, inspected or used, and no signing action occurred.
+
+The current unsigned chain is:
+
+- candidate v7: `5e2e49e04852d507bb1c56533beb558373c46d71c5d5c02987de704f74f2a8e8`,
+  SHA-256 `cc839b30a4f81eb1c5b4e3c1aeca18cdac4bde01ef105b7412855840ba324c1a`;
+- request v5: `9917471c523f412ee94c3db476c2c8c339af1dabf39226ac61f7e5b4865565e7`,
+  SHA-256 `0bbdb77ec2d89b2f654f0cde2dfc4d4db2c85e4ba20bb44c591000b8cc65240e`.
+
+Both were generated twice with identical bytes. Candidate v5/request v3 were
+superseded after acceptance-time hardening; candidate v6/request v4 were
+superseded after narrowing the wrapper read allowlist. All four remain
+immutable `MUST_NOT_SIGN` audit history. The private supersession ledger is
+`2026-08-11-owner-signing-supersession-v3.json` outside Git.
+
+The next transition still requires a new action-time authorization naming the
+exact request ID, candidate ID and absent output path. The short-lived request
+must be regenerated if it expires before that authorization.
+
+### WP0B-B1 offline owner-signer final verification checkpoint - 2026-08-11
+
+**Status:** `IMPLEMENTED_UNSIGNED_AWAITING_EXACT_SIGNING_AUTHORIZATION`. The
+max-review findings and the primary integration review are closed in the
+implementation: request expiry cannot be caller-bypassed, the signer imports a
+pure schema-3 request contract, the runtime and every signer-closure byte are
+pinned, all public checks finish before private-key access, the output writer
+rejects parent and temporary-inode replacement, and the one-time acceptance
+receipt binds the complete canonical request and signature.
+
+The active unsigned chain is:
+
+- candidate v9: `800bcb56c34ab7d143d0771c7431a4880c4bca71d4768d8d9d332159355f81bd`,
+  SHA-256 `67298d23f673c15e4a1d12911fb40b7d7aa2ec456a4ea1e36d7b00afaa3f6435`;
+- request v7: `54d8b3202fb0c36edf7aaaa9e387a5b8f07f20c6a647e01e4e6ec64e1b42000e`,
+  SHA-256 `9685cc57288996832270f0bcfe4709f2a05f026df8ebfc69f0a507020895e947`,
+  issued `2026-08-10T17:37:00.000Z` and expiring
+  `2026-08-11T16:37:00.000Z`;
+- offline signer contract:
+  `d1c91de16033b69c6d1ebb24a92a377c8feac87bde51134251658bd4e7aede07`,
+  SHA-256 `fb4cd62dec03904b785c5eb360bf2c0328833a896f58b1cf2a7ab0b0dd4d2bd5`;
+- toolchain contract SHA-256:
+  `50de144ab86c7603732daaf4efc52979f3f72bd326c67266cdf53571faa239fa`.
+
+Candidate v9 and request v7 were each generated twice with byte-identical
+outputs, mode `0600`, one link and no private-feed marker. The private
+supersession ledger is
+`2026-08-11-owner-signing-supersession-v4.json`; every candidate through v8
+and request through v6 is immutable `MUST_NOT_SIGN` history.
+
+Verification passes 113/113 focused and integration tests across B0/B1,
+static rights, route resolution, PWA, the B2 worker protocol, signer security
+and one-time acceptance. Lint, explicit module/shell syntax checks, schema
+validation (`2,331` pages, `5,963` blocks, zero errors), publication-boundary
+audit (`19` workflows, `2,331` public artifacts, zero violations), exact
+toolchain replay and Git diff checks pass. With the injected public production
+trust root, the production rights gate exits nonzero at the intended
+`WITHDRAWAL_HEAD_NOT_ESTABLISHED` boundary.
+
+The owner's current confirmation authorizes continued preparation and local
+commit only. It does not name the exact request, candidate and absent output
+path and therefore is not an action-time production signing authorization. No
+production private key was located, opened, inspected or used; no signature,
+push, deployment, promotion or activation occurred. Partnerize and The Good
+Guys remain `PRIVATE_EVIDENCE_ONLY`, absent from Git, candidate/request bytes,
+public output and static-publication signing dependencies.
+
+The next external transition is optional exact owner-attestation signing and
+bounded acceptance before request expiry. Even after acceptance, B1 remains
+blocked until withdrawal genesis, the five scoped rights decisions, the
+approved source manifest and detached publication authorization are completed
+through their separate signed contracts.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

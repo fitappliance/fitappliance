@@ -22,6 +22,7 @@ import {
   runOwnerAttestationRequestCli,
 } from '../scripts/deployment/prepare-owner-attestation-request.mjs';
 import { canonicalJson, semanticId } from '../src/domain/static-publication-rights.mjs';
+import { buildOfflineSignerContract } from '../src/domain/offline-owner-signer-contract.mjs';
 
 const ISSUED_AT = '2026-08-10T16:00:00.000Z';
 const EXPIRES_AT = '2026-08-10T17:00:00.000Z';
@@ -79,9 +80,12 @@ function exactCandidate({ authoritySetId, authoritySetSha256, ownerTrustAnchorSh
     ownerTrustRootSha256: null,
     publicEvidenceManifestSha256: HEX.d,
     routeConfigSha256: HEX.e,
-    schemaVersion: 2,
+    schemaVersion: 3,
     status: 'BLOCKED_OWNER_ATTESTATION',
     toolchainContractSha256: HEX.f,
+    offlineSignerContractId: HEX.j,
+    offlineSignerContractSha256: HEX.k,
+    ownerAcceptance: null,
     withdrawalGenesis: {
       schemaVersion: 1,
       environment: 'PRODUCTION',
@@ -92,7 +96,7 @@ function exactCandidate({ authoritySetId, authoritySetSha256, ownerTrustAnchorSh
   };
   return {
     ...payload,
-    candidateId: semanticId('fitappliance.static-rights-signing-candidate', 2, payload, {
+    candidateId: semanticId('fitappliance.static-rights-signing-candidate', 3, payload, {
       sortedArrays: CANDIDATE_SORTED_ARRAYS,
     }),
   };
@@ -148,6 +152,17 @@ function fixture() {
     trustRootSha256: sha256(ownerTrustRootBytes),
   };
   const trustAnchorBytes = Buffer.from(canonicalJson(trustAnchor));
+  const offlineSignerContract = buildOfflineSignerContract({
+    nodeVersion: process.versions.node,
+    trustAnchor: { path: 'deployment/static-owner-trust-anchor.json', sha256: sha256(trustAnchorBytes) },
+    boundFiles: [
+      'src/domain/owner-attestation-request-contract.mjs',
+      'src/domain/offline-owner-signer-contract.mjs',
+      'scripts/deployment/offline-owner-secure-io.mjs',
+      'scripts/deployment/sign-owner-attestation.mjs',
+    ].map((filePath) => ({ path: filePath, sha256: sha256(filePath) })),
+  });
+  const offlineSignerContractBytes = Buffer.from(canonicalJson(offlineSignerContract));
   const candidate = exactCandidate({
     authoritySetId: semanticId(
       'fitappliance.static-publication-authority-set',
@@ -157,6 +172,8 @@ function fixture() {
     ),
     authoritySetSha256: sha256(authoritySetBytes),
     ownerTrustAnchorSha256: sha256(trustAnchorBytes),
+    offlineSignerContractId: offlineSignerContract.contractId,
+    offlineSignerContractSha256: sha256(offlineSignerContractBytes),
   });
   const candidateBytes = Buffer.from(canonicalJson(candidate, { sortedArrays: CANDIDATE_SORTED_ARRAYS }));
   return {
@@ -172,6 +189,8 @@ function fixture() {
     ownerTrustRootBytes,
     trustAnchor,
     trustAnchorBytes,
+    offlineSignerContract,
+    offlineSignerContractBytes,
   };
 }
 
@@ -184,6 +203,7 @@ function build(input = fixture(), overrides = {}) {
     ownerPublicKeyPem: input.ownerPublicKeyPem,
     ownerTrustRootBytes: input.ownerTrustRootBytes,
     trustAnchorBytes: input.trustAnchorBytes,
+    offlineSignerContractBytes: input.offlineSignerContractBytes,
     issuedAt: ISSUED_AT,
     expiresAt: EXPIRES_AT,
     ...overrides,
@@ -209,6 +229,7 @@ function privateCliFixture() {
     publicKey: path.join(root, 'owner-root.pem'),
     trustRoot: path.join(root, 'trust-root.json'),
     trustAnchor: path.join(root, 'trust-anchor.json'),
+    signerContract: path.join(root, 'offline-signer-contract.json'),
     output: path.join(root, 'request.json'),
   };
   writeFileSync(paths.authoritySet, input.authoritySetBytes, { mode: 0o644 });
@@ -217,6 +238,7 @@ function privateCliFixture() {
   writeFileSync(paths.publicKey, input.ownerPublicKeyPem, { mode: 0o600 });
   writeFileSync(paths.trustRoot, input.ownerTrustRootBytes, { mode: 0o600 });
   writeFileSync(paths.trustAnchor, input.trustAnchorBytes, { mode: 0o644 });
+  writeFileSync(paths.signerContract, input.offlineSignerContractBytes, { mode: 0o644 });
   return { input, root, paths };
 }
 
@@ -228,6 +250,7 @@ function cliArgs(paths, extra = []) {
     `--owner-public-key=${paths.publicKey}`,
     `--owner-trust-root=${paths.trustRoot}`,
     `--trust-anchor=${paths.trustAnchor}`,
+    `--signer-contract=${paths.signerContract}`,
     `--issued-at=${ISSUED_AT}`,
     `--expires-at=${EXPIRES_AT}`,
     `--output=${paths.output}`,
@@ -250,11 +273,11 @@ test('builds a deterministic unsigned request whose payload binds the full repla
   const firstParty = input.candidate.dependencies.find((row) => row.dependencyId === 'FIRST_PARTY');
 
   assert.deepEqual(first, second);
-  assert.equal(first.schemaVersion, 2);
+  assert.equal(first.schemaVersion, 3);
   assert.equal(first.state, 'UNSIGNED');
   assert.equal(Object.hasOwn(first, 'signature'), false);
   assert.deepEqual(first.payload, {
-    schemaVersion: 2,
+    schemaVersion: 3,
     environment: 'PRODUCTION',
     action: 'PUBLIC_STATIC_DISTRIBUTION',
     dependencyId: 'FIRST_PARTY',
@@ -274,10 +297,12 @@ test('builds a deterministic unsigned request whose payload binds the full repla
     routeConfigSha256: input.candidate.routeConfigSha256,
     publicEvidenceManifestSha256: input.candidate.publicEvidenceManifestSha256,
     withdrawalGenesisSha256: sha256(Buffer.from(canonicalJson(input.candidate.withdrawalGenesis))),
+    offlineSignerContractId: input.offlineSignerContract.contractId,
+    offlineSignerContractSha256: sha256(input.offlineSignerContractBytes),
     issuedAt: ISSUED_AT,
     expiresAt: EXPIRES_AT,
   });
-  assert.equal(first.requestId, semanticId('fitappliance.owner-attestation-request', 2, {
+  assert.equal(first.requestId, semanticId('fitappliance.owner-attestation-request', 3, {
     schemaVersion: first.schemaVersion,
     state: first.state,
     algorithm: first.algorithm,
@@ -290,6 +315,8 @@ test('builds a deterministic unsigned request whose payload binds the full repla
     ownerTrustRootSha256: first.ownerTrustRootSha256,
     authoritySetId: first.authoritySetId,
     authoritySetSha256: first.authoritySetSha256,
+    offlineSignerContractId: first.offlineSignerContractId,
+    offlineSignerContractSha256: first.offlineSignerContractSha256,
     payload: first.payload,
   }));
 });
