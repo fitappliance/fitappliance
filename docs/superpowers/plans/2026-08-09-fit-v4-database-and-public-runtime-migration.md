@@ -1976,6 +1976,40 @@ activation.
   activation occurred. The next code slice may implement only B2's fixture
   protocol/receipt contract; real worker generation remains blocked on B1.
 
+### WP0B-B2 fixture-protocol implementation checkpoint - 2026-08-10
+
+- One bounded `gpt-5.6-sol` medium implementation slice built the pure B2
+  protocol and fixture tests only. Its first RED proved the module did not
+  exist; its initial GREEN passed 11/11. Primary review then added six failing
+  adversarial assertions for unversioned artifacts, ambiguous duplicate binding
+  paths, non-namespaced cache deletion, impossible activation state and unsafe
+  cache-version input. The minimum implementation now passes all 11/11.
+- `applicationSourceId`, `applicationGenerationId` and
+  `workerGenerationReceiptId` are separate schema-1 identities. The source ID
+  binds canonical pre-stamp path/hash rows and rejects the tracked worker; the
+  generation ID binds the closed release inputs without hashing marker-stamped
+  bytes; the worker receipt binds the B1 authorization, toolchain, source and
+  generation identities, active retail release, exact worker/producer/tool/input
+  bytes, predecessor, cache protocol and coverage manifest.
+- B3 fixture composition accepts only the exact generated worker bytes and
+  receipt and rejects reuse of the tracked legacy witness. The generation
+  handshake fails closed on absent or mixed page, worker or Fit-resource
+  identities. Cache retention owns only the explicit
+  `fitappliance-app-shell-*`, `fitappliance-data-*` and
+  `fitappliance-static-*` namespaces, preserves both current and predecessor
+  versions, never deletes after failed install/activation and cannot delete a
+  generic third-party cache.
+- The legacy PWA characterization suite passes 25/25, proving this slice did not
+  change the tracked worker, registration or current cache behavior. The B2
+  module is syntax-valid and the focused fixture protocol is deterministic.
+- This reaches `B2_PROTOCOL_READY` only. `B2_GENERATION_READY`, B3A and every
+  preview or release action remain blocked until B1 has a signed withdrawal
+  genesis, the five scoped rights decisions, final route receipts and detached
+  static-publication authorization. Partnerize remains private internal
+  evidence, is excluded from that signing packet and was not accessed here.
+  No private key was read, no signature was created, and no real worker,
+  production output, push, deployment or activation was produced.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public
