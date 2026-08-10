@@ -410,6 +410,57 @@ test('a lifecycle-neutral safety release can only remove unsupported legacy door
   }), /lifecycle-neutral safety.*non-whitelisted/i);
 });
 
+test('a lifecycle-neutral safety release may remove private feed data but no unrelated field', () => {
+  const input = fixture();
+  const baseline = structuredClone(input.publicProjection);
+  baseline.products[0].retailers[0].source = 'retailer-observation:affiliate_feed';
+  baseline.products[0].retailers[0].feed_title = 'Private feed title';
+  baseline.products[0].retailLifecycle = {
+    lifecycleState: 'CURRENT_RETAIL',
+    authorizingObservation: { sourceType: 'affiliate_feed' },
+    latestObservations: [{ sourceType: 'affiliate_feed' }],
+  };
+  baseline.products[0].lifecycleVisibility = 'CURRENT_OUTPUT';
+  const candidate = structuredClone(baseline);
+  candidate.products[0].retailers = [];
+  candidate.products[0].unavailable = true;
+  candidate.products[0].price = null;
+  delete candidate.products[0].retailLifecycle;
+  delete candidate.products[0].lifecycleVisibility;
+  const baselineBytes = `${JSON.stringify(baseline, null, 2)}\n`;
+  const reboundMarket = marketLifecycle(baseline);
+  const reboundShadow = buildRetailLifecycleShadow({
+    ...input,
+    publicProjection: baseline,
+    publicProjectionSha256: hash(baselineBytes),
+    officialMarketLifecycle: reboundMarket,
+    officialMarketLifecycleSha256: hash(`${JSON.stringify(reboundMarket, null, 2)}\n`),
+  });
+  const releasePolicy = { mode: 'SHADOW_ONLY', releaseEpoch: input.releaseEpoch, asOf: input.asOf };
+  const release = buildRetailLifecycleNeutralSafetyPublication({
+    baselinePublicProjection: baseline,
+    baselinePublicProjectionSha256: hash(baselineBytes),
+    candidatePublicProjection: candidate,
+    candidatePublicProjectionSha256: hash(`${JSON.stringify(candidate, null, 2)}\n`),
+    releasePolicy,
+    releasePolicySha256: input.releasePolicySha256,
+    shadow: reboundShadow,
+  });
+  assert.equal(release.decision.status, 'SAFETY_FIELDS_REMOVED');
+
+  const unrelatedDrift = structuredClone(candidate);
+  unrelatedDrift.products[0].model = 'CHANGED';
+  assert.throws(() => buildRetailLifecycleNeutralSafetyPublication({
+    baselinePublicProjection: baseline,
+    baselinePublicProjectionSha256: hash(baselineBytes),
+    candidatePublicProjection: unrelatedDrift,
+    candidatePublicProjectionSha256: hash(`${JSON.stringify(unrelatedDrift, null, 2)}\n`),
+    releasePolicy,
+    releasePolicySha256: input.releasePolicySha256,
+    shadow: reboundShadow,
+  }), /non-whitelisted product changes/i);
+});
+
 test('a ready cutover publishes only observation-authorized retailers and restores a relisted product', () => {
   const input = fixture();
   const ledger = buildRetailerObservationLedger({
@@ -499,7 +550,16 @@ test('tracked full-catalogue shadow accounts for every product and keeps product
   });
 
   assert.equal(shadow.summary.products, publicProjection.products.length);
-  assert.equal(shadow.summary.legacyCurrentProducts, 1384);
+  const expectedLegacyCurrentProducts = publicProjection.products.filter((product) => (
+    product.unavailable === false
+    && Array.isArray(product.retailers)
+    && product.retailers.length > 0
+  )).length;
+  assert.equal(
+    expectedLegacyCurrentProducts,
+    releasePolicy.cutoverRequirements.expectedLegacyCurrentProducts,
+  );
+  assert.equal(shadow.summary.legacyCurrentProducts, expectedLegacyCurrentProducts);
   assert.equal(
     shadow.cutover.status,
     shadow.cutover.unresolvedLegacyCurrentIds.length === 0
@@ -580,4 +640,22 @@ test('current source policy excludes previously typed observations without delet
   assert.equal(input.retailerLedger.observations.some((row) => (
     row.canonicalProductId === 'fa_prod_keep' && row.sourceType === 'affiliate_feed'
   )), true);
+});
+
+test('private campaign use permits collection but cannot authorize public lifecycle state', () => {
+  const input = fixture();
+  const privatePolicy = structuredClone(sourcePolicy);
+  privatePolicy.sources[0].termsReviewState = 'reviewed_private_campaign_use';
+  privatePolicy.sources[0].legacyLinkAction = 'PRIVATE_EVIDENCE_ONLY';
+  const shadow = buildRetailLifecycleShadow({
+    ...input,
+    sourcePolicy: privatePolicy,
+    sourcePolicySha256: hash(`${JSON.stringify(privatePolicy)}\n`),
+  });
+  const keep = shadow.records.find((record) => record.canonicalProductId === 'fa_prod_keep');
+
+  assert.equal(keep.lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(keep.excludedBySourcePolicy.observationIds.length, 1);
+  assert.equal(keep.excludedBySourcePolicy.collectionAttemptIds.length, 0);
+  assert.equal(keep.retailLifecycle.authorizingObservation, null);
 });

@@ -9,6 +9,7 @@ import {
   applyRetailerIdentityMigrationToCatalog,
   applyRetailerIdentityMigrationToLedger,
   buildRetailerIdentityMigration,
+  rebindRetailerIdentityMigrationProjection,
   validateRetailerIdentityMigration,
 } from '../../src/domain/retailer-identity-migration.mjs';
 import { buildCanonicalRegistry } from '../../src/domain/canonical-registry.mjs';
@@ -36,6 +37,27 @@ function canonical(value) {
 
 function digest(value) {
   return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
+}
+
+function resealMigration(value) {
+  const document = structuredClone(value);
+  delete document.migrationId;
+  delete document.semanticSha256;
+  const semanticSha256 = digest(document);
+  document.migrationId = `retailer_identity_migration_${semanticSha256.slice(0, 24)}`;
+  document.semanticSha256 = semanticSha256;
+  return document;
+}
+
+function bindResolutionToProjection(value, publicProjection) {
+  const document = structuredClone(value);
+  document.sourceBindings.publicProjectionSemanticSha256 = digest(publicProjection);
+  delete document.resolutionId;
+  delete document.semanticSha256;
+  const semanticSha256 = digest(document);
+  document.resolutionId = `retailer_identity_resolution_${semanticSha256.slice(0, 24)}`;
+  document.semanticSha256 = semanticSha256;
+  return document;
 }
 
 function countBy(items, selector) {
@@ -140,7 +162,7 @@ test('builds a declarative migration for every resolved case and leaves unresolv
 
 test('builds a partial migration while preserving unresolved identity cases outside the mutation set', async () => {
   const { resolution, publicProjection, ledger } = await fixture();
-  const partial = withOneUnresolvedCase(resolution);
+  const partial = withOneUnresolvedCase(bindResolutionToProjection(resolution, publicProjection));
   const migration = buildRetailerIdentityMigration({
     resolution: partial.document,
     publicProjection,
@@ -175,11 +197,13 @@ test('coverage consumes persisted identity events as terminal dispositions witho
   };
   for (const event of migration.linkEvents) {
     const item = byLink.get(event.baselineLinkId);
+    if (!item) continue;
     assert.equal(item.terminalObservationState, stateByAction[event.action]);
     assert.equal(item.revalidation, null);
     assert.equal(item.typedObservation.kind, 'IDENTITY_RESOLUTION');
     assert.equal(item.typedObservation.eventId, event.id);
   }
+  assert.ok(migration.linkEvents.some((event) => !byLink.has(event.baselineLinkId)));
 });
 
 test('catalog migration changes only authorised identity presentation and removes merged duplicates', async () => {
@@ -313,7 +337,7 @@ test('migration application fails closed on catalogue identity drift and a ledge
 });
 
 test('repository scripts freeze one migration epoch and replay it idempotently', async (context) => {
-  const { resolution, publicProjection, ledger } = await fixture();
+  const { resolution, publicProjection, ledger, migration } = await fixture();
   const directory = await mkdtemp(join(tmpdir(), 'fitappliance-identity-migration-'));
   context.after(() => rm(directory, { recursive: true, force: true }));
   const paths = {
@@ -327,6 +351,7 @@ test('repository scripts freeze one migration epoch and replay it idempotently',
     writeFile(paths.resolution, JSON.stringify(resolution)),
     writeFile(paths.projection, JSON.stringify(publicProjection)),
     writeFile(paths.ledger, JSON.stringify(ledger)),
+    writeFile(paths.migration, JSON.stringify(migration)),
   ]);
   const first = await buildRetailerIdentityMigrationFromRepository({
     output: paths.migration,
@@ -353,4 +378,47 @@ test('repository scripts freeze one migration epoch and replay it idempotently',
 
   assert.deepEqual(replay, first);
   assert.deepEqual(appliedAgain, migrated);
+});
+
+test('projection rebind accepts only a non-identity safety projection', async () => {
+  const { publicProjection, migration } = await fixture();
+  const priorProjection = structuredClone(publicProjection);
+  priorProjection.products[0].retailers = [{
+    n: 'Private fixture',
+    url: 'https://retailer.example/private',
+    source: 'partnerize-feed',
+  }];
+  priorProjection.products[0].unavailable = false;
+  const priorBindings = structuredClone(migration.sourceBindings);
+  delete priorBindings.projectionRebinds;
+  const priorMigration = resealMigration({
+    ...structuredClone(migration),
+    sourceBindings: {
+      ...priorBindings,
+      publicProjectionSemanticSha256: digest(priorProjection),
+    },
+  });
+
+  const rebound = rebindRetailerIdentityMigrationProjection({
+    existingMigration: priorMigration,
+    priorPublicProjection: priorProjection,
+    nextPublicProjection: publicProjection,
+  });
+  assert.equal(
+    rebound.sourceBindings.publicProjectionSemanticSha256,
+    digest(publicProjection),
+  );
+  assert.equal(
+    rebound.sourceBindings.projectionRebinds.at(-1).predecessorMigrationSemanticSha256,
+    priorMigration.semanticSha256,
+  );
+  assert.doesNotThrow(() => validateRetailerIdentityMigration(rebound));
+
+  const identityDrift = structuredClone(publicProjection);
+  identityDrift.products[0].model = 'DIFFERENT-MODEL';
+  assert.throws(() => rebindRetailerIdentityMigrationProjection({
+    existingMigration: priorMigration,
+    priorPublicProjection: priorProjection,
+    nextPublicProjection: identityDrift,
+  }), /identity inventory drift/i);
 });

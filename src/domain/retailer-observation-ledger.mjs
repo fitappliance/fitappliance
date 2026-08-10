@@ -11,6 +11,13 @@ const TERMS_REVIEW_STATES = new Set([
   'authorized_partner_feed',
   'collection_blocked',
   'pending_automated_scale_review',
+  'reviewed_private_campaign_use',
+  'reviewed_bounded_exact_product_api',
+]);
+
+const PUBLIC_OBSERVATION_STATES = new Set([
+  'authorized_partner_feed',
+  'pending_automated_scale_review',
   'reviewed_bounded_exact_product_api',
 ]);
 
@@ -114,7 +121,7 @@ export function retailerObservationAuthorizedBySourcePolicy(value, policy) {
   const observation = createObservation(value);
   if (observation.sourceType === 'legacy_catalog') return true;
   const source = normalizedPolicy(policy).sources.find((row) => row.id === observation.adapterId);
-  if (!source || source.termsReviewState === 'collection_blocked') return false;
+  if (!source || !PUBLIC_OBSERVATION_STATES.has(source.termsReviewState)) return false;
   if (observation.retailer !== source.retailer
     || observation.sourceType !== source.sourceType
     || observation.policyVersion !== source.policyVersion

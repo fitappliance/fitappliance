@@ -128,7 +128,7 @@ function resignInventory(value) {
 
 resignInventory(inventory);
 
-test('real Partnerize source stays blocked until public feed reuse rights are explicit', () => {
+test('real Partnerize source is private-only and cannot enter the tracked lifecycle refresh plan', () => {
   const policyBytes = readFileSync(new URL(
     '../../data/architecture-v2/policies/retailer-source-policy.json', import.meta.url,
   ));
@@ -137,9 +137,9 @@ test('real Partnerize source stays blocked until public feed reuse rights are ex
     source.id === 'the-good-guys-partnerize-feed-v1'
   ));
 
-  assert.equal(partnerize.termsReviewState, 'collection_blocked');
-  assert.equal(partnerize.legacyLinkAction, 'FEED_RIGHTS_REVIEW_BLOCKED');
-  assert.match(partnerize.notes, /public (?:display|redistribution)/i);
+  assert.equal(partnerize.termsReviewState, 'reviewed_private_campaign_use');
+  assert.equal(partnerize.legacyLinkAction, 'PRIVATE_EVIDENCE_ONLY');
+  assert.match(partnerize.notes, /private evidence/i);
   assert.throws(() => buildRetailLifecycleRefreshPlan({
     inventory,
     inventorySha256: SHA_A,
@@ -149,7 +149,7 @@ test('real Partnerize source stays blocked until public feed reuse rights are ex
     sourcePolicySha256: createHash('sha256').update(policyBytes).digest('hex'),
     sourcePolicyId: partnerize.id,
     observedAt: OBSERVED_AT,
-  }), /source policy is blocked/i);
+  }), /not approved for a supported refresh mode/i);
 });
 
 function buildPlan(observedAt = OBSERVED_AT) {

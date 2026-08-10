@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "policyVersion": "retail-lifecycle-release-v1",
-  "releaseEpoch": "retail-lifecycle-shadow-2026-07-21-inputs-9bbd5004205e",
+  "releaseEpoch": "retail-lifecycle-shadow-2026-07-21-inputs-0bfa8becc5c0",
   "asOf": "2026-07-21T12:12:18.070Z",
   "mode": "SHADOW_ONLY",
   "retailLifecyclePolicyVersion": "retail-lifecycle-v1",
   "cutoverRequirements": {
-    "expectedLegacyCurrentProducts": 1384,
+    "expectedLegacyCurrentProducts": 1348,
     "maximumUnresolvedLegacyCurrentProducts": 0,
     "maximumUnsafeRemovedLegacyCurrentProducts": 0,
     "atomicDownstreamRebuildRequired": true

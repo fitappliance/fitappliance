@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
+  assertNoPrivateRetailerFeedPublication,
   buildLifecycleNeutralSafetyProjection,
   buildPublicProjection,
   normalizePublicProduct,
@@ -19,6 +20,49 @@ test('public normalization keeps unknown measurements null and fills presentatio
   assert.deepEqual(result.features, []);
   assert.equal(result.sponsored, false);
   assert.match(result.emoji, /\S/);
+});
+
+test('public normalization removes private affiliate-feed rows and their lifecycle evidence', () => {
+  const result = normalizePublicProduct({
+    id: 'fridge-private-feed',
+    cat: 'fridge',
+    brand: 'A',
+    model: 'M',
+    unavailable: false,
+    retailers: [{
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/example',
+      source: 'retailer-observation:affiliate_feed',
+      feed_title: 'Private feed title',
+      tgg_sku: '50000001',
+    }],
+    retailLifecycle: {
+      lifecycleState: 'CURRENT_RETAIL',
+      authorizingObservation: {
+        sourceType: 'affiliate_feed',
+        adapterId: 'the-good-guys-partnerize-feed-v1',
+        rawSourceSha256: 'a'.repeat(64),
+      },
+      latestObservations: [{ sourceType: 'affiliate_feed' }],
+    },
+    lifecycleVisibility: 'CURRENT_OUTPUT',
+  });
+
+  assert.deepEqual(result.retailers, []);
+  assert.equal(result.unavailable, true);
+  assert.equal(result.price, null);
+  assert.equal(Object.hasOwn(result, 'retailLifecycle'), false);
+  assert.equal(Object.hasOwn(result, 'lifecycleVisibility'), false);
+  assert.equal(assertNoPrivateRetailerFeedPublication(result), true);
+});
+
+test('public feed boundary rejects nested canaries instead of relying on visible text search', () => {
+  assert.throws(() => assertNoPrivateRetailerFeedPublication({
+    products: [{ retailers: [{ retailer_dimension_hint: { w_mm: 600 } }] }],
+  }), /private retailer feed/i);
+  assert.throws(() => assertNoPrivateRetailerFeedPublication({
+    products: [{ retailLifecycle: { latestObservations: [{ sourceType: 'affiliate_feed' }] } }],
+  }), /private retailer feed/i);
 });
 
 test('public normalization derives door projection only from explicit 90-degree depth evidence', () => {

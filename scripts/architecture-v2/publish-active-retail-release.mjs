@@ -6,6 +6,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
+import { sanitizePrivateRetailerFeedPublication } from '../../src/domain/public-projection.mjs';
 import { runFitPublicationAudit } from './audit-fit-publication.mjs';
 import { runHistoricalReplacementAudit } from './audit-historical-replacement.mjs';
 import { validateCandidateReference } from './build-retail-lifecycle-release-candidate.mjs';
@@ -46,6 +47,7 @@ async function verifyPublishedRuntime(root, expectedCatalog) {
 
 export async function auditActiveRetailRelease({ root = defaultRoot, publish = false } = {}) {
   const release = await loadActiveRetailRelease({ root });
+  const publicCatalog = sanitizePrivateRetailerFeedPublication(release.catalog);
   validateCandidateReference(release.reference, release.catalog);
   const publicationManifestPath = resolve(
     release.releaseDirectory,
@@ -55,14 +57,14 @@ export async function auditActiveRetailRelease({ root = defaultRoot, publish = f
   const fitAuditPath = resolve(release.releaseDirectory, 'fit-publication-audit.json');
 
   if (publish) {
-    await publishRuntimeProjection({ root, catalog: release.catalog });
+    await publishRuntimeProjection({ root, catalog: publicCatalog });
     await publishHistoricalReference({
       repoRoot: root,
       referencePath: release.paths.reference,
       manifestPath: publicationManifestPath,
     });
   }
-  await verifyPublishedRuntime(root, release.catalog);
+  await verifyPublishedRuntime(root, publicCatalog);
   const historicalAudit = await runHistoricalReplacementAudit({
     repoRoot: root,
     referencePath: release.paths.reference,
@@ -81,8 +83,8 @@ export async function auditActiveRetailRelease({ root = defaultRoot, publish = f
   }
   return Object.freeze({
     releaseCandidateId: release.descriptor.releaseCandidateId,
-    products: release.catalog.products.length,
-    currentRetailProducts: release.catalog.products.filter((product) => (
+    products: publicCatalog.products.length,
+    currentRetailProducts: publicCatalog.products.filter((product) => (
       product.unavailable === false
     )).length,
     historicalReferenceRecords: release.reference.records.length,

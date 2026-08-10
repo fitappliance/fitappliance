@@ -37,6 +37,43 @@ test('publisher writes the canonical catalog and consistent category/meta files'
   assert.equal('rollbackProjection' in marker, false);
 });
 
+test('publisher strips private Partnerize feed evidence before writing any public data file', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fit-publish-private-feed-'));
+  const catalog = {
+    schema_version: 3,
+    last_updated: '2026-01-02',
+    products: [{
+      id: 'private-feed',
+      canonicalProductId: 'fa_prod_private',
+      cat: 'fridge',
+      readableSpec: 'Top-mount fridge',
+      priorityScore: 12,
+      unavailable: false,
+      retailers: [{
+        n: 'The Good Guys',
+        url: 'https://www.thegoodguys.com.au/example',
+        source: 'retailer-observation:affiliate_feed',
+        feed_title: 'Private title',
+      }],
+      retailLifecycle: {
+        lifecycleState: 'CURRENT_RETAIL',
+        authorizingObservation: { sourceType: 'affiliate_feed' },
+        latestObservations: [{ sourceType: 'affiliate_feed' }],
+      },
+      lifecycleVisibility: 'CURRENT_OUTPUT',
+    }],
+  };
+
+  await publishRuntimeProjection({ root, catalog, logger: { log() {} } });
+  for (const relativePath of ['appliances.json', 'fridges.json']) {
+    const published = JSON.parse(await fs.readFile(path.join(root, 'public/data', relativePath)));
+    assert.deepEqual(published.products[0].retailers, []);
+    assert.equal(published.products[0].unavailable, true);
+    assert.equal(Object.hasOwn(published.products[0], 'retailLifecycle'), false);
+    assert.doesNotMatch(JSON.stringify(published), /affiliate_feed|feed_title|Private title/);
+  }
+});
+
 test('publisher rejects a projection that dropped deterministic display metadata', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fit-publish-metadata-'));
   const catalog = {

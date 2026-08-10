@@ -12,6 +12,10 @@ import {
   validateRetailerObservationLedger,
 } from './retailer-observation-ledger.mjs';
 import { validateOfficialMarketLifecycle } from './official-market-lifecycle.mjs';
+import {
+  assertNoPrivateRetailerFeedPublication,
+  sanitizePrivateRetailerFeedPublication,
+} from './public-projection.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
 const PRIORITY_BY_LIFECYCLE = Object.freeze({
@@ -750,7 +754,7 @@ export function buildRetailLifecycleNeutralSafetyPublication({
     if (String(candidate?.id ?? '') !== String(baseline?.id ?? '')) {
       throw new Error('lifecycle-neutral safety release contains non-whitelisted product order changes');
     }
-    const expected = structuredClone(baseline);
+    const expected = sanitizePrivateRetailerFeedPublication(baseline);
     if (canonicalSha256(baseline?.door_swing_mm ?? null)
       !== canonicalSha256(candidate?.door_swing_mm ?? null)) {
       if (candidate?.door_swing_mm !== null
@@ -786,6 +790,8 @@ export function buildRetailLifecycleNeutralSafetyPublication({
       changedProductIds.push(String(baseline.id));
     }
   }
+
+  assertNoPrivateRetailerFeedPublication(candidatePublicProjection);
 
   return freezeDeep({
     publicProjection: structuredClone(candidatePublicProjection),

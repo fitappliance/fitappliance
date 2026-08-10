@@ -8,6 +8,12 @@ function required(value, label) {
   return result;
 }
 
+function sha256(value, label) {
+  const result = required(value, label).toLowerCase();
+  if (!SHA256.test(result)) throw new TypeError(`${label} must be a SHA-256`);
+  return result;
+}
+
 function timestamp(value, label) {
   const parsed = new Date(required(value, label));
   if (Number.isNaN(parsed.valueOf())) throw new TypeError(`${label} must be an ISO timestamp`);
@@ -39,8 +45,19 @@ export function advanceRetailLifecycleShadowEpoch({
   releasePolicy,
   retailerLedger,
   officialIdentityEvidence = null,
+  sourcePolicySha256,
+  baselinePublicProjectionSha256,
+  expectedLegacyCurrentProducts,
 }) {
   const policy = validatePolicy(releasePolicy);
+  const normalizedSourcePolicySha256 = sha256(sourcePolicySha256, 'source policy SHA-256');
+  const normalizedBaselineSha256 = sha256(
+    baselinePublicProjectionSha256,
+    'baseline public projection SHA-256',
+  );
+  if (!Number.isInteger(expectedLegacyCurrentProducts) || expectedLegacyCurrentProducts < 0) {
+    throw new TypeError('legacy-current population must be a non-negative integer');
+  }
   if (!retailerLedger || retailerLedger.schemaVersion !== 2
     || !Array.isArray(retailerLedger.observations)
     || !Array.isArray(retailerLedger.collectionAttempts)
@@ -71,13 +88,18 @@ export function advanceRetailLifecycleShadowEpoch({
     .update([
       retailerLedger.semanticSha256,
       ...(officialSemanticSha256 ? [officialSemanticSha256] : []),
+      normalizedSourcePolicySha256,
+      normalizedBaselineSha256,
       latest,
     ].join('\0'))
     .digest('hex')
     .slice(0, 12);
   const sourceLabel = officialSemanticSha256 ? 'inputs' : 'ledger';
   const releaseEpoch = `retail-lifecycle-shadow-${latest.slice(0, 10)}-${sourceLabel}-${suffix}`;
-  if (latest === current && policy.releaseEpoch === releaseEpoch) {
+  if (latest === current
+    && policy.releaseEpoch === releaseEpoch
+    && policy.cutoverRequirements.expectedLegacyCurrentProducts
+      === expectedLegacyCurrentProducts) {
     return Object.freeze({ changed: false, policy: structuredClone(policy) });
   }
   return Object.freeze({
@@ -86,6 +108,10 @@ export function advanceRetailLifecycleShadowEpoch({
       ...structuredClone(policy),
       releaseEpoch,
       asOf: latest,
+      cutoverRequirements: {
+        ...structuredClone(policy.cutoverRequirements),
+        expectedLegacyCurrentProducts,
+      },
     },
   });
 }

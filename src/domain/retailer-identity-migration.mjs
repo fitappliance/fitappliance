@@ -58,6 +58,24 @@ function identityKey(category, brand, model) {
   return `${category}\0${registryBrandKey(brand)}\0${registryModelKey(model)}`;
 }
 
+function projectionIdentityInventory(publicProjection, label) {
+  if (!publicProjection || !Array.isArray(publicProjection.products)) {
+    throw new TypeError(`${label} products required`);
+  }
+  const inventory = publicProjection.products.map((product) => ({
+    legacyRuntimeId: required(product?.id, `${label} legacy runtime ID`).toLowerCase(),
+    canonicalProductId: required(product?.canonicalProductId, `${label} canonical product ID`),
+    category: required(product?.cat, `${label} category`),
+    brand: required(product?.brand, `${label} brand`),
+    model: required(product?.model, `${label} model`),
+  })).sort((left, right) => left.legacyRuntimeId.localeCompare(right.legacyRuntimeId));
+  if (new Set(inventory.map((row) => row.legacyRuntimeId)).size !== inventory.length
+    || new Set(inventory.map((row) => row.canonicalProductId)).size !== inventory.length) {
+    throw new TypeError(`${label} identities must be unique`);
+  }
+  return inventory;
+}
+
 function countBy(items, selector) {
   const result = {};
   for (const item of items) {
@@ -285,6 +303,50 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
   return freezeDeep(validateRetailerIdentityMigration(document));
 }
 
+export function rebindRetailerIdentityMigrationProjection({
+  existingMigration,
+  priorPublicProjection,
+  nextPublicProjection,
+}) {
+  validateRetailerIdentityMigration(existingMigration);
+  const priorProjectionSha256 = canonicalSha256(priorPublicProjection);
+  if (priorProjectionSha256
+    !== existingMigration.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('identity migration prior public projection binding drift');
+  }
+  const priorInventory = projectionIdentityInventory(priorPublicProjection, 'prior public projection');
+  const nextInventory = projectionIdentityInventory(nextPublicProjection, 'next public projection');
+  if (!sameCanonical(priorInventory, nextInventory)) {
+    throw new Error('identity migration projection identity inventory drift');
+  }
+  const nextProjectionSha256 = canonicalSha256(nextPublicProjection);
+  if (nextProjectionSha256 === priorProjectionSha256) {
+    return freezeDeep(structuredClone(existingMigration));
+  }
+  const inventorySha256 = canonicalSha256(nextInventory);
+  const document = structuredClone(existingMigration);
+  document.sourceBindings = {
+    ...document.sourceBindings,
+    publicProjectionSemanticSha256: nextProjectionSha256,
+    predecessorMigrationSemanticSha256: existingMigration.semanticSha256,
+    projectionRebinds: [
+      ...(document.sourceBindings.projectionRebinds ?? []),
+      {
+        predecessorMigrationSemanticSha256: existingMigration.semanticSha256,
+        priorPublicProjectionSemanticSha256: priorProjectionSha256,
+        nextPublicProjectionSemanticSha256: nextProjectionSha256,
+        identityInventorySha256: inventorySha256,
+      },
+    ],
+  };
+  delete document.migrationId;
+  delete document.semanticSha256;
+  const semantic = canonicalSha256(document);
+  document.migrationId = `retailer_identity_migration_${semantic.slice(0, 24)}`;
+  document.semanticSha256 = semantic;
+  return freezeDeep(validateRetailerIdentityMigration(document));
+}
+
 function resolutionEpochsFromMigration(migration) {
   if (migration.schemaVersion >= 4) {
     return structuredClone(migration.sourceBindings.resolutionEpochs);
@@ -458,6 +520,34 @@ export function validateRetailerIdentityMigration(document) {
         document.sourceBindings.predecessorMigrationSemanticSha256,
         'identity migration predecessor semantic SHA-256',
       );
+    }
+    const projectionRebinds = document.sourceBindings.projectionRebinds ?? [];
+    if (!Array.isArray(projectionRebinds)) {
+      throw new TypeError('identity migration projection rebinds must be an array');
+    }
+    for (let index = 0; index < projectionRebinds.length; index += 1) {
+      const rebind = projectionRebinds[index];
+      hash(
+        rebind.predecessorMigrationSemanticSha256,
+        'identity migration rebind predecessor SHA-256',
+      );
+      const prior = hash(
+        rebind.priorPublicProjectionSemanticSha256,
+        'identity migration rebind prior projection SHA-256',
+      );
+      const next = hash(
+        rebind.nextPublicProjectionSemanticSha256,
+        'identity migration rebind next projection SHA-256',
+      );
+      hash(rebind.identityInventorySha256, 'identity migration rebind inventory SHA-256');
+      if (index > 0
+        && prior !== projectionRebinds[index - 1].nextPublicProjectionSemanticSha256) {
+        throw new TypeError('identity migration projection rebind chain drift');
+      }
+      if (index === projectionRebinds.length - 1
+        && next !== document.sourceBindings.publicProjectionSemanticSha256) {
+        throw new TypeError('identity migration projection rebind terminal drift');
+      }
     }
   } else {
     required(document.sourceBindings?.resolutionId, 'identity migration resolution ID');

@@ -31,8 +31,22 @@ const officialEvidence = {
   acquiredAt: '2026-07-20T20:00:00.000Z',
 };
 
+const sourcePolicySha256 = 'c'.repeat(64);
+const baselinePublicProjectionSha256 = 'd'.repeat(64);
+
+function advance(input = {}) {
+  return advanceRetailLifecycleShadowEpoch({
+    releasePolicy: policy,
+    retailerLedger: ledger,
+    sourcePolicySha256,
+    baselinePublicProjectionSha256,
+    expectedLegacyCurrentProducts: 1384,
+    ...input,
+  });
+}
+
 test('shadow epoch advances to the latest ledger event without authorizing cutover', () => {
-  const result = advanceRetailLifecycleShadowEpoch({ releasePolicy: policy, retailerLedger: ledger });
+  const result = advance();
   assert.equal(result.changed, true);
   assert.equal(result.policy.asOf, '2026-07-20T19:43:11.969Z');
   assert.equal(result.policy.mode, 'SHADOW_ONLY');
@@ -41,10 +55,9 @@ test('shadow epoch advances to the latest ledger event without authorizing cutov
 });
 
 test('shadow epoch advancement is idempotent and never moves time backwards', () => {
-  const first = advanceRetailLifecycleShadowEpoch({ releasePolicy: policy, retailerLedger: ledger });
-  const repeated = advanceRetailLifecycleShadowEpoch({
+  const first = advance();
+  const repeated = advance({
     releasePolicy: first.policy,
-    retailerLedger: ledger,
   });
   assert.equal(repeated.changed, false);
   assert.deepEqual(repeated.policy, first.policy);
@@ -52,25 +65,22 @@ test('shadow epoch advancement is idempotent and never moves time backwards', ()
   const older = structuredClone(ledger);
   older.observations[0].observedAt = '2026-07-19T00:00:00.000Z';
   older.collectionAttempts[0].observedAt = '2026-07-19T00:00:00.000Z';
-  assert.throws(() => advanceRetailLifecycleShadowEpoch({
-    releasePolicy: policy,
+  assert.throws(() => advance({
     retailerLedger: older,
   }), /precedes current release asOf/i);
 });
 
 test('shadow epoch rejects malformed ledgers and non-shadow release policy', () => {
-  assert.throws(() => advanceRetailLifecycleShadowEpoch({
-    releasePolicy: { ...policy, mode: 'CUTOVER' }, retailerLedger: ledger,
+  assert.throws(() => advance({
+    releasePolicy: { ...policy, mode: 'CUTOVER' },
   }), /SHADOW_ONLY/i);
-  assert.throws(() => advanceRetailLifecycleShadowEpoch({
-    releasePolicy: policy, retailerLedger: { ...ledger, collectionAttempts: [] },
+  assert.throws(() => advance({
+    retailerLedger: { ...ledger, collectionAttempts: [] },
   }), /ledger events required/i);
 });
 
 test('shadow epoch advances across both retailer and official-market evidence', () => {
-  const result = advanceRetailLifecycleShadowEpoch({
-    releasePolicy: policy,
-    retailerLedger: ledger,
+  const result = advance({
     officialIdentityEvidence: officialEvidence,
   });
   assert.equal(result.changed, true);
@@ -78,23 +88,51 @@ test('shadow epoch advances across both retailer and official-market evidence', 
   assert.match(result.policy.releaseEpoch, /^retail-lifecycle-shadow-2026-07-20-inputs-[a-f0-9]{12}$/);
 
   const changedEvidence = { ...officialEvidence, semanticSha256: 'c'.repeat(64) };
-  const rebound = advanceRetailLifecycleShadowEpoch({
-    releasePolicy: policy,
-    retailerLedger: ledger,
+  const rebound = advance({
     officialIdentityEvidence: changedEvidence,
   });
   assert.notEqual(rebound.policy.releaseEpoch, result.policy.releaseEpoch);
 });
 
 test('shadow epoch rejects malformed or future-inconsistent official evidence', () => {
+  assert.throws(() => advance({
+    officialIdentityEvidence: { ...officialEvidence, semanticSha256: 'bad' },
+  }), /official identity evidence/i);
+  assert.throws(() => advance({
+    releasePolicy: { ...policy, asOf: '2026-07-21T00:00:00.000Z' },
+    officialIdentityEvidence: officialEvidence,
+  }), /precedes current release asOf/i);
+});
+
+test('shadow epoch binds source policy and the cleaned baseline population', () => {
+  const cleaned = advance({
+    expectedLegacyCurrentProducts: 1348,
+  });
+  assert.equal(
+    cleaned.policy.cutoverRequirements.expectedLegacyCurrentProducts,
+    1348,
+  );
+
+  const changedRights = advance({
+    sourcePolicySha256: 'e'.repeat(64),
+    expectedLegacyCurrentProducts: 1348,
+  });
+  assert.notEqual(changedRights.policy.releaseEpoch, cleaned.policy.releaseEpoch);
+
+  const changedBaseline = advance({
+    baselinePublicProjectionSha256: 'f'.repeat(64),
+    expectedLegacyCurrentProducts: 1348,
+  });
+  assert.notEqual(changedBaseline.policy.releaseEpoch, cleaned.policy.releaseEpoch);
+});
+
+test('shadow epoch fails closed without source-policy and baseline bindings', () => {
   assert.throws(() => advanceRetailLifecycleShadowEpoch({
     releasePolicy: policy,
     retailerLedger: ledger,
-    officialIdentityEvidence: { ...officialEvidence, semanticSha256: 'bad' },
-  }), /official identity evidence/i);
-  assert.throws(() => advanceRetailLifecycleShadowEpoch({
-    releasePolicy: { ...policy, asOf: '2026-07-21T00:00:00.000Z' },
-    retailerLedger: ledger,
-    officialIdentityEvidence: officialEvidence,
-  }), /precedes current release asOf/i);
+    expectedLegacyCurrentProducts: 1384,
+  }), /source policy SHA-256/i);
+  assert.throws(() => advance({
+    expectedLegacyCurrentProducts: -1,
+  }), /legacy-current population/i);
 });

@@ -9,6 +9,7 @@ import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-path
 import {
   applyRetailerIdentityMigrationToLedger,
   buildRetailerIdentityMigration,
+  rebindRetailerIdentityMigrationProjection,
   rollForwardRetailerIdentityMigration,
   validateRetailerIdentityMigration,
 } from '../../src/domain/retailer-identity-migration.mjs';
@@ -47,24 +48,37 @@ async function atomicJson(path, value) {
   await rename(temporary, path);
 }
 
-function existingMigrationForCurrentEpoch({ existing, resolution, publicProjection, ledger }) {
-  validateRetailerIdentityMigration(existing);
-  if (existing.sourceBindings.publicProjectionSemanticSha256 !== canonicalSha256(publicProjection)) {
-    throw new Error('retailer identity migration public projection epoch drift');
+function existingMigrationForCurrentEpoch({
+  existing,
+  resolution,
+  publicProjection,
+  ledger,
+  priorPublicProjection,
+}) {
+  let migration = validateRetailerIdentityMigration(existing);
+  if (migration.sourceBindings.publicProjectionSemanticSha256 !== canonicalSha256(publicProjection)) {
+    if (!priorPublicProjection) {
+      throw new Error('retailer identity migration public projection epoch drift');
+    }
+    migration = rebindRetailerIdentityMigrationProjection({
+      existingMigration: migration,
+      priorPublicProjection,
+      nextPublicProjection: publicProjection,
+    });
   }
-  const existingResolutionSemantics = existing.schemaVersion >= 4
-    ? existing.sourceBindings.resolutionEpochs.map((epoch) => epoch.semanticSha256)
-    : [existing.sourceBindings.resolutionSemanticSha256];
+  const existingResolutionSemantics = migration.schemaVersion >= 4
+    ? migration.sourceBindings.resolutionEpochs.map((epoch) => epoch.semanticSha256)
+    : [migration.sourceBindings.resolutionSemanticSha256];
   if (existingResolutionSemantics.includes(resolution.semanticSha256)) {
-    if (ledger.semanticSha256 === existing.sourceBindings.retailerLedgerSemanticSha256) return existing;
-    const replayed = applyRetailerIdentityMigrationToLedger({ ledger, migration: existing });
+    if (ledger.semanticSha256 === migration.sourceBindings.retailerLedgerSemanticSha256) return migration;
+    const replayed = applyRetailerIdentityMigrationToLedger({ ledger, migration });
     if (replayed.semanticSha256 !== ledger.semanticSha256) {
       throw new Error('retailer identity migration ledger is neither the frozen baseline nor a complete replay');
     }
-    return existing;
+    return migration;
   }
   return rollForwardRetailerIdentityMigration({
-    existingMigration: existing,
+    existingMigration: migration,
     resolution,
     publicProjection,
     ledger,
@@ -77,15 +91,23 @@ export async function buildRetailerIdentityMigrationFromRepository({
   resolutionInput = resolveArchitectureV2Path(root, 'retailerIdentityResolutions'),
   publicProjectionInput = resolveArchitectureV2Path(root, 'publicProjection'),
   ledgerInput = resolveArchitectureV2Path(root, 'retailerObservations'),
+  priorPublicProjectionInput = null,
 } = {}) {
-  const [resolution, publicProjection, ledger, existing] = await Promise.all([
+  const [resolution, publicProjection, ledger, existing, priorPublicProjection] = await Promise.all([
     readJson(resolutionInput),
     readJson(publicProjectionInput),
     readJson(ledgerInput),
     readOptionalJson(output),
+    priorPublicProjectionInput ? readJson(priorPublicProjectionInput) : null,
   ]);
   const migration = existing
-    ? existingMigrationForCurrentEpoch({ existing, resolution, publicProjection, ledger })
+    ? existingMigrationForCurrentEpoch({
+      existing,
+      resolution,
+      publicProjection,
+      ledger,
+      priorPublicProjection,
+    })
     : buildRetailerIdentityMigration({ resolution, publicProjection, ledger });
   if (!existing || existing.semanticSha256 !== migration.semanticSha256) {
     await atomicJson(output, migration);
@@ -102,7 +124,14 @@ function option(args, name) {
 }
 
 export async function runCli(args = process.argv.slice(2)) {
-  const supported = new Set(['--root', '--output', '--resolution', '--projection', '--ledger']);
+  const supported = new Set([
+    '--root',
+    '--output',
+    '--resolution',
+    '--projection',
+    '--ledger',
+    '--prior-projection',
+  ]);
   for (let index = 0; index < args.length; index += 2) {
     if (!supported.has(args[index])) throw new TypeError(`unknown argument: ${args[index]}`);
   }
@@ -118,6 +147,9 @@ export async function runCli(args = process.argv.slice(2)) {
       ?? resolveArchitectureV2Path(root, 'publicProjection')),
     ledgerInput: resolve(option(args, '--ledger')
       ?? resolveArchitectureV2Path(root, 'retailerObservations')),
+    priorPublicProjectionInput: option(args, '--prior-projection')
+      ? resolve(option(args, '--prior-projection'))
+      : null,
   });
   process.stdout.write(`${JSON.stringify({
     output,

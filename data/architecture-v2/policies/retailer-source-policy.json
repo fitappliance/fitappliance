@@ -98,14 +98,14 @@
       ],
       "sourceType": "affiliate_feed",
       "collectionMode": "partnerize_feed_only",
-      "termsReviewState": "collection_blocked",
+      "termsReviewState": "reviewed_private_campaign_use",
       "robotsHttpStatus": 200,
       "robotsSha256": "0d73e51be2ca9f07ede19daa5e5b9ccb0de5ab2ac4663ff4e30910a3b3135735",
       "minimumIntervalMs": 1000,
       "expectedCadenceHours": 24,
       "maximumCurrentAgeHours": 72,
-      "legacyLinkAction": "FEED_RIGHTS_REVIEW_BLOCKED",
-      "notes": "Authenticated Partnerize access and campaign terms permit affiliate links and bounded licensed-material use, but do not expressly authorize caching and public redistribution of the full product feed. Acquisition, refresh and publication remain blocked until written permission defines display, storage, update, attribution and withdrawal scope."
+      "legacyLinkAction": "PRIVATE_EVIDENCE_ONLY",
+      "notes": "Owner direction limits the authenticated Partnerize feed to private evidence and internal research. Raw bytes and feed-derived fields stay outside Git and public output. The source cannot authorize public lifecycle, Fit, catalogue, page, price, stock or retailer-link publication."
     }
   ]
 }

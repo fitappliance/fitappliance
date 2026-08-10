@@ -255,7 +255,7 @@ export function buildProductionReplaySpecs({ repoRoot, inventory }) {
     toolEntryPaths,
     inputPaths,
     fontPaths: [],
-    dependencyIds: ['FIRST_PARTY', 'RETAILER_FEED'],
+    dependencyIds: ['FIRST_PARTY'],
   });
 
   return [
@@ -263,10 +263,10 @@ export function buildProductionReplaySpecs({ repoRoot, inventory }) {
       id: 'active-catalog-projection',
       outputPaths: ['public/data/appliances.json', 'public/data/catalog-projection.json'],
       producerPath: 'scripts/architecture-v2/publish-active-retail-release.mjs',
-      toolEntryPaths: [],
+      toolEntryPaths: ['src/domain/public-projection.mjs'],
       inputPaths: releaseInputs,
       fontPaths: [],
-      dependencyIds: ['FIRST_PARTY', 'RETAILER_FEED'],
+      dependencyIds: ['FIRST_PARTY'],
     },
     {
       id: 'split-catalog',

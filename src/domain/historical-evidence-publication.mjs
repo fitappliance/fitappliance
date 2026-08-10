@@ -235,7 +235,13 @@ function effectiveLifecycleState(entry, product, lifecycleMode) {
     return entry.lifecycleState;
   }
 
-  if (lifecycleMode === 'LEGACY_BASELINE') return entry.lifecycleState;
+  if (lifecycleMode === 'LEGACY_BASELINE') {
+    if (entry.lifecycleState === 'CURRENT_RETAIL'
+      && !isLegacyBaselineCurrentProduct(product)) {
+      return 'UNKNOWN_RETAIL';
+    }
+    return entry.lifecycleState;
+  }
 
   const productId = text(product.canonicalProductId);
   const entryProductId = text(entry.canonicalProductId);

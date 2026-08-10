@@ -8,6 +8,100 @@ const CATEGORY_MARKERS = Object.freeze({
   washtower_combo: 'WT',
 });
 
+const PRIVATE_RETAILER_FEED_KEYS = new Set([
+  'affiliate_campaign',
+  'affiliate_network',
+  'affiliate_url',
+  'camref',
+  'commission_cookie_days',
+  'commission_eligible',
+  'commission_model',
+  'commission_rate_percent',
+  'commission_terms_observed_at',
+  'feed_model',
+  'feed_title',
+  'pubref',
+  'retailer_dimension_hint',
+  'retailer_dimension_hint_catalog_delta_mm',
+  'retailer_dimension_hint_review_required',
+  'retailer_dimension_hint_source_text',
+  'tgg_sku',
+  'tracking_verified_at',
+]);
+
+function isPrivateRetailerFeedMarker(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const source = String(value.source ?? '').trim().toLowerCase();
+  return String(value.sourceType ?? '').trim().toLowerCase() === 'affiliate_feed'
+    || String(value.adapterId ?? '').trim() === 'the-good-guys-partnerize-feed-v1'
+    || String(value.affiliate_network ?? '').trim().toLowerCase() === 'partnerize'
+    || ['affiliate_feed', 'affiliate-feed', 'partnerize-feed', 'retailer-observation:affiliate_feed']
+      .includes(source);
+}
+
+function containsPrivateRetailerFeedMarker(value) {
+  if (isPrivateRetailerFeedMarker(value)) return true;
+  if (Array.isArray(value)) return value.some(containsPrivateRetailerFeedMarker);
+  return Boolean(value && typeof value === 'object'
+    && Object.values(value).some(containsPrivateRetailerFeedMarker));
+}
+
+function stripPrivateRetailerFeedKeys(value) {
+  if (Array.isArray(value)) return value.map(stripPrivateRetailerFeedKeys);
+  if (!value || typeof value !== 'object') return value;
+  return Object.fromEntries(Object.entries(value)
+    .filter(([key]) => !PRIVATE_RETAILER_FEED_KEYS.has(key))
+    .map(([key, child]) => [key, stripPrivateRetailerFeedKeys(child)]));
+}
+
+export function sanitizePrivateRetailerFeedPublication(value) {
+  if (!value || typeof value !== 'object') return value;
+  if (Array.isArray(value.products)) {
+    return {
+      ...stripPrivateRetailerFeedKeys(value),
+      products: value.products.map(sanitizePrivateRetailerFeedPublication),
+    };
+  }
+
+  const privateLifecycle = containsPrivateRetailerFeedMarker(value.retailLifecycle);
+  const sourceRetailers = Array.isArray(value.retailers) ? value.retailers : [];
+  const retailers = sourceRetailers
+    .filter((row) => !containsPrivateRetailerFeedMarker(row))
+    .map(stripPrivateRetailerFeedKeys);
+  const sanitized = stripPrivateRetailerFeedKeys(value);
+  sanitized.retailers = retailers;
+  if (privateLifecycle) {
+    delete sanitized.retailLifecycle;
+    delete sanitized.lifecycleVisibility;
+    sanitized.price = null;
+    sanitized.unavailable = true;
+  } else if (sourceRetailers.length > 0 && retailers.length === 0) {
+    sanitized.unavailable = true;
+  }
+  return sanitized;
+}
+
+export function assertNoPrivateRetailerFeedPublication(value) {
+  const visit = (current, path = '$') => {
+    if (Array.isArray(current)) {
+      current.forEach((child, index) => visit(child, `${path}[${index}]`));
+      return;
+    }
+    if (!current || typeof current !== 'object') return;
+    if (isPrivateRetailerFeedMarker(current)) {
+      throw new Error(`private retailer feed marker reached public publication at ${path}`);
+    }
+    for (const [key, child] of Object.entries(current)) {
+      if (PRIVATE_RETAILER_FEED_KEYS.has(key)) {
+        throw new Error(`private retailer feed field reached public publication at ${path}.${key}`);
+      }
+      visit(child, `${path}.${key}`);
+    }
+  };
+  visit(value);
+  return true;
+}
+
 function integerInRange(value, minimum, maximum) {
   return Number.isInteger(value) && value >= minimum && value <= maximum ? value : null;
 }
@@ -46,6 +140,7 @@ function deriveDoorSwing(product, publicationLevel) {
 }
 
 export function normalizePublicProduct(product) {
+  product = sanitizePrivateRetailerFeedPublication(product);
   const retailers = Array.isArray(product?.retailers) ? product.retailers.map((row) => ({ ...row })) : [];
   const publicationLevel = classifyGeometryPublication(product);
   const sourceEvidence = product?.evidence && typeof product.evidence === 'object'
@@ -90,7 +185,7 @@ export function normalizePublicProduct(product) {
     : (product?.flags && typeof product.flags === 'object'
       ? { ...product.flags, reversible_door: null }
       : product?.flags);
-  return Object.freeze({
+  const result = {
     ...publicSource,
     ...(publicFlags ? { flags: publicFlags } : {}),
     ...(evidence ? { evidence } : {}),
@@ -108,7 +203,9 @@ export function normalizePublicProduct(product) {
     retailers,
     sponsored: product?.sponsored === true,
     unavailable: product?.unavailable === false && retailers.length > 0 ? false : true,
-  });
+  };
+  assertNoPrivateRetailerFeedPublication(result);
+  return Object.freeze(result);
 }
 
 export function buildPublicProjection(registry, catalog) {

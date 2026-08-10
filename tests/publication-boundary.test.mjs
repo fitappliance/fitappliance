@@ -16,6 +16,17 @@ async function createWorkspace(workflow) {
   return root;
 }
 
+const safeWorkflow = `name: Safe audit
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm test
+`;
+
 test('publication boundary rejects legacy sync and direct runtime publication to main', async () => {
   const root = await createWorkspace(`name: Unsafe publisher
 on: workflow_dispatch
@@ -132,6 +143,50 @@ jobs:
       command
     );
   }
+});
+
+test('publication boundary rejects private Partnerize data and stale retailer links in public artifacts', async () => {
+  const root = await createWorkspace(safeWorkflow);
+  await mkdir(path.join(root, 'public', 'data'), { recursive: true });
+  await mkdir(path.join(root, 'pages', 'products'), { recursive: true });
+  await writeFile(path.join(root, 'public', 'data', 'appliances.json'), JSON.stringify({
+    products: [{ id: 'safe', retailers: [] }],
+  }));
+  await writeFile(path.join(root, 'pages', 'products', 'leak.html'), `
+    <a href="https://prf.hn/click/camref:redacted">Buy</a>
+    <a href="https://www.thegoodguys.com.au/private-feed-product">The Good Guys</a>
+    <script type="application/ld+json">{"source":"partnerize-feed"}</script>
+  `);
+
+  const result = await auditPublicationBoundary({
+    repoRoot: root,
+    logger: { log() {}, error() {} },
+  });
+  assert.equal(result.exitCode, 1);
+  assert.deepEqual(
+    new Set(result.violations.map((violation) => violation.rule)),
+    new Set(['private-retailer-feed-marker', 'unbound-retailer-product-link']),
+  );
+});
+
+test('publication boundary permits a retailer URL only when the public catalog contains it', async () => {
+  const root = await createWorkspace(safeWorkflow);
+  const url = 'https://www.thegoodguys.com.au/publicly-authorized-product';
+  await mkdir(path.join(root, 'public', 'data'), { recursive: true });
+  await mkdir(path.join(root, 'pages', 'products'), { recursive: true });
+  await writeFile(path.join(root, 'public', 'data', 'appliances.json'), JSON.stringify({
+    products: [{ id: 'safe', retailers: [{ n: 'The Good Guys', url }] }],
+  }));
+  await writeFile(
+    path.join(root, 'pages', 'products', 'safe.html'),
+    `<a href="${url}">The Good Guys</a>`,
+  );
+
+  const result = await auditPublicationBoundary({
+    repoRoot: root,
+    logger: { log() {}, error() {} },
+  });
+  assert.equal(result.exitCode, 0, JSON.stringify(result.violations, null, 2));
 });
 
 test('repository workflows satisfy the publication boundary', async () => {

@@ -6,9 +6,117 @@ const { readdir, readFile } = require('node:fs/promises');
 
 const WORKFLOW_EXTENSIONS = new Set(['.yml', '.yaml']);
 const RUNTIME_ADD_PATTERN = /\bpublic\/data\b|\bpublic\/(?:sitemap\.xml|service-worker\.js|rss\.xml|image-sitemap\.xml)\b|\bpages\/(?:brands|compare|guides|location|products|cavity|doorway)\b/;
+const PUBLIC_ARTIFACT_ROOTS = [
+  ['public', 'data'],
+  ['pages', 'brands'],
+  ['pages', 'compare'],
+  ['pages', 'guides'],
+  ['pages', 'location'],
+  ['pages', 'products'],
+  ['pages', 'cavity'],
+  ['pages', 'doorway']
+];
+const PUBLIC_ARTIFACT_EXTENSIONS = new Set(['.html', '.json']);
+const PRIVATE_FEED_PATTERN = /prf\.hn\/click|feeds\.(?:performancehorizon|partnerize)\.com|retailer-observation:affiliate_feed|partnerize-feed|the-good-guys-partnerize-feed-v1|"sourceType"\s*:\s*"affiliate_feed"|"affiliate_network"\s*:\s*"partnerize"|"(?:affiliate_url|feed_title|feed_model|tgg_sku|camref|pubref)"\s*:/i;
+const TGG_URL_PATTERN = /https?:\/\/(?:www\.)?thegoodguys\.com\.au\/[^\s"'<>\\]+/gi;
 
 function violation(file, line, rule, message) {
   return { file, line, rule, message };
+}
+
+function lineForOffset(text, offset) {
+  return text.slice(0, offset).split(/\r?\n/).length;
+}
+
+function normalizeUrl(value) {
+  return String(value ?? '')
+    .replaceAll('&amp;', '&')
+    .replace(/[),.;]+$/, '')
+    .replace(/\/$/, '');
+}
+
+async function filesBelow(root) {
+  const files = [];
+  const visit = async (directory) => {
+    let entries;
+    try {
+      entries = await readdir(directory, { withFileTypes: true });
+    } catch (error) {
+      if (error.code === 'ENOENT') return;
+      throw error;
+    }
+    for (const entry of entries) {
+      const absolute = path.join(directory, entry.name);
+      if (entry.isDirectory()) await visit(absolute);
+      else if (entry.isFile() && PUBLIC_ARTIFACT_EXTENSIONS.has(path.extname(entry.name))) {
+        files.push(absolute);
+      }
+    }
+  };
+  await visit(root);
+  return files.sort();
+}
+
+async function authorizedTggUrls(repoRoot) {
+  const catalogPath = path.join(repoRoot, 'public', 'data', 'appliances.json');
+  let document;
+  try {
+    document = JSON.parse(await readFile(catalogPath, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') return new Set();
+    throw error;
+  }
+  const urls = new Set();
+  const visit = (value) => {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (value && typeof value === 'object') {
+      Object.values(value).forEach(visit);
+      return;
+    }
+    if (/^https?:\/\/(?:www\.)?thegoodguys\.com\.au\//i.test(String(value ?? ''))) {
+      urls.add(normalizeUrl(value));
+    }
+  };
+  visit(document);
+  return urls;
+}
+
+async function auditPublicArtifacts(repoRoot) {
+  const authorizedUrls = await authorizedTggUrls(repoRoot);
+  const files = [];
+  for (const segments of PUBLIC_ARTIFACT_ROOTS) {
+    files.push(...await filesBelow(path.join(repoRoot, ...segments)));
+  }
+  const violations = [];
+  for (const absolutePath of [...new Set(files)].sort()) {
+    const relativePath = path.relative(repoRoot, absolutePath).split(path.sep).join('/');
+    const text = await readFile(absolutePath, 'utf8');
+    const marker = PRIVATE_FEED_PATTERN.exec(text);
+    if (marker) {
+      violations.push(violation(
+        relativePath,
+        lineForOffset(text, marker.index),
+        'private-retailer-feed-marker',
+        'Private Partnerize feed data reached a public artifact.'
+      ));
+    }
+    const seenUrls = new Set();
+    for (const match of text.matchAll(TGG_URL_PATTERN)) {
+      const url = normalizeUrl(match[0]);
+      if (seenUrls.has(url) || authorizedUrls.has(url)) continue;
+      seenUrls.add(url);
+      violations.push(violation(
+        relativePath,
+        lineForOffset(text, match.index),
+        'unbound-retailer-product-link',
+        'The Good Guys product link is not present in the sanitized public catalog.'
+      ));
+    }
+  }
+  return { checkedFiles: [...new Set(files)].length, violations };
 }
 
 function auditWorkflow(relativePath, text) {
@@ -127,16 +235,19 @@ async function auditPublicationBoundary({ repoRoot = path.resolve(__dirname, '..
     violations.push(...auditWorkflow(relativePath, text));
   }
 
+  const artifactAudit = await auditPublicArtifacts(repoRoot);
+  violations.push(...artifactAudit.violations);
+
   if (violations.length > 0) {
     for (const row of violations) {
       logger.error(`${row.file}:${row.line} [${row.rule}] ${row.message}`);
     }
   } else {
-    logger.log(`[publication-boundary] checked ${workflowNames.length} workflows; no violations`);
+    logger.log(`[publication-boundary] checked ${workflowNames.length} workflows and ${artifactAudit.checkedFiles} public artifacts; no violations`);
   }
 
   return {
-    checkedFiles: workflowNames.length,
+    checkedFiles: workflowNames.length + artifactAudit.checkedFiles,
     violations,
     exitCode: violations.length > 0 ? 1 : 0
   };
@@ -157,6 +268,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  auditPublicArtifacts,
   auditPublicationBoundary,
   auditWorkflow
 };

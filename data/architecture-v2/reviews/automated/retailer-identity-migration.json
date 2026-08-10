@@ -41,9 +41,17 @@
         }
       }
     ],
-    "publicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+    "publicProjectionSemanticSha256": "fd7fc1c8828d1b2707067d148da2caa1cb46911e0f50397e0f1486949fa941c1",
     "retailerLedgerSemanticSha256": "02c289d4ec3996e3730c961224c0e5ebcbd58c7c61f59f86add16f50e992efcc",
-    "predecessorMigrationSemanticSha256": "66d56bf4f5840ed79d8c6af7c6566595594abe1af6458398d3ea4f69c9368a9f"
+    "predecessorMigrationSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+    "projectionRebinds": [
+      {
+        "predecessorMigrationSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+        "priorPublicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+        "nextPublicProjectionSemanticSha256": "fd7fc1c8828d1b2707067d148da2caa1cb46911e0f50397e0f1486949fa941c1",
+        "identityInventorySha256": "ae7e8c9892b58f56a7674d52f53ec989f8a75428a7ebf8e77f4089cb52625733"
+      }
+    ]
   },
   "sourceResolutionSummary": {
     "cases": 18,
@@ -1023,6 +1031,6 @@
       "REASSIGN_TO_EXISTING_CANONICAL": 7
     }
   },
-  "migrationId": "retailer_identity_migration_834f0021c83facefd7b341f4",
-  "semanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+  "migrationId": "retailer_identity_migration_c2d0541757cf48bbb16f977f",
+  "semanticSha256": "c2d0541757cf48bbb16f977fdba2de32c26ab7a6777a30a4ae79373335829708"
 }

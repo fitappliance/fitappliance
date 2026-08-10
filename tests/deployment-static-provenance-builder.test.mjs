@@ -115,6 +115,34 @@ test('production replay specs include reproduced guides, product index, and vend
   assert.deepEqual(specs.find((row) => row.id === 'vendored-fit-engine').outputPaths, ['public/scripts/fit-engine.js']);
 });
 
+test('production replay specs bind the public sanitizer and never authorize the private retailer feed', () => {
+  const { repoRoot } = fixture();
+  write(repoRoot, 'data/architecture-v2/decisions/active-retail-release.json', JSON.stringify({
+    artifacts: {
+      publicProjection: { path: 'data/release/catalog.json' },
+      historicalReference: { path: 'data/release/reference.json' },
+      authorizationManifest: { path: 'data/release/authorization.json' },
+    },
+  }));
+  for (const relativePath of [
+    'data/release/catalog.json',
+    'data/release/reference.json',
+    'data/release/authorization.json',
+  ]) write(repoRoot, relativePath, '{}\n');
+  git(repoRoot, ['add', '.']);
+  git(repoRoot, ['commit', '-qm', 'production source boundary']);
+
+  const specs = buildProductionReplaySpecs({
+    repoRoot,
+    inventory: buildStaticSourceInventory({ repoRoot }),
+  });
+  const activeCatalog = specs.find((row) => row.id === 'active-catalog-projection');
+
+  assert.ok(activeCatalog.toolEntryPaths.includes('src/domain/public-projection.mjs'));
+  assert.deepEqual(activeCatalog.dependencyIds, ['FIRST_PARTY']);
+  assert.equal(specs.some((row) => row.dependencyIds.includes('RETAILER_FEED')), false);
+});
+
 test('replay builder fails closed on output drift and duplicate output claims', () => {
   const { repoRoot, replayRoot } = fixture();
   const inventory = buildStaticSourceInventory({ repoRoot });

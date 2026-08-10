@@ -7,10 +7,16 @@ const { splitAppliances } = require('../split-appliances.js');
 
 async function publishRuntimeProjection({ root, catalog, logger = console }) {
   if (!catalog || !Array.isArray(catalog.products)) throw new TypeError('canonical projection products required');
-  if (catalog.products.some((row) => !String(row.canonicalProductId || '').startsWith('fa_prod_'))) {
+  const {
+    assertNoPrivateRetailerFeedPublication,
+    sanitizePrivateRetailerFeedPublication,
+  } = await import('../../src/domain/public-projection.mjs');
+  const publicCatalog = sanitizePrivateRetailerFeedPublication(catalog);
+  assertNoPrivateRetailerFeedPublication(publicCatalog);
+  if (publicCatalog.products.some((row) => !String(row.canonicalProductId || '').startsWith('fa_prod_'))) {
     throw new TypeError('V2 runtime projection contains a product without canonical ID');
   }
-  if (catalog.products.some((row) => (
+  if (publicCatalog.products.some((row) => (
     !String(row.readableSpec ?? '').trim()
     || !Number.isFinite(row.priorityScore)
   ))) {
@@ -18,15 +24,15 @@ async function publishRuntimeProjection({ root, catalog, logger = console }) {
   }
   const dataDir = path.join(root, 'public', 'data');
   await fs.mkdir(dataDir, { recursive: true });
-  await fs.writeFile(path.join(dataDir, 'appliances.json'), JSON.stringify(catalog));
+  await fs.writeFile(path.join(dataDir, 'appliances.json'), JSON.stringify(publicCatalog));
   await splitAppliances({ dataDir, logger });
   const marker = {
     schemaVersion: 2, activeProjection: 'v2',
-    productCount: catalog.products.length, sourceLastUpdated: catalog.last_updated ?? null
+    productCount: publicCatalog.products.length, sourceLastUpdated: publicCatalog.last_updated ?? null
   };
   await fs.writeFile(path.join(dataDir, 'catalog-projection.json'), `${JSON.stringify(marker)}\n`);
-  logger.log(`[catalog-projection] published v2 with ${catalog.products.length} products`);
-  return Object.freeze({ projection: 'v2', productCount: catalog.products.length });
+  logger.log(`[catalog-projection] published v2 with ${publicCatalog.products.length} products`);
+  return Object.freeze({ projection: 'v2', productCount: publicCatalog.products.length });
 }
 
 async function main() {

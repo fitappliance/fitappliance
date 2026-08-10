@@ -409,6 +409,28 @@ test('a shadow-only release routes receipts from the frozen legacy baseline with
   );
 });
 
+test('a shadow-only release demotes a stale current receipt after public source-rights removal', () => {
+  const product = wdProduct('CURRENT_RETAIL');
+  product.unavailable = true;
+  product.retailers = [];
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: currentBundle,
+    products: [product],
+    lifecycleMode: 'LEGACY_BASELINE',
+  });
+
+  assert.equal(publication.currentAcceptanceByLegacyId.size, 0);
+  assert.equal(
+    publication.historicalEvidenceProjection.records[0].lifecycleState,
+    'UNKNOWN_RETAIL',
+  );
+  assert.deepEqual(
+    publication.historicalEvidenceProjection.records[0].dimensionsMm,
+    { width: 600, height: 850, depth: 645 },
+  );
+});
+
 test('publication rejects an unknown lifecycle epoch instead of guessing a mixed mode', () => {
   assert.throws(() => buildHistoricalEvidencePublication({
     bundle: currentBundle,
