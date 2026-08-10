@@ -281,6 +281,56 @@ test('classification is conservative and generated families inherit first-party 
   assert.deepEqual(result.rows.find((row) => row.path === 'public/mystery.bin').blockers, ['MISSING_DEPENDENCY_CLASSIFICATION', 'UNKNOWN_SOURCE_CLASS']);
 });
 
+test('sanitizer-bound catalog provenance removes the private-feed fallback only from its receipt chain', () => {
+  const repoRoot = initRepo({
+    'public/data/appliances.json': '{"products":[]}\n',
+    'pages/products/widget.html': 'widget\n',
+  });
+  const inventory = buildStaticSourceInventory({ repoRoot });
+  const catalog = inventory.rows.find((row) => row.path === 'public/data/appliances.json');
+  const productPage = inventory.rows.find((row) => row.path === 'pages/products/widget.html');
+  const catalogReceipt = buildGeneratedProvenanceReceipt({
+    outputPath: catalog.path,
+    outputSha256: catalog.sha256,
+    producer: { path: 'scripts/architecture-v2/publish-active-retail-release.mjs', sha256: HASH },
+    tools: [{ path: 'src/domain/public-projection.mjs', sha256: HASH }],
+    inputs: [],
+    dependencyIds: ['FIRST_PARTY'],
+  });
+  const pageReceipt = buildGeneratedProvenanceReceipt({
+    outputPath: productPage.path,
+    outputSha256: productPage.sha256,
+    producer: { path: 'scripts/generate-product-pages.js', sha256: HASH },
+    inputs: [{ path: catalog.path, sha256: catalog.sha256 }],
+    dependencyIds: ['FIRST_PARTY'],
+  });
+
+  const classified = classifyStaticSources({
+    inventory,
+    generatedProvenance: { schemaVersion: 1, receipts: [catalogReceipt, pageReceipt] },
+  });
+  for (const row of classified.rows) {
+    assert.deepEqual(row.dependencyIds, ['FIRST_PARTY']);
+    assert.deepEqual(row.blockers, []);
+  }
+
+  const unprovedCatalogReceipt = buildGeneratedProvenanceReceipt({
+    outputPath: catalog.path,
+    outputSha256: catalog.sha256,
+    producer: catalogReceipt.producer,
+    tools: [],
+    inputs: [],
+    dependencyIds: ['FIRST_PARTY'],
+  });
+  const unproved = classifyStaticSources({
+    inventory,
+    generatedProvenance: { schemaVersion: 1, receipts: [unprovedCatalogReceipt, pageReceipt] },
+  });
+  for (const row of unproved.rows) {
+    assert.deepEqual(row.dependencyIds, ['FIRST_PARTY', 'RETAILER_FEED']);
+  }
+});
+
 test('exact government reference provenance does not inherit the retailer-feed fallback', () => {
   const repoRoot = initRepo({
     'public/data/replacement-reference/fridges.json': '{"records":[]}\n',

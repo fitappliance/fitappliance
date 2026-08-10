@@ -359,6 +359,14 @@ function requiresGeneratedProvenance(relativePath, sourceClass = baseClassificat
     || GENERATED_FIRST_PARTY_PATHS.has(relativePath);
 }
 
+function isPrivateFeedSanitizerReceipt(receipt) {
+  return ['public/data/appliances.json', 'public/data/catalog-projection.json'].includes(receipt.outputPath)
+    && receipt.producer.path === 'scripts/architecture-v2/publish-active-retail-release.mjs'
+    && receipt.tools.some((tool) => tool.path === 'src/domain/public-projection.mjs')
+    && receipt.dependencyIds.includes('FIRST_PARTY')
+    && !receipt.dependencyIds.includes('RETAILER_FEED');
+}
+
 export function buildGeneratedProvenance({ inventory, existingProvenance = { schemaVersion: 1, receipts: [] } }) {
   validateGeneratedProvenance(existingProvenance);
   const receiptOutputs = new Set(existingProvenance.receipts.map((row) => row.outputPath));
@@ -381,6 +389,8 @@ export function classifyStaticSources({ inventory, generatedProvenance }) {
     const nextStack = new Set(stack).add(receipt.provenanceId);
     const dependencies = [...receipt.dependencyIds];
     const blockers = [];
+    const generatedRetailParents = [];
+    let privateFeedExcluded = isPrivateFeedSanitizerReceipt(receipt);
     for (const font of receipt.fonts) {
       if (font.path.toLowerCase().includes('outfit')) dependencies.push('OUTFIT_FONT');
     }
@@ -393,6 +403,9 @@ export function classifyStaticSources({ inventory, generatedProvenance }) {
         const parent = resolveReceiptDependencies(parentReceipt, nextStack);
         dependencies.push(...parent.dependencies);
         blockers.push(...parent.blockers);
+        if (baseClassification(input.path).sourceClass === 'GENERATED_RETAIL_PRESENTATION') {
+          generatedRetailParents.push(parent.privateFeedExcluded);
+        }
       } else {
         const inputClass = baseClassification(input.path);
         dependencies.push(...inputClass.dependencyIds);
@@ -401,7 +414,16 @@ export function classifyStaticSources({ inventory, generatedProvenance }) {
         }
       }
     }
-    const resolved = { dependencies: uniqueSorted(dependencies), blockers: uniqueSorted(blockers) };
+    if (!privateFeedExcluded && generatedRetailParents.length > 0
+      && generatedRetailParents.every(Boolean)
+      && !receipt.dependencyIds.includes('RETAILER_FEED')) {
+      privateFeedExcluded = true;
+    }
+    const resolved = {
+      dependencies: uniqueSorted(dependencies),
+      blockers: uniqueSorted(blockers),
+      privateFeedExcluded,
+    };
     resolvedByProvenanceId.set(receipt.provenanceId, resolved);
     return resolved;
   };
@@ -420,6 +442,9 @@ export function classifyStaticSources({ inventory, generatedProvenance }) {
         if (receipt.outputSha256 !== inventoryRow.sha256) fail('PROVENANCE_OUTPUT_DRIFT', `Generated output bytes changed: ${receipt.outputPath}`);
         provenanceIds.push(receipt.provenanceId);
         const inherited = resolveReceiptDependencies(receipt);
+        if (base.sourceClass === 'GENERATED_RETAIL_PRESENTATION' && inherited.privateFeedExcluded) {
+          dependencies = dependencies.filter((dependencyId) => dependencyId !== 'RETAILER_FEED');
+        }
         dependencies.push(...inherited.dependencies);
         blockers.push(...inherited.blockers);
       }
