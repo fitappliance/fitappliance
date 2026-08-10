@@ -2071,6 +2071,61 @@ activation.
   so no browser feed was accessed in this slice. Login state is not a B1
   dependency and must never be used to weaken the public-source gate.
 
+### WP0B-B1 pinned owner-attestation request checkpoint - 2026-08-11
+
+- The schema-1 candidate, hardened candidate v2, candidate v3 and owner request
+  v1 are superseded private audit history. None may be signed, promoted or used
+  as an authorization input. Candidate v3 and request v1 exposed three P1
+  design gaps found by the final `gpt-5.6-sol` max review: a caller could supply
+  a self-consistent substitute candidate, the owner root was not independently
+  pinned, and the owner signature covered only the FIRST_PARTY inventory tuple
+  rather than every release-affecting binding.
+- The replacement path now replays the unsigned candidate from the current
+  repository, public evidence manifest and withdrawal draft, then requires
+  exact canonical byte equality with the candidate presented for signing. A
+  tracked production trust anchor pins the owner root ID, Ed25519 public-key
+  fingerprint and PEM hash, owner metadata hash, trust-root hash and exact
+  authority-set enrollment hash. The trust anchor and both request/candidate
+  generators are bound by `deployment/toolchain-contract.json`.
+- Owner attestation schema 2 signs the exact candidate ID and byte hash,
+  authority-set ID and byte hash, inventory/scope/source-object hashes,
+  trust-anchor hash, toolchain/generator/route hashes, public evidence manifest
+  hash, withdrawal genesis hash and a maximum 24-hour issue/expiry window. A
+  signature cannot be reused after any of those values drift. Input reads reject
+  symlinked ancestors, link-count or inode changes, and size/mtime/ctime changes
+  during the read.
+- The current unsigned candidate is retained outside Git at
+  `/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/decision-packets/2026-08-11-b1-signing-candidate-v4.json`.
+  It has candidate ID
+  `0d8fdeeeb183960ef9b25f5ec0a6f1c388059d84a06fc5b86b4cceb5d032c1da`,
+  file SHA-256
+  `2e8e514f87be28094f978dcfb7877a99da44da5e000b595357b4a2c1844123ce`,
+  mode `0600`, one link and status `BLOCKED_OWNER_ATTESTATION`. Repeated
+  generation produced the same ID and bytes.
+- The matching unsigned request is retained outside Git at
+  `/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/decision-packets/2026-08-11-owner-attestation-request-v2.json`.
+  It has request ID
+  `be5632fec30e7914137cfaa62d05b120e9839ceea9e995775e576d23ce8c2564`,
+  file SHA-256
+  `5adf7f47c7fe91d13f62029e8190a50d87f6c2f2b03e644ad999552e939222ad`,
+  mode `0600`, one link and state `UNSIGNED`. It expires at
+  `2026-08-11T16:25:00.000Z`; after expiry it must be regenerated from the
+  then-current repository and must not be signed retroactively.
+- The adversarial suite covers candidate substitution, semantic and dependency
+  drift, private-feed markers, root/anchor/enrollment substitution, signature
+  reuse, expiry, symlink ancestors, hardlinks, unsafe permissions and unstable
+  reads. The selected regression suite passes 97/97. Lint passes; schema
+  validation reports 2,331 pages, 5,963 blocks and zero errors; publication
+  boundary audit reports 19 workflows and 2,331 public artifacts with no
+  violations. The production gate still exits nonzero at
+  `WITHDRAWAL_HEAD_NOT_ESTABLISHED`.
+- The owner's confirmation authorizes continued preparation only. No cold
+  private key was read, no owner or production signature was produced, and no
+  push, deployment, promotion or activation occurred. Partnerize remains
+  private internal evidence only: it is absent from the candidate and request,
+  excluded from public output and excluded from every static-publication
+  signing dependency.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

@@ -186,6 +186,8 @@ test('B0 repository contract pins local tools and every output-affecting deploym
     'scripts/deployment/build-static-rights-review.mjs',
     'scripts/deployment/verify-static-rights-gate.mjs',
     'scripts/deployment/prepare-static-rights-signing-candidate.mjs',
+    'scripts/deployment/prepare-owner-attestation-request.mjs',
+    'deployment/static-owner-trust-anchor.json',
   ]);
   assert.equal(contract.executableBindingSetVersion, 1);
   assert.equal(contract.dependencyAvailability.offlinePackageBytesRetained, false);

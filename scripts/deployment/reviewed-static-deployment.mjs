@@ -62,6 +62,8 @@ const REQUIRED_EXECUTABLE_BINDINGS = [
   'scripts/deployment/build-static-rights-review.mjs',
   'scripts/deployment/verify-static-rights-gate.mjs',
   'scripts/deployment/prepare-static-rights-signing-candidate.mjs',
+  'scripts/deployment/prepare-owner-attestation-request.mjs',
+  'deployment/static-owner-trust-anchor.json',
 ];
 
 export class DeploymentContractError extends Error {

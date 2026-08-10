@@ -1,4 +1,4 @@
-import { createHash, verify } from 'node:crypto';
+import { createHash, createPublicKey, verify } from 'node:crypto';
 import {
   closeSync,
   constants,
@@ -38,6 +38,13 @@ import {
 } from './reviewed-static-deployment.mjs';
 
 const HEX_64 = /^[0-9a-f]{64}$/;
+const CANDIDATE_SCHEMA_VERSION = 2;
+const OWNER_ATTESTATION_SCHEMA_VERSION = 2;
+const OWNER_ATTESTATION_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const CANDIDATE_SORTED_ARRAYS = [
+  'allowedDependencies', 'attributionFulfillments', 'attributionObligationIds', 'blockers',
+  'dependencies', 'evidenceHashes', 'forbiddenDependencies',
+];
 const EXPECTED_DEPENDENCIES = [
   'ENERGY_RATING_CC_BY',
   'FIRST_PARTY',
@@ -106,7 +113,7 @@ const EXPECTED_ENERGY_RESOURCES = [
 const PRIVATE_MARKERS = ['partnerize', 'retailer_feed', 'the-good-guys', '1101l4116'];
 const DEFAULT_EVIDENCE_MANIFEST = '/Volumes/UGREEN-1TB/FitAppliance/outreach/rights/static-publication/2026-08-10/public-sources/evidence-manifest.json';
 const DEFAULT_WITHDRAWAL_DRAFT = '/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/withdrawal-log/2026-08-10-genesis.draft.json';
-const DEFAULT_OUTPUT = '/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/decision-packets/2026-08-10-b1-signing-candidate-v2.json';
+const DEFAULT_OUTPUT = '/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/decision-packets/2026-08-11-b1-signing-candidate-v4.json';
 
 export class StaticRightsSigningCandidateError extends Error {
   constructor(code, message) {
@@ -419,13 +426,43 @@ function validateWithdrawalGenesis({ withdrawalGenesisDraft, authoritySet }) {
   return log;
 }
 
-function replayOwnerAttestation({ ownerAttestation, ownerTrustRoot, inventoryId, scopeHash, sourceObjectHash }) {
+function replayOwnerAttestation({
+  ownerAttestation,
+  ownerTrustRoot,
+  ownerTrustAnchor,
+  ownerTrustAnchorSha256,
+  ownerAttestationAsOf,
+  expected,
+}) {
   if (ownerAttestation === null) return null;
   exactKeys(ownerAttestation, ['path', 'sha256'], 'owner attestation', 'OWNER_ATTESTATION_INVALID');
   exactKeys(ownerTrustRoot, ['source', 'publicKey'], 'owner trust root', 'OWNER_ATTESTATION_INVALID');
+  exactKeys(ownerTrustAnchor, [
+    'algorithm', 'authoritySetEnrollmentHash', 'environment',
+    'ownerPublicKeyFingerprintSha256', 'ownerPublicKeyPemSha256', 'ownerRootId',
+    'ownerRootMetadataSha256', 'schemaVersion', 'trustRootSha256',
+  ], 'owner trust anchor', 'OWNER_ATTESTATION_INVALID');
   if (ownerTrustRoot.source !== 'INJECTED_READ_ONLY' || typeof ownerTrustRoot.publicKey !== 'string'
-    || !HEX_64.test(ownerAttestation.sha256 ?? '')) {
+    || !HEX_64.test(ownerAttestation.sha256 ?? '') || !HEX_64.test(ownerTrustAnchorSha256 ?? '')
+    || ownerTrustAnchor.schemaVersion !== 1 || ownerTrustAnchor.environment !== 'PRODUCTION'
+    || ownerTrustAnchor.algorithm !== 'Ed25519'
+    || ownerTrustAnchor.ownerRootId !== 'FITAPPLIANCE_OWNER_ROOT_2026_01'
+    || sha256(Buffer.from(canonicalJson(ownerTrustAnchor))) !== ownerTrustAnchorSha256) {
     fail('OWNER_ATTESTATION_INVALID', 'Owner attestation trust root or hash is invalid');
+  }
+  let ownerKey;
+  try {
+    ownerKey = createPublicKey(ownerTrustRoot.publicKey);
+  } catch {
+    fail('OWNER_ATTESTATION_INVALID', 'Owner trust root public key is invalid');
+  }
+  const ownerKeyFingerprint = sha256(ownerKey.export({ type: 'spki', format: 'der' }));
+  const trustRootHash = sha256(Buffer.from(canonicalJson(ownerTrustRoot)));
+  if (ownerKey.asymmetricKeyType !== 'ed25519'
+    || ownerKeyFingerprint !== ownerTrustAnchor.ownerPublicKeyFingerprintSha256
+    || sha256(Buffer.from(ownerTrustRoot.publicKey)) !== ownerTrustAnchor.ownerPublicKeyPemSha256
+    || trustRootHash !== ownerTrustAnchor.trustRootSha256) {
+    fail('OWNER_ATTESTATION_INVALID', 'Owner trust root does not match the pinned production anchor');
   }
   const absolutePath = path.resolve(ownerAttestation.path);
   const bytes = readSecureFileWithinRoot(
@@ -449,16 +486,32 @@ function replayOwnerAttestation({ ownerAttestation, ownerTrustRoot, inventoryId,
   exactKeys(envelope, ['payload', 'signature'], 'owner attestation envelope', 'OWNER_ATTESTATION_INVALID');
   exactKeys(envelope.payload, [
     'schemaVersion', 'environment', 'action', 'dependencyId', 'ownerId', 'inventoryId',
-    'scopeHash', 'sourceObjectHash', 'issuedAt',
+    'scopeHash', 'sourceObjectHash', 'candidateId', 'candidateSha256', 'authoritySetId',
+    'authoritySetSha256', 'ownerRootId', 'ownerPublicKeyFingerprintSha256',
+    'ownerTrustAnchorSha256', 'toolchainContractSha256', 'candidateGeneratorSha256',
+    'routeConfigSha256', 'publicEvidenceManifestSha256', 'withdrawalGenesisSha256',
+    'issuedAt', 'expiresAt',
   ], 'owner attestation payload', 'OWNER_ATTESTATION_INVALID');
   const payload = envelope.payload;
   exactIsoTimestamp(payload.issuedAt, 'OWNER_ATTESTATION_INVALID', 'Owner attestation issue time');
-  if (payload.schemaVersion !== 1 || payload.environment !== 'PRODUCTION'
+  exactIsoTimestamp(payload.expiresAt, 'OWNER_ATTESTATION_INVALID', 'Owner attestation expiry time');
+  exactIsoTimestamp(ownerAttestationAsOf, 'OWNER_ATTESTATION_INVALID', 'Owner attestation verification time');
+  const issuedAtMs = Date.parse(payload.issuedAt);
+  const expiresAtMs = Date.parse(payload.expiresAt);
+  const asOfMs = Date.parse(ownerAttestationAsOf);
+  if (expiresAtMs <= issuedAtMs || expiresAtMs - issuedAtMs > OWNER_ATTESTATION_MAX_AGE_MS
+    || asOfMs < issuedAtMs || asOfMs > expiresAtMs) {
+    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation is outside its bounded validity window');
+  }
+  if (payload.schemaVersion !== OWNER_ATTESTATION_SCHEMA_VERSION || payload.environment !== 'PRODUCTION'
     || payload.action !== STATIC_RIGHTS_ACTION || payload.dependencyId !== 'FIRST_PARTY'
-    || payload.ownerId !== 'FITAPPLIANCE_OWNER' || payload.inventoryId !== inventoryId
-    || payload.scopeHash !== scopeHash || payload.sourceObjectHash !== sourceObjectHash
+    || payload.ownerId !== 'FITAPPLIANCE_OWNER'
+    || Object.entries(expected).some(([key, value]) => payload[key] !== value)
+    || payload.ownerRootId !== ownerTrustAnchor.ownerRootId
+    || payload.ownerPublicKeyFingerprintSha256 !== ownerTrustAnchor.ownerPublicKeyFingerprintSha256
+    || payload.ownerTrustAnchorSha256 !== ownerTrustAnchorSha256
     || typeof envelope.signature !== 'string' || !envelope.signature) {
-    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation does not bind the exact FIRST_PARTY source set');
+    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation does not bind the exact unsigned signing candidate');
   }
   let signatureValid = false;
   try {
@@ -474,7 +527,7 @@ function replayOwnerAttestation({ ownerAttestation, ownerTrustRoot, inventoryId,
   if (!signatureValid) fail('OWNER_ATTESTATION_INVALID', 'Owner attestation signature is invalid');
   return {
     attestationHash: ownerAttestation.sha256,
-    trustRootHash: sha256(Buffer.from(canonicalJson(ownerTrustRoot))),
+    trustRootHash,
   };
 }
 
@@ -544,18 +597,49 @@ export function buildStaticRightsSigningCandidate({
   inventory,
   classification,
   authoritySet,
+  authoritySetSha256,
   withdrawalGenesisDraft,
   publicEvidence,
   routeConfigSha256,
   toolchainContractSha256,
   candidateGeneratorSha256,
+  ownerTrustAnchor,
+  ownerTrustAnchorSha256,
   attributionSpecs,
   attributionRouteResolutions,
   ownerAttestation = null,
   ownerTrustRoot = null,
+  ownerAttestationAsOf = null,
 }) {
-  if (!HEX_64.test(toolchainContractSha256 ?? '') || !HEX_64.test(candidateGeneratorSha256 ?? '')) {
+  if (!HEX_64.test(toolchainContractSha256 ?? '') || !HEX_64.test(candidateGeneratorSha256 ?? '')
+    || !HEX_64.test(authoritySetSha256 ?? '') || !HEX_64.test(ownerTrustAnchorSha256 ?? '')) {
     fail('TOOLCHAIN_BINDING_INVALID', 'Signing candidate must bind its reviewed generator and toolchain contract');
+  }
+  exactKeys(ownerTrustAnchor, [
+    'algorithm', 'authoritySetEnrollmentHash', 'environment',
+    'ownerPublicKeyFingerprintSha256', 'ownerPublicKeyPemSha256', 'ownerRootId',
+    'ownerRootMetadataSha256', 'schemaVersion', 'trustRootSha256',
+  ], 'owner trust anchor', 'OWNER_ATTESTATION_INVALID');
+  if (ownerTrustAnchor.schemaVersion !== 1 || ownerTrustAnchor.environment !== 'PRODUCTION'
+    || ownerTrustAnchor.algorithm !== 'Ed25519'
+    || ownerTrustAnchor.ownerRootId !== 'FITAPPLIANCE_OWNER_ROOT_2026_01'
+    || !HEX_64.test(ownerTrustAnchor.authoritySetEnrollmentHash ?? '')
+    || !HEX_64.test(ownerTrustAnchor.ownerPublicKeyFingerprintSha256 ?? '')
+    || !HEX_64.test(ownerTrustAnchor.ownerPublicKeyPemSha256 ?? '')
+    || !HEX_64.test(ownerTrustAnchor.ownerRootMetadataSha256 ?? '')
+    || !HEX_64.test(ownerTrustAnchor.trustRootSha256 ?? '')
+    || sha256(Buffer.from(canonicalJson(ownerTrustAnchor))) !== ownerTrustAnchorSha256) {
+    fail('OWNER_ATTESTATION_INVALID', 'Pinned owner trust anchor is invalid');
+  }
+  if (authoritySet?.trustRootEnrollment?.authoritySetHash
+      !== ownerTrustAnchor.authoritySetEnrollmentHash) {
+    fail('OWNER_ATTESTATION_INVALID', 'Authority set is outside the pinned owner enrollment');
+  }
+  const actualAuthoritySetSha256 = sha256(Buffer.from(canonicalJson(authoritySet, {
+    sortedArrays: ['authorities'],
+  })));
+  if (actualAuthoritySetSha256 !== authoritySetSha256) {
+    fail('TOOLCHAIN_BINDING_INVALID', 'Authority set bytes do not match the reviewed binding');
   }
   const { inventoryByPath, pathsByDependency } = validateInventoryAndClassification(inventory, classification);
   const withdrawalGenesis = validateWithdrawalGenesis({ withdrawalGenesisDraft, authoritySet });
@@ -578,22 +662,6 @@ export function buildStaticRightsSigningCandidate({
     }, { sortedArrays: ['objects'] });
     return [dependencyId, { objects, scopeHash, sourceObjectHash }];
   }));
-  const firstPartyBinding = dependencyBindings.get('FIRST_PARTY');
-  const ownerReplay = replayOwnerAttestation({
-    ownerAttestation,
-    ownerTrustRoot,
-    inventoryId: inventory.staticSourceInventoryId,
-    scopeHash: firstPartyBinding.scopeHash,
-    sourceObjectHash: firstPartyBinding.sourceObjectHash,
-  });
-  if (ownerReplay) {
-    try {
-      validateAuthoritySet({ authoritySet, trustRoot: ownerTrustRoot });
-    } catch (error) {
-      fail('OWNER_ATTESTATION_INVALID', `Owner trust root is not the enrolled production root: ${error.message}`);
-    }
-  }
-  const ownerAttestationHash = ownerReplay?.attestationHash ?? null;
   const evidenceById = new Map(publicEvidence?.records?.map((row) => [row.id, row.sha256]));
   if (!HEX_64.test(publicEvidence?.manifestSha256 ?? '') || evidenceById.size !== EXPECTED_PUBLIC_EVIDENCE_IDS.length) {
     fail('EVIDENCE_SET_INVALID', 'Replayed public evidence is required');
@@ -608,7 +676,7 @@ export function buildStaticRightsSigningCandidate({
   const obligationsByDependency = new Map(EXPECTED_DEPENDENCIES.map((dependencyId) => [dependencyId, []]));
   for (const spec of attributionSpecs) obligationsByDependency.get(spec.dependencyId).push(spec.obligationId);
 
-  const dependencies = EXPECTED_DEPENDENCIES.map((dependencyId) => {
+  const buildDependencies = (ownerAttestationHash = null) => EXPECTED_DEPENDENCIES.map((dependencyId) => {
     const { objects, scopeHash, sourceObjectHash } = dependencyBindings.get(dependencyId);
     const evidenceHashes = PUBLIC_EVIDENCE_BY_DEPENDENCY[dependencyId].map((id) => {
       const evidenceHash = evidenceById.get(id);
@@ -635,40 +703,88 @@ export function buildStaticRightsSigningCandidate({
       attributionObligationIds,
     };
   });
-  const blockers = ['EXPLICIT_SIGNING_APPROVAL_REQUIRED'];
-  if (!ownerAttestationHash) blockers.push('OWNER_ATTESTATION_REQUIRED');
-  blockers.sort(byteSort);
-  const payload = {
-    schemaVersion: 1,
-    status: ownerAttestationHash ? 'READY_FOR_EXPLICIT_SIGNING_APPROVAL' : 'BLOCKED_OWNER_ATTESTATION',
-    inventoryId: inventory.staticSourceInventoryId,
-    classifierId: classification.classifierId,
-    authoritySetId: semanticId('fitappliance.static-publication-authority-set', 1, authoritySet, { sortedArrays: ['authorities'] }),
-    publicEvidenceManifestSha256: publicEvidence.manifestSha256,
-    routeConfigSha256,
-    toolchainContractSha256,
-    candidateGeneratorSha256,
-    ownerTrustRootSha256: ownerReplay?.trustRootHash ?? null,
-    withdrawalGenesis,
-    constraints: {
-      environment: 'PRODUCTION',
-      allowedDependencies: EXPECTED_DEPENDENCIES,
-      forbiddenDependencies: ['RETAILER_FEED'],
-      signatureState: 'UNSIGNED',
-      privateEvidenceAccess: 'PROHIBITED',
-    },
-    dependencies,
-    attributionFulfillments,
-    blockers,
+  const authoritySetId = semanticId(
+    'fitappliance.static-publication-authority-set',
+    1,
+    authoritySet,
+    { sortedArrays: ['authorities'] },
+  );
+  const withdrawalGenesisSha256 = sha256(Buffer.from(canonicalJson(withdrawalGenesis)));
+  const buildCandidate = ({ ownerAttestationHash = null, ownerTrustRootSha256 = null } = {}) => {
+    const blockers = ['EXPLICIT_SIGNING_APPROVAL_REQUIRED'];
+    if (!ownerAttestationHash) blockers.push('OWNER_ATTESTATION_REQUIRED');
+    blockers.sort(byteSort);
+    const payload = {
+      schemaVersion: CANDIDATE_SCHEMA_VERSION,
+      status: ownerAttestationHash ? 'READY_FOR_EXPLICIT_SIGNING_APPROVAL' : 'BLOCKED_OWNER_ATTESTATION',
+      inventoryId: inventory.staticSourceInventoryId,
+      classifierId: classification.classifierId,
+      authoritySetId,
+      authoritySetSha256,
+      ownerTrustAnchorSha256,
+      publicEvidenceManifestSha256: publicEvidence.manifestSha256,
+      routeConfigSha256,
+      toolchainContractSha256,
+      candidateGeneratorSha256,
+      ownerTrustRootSha256,
+      withdrawalGenesis,
+      constraints: {
+        environment: 'PRODUCTION',
+        allowedDependencies: EXPECTED_DEPENDENCIES,
+        forbiddenDependencies: ['RETAILER_FEED'],
+        signatureState: 'UNSIGNED',
+        privateEvidenceAccess: 'PROHIBITED',
+      },
+      dependencies: buildDependencies(ownerAttestationHash),
+      attributionFulfillments,
+      blockers,
+    };
+    return Object.freeze({
+      ...payload,
+      candidateId: semanticId(
+        'fitappliance.static-rights-signing-candidate',
+        CANDIDATE_SCHEMA_VERSION,
+        payload,
+        { sortedArrays: CANDIDATE_SORTED_ARRAYS },
+      ),
+    });
   };
-  return Object.freeze({
-    ...payload,
-    candidateId: semanticId('fitappliance.static-rights-signing-candidate', 1, payload, {
-      sortedArrays: [
-        'allowedDependencies', 'attributionFulfillments', 'attributionObligationIds', 'blockers',
-        'dependencies', 'evidenceHashes', 'forbiddenDependencies',
-      ],
-    }),
+  const unsignedCandidate = buildCandidate();
+  if (ownerAttestation === null) return unsignedCandidate;
+
+  const firstPartyBinding = dependencyBindings.get('FIRST_PARTY');
+  const unsignedCandidateBytes = Buffer.from(canonicalJson(unsignedCandidate, {
+    sortedArrays: CANDIDATE_SORTED_ARRAYS,
+  }));
+  const ownerReplay = replayOwnerAttestation({
+    ownerAttestation,
+    ownerTrustRoot,
+    ownerTrustAnchor,
+    ownerTrustAnchorSha256,
+    ownerAttestationAsOf,
+    expected: {
+      inventoryId: inventory.staticSourceInventoryId,
+      scopeHash: firstPartyBinding.scopeHash,
+      sourceObjectHash: firstPartyBinding.sourceObjectHash,
+      candidateId: unsignedCandidate.candidateId,
+      candidateSha256: sha256(unsignedCandidateBytes),
+      authoritySetId,
+      authoritySetSha256,
+      toolchainContractSha256,
+      candidateGeneratorSha256,
+      routeConfigSha256,
+      publicEvidenceManifestSha256: publicEvidence.manifestSha256,
+      withdrawalGenesisSha256,
+    },
+  });
+  try {
+    validateAuthoritySet({ authoritySet, trustRoot: ownerTrustRoot });
+  } catch (error) {
+    fail('OWNER_ATTESTATION_INVALID', `Owner trust root is not the enrolled production root: ${error.message}`);
+  }
+  return buildCandidate({
+    ownerAttestationHash: ownerReplay.attestationHash,
+    ownerTrustRootSha256: ownerReplay.trustRootHash,
   });
 }
 
@@ -804,7 +920,16 @@ function repoInputs(repoRoot) {
     fail('SOURCE_SET_INVALID', `Generated provenance repository replay failed: ${error.message}`);
   }
   const classification = classifyStaticSources({ inventory, generatedProvenance });
-  const authoritySet = readJsonFile(authorityPath, 'AUTHORITY_SET_INVALID', 'Publication authority set').value;
+  const { bytes: authoritySetBytes, value: authoritySet } = readJsonFile(
+    authorityPath,
+    'AUTHORITY_SET_INVALID',
+    'Publication authority set',
+  );
+  const { bytes: ownerTrustAnchorBytes, value: ownerTrustAnchor } = readJsonFile(
+    path.join(repoRoot, 'deployment/static-owner-trust-anchor.json'),
+    'OWNER_ATTESTATION_INVALID',
+    'Owner trust anchor',
+  );
   const toolchainPath = path.join(repoRoot, 'deployment/toolchain-contract.json');
   const { bytes: toolchainBytes, value: toolchainContract } = readJsonFile(
     toolchainPath,
@@ -845,6 +970,9 @@ function repoInputs(repoRoot) {
     inventory,
     classification,
     authoritySet,
+    authoritySetSha256: sha256(authoritySetBytes),
+    ownerTrustAnchor,
+    ownerTrustAnchorSha256: sha256(ownerTrustAnchorBytes),
     attributionSpecs,
     routeConfigSha256: sha256(regularFile(path.join(repoRoot, 'vercel.json'), 'ATTRIBUTION_SOURCE_DRIFT', 'Vercel route configuration')),
     toolchainContractSha256: sha256(toolchainBytes),
@@ -884,15 +1012,44 @@ function validateCurrentRoutes({ repoRoot, inventory, attributionSpecs }) {
   }
 }
 
+export function replayCurrentUnsignedStaticRightsCandidate({
+  repoRoot,
+  evidenceManifestPath = DEFAULT_EVIDENCE_MANIFEST,
+  withdrawalDraftPath = DEFAULT_WITHDRAWAL_DRAFT,
+}) {
+  const inputs = repoInputs(repoRoot);
+  return buildStaticRightsSigningCandidate({
+    ...inputs,
+    attributionRouteResolutions: validateCurrentRoutes({
+      repoRoot,
+      inventory: inputs.inventory,
+      attributionSpecs: inputs.attributionSpecs,
+    }),
+    publicEvidence: replayPublicEvidenceManifest({ manifestPath: evidenceManifestPath }),
+    withdrawalGenesisDraft: readJsonFile(
+      path.resolve(withdrawalDraftPath),
+      'WITHDRAWAL_GENESIS_INVALID',
+      'Withdrawal genesis draft',
+    ).value,
+    ownerAttestation: null,
+    ownerTrustRoot: null,
+    ownerAttestationAsOf: null,
+  });
+}
+
 async function main() {
   const repoRoot = process.cwd();
   const evidenceManifestPath = argValue('--evidence-manifest') ?? DEFAULT_EVIDENCE_MANIFEST;
   const withdrawalDraftPath = argValue('--withdrawal-draft') ?? DEFAULT_WITHDRAWAL_DRAFT;
   const ownerAttestationPath = argValue('--owner-attestation');
   const ownerTrustRootPath = argValue('--owner-trust-root');
+  const ownerAttestationAsOf = argValue('--owner-attestation-as-of');
   const outputPath = path.resolve(argValue('--output') ?? DEFAULT_OUTPUT);
   if (Boolean(ownerAttestationPath) !== Boolean(ownerTrustRootPath)) {
     fail('OWNER_ATTESTATION_INVALID', 'Owner attestation and injected trust root must be supplied together');
+  }
+  if (Boolean(ownerAttestationPath) !== Boolean(ownerAttestationAsOf)) {
+    fail('OWNER_ATTESTATION_INVALID', 'Owner attestation and its frozen verification time must be supplied together');
   }
   const absoluteAttestationPath = ownerAttestationPath ? path.resolve(ownerAttestationPath) : null;
   const ownerAttestationBytes = absoluteAttestationPath
@@ -933,6 +1090,7 @@ async function main() {
     withdrawalGenesisDraft: readJsonFile(path.resolve(withdrawalDraftPath), 'WITHDRAWAL_GENESIS_INVALID', 'Withdrawal genesis draft').value,
     ownerAttestation,
     ownerTrustRoot,
+    ownerAttestationAsOf,
   });
   writeCanonicalCandidateFile(outputPath, candidate);
   process.stdout.write(canonicalJson({ candidateId: candidate.candidateId, outputPath, status: candidate.status }));

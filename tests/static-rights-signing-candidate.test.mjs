@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createHash, generateKeyPairSync, sign } from 'node:crypto';
+import { createHash, createPublicKey, generateKeyPairSync, sign } from 'node:crypto';
 import {
   chmodSync,
   linkSync,
@@ -21,7 +21,6 @@ import {
   writeCanonicalCandidateFile,
 } from '../scripts/deployment/prepare-static-rights-signing-candidate.mjs';
 import {
-  buildDependencyScopeHash,
   canonicalJson,
   semanticId,
 } from '../src/domain/static-publication-rights.mjs';
@@ -156,22 +155,74 @@ function signingFixture() {
     { dependencyId: 'OUTFIT_FONT', obligationId: 'OUTFIT_OFL_1_1_LICENSE_COPY', path: paths.outfitLicense, sha256: rows.find((row) => row.path === paths.outfitLicense).sha256, route: '/licenses/outfit-ofl-1.1.txt' },
     { dependencyId: 'ENERGY_RATING_CC_BY', obligationId: 'ENERGY_RATING_CC_BY_ATTRIBUTION', path: paths.credits, sha256: rows.find((row) => row.path === paths.credits).sha256, route: '/third-party-licenses' },
   ];
+  const owner = generateKeyPairSync('ed25519');
+  const reviewer = generateKeyPairSync('ed25519');
+  const ownerPublicKeyPem = owner.publicKey.export({ type: 'spki', format: 'pem' });
+  const authorities = [{
+    issuerId: 'FITAPPLIANCE_RIGHTS_REVIEWER',
+    keyId: 'FITAPPLIANCE_RIGHTS_KEY',
+    publicKey: reviewer.publicKey.export({ type: 'spki', format: 'pem' }),
+    roles: ['RIGHTS_REVIEWER'],
+    actions: ['PUBLIC_STATIC_DISTRIBUTION'],
+  }];
+  const authorityEnrollmentPayload = {
+    schemaVersion: 1,
+    environment: 'PRODUCTION',
+    authorities,
+  };
+  const authoritySetHash = semanticId(
+    'fitappliance.static-publication-authority-set',
+    1,
+    authorityEnrollmentPayload,
+    { sortedArrays: ['authorities'] },
+  );
+  const authoritySet = {
+    ...authorityEnrollmentPayload,
+    trustRootEnrollment: {
+      authoritySetHash,
+      signature: sign(
+        null,
+        Buffer.from(canonicalJson({ authoritySetHash })),
+        owner.privateKey,
+      ).toString('base64'),
+    },
+  };
+  const authoritySetBytes = Buffer.from(canonicalJson(authoritySet, { sortedArrays: ['authorities'] }));
+  const ownerTrustRoot = {
+    source: 'INJECTED_READ_ONLY',
+    publicKey: ownerPublicKeyPem,
+  };
+  const ownerRootMetadata = {
+    algorithm: 'Ed25519',
+    authoritySetHash,
+    createdAt: '2026-08-10T14:00:00.000Z',
+    environment: 'PRODUCTION',
+    publicKeyFingerprintSha256: sha256(createPublicKey(ownerPublicKeyPem).export({ type: 'spki', format: 'der' })),
+    rootId: 'FITAPPLIANCE_OWNER_ROOT_2026_01',
+    schemaVersion: 1,
+  };
+  const ownerTrustAnchor = {
+    algorithm: 'Ed25519',
+    authoritySetEnrollmentHash: authoritySetHash,
+    environment: 'PRODUCTION',
+    ownerPublicKeyFingerprintSha256: ownerRootMetadata.publicKeyFingerprintSha256,
+    ownerPublicKeyPemSha256: sha256(Buffer.from(ownerPublicKeyPem)),
+    ownerRootId: ownerRootMetadata.rootId,
+    ownerRootMetadataSha256: sha256(Buffer.from(canonicalJson(ownerRootMetadata))),
+    schemaVersion: 1,
+    trustRootSha256: sha256(Buffer.from(canonicalJson(ownerTrustRoot))),
+  };
   return {
     inventory,
     classification,
     withdrawalGenesisDraft,
-    authoritySet: {
-      schemaVersion: 1,
-      environment: 'PRODUCTION',
-      trustRootEnrollment: { authoritySetHash: HASHES.a, signature: 'not-used-by-candidate-builder' },
-      authorities: [{
-        issuerId: 'FITAPPLIANCE_RIGHTS_REVIEWER',
-        keyId: 'FITAPPLIANCE_RIGHTS_KEY',
-        publicKey: 'not-used-by-candidate-builder',
-        roles: ['RIGHTS_REVIEWER'],
-        actions: ['PUBLIC_STATIC_DISTRIBUTION'],
-      }],
-    },
+    authoritySet,
+    authoritySetSha256: sha256(authoritySetBytes),
+    ownerTrustAnchor,
+    ownerTrustAnchorSha256: sha256(Buffer.from(canonicalJson(ownerTrustAnchor))),
+    ownerTrustRoot,
+    ownerRootMetadata,
+    ownerPrivateKey: owner.privateKey,
     routeConfigSha256: HASHES.y,
     toolchainContractSha256: HASHES.w,
     candidateGeneratorSha256: HASHES.v,
@@ -184,61 +235,47 @@ function signingFixture() {
   };
 }
 
-function signedOwnerAttestation(root, fixture) {
-  const { publicKey, privateKey } = generateKeyPairSync('ed25519');
-  const authorityPayload = {
-    schemaVersion: 1,
-    environment: fixture.authoritySet.environment,
-    authorities: fixture.authoritySet.authorities,
-  };
-  const authoritySetHash = semanticId(
-    'fitappliance.static-publication-authority-set',
-    1,
-    authorityPayload,
-    { sortedArrays: ['authorities'] },
-  );
-  fixture.authoritySet.trustRootEnrollment = {
-    authoritySetHash,
-    signature: sign(
-      null,
-      Buffer.from(canonicalJson({ authoritySetHash })),
-      privateKey,
-    ).toString('base64'),
-  };
-  const objects = fixture.classification.rows
-    .filter((row) => row.dependencyIds.includes('FIRST_PARTY'))
-    .map((row) => ({
-      path: row.path,
-      sha256: fixture.inventory.rows.find((item) => item.path === row.path).sha256,
-    }))
-    .sort((left, right) => Buffer.compare(Buffer.from(left.path), Buffer.from(right.path)));
-  const scopeHash = buildDependencyScopeHash({
-    action: 'PUBLIC_STATIC_DISTRIBUTION',
-    dependencyId: 'FIRST_PARTY',
-    inventoryId: fixture.inventory.staticSourceInventoryId,
-    paths: objects.map((row) => row.path),
+function signedOwnerAttestation(root, fixture, publicEvidence, overrides = {}) {
+  const unsignedCandidate = buildStaticRightsSigningCandidate({
+    ...fixture,
+    publicEvidence,
+    ownerAttestation: null,
   });
-  const sourceObjectHash = semanticId('fitappliance.static-rights-source-object-set', 1, {
-    schemaVersion: 1,
-    dependencyId: 'FIRST_PARTY',
-    inventoryId: fixture.inventory.staticSourceInventoryId,
-    scopeHash,
-    objects,
-  }, { sortedArrays: ['objects'] });
+  const unsignedCandidateBytes = Buffer.from(canonicalJson(unsignedCandidate, {
+    sortedArrays: [
+      'allowedDependencies', 'attributionFulfillments', 'attributionObligationIds', 'blockers',
+      'dependencies', 'evidenceHashes', 'forbiddenDependencies',
+    ],
+  }));
+  const firstParty = unsignedCandidate.dependencies.find((row) => row.dependencyId === 'FIRST_PARTY');
   const payload = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     environment: 'PRODUCTION',
     action: 'PUBLIC_STATIC_DISTRIBUTION',
     dependencyId: 'FIRST_PARTY',
     ownerId: 'FITAPPLIANCE_OWNER',
-    inventoryId: fixture.inventory.staticSourceInventoryId,
-    scopeHash,
-    sourceObjectHash,
+    inventoryId: unsignedCandidate.inventoryId,
+    scopeHash: firstParty.scopeHash,
+    sourceObjectHash: firstParty.sourceObjectHash,
+    candidateId: unsignedCandidate.candidateId,
+    candidateSha256: sha256(unsignedCandidateBytes),
+    authoritySetId: unsignedCandidate.authoritySetId,
+    authoritySetSha256: unsignedCandidate.authoritySetSha256,
+    ownerRootId: fixture.ownerTrustAnchor.ownerRootId,
+    ownerPublicKeyFingerprintSha256: fixture.ownerTrustAnchor.ownerPublicKeyFingerprintSha256,
+    ownerTrustAnchorSha256: unsignedCandidate.ownerTrustAnchorSha256,
+    toolchainContractSha256: unsignedCandidate.toolchainContractSha256,
+    candidateGeneratorSha256: unsignedCandidate.candidateGeneratorSha256,
+    routeConfigSha256: unsignedCandidate.routeConfigSha256,
+    publicEvidenceManifestSha256: unsignedCandidate.publicEvidenceManifestSha256,
+    withdrawalGenesisSha256: sha256(Buffer.from(canonicalJson(unsignedCandidate.withdrawalGenesis))),
     issuedAt: '2026-08-10T15:00:00.000Z',
+    expiresAt: '2026-08-10T16:00:00.000Z',
+    ...overrides,
   };
   const envelope = {
     payload,
-    signature: sign(null, Buffer.from(canonicalJson(payload)), privateKey).toString('base64'),
+    signature: sign(null, Buffer.from(canonicalJson(payload)), fixture.ownerPrivateKey).toString('base64'),
   };
   const attestationPath = path.join(root, 'owner-attestation.json');
   writeFileSync(attestationPath, canonicalJson(envelope), { mode: 0o600 });
@@ -246,8 +283,9 @@ function signedOwnerAttestation(root, fixture) {
     ownerAttestation: { path: attestationPath, sha256: sha256(readFileSync(attestationPath)) },
     ownerTrustRoot: {
       source: 'INJECTED_READ_ONLY',
-      publicKey: publicKey.export({ type: 'spki', format: 'pem' }),
+      ...fixture.ownerTrustRoot,
     },
+    ownerAttestationAsOf: '2026-08-10T15:30:00.000Z',
   };
 }
 
@@ -312,6 +350,9 @@ test('candidate derives exact scopes and route receipts but stays blocked withou
   assert.equal(candidate.attributionFulfillments.every((row) => row.routeReceipt.payload.configSha256 === HASHES.y), true);
   assert.equal(candidate.toolchainContractSha256, HASHES.w);
   assert.equal(candidate.candidateGeneratorSha256, HASHES.v);
+  assert.equal(candidate.schemaVersion, 2);
+  assert.match(candidate.authoritySetSha256, /^[0-9a-f]{64}$/);
+  assert.match(candidate.ownerTrustAnchorSha256, /^[0-9a-f]{64}$/);
   assert.equal('signature' in candidate, false);
   assert.match(candidate.candidateId, /^[0-9a-f]{64}$/);
 });
@@ -319,10 +360,11 @@ test('candidate derives exact scopes and route receipts but stays blocked withou
 test('candidate becomes signing-review ready only with a replayed owner attestation', () => {
   const { root, manifestPath } = evidenceFixture();
   const fixture = signingFixture();
-  const attestation = signedOwnerAttestation(root, fixture);
+  const publicEvidence = replayPublicEvidenceManifest({ manifestPath });
+  const attestation = signedOwnerAttestation(root, fixture, publicEvidence);
   const candidate = buildStaticRightsSigningCandidate({
     ...fixture,
-    publicEvidence: replayPublicEvidenceManifest({ manifestPath }),
+    publicEvidence,
     ...attestation,
   });
   assert.equal(candidate.status, 'READY_FOR_EXPLICIT_SIGNING_APPROVAL');
@@ -337,7 +379,70 @@ test('candidate becomes signing-review ready only with a replayed owner attestat
     publicEvidence: replayPublicEvidenceManifest({ manifestPath }),
     ownerAttestation: { path: arbitraryPath, sha256: sha256(readFileSync(arbitraryPath)) },
     ownerTrustRoot: attestation.ownerTrustRoot,
+    ownerAttestationAsOf: attestation.ownerAttestationAsOf,
   }), assertCode('OWNER_ATTESTATION_INVALID'));
+});
+
+test('owner signature cannot be reused after candidate bindings drift or expiry', () => {
+  const { root, manifestPath } = evidenceFixture();
+  const fixture = signingFixture();
+  const publicEvidence = replayPublicEvidenceManifest({ manifestPath });
+  const attestation = signedOwnerAttestation(root, fixture, publicEvidence);
+
+  assert.throws(() => buildStaticRightsSigningCandidate({
+    ...fixture,
+    toolchainContractSha256: HASHES.x,
+    publicEvidence,
+    ...attestation,
+  }), assertCode('OWNER_ATTESTATION_INVALID'));
+
+  assert.throws(() => buildStaticRightsSigningCandidate({
+    ...fixture,
+    publicEvidence,
+    ...attestation,
+    ownerAttestationAsOf: '2026-08-10T16:00:00.001Z',
+  }), assertCode('OWNER_ATTESTATION_INVALID'));
+});
+
+test('owner attestation rejects a substituted root or unpinned trust anchor', () => {
+  const { root, manifestPath } = evidenceFixture();
+  const fixture = signingFixture();
+  const publicEvidence = replayPublicEvidenceManifest({ manifestPath });
+  const attestation = signedOwnerAttestation(root, fixture, publicEvidence);
+  const substituted = generateKeyPairSync('ed25519').publicKey.export({ type: 'spki', format: 'pem' });
+
+  assert.throws(() => buildStaticRightsSigningCandidate({
+    ...fixture,
+    publicEvidence,
+    ...attestation,
+    ownerTrustRoot: { source: 'INJECTED_READ_ONLY', publicKey: substituted },
+  }), assertCode('OWNER_ATTESTATION_INVALID'));
+
+  const driftedAnchor = { ...fixture.ownerTrustAnchor, ownerRootId: 'FITAPPLIANCE_OWNER_ROOT_OTHER' };
+  assert.throws(() => buildStaticRightsSigningCandidate({
+    ...fixture,
+    publicEvidence,
+    ...attestation,
+    ownerTrustAnchor: driftedAnchor,
+    ownerTrustAnchorSha256: sha256(Buffer.from(canonicalJson(driftedAnchor))),
+  }), assertCode('OWNER_ATTESTATION_INVALID'));
+
+  const enrollmentDrift = signingFixture();
+  enrollmentDrift.ownerTrustAnchor.authoritySetEnrollmentHash = HASHES.x;
+  enrollmentDrift.ownerTrustAnchorSha256 = sha256(Buffer.from(canonicalJson(enrollmentDrift.ownerTrustAnchor)));
+  assert.throws(() => buildStaticRightsSigningCandidate({
+    ...enrollmentDrift,
+    publicEvidence,
+    ownerAttestation: null,
+  }), assertCode('OWNER_ATTESTATION_INVALID'));
+
+  const authorityBytesDrift = signingFixture();
+  authorityBytesDrift.authoritySetSha256 = HASHES.x;
+  assert.throws(() => buildStaticRightsSigningCandidate({
+    ...authorityBytesDrift,
+    publicEvidence,
+    ownerAttestation: null,
+  }), assertCode('TOOLCHAIN_BINDING_INVALID'));
 });
 
 test('candidate rejects private dependencies and stale attribution bytes', () => {
@@ -543,6 +648,10 @@ test('malformed evidence paths and withdrawal arrays fail with typed candidate e
 
   const malformedAuthority = signingFixture();
   malformedAuthority.authoritySet.authorities = {};
+  malformedAuthority.authoritySetSha256 = sha256(Buffer.from(canonicalJson(
+    malformedAuthority.authoritySet,
+    { sortedArrays: ['authorities'] },
+  )));
   assert.throws(() => buildStaticRightsSigningCandidate({
     ...malformedAuthority,
     publicEvidence: replayPublicEvidenceManifest({ manifestPath }),

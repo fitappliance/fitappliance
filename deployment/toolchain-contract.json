@@ -46,7 +46,7 @@
     },
     {
       "path": "scripts/deployment/reviewed-static-deployment.mjs",
-      "sha256": "9d5dea0b14261333ec48469e605d763c5a9d8adafc4a848c36da835d54f0ce95"
+      "sha256": "c9183437c609d7ad058509101d4e38dcdbd29c32bf81f6c5a57069f695b8782b"
     },
     {
       "path": "src/domain/static-publication-rights.mjs",
@@ -62,7 +62,15 @@
     },
     {
       "path": "scripts/deployment/prepare-static-rights-signing-candidate.mjs",
-      "sha256": "970947f8ad2e024d40953c4f43fb421b42df94fef401d3b9a9d68817feeff4e1"
+      "sha256": "80be1d07f63bbcd1d6672233162285901fbbf729a507626a0cb98e582858b335"
+    },
+    {
+      "path": "scripts/deployment/prepare-owner-attestation-request.mjs",
+      "sha256": "ad89e75e0c27d8689773b519bd9946d590e8cbb4cba501dc61616ab4f9d1940d"
+    },
+    {
+      "path": "deployment/static-owner-trust-anchor.json",
+      "sha256": "d298732073573c978c252393a71ab67d4fbb63c35c57058c44e0d44c2ddeef21"
     }
   ]
 }
