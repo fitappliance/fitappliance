@@ -73,10 +73,15 @@ test('shadow output is immutable, hash-bound, versioned, auditable, and contains
   assert.equal(result.versions.fieldMap, FIELD_MAP.version);
   assert.match(result.hashes.product, /^[a-f0-9]{64}$/);
   assert.match(result.hashes.receipts, /^[a-f0-9]{64}$/);
-  assert.match(result.hashes.siteScenario, /^[a-f0-9]{64}$/);
+  assert.match(result.scenarioBinding.scenarioSetSha256, /^[a-f0-9]{64}$/);
+  assert.match(result.scenarioBinding.scenarioMemberSha256, /^[a-f0-9]{64}$/);
+  assert.equal(Object.hasOwn(result.hashes, 'siteScenario'), false);
   assert.equal(Object.isFrozen(result), true);
   assert.equal(JSON.stringify(result).includes('publicationEligibility'), false);
-  assert.equal(auditFitV4ShadowResult(result).passed, true);
+  assert.equal(auditFitV4ShadowResult(result, {
+    manifest: scenario.runManifest,
+    siteOptions: scenario.scenarioSiteOptions,
+  }).passed, true);
 });
 
 test('shadow evaluation requires an independently bound manifest and trusted registries', () => {

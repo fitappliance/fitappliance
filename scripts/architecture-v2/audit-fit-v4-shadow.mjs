@@ -9,6 +9,7 @@ import {
   compareAndSwapFitV4ShadowPointer,
   createFitV4RunManifest,
   resumeFitV4Run,
+  validateFitV4ShadowPointer,
   validateFitV4RunManifest,
   writeFitV4RunManifest,
 } from '../../src/domain/fit-v4-run-manifest.mjs';
@@ -25,7 +26,7 @@ export const FIT_V4_SHADOW_AUDIT_BOUNDARIES = Object.freeze([
   'after-pointer-cas',
 ]);
 
-const AUDIT_SCHEMA_VERSION = 1;
+const AUDIT_SCHEMA_VERSION = 2;
 const AUDIT_TYPE = 'FIT_V4_SHADOW_AUDIT';
 const AUDIT_ID = /^fit_v4_shadow_audit_[a-f0-9]{24}$/;
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -263,6 +264,8 @@ export function auditFitV4Shadow({
     artifactType: AUDIT_TYPE,
     manifestId: manifest?.manifestId,
     runId: manifest?.runId,
+    manifestSha256: manifest?.manifestSha256,
+    scenarioBinding: manifest?.semantic?.scenarioBinding,
     inputSemanticSha256,
     publicMutation: false,
     evaluationSummary,
@@ -318,12 +321,12 @@ async function ensureManifest({ runsRoot, manifest, expectedInputs, root, descri
   if (expected.runId !== manifest.runId || expected.semanticSha256 !== manifest.semanticSha256
     || !same(expected.semantic, manifest.semantic)) throw new Error('fresh run semantic manifest drift');
   try {
-    return await resumeFitV4Run({ runsRoot, manifestId: manifest.manifestId, expectedInputs, root, descriptorPath });
+    return await resumeFitV4Run({ runsRoot, manifest, expectedInputs, root, descriptorPath });
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
   await writeFitV4RunManifest({ runsRoot, manifest });
-  return resumeFitV4Run({ runsRoot, manifestId: manifest.manifestId, expectedInputs, root, descriptorPath });
+  return resumeFitV4Run({ runsRoot, manifest, expectedInputs, root, descriptorPath });
 }
 
 async function readAndVerifyAudit(path, completeInput) {
@@ -363,6 +366,7 @@ export async function runFitV4ShadowAudit({
   writerId,
   faultAt = null,
 }) {
+  validateFitV4RunManifest(manifest);
   const isolatedRunsRoot = assertIsolatedRoot(runsRoot, 'runs root');
   const isolatedShadowRoot = assertIsolatedRoot(shadowRoot, 'shadow root');
   requiredObject(expectedInputs, 'complete expected semantic inputs');
@@ -391,12 +395,17 @@ export async function runFitV4ShadowAudit({
   if (artifactExists) await readAndVerifyAudit(auditPath, completeInput);
   if (priorCheckpoint && !same(priorCheckpoint, checkpoint)) throw new Error('shadow audit checkpoint semantic mismatch');
 
-  let pointerRunId = null;
+  let priorPointer = null;
   try {
-    pointerRunId = JSON.parse(await readFile(join(isolatedShadowRoot, 'active-shadow.json'), 'utf8')).runId;
+    const pointerBytes = await readFile(join(isolatedShadowRoot, 'active-shadow.json'));
+    priorPointer = validateFitV4ShadowPointer(JSON.parse(pointerBytes));
+    if (!pointerBytes.equals(Buffer.from(`${JSON.stringify(priorPointer, null, 2)}\n`))) {
+      throw new TypeError('Fit V4 shadow pointer bytes invalid');
+    }
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
+  const pointerRunId = priorPointer?.runId ?? null;
   if (artifactExists && priorCheckpoint && pointerRunId === manifest.runId) {
     if (expectedRunId !== manifest.runId) {
       throw new Error('existing shadow pointer differs from expected compare-and-swap state');
@@ -426,21 +435,10 @@ export async function runFitV4ShadowAudit({
   if (pointerRunId !== manifest.runId) {
     injectFault(faultAt, 'before-pointer-cas', 'ADVANCE_POINTER');
     await compareAndSwapFitV4ShadowPointer({
+      runsRoot: isolatedRunsRoot,
       shadowRoot: isolatedShadowRoot,
-      expectedRunId,
-      nextRunId: manifest.runId,
-      verify: async () => {
-        await readAndVerifyAudit(auditPath, completeInput);
-        const latest = await resumeFitV4Run({
-          runsRoot: isolatedRunsRoot,
-          manifestId: manifest.manifestId,
-          expectedInputs,
-          root,
-          descriptorPath,
-        });
-        const written = latest.checkpoints.find((item) => item.stage === 'shadow-audit');
-        if (!written || !same(written, checkpoint)) throw new Error('shadow audit checkpoint missing before pointer CAS');
-      },
+      expectedPointer: priorPointer,
+      nextManifest: manifest,
     });
     injectFault(faultAt, 'after-pointer-cas', 'COMPLETE');
   } else if (expectedRunId !== manifest.runId) {
@@ -462,6 +460,7 @@ export async function rollbackFitV4ShadowAudit({
   manifest,
   auditInput,
 }) {
+  validateFitV4RunManifest(manifest);
   if (targetRunId !== manifest?.runId) throw new Error('rollback target run and manifest mismatch');
   const isolatedRunsRoot = assertIsolatedRoot(runsRoot, 'runs root');
   const manifestPath = join(isolatedRunsRoot, targetRunId, 'manifest.json');
@@ -492,13 +491,24 @@ export async function rollbackFitV4ShadowAudit({
     throw error;
   }
   if (!same(persistedCheckpoint, expectedCheckpoint)) throw new Error('rollback target checkpoint mismatch');
+  let priorPointer = null;
+  try {
+    const pointerBytes = await readFile(join(assertIsolatedRoot(shadowRoot, 'shadow root'), 'active-shadow.json'));
+    priorPointer = validateFitV4ShadowPointer(JSON.parse(pointerBytes));
+    if (!pointerBytes.equals(Buffer.from(`${JSON.stringify(priorPointer, null, 2)}\n`))) {
+      throw new TypeError('Fit V4 shadow pointer bytes invalid');
+    }
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  if ((priorPointer?.runId ?? null) !== expectedRunId) {
+    throw new Error('stale compare-and-swap shadow pointer');
+  }
+  if (artifact.verdict !== 'PASS') throw new Error('rollback target audit did not pass');
   return compareAndSwapFitV4ShadowPointer({
+    runsRoot: isolatedRunsRoot,
     shadowRoot: assertIsolatedRoot(shadowRoot, 'shadow root'),
-    expectedRunId,
-    nextRunId: targetRunId,
-    verify: async () => {
-      const { artifact } = await readAndVerifyAudit(auditPath, completeInput);
-      if (artifact.verdict !== 'PASS') throw new Error('rollback target audit did not pass');
-    },
+    expectedPointer: priorPointer,
+    nextManifest: manifest,
   });
 }

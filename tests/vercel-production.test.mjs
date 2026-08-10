@@ -23,7 +23,8 @@ test('vercel production config: clean urls and canonical slash behavior are expl
 
   assert.equal(config.cleanUrls, true);
   assert.equal(config.trailingSlash, false);
-  assert.equal(config.buildCommand, 'npm run build');
+  assert.equal(config.buildCommand, 'npm run build:deploy');
+  assert.equal(config.outputDirectory, 'dist');
 });
 
 test('vercel production config: apex host permanently redirects to canonical www host', () => {
@@ -66,6 +67,26 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.get('/products/:slug'), '/pages/products/:slug');
   assert.equal(routes.get('/data/:path*'), '/public/data/:path*');
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
+  assert.equal(routes.get('/licenses/:path*'), '/public/licenses/:path*');
+  assert.equal(routes.get('/third-party-licenses'), '/pages/third-party-licenses');
+  assert.equal(routes.has('/pdf-evidence/:path*'), false);
+});
+
+test('third-party licenses and government data attribution are publicly disclosed', () => {
+  const page = fs.readFileSync(path.join(repoRoot, 'pages/third-party-licenses.html'), 'utf8');
+  const apache = fs.readFileSync(path.join(repoRoot, 'public/licenses/web-vitals-4.2.4-apache-2.0.txt'), 'utf8');
+  const outfit = fs.readFileSync(path.join(repoRoot, 'public/licenses/outfit-ofl-1.1.txt'), 'utf8');
+  const home = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(page, /web-vitals 4\.2\.4/);
+  assert.match(page, /Australian Government Energy Rating dataset/);
+  assert.match(page, /Department of Climate Change, Energy, the Environment and Water/);
+  assert.match(page, /Creative Commons Attribution 3\.0 Australia/);
+  assert.match(page, /\/licenses\/web-vitals-4\.2\.4-apache-2\.0\.txt/);
+  assert.match(page, /\/licenses\/outfit-ofl-1\.1\.txt/);
+  assert.match(apache, /Apache License\s+Version 2\.0, January 2004/);
+  assert.match(outfit, /SIL OPEN FONT LICENSE Version 1\.1/);
+  assert.match(home, /href="\/third-party-licenses"/);
 });
 
 test('vercel production config: root files do not shadow public script rewrites', () => {
@@ -112,7 +133,7 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   for (const width of [800, 700, 620, 600, 580]) {
     assert.deepEqual(redirects.get(`/fit-check/panasonic-nr-tc221busa-in-${width}mm-cavity`), {
       source: `/fit-check/panasonic-nr-tc221busa-in-${width}mm-cavity`,
-      destination: '/fit-check/panasonic-nr-tc221busa-in-640mm-cavity',
+      destination: '/brands/panasonic-fridge-clearance',
       permanent: true
     });
   }
@@ -153,7 +174,7 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   });
   assert.deepEqual(redirects.get('/compare/smeg-vs-miele-dishwasher-clearance'), {
     source: '/compare/smeg-vs-miele-dishwasher-clearance',
-    destination: '/compare/fisher-paykel-vs-miele-dishwasher-clearance',
+    destination: '/compare/fisher-paykel-vs-miele-dishwasher',
     permanent: true
   });
   assert.deepEqual(redirects.get('/compare/midea-vs-inalto-washing-machine-clearance'), {
@@ -193,7 +214,7 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   );
 });
 
-test('vercel production config: runtime data revalidates while immutable evidence keeps bounded caching', () => {
+test('vercel production config: runtime data revalidates and private PDF evidence has no public header rule', () => {
   const config = loadVercelConfig();
 
   const dataRule = findHeaderRule(config, '/data/:path*');
@@ -201,11 +222,7 @@ test('vercel production config: runtime data revalidates while immutable evidenc
   assert.equal(dataCache, 'public, max-age=0, must-revalidate');
   assert.equal(headerValue(dataRule, 'X-Robots-Tag'), 'noindex');
 
-  const evidenceRule = findHeaderRule(config, '/pdf-evidence/:path*');
-  const evidenceCache = headerValue(evidenceRule, 'Cache-Control');
-  assert.match(evidenceCache, /max-age=86400/);
-  assert.match(evidenceCache, /stale-while-revalidate=604800/);
-  assert.equal(headerValue(evidenceRule, 'X-Robots-Tag'), 'noindex');
+  assert.equal(findHeaderRule(config, '/pdf-evidence/:path*'), undefined);
 });
 
 test('vercel production config: runtime UI assets revalidate and JavaScript stays non-indexable', () => {

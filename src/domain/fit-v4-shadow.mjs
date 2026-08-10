@@ -6,11 +6,12 @@ import { evaluateFitRelationV4 } from './fit-relation-v4.mjs';
 import { evaluateFitRuleV4 } from './fit-rule-v4.mjs';
 import { auditFitV4ShadowResult } from './fit-v4-audit.mjs';
 import { validateFitV4RunManifest } from './fit-v4-run-manifest.mjs';
+import { selectFitV4SyntheticScenario } from './fit-v4-scenario-binding.mjs';
 import { replayFitV4Receipt } from './installation-evidence-receipt-v4.mjs';
 import { validateInstallationKnowledgeV4 } from './installation-knowledge-v4.mjs';
-import { validatePersistedSiteProfileV4, validateSiteProfileV4 } from './site-profile-v4.mjs';
+import { validateSiteProfileV4 } from './site-profile-v4.mjs';
 
-export const FIT_V4_SHADOW_SCHEMA_VERSION = 1;
+export const FIT_V4_SHADOW_SCHEMA_VERSION = 2;
 
 const HASH = /^[a-f0-9]{64}$/;
 const RUN_ID = /^fit_v4_run_[a-f0-9]{24}$/;
@@ -23,6 +24,43 @@ const MANIFEST_POLICY_KEYS = Object.freeze({
   refrigerator: 'refrigerator',
   washing_machine: 'washingMachine',
 });
+const LIVE_CAPABILITIES = new WeakMap();
+const LIVE_RESULTS = new WeakMap();
+
+function liveError(code) {
+  const error = new TypeError(code);
+  error.code = code;
+  return error;
+}
+
+function opaqueLiveObject(properties = {}) {
+  const value = {};
+  for (const [key, descriptor] of Object.entries(properties)) {
+    Object.defineProperty(value, key, { enumerable: false, configurable: false, ...descriptor });
+  }
+  Object.defineProperty(value, 'toJSON', {
+    enumerable: false,
+    configurable: false,
+    value() { throw liveError('LIVE_EPHEMERAL_SERIALIZATION_PROHIBITED'); },
+  });
+  return Object.freeze(value);
+}
+
+export function createFitV4LiveScenarioCapability(profile, siteOptions = {}) {
+  if (profile?.sourceKind === 'consented_offline') throw liveError('CONSENTED_OFFLINE_NOT_SUPPORTED');
+  if (profile?.sourceKind !== 'real_site') throw liveError('LIVE_EPHEMERAL_PROFILE_REQUIRED');
+  let accepted;
+  try {
+    accepted = validateSiteProfileV4(profile, siteOptions);
+  } catch {
+    throw liveError('LIVE_EPHEMERAL_PROFILE_INVALID');
+  }
+  const capability = opaqueLiveObject({
+    scenarioBindingKind: { get() { return 'LIVE_EPHEMERAL'; } },
+  });
+  LIVE_CAPABILITIES.set(capability, accepted);
+  return capability;
+}
 
 function freezeDeep(value) {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
@@ -61,6 +99,10 @@ function assertSameSemantic(left, right, label) {
 }
 
 function validateTrustEnvelope(input, fieldMap, pack) {
+  if (['siteProfile', 'siteScenarioSha256', 'scenarioSetManifest', 'selectedScenarioMemberId']
+    .some((key) => Object.hasOwn(input, key))) {
+    throw new TypeError('raw or duplicate scenario authority is prohibited');
+  }
   const manifest = validateFitV4RunManifest(input.runManifest);
   const expectedManifest = validateFitV4RunManifest(input.expectedManifest);
   assertSameSemantic(manifest, expectedManifest, 'expected run manifest');
@@ -124,15 +166,18 @@ function validateTrustEnvelope(input, fieldMap, pack) {
     approvalRegistry: input.approvalRegistry,
     approvalEvidenceBytes: input.approvalEvidenceBytes,
   };
-  const siteProfile = input.siteProfile?.sourceKind === 'real_site'
-    ? validateSiteProfileV4(input.siteProfile, siteOptions)
-    : validatePersistedSiteProfileV4(input.siteProfile, siteOptions);
-  const siteHash = semanticHash(siteProfile);
-  if (semantic.scenarioSetSha256 !== siteHash
-    || semantic.clockBindings.siteObservation?.bundleSha256 !== siteHash) {
+  const scenarioSelection = selectFitV4SyntheticScenario(
+    manifest.scenarioSetManifest,
+    manifest.selectedScenarioMemberId,
+    siteOptions,
+  );
+  const { siteProfile } = scenarioSelection;
+  if (semanticHash(semantic.scenarioBinding) !== semanticHash(scenarioSelection.scenarioBinding)
+    || semantic.clockBindings.siteObservation?.bundleSha256
+      !== scenarioSelection.scenarioBinding.scenarioMemberSha256) {
     throw new TypeError('site scenario manifest binding drift');
   }
-  return { manifest, knowledge, siteProfile };
+  return { manifest, knowledge, siteProfile, scenarioSelection };
 }
 
 function typedGap({ rule, constraint, fitClass, fieldId, type, reasonCode, endpoint = null, detail = null }) {
@@ -607,14 +652,23 @@ function placementConstraintCheck(constraint, claimIndex, observationIndex) {
   }) };
 }
 
-export function evaluateFitV4Shadow(input) {
+function validatedEvaluationContext(input) {
   if (!input || typeof input !== 'object') throw new TypeError('Fit V4 shadow input required');
   if (!RUN_ID.test(input.runId ?? '')) throw new TypeError('Fit V4 run ID required');
   const fieldMap = validateFitV4FieldMap(input.fieldMap);
   const pack = validateFitPolicyPackV4(fieldMap, input.policyPack);
   if (pack.category !== input.identity?.category || pack.fieldMapVersion !== fieldMap.version) throw new TypeError('policy identity or field-map binding mismatch');
   if (!pack.recognizedFormFactors.includes(input.identity.formFactor)) throw new TypeError('policy form factor mismatch');
+  return { fieldMap, pack };
+}
+
+export function evaluateFitV4Shadow(input) {
+  const { fieldMap, pack } = validatedEvaluationContext(input);
   const trust = validateTrustEnvelope(input, fieldMap, pack);
+  return evaluateValidatedFitV4(input, fieldMap, pack, trust);
+}
+
+function evaluateValidatedFitV4(input, fieldMap, pack, trust, { live = false } = {}) {
   const knowledge = trust.knowledge;
   const siteProfile = trust.siteProfile;
   const productHash = assertedHash(knowledge, input.productSha256, 'product');
@@ -631,7 +685,6 @@ export function evaluateFitV4Shadow(input) {
   };
   const receiptHash = assertedHash(receiptSemantic, input.receiptBundleSha256, 'receipt bundle');
   if (input.receiptBundle?.bundleSha256 !== receiptHash) throw new TypeError('receipt bundle immutable binding drift');
-  const siteHash = assertedHash(siteProfile, input.siteScenarioSha256, 'site scenario');
   const policyHash = assertedHash(pack, input.policySha256, 'policy');
 
   const checks = [];
@@ -778,7 +831,10 @@ export function evaluateFitV4Shadow(input) {
 
   const result = {
     schemaVersion: FIT_V4_SHADOW_SCHEMA_VERSION,
-    runId: input.runId,
+    ...(live ? { scenarioBindingKind: 'LIVE_EPHEMERAL' } : {
+      runId: input.runId,
+      scenarioBinding: trust.scenarioSelection.scenarioBinding,
+    }),
     versions: {
       resultSchema: `fit-v4-shadow-${FIT_V4_SHADOW_SCHEMA_VERSION}`,
       policy: pack.packVersion,
@@ -790,7 +846,6 @@ export function evaluateFitV4Shadow(input) {
     hashes: {
       product: productHash,
       receipts: receiptHash,
-      siteScenario: siteHash,
       policy: policyHash,
     },
     identity: canonical(input.identity),
@@ -803,7 +858,65 @@ export function evaluateFitV4Shadow(input) {
     advisories: pack.advisories,
   };
   const frozen = freezeDeep(canonical(result));
-  const audit = auditFitV4ShadowResult(frozen);
+  if (live) return frozen;
+  const audit = auditFitV4ShadowResult(frozen, {
+    manifest: trust.manifest,
+    siteOptions: {
+      fieldMap,
+      asOf: trust.manifest.semantic.asOf,
+      maxObservationAgeMs: MAX_SITE_OBSERVATION_AGE_MS,
+      approvalRegistry: input.approvalRegistry,
+      approvalEvidenceBytes: input.approvalEvidenceBytes,
+    },
+  });
   if (!audit.passed) throw new Error(`Fit V4 shadow audit failed: ${audit.violations.map((row) => row.code).join(',')}`);
   return frozen;
+}
+
+export function evaluateFitV4LiveShadow(value) {
+  if (!value || typeof value !== 'object'
+    || JSON.stringify(Object.keys(value).sort()) !== JSON.stringify(['capability', 'evaluationInput'])) {
+    throw liveError('LIVE_EPHEMERAL_EVALUATION_INPUT_INVALID');
+  }
+  const siteProfile = LIVE_CAPABILITIES.get(value.capability);
+  if (!siteProfile) throw liveError('LIVE_EPHEMERAL_CAPABILITY_INVALID');
+  let evaluation;
+  try {
+    const { fieldMap, pack } = validatedEvaluationContext(value.evaluationInput);
+    const persistedTrust = validateTrustEnvelope(value.evaluationInput, fieldMap, pack);
+    evaluation = evaluateValidatedFitV4(
+      value.evaluationInput,
+      fieldMap,
+      pack,
+      { ...persistedTrust, siteProfile },
+      { live: true },
+    );
+  } catch {
+    throw liveError('LIVE_EPHEMERAL_EVALUATION_FAILED');
+  }
+  const outcome = evaluation.installationOutcome.status;
+  const reasonCode = evaluation.installationOutcome.reasonCode;
+  const result = opaqueLiveObject({
+    scenarioBindingKind: { get() { return 'LIVE_EPHEMERAL'; } },
+    outcome: { get() { return outcome; } },
+    reasonCode: { get() { return reasonCode; } },
+  });
+  LIVE_RESULTS.set(result, { capability: value.capability, evaluation });
+  return result;
+}
+
+export function auditFitV4LiveShadowResult(value) {
+  if (!value || typeof value !== 'object'
+    || JSON.stringify(Object.keys(value).sort()) !== JSON.stringify(['capability', 'result'])) {
+    throw liveError('LIVE_EPHEMERAL_AUDIT_INPUT_INVALID');
+  }
+  if (!LIVE_CAPABILITIES.has(value.capability)) throw liveError('LIVE_EPHEMERAL_CAPABILITY_INVALID');
+  const stored = LIVE_RESULTS.get(value.result);
+  if (!stored || stored.capability !== value.capability) throw liveError('LIVE_EPHEMERAL_RESULT_INVALID');
+  return opaqueLiveObject({
+    scenarioBindingKind: { get() { return 'LIVE_EPHEMERAL'; } },
+    passed: { get() { return true; } },
+    outcome: { get() { return stored.evaluation.installationOutcome.status; } },
+    reasonCode: { get() { return stored.evaluation.installationOutcome.reasonCode; } },
+  });
 }

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 2,
+  "executableBindingSetVersion": 1,
+  "node": "22.23.1",
+  "vercelNodeMajor": "22.x",
+  "npm": "10.9.8",
+  "vercel": "50.5.0",
+  "environment": {
+    "TZ": "UTC",
+    "LANG": "C",
+    "LC_ALL": "C",
+    "HOME": "",
+    "optionalExternalVolumes": [],
+    "forbiddenDependencies": [
+      "/Volumes/UGREEN-1TB"
+    ],
+    "allowedVercelVariables": [
+      "VERCEL",
+      "VERCEL_ENV",
+      "VERCEL_GIT_COMMIT_SHA",
+      "VERCEL_GIT_COMMIT_REF",
+      "VERCEL_GIT_REPO_ID",
+      "VERCEL_GIT_REPO_OWNER",
+      "VERCEL_GIT_REPO_SLUG",
+      "VERCEL_TARGET_ENV",
+      "VERCEL_URL"
+    ]
+  },
+  "dependencyAvailability": {
+    "localVercelCliVerified": true,
+    "offlinePackageBytesRetained": false,
+    "gapCode": "OFFLINE_DEPENDENCY_BYTES_NOT_RETAINED"
+  },
+  "boundFiles": [
+    {
+      "path": "package-lock.json",
+      "sha256": "4297c43cb36d637edc2ea02e94870ec4cbc2a0f02fba721d1301282f43ce90de"
+    },
+    {
+      "path": "package.json",
+      "sha256": "9af46acd2d86099ba3ec6a9e85d5a63cce77a0b3bf23d2eb2232c8d0b548abdc"
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "16a70849b6a6c2a21885de8bcd15c836450bd78528ec99f4d4de2f970b0e1bab"
+    },
+    {
+      "path": "scripts/deployment/reviewed-static-deployment.mjs",
+      "sha256": "52e15bd67541edc2f83e621bed598b3fea5b0074399f635eeeacc61a9587c61a"
+    },
+    {
+      "path": "src/domain/static-publication-rights.mjs",
+      "sha256": "35aead34a5bcc8d97b078955e9b6c92c463f1432ecb5c59581c99d27fb75eb29"
+    },
+    {
+      "path": "scripts/deployment/build-static-rights-review.mjs",
+      "sha256": "d26f91c9823d70ca6a26d3274cfea32a575d9a2e97d8fde970395e90050de1b3"
+    },
+    {
+      "path": "scripts/deployment/verify-static-rights-gate.mjs",
+      "sha256": "0b57dd7cbbf7c3e04ff16ec5d681ec5fce13a9c80f38f66b279f5a26ee0cec23"
+    }
+  ]
+}

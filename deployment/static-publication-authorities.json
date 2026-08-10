@@ -1,0 +1,21 @@
+{
+  "authorities": [
+    {
+      "actions": [
+        "PUBLIC_STATIC_DISTRIBUTION"
+      ],
+      "issuerId": "FITAPPLIANCE_RIGHTS_REVIEWER",
+      "keyId": "FITAPPLIANCE_RIGHTS_ED25519_388F583DC4D7D1D9",
+      "publicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAueK0draxgtXDs5m3K4kIQwQY6D8+pIi5rvG4NGHA1N0=\n-----END PUBLIC KEY-----\n",
+      "roles": [
+        "RIGHTS_REVIEWER"
+      ]
+    }
+  ],
+  "environment": "PRODUCTION",
+  "schemaVersion": 1,
+  "trustRootEnrollment": {
+    "authoritySetHash": "b5671ef404bdb935e44ee539c400807287baee1fa7731d9311604935cae00510",
+    "signature": "0PGQ/D3WmGesXlJJSHYheFNS2Fu2OiIavqawOyIrwkOssnvLFkf4JH68AzqBrGmZNvMQXXo6HkYAMfh605SRAw=="
+  }
+}

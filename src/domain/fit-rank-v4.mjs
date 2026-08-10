@@ -41,6 +41,14 @@ const FORBIDDEN_KEYS = new Set([
 ]);
 const HASH = /^[a-f0-9]{64}$/;
 
+function stopSchema2Rank(result) {
+  if (result?.schemaVersion === 2) {
+    const error = new TypeError('RANK_SCHEMA_V2_REQUIRED');
+    error.code = 'RANK_SCHEMA_V2_REQUIRED';
+    throw error;
+  }
+}
+
 function freezeDeep(value) {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
     for (const child of Object.values(value)) freezeDeep(child);
@@ -86,6 +94,7 @@ function forbiddenLegacyKey(value) {
 }
 
 function completedResult(result) {
+  stopSchema2Rank(result);
   if (!result || typeof result !== 'object') throw new TypeError('completed V4 shadow result required');
   const legacyKey = forbiddenLegacyKey(result);
   if (legacyKey) throw new TypeError(`legacy or generic V4 rank input key prohibited: ${legacyKey}`);
@@ -230,6 +239,7 @@ function rankFromReplayInput(replayInput) {
 }
 
 export function deriveFitV4Rank(result, replayInput) {
+  stopSchema2Rank(result);
   const replayed = evaluateFitV4Shadow(replayInput);
   if (semanticHash(result) !== semanticHash(replayed)) {
     throw new TypeError('V4 rank source result does not match independently replayed evaluation');

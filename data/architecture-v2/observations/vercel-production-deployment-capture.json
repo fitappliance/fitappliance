@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "fit-v4-production-deployment-capture-v1",
+  "capturedAt": "2026-08-09T08:10:01.000Z",
+  "project": {
+    "projectId": "prj_BnXUk2ZckCJMmbBwPRAd4AcszAd9",
+    "teamId": "team_kMmQZPK2xArpjMZUlw96wI9E"
+  },
+  "deployment": {
+    "deploymentId": "dpl_BY3B3AatSC56LXVeMKnX2cr5F22M",
+    "deploymentUrl": "https://fitappliance-bmwpa6ziw-fitappliances-projects.vercel.app",
+    "target": "production",
+    "readyState": "READY",
+    "createdAt": 1785339020883,
+    "aliases": [
+      "fitappliance-fitappliances-projects.vercel.app",
+      "fitappliance-git-main-fitappliances-projects.vercel.app",
+      "fitappliance.com.au",
+      "fitappliance.vercel.app",
+      "www.fitappliance.com.au"
+    ]
+  },
+  "source": {
+    "provider": "github",
+    "ref": "main",
+    "commit": "35a4ea0a180f0f9f2d4c35b281cf618d8c93023a",
+    "tree": "901ca311f85a00600457185bb51d121b6b4398f3",
+    "inventory": {
+      "blobCount": 7941,
+      "totalBytes": 383780028
+    },
+    "ancestorOfCaptureHead": true
+  },
+  "runtime": {
+    "nodeVersion": "24.x",
+    "regions": [
+      "syd1"
+    ],
+    "functions": [
+      {
+        "path": "api/error",
+        "digest": "47698d7ab3c9cda9133564a7a1dd9e8659f2f20a491340607aa5d2f5fb79bf20",
+        "mode": 49590,
+        "size": 6790,
+        "runtime": "nodejs24.x",
+        "regions": [
+          "syd1"
+        ]
+      },
+      {
+        "path": "api/rum",
+        "digest": "d97a5e380928f18b64c0be1c998ca7acc14cf1dec324e92fc798d0a5695d02cd",
+        "mode": 49590,
+        "size": 7779,
+        "runtime": "nodejs24.x",
+        "regions": [
+          "syd1"
+        ]
+      },
+      {
+        "path": "api/subscribe",
+        "digest": "feccd1a7757208fd3f1927b1782c83ca8d285c0d0c68845ac86649d3a60b69d0",
+        "mode": 49590,
+        "size": 6729,
+        "runtime": "nodejs24.x",
+        "regions": [
+          "syd1"
+        ]
+      }
+    ]
+  },
+  "configuration": {
+    "vercelJsonBytesSha256": "8b7111edda3d361a363de163e5af5a06e7511a22f4acdafae1ee0ae8acef937e",
+    "vercelJsonSemanticSha256": "8f1a6f21a0dd8ac1608a1d86e7dc1dfd7135f62ad22623115f315ffe6358c8a0",
+    "redirects": {
+      "count": 78,
+      "semanticSha256": "166d865633b77fcc18f9e3d1a7be55db049b6b08cf206083b481b2198c8f9f53"
+    },
+    "rewrites": {
+      "count": 40,
+      "semanticSha256": "1bb5b9e5496b20c94b2d3858a32ac1bdf5d88689a4045af1869124336f183363"
+    },
+    "headers": {
+      "count": 11,
+      "semanticSha256": "7e796611ecf1641df7e9e43433b45c2f5b581f09ed7fc8068f64243a42354c99"
+    },
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "regions": [
+      "syd1"
+    ],
+    "buildCommand": "npm run build",
+    "outputDirectory": null
+  },
+  "remoteFileTree": {
+    "available": false,
+    "statusCode": 404,
+    "message": "File tree not found"
+  },
+  "isolatedBuild": {
+    "status": "SUCCEEDED_OVERBROAD",
+    "fileCount": 7953,
+    "approximateBytes": 399507456,
+    "outputDirectory": ".",
+    "confirmedExposurePaths": [
+      "/.openclaw_context",
+      "/README.md",
+      "/data/architecture-v2/decisions/active-retail-release.json",
+      "/docs/product-core-brief.md"
+    ]
+  },
+  "liveFingerprints": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 162178,
+      "sha256": "64c962bf9bd0417cca4c9f7f9bfb95613571a8cb634f2ec44bae8a433449394b"
+    },
+    {
+      "path": "/service-worker.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 6713,
+      "sha256": "1173e7fd32da8f8412cb483d7f6f11540af087eb6789a00909c4513c356fb0ae"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml",
+      "bytes": 403508,
+      "sha256": "2128a39c323e4deb59734cec22617c89013386cba4b6ae1bca685b78880768cc"
+    },
+    {
+      "path": "/data/appliances.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 6228993,
+      "sha256": "ef9695123681b4c8fe37ebd79d228bbcfaf24b89da68a012e1e3ddab7f0e558a"
+    },
+    {
+      "path": "/README.md",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 41556,
+      "sha256": "6382e4bcb5d189ee88bdfeba710aa61a30b055a5b055a10c271aaaf5b36fdffc"
+    },
+    {
+      "path": "/.openclaw_context",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "bytes": 268,
+      "sha256": "7120c4f25909b3239ca807567b4478b863d8a4c46f6ad1e1cb466f3662c8a2ee"
+    },
+    {
+      "path": "/docs/product-core-brief.md",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 60028,
+      "sha256": "9be84a660f55c998cf9c4b7999d0461609a66ed43abc4225af8aed9052781719"
+    },
+    {
+      "path": "/data/architecture-v2/decisions/active-retail-release.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 1122,
+      "sha256": "976a1463dd747763d20c959d52ecceaa1617a52eff6b06f17d9d8f59b2a6f222"
+    }
+  ],
+  "serviceWorker": {
+    "liveCacheVersion": "35a4ea0",
+    "trackedCacheVersion": "e69bbe0",
+    "trackedSourceIsDeployedByte": false,
+    "liveBytesSha256": "1173e7fd32da8f8412cb483d7f6f11540af087eb6789a00909c4513c356fb0ae"
+  }
+}

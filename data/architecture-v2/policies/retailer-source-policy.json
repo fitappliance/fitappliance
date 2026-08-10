@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "policyVersion": "retailer-source-policy-v2",
-  "reviewedAt": "2026-07-20",
+  "reviewedAt": "2026-08-10",
   "sources": [
     {
       "id": "appliances-online-product-api-v1",
@@ -98,14 +98,14 @@
       ],
       "sourceType": "affiliate_feed",
       "collectionMode": "partnerize_feed_only",
-      "termsReviewState": "authorized_partner_feed",
+      "termsReviewState": "collection_blocked",
       "robotsHttpStatus": 200,
       "robotsSha256": "0d73e51be2ca9f07ede19daa5e5b9ccb0de5ab2ac4663ff4e30910a3b3135735",
       "minimumIntervalMs": 1000,
       "expectedCadenceHours": 24,
       "maximumCurrentAgeHours": 72,
-      "legacyLinkAction": "REPLAY_PARTNERIZE_FEED",
-      "notes": "Use the authorised Partnerize product feed. Do not crawl disallowed product or search paths."
+      "legacyLinkAction": "FEED_RIGHTS_REVIEW_BLOCKED",
+      "notes": "Authenticated Partnerize access and campaign terms permit affiliate links and bounded licensed-material use, but do not expressly authorize caching and public redistribution of the full product feed. Acquisition, refresh and publication remain blocked until written permission defines display, storage, update, attribution and withdrawal scope."
     }
   ]
 }

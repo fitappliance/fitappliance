@@ -62,6 +62,16 @@ const sourcePolicy = readJsonWithHash(
 );
 const emptyV1Ledger = Object.freeze({ schemaVersion: 1, observations: [] });
 
+function authorizedPartnerizePolicy() {
+  const document = structuredClone(sourcePolicy.document);
+  const partnerize = document.sources.find((source) => (
+    source.id === 'the-good-guys-partnerize-feed-v1'
+  ));
+  partnerize.termsReviewState = 'authorized_partner_feed';
+  partnerize.legacyLinkAction = 'REPLAY_PARTNERIZE_FEED';
+  return { document, sha256: canonicalSha256(document) };
+}
+
 function adapterForPolicy(sourceId) {
   const policy = sourcePolicy.document;
   const source = policy.sources.find((row) => row.id === sourceId);
@@ -192,7 +202,7 @@ test('coverage inventory classifies every baseline link as typed or a specific p
     .every((item) => item.revalidation.executionState === 'RUNNABLE_POLICY_REVIEWED_SOURCE'));
   assert.ok(coverage.items
     .filter((item) => item.sourcePolicyId === 'the-good-guys-partnerize-feed-v1')
-    .every((item) => item.revalidation.executionState === 'RUNNABLE_AUTHORIZED_SOURCE'));
+    .every((item) => item.revalidation.executionState === 'BLOCKED_BY_SOURCE_POLICY'));
 });
 
 test('a hash-bound typed snapshot appends once and replaces only its own coverage item', () => {
@@ -270,6 +280,7 @@ test('a hash-bound typed snapshot appends once and replaces only its own coverag
 });
 
 test('coverage consumes a complete-feed per-listing identity quarantine without inventing availability', () => {
+  const fixturePolicy = authorizedPartnerizePolicy();
   const adapter = adapterForPolicy('the-good-guys-partnerize-feed-v1');
   const product = publicProjection.document.products.find((row) => (
     row.retailers?.some((retailer) => retailer.n === 'The Good Guys')
@@ -305,8 +316,8 @@ test('coverage consumes a complete-feed per-listing identity quarantine without 
     existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
-    sourcePolicy: sourcePolicy.document,
-    sourcePolicySha256: sourcePolicy.sha256,
+    sourcePolicy: fixturePolicy.document,
+    sourcePolicySha256: fixturePolicy.sha256,
     typedSnapshots: [snapshot],
   });
   const coverage = buildRetailerObservationCoverage({
@@ -314,8 +325,8 @@ test('coverage consumes a complete-feed per-listing identity quarantine without 
     publicProjectionSha256: publicProjection.sha256,
     ledger,
     ledgerSha256: canonicalSha256(ledger),
-    sourcePolicy: sourcePolicy.document,
-    sourcePolicySha256: sourcePolicy.sha256,
+    sourcePolicy: fixturePolicy.document,
+    sourcePolicySha256: fixturePolicy.sha256,
   });
   const item = coverage.items.find((row) => row.baselineLinkId === baselineLinkId);
 
@@ -327,6 +338,7 @@ test('coverage consumes a complete-feed per-listing identity quarantine without 
 });
 
 test('coverage routes complete affiliate-feed absence to an alternate source without inferring unavailable', () => {
+  const fixturePolicy = authorizedPartnerizePolicy();
   const adapter = adapterForPolicy('the-good-guys-partnerize-feed-v1');
   const product = publicProjection.document.products.find((row) => (
     row.retailers?.some((retailer) => retailer.n === 'The Good Guys')
@@ -361,8 +373,8 @@ test('coverage routes complete affiliate-feed absence to an alternate source wit
     existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
-    sourcePolicy: sourcePolicy.document,
-    sourcePolicySha256: sourcePolicy.sha256,
+    sourcePolicy: fixturePolicy.document,
+    sourcePolicySha256: fixturePolicy.sha256,
     typedSnapshots: [snapshot],
   });
   const coverage = buildRetailerObservationCoverage({
@@ -370,8 +382,8 @@ test('coverage routes complete affiliate-feed absence to an alternate source wit
     publicProjectionSha256: publicProjection.sha256,
     ledger,
     ledgerSha256: canonicalSha256(ledger),
-    sourcePolicy: sourcePolicy.document,
-    sourcePolicySha256: sourcePolicy.sha256,
+    sourcePolicy: fixturePolicy.document,
+    sourcePolicySha256: fixturePolicy.sha256,
   });
   const item = coverage.items.find((row) => row.baselineLinkId === baselineLinkId);
 

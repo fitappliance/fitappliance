@@ -11,6 +11,7 @@ import {
   writeFitV4ShadowCohort,
 } from '../../scripts/architecture-v2/build-fit-v4-shadow-cohort.mjs';
 import { auditFitV4ShadowCohort } from '../../scripts/architecture-v2/audit-fit-v4-shadow-cohort.mjs';
+import { validateFitV4SyntheticScenarioSet } from '../../src/domain/fit-v4-scenario-binding.mjs';
 
 const ROOT = new URL('../..', import.meta.url).pathname;
 const PILOT_PATH = new URL('../../data/architecture-v2/generated/installation-knowledge-pilot.json', import.meta.url);
@@ -66,6 +67,20 @@ test('cohort freezes exactly 100 unique products split 50/50 and binds active re
   assert.match(artifact.bindings.activeRelease.authorizationManifestSha256, /^[a-f0-9]{64}$/);
   assert.equal(artifact.isolation.publicMutation, false);
   assert.equal(JSON.stringify(artifact).includes('publicationEligibility'), false);
+});
+
+test('cohort cases are fixed non-evaluated descriptors and cannot validate as a scenario set', async () => {
+  const artifact = await buildFitV4ShadowCohort(await inputs());
+  assert.equal(Object.hasOwn(artifact, 'scenarios'), false);
+  assert.equal(Object.hasOwn(artifact.bindings, 'scenarios'), false);
+  assert.equal(artifact.cohortCases.artifactType, 'FIT_V4_NON_EVALUATED_COHORT_CASES');
+  assert.equal(artifact.cohortCases.caseSetId, 'fit-v4-task-7-fixed-non-evaluated-cases-v1');
+  assert.equal(Object.hasOwn(artifact.cohortCases, 'scenarioSetId'), false);
+  assert.ok(artifact.cohortCases.cases.every((row) => row.evaluationStatus === 'NOT_EVALUATED'));
+  assert.throws(
+    () => validateFitV4SyntheticScenarioSet(artifact.cohortCases),
+    /scenario|artifact|key set|schema/i,
+  );
 });
 
 test('active-release descriptor or artifact drift fails closed through the active loader', async (t) => {
@@ -175,7 +190,7 @@ test('audit detects semantic tamper, category drift and cross-model adapter bind
   assert.ok(audit.violations.some((row) => row.code === 'PILOT_BINDING_VIOLATION'));
 
   const scenarioTamper = structuredClone(artifact);
-  scenarioTamper.scenarios.scenarios[0].measurementState = 'KNOWN';
+  scenarioTamper.cohortCases.cases[0].measurementState = 'KNOWN';
   audit = await auditFitV4ShadowCohort(rehash(scenarioTamper), { root: ROOT });
   assert.ok(audit.violations.some((row) => row.code === 'HASH_BINDING_VIOLATION'));
 

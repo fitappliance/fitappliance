@@ -424,7 +424,12 @@ export async function writeFitV4CutoverCandidate({ candidate, outputPath } = {})
   return path;
 }
 
-export async function rehearsePrivatePointerRollback({ shadowRoot } = {}) {
+export async function rehearsePrivatePointerRollback({
+  runsRoot,
+  shadowRoot,
+  priorManifest,
+  rehearsalManifest,
+} = {}) {
   const root = resolve(shadowRoot);
   if (root.split(sep).some((part) => part.toLowerCase() === 'public')) {
     throw new Error('private pointer rehearsal requires isolated storage');
@@ -432,30 +437,30 @@ export async function rehearsePrivatePointerRollback({ shadowRoot } = {}) {
   const pointerPath = join(root, 'active-shadow.json');
   const priorBytes = await readFile(pointerPath);
   const prior = JSON.parse(priorBytes);
-  const rehearsalRunId = `fit_v4_run_${sha256(priorBytes).slice(0, 24)}`;
   await compareAndSwapFitV4ShadowPointer({
+    runsRoot,
     shadowRoot: root,
-    expectedRunId: prior.runId,
-    nextRunId: rehearsalRunId,
-    verify: async () => true,
+    expectedPointer: prior,
+    nextManifest: rehearsalManifest,
   });
+  const rehearsal = JSON.parse(await readFile(pointerPath, 'utf8'));
   let staleCasRejected = false;
   try {
     await compareAndSwapFitV4ShadowPointer({
+      runsRoot,
       shadowRoot: root,
-      expectedRunId: prior.runId,
-      nextRunId: rehearsalRunId,
-      verify: async () => true,
+      expectedPointer: prior,
+      nextManifest: rehearsalManifest,
     });
   } catch (error) {
     if (!/stale compare-and-swap/.test(error.message)) throw error;
     staleCasRejected = true;
   }
   await compareAndSwapFitV4ShadowPointer({
+    runsRoot,
     shadowRoot: root,
-    expectedRunId: rehearsalRunId,
-    nextRunId: prior.runId,
-    verify: async () => true,
+    expectedPointer: rehearsal,
+    nextManifest: priorManifest,
   });
   return {
     proofType: 'PRIVATE_POINTER_REHEARSAL_ONLY',

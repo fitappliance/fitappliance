@@ -10,6 +10,15 @@ import {
   rehearsePrivatePointerRollback,
   writeFitV4CutoverCandidate,
 } from '../../scripts/architecture-v2/build-fit-v4-cutover-candidate.mjs';
+import {
+  compareAndSwapFitV4ShadowPointer,
+  writeFitV4RunManifest,
+} from '../../src/domain/fit-v4-run-manifest.mjs';
+import {
+  buildTrustedFitV4Input,
+  observation,
+  writeFitV4PassingShadowActivationProof,
+} from '../helpers/fit-v4-trusted-evaluation-fixture.mjs';
 
 const ROOT = resolve(new URL('../..', import.meta.url).pathname);
 const REQUIRED_BLOCKERS = [
@@ -164,15 +173,29 @@ test('writer is explicit, atomic, deterministic, and rejects public output', asy
 test('private pointer rehearsal restores exact bytes and rejects stale CAS', async (t) => {
   const directory = await mkdtemp(join(tmpdir(), 'fit-v4-cutover-pointer-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  const pointerPath = join(directory, 'active-shadow.json');
-  const original = Buffer.from(`${JSON.stringify({
-    schemaVersion: 1,
-    pointerType: 'FIT_V4_ACTIVE_SHADOW',
-    runId: `fit_v4_run_${'1'.repeat(24)}`,
-  }, null, 2)}\n`);
-  await writeFile(pointerPath, original);
+  const runsRoot = join(directory, 'runs');
+  const shadowRoot = join(directory, 'shadow');
+  const pointerPath = join(shadowRoot, 'active-shadow.json');
+  const priorManifest = buildTrustedFitV4Input({ observations: [observation('cavity.width', 610)] }).runManifest;
+  const rehearsalManifest = buildTrustedFitV4Input({ observations: [observation('cavity.width', 590)] }).runManifest;
+  await writeFitV4RunManifest({ runsRoot, manifest: priorManifest });
+  await writeFitV4RunManifest({ runsRoot, manifest: rehearsalManifest });
+  await writeFitV4PassingShadowActivationProof({ runsRoot, manifest: priorManifest });
+  await writeFitV4PassingShadowActivationProof({ runsRoot, manifest: rehearsalManifest });
+  await compareAndSwapFitV4ShadowPointer({
+    runsRoot,
+    shadowRoot,
+    expectedPointer: null,
+    nextManifest: priorManifest,
+  });
+  const original = await readFile(pointerPath);
 
-  const result = await rehearsePrivatePointerRollback({ shadowRoot: directory });
+  const result = await rehearsePrivatePointerRollback({
+    runsRoot,
+    shadowRoot,
+    priorManifest,
+    rehearsalManifest,
+  });
   assert.equal(result.proofType, 'PRIVATE_POINTER_REHEARSAL_ONLY');
   assert.equal(result.restoredExactPriorBytes, true);
   assert.equal(result.staleCasRejected, true);

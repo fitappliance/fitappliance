@@ -1181,8 +1181,8 @@ review rounds.
    artifact contracts, order work by dependency, and define tests, publication
    boundaries, rollback, resume/replay behaviour and typed stop conditions.
 2. A substantial plan remains `DRAFT` until one independent
-   `gpt-5.6-sol` subagent reviews it at reasoning effort `ultra` (the highest
-   available level). The review must try to disprove the plan across identity,
+   `gpt-5.6-sol` subagent reviews it at reasoning effort `max`. Do not use
+   `ultra` for this workflow. The review must try to disprove the plan across identity,
    lifecycle, evidence, repeated-run, resume, conflict, publication and
    Fit-safety paths. The primary conversation resolves or records every material
    finding before marking the plan `READY`.

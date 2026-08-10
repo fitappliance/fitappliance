@@ -7,7 +7,6 @@ import { fileURLToPath } from 'node:url';
 
 import {
   FIT_RANK_POLICY_V4,
-  compareFitV4Ranks,
   deriveFitV4Rank,
 } from '../../src/domain/fit-rank-v4.mjs';
 import { FIT_POLICY_PACKS_V4 } from '../../src/domain/fit-policies-v4/index.mjs';
@@ -33,12 +32,6 @@ const canonical = (value) => Array.isArray(value)
     ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])]))
     : value;
 const semanticHash = (value) => createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
-function rehashRank(value) {
-  const { semanticSha256: _discarded, ...core } = value.fitV4Rank;
-  value.fitV4Rank.semanticSha256 = createHash('sha256').update(JSON.stringify(canonical(core))).digest('hex');
-  return value;
-}
-
 function trustedEvaluation({ availableWidth = 610 } = {}) {
   const replayInput = buildTrustedFitV4Input({
     fields: [['envelope.closed.width', 600]],
@@ -62,98 +55,29 @@ async function treeHash(root) {
   return createHash('sha256').update(rows.join('\n')).digest('hex');
 }
 
-test('rank replays a trusted V4 evaluation and emits only the fitV4Rank namespace', () => {
-  const { result, replayInput } = trustedEvaluation();
-  const ranked = deriveFitV4Rank(result, replayInput);
-  assert.deepEqual(Object.keys(ranked), ['fitV4Rank']);
-  assert.equal(ranked.fitV4Rank.schemaVersion, 1);
-  assert.equal(ranked.fitV4Rank.total, null);
-  assert.equal(ranked.fitV4Rank.totalEnabled, false);
-  assert.equal(ranked.fitV4Rank.categoryPolicyVersion, FIT_RANK_POLICY_V4.categories.refrigerator.version);
-  assert.match(ranked.fitV4Rank.hashes.sourceResult, /^[a-f0-9]{64}$/);
-  assert.match(ranked.fitV4Rank.semanticSha256, /^[a-f0-9]{64}$/);
-  assert.equal(JSON.stringify(ranked).match(/fitScore|fitScoreNumeric|"score"|"verified"/), null);
-  assert.throws(() => deriveFitV4Rank(result), /replay|input|shadow/i);
-});
-
-test('rank rejects an audit-shaped or rehashed forged outcome', () => {
-  const { result, replayInput } = trustedEvaluation();
-  const forged = structuredClone(result);
-  forged.installationOutcome = {
-    status: 'VERIFIED_FIT',
-    reasonCode: 'ALL_APPLICABLE_HARD_CONDITIONS_PROVEN',
-    checkIds: forged.checks.filter((row) => row.scope === 'installation').map((row) => row.id),
-    gapCount: 0,
-  };
-  forged.gaps = [];
-  assert.throws(() => deriveFitV4Rank(forged, replayInput), /replayed|source result|binding|mismatch/i);
-});
-
-test('rank hashing and replay comparison are deterministic', () => {
-  const firstEvaluation = trustedEvaluation();
-  const secondEvaluation = trustedEvaluation();
-  const first = deriveFitV4Rank(firstEvaluation.result, firstEvaluation.replayInput);
-  const replay = deriveFitV4Rank(secondEvaluation.result, secondEvaluation.replayInput);
-  assert.deepEqual(first, replay);
-  assert.equal(compareFitV4Ranks(first, replay, {
-    leftReplayInput: firstEvaluation.replayInput,
-    rightReplayInput: secondEvaluation.replayInput,
-  }), 0);
-});
-
-test('rank comparison rejects rehashed ordinal and generic-key substitution', () => {
-  const evaluation = trustedEvaluation();
-  const accepted = deriveFitV4Rank(evaluation.result, evaluation.replayInput);
-  const ordinal = structuredClone(accepted);
-  ordinal.fitV4Rank.outcomeBand.ordinal = 99;
-  rehashRank(ordinal);
-  assert.throws(() => compareFitV4Ranks(ordinal, accepted, {
-    leftReplayInput: evaluation.replayInput,
-    rightReplayInput: evaluation.replayInput,
-  }), /outcome band|ordinal|schema/i);
-
-  const generic = structuredClone(accepted);
-  generic.fitV4Rank.score = 100;
-  rehashRank(generic);
-  assert.throws(() => compareFitV4Ranks(generic, accepted, {
-    leftReplayInput: evaluation.replayInput,
-    rightReplayInput: evaluation.replayInput,
-  }), /schema|key|generic/i);
-
-  const forgedReserve = structuredClone(accepted);
-  forgedReserve.fitV4Rank.vector.criticalReserve.value = 999;
-  rehashRank(forgedReserve);
-  assert.throws(() => compareFitV4Ranks(forgedReserve, accepted, {
-    leftReplayInput: evaluation.replayInput,
-    rightReplayInput: evaluation.replayInput,
-  }), /source result|derived|semantic|mismatch/i);
-});
-
-test('categorical outcome bands precede numeric reserves', () => {
-  const insufficient = trustedEvaluation({ availableWidth: 610 });
-  const noFit = trustedEvaluation({ availableWidth: 590 });
-  const insufficientRank = deriveFitV4Rank(insufficient.result, insufficient.replayInput);
-  const noFitRank = deriveFitV4Rank(noFit.result, noFit.replayInput);
-  assert.equal(insufficientRank.fitV4Rank.outcomeBand.name, 'INSUFFICIENT_DATA');
-  assert.equal(noFitRank.fitV4Rank.outcomeBand.name, 'NO_FIT');
-  assert.ok(compareFitV4Ranks(insufficientRank, noFitRank, {
-    leftReplayInput: insufficient.replayInput,
-    rightReplayInput: noFit.replayInput,
-  }) < 0);
-});
-
-test('incomplete evidence disables all numeric rank components and the total', () => {
-  const evaluation = trustedEvaluation({ availableWidth: 610 });
-  const ranked = deriveFitV4Rank(evaluation.result, evaluation.replayInput);
-  assert.equal(ranked.fitV4Rank.evidenceBand.name, 'INCOMPLETE');
-  assert.equal(ranked.fitV4Rank.vector.criticalReserve.value, null);
-  assert.equal(ranked.fitV4Rank.vector.operationReserve.value, null);
-  assert.equal(ranked.fitV4Rank.vector.inverseInstallationComplexity.value, null);
-  assert.equal(ranked.fitV4Rank.totalEnabled, false);
-  assert.equal(ranked.fitV4Rank.total, null);
-  assert.deepEqual(ranked.fitV4Rank.hypothesisWeights, {
-    criticalReserve: 40, operationReserve: 25, inverseInstallationComplexity: 20, evidence: 15,
+test('rank schema 1 stops on schema-2 results before replay, hashing or scenario-field access', () => {
+  const result = new Proxy({ schemaVersion: 2 }, {
+    get(target, key) {
+      if (key === 'schemaVersion') return target.schemaVersion;
+      throw new Error(`rank read prohibited field: ${String(key)}`);
+    },
+    ownKeys() { throw new Error('rank enumerated schema-2 result'); },
   });
+  const replayInput = new Proxy({}, {
+    get() { throw new Error('rank replayed schema-2 input'); },
+    ownKeys() { throw new Error('rank enumerated schema-2 replay input'); },
+  });
+  assert.throws(
+    () => deriveFitV4Rank(result, replayInput),
+    (error) => error.code === 'RANK_SCHEMA_V2_REQUIRED'
+      && error.message === 'RANK_SCHEMA_V2_REQUIRED',
+  );
+});
+
+test('current trusted schema-2 evaluations cannot enter rank schema 1', () => {
+  const { result, replayInput } = trustedEvaluation();
+  assert.throws(() => deriveFitV4Rank(result, replayInput), { code: 'RANK_SCHEMA_V2_REQUIRED' });
+  assert.equal(FIT_RANK_POLICY_V4.schemaVersion, 1);
 });
 
 test('the frozen calibration fixture is honest about zero labels and four blocked categories', async () => {

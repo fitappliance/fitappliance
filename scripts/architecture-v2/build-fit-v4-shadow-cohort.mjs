@@ -33,14 +33,15 @@ export const FIT_V4_DISAGREEMENT_CLASSES = Object.freeze([
   'NO_DISAGREEMENT',
 ]);
 
-const SCENARIOS = Object.freeze({
+const COHORT_CASES = Object.freeze({
   schemaVersion: 1,
-  scenarioSetId: 'fit-v4-task-7-fixed-synthetic-no-site-v1',
+  artifactType: 'FIT_V4_NON_EVALUATED_COHORT_CASES',
+  caseSetId: 'fit-v4-task-7-fixed-non-evaluated-cases-v1',
   sourceKind: 'synthetic',
   containsUserData: false,
-  scenarios: Object.freeze([
-    Object.freeze({ id: 'synthetic-refrigerator-no-site-v1', category: 'refrigerator', measurementState: 'UNKNOWN' }),
-    Object.freeze({ id: 'synthetic-dishwasher-no-site-v1', category: 'dishwasher', measurementState: 'UNKNOWN' }),
+  cases: Object.freeze([
+    Object.freeze({ id: 'synthetic-refrigerator-no-site-v1', category: 'refrigerator', measurementState: 'UNKNOWN', evaluationStatus: 'NOT_EVALUATED' }),
+    Object.freeze({ id: 'synthetic-dishwasher-no-site-v1', category: 'dishwasher', measurementState: 'UNKNOWN', evaluationStatus: 'NOT_EVALUATED' }),
   ]),
 });
 
@@ -320,11 +321,11 @@ export async function buildFitV4ShadowCohort(input = {}) {
       v3Audit: { bytesSha256: bytesHash(auditBytes), semanticSha256: semanticHash(v3Audit) },
       fieldMap: { version: fieldMap.version, bytesSha256: bytesHash(source.fieldMapBytes), semanticSha256: semanticHash(source.rawFieldMap) },
       policies: policyHashes,
-      scenarios: { semanticSha256: semanticHash(SCENARIOS) },
+      cohortCases: { semanticSha256: semanticHash(COHORT_CASES) },
       adapters: { semanticSha256: semanticHash(adapters.accepted) },
       v4ReceiptBundle: { semanticSha256: v4ReceiptBundle.bundleSha256 },
     },
-    scenarios: SCENARIOS,
+    cohortCases: COHORT_CASES,
     adapters: adapters.accepted,
     gaps: adapters.gaps,
     v4ReceiptBundle,

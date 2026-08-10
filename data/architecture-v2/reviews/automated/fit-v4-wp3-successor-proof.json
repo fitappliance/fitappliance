@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "FIT_V4_WP3_MIGRATION_RISK_SUCCESSOR_PROOF",
+  "successorId": "fit-v4-wp3-private-successor-1",
+  "predecessor": {
+    "path": "data/architecture-v2/reviews/automated/fit-v4-baseline.json",
+    "bytesSha256": "4c13f4bdbcdba079e874b880f2c67f979009ed9759ffc0597492e1d8a3154aa3"
+  },
+  "proofs": {
+    "frozenPredecessorReadOnly": true,
+    "rankSchema2Stop": "RANK_SCHEMA_V2_REQUIRED",
+    "scenarioMemberBindingPresent": true,
+    "scenarioSetMemberSeparated": true
+  },
+  "scope": {
+    "publicMutation": false,
+    "rightsState": "PUBLIC_RIGHTS_REVIEW_REQUIRED"
+  },
+  "semanticSha256": "66b644990d87b0d2f949f5dda050ee4caf679da979b7cdcbbfa9552f25a30f49"
+}

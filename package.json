@@ -4,9 +4,15 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": "22.x"
   },
+  "packageManager": "npm@10.9.8",
   "scripts": {
+    "build:deploy": "node scripts/deployment/reviewed-static-deployment.mjs",
+    "clean:deploy": "node scripts/deployment/reviewed-static-deployment.mjs --clean",
+    "build:b1-replayed-provenance": "node scripts/deployment/build-replayed-static-provenance.mjs",
+    "review:b1-rights": "node scripts/deployment/build-static-rights-review.mjs",
+    "verify:b1-rights-gate": "node scripts/deployment/verify-static-rights-gate.mjs",
     "build:evidence-resolution": "node scripts/architecture-v2/build-evidence-resolution-manifest.mjs",
     "verify:evidence-resolution-objects": "node scripts/architecture-v2/verify-evidence-resolution-objects.mjs",
     "resolve:evidence": "node scripts/architecture-v2/run-evidence-resolution.mjs",
@@ -212,6 +218,7 @@
     "pdf-parse": "^2.4.5",
     "robots-parser": "^3.0.1",
     "sharp": "^0.34.5",
+    "vercel": "50.5.0",
     "zod": "^4.4.3"
   }
 }

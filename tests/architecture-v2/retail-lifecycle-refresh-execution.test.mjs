@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 import {
@@ -126,6 +127,30 @@ function resignInventory(value) {
 }
 
 resignInventory(inventory);
+
+test('real Partnerize source stays blocked until public feed reuse rights are explicit', () => {
+  const policyBytes = readFileSync(new URL(
+    '../../data/architecture-v2/policies/retailer-source-policy.json', import.meta.url,
+  ));
+  const realPolicy = JSON.parse(policyBytes);
+  const partnerize = realPolicy.sources.find((source) => (
+    source.id === 'the-good-guys-partnerize-feed-v1'
+  ));
+
+  assert.equal(partnerize.termsReviewState, 'collection_blocked');
+  assert.equal(partnerize.legacyLinkAction, 'FEED_RIGHTS_REVIEW_BLOCKED');
+  assert.match(partnerize.notes, /public (?:display|redistribution)/i);
+  assert.throws(() => buildRetailLifecycleRefreshPlan({
+    inventory,
+    inventorySha256: SHA_A,
+    publicProjection,
+    publicProjectionSha256: SHA_B,
+    sourcePolicy: realPolicy,
+    sourcePolicySha256: createHash('sha256').update(policyBytes).digest('hex'),
+    sourcePolicyId: partnerize.id,
+    observedAt: OBSERVED_AT,
+  }), /source policy is blocked/i);
+});
 
 function buildPlan(observedAt = OBSERVED_AT) {
   return buildRetailLifecycleRefreshPlan({

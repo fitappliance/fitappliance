@@ -9,6 +9,16 @@ import {
   createModelRequirement,
 } from '../../src/domain/installation-knowledge-v3.mjs';
 import { evaluateFitV3 } from '../../src/domain/fit-v3.mjs';
+import {
+  FIT_V4_RANK_SCHEMA_VERSION,
+  compareFitV4Ranks,
+  deriveFitV4Rank,
+} from '../../src/domain/fit-rank-v4.mjs';
+import { evaluateFitV4Shadow } from '../../src/domain/fit-v4-shadow.mjs';
+import {
+  buildTrustedFitV4Input,
+  observation,
+} from '../../tests/helpers/fit-v4-trusted-evaluation-fixture.mjs';
 
 const DEFAULT_ROOT = fileURLToPath(new URL('../..', import.meta.url));
 const DEFAULT_OUTPUT = 'data/architecture-v2/reviews/automated/fit-v4-baseline.json';
@@ -19,6 +29,9 @@ const MODEL = 'TASK0-DW';
 const ARTIFACT_HASH = 'a'.repeat(64);
 const RECEIPT_HASH = 'b'.repeat(64);
 const FRAGMENT_HASH = 'c'.repeat(64);
+const CUTOVER_CANDIDATE_PATH = 'data/architecture-v2/reviews/automated/fit-v4-cutover-candidate.json';
+const FIELD_MAP_PATH = 'data/architecture-v2/policies/fit-v4-field-map.json';
+const RIGHTS_DICTIONARY_PATH = 'data/architecture-v2/policies/product-data-field-rights-dictionary.json';
 
 function canonical(value) {
   if (Array.isArray(value)) return value.map(canonical);
@@ -38,6 +51,11 @@ function sha256(value) {
 
 async function fileSha256(path) {
   return sha256(await readFile(path));
+}
+
+async function fileBinding(root, path) {
+  const bytes = await readFile(join(root, path));
+  return { path, bytesSha256: sha256(bytes), byteLength: bytes.length };
 }
 
 function requirement(field, value, options = {}) {
@@ -163,6 +181,126 @@ async function regularFiles(root, directory) {
   return files.sort();
 }
 
+function treeSha256(files) {
+  return sha256([...files]
+    .sort((left, right) => left.path.localeCompare(right.path))
+    .map((row) => `${row.bytesSha256}  ${row.path}\n`).join(''));
+}
+
+async function deploymentSurfaceBinding(root, candidateSurface) {
+  const explicitPaths = candidateSurface.explicitFiles.map((row) => row.path);
+  const treePaths = candidateSurface.trees.map((row) => row.path);
+  const explicitFiles = await Promise.all(explicitPaths.map((path) => fileBinding(root, path)));
+  const treeFiles = await Promise.all(treePaths.map(async (path) => Promise.all(
+    (await regularFiles(root, path)).map((file) => fileBinding(root, file)),
+  )));
+  const files = [...explicitFiles, ...treeFiles.flat()];
+  return {
+    explicitFiles,
+    trees: treeFiles.map((rows, index) => ({
+      path: treePaths[index],
+      fileCount: rows.length,
+      treeSha256: treeSha256(rows),
+    })),
+    fileCount: files.length,
+    treeSha256: treeSha256(files),
+  };
+}
+
+function countBy(rows, keyFor) {
+  const counts = {};
+  for (const row of rows) {
+    const key = keyFor(row);
+    counts[key] = (counts[key] ?? 0) + 1;
+  }
+  return counts;
+}
+
+function currentCatalogCoverage(rows) {
+  const current = rows.filter((row) => row.lifecycleVisibility === 'CURRENT_OUTPUT');
+  const categories = [...new Set(current.map((row) => row.cat ?? row.category))].sort();
+  const byCategory = Object.fromEntries(categories.map((category) => {
+    const categoryRows = current.filter((row) => (row.cat ?? row.category) === category);
+    const geometryV2Count = categoryRows.filter((row) => row.geometry_v2).length;
+    const formFactorCount = categoryRows.filter((row) => row.geometry_v2?.formFactor).length;
+    return [category, {
+      rowCount: categoryRows.length,
+      geometryV2Count,
+      formFactorCount,
+      withoutFormFactorCount: categoryRows.length - formFactorCount,
+    }];
+  }));
+  const geometryV2Count = current.filter((row) => row.geometry_v2).length;
+  const formFactorCount = current.filter((row) => row.geometry_v2?.formFactor).length;
+  return {
+    rowCount: current.length,
+    geometryV2Count,
+    formFactorCount,
+    withoutFormFactorCount: current.length - formFactorCount,
+    byCategory,
+  };
+}
+
+function characterizationWitnesses() {
+  const rankFixture = { leftAvailableWidthMm: 610, rightAvailableWidthMm: 590, requiredWidthMm: 600 };
+  const replayInput = (availableWidthMm) => buildTrustedFitV4Input({
+    fields: [['envelope.closed.width', rankFixture.requiredWidthMm]],
+    observations: [observation('cavity.width', availableWidthMm)],
+  });
+  const leftReplayInput = replayInput(rankFixture.leftAvailableWidthMm);
+  const rightReplayInput = replayInput(rankFixture.rightAvailableWidthMm);
+  const leftResult = evaluateFitV4Shadow(leftReplayInput);
+  const rightResult = evaluateFitV4Shadow(rightReplayInput);
+  const leftRank = deriveFitV4Rank(leftResult, leftReplayInput);
+  const rightRank = deriveFitV4Rank(rightResult, rightReplayInput);
+  const comparison = compareFitV4Ranks(leftRank, rightRank, { leftReplayInput, rightReplayInput });
+
+  const leftScenarioSet = leftReplayInput.runManifest.semantic.scenarioSetSha256;
+  const rightScenarioSet = rightReplayInput.runManifest.semantic.scenarioSetSha256;
+  const scenarioMemberBindingPresent = ['scenarioMemberSha256', 'scenarioMemberId']
+    .some((key) => Object.hasOwn(leftReplayInput.runManifest.semantic, key));
+  const scenarioSetEqualsSiteScenario = leftScenarioSet === leftResult.hashes.siteScenario
+    && rightScenarioSet === rightResult.hashes.siteScenario;
+
+  return [
+    fixtureRisk({
+      id: 'rank-v1-cross-outcome-comparison',
+      riskClass: 'CROSS_OUTCOME_RANK_COMPARISON',
+      fixture: rankFixture,
+      sourcePaths: ['src/domain/fit-rank-v4.mjs', 'tests/helpers/fit-v4-trusted-evaluation-fixture.mjs'],
+      observation: {
+        rankSchemaVersion: FIT_V4_RANK_SCHEMA_VERSION,
+        leftOutcome: leftResult.installationOutcome.status,
+        rightOutcome: rightResult.installationOutcome.status,
+        comparison,
+      },
+      reproduced: leftResult.installationOutcome.status === 'INSUFFICIENT_DATA'
+        && rightResult.installationOutcome.status === 'NO_FIT'
+        && comparison < 0,
+    }),
+    fixtureRisk({
+      id: 'scenario-set-member-conflation',
+      riskClass: 'SCENARIO_SET_MEMBER_CONFLATION',
+      fixture: rankFixture,
+      sourcePaths: [
+        'src/domain/fit-v4-run-manifest.mjs',
+        'src/domain/fit-v4-shadow.mjs',
+        'tests/helpers/fit-v4-trusted-evaluation-fixture.mjs',
+      ],
+      observation: {
+        leftScenarioSetSha256: leftScenarioSet,
+        rightScenarioSetSha256: rightScenarioSet,
+        scenarioSetHashChangesWithMember: leftScenarioSet !== rightScenarioSet,
+        scenarioMemberBindingPresent,
+        scenarioSetEqualsSiteScenario,
+      },
+      reproduced: leftScenarioSet !== rightScenarioSet
+        && !scenarioMemberBindingPresent
+        && scenarioSetEqualsSiteScenario,
+    }),
+  ];
+}
+
 async function protectedSnapshot(root) {
   const paths = [
     'src/shared/fit-engine.js',
@@ -178,14 +316,18 @@ async function protectedSnapshot(root) {
   };
 }
 
-async function sourceInputs(root, activeProjectionPath) {
+async function sourceInputs(root, activeProjectionPath, historicalReferencePath) {
   const paths = [
     'scripts/architecture-v2/build-fit-v4-baseline.mjs',
     'tests/architecture-v2/fit-v4-migration-risks.test.mjs',
     'src/shared/fit-engine.js',
     'src/domain/fit-decision.mjs',
     'src/domain/fit-v3.mjs',
+    'src/domain/fit-rank-v4.mjs',
+    'src/domain/fit-v4-run-manifest.mjs',
+    'src/domain/fit-v4-shadow.mjs',
     'src/domain/installation-knowledge-v3.mjs',
+    'tests/helpers/fit-v4-trusted-evaluation-fixture.mjs',
     'public/scripts/ui/fit-score.js',
     'public/scripts/ui/fit-score-ring.js',
     'public/scripts/ui/score-breakdown.js',
@@ -193,6 +335,10 @@ async function sourceInputs(root, activeProjectionPath) {
     'public/scripts/search-core.js',
     'data/architecture-v2/decisions/active-retail-release.json',
     activeProjectionPath,
+    historicalReferencePath,
+    FIELD_MAP_PATH,
+    RIGHTS_DICTIONARY_PATH,
+    CUTOVER_CANDIDATE_PATH,
     'data/architecture-v2/generated/installation-knowledge-pilot.json',
     'data/architecture-v2/reviews/automated/fit-v3-shadow-audit.json',
     'data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json',
@@ -209,11 +355,25 @@ export function semanticPayload(baseline) {
 }
 
 export async function buildFitV4Baseline({ root = DEFAULT_ROOT, generatedAt = new Date().toISOString() } = {}) {
+  const frozenError = new Error('FIT_V4_BASELINE_FROZEN_USE_SUCCESSOR_PROOF');
+  frozenError.code = 'FIT_V4_BASELINE_FROZEN_USE_SUCCESSOR_PROOF';
+  throw frozenError;
+
   const before = await protectedSnapshot(root);
-  const activeReleasePath = join(root, 'data/architecture-v2/decisions/active-retail-release.json');
-  const activeRelease = JSON.parse(await readFile(activeReleasePath, 'utf8'));
+  const activeReleaseRelativePath = 'data/architecture-v2/decisions/active-retail-release.json';
+  const activeReleaseBytes = await readFile(join(root, activeReleaseRelativePath));
+  const activeRelease = JSON.parse(activeReleaseBytes);
   const activeProjectionPath = activeRelease.artifacts.publicProjection.path;
-  const activeProjection = JSON.parse(await readFile(join(root, activeProjectionPath), 'utf8'));
+  const historicalReferencePath = activeRelease.artifacts.historicalReference.path;
+  const activeProjectionBytes = await readFile(join(root, activeProjectionPath));
+  const historicalReferenceBytes = await readFile(join(root, historicalReferencePath));
+  const fieldMapBytes = await readFile(join(root, FIELD_MAP_PATH));
+  const rightsDictionaryBytes = await readFile(join(root, RIGHTS_DICTIONARY_PATH));
+  const cutoverCandidateBytes = await readFile(join(root, CUTOVER_CANDIDATE_PATH));
+  const activeProjection = JSON.parse(activeProjectionBytes);
+  const historicalReference = JSON.parse(historicalReferenceBytes);
+  const fieldMap = JSON.parse(fieldMapBytes);
+  const cutoverCandidate = JSON.parse(cutoverCandidateBytes);
   const acceptance = JSON.parse(await readFile(join(root, 'data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json'), 'utf8'));
   const { computeFitScore, renderFitScoreCardBlock } = await loadPublicFitUi(root);
 
@@ -450,12 +610,71 @@ export async function buildFitV4Baseline({ root = DEFAULT_ROOT, generatedAt = ne
     throw new Error('Fit V4 baseline build changed protected V2/V3 or public runtime files');
   }
 
+  const publicDisplayRequiredCount = fieldMap.fields.filter((field) => (
+    field.rights?.requiredActions?.includes('public_display')
+  )).length;
+  const databaseRuntimeSnapshot = {
+    activeRelease: {
+      releaseCandidateId: activeRelease.releaseCandidateId,
+      pointer: {
+        path: activeReleaseRelativePath,
+        byteLength: activeReleaseBytes.length,
+        bytesSha256: sha256(activeReleaseBytes),
+      },
+      catalog: {
+        path: activeProjectionPath,
+        declaredSha256: activeRelease.artifacts.publicProjection.sha256,
+        bytesSha256: sha256(activeProjectionBytes),
+        semanticSha256: sha256(stableJson(activeProjection)),
+      },
+      historicalReference: {
+        path: historicalReferencePath,
+        declaredSha256: activeRelease.artifacts.historicalReference.sha256,
+        bytesSha256: sha256(historicalReferenceBytes),
+        semanticSha256: sha256(stableJson(historicalReference)),
+      },
+    },
+    catalog: {
+      rowCount: activeRows.length,
+      lifecycleVisibility: countBy(activeRows, (row) => row.lifecycleVisibility),
+    },
+    historicalReference: { rowCount: historicalReference.records.length },
+    currentCatalog: currentCatalogCoverage(activeRows),
+    fitV4Rights: {
+      fieldMap: {
+        path: FIELD_MAP_PATH,
+        version: fieldMap.version,
+        byteLength: fieldMapBytes.length,
+        bytesSha256: sha256(fieldMapBytes),
+        semanticSha256: sha256(stableJson(fieldMap)),
+      },
+      rightsDictionary: {
+        path: RIGHTS_DICTIONARY_PATH,
+        byteLength: rightsDictionaryBytes.length,
+        bytesSha256: sha256(rightsDictionaryBytes),
+      },
+      totalFieldMappings: fieldMap.fields.length,
+      publicDisplayRequiredCount,
+    },
+    cutoverCandidate: {
+      path: CUTOVER_CANDIDATE_PATH,
+      byteLength: cutoverCandidateBytes.length,
+      bytesSha256: sha256(cutoverCandidateBytes),
+      candidateId: cutoverCandidate.candidateId,
+      semanticSha256: cutoverCandidate.semanticSha256,
+      status: cutoverCandidate.decision.status,
+      blockerCount: cutoverCandidate.blockers.length,
+    },
+    deploymentSurface: await deploymentSurfaceBinding(root, cutoverCandidate.bindings.deploymentSurface),
+  };
+  const witnesses = characterizationWitnesses();
+
   const payload = {
     schemaVersion: 1,
     baseline: 'fit-v4-migration-risks',
     generatedAt,
     diagnosticOnly: true,
-    sourceInputs: await sourceInputs(root, activeProjectionPath),
+    sourceInputs: await sourceInputs(root, activeProjectionPath, historicalReferencePath),
     protectedFiles: {
       scope: ['src/shared/fit-engine.js', 'src/domain/fit-decision.mjs', 'src/domain/fit-v3.mjs', 'src/domain/installation-knowledge-v3.mjs', 'public/**'],
       fileCount: before.fileCount,
@@ -463,6 +682,8 @@ export async function buildFitV4Baseline({ root = DEFAULT_ROOT, generatedAt = ne
       afterSha256: after.sha256,
       unchanged: true,
     },
+    databaseRuntimeSnapshot,
+    characterizationWitnesses: witnesses,
     risks,
     summary: {
       total: risks.length,

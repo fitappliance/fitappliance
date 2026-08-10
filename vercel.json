@@ -1,7 +1,8 @@
 {
   "version": 2,
   "name": "fitappliance",
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:deploy",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "regions": ["syd1"],
@@ -20,27 +21,27 @@
     },
     {
       "source": "/fit-check/panasonic-nr-tc221busa-in-800mm-cavity",
-      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "destination": "/brands/panasonic-fridge-clearance",
       "permanent": true
     },
     {
       "source": "/fit-check/panasonic-nr-tc221busa-in-700mm-cavity",
-      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "destination": "/brands/panasonic-fridge-clearance",
       "permanent": true
     },
     {
       "source": "/fit-check/panasonic-nr-tc221busa-in-620mm-cavity",
-      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "destination": "/brands/panasonic-fridge-clearance",
       "permanent": true
     },
     {
       "source": "/fit-check/panasonic-nr-tc221busa-in-600mm-cavity",
-      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "destination": "/brands/panasonic-fridge-clearance",
       "permanent": true
     },
     {
       "source": "/fit-check/panasonic-nr-tc221busa-in-580mm-cavity",
-      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "destination": "/brands/panasonic-fridge-clearance",
       "permanent": true
     },
     {
@@ -80,7 +81,7 @@
     },
     {
       "source": "/compare/smeg-vs-miele-dishwasher-clearance",
-      "destination": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
+      "destination": "/compare/fisher-paykel-vs-miele-dishwasher",
       "permanent": true
     },
     {
@@ -408,8 +409,8 @@
     { "source": "/google32758d7798f4a670.html", "destination": "/google32758d7798f4a670.html" },
     { "source": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html", "destination": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html" },
     { "source": "/data/:path*",          "destination": "/public/data/:path*" },
-    { "source": "/pdf-evidence/:path*",  "destination": "/data/pdf-evidence/:path*" },
     { "source": "/scripts/:path*",       "destination": "/public/scripts/:path*" },
+    { "source": "/licenses/:path*",      "destination": "/public/licenses/:path*" },
     { "source": "/icons/:path*",         "destination": "/public/icons/:path*" },
     { "source": "/favicon.ico",          "destination": "/public/icons/icon-192.png" },
     { "source": "/manifest.webmanifest", "destination": "/public/manifest.webmanifest" },
@@ -434,6 +435,7 @@
     { "source": "/account",              "destination": "/pages/account" },
     { "source": "/about",                "destination": "/pages/about" },
     { "source": "/methodology",          "destination": "/pages/methodology" },
+    { "source": "/third-party-licenses", "destination": "/pages/third-party-licenses" },
     { "source": "/about/editorial-standards", "destination": "/pages/about/editorial-standards" },
     { "source": "/products",            "destination": "/pages/products" },
     { "source": "/products/:slug",       "destination": "/pages/products/:slug" },
@@ -477,13 +479,6 @@
       "source": "/data/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-        { "key": "X-Robots-Tag", "value": "noindex" }
-      ]
-    },
-    {
-      "source": "/pdf-evidence/:path*",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" },
         { "key": "X-Robots-Tag", "value": "noindex" }
       ]
     },

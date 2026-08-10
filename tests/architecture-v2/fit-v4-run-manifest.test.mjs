@@ -14,9 +14,16 @@ import {
   validateFitV4RunManifest,
   writeFitV4RunManifest,
 } from '../../src/domain/fit-v4-run-manifest.mjs';
+import {
+  buildTrustedFitV4Input,
+  observation,
+  writeFitV4PassingShadowActivationProof,
+} from '../helpers/fit-v4-trusted-evaluation-fixture.mjs';
 
 const ROOT = new URL('../..', import.meta.url).pathname;
 const SHA = (digit) => digit.repeat(64);
+const SCENARIO = buildTrustedFitV4Input({ observations: [observation('cavity.width', 610)] });
+const OTHER_SCENARIO = buildTrustedFitV4Input({ observations: [observation('cavity.width', 590)] });
 const canonical = (value) => Array.isArray(value)
   ? value.map(canonical)
   : value && typeof value === 'object'
@@ -44,14 +51,20 @@ function inputs(overrides = {}) {
       knowledgePolicyBundle: SHA('d'), knowledgeReferenceRegistry: SHA('e'),
       consentApprovalRegistry: null, rightsEvidenceSet: SHA('f'), calibrationLabelRegistry: null,
     },
-    scenarioSetSha256: SHA('b'), policyEpoch: 'fit-policy-v4.0.0',
+    scenarioSetManifest: SCENARIO.runManifest.scenarioSetManifest,
+    selectedScenarioMemberId: SCENARIO.runManifest.selectedScenarioMemberId,
+    scenarioSiteOptions: SCENARIO.scenarioSiteOptions,
+    policyEpoch: 'fit-policy-v4.0.0',
     retailEvidenceClock: {
       bundleSha256: SHA('c'),
       oldestObservedAt: '2026-07-01T00:00:00.000Z',
       freshestObservedAt: '2026-08-01T00:00:00.000Z',
     },
     documentRevisionClock: null,
-    siteObservationClock: null,
+    siteObservationClock: {
+      bundleSha256: SCENARIO.runManifest.semantic.scenarioBinding.scenarioMemberSha256,
+      observedAt: '2026-08-07T00:00:00.000Z',
+    },
     ...overrides,
   };
 }
@@ -68,7 +81,10 @@ test('semantic run identity includes complete inputs and keeps activation and ev
   assert.notEqual(first.clocks.activeReleaseActivatedAt, first.clocks.retailEvidence.freshestObservedAt);
   assert.equal(Object.hasOwn(first.clocks, 'retailFreshness'), false);
   assert.equal(first.clocks.documentRevision, null);
-  assert.equal(first.clocks.siteObservation, null);
+  assert.equal(
+    first.clocks.siteObservation.bundleSha256,
+    first.semantic.scenarioBinding.scenarioMemberSha256,
+  );
 
   for (const changed of [
     { asOf: '2026-08-09T00:00:00.000Z' },
@@ -78,7 +94,15 @@ test('semantic run identity includes complete inputs and keeps activation and ev
     { schemaHashes: { ...inputs().schemaHashes, knowledge: SHA('d') } },
     { policyHashes: { ...inputs().policyHashes, dryer: SHA('d') } },
     { trustedRegistryHashes: { ...inputs().trustedRegistryHashes, knowledgePolicyBundle: SHA('0') } },
-    { scenarioSetSha256: SHA('d') },
+    {
+      scenarioSetManifest: OTHER_SCENARIO.runManifest.scenarioSetManifest,
+      selectedScenarioMemberId: OTHER_SCENARIO.runManifest.selectedScenarioMemberId,
+      scenarioSiteOptions: OTHER_SCENARIO.scenarioSiteOptions,
+      siteObservationClock: {
+        bundleSha256: OTHER_SCENARIO.runManifest.semantic.scenarioBinding.scenarioMemberSha256,
+        observedAt: '2026-08-07T00:00:00.000Z',
+      },
+    },
     { policyEpoch: 'fit-policy-v4.0.1' },
     { retailEvidenceClock: { ...inputs().retailEvidenceClock, bundleSha256: SHA('d') } },
   ]) {
@@ -99,12 +123,12 @@ test('resume requires explicit manifest ID and the complete expected semantic in
   await writer.writeCheckpoint(checkpoint);
   await writer.close();
 
-  await assert.rejects(() => resumeFitV4Run({ runsRoot: directory, root: ROOT }), /manifest ID required/i);
+  await assert.rejects(() => resumeFitV4Run({ runsRoot: directory, root: ROOT }), /manifest.*required|key set/i);
   await assert.rejects(() => resumeFitV4Run({
-    runsRoot: directory, root: ROOT, manifestId: manifest.manifestId,
+    runsRoot: directory, root: ROOT, manifest,
   }), /expected semantic inputs|required/i);
   await assert.doesNotReject(() => resumeFitV4Run({
-    runsRoot: directory, root: ROOT, manifestId: manifest.manifestId, expectedInputs: inputs(),
+    runsRoot: directory, root: ROOT, manifest, expectedInputs: inputs(),
   }));
 
   for (const changed of [
@@ -112,11 +136,19 @@ test('resume requires explicit manifest ID and the complete expected semantic in
     { schemaHashes: { ...inputs().schemaHashes, result: SHA('e') } },
     { policyHashes: { ...inputs().policyHashes, refrigerator: SHA('e') } },
     { trustedRegistryHashes: { ...inputs().trustedRegistryHashes, rightsEvidenceSet: SHA('0') } },
-    { scenarioSetSha256: SHA('e') }, { policyEpoch: 'fit-policy-v4.0.2' },
+    {
+      scenarioSetManifest: OTHER_SCENARIO.runManifest.scenarioSetManifest,
+      selectedScenarioMemberId: OTHER_SCENARIO.runManifest.selectedScenarioMemberId,
+      scenarioSiteOptions: OTHER_SCENARIO.scenarioSiteOptions,
+      siteObservationClock: {
+        bundleSha256: OTHER_SCENARIO.runManifest.semantic.scenarioBinding.scenarioMemberSha256,
+        observedAt: '2026-08-07T00:00:00.000Z',
+      },
+    }, { policyEpoch: 'fit-policy-v4.0.2' },
     { asOf: '2026-08-10T00:00:00.000Z' },
   ]) {
     await assert.rejects(() => resumeFitV4Run({
-      runsRoot: directory, root: ROOT, manifestId: manifest.manifestId,
+      runsRoot: directory, root: ROOT, manifest,
       expectedInputs: inputs(changed),
     }), /semantic|manifest|drift/i, JSON.stringify(changed));
   }
@@ -126,7 +158,7 @@ test('resume requires explicit manifest ID and the complete expected semantic in
   changedCheckpoint.outputSha256 = SHA('e');
   await writeFile(checkpointPath, `${JSON.stringify(changedCheckpoint)}\n`);
   await assert.rejects(() => resumeFitV4Run({
-    runsRoot: directory, root: ROOT, manifestId: manifest.manifestId, expectedInputs: inputs(),
+    runsRoot: directory, root: ROOT, manifest, expectedInputs: inputs(),
   }), /checkpoint/i);
 });
 
@@ -273,58 +305,60 @@ test('run writer requires the persisted indexed/run manifest and remains exclusi
   }), /manifest|hash|drift/i);
 });
 
-test('shadow CAS verifies while readers still see prior bytes and failed verification leaves bytes untouched', async (t) => {
+test('shadow CAS advances only to exact persisted schema-2 manifests and stale state leaves bytes untouched', async (t) => {
   const directory = await mkdtemp(join(tmpdir(), 'fit-v4-pointer-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  const runA = `fit_v4_run_${'a'.repeat(24)}`;
-  const runB = `fit_v4_run_${'b'.repeat(24)}`;
-  const pointerPath = join(directory, 'active-shadow.json');
-  await assert.rejects(() => compareAndSwapFitV4ShadowPointer({
-    shadowRoot: directory, expectedRunId: null, nextRunId: runA,
-  }), /verification callback required/i);
-  await compareAndSwapFitV4ShadowPointer({
-    shadowRoot: directory, expectedRunId: null, nextRunId: runA, verify: async () => {},
+  const runsRoot = join(directory, 'runs');
+  const shadowRoot = join(directory, 'shadow');
+  const manifestA = await createFitV4RunManifest(inputs(), { root: ROOT });
+  const manifestB = await createFitV4RunManifest(inputs({
+    scenarioSetManifest: OTHER_SCENARIO.runManifest.scenarioSetManifest,
+    selectedScenarioMemberId: OTHER_SCENARIO.runManifest.selectedScenarioMemberId,
+    scenarioSiteOptions: OTHER_SCENARIO.scenarioSiteOptions,
+    siteObservationClock: {
+      bundleSha256: OTHER_SCENARIO.runManifest.semantic.scenarioBinding.scenarioMemberSha256,
+      observedAt: '2026-08-07T00:00:00.000Z',
+    },
+  }), { root: ROOT });
+  await writeFitV4RunManifest({ runsRoot, manifest: manifestA });
+  await writeFitV4RunManifest({ runsRoot, manifest: manifestB });
+  await writeFitV4PassingShadowActivationProof({ runsRoot, manifest: manifestA });
+  await writeFitV4PassingShadowActivationProof({ runsRoot, manifest: manifestB });
+  const pointerPath = join(shadowRoot, 'active-shadow.json');
+  const pointerA = await compareAndSwapFitV4ShadowPointer({
+    runsRoot, shadowRoot, expectedPointer: null, nextManifest: manifestA,
   });
   const priorBytes = await readFile(pointerPath);
-  await compareAndSwapFitV4ShadowPointer({
-    shadowRoot: directory,
-    expectedRunId: runA,
-    nextRunId: runB,
-    verify: async (candidate) => {
-      assert.equal(candidate.runId, runB);
-      assert.deepEqual(await readFile(pointerPath), priorBytes);
-    },
+  const pointerB = await compareAndSwapFitV4ShadowPointer({
+    runsRoot, shadowRoot, expectedPointer: pointerA, nextManifest: manifestB,
   });
-  assert.equal(JSON.parse(await readFile(pointerPath, 'utf8')).runId, runB);
+  assert.equal(pointerB.runId, manifestB.runId);
+  assert.notDeepEqual(await readFile(pointerPath), priorBytes);
 
   const beforeFailure = await readFile(pointerPath);
   await assert.rejects(() => compareAndSwapFitV4ShadowPointer({
-    shadowRoot: directory,
-    expectedRunId: runB,
-    nextRunId: runA,
-    verify: async () => { throw new Error('verification failed'); },
-  }), /verification failed/i);
+    runsRoot, shadowRoot, expectedPointer: pointerA, nextManifest: manifestA,
+  }), /stale.*pointer/i);
   assert.deepEqual(await readFile(pointerPath), beforeFailure);
 });
 
 test('shadow pointer CAS permits only one concurrent writer', async (t) => {
   const directory = await mkdtemp(join(tmpdir(), 'fit-v4-pointer-writer-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  let enteredVerification;
-  const verificationEntered = new Promise((resolve) => { enteredVerification = resolve; });
-  let releaseVerification;
-  const verificationRelease = new Promise((resolve) => { releaseVerification = resolve; });
-  const first = compareAndSwapFitV4ShadowPointer({
-    shadowRoot: directory, expectedRunId: null, nextRunId: `fit_v4_run_${'a'.repeat(24)}`,
-    verify: async () => { enteredVerification(); await verificationRelease; },
-  });
-  await verificationEntered;
-  await assert.rejects(() => compareAndSwapFitV4ShadowPointer({
-    shadowRoot: directory, expectedRunId: null, nextRunId: `fit_v4_run_${'b'.repeat(24)}`,
-    verify: async () => {},
-  }), /writer|lock/i);
-  releaseVerification();
-  await first;
+  const runsRoot = join(directory, 'runs');
+  const shadowRoot = join(directory, 'shadow');
+  const firstManifest = await createFitV4RunManifest(inputs(), { root: ROOT });
+  const secondManifest = await createFitV4RunManifest(inputs({ policyEpoch: 'fit-policy-v4.0.1' }), { root: ROOT });
+  await writeFitV4RunManifest({ runsRoot, manifest: firstManifest });
+  await writeFitV4RunManifest({ runsRoot, manifest: secondManifest });
+  await writeFitV4PassingShadowActivationProof({ runsRoot, manifest: firstManifest });
+  await writeFitV4PassingShadowActivationProof({ runsRoot, manifest: secondManifest });
+  const outcomes = await Promise.allSettled([
+    compareAndSwapFitV4ShadowPointer({ runsRoot, shadowRoot, expectedPointer: null, nextManifest: firstManifest }),
+    compareAndSwapFitV4ShadowPointer({ runsRoot, shadowRoot, expectedPointer: null, nextManifest: secondManifest }),
+  ]);
+  assert.equal(outcomes.filter((row) => row.status === 'fulfilled').length, 1);
+  assert.equal(outcomes.filter((row) => row.status === 'rejected').length, 1);
 });
 
 test('V4 isolation is structural and uses a clear protective public path guard', async () => {

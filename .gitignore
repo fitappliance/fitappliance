@@ -7,6 +7,8 @@ outreach-private/
 .worktrees/
 .superpowers/
 node_modules/
+dist/
+.deployment-private/
 *.tmp-*
 !public/data/appliances.json
 .vercel

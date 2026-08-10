@@ -1,0 +1,938 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "fit-v4-production-recovery-anchor-v1",
+  "status": "BASELINE_RECOVERY_ANCHOR_ONLY",
+  "capturedAt": "2026-08-09T08:10:01.000Z",
+  "capture": {
+    "schemaVersion": 1,
+    "policyVersion": "fit-v4-production-deployment-capture-v1",
+    "capturedAt": "2026-08-09T08:10:01.000Z",
+    "project": {
+      "projectId": "prj_BnXUk2ZckCJMmbBwPRAd4AcszAd9",
+      "teamId": "team_kMmQZPK2xArpjMZUlw96wI9E"
+    },
+    "deployment": {
+      "deploymentId": "dpl_BY3B3AatSC56LXVeMKnX2cr5F22M",
+      "deploymentUrl": "https://fitappliance-bmwpa6ziw-fitappliances-projects.vercel.app",
+      "target": "production",
+      "readyState": "READY",
+      "createdAt": 1785339020883,
+      "aliases": [
+        "fitappliance-fitappliances-projects.vercel.app",
+        "fitappliance-git-main-fitappliances-projects.vercel.app",
+        "fitappliance.com.au",
+        "fitappliance.vercel.app",
+        "www.fitappliance.com.au"
+      ]
+    },
+    "source": {
+      "provider": "github",
+      "ref": "main",
+      "commit": "35a4ea0a180f0f9f2d4c35b281cf618d8c93023a",
+      "tree": "901ca311f85a00600457185bb51d121b6b4398f3",
+      "inventory": {
+        "blobCount": 7941,
+        "totalBytes": 383780028
+      },
+      "ancestorOfCaptureHead": true
+    },
+    "runtime": {
+      "nodeVersion": "24.x",
+      "regions": [
+        "syd1"
+      ],
+      "functions": [
+        {
+          "path": "api/error",
+          "digest": "47698d7ab3c9cda9133564a7a1dd9e8659f2f20a491340607aa5d2f5fb79bf20",
+          "mode": 49590,
+          "size": 6790,
+          "runtime": "nodejs24.x",
+          "regions": [
+            "syd1"
+          ]
+        },
+        {
+          "path": "api/rum",
+          "digest": "d97a5e380928f18b64c0be1c998ca7acc14cf1dec324e92fc798d0a5695d02cd",
+          "mode": 49590,
+          "size": 7779,
+          "runtime": "nodejs24.x",
+          "regions": [
+            "syd1"
+          ]
+        },
+        {
+          "path": "api/subscribe",
+          "digest": "feccd1a7757208fd3f1927b1782c83ca8d285c0d0c68845ac86649d3a60b69d0",
+          "mode": 49590,
+          "size": 6729,
+          "runtime": "nodejs24.x",
+          "regions": [
+            "syd1"
+          ]
+        }
+      ]
+    },
+    "configuration": {
+      "vercelJsonBytesSha256": "8b7111edda3d361a363de163e5af5a06e7511a22f4acdafae1ee0ae8acef937e",
+      "vercelJsonSemanticSha256": "8f1a6f21a0dd8ac1608a1d86e7dc1dfd7135f62ad22623115f315ffe6358c8a0",
+      "redirects": {
+        "count": 78,
+        "semanticSha256": "166d865633b77fcc18f9e3d1a7be55db049b6b08cf206083b481b2198c8f9f53"
+      },
+      "rewrites": {
+        "count": 40,
+        "semanticSha256": "1bb5b9e5496b20c94b2d3858a32ac1bdf5d88689a4045af1869124336f183363"
+      },
+      "headers": {
+        "count": 11,
+        "semanticSha256": "7e796611ecf1641df7e9e43433b45c2f5b581f09ed7fc8068f64243a42354c99"
+      },
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "regions": [
+        "syd1"
+      ],
+      "buildCommand": "npm run build",
+      "outputDirectory": null
+    },
+    "remoteFileTree": {
+      "available": false,
+      "statusCode": 404,
+      "message": "File tree not found"
+    },
+    "isolatedBuild": {
+      "status": "SUCCEEDED_OVERBROAD",
+      "fileCount": 7953,
+      "approximateBytes": 399507456,
+      "outputDirectory": ".",
+      "confirmedExposurePaths": [
+        "/.openclaw_context",
+        "/README.md",
+        "/data/architecture-v2/decisions/active-retail-release.json",
+        "/docs/product-core-brief.md"
+      ]
+    },
+    "liveFingerprints": [
+      {
+        "path": "/",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 162178,
+        "sha256": "64c962bf9bd0417cca4c9f7f9bfb95613571a8cb634f2ec44bae8a433449394b"
+      },
+      {
+        "path": "/service-worker.js",
+        "status": 200,
+        "contentType": "application/javascript; charset=utf-8",
+        "bytes": 6713,
+        "sha256": "1173e7fd32da8f8412cb483d7f6f11540af087eb6789a00909c4513c356fb0ae"
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "contentType": "application/xml",
+        "bytes": 403508,
+        "sha256": "2128a39c323e4deb59734cec22617c89013386cba4b6ae1bca685b78880768cc"
+      },
+      {
+        "path": "/data/appliances.json",
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "bytes": 6228993,
+        "sha256": "ef9695123681b4c8fe37ebd79d228bbcfaf24b89da68a012e1e3ddab7f0e558a"
+      },
+      {
+        "path": "/README.md",
+        "status": 200,
+        "contentType": "text/markdown; charset=utf-8",
+        "bytes": 41556,
+        "sha256": "6382e4bcb5d189ee88bdfeba710aa61a30b055a5b055a10c271aaaf5b36fdffc"
+      },
+      {
+        "path": "/.openclaw_context",
+        "status": 200,
+        "contentType": "application/octet-stream",
+        "bytes": 268,
+        "sha256": "7120c4f25909b3239ca807567b4478b863d8a4c46f6ad1e1cb466f3662c8a2ee"
+      },
+      {
+        "path": "/docs/product-core-brief.md",
+        "status": 200,
+        "contentType": "text/markdown; charset=utf-8",
+        "bytes": 60028,
+        "sha256": "9be84a660f55c998cf9c4b7999d0461609a66ed43abc4225af8aed9052781719"
+      },
+      {
+        "path": "/data/architecture-v2/decisions/active-retail-release.json",
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "bytes": 1122,
+        "sha256": "976a1463dd747763d20c959d52ecceaa1617a52eff6b06f17d9d8f59b2a6f222"
+      }
+    ],
+    "serviceWorker": {
+      "liveCacheVersion": "35a4ea0",
+      "trackedCacheVersion": "e69bbe0",
+      "trackedSourceIsDeployedByte": false,
+      "liveBytesSha256": "1173e7fd32da8f8412cb483d7f6f11540af087eb6789a00909c4513c356fb0ae"
+    }
+  },
+  "sourceTree": {
+    "commit": "35a4ea0a180f0f9f2d4c35b281cf618d8c93023a",
+    "tree": "901ca311f85a00600457185bb51d121b6b4398f3",
+    "fileCount": 7941,
+    "totalBytes": 383780028,
+    "inventorySha256": "6850d47661ffc33766465434b339773a720981873307bf58d54fc4ffcd7c4073",
+    "ancestorOfCurrentHead": true
+  },
+  "vercelConfiguration": {
+    "bytesSha256": "8b7111edda3d361a363de163e5af5a06e7511a22f4acdafae1ee0ae8acef937e",
+    "semanticSha256": "8f1a6f21a0dd8ac1608a1d86e7dc1dfd7135f62ad22623115f315ffe6358c8a0",
+    "document": {
+      "version": 2,
+      "name": "fitappliance",
+      "buildCommand": "npm run build",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "regions": [
+        "syd1"
+      ],
+      "redirects": [
+        {
+          "source": "/:path*",
+          "has": [
+            {
+              "type": "header",
+              "key": "host",
+              "value": "fitappliance.com.au"
+            }
+          ],
+          "destination": "https://www.fitappliance.com.au/:path*",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/panasonic-nr-tc221busa-in-800mm-cavity",
+          "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/panasonic-nr-tc221busa-in-700mm-cavity",
+          "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/panasonic-nr-tc221busa-in-620mm-cavity",
+          "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/panasonic-nr-tc221busa-in-600mm-cavity",
+          "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/panasonic-nr-tc221busa-in-580mm-cavity",
+          "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/lg-wtx3-09g-in-620mm-cavity",
+          "destination": "/brands/lg-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/fit-check/hisense-hcf7s1014b-in-640mm-cavity",
+          "destination": "/brands/hisense-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/cavity",
+          "destination": "/tools/fit-checker",
+          "permanent": true
+        },
+        {
+          "source": "/doorway",
+          "destination": "/tools/fit-checker",
+          "permanent": true
+        },
+        {
+          "source": "/location",
+          "destination": "/tools/fit-checker",
+          "permanent": true
+        },
+        {
+          "source": "/location/:city",
+          "destination": "/location/:city/fridge",
+          "permanent": true
+        },
+        {
+          "source": "/compare/euro-vs-robinhood-dryer-clearance",
+          "destination": "/brands/euro-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-miele-dishwasher-clearance",
+          "destination": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/midea-vs-inalto-washing-machine-clearance",
+          "destination": "/brands/midea-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/midea-vs-beko-washing-machine-clearance",
+          "destination": "/brands/midea-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/hisense-vs-inalto-washing-machine-clearance",
+          "destination": "/brands/hisense-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/hisense-vs-chiq-fridge-clearance",
+          "destination": "/compare/hisense-vs-chiq-fridge",
+          "permanent": true
+        },
+        {
+          "source": "/products/westinghouse-wtb3400ak-ao-110593",
+          "destination": "/brands/westinghouse-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/products/westinghouse-wqe6870ba-ao-88955",
+          "destination": "/brands/westinghouse-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/beko-vs-electrolux-dryer",
+          "destination": "/brands/electrolux-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/beko-vs-electrolux-fridge",
+          "destination": "/brands/electrolux-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/beko-vs-esatto-fridge",
+          "destination": "/compare/esatto-vs-beko-fridge",
+          "permanent": true
+        },
+        {
+          "source": "/compare/beko-vs-lg-dryer",
+          "destination": "/guides/dryer-ventilation-guide",
+          "permanent": true
+        },
+        {
+          "source": "/compare/beko-vs-midea-fridge",
+          "destination": "/brands/midea-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-asko-dishwasher",
+          "destination": "/compare/bosch-vs-asko-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-beko-dishwasher",
+          "destination": "/brands/bosch-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-beko-dryer",
+          "destination": "/brands/bosch-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-fisher-paykel-dishwasher",
+          "destination": "/compare/bosch-vs-fisher-paykel-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-haier-washing-machine",
+          "destination": "/brands/bosch-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-lg-dryer",
+          "destination": "/compare/bosch-vs-lg-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-omega-dishwasher",
+          "destination": "/compare/bosch-vs-omega-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-smeg-dishwasher",
+          "destination": "/compare/bosch-vs-smeg-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/bosch-vs-westinghouse-dishwasher",
+          "destination": "/brands/bosch-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/chiq-vs-electrolux-fridge",
+          "destination": "/brands/chiq-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/chiq-vs-lg-fridge",
+          "destination": "/compare/lg-vs-chiq-fridge",
+          "permanent": true
+        },
+        {
+          "source": "/compare/chiq-vs-midea-fridge",
+          "destination": "/brands/chiq-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/electrolux-vs-lg-dryer",
+          "destination": "/brands/electrolux-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/esatto-vs-electrolux-fridge",
+          "destination": "/brands/esatto-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/esatto-vs-midea-fridge",
+          "destination": "/brands/esatto-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-asko-dishwasher",
+          "destination": "/brands/fisher-paykel-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-beko-dryer",
+          "destination": "/brands/fisher-paykel-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-electrolux-fridge",
+          "destination": "/brands/fisher-paykel-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-haier-washing-machine",
+          "destination": "/brands/fisher-paykel-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-lg-dryer",
+          "destination": "/compare/fisher-paykel-vs-lg-dryer-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-midea-fridge",
+          "destination": "/brands/fisher-paykel-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/fisher-paykel-vs-samsung-washing-machine",
+          "destination": "/compare/fisher-paykel-vs-samsung-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/haier-vs-asko-dishwasher",
+          "destination": "/brands/haier-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/haier-vs-electrolux-fridge",
+          "destination": "/brands/haier-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/haier-vs-hisense-fridge",
+          "destination": "/compare/hisense-vs-haier-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/haier-vs-midea-fridge",
+          "destination": "/brands/haier-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/hisense-vs-electrolux-fridge",
+          "destination": "/brands/hisense-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/hisense-vs-midea-fridge",
+          "destination": "/brands/hisense-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/lg-vs-electrolux-fridge",
+          "destination": "/brands/lg-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/lg-vs-fisher-paykel-washing-machine",
+          "destination": "/compare/lg-vs-fisher-paykel-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/lg-vs-haier-washing-machine",
+          "destination": "/brands/lg-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/lg-vs-midea-fridge",
+          "destination": "/brands/lg-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/lg-vs-samsung-washing-machine",
+          "destination": "/compare/lg-vs-samsung-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/midea-vs-electrolux-fridge",
+          "destination": "/brands/midea-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/samsung-vs-bosch-washing-machine",
+          "destination": "/compare/samsung-vs-bosch-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/samsung-vs-electrolux-fridge",
+          "destination": "/brands/samsung-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/samsung-vs-haier-washing-machine",
+          "destination": "/brands/samsung-washing-machine-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/samsung-vs-midea-fridge",
+          "destination": "/brands/samsung-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-asko-dishwasher",
+          "destination": "/brands/smeg-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-electrolux-fridge",
+          "destination": "/brands/smeg-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-esatto-fridge",
+          "destination": "/compare/esatto-vs-smeg-fridge",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-fisher-paykel-dishwasher",
+          "destination": "/compare/fisher-paykel-vs-smeg-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-haier-dishwasher",
+          "destination": "/brands/smeg-dishwasher-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/smeg-vs-midea-fridge",
+          "destination": "/brands/smeg-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/westinghouse-vs-electrolux-fridge",
+          "destination": "/brands/westinghouse-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/westinghouse-vs-haier-fridge",
+          "destination": "/compare/westinghouse-vs-haier-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/westinghouse-vs-hisense-fridge",
+          "destination": "/compare/westinghouse-vs-hisense-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/westinghouse-vs-lg-fridge",
+          "destination": "/compare/westinghouse-vs-lg-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/compare/westinghouse-vs-midea-fridge",
+          "destination": "/brands/westinghouse-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/products/fisher-paykel-rf730qzuvx1-french-door-726l-f3",
+          "destination": "/brands/fisher-paykel-fridge-clearance",
+          "permanent": true
+        },
+        {
+          "source": "/products/haier-hrf520bhs-french-door-520l-f7",
+          "destination": "/products/haier-hrf520bhs-ao-62557",
+          "permanent": true
+        },
+        {
+          "source": "/products/lg-1910bx-discovery-washing-machine-lg-1910bx",
+          "destination": "/products/lg-wwt-1910bx-discovery-washing-machine-lg-1910bx",
+          "permanent": true
+        },
+        {
+          "source": "/products/lg-1910fgx-discovery-washing-machine-lg-1910fgx",
+          "destination": "/products/lg-wwt-1910fgx-discovery-washing-machine-lg-1910fgx",
+          "permanent": true
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "/google32758d7798f4a670.html",
+          "destination": "/google32758d7798f4a670.html"
+        },
+        {
+          "source": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html",
+          "destination": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html"
+        },
+        {
+          "source": "/data/:path*",
+          "destination": "/public/data/:path*"
+        },
+        {
+          "source": "/pdf-evidence/:path*",
+          "destination": "/data/pdf-evidence/:path*"
+        },
+        {
+          "source": "/scripts/:path*",
+          "destination": "/public/scripts/:path*"
+        },
+        {
+          "source": "/icons/:path*",
+          "destination": "/public/icons/:path*"
+        },
+        {
+          "source": "/favicon.ico",
+          "destination": "/public/icons/icon-192.png"
+        },
+        {
+          "source": "/manifest.webmanifest",
+          "destination": "/public/manifest.webmanifest"
+        },
+        {
+          "source": "/service-worker.js",
+          "destination": "/public/service-worker.js"
+        },
+        {
+          "source": "/styles.css",
+          "destination": "/public/styles.css"
+        },
+        {
+          "source": "/styles-deferred.css",
+          "destination": "/public/styles-deferred.css"
+        },
+        {
+          "source": "/ads.txt",
+          "destination": "/public/ads.txt"
+        },
+        {
+          "source": "/sitemap.xml",
+          "destination": "/public/sitemap.xml"
+        },
+        {
+          "source": "/rss.xml",
+          "destination": "/public/rss.xml"
+        },
+        {
+          "source": "/image-sitemap.xml",
+          "destination": "/public/image-sitemap.xml"
+        },
+        {
+          "source": "/a8f09a8f55a15e62d93ec6b5ca1397b4.txt",
+          "destination": "/public/a8f09a8f55a15e62d93ec6b5ca1397b4.txt"
+        },
+        {
+          "source": "/og-images/:path*",
+          "destination": "/public/og-images/:path*"
+        },
+        {
+          "source": "/robots.txt",
+          "destination": "/public/robots.txt"
+        },
+        {
+          "source": "/affiliate-disclosure",
+          "destination": "/pages/affiliate-disclosure"
+        },
+        {
+          "source": "/privacy",
+          "destination": "/pages/privacy"
+        },
+        {
+          "source": "/privacy-policy",
+          "destination": "/pages/privacy-policy"
+        },
+        {
+          "source": "/terms",
+          "destination": "/pages/terms"
+        },
+        {
+          "source": "/contact",
+          "destination": "/pages/contact"
+        },
+        {
+          "source": "/partners",
+          "destination": "/pages/partners"
+        },
+        {
+          "source": "/subscribe",
+          "destination": "/pages/subscribe"
+        },
+        {
+          "source": "/subscribe/thanks",
+          "destination": "/pages/subscribe/thanks"
+        },
+        {
+          "source": "/account",
+          "destination": "/pages/account"
+        },
+        {
+          "source": "/about",
+          "destination": "/pages/about"
+        },
+        {
+          "source": "/methodology",
+          "destination": "/pages/methodology"
+        },
+        {
+          "source": "/about/editorial-standards",
+          "destination": "/pages/about/editorial-standards"
+        },
+        {
+          "source": "/products",
+          "destination": "/pages/products"
+        },
+        {
+          "source": "/products/:slug",
+          "destination": "/pages/products/:slug"
+        },
+        {
+          "source": "/brands/:slug",
+          "destination": "/pages/brands/:slug"
+        },
+        {
+          "source": "/compare/:slug",
+          "destination": "/pages/compare/:slug"
+        },
+        {
+          "source": "/cavity/:slug",
+          "destination": "/pages/cavity/:slug"
+        },
+        {
+          "source": "/doorway/:slug",
+          "destination": "/pages/doorway/:slug"
+        },
+        {
+          "source": "/fit-check/:slug",
+          "destination": "/pages/fit-check/:slug"
+        },
+        {
+          "source": "/location/:city/:category",
+          "destination": "/pages/location/:city/:category"
+        },
+        {
+          "source": "/tools/:slug",
+          "destination": "/pages/tools/:slug"
+        },
+        {
+          "source": "/guides/:slug",
+          "destination": "/pages/guides/:slug"
+        }
+      ],
+      "headers": [
+        {
+          "source": "/(.*)",
+          "headers": [
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net; font-src 'self' data:; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.adtrafficquality.google; frame-src https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "Permissions-Policy",
+              "value": "geolocation=(), camera=(), microphone=()"
+            }
+          ]
+        },
+        {
+          "source": "/index.html",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "/service-worker.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Service-Worker-Allowed",
+              "value": "/"
+            }
+          ]
+        },
+        {
+          "source": "/data/:path*",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
+        },
+        {
+          "source": "/pdf-evidence/:path*",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=86400, stale-while-revalidate=604800"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
+        },
+        {
+          "source": "/og-images/:path*",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "/icons/:path*",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "/scripts/:path*",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
+        },
+        {
+          "source": "/styles.css",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "/styles-deferred.css",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "/public/:path*",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0, must-revalidate"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "activeRetailRelease": {
+    "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+    "descriptorPath": "data/architecture-v2/decisions/active-retail-release.json",
+    "descriptorBytesSha256": "976a1463dd747763d20c959d52ecceaa1617a52eff6b06f17d9d8f59b2a6f222",
+    "artifacts": {
+      "publicProjection": {
+        "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
+        "bytesSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+        "semanticSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85"
+      },
+      "historicalReference": {
+        "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/historical-appliance-reference.json",
+        "bytesSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
+        "semanticSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13"
+      },
+      "authorizationManifest": {
+        "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/authorization-manifest.json",
+        "bytesSha256": "1289e8ea9fcacdbbc81df305193a28937bfb8d80a0b63b654cb3e04427b78fd1",
+        "semanticSha256": "a4effdfcc738b659186bc0d4fc22b3317a732960eed4964a57c4cb955e059377"
+      }
+    }
+  },
+  "trackedServiceWorker": {
+    "path": "public/service-worker.js",
+    "bytesSha256": "207e2ec6434f80ab9ac7ef27b08194e3cbaa9e2e91452293d8ce9e245fbab20f",
+    "cacheVersion": "e69bbe0",
+    "matchesLiveBytes": false
+  },
+  "capabilities": [
+    "OFFLINE_GIT_SOURCE_RECONSTRUCTION",
+    "REMOTE_PROMOTION_CANDIDATE_POINT_IN_TIME"
+  ],
+  "gaps": [
+    "CLIENT_CACHE_STATE_NOT_CAPTURED",
+    "EXACT_REMOTE_OUTPUT_BYTES_NOT_CAPTURED",
+    "OFFLINE_DEPENDENCY_INSTALL_NOT_PROVEN",
+    "OVERBROAD_STATIC_OUTPUT_CONFIRMED",
+    "REMOTE_FILE_TREE_UNAVAILABLE"
+  ],
+  "semanticSha256": "2cca426eac9950d1f7b9351a28bcff46e7204d9a89cbe6fa2cb6c48ac2ba7041"
+}

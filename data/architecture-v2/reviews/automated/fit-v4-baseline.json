@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "fit-v4-migration-risks",
-  "generatedAt": "2026-08-08T00:00:03.000Z",
+  "generatedAt": "2026-08-09T00:00:00.000Z",
   "diagnosticOnly": true,
   "sourceInputs": [
     {
@@ -13,12 +13,28 @@
       "sha256": "88790c3c8858fa0ca63a4230b76f18033a841b7f63134359586bc93feebcf259"
     },
     {
+      "path": "data/architecture-v2/policies/fit-v4-field-map.json",
+      "sha256": "d1520cb2016180cd42d696e89f2ead330b4fe9aa0ab405621a7e9203e3ec5b94"
+    },
+    {
+      "path": "data/architecture-v2/policies/product-data-field-rights-dictionary.json",
+      "sha256": "69c1dac30edb4b736777592eb70be541f7aa99fbe7e4f0982c6be5b573291d03"
+    },
+    {
+      "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/historical-appliance-reference.json",
+      "sha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882"
+    },
+    {
       "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
       "sha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90"
     },
     {
       "path": "data/architecture-v2/reviews/automated/fit-v3-shadow-audit.json",
       "sha256": "d1c3fe680eeaaa3bcb7169413b5426048b45382e370c028d77b6885b95c85799"
+    },
+    {
+      "path": "data/architecture-v2/reviews/automated/fit-v4-cutover-candidate.json",
+      "sha256": "927f44125dd1c3c6ee51c5f1b83dd3e18e140258c55b1813f3845f49a60ad8f2"
     },
     {
       "path": "data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json",
@@ -46,15 +62,27 @@
     },
     {
       "path": "scripts/architecture-v2/build-fit-v4-baseline.mjs",
-      "sha256": "a59bd070138e3244d3e966e42cc97c4b8ba694feacb847ffdde5f2d4eaf89556"
+      "sha256": "abb355602374a84059f7c9d4d0cd07bda3522964c1414be08e982217cc99c078"
     },
     {
       "path": "src/domain/fit-decision.mjs",
       "sha256": "a45b2b16e1326245420f55e3d9c4bc4ce8ab8133e8fbfbfaf55dc3f554409671"
     },
     {
+      "path": "src/domain/fit-rank-v4.mjs",
+      "sha256": "b486729bf2b7ffdf390f89bfdd94efdb4978bc0128e399f2143448513652b028"
+    },
+    {
       "path": "src/domain/fit-v3.mjs",
       "sha256": "229a65c2e013d2bcf137fc2705ca0b4fbfb65af6038926fb85e6591dac69b3ab"
+    },
+    {
+      "path": "src/domain/fit-v4-run-manifest.mjs",
+      "sha256": "c3fc356f6d1b8f70db67c353610f0ec69b6263dbddf19688de8d6166bb8cbcb9"
+    },
+    {
+      "path": "src/domain/fit-v4-shadow.mjs",
+      "sha256": "bf452abd69af5bfb0242bd02a78cd8b90e0b38eb39a3b06665eaed0446879ee5"
     },
     {
       "path": "src/domain/installation-knowledge-v3.mjs",
@@ -66,7 +94,11 @@
     },
     {
       "path": "tests/architecture-v2/fit-v4-migration-risks.test.mjs",
-      "sha256": "a02602c0ea90e0c685c5b578ae6f724083d8603f43b96997d15e2a2f7da866f2"
+      "sha256": "2f9564baeb77120839224b28af1d38b34a334ce7572d338a10298fd71f6f76a3"
+    },
+    {
+      "path": "tests/helpers/fit-v4-trusted-evaluation-fixture.mjs",
+      "sha256": "961743ed2bfc4d1254d17a129d12a55043e9c366552b12441d65e4264b39870b"
     }
   ],
   "protectedFiles": {
@@ -82,6 +114,211 @@
     "afterSha256": "0ef3bbcc2ff01ef37ccb580d8b7e9a948df687a51f74c37bc736f93829af6f56",
     "unchanged": true
   },
+  "databaseRuntimeSnapshot": {
+    "activeRelease": {
+      "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+      "pointer": {
+        "path": "data/architecture-v2/decisions/active-retail-release.json",
+        "byteLength": 1122,
+        "bytesSha256": "976a1463dd747763d20c959d52ecceaa1617a52eff6b06f17d9d8f59b2a6f222"
+      },
+      "catalog": {
+        "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
+        "declaredSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+        "bytesSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+        "semanticSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85"
+      },
+      "historicalReference": {
+        "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/historical-appliance-reference.json",
+        "declaredSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
+        "bytesSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
+        "semanticSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13"
+      }
+    },
+    "catalog": {
+      "rowCount": 3513,
+      "lifecycleVisibility": {
+        "HISTORICAL_INPUT_ONLY": 3087,
+        "MARKET_REFERENCE_ONLY": 77,
+        "CURRENT_OUTPUT": 349
+      }
+    },
+    "historicalReference": {
+      "rowCount": 8087
+    },
+    "currentCatalog": {
+      "rowCount": 349,
+      "geometryV2Count": 103,
+      "formFactorCount": 100,
+      "withoutFormFactorCount": 249,
+      "byCategory": {
+        "dishwasher": {
+          "rowCount": 117,
+          "geometryV2Count": 43,
+          "formFactorCount": 43,
+          "withoutFormFactorCount": 74
+        },
+        "dryer": {
+          "rowCount": 24,
+          "geometryV2Count": 19,
+          "formFactorCount": 17,
+          "withoutFormFactorCount": 7
+        },
+        "fridge": {
+          "rowCount": 158,
+          "geometryV2Count": 25,
+          "formFactorCount": 25,
+          "withoutFormFactorCount": 133
+        },
+        "washing_machine": {
+          "rowCount": 48,
+          "geometryV2Count": 16,
+          "formFactorCount": 15,
+          "withoutFormFactorCount": 33
+        },
+        "washtower_combo": {
+          "rowCount": 2,
+          "geometryV2Count": 0,
+          "formFactorCount": 0,
+          "withoutFormFactorCount": 2
+        }
+      }
+    },
+    "fitV4Rights": {
+      "fieldMap": {
+        "path": "data/architecture-v2/policies/fit-v4-field-map.json",
+        "version": "fit-v4-field-map-1.2.0",
+        "byteLength": 104634,
+        "bytesSha256": "d1520cb2016180cd42d696e89f2ead330b4fe9aa0ab405621a7e9203e3ec5b94",
+        "semanticSha256": "d67887b5b34357e98da809340fc1815485c006f5201d8d8ae3b33595c71bd47c"
+      },
+      "rightsDictionary": {
+        "path": "data/architecture-v2/policies/product-data-field-rights-dictionary.json",
+        "byteLength": 14015,
+        "bytesSha256": "69c1dac30edb4b736777592eb70be541f7aa99fbe7e4f0982c6be5b573291d03"
+      },
+      "totalFieldMappings": 85,
+      "publicDisplayRequiredCount": 0
+    },
+    "cutoverCandidate": {
+      "path": "data/architecture-v2/reviews/automated/fit-v4-cutover-candidate.json",
+      "byteLength": 251204,
+      "bytesSha256": "927f44125dd1c3c6ee51c5f1b83dd3e18e140258c55b1813f3845f49a60ad8f2",
+      "candidateId": "fit_v4_cutover_d144848e18f7c0558d00df11",
+      "semanticSha256": "d144848e18f7c0558d00df11b98bce7cfe5f1f65b33e76a1e6e4351138b15047",
+      "status": "BLOCKED",
+      "blockerCount": 11
+    },
+    "deploymentSurface": {
+      "explicitFiles": [
+        {
+          "path": ".vercelignore",
+          "bytesSha256": "6a0e245c752662936980d82bc46bd4d8080992ed9f506d837a1efbb6561a2a05",
+          "byteLength": 95
+        },
+        {
+          "path": "vercel.json",
+          "bytesSha256": "8b7111edda3d361a363de163e5af5a06e7511a22f4acdafae1ee0ae8acef937e",
+          "byteLength": 19126
+        },
+        {
+          "path": "package.json",
+          "bytesSha256": "d8b8979ffe217e80eee0b0075785e51e2e375f1113f01ae1555acc3b26be95b7",
+          "byteLength": 23000
+        },
+        {
+          "path": "package-lock.json",
+          "bytesSha256": "ad45d58a7bf0e4c88a0b26edc9c73100810358286f2f39354b978bc25238d0e7",
+          "byteLength": 174234
+        },
+        {
+          "path": "index.html",
+          "bytesSha256": "64c962bf9bd0417cca4c9f7f9bfb95613571a8cb634f2ec44bae8a433449394b",
+          "byteLength": 162178
+        },
+        {
+          "path": "google32758d7798f4a670.html",
+          "bytesSha256": "7d023c457bb626164d451c73c22bc576bbb0ac0fc7dff6b757e86698cdfa54be",
+          "byteLength": 54
+        },
+        {
+          "path": "google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html",
+          "bytesSha256": "420d02ddb8086b0244e09f723ae3b204e16c79370b854445e4c111bc3fdae085",
+          "byteLength": 81
+        }
+      ],
+      "trees": [
+        {
+          "path": "public",
+          "fileCount": 942,
+          "treeSha256": "b9ee61351177e40f5a10a3e89647646d9b3a1e69587b57f1547500f3466732cf"
+        },
+        {
+          "path": "pages",
+          "fileCount": 2336,
+          "treeSha256": "dbab7e693b983145ac0b93d13dff5c889459161d355e20b18dd0daa82c8160ae"
+        },
+        {
+          "path": "api",
+          "fileCount": 4,
+          "treeSha256": "482e4445a1488ba1c87afdfcd7d2b34e59769245bfa38bff406d0ac6cf14fb69"
+        },
+        {
+          "path": "data/pdf-evidence",
+          "fileCount": 1,
+          "treeSha256": "5642d1e8746803e32f1681489e21f49ab507e5ca10116cac89bdeb02e57f9edd"
+        }
+      ],
+      "fileCount": 3290,
+      "treeSha256": "3a978d666e292c4cc14e59a54e0e23e37d91ab7800d4172cef06a2df3d08f60e"
+    }
+  },
+  "characterizationWitnesses": [
+    {
+      "id": "rank-v1-cross-outcome-comparison",
+      "riskClass": "CROSS_OUTCOME_RANK_COMPARISON",
+      "reproduced": true,
+      "fixture": {
+        "leftAvailableWidthMm": 610,
+        "rightAvailableWidthMm": 590,
+        "requiredWidthMm": 600
+      },
+      "fixtureSha256": "39d6f8fbf4a6a1f3ccf9db9b086f99233dd859f748714b6da6c3f0c738eb67d2",
+      "sourcePaths": [
+        "src/domain/fit-rank-v4.mjs",
+        "tests/helpers/fit-v4-trusted-evaluation-fixture.mjs"
+      ],
+      "observation": {
+        "rankSchemaVersion": 1,
+        "leftOutcome": "INSUFFICIENT_DATA",
+        "rightOutcome": "NO_FIT",
+        "comparison": -1
+      }
+    },
+    {
+      "id": "scenario-set-member-conflation",
+      "riskClass": "SCENARIO_SET_MEMBER_CONFLATION",
+      "reproduced": true,
+      "fixture": {
+        "leftAvailableWidthMm": 610,
+        "rightAvailableWidthMm": 590,
+        "requiredWidthMm": 600
+      },
+      "fixtureSha256": "39d6f8fbf4a6a1f3ccf9db9b086f99233dd859f748714b6da6c3f0c738eb67d2",
+      "sourcePaths": [
+        "src/domain/fit-v4-run-manifest.mjs",
+        "src/domain/fit-v4-shadow.mjs",
+        "tests/helpers/fit-v4-trusted-evaluation-fixture.mjs"
+      ],
+      "observation": {
+        "leftScenarioSetSha256": "1d80c38ca4cd21c3a09fa5db749c382040f683a5f2b2431f1bbdefba7b987b24",
+        "rightScenarioSetSha256": "8aaefae71f1a83f92d86cde56f1b283d6188d01c70fc9c25b833248e175028dc",
+        "scenarioSetHashChangesWithMember": true,
+        "scenarioMemberBindingPresent": false,
+        "scenarioSetEqualsSiteScenario": true
+      }
+    }
+  ],
   "risks": [
     {
       "id": "accepted-unevaluated-front-clearance",
@@ -424,5 +661,5 @@
     "notReproduced": [],
     "publicOrRuntimeMutations": 0
   },
-  "semanticSha256": "7e231fb7c3ce71d2b9c593596154ef4e34225ca2b9efbd2a4a1685def84f6788"
+  "semanticSha256": "cb84cbe741d0471de28067b883dcb075a713c2540ab797c91b79aefdeff1511e"
 }

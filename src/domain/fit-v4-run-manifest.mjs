@@ -4,14 +4,27 @@ import { basename, dirname, join, parse, resolve, sep } from 'node:path';
 
 import { loadActiveRetailRelease } from './active-retail-release.mjs';
 import { assertSha256 } from './fit-v4-contract.mjs';
+import {
+  selectFitV4SyntheticScenario,
+  validateFitV4SyntheticScenarioSetEnvelope,
+} from './fit-v4-scenario-binding.mjs';
 
-export const FIT_V4_RUN_MANIFEST_SCHEMA_VERSION = 1;
-export const FIT_V4_CHECKPOINT_SCHEMA_VERSION = 1;
+export const FIT_V4_RUN_MANIFEST_SCHEMA_VERSION = 2;
+export const FIT_V4_CHECKPOINT_SCHEMA_VERSION = 2;
 
 const FOUR_POLICIES = ['dishwasher', 'dryer', 'refrigerator', 'washingMachine'];
 const THREE_SCHEMAS = ['knowledge', 'result', 'site'];
 const MANIFEST_ID = /^fit_v4_manifest_[a-f0-9]{24}$/;
 const RUN_ID = /^fit_v4_run_[a-f0-9]{24}$/;
+const AUDIT_ID = /^fit_v4_shadow_audit_[a-f0-9]{24}$/;
+const SHADOW_AUDIT_BINDING_CHECK_IDS = [
+  'ACTIVE_RELEASE',
+  'CONFLICT_SET',
+  'POLICY',
+  'RECEIPT_LIFECYCLE',
+  'SITE_OBSERVATION',
+  'SOURCE_REVISION',
+];
 const FIVE_TRUST_REGISTRIES = [
   'knowledgePolicyBundle', 'knowledgeReferenceRegistry', 'consentApprovalRegistry',
   'rightsEvidenceSet', 'calibrationLabelRegistry',
@@ -46,6 +59,14 @@ function freezeDeep(value) {
 function text(value, label) {
   if (typeof value !== 'string' || !value.trim()) throw new TypeError(`${label} required`);
   return value;
+}
+
+function rejectLiveEphemeral(value) {
+  if (value?.scenarioBindingKind === 'LIVE_EPHEMERAL') {
+    const error = new TypeError('LIVE_EPHEMERAL_NOT_PERSISTABLE');
+    error.code = 'LIVE_EPHEMERAL_NOT_PERSISTABLE';
+    throw error;
+  }
 }
 
 function exactKeys(value, keys, label) {
@@ -140,7 +161,11 @@ async function assertIsolatedRoot(path, label) {
   return absolute;
 }
 
-function manifestSemantic({ active, input, asOf }) {
+function manifestSemantic({ active, input, asOf, selected }) {
+  const siteObservation = nullableClockBinding(input.siteObservationClock, 'site observation clock');
+  if (!siteObservation || siteObservation.bundleSha256 !== selected.scenarioBinding.scenarioMemberSha256) {
+    throw new TypeError('site observation clock must bind the selected scenario member');
+  }
   return canonical({
     schemaVersion: FIT_V4_RUN_MANIFEST_SCHEMA_VERSION,
     activeRelease: {
@@ -157,22 +182,28 @@ function manifestSemantic({ active, input, asOf }) {
     policyHashes: exactHashObject(input.policyHashes, FOUR_POLICIES, 'policy hashes'),
     trustedRegistryHashes: trustedRegistryHashes(input.trustedRegistryHashes),
     policyEpoch: text(input.policyEpoch, 'policy epoch'),
-    scenarioSetSha256: assertSha256(input.scenarioSetSha256, 'scenario set'),
+    scenarioBinding: selected.scenarioBinding,
     clockBindings: {
       retailEvidence: retailEvidenceClock(input.retailEvidenceClock, asOf),
       documentRevision: nullableClockBinding(input.documentRevisionClock, 'document revision clock'),
-      siteObservation: nullableClockBinding(input.siteObservationClock, 'site observation clock'),
+      siteObservation,
     },
     asOf,
   });
 }
 
 export async function createFitV4RunManifest(input, { root, descriptorPath } = {}) {
+  rejectLiveEphemeral(input);
   if (!input || typeof input !== 'object') throw new TypeError('Fit V4 run input required');
+  const selected = selectFitV4SyntheticScenario(
+    input.scenarioSetManifest,
+    input.selectedScenarioMemberId,
+    input.scenarioSiteOptions,
+  );
   const asOf = instant(input.asOf, 'run asOf');
   const generatedAt = instant(input.generatedAt, 'run generatedAt');
   const active = await loadActiveRetailRelease({ root, descriptorPath });
-  const semantic = manifestSemantic({ active, input, asOf });
+  const semantic = manifestSemantic({ active, input, asOf, selected });
   const semanticSha256 = semanticHash(semantic);
   const payload = canonical({
     schemaVersion: FIT_V4_RUN_MANIFEST_SCHEMA_VERSION,
@@ -180,6 +211,8 @@ export async function createFitV4RunManifest(input, { root, descriptorPath } = {
     runId: `fit_v4_run_${semanticSha256.slice(0, 24)}`,
     semanticSha256,
     semantic,
+    scenarioSetManifest: input.scenarioSetManifest,
+    selectedScenarioMemberId: selected.scenarioBinding.scenarioMemberId,
     generatedAt,
     clocks: {
       asOf,
@@ -195,9 +228,11 @@ export async function createFitV4RunManifest(input, { root, descriptorPath } = {
 }
 
 export function validateFitV4RunManifest(value) {
+  rejectLiveEphemeral(value);
   exactKeys(value, [
     'schemaVersion', 'manifestId', 'runId', 'semanticSha256', 'semantic',
-    'generatedAt', 'clocks', 'manifestSha256',
+    'scenarioSetManifest', 'selectedScenarioMemberId', 'generatedAt', 'clocks',
+    'manifestSha256',
   ], 'Fit V4 run manifest');
   if (!value || value.schemaVersion !== FIT_V4_RUN_MANIFEST_SCHEMA_VERSION
     || !MANIFEST_ID.test(String(value.manifestId)) || !RUN_ID.test(String(value.runId))) {
@@ -206,7 +241,7 @@ export function validateFitV4RunManifest(value) {
   exactKeys(value.semantic, [
     'schemaVersion', 'activeRelease', 'identityMapSha256', 'receiptBundleSha256',
     'fieldMapSha256', 'schemaHashes', 'policyHashes', 'trustedRegistryHashes', 'policyEpoch',
-    'scenarioSetSha256', 'clockBindings', 'asOf',
+    'scenarioBinding', 'clockBindings', 'asOf',
   ], 'Fit V4 run semantic manifest');
   if (value.semantic.schemaVersion !== FIT_V4_RUN_MANIFEST_SCHEMA_VERSION) throw new TypeError('Fit V4 semantic schema invalid');
   exactKeys(value.semantic.activeRelease, [
@@ -220,9 +255,33 @@ export function validateFitV4RunManifest(value) {
   for (const key of ['catalogSha256', 'historicalReferenceSha256', 'authorizationManifestSha256']) {
     assertSha256(value.semantic.activeRelease[key], `active release ${key}`);
   }
-  for (const key of ['identityMapSha256', 'receiptBundleSha256', 'fieldMapSha256', 'scenarioSetSha256']) {
+  for (const key of ['identityMapSha256', 'receiptBundleSha256', 'fieldMapSha256']) {
     assertSha256(value.semantic[key], `semantic ${key}`);
   }
+  exactKeys(value.semantic.scenarioBinding, [
+    'scenarioBindingKind', 'scenarioSetId', 'scenarioSetSha256',
+    'scenarioMemberId', 'scenarioMemberSha256',
+  ], 'scenario binding');
+  if (value.semantic.scenarioBinding.scenarioBindingKind !== 'PERSISTED_SYNTHETIC') {
+    throw new TypeError('persisted synthetic scenario binding required');
+  }
+  const scenarioSetManifest = validateFitV4SyntheticScenarioSetEnvelope(value.scenarioSetManifest);
+  const selectedMember = scenarioSetManifest.members.find(
+    (member) => member.scenarioMemberId === value.selectedScenarioMemberId,
+  );
+  if (!selectedMember) throw new TypeError('selected scenario member absent from persisted scenario set');
+  const expectedScenarioBinding = canonical({
+    scenarioBindingKind: 'PERSISTED_SYNTHETIC',
+    scenarioSetId: scenarioSetManifest.scenarioSetId,
+    scenarioSetSha256: scenarioSetManifest.scenarioSetSha256,
+    scenarioMemberId: selectedMember.scenarioMemberId,
+    scenarioMemberSha256: selectedMember.scenarioMemberSha256,
+  });
+  if (JSON.stringify(value.semantic.scenarioBinding) !== JSON.stringify(expectedScenarioBinding)) {
+    throw new TypeError('persisted scenario set/member binding drift');
+  }
+  assertSha256(value.semantic.scenarioBinding.scenarioSetSha256, 'scenario set');
+  assertSha256(value.semantic.scenarioBinding.scenarioMemberSha256, 'scenario member');
   exactHashObject(value.semantic.schemaHashes, THREE_SCHEMAS, 'schema hashes');
   exactHashObject(value.semantic.policyHashes, FOUR_POLICIES, 'policy hashes');
   trustedRegistryHashes(value.semantic.trustedRegistryHashes);
@@ -232,6 +291,10 @@ export function validateFitV4RunManifest(value) {
   retailEvidenceClock(value.semantic.clockBindings.retailEvidence, value.semantic.asOf);
   nullableClockBinding(value.semantic.clockBindings.documentRevision, 'document revision clock');
   nullableClockBinding(value.semantic.clockBindings.siteObservation, 'site observation clock');
+  if (value.semantic.clockBindings.siteObservation?.bundleSha256
+    !== value.semantic.scenarioBinding.scenarioMemberSha256) {
+    throw new TypeError('site observation clock scenario member binding drift');
+  }
   if (instant(value.generatedAt, 'run generatedAt') !== value.generatedAt) throw new TypeError('run generatedAt must be canonical');
   exactKeys(value.clocks, [
     'asOf', 'generatedAt', 'activeReleaseActivatedAt', 'retailEvidence',
@@ -392,6 +455,7 @@ export function buildFitV4Checkpoint({ manifest, stage, inputHashes, outputSha25
     schemaVersion: FIT_V4_CHECKPOINT_SCHEMA_VERSION,
     manifestId: manifest.manifestId,
     runId: manifest.runId,
+    manifestSha256: manifest.manifestSha256,
     stage,
     inputHashes,
     outputSha256,
@@ -402,7 +466,7 @@ export function buildFitV4Checkpoint({ manifest, stage, inputHashes, outputSha25
 
 function validateCheckpoint(value, manifest) {
   exactKeys(value, [
-    'schemaVersion', 'manifestId', 'runId', 'stage', 'inputHashes', 'outputSha256',
+    'schemaVersion', 'manifestId', 'runId', 'manifestSha256', 'stage', 'inputHashes', 'outputSha256',
     'checkpointId', 'checkpointSha256',
   ], 'checkpoint');
   if (value.schemaVersion !== FIT_V4_CHECKPOINT_SCHEMA_VERSION) throw new TypeError('checkpoint schema invalid');
@@ -411,7 +475,8 @@ function validateCheckpoint(value, manifest) {
   });
   if (JSON.stringify(canonical(value)) !== JSON.stringify(canonical(rebuilt))
     || value.checkpointId !== rebuilt.checkpointId || value.checkpointSha256 !== rebuilt.checkpointSha256
-    || value.manifestId !== manifest.manifestId || value.runId !== manifest.runId) {
+    || value.manifestId !== manifest.manifestId || value.runId !== manifest.runId
+    || value.manifestSha256 !== manifest.manifestSha256) {
     throw new TypeError('checkpoint binding mismatch');
   }
   return rebuilt;
@@ -464,16 +529,20 @@ export async function acquireFitV4RunWriter({ runsRoot, manifest, writerId, stal
   });
 }
 
-export async function resumeFitV4Run({ runsRoot, manifestId, expectedInputs, root, descriptorPath }) {
-  const manifest = await readIndexedManifest(runsRoot, manifestId);
+export async function resumeFitV4Run({ runsRoot, manifest, expectedInputs, root, descriptorPath }) {
+  validateFitV4RunManifest(manifest);
+  const persistedManifest = await readIndexedManifest(runsRoot, manifest.manifestId);
+  if (JSON.stringify(persistedManifest) !== JSON.stringify(manifest)) {
+    throw new TypeError('persisted run manifest differs from requested resume manifest');
+  }
   if (!expectedInputs || typeof expectedInputs !== 'object') throw new TypeError('complete expected semantic inputs required for resume');
   const expected = await createFitV4RunManifest(expectedInputs, { root, descriptorPath });
-  if (expected.runId !== manifest.runId || expected.semanticSha256 !== manifest.semanticSha256
-    || JSON.stringify(expected.semantic) !== JSON.stringify(manifest.semantic)) {
+  if (expected.runId !== persistedManifest.runId || expected.semanticSha256 !== persistedManifest.semanticSha256
+    || JSON.stringify(expected.semantic) !== JSON.stringify(persistedManifest.semantic)) {
     throw new Error('resume semantic manifest drift');
   }
   const isolatedRoot = await assertIsolatedRoot(runsRoot, 'runs root');
-  const checkpointDirectory = join(runDirectory(isolatedRoot, manifest.runId), 'checkpoints');
+  const checkpointDirectory = join(runDirectory(isolatedRoot, persistedManifest.runId), 'checkpoints');
   let names = [];
   try {
     names = await readdir(checkpointDirectory);
@@ -483,38 +552,268 @@ export async function resumeFitV4Run({ runsRoot, manifestId, expectedInputs, roo
   const checkpoints = [];
   for (const name of names.sort()) {
     if (!name.endsWith('.json')) throw new TypeError('unexpected checkpoint artifact');
-    const checkpoint = validateCheckpoint(JSON.parse(await readFile(join(checkpointDirectory, name), 'utf8')), manifest);
+    const checkpoint = validateCheckpoint(JSON.parse(await readFile(join(checkpointDirectory, name), 'utf8')), persistedManifest);
     if (name !== `${checkpoint.stage}.json`) throw new TypeError('checkpoint filename and stage mismatch');
     checkpoints.push(checkpoint);
   }
-  return freezeDeep({ manifest, checkpoints });
+  return freezeDeep({ manifest: persistedManifest, checkpoints });
 }
 
-export async function compareAndSwapFitV4ShadowPointer({ shadowRoot, expectedRunId, nextRunId, verify }) {
-  if (typeof verify !== 'function') throw new TypeError('verification callback required before shadow pointer replacement');
+export function validateFitV4ShadowPointer(value) {
+  exactKeys(value, ['schemaVersion', 'pointerType', 'manifestId', 'runId', 'manifestSha256'], 'Fit V4 shadow pointer');
+  if (value.schemaVersion !== 2 || value.pointerType !== 'FIT_V4_ACTIVE_SHADOW'
+    || !MANIFEST_ID.test(String(value.manifestId)) || !RUN_ID.test(String(value.runId))) {
+    throw new TypeError('Fit V4 shadow pointer schema invalid');
+  }
+  assertSha256(value.manifestSha256, 'Fit V4 shadow pointer manifest');
+  return value;
+}
+
+function validateShadowAuditActivationBody(artifact) {
+  if (!Array.isArray(artifact.evaluationSummary) || artifact.evaluationSummary.length === 0) {
+    throw new TypeError('shadow audit activation summary invalid');
+  }
+  let priorProductId = null;
+  for (const row of artifact.evaluationSummary) {
+    exactKeys(row, [
+      'productId', 'category', 'applicableHardFieldCount', 'outcomeCheckCount',
+    ], 'shadow audit activation summary row');
+    const productId = text(row.productId, 'shadow audit activation product ID');
+    text(row.category, 'shadow audit activation category');
+    for (const key of ['applicableHardFieldCount', 'outcomeCheckCount']) {
+      if (!Number.isInteger(row[key]) || row[key] < 0) {
+        throw new TypeError(`shadow audit activation ${key} invalid`);
+      }
+    }
+    if (priorProductId !== null && priorProductId.localeCompare(productId) > 0) {
+      throw new TypeError('shadow audit activation summary order invalid');
+    }
+    priorProductId = productId;
+  }
+  if (!Array.isArray(artifact.bindingChecks)
+    || artifact.bindingChecks.length !== SHADOW_AUDIT_BINDING_CHECK_IDS.length) {
+    throw new TypeError('shadow audit activation binding checks invalid');
+  }
+  for (let index = 0; index < SHADOW_AUDIT_BINDING_CHECK_IDS.length; index += 1) {
+    const check = artifact.bindingChecks[index];
+    exactKeys(check, ['checkId', 'pass', 'reasonCodes'], 'shadow audit activation binding check');
+    if (check.checkId !== SHADOW_AUDIT_BINDING_CHECK_IDS[index]
+      || check.pass !== true || !Array.isArray(check.reasonCodes) || check.reasonCodes.length !== 0) {
+      throw new TypeError('shadow audit activation binding check invalid');
+    }
+  }
+}
+
+async function validateShadowActivationProof(runsRoot, manifest) {
+  const root = await assertIsolatedRoot(runsRoot, 'runs root');
+  const directory = runDirectory(root, manifest.runId);
+  let checkpointBytes;
+  let auditBytes;
+  try {
+    [checkpointBytes, auditBytes] = await Promise.all([
+      readFile(join(directory, 'checkpoints', 'shadow-audit.json')),
+      readFile(join(directory, 'shadow-audit.json')),
+    ]);
+  } catch (error) {
+    if (error.code === 'ENOENT') throw new TypeError('shadow audit activation proof missing');
+    throw error;
+  }
+  const checkpoint = validateCheckpoint(JSON.parse(checkpointBytes), manifest);
+  if (checkpoint.stage !== 'shadow-audit') throw new TypeError('shadow audit activation checkpoint required');
+  exactKeys(checkpoint.inputHashes, ['auditInput', 'manifest'], 'shadow audit activation inputs');
+  const artifact = JSON.parse(auditBytes);
+  if (checkpoint.inputHashes.manifest !== manifest.manifestSha256
+    || checkpoint.inputHashes.auditInput !== artifact.inputSemanticSha256
+    || checkpoint.outputSha256 !== sha256(auditBytes)) {
+    throw new TypeError('shadow audit activation checkpoint binding drift');
+  }
+  exactKeys(artifact, [
+    'schemaVersion', 'artifactType', 'manifestId', 'runId', 'manifestSha256',
+    'scenarioBinding', 'inputSemanticSha256', 'publicMutation', 'evaluationSummary',
+    'bindingChecks', 'verdict', 'reasonCodes', 'semanticSha256', 'auditId',
+  ], 'shadow audit activation artifact');
+  validateShadowAuditActivationBody(artifact);
+  const { semanticSha256, auditId, ...semantic } = artifact;
+  const expectedSemanticSha256 = semanticHash(semantic);
+  assertSha256(artifact.inputSemanticSha256, 'shadow audit activation input');
+  if (artifact.schemaVersion !== 2 || artifact.artifactType !== 'FIT_V4_SHADOW_AUDIT'
+    || artifact.manifestId !== manifest.manifestId || artifact.runId !== manifest.runId
+    || artifact.manifestSha256 !== manifest.manifestSha256
+    || JSON.stringify(artifact.scenarioBinding) !== JSON.stringify(manifest.semantic.scenarioBinding)
+    || artifact.publicMutation !== false || artifact.verdict !== 'PASS'
+    || !Array.isArray(artifact.reasonCodes) || artifact.reasonCodes.length !== 0
+    || semanticSha256 !== expectedSemanticSha256
+    || auditId !== `fit_v4_shadow_audit_${expectedSemanticSha256.slice(0, 24)}`
+    || !AUDIT_ID.test(auditId)) {
+    throw new TypeError('shadow audit activation artifact invalid');
+  }
+  if (!auditBytes.equals(Buffer.from(`${JSON.stringify(artifact, null, 2)}\n`))) {
+    throw new TypeError('shadow audit activation artifact bytes invalid');
+  }
+  return { checkpoint, artifact };
+}
+
+export async function compareAndSwapFitV4ShadowPointer(options) {
+  exactKeys(options, ['runsRoot', 'shadowRoot', 'expectedPointer', 'nextManifest'], 'shadow pointer CAS input');
+  const { runsRoot, shadowRoot, expectedPointer, nextManifest } = options;
+  validateFitV4RunManifest(nextManifest);
+  if (expectedPointer !== null) validateFitV4ShadowPointer(expectedPointer);
+  const persisted = await readIndexedManifest(runsRoot, nextManifest.manifestId);
+  if (JSON.stringify(persisted) !== JSON.stringify(nextManifest)) {
+    throw new TypeError('next shadow pointer manifest differs from exact persisted manifest');
+  }
+  await validateShadowActivationProof(runsRoot, persisted);
   const root = await assertIsolatedRoot(shadowRoot, 'shadow root');
   await mkdir(root, { recursive: true });
-  if (expectedRunId !== null && !RUN_ID.test(String(expectedRunId))) throw new TypeError('expected shadow run ID invalid');
-  if (!RUN_ID.test(String(nextRunId))) throw new TypeError('next shadow run ID invalid');
   const path = join(root, 'active-shadow.json');
   const lockPath = join(root, 'active-shadow.lock');
   const lock = await acquireExclusiveLock(lockPath, 'duplicate or concurrent shadow pointer writer lock', {
-    ownerId: `shadow-pointer:${nextRunId}`,
+    ownerId: `shadow-pointer:${nextManifest.runId}`,
   });
   try {
     let prior = null;
     try {
-      prior = JSON.parse(await readFile(path, 'utf8'));
+      const priorBytes = await readFile(path);
+      prior = validateFitV4ShadowPointer(JSON.parse(priorBytes));
+      const canonicalBytes = Buffer.from(`${JSON.stringify(prior, null, 2)}\n`);
+      if (!priorBytes.equals(canonicalBytes)) throw new TypeError('Fit V4 shadow pointer bytes invalid');
     } catch (error) {
       if (error.code !== 'ENOENT') throw error;
     }
-    if ((prior?.runId ?? null) !== expectedRunId) throw new Error('stale compare-and-swap shadow pointer');
-    const next = freezeDeep({ schemaVersion: 1, pointerType: 'FIT_V4_ACTIVE_SHADOW', runId: nextRunId });
-    await verify(next);
+    if (JSON.stringify(prior) !== JSON.stringify(expectedPointer)) {
+      throw new Error('stale compare-and-swap shadow pointer');
+    }
+    const next = freezeDeep(canonical({
+      schemaVersion: 2,
+      pointerType: 'FIT_V4_ACTIVE_SHADOW',
+      manifestId: persisted.manifestId,
+      runId: persisted.runId,
+      manifestSha256: persisted.manifestSha256,
+    }));
     await atomicWrite(path, Buffer.from(`${JSON.stringify(next, null, 2)}\n`));
     return next;
   } finally {
     await lock.close();
     await rm(lockPath, { force: true });
   }
+}
+
+export function readHistoricalFitV4RunManifestV1(value) {
+  exactKeys(value, [
+    'schemaVersion', 'manifestId', 'runId', 'semanticSha256', 'semantic',
+    'generatedAt', 'clocks', 'manifestSha256',
+  ], 'historical Fit V4 run manifest');
+  if (value.schemaVersion !== 1 || value.semantic?.schemaVersion !== 1
+    || !MANIFEST_ID.test(String(value.manifestId)) || !RUN_ID.test(String(value.runId))) {
+    throw new TypeError('historical Fit V4 run manifest schema 1 required');
+  }
+  if (Object.hasOwn(value.semantic, 'scenarioBinding')) {
+    throw new TypeError('historical Fit V4 run manifest cannot contain schema-2 scenario binding');
+  }
+  exactKeys(value.semantic, [
+    'schemaVersion', 'activeRelease', 'identityMapSha256', 'receiptBundleSha256',
+    'fieldMapSha256', 'schemaHashes', 'policyHashes', 'trustedRegistryHashes',
+    'policyEpoch', 'scenarioSetSha256', 'clockBindings', 'asOf',
+  ], 'historical Fit V4 semantic manifest');
+  exactKeys(value.semantic.activeRelease, [
+    'releaseCandidateId', 'activatedAt', 'catalogSha256', 'historicalReferenceSha256',
+    'authorizationManifestSha256',
+  ], 'historical active release binding');
+  text(value.semantic.activeRelease.releaseCandidateId, 'historical active release candidate');
+  if (instant(value.semantic.activeRelease.activatedAt, 'historical active release activation')
+    !== value.semantic.activeRelease.activatedAt) {
+    throw new TypeError('historical active release activation must be canonical');
+  }
+  for (const key of ['catalogSha256', 'historicalReferenceSha256', 'authorizationManifestSha256']) {
+    assertSha256(value.semantic.activeRelease[key], `historical active release ${key}`);
+  }
+  for (const key of ['identityMapSha256', 'receiptBundleSha256', 'fieldMapSha256', 'scenarioSetSha256']) {
+    assertSha256(value.semantic[key], `historical semantic ${key}`);
+  }
+  exactHashObject(value.semantic.schemaHashes, THREE_SCHEMAS, 'historical schema hashes');
+  exactHashObject(value.semantic.policyHashes, FOUR_POLICIES, 'historical policy hashes');
+  trustedRegistryHashes(value.semantic.trustedRegistryHashes);
+  text(value.semantic.policyEpoch, 'historical policy epoch');
+  if (instant(value.semantic.asOf, 'historical run asOf') !== value.semantic.asOf) {
+    throw new TypeError('historical run asOf must be canonical');
+  }
+  exactKeys(value.semantic.clockBindings, ['retailEvidence', 'documentRevision', 'siteObservation'], 'historical clock bindings');
+  retailEvidenceClock(value.semantic.clockBindings.retailEvidence, value.semantic.asOf);
+  nullableClockBinding(value.semantic.clockBindings.documentRevision, 'historical document revision clock');
+  nullableClockBinding(value.semantic.clockBindings.siteObservation, 'historical site observation clock');
+  assertSha256(value.semantic.scenarioSetSha256, 'historical scenario set');
+  const semanticSha256 = semanticHash(value.semantic);
+  if (value.semanticSha256 !== semanticSha256
+    || value.manifestId !== `fit_v4_manifest_${semanticSha256.slice(0, 24)}`
+    || value.runId !== `fit_v4_run_${semanticSha256.slice(0, 24)}`) {
+    throw new TypeError('historical Fit V4 run semantic binding drift');
+  }
+  const { manifestSha256: ignored, ...payload } = value;
+  if (value.manifestSha256 !== semanticHash(payload)) {
+    throw new TypeError('historical Fit V4 run manifest hash drift');
+  }
+  if (instant(value.generatedAt, 'historical run generatedAt') !== value.generatedAt) {
+    throw new TypeError('historical run generatedAt must be canonical');
+  }
+  exactKeys(value.clocks, [
+    'asOf', 'generatedAt', 'activeReleaseActivatedAt', 'retailEvidence',
+    'documentRevision', 'siteObservation', 'policyEpoch',
+  ], 'historical manifest clocks');
+  const expectedClocks = canonical({
+    asOf: value.semantic.asOf,
+    generatedAt: value.generatedAt,
+    activeReleaseActivatedAt: value.semantic.activeRelease.activatedAt,
+    retailEvidence: value.semantic.clockBindings.retailEvidence,
+    documentRevision: value.semantic.clockBindings.documentRevision,
+    siteObservation: value.semantic.clockBindings.siteObservation,
+    policyEpoch: value.semantic.policyEpoch,
+  });
+  if (JSON.stringify(value.clocks) !== JSON.stringify(expectedClocks)) {
+    throw new TypeError('historical Fit V4 run clock binding drift');
+  }
+  return freezeDeep(value);
+}
+
+export function readHistoricalFitV4CheckpointV1(value, manifest) {
+  const historicalManifest = readHistoricalFitV4RunManifestV1(manifest);
+  exactKeys(value, [
+    'schemaVersion', 'manifestId', 'runId', 'stage', 'inputHashes', 'outputSha256',
+    'checkpointId', 'checkpointSha256',
+  ], 'historical Fit V4 checkpoint');
+  if (value.schemaVersion !== 1 || value.manifestId !== historicalManifest.manifestId
+    || value.runId !== historicalManifest.runId
+    || !/^[a-z][a-z0-9-]*$/.test(String(value.stage ?? ''))) {
+    throw new TypeError('historical Fit V4 checkpoint schema 1 required');
+  }
+  if (!value.inputHashes || typeof value.inputHashes !== 'object' || Array.isArray(value.inputHashes)
+    || Object.keys(value.inputHashes).length === 0) {
+    throw new TypeError('historical Fit V4 checkpoint input hashes required');
+  }
+  for (const [key, hash] of Object.entries(value.inputHashes)) {
+    assertSha256(hash, `historical checkpoint input ${key}`);
+  }
+  assertSha256(value.outputSha256, 'historical checkpoint output');
+  const semantic = canonical({
+    schemaVersion: 1,
+    manifestId: value.manifestId,
+    runId: value.runId,
+    stage: value.stage,
+    inputHashes: value.inputHashes,
+    outputSha256: value.outputSha256,
+  });
+  const checkpointSha256 = semanticHash(semantic);
+  if (value.checkpointSha256 !== checkpointSha256
+    || value.checkpointId !== `fit_v4_checkpoint_${checkpointSha256.slice(0, 24)}`) {
+    throw new TypeError('historical Fit V4 checkpoint binding drift');
+  }
+  return freezeDeep(value);
+}
+
+export function readHistoricalFitV4ShadowPointerV1(value) {
+  exactKeys(value, ['schemaVersion', 'pointerType', 'runId'], 'historical Fit V4 shadow pointer');
+  if (value.schemaVersion !== 1 || value.pointerType !== 'FIT_V4_ACTIVE_SHADOW'
+    || !RUN_ID.test(String(value.runId))) {
+    throw new TypeError('historical Fit V4 shadow pointer schema 1 required');
+  }
+  return freezeDeep(value);
 }

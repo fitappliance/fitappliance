@@ -5,7 +5,9 @@
 > approved implementation slice, run TDD, and review its diff in the primary
 > conversation. Do not execute dependent tasks concurrently.
 
-**Status:** Isolated shadow implementation complete; public cutover remains blocked
+**Status:** Isolated shadow implementation complete; public cutover remains blocked.
+Public migration is superseded by
+[2026-08-09-fit-v4-database-and-public-runtime-migration.md](2026-08-09-fit-v4-database-and-public-runtime-migration.md).
 **Research basis:** [Appliance Fit Engineering Standard Research](../../architecture-v2/appliance-fit-engineering-standard-research.md)
 **Goal:** Build a versioned, evidence-bound engineering Fit standard for
 refrigerators, dishwashers, washing machines and dryers; validate it in an

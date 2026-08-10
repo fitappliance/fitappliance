@@ -1,9 +1,17 @@
 import { createHash } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 import { validateFitV4FieldMap } from '../../src/domain/fit-v4-contract.mjs';
 import { FIT_POLICY_PACKS_V4 } from '../../src/domain/fit-policies-v4/index.mjs';
-import { validateFitV4RunManifest } from '../../src/domain/fit-v4-run-manifest.mjs';
+import {
+  buildFitV4Checkpoint,
+  validateFitV4RunManifest,
+} from '../../src/domain/fit-v4-run-manifest.mjs';
+import {
+  buildFitV4SyntheticScenarioSet,
+  selectFitV4SyntheticScenario,
+} from '../../src/domain/fit-v4-scenario-binding.mjs';
 import {
   createFitV4Receipt,
   createFitV4ReceiptBundle,
@@ -24,6 +32,61 @@ export const canonical = (value) => Array.isArray(value)
     ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])]))
     : value;
 export const semanticHash = (value) => sha256(JSON.stringify(canonical(value)));
+
+export async function writeFitV4PassingShadowActivationProof({ runsRoot, manifest }) {
+  const validated = validateFitV4RunManifest(manifest);
+  const semantic = canonical({
+    schemaVersion: 2,
+    artifactType: 'FIT_V4_SHADOW_AUDIT',
+    manifestId: validated.manifestId,
+    runId: validated.runId,
+    manifestSha256: validated.manifestSha256,
+    scenarioBinding: validated.semantic.scenarioBinding,
+    inputSemanticSha256: 'a'.repeat(64),
+    publicMutation: false,
+    evaluationSummary: [{
+      productId: 'fixture-product',
+      category: 'refrigerator',
+      applicableHardFieldCount: 0,
+      outcomeCheckCount: 0,
+    }],
+    bindingChecks: [
+      'ACTIVE_RELEASE',
+      'CONFLICT_SET',
+      'POLICY',
+      'RECEIPT_LIFECYCLE',
+      'SITE_OBSERVATION',
+      'SOURCE_REVISION',
+    ].map((checkId) => ({ checkId, pass: true, reasonCodes: [] })),
+    verdict: 'PASS',
+    reasonCodes: [],
+  });
+  const semanticSha256 = semanticHash(semantic);
+  const artifact = {
+    ...semantic,
+    semanticSha256,
+    auditId: `fit_v4_shadow_audit_${semanticSha256.slice(0, 24)}`,
+  };
+  const auditBytes = Buffer.from(`${JSON.stringify(artifact, null, 2)}\n`);
+  const checkpoint = buildFitV4Checkpoint({
+    manifest: validated,
+    stage: 'shadow-audit',
+    inputHashes: {
+      auditInput: artifact.inputSemanticSha256,
+      manifest: validated.manifestSha256,
+    },
+    outputSha256: sha256(auditBytes),
+  });
+  const runRoot = join(runsRoot, validated.runId);
+  await mkdir(join(runRoot, 'checkpoints'), { recursive: true });
+  await writeFile(join(runRoot, 'shadow-audit.json'), auditBytes, { flag: 'wx' });
+  await writeFile(
+    join(runRoot, 'checkpoints', 'shadow-audit.json'),
+    `${JSON.stringify(checkpoint, null, 2)}\n`,
+    { flag: 'wx' },
+  );
+  return { artifact, checkpoint };
+}
 
 const NULL_NORMALIZED = Object.freeze({ value: null, unit: null, relation: null, endpoints: null });
 const UNKNOWN = Object.freeze({ state: 'unknown', predicate: null });
@@ -204,7 +267,16 @@ function siteProfile(observations, configuration, deliverySelected) {
   };
 }
 
-function manifestFor({ receiptBundle, knowledge, site, policyBundle, referenceRegistry, replayContexts }) {
+function manifestFor({
+  receiptBundle,
+  knowledge,
+  scenarioSetManifest,
+  selectedScenarioMemberId,
+  scenarioSelection,
+  policyBundle,
+  referenceRegistry,
+  replayContexts,
+}) {
   const policyHashes = {
     dishwasher: semanticHash(FIT_POLICY_PACKS_V4.dishwasher),
     dryer: semanticHash(FIT_POLICY_PACKS_V4.dryer),
@@ -215,7 +287,7 @@ function manifestFor({ receiptBundle, knowledge, site, policyBundle, referenceRe
     Object.keys(context.rightsEvidenceBytes)
   )))].sort();
   const semantic = canonical({
-    schemaVersion: 1,
+    schemaVersion: 2,
     activeRelease: {
       releaseCandidateId: 'fixture-active-release', activatedAt: '2026-08-01T00:00:00.000Z',
       catalogSha256: '2'.repeat(64), historicalReferenceSha256: '3'.repeat(64),
@@ -234,24 +306,29 @@ function manifestFor({ receiptBundle, knowledge, site, policyBundle, referenceRe
       calibrationLabelRegistry: null,
     },
     policyEpoch: PACK.packVersion,
-    scenarioSetSha256: semanticHash(site),
+    scenarioBinding: scenarioSelection.scenarioBinding,
     clockBindings: {
       retailEvidence: {
         bundleSha256: '5'.repeat(64), oldestObservedAt: '2026-08-01T00:00:00.000Z',
         freshestObservedAt: '2026-08-07T00:00:00.000Z',
       },
       documentRevision: null,
-      siteObservation: { bundleSha256: semanticHash(site), observedAt: '2026-08-07T00:00:00.000Z' },
+      siteObservation: {
+        bundleSha256: scenarioSelection.scenarioBinding.scenarioMemberSha256,
+        observedAt: '2026-08-07T00:00:00.000Z',
+      },
     },
     asOf: AS_OF,
   });
   const semanticSha256 = semanticHash(semantic);
   const payload = canonical({
-    schemaVersion: 1,
+    schemaVersion: 2,
     manifestId: `fit_v4_manifest_${semanticSha256.slice(0, 24)}`,
     runId: `fit_v4_run_${semanticSha256.slice(0, 24)}`,
     semanticSha256,
     semantic,
+    scenarioSetManifest,
+    selectedScenarioMemberId,
     generatedAt: AS_OF,
     clocks: {
       asOf: AS_OF, generatedAt: AS_OF,
@@ -268,6 +345,7 @@ function manifestFor({ receiptBundle, knowledge, site, policyBundle, referenceRe
 export function buildTrustedFitV4Input({
   fields = [], observations = [], configuration = {}, deliverySelected = false,
   normative = [], claims = [], includeDefaultEnvironmentClaim = true,
+  scenarioObservationSets = null, selectedScenarioIndex = 0,
 } = {}) {
   const receiptRows = fields.map(([fieldId, value, options]) => exactReceipt(fieldId, value, options));
   const receipts = receiptRows.map((row) => row.receipt);
@@ -365,9 +443,39 @@ export function buildTrustedFitV4Input({
   };
   const policyBundle = trustedPolicyBundle(normativeRules);
   const referenceRegistry = trustedReferenceRegistry([...relationRefs, ...compositionRefs]);
-  const site = siteProfile(observations, configuration, deliverySelected);
+  const observationSets = scenarioObservationSets ?? [observations];
+  if (!Array.isArray(observationSets) || observationSets.length === 0
+    || !Number.isInteger(selectedScenarioIndex) || !observationSets[selectedScenarioIndex]) {
+    throw new TypeError('trusted fixture scenario selection invalid');
+  }
+  const sites = observationSets.map((rows) => siteProfile(rows, configuration, deliverySelected));
+  const scenarioSetManifest = buildFitV4SyntheticScenarioSet({
+    purpose: 'FIT_V4_TRUSTED_EVALUATION_FIXTURE',
+    category: 'refrigerator',
+    configurationScope: { category: 'refrigerator', values: configuration },
+    metadata: { frozenAt: AS_OF, source: 'TRUSTED_TEST_FIXTURE' },
+    members: sites,
+  }, {
+    fieldMap: FIELD_MAP,
+    asOf: AS_OF,
+    maxObservationAgeMs: 7 * 24 * 60 * 60 * 1000,
+  });
+  const selectedHash = semanticHash(sites[selectedScenarioIndex]);
+  const selectedScenarioMemberId = scenarioSetManifest.members.find(
+    (member) => member.scenarioMemberSha256 === selectedHash,
+  )?.scenarioMemberId;
+  const scenarioSelection = selectFitV4SyntheticScenario(
+    scenarioSetManifest,
+    selectedScenarioMemberId,
+    {
+      fieldMap: FIELD_MAP,
+      asOf: AS_OF,
+      maxObservationAgeMs: 7 * 24 * 60 * 60 * 1000,
+    },
+  );
   const runManifest = manifestFor({
-    receiptBundle, knowledge, site, policyBundle, referenceRegistry, replayContexts,
+    receiptBundle, knowledge, scenarioSetManifest, selectedScenarioMemberId,
+    scenarioSelection, policyBundle, referenceRegistry, replayContexts,
   });
   return {
     runId: runManifest.runId,
@@ -378,7 +486,11 @@ export function buildTrustedFitV4Input({
     identity: { ...knowledge.identity, formFactor: 'upright' },
     knowledge,
     receiptBundle,
-    siteProfile: site,
+    scenarioSiteOptions: {
+      fieldMap: FIELD_MAP,
+      asOf: AS_OF,
+      maxObservationAgeMs: 7 * 24 * 60 * 60 * 1000,
+    },
     trustedPolicyBundle: policyBundle,
     trustedReferenceRegistry: referenceRegistry,
     approvalRegistry: null,
@@ -386,7 +498,6 @@ export function buildTrustedFitV4Input({
     identityMapSha256: runManifest.semantic.identityMapSha256,
     productSha256: semanticHash(knowledge),
     receiptBundleSha256: receiptBundle.bundleSha256,
-    siteScenarioSha256: semanticHash(site),
     policySha256: semanticHash(PACK),
   };
 }

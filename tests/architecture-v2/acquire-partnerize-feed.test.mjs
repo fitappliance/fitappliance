@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import test from 'node:test';
@@ -10,10 +10,21 @@ const repoRoot = resolve(new URL('../..', import.meta.url).pathname);
 
 test('authorized Partnerize acquisition stores immutable bytes and a secret-safe receipt', async (t) => {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-partnerize-acquisition-'));
+  const policyRoot = await mkdtemp(join(tmpdir(), 'fitappliance-partnerize-policy-'));
   t.after(() => rm(storageRoot, { recursive: true, force: true }));
+  t.after(() => rm(policyRoot, { recursive: true, force: true }));
+  const policy = JSON.parse(await readFile(join(
+    repoRoot, 'data/architecture-v2/policies/retailer-source-policy.json',
+  ), 'utf8'));
+  const partnerize = policy.sources.find((source) => source.id === 'the-good-guys-partnerize-feed-v1');
+  partnerize.termsReviewState = 'authorized_partner_feed';
+  partnerize.legacyLinkAction = 'REPLAY_PARTNERIZE_FEED';
+  const policyPath = join(policyRoot, 'data/architecture-v2/policies/retailer-source-policy.json');
+  await mkdir(join(policyRoot, 'data/architecture-v2/policies'), { recursive: true });
+  await writeFile(policyPath, `${JSON.stringify(policy, null, 2)}\n`);
   const csv = Buffer.from('Category|Stock\nDishwashers|Yes\n');
   const result = await acquirePartnerizeFeedToStorage({
-    root: repoRoot,
+    root: policyRoot,
     storageRoot,
     url: 'https://feeds.performancehorizon.com/private/token.csv?secret=value',
   }, {

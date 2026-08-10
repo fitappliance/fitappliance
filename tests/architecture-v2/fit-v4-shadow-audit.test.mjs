@@ -61,7 +61,9 @@ function manifestInputs(overrides = {}) {
       rightsEvidenceSet: replayInput.runManifest.semantic.trustedRegistryHashes.rightsEvidenceSet,
       calibrationLabelRegistry: null,
     },
-    scenarioSetSha256: replayInput.siteScenarioSha256,
+    scenarioSetManifest: replayInput.runManifest.scenarioSetManifest,
+    selectedScenarioMemberId: replayInput.runManifest.selectedScenarioMemberId,
+    scenarioSiteOptions: replayInput.scenarioSiteOptions,
     policyEpoch: replayInput.policyPack.packVersion,
     retailEvidenceClock: {
       bundleSha256: SHA('c'),
@@ -72,9 +74,26 @@ function manifestInputs(overrides = {}) {
       bundleSha256: SHA('d'), observedAt: '2026-08-02T00:00:00.000Z',
     },
     siteObservationClock: {
-      bundleSha256: replayInput.siteScenarioSha256, observedAt: '2026-08-07T00:00:00.000Z',
+      bundleSha256: replayInput.runManifest.semantic.scenarioBinding.scenarioMemberSha256,
+      observedAt: '2026-08-07T00:00:00.000Z',
     },
     ...overrides,
+  };
+}
+
+function scenarioOverrides(width) {
+  const replayInput = buildTrustedFitV4Input({
+    fields: [['envelope.closed.width', 600]],
+    observations: [observation('cavity.width', width)],
+  });
+  return {
+    scenarioSetManifest: replayInput.runManifest.scenarioSetManifest,
+    selectedScenarioMemberId: replayInput.runManifest.selectedScenarioMemberId,
+    scenarioSiteOptions: replayInput.scenarioSiteOptions,
+    siteObservationClock: {
+      bundleSha256: replayInput.runManifest.semantic.scenarioBinding.scenarioMemberSha256,
+      observedAt: '2026-08-07T00:00:00.000Z',
+    },
   };
 }
 
@@ -281,7 +300,7 @@ test('fresh run writes immutable audit and checkpoint before CAS; identical repl
   const laterInputs = manifestInputs({ generatedAt: '2026-08-09T01:00:00.000Z' });
   const laterManifest = await createFitV4RunManifest(laterInputs, { root: ROOT });
   assert.equal(laterManifest.runId, item.manifest.runId);
-  const semanticReplay = await runFitV4ShadowAudit({
+  await assert.rejects(() => runFitV4ShadowAudit({
     runsRoot: item.runsRoot,
     shadowRoot: item.shadowRoot,
     root: ROOT,
@@ -290,14 +309,13 @@ test('fresh run writes immutable audit and checkpoint before CAS; identical repl
     auditInput: item.auditInput,
     expectedRunId: item.manifest.runId,
     writerId: 'semantic-replay',
-  });
-  assert.equal(semanticReplay.replayed, true);
+  }), /persisted.*manifest|full.*manifest|manifest.*differs/i);
   assert.deepEqual(await readFile(auditPath), beforeBytes);
   assert.equal((await stat(auditPath)).ino, beforeStat.ino);
 
   await assert.rejects(() => runFitV4ShadowAudit({
     ...item,
-    expectedInputs: manifestInputs({ scenarioSetSha256: SHA('0') }),
+    expectedInputs: manifestInputs(scenarioOverrides(590)),
     expectedRunId: item.manifest.runId,
     writerId: 'drifted-resume',
   }), /resume|semantic|manifest|drift/i);
@@ -311,7 +329,7 @@ test('fresh run writes immutable audit and checkpoint before CAS; identical repl
 
 test('run input cannot override the persisted manifest identity', async (t) => {
   const item = await fixture(t);
-  const otherInputs = manifestInputs({ scenarioSetSha256: SHA('0') });
+  const otherInputs = manifestInputs(scenarioOverrides(590));
   const otherManifest = await createFitV4RunManifest(otherInputs, { root: ROOT });
   await assert.rejects(() => runFitV4ShadowAudit({
     ...item,
@@ -367,26 +385,22 @@ test('run and pointer writer concurrency reject the second writer', async (t) =>
     faultAt: 'before-pointer-cas',
   }), (error) => error?.code === 'FIT_V4_SHADOW_FAULT');
 
-  let release;
-  let entered;
-  const enteredPromise = new Promise((resolve) => { entered = resolve; });
-  const releasePromise = new Promise((resolve) => { release = resolve; });
-  const target = `fit_v4_run_${'f'.repeat(24)}`;
-  const heldPointer = compareAndSwapFitV4ShadowPointer({
-    shadowRoot: item.shadowRoot, expectedRunId: null, nextRunId: target,
-    verify: async () => { entered(); await releasePromise; },
-  });
-  await enteredPromise;
-  await assert.rejects(() => rollbackFitV4ShadowAudit({
-    runsRoot: item.runsRoot,
-    shadowRoot: item.shadowRoot,
-    expectedRunId: null,
-    targetRunId: item.manifest.runId,
-    manifest: item.manifest,
-    auditInput: item.auditInput,
-  }), /pointer|writer|lock/i);
-  release();
-  await heldPointer;
+  const outcomes = await Promise.allSettled([
+    compareAndSwapFitV4ShadowPointer({
+      runsRoot: item.runsRoot,
+      shadowRoot: item.shadowRoot,
+      expectedPointer: null,
+      nextManifest: item.manifest,
+    }),
+    compareAndSwapFitV4ShadowPointer({
+      runsRoot: item.runsRoot,
+      shadowRoot: item.shadowRoot,
+      expectedPointer: null,
+      nextManifest: item.manifest,
+    }),
+  ]);
+  assert.equal(outcomes.filter((row) => row.status === 'fulfilled').length, 1);
+  assert.equal(outcomes.filter((row) => row.status === 'rejected').length, 1);
 });
 
 test('new run retains old bytes and verified CAS rollback restores the prior run', async (t) => {

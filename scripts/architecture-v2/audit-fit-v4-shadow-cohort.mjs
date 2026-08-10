@@ -156,10 +156,20 @@ export async function auditFitV4ShadowCohort(artifact, { root = DEFAULT_ROOT, de
   }
   const expectedPolicyHashes = Object.fromEntries(Object.entries(FIT_POLICY_PACKS_V4)
     .map(([category, pack]) => [category, semanticHash(pack)]).sort(([left], [right]) => left.localeCompare(right)));
+  const cohortCases = artifact.cohortCases;
+  if (JSON.stringify(Object.keys(cohortCases ?? {}).sort()) !== JSON.stringify([
+    'artifactType', 'caseSetId', 'cases', 'containsUserData', 'schemaVersion', 'sourceKind',
+  ].sort())
+    || cohortCases?.artifactType !== 'FIT_V4_NON_EVALUATED_COHORT_CASES'
+    || !Array.isArray(cohortCases?.cases) || cohortCases.cases.length === 0
+    || cohortCases.cases.some((row) => row.evaluationStatus !== 'NOT_EVALUATED')
+    || Object.hasOwn(cohortCases ?? {}, 'scenarioSetId')) {
+    violations.push(violation('INVALID_COHORT_CASES', 'fixed non-evaluated cohort cases required'));
+  }
   if (JSON.stringify(artifact.bindings?.policies) !== JSON.stringify(expectedPolicyHashes)
-    || artifact.bindings?.scenarios?.semanticSha256 !== semanticHash(artifact.scenarios)
+    || artifact.bindings?.cohortCases?.semanticSha256 !== semanticHash(artifact.cohortCases)
     || artifact.bindings?.adapters?.semanticSha256 !== semanticHash(artifact.adapters)) {
-    violations.push(violation('HASH_BINDING_VIOLATION', 'policy, scenario or adapter'));
+    violations.push(violation('HASH_BINDING_VIOLATION', 'policy, cohort cases or adapter'));
   }
   const adapterByHash = new Map();
   for (const row of artifact.adapters ?? []) {
@@ -219,7 +229,7 @@ export async function auditFitV4ShadowCohort(artifact, { root = DEFAULT_ROOT, de
   }
   for (const [label, hash] of Object.entries({
     fieldMap: artifact.bindings?.fieldMap?.semanticSha256,
-    scenarios: artifact.bindings?.scenarios?.semanticSha256,
+    cohortCases: artifact.bindings?.cohortCases?.semanticSha256,
     adapters: artifact.bindings?.adapters?.semanticSha256,
   })) {
     if (!HASH.test(hash ?? '')) violations.push(violation('INVALID_BINDING_HASH', label));
