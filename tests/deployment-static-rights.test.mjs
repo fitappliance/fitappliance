@@ -225,6 +225,28 @@ test('inventory freezes exact tracked bytes and rejects changed, new tracked, an
   assert.throws(() => validateStaticSourceInventory({ repoRoot, inventory }), assertCode('STATIC_SOURCE_SET_DRIFT'));
 });
 
+test('B1 inventory excludes the exact tracked legacy service worker witness', () => {
+  const repoRoot = initRepo({
+    'index.html': 'home\n',
+    'public/app.js': 'app\n',
+    'public/service-worker.js': 'legacy worker\n',
+  });
+  const inventory = buildStaticSourceInventory({ repoRoot });
+
+  assert.deepEqual(inventory.rows.map((row) => row.path), ['index.html', 'public/app.js']);
+  assert.equal(validateStaticSourceInventory({ repoRoot, inventory }), true);
+
+  writeFileSync(path.join(repoRoot, 'public/service-worker.js'), 'changed legacy worker\n');
+  assert.deepEqual(
+    buildStaticSourceInventory({ repoRoot }).rows.map((row) => row.path),
+    ['index.html', 'public/app.js']
+  );
+  assert.equal(validateStaticSourceInventory({ repoRoot, inventory }), true);
+
+  writeFileSync(path.join(repoRoot, 'public/service-worker.js.map'), '{}\n');
+  assert.throws(() => validateStaticSourceInventory({ repoRoot, inventory }), assertCode('STATIC_SOURCE_SET_DRIFT'));
+});
+
 test('inventory construction rejects tracked working-tree or index drift', () => {
   const repoRoot = initRepo();
   writeFileSync(path.join(repoRoot, 'public/app.js'), 'dirty\n');
@@ -272,12 +294,13 @@ test('classification is conservative and generated families inherit first-party 
     assert.deepEqual(row.dependencyIds, ['FIRST_PARTY', 'RETAILER_FEED']);
     assert.deepEqual(row.blockers, ['GENERATED_PROVENANCE_MISSING']);
   }
-  for (const path of ['public/scripts/fit-engine.js', 'public/service-worker.js']) {
+  for (const path of ['public/scripts/fit-engine.js']) {
     const row = result.rows.find((candidate) => candidate.path === path);
     assert.equal(row.sourceClass, 'FIRST_PARTY_CANDIDATE');
     assert.deepEqual(row.dependencyIds, ['FIRST_PARTY']);
     assert.deepEqual(row.blockers, ['GENERATED_PROVENANCE_MISSING']);
   }
+  assert.equal(result.rows.some((row) => row.path === 'public/service-worker.js'), false);
   assert.deepEqual(result.rows.find((row) => row.path === 'public/mystery.bin').blockers, ['MISSING_DEPENDENCY_CLASSIFICATION', 'UNKNOWN_SOURCE_CLASS']);
 });
 
@@ -713,6 +736,10 @@ test('schema 2 rejects arbitrary basis, schema-1 ALLOWED, unknown keys, and dupl
   assert.throws(() => validateSchema2Manifest({ ...manifest, schemaVersion: 1 }), assertCode('MANIFEST_SCHEMA_INVALID'));
   assert.throws(() => validateSchema2Manifest({ ...manifest, rows: [{ ...row, basis: 'I say ALLOWED' }] }), assertCode('SCHEMA_UNKNOWN_KEY'));
   assert.throws(() => validateSchema2Manifest({ ...manifest, rows: [{ ...row, dependencyDecisionIds: [input.decisions[0].decisionId, input.decisions[0].decisionId] }] }), assertCode('DUPLICATE_ID'));
+  assert.throws(
+    () => validateSchema2Manifest({ ...manifest, rows: [{ ...row, path: 'public/service-worker.js' }] }),
+    assertCode('STATIC_SOURCE_PATH_INVALID')
+  );
   assert.throws(
     () => validateSchema2Manifest({ ...manifest, rows: [{ ...row, path: 'public/A.txt' }, { ...row, path: 'public/a.txt' }] }),
     assertCode('MANIFEST_PATH_COLLISION')

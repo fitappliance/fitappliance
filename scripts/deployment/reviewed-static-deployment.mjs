@@ -51,6 +51,7 @@ const EXPECTED_FUNCTION_ROUTES = ['/api/error', '/api/rum', '/api/subscribe'];
 const DEFAULT_MANIFEST = 'deployment/reviewed-static-source-manifest.json';
 const DEFAULT_CONTRACT = 'deployment/toolchain-contract.json';
 const DEFAULT_OUTPUT_MANIFEST = '.deployment-private/deployment-output-manifest.json';
+const LEGACY_SERVICE_WORKER_WITNESS = 'public/service-worker.js';
 const REQUIRED_EXECUTABLE_BINDINGS = [
   'package-lock.json',
   'package.json',
@@ -110,9 +111,10 @@ function git(repoRoot, args) {
 }
 
 function isEligiblePath(relativePath) {
-  return ROOT_STATIC_FILES.has(relativePath)
-    || relativePath.startsWith('public/')
-    || relativePath.startsWith('pages/');
+  return relativePath !== LEGACY_SERVICE_WORKER_WITNESS
+    && (ROOT_STATIC_FILES.has(relativePath)
+      || relativePath.startsWith('public/')
+      || relativePath.startsWith('pages/'));
 }
 
 function normalizedCollisionKey(relativePath) {
@@ -176,7 +178,10 @@ function eligibleGitPaths(repoRoot) {
     'public',
     'pages',
   ]);
-  return output ? [...new Set(output.split('\n').filter(Boolean))].sort(byteSort) : [];
+  const trackedWitness = git(repoRoot, ['ls-files', '--cached', '--', LEGACY_SERVICE_WORKER_WITNESS]) === LEGACY_SERVICE_WORKER_WITNESS;
+  return output
+    ? [...new Set(output.split('\n').filter((relativePath) => relativePath && (relativePath !== LEGACY_SERVICE_WORKER_WITNESS || !trackedWitness)))].sort(byteSort)
+    : [];
 }
 
 function lstatContainedSource(repoRoot, relativePath) {

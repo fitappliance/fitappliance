@@ -230,6 +230,7 @@ test('B1 rejects undeclared roots, dotfiles, traversal, and forbidden families',
     'README.md',
     'public/.secret',
     'public/../index.html',
+    'public/service-worker.js',
     'public/data/pdf-evidence/manual.pdf',
     'pages/reviews/private.html',
     'api/error.js',
@@ -306,8 +307,14 @@ test('B1 rejects schema-1 free-text ALLOWED rights and a typed blocked productio
 
 test('B1 rejects changed, missing, untracked, and undeclared eligible files', async () => {
   const { validateReviewedSourceManifest } = await loadSubject();
-  const repoRoot = initFixture({ 'index.html': 'home\n', 'public/app.js': 'app\n' });
+  const repoRoot = initFixture({
+    'index.html': 'home\n',
+    'public/app.js': 'app\n',
+    'public/service-worker.js': 'legacy worker\n',
+  });
   const complete = approvedManifest(repoRoot, ['index.html', 'public/app.js']);
+
+  assert.equal(validateReviewedSourceManifest({ repoRoot, manifest: complete }).length, 2);
 
   writeFileSync(path.join(repoRoot, 'public/app.js'), 'changed\n');
   assert.throws(() => validateReviewedSourceManifest({ repoRoot, manifest: complete }), assertCode('SOURCE_CHANGED'));

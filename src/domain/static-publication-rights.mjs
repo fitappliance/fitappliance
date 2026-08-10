@@ -12,10 +12,10 @@ const ROOT_STATIC_FILES = [
   'google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html',
   'index.html',
 ];
+const LEGACY_SERVICE_WORKER_WITNESS = 'public/service-worker.js';
 const GENERATED_FIRST_PARTY_PATHS = new Set([
   'public/data/evidence-index.json',
   'public/scripts/fit-engine.js',
-  'public/service-worker.js',
 ]);
 const EDITED_FIRST_PARTY_DATA_PATHS = new Set([
   'public/data/brands/metadata.json',
@@ -123,7 +123,8 @@ function git(repoRoot, args) {
 }
 
 function eligiblePath(relativePath) {
-  return ROOT_STATIC_FILES.includes(relativePath) || relativePath.startsWith('public/') || relativePath.startsWith('pages/');
+  return relativePath !== LEGACY_SERVICE_WORKER_WITNESS
+    && (ROOT_STATIC_FILES.includes(relativePath) || relativePath.startsWith('public/') || relativePath.startsWith('pages/'));
 }
 
 function validatePath(relativePath) {
@@ -153,7 +154,8 @@ function trackedPathRows(repoRoot) {
     const match = /^(\d{6}) ([0-9a-f]{40,64}) \d\t(.+)$/.exec(line);
     if (!match) fail('GIT_PROVENANCE_UNAVAILABLE', `Unexpected Git index row: ${line}`);
     return { mode: match[1], blobOid: match[2], path: match[3] };
-  }).sort((left, right) => byteSort(left.path, right.path));
+  }).filter((row) => row.path !== LEGACY_SERVICE_WORKER_WITNESS)
+    .sort((left, right) => byteSort(left.path, right.path));
 }
 
 function untrackedPaths(repoRoot) {
@@ -187,7 +189,16 @@ function inventoryPayload(rows) {
 export function buildStaticSourceInventory({ repoRoot }) {
   const untracked = untrackedPaths(repoRoot);
   if (untracked.length) fail('STATIC_SOURCE_SET_DRIFT', 'Untracked eligible static paths prevent inventory creation', { untracked });
-  const dirty = git(repoRoot, ['status', '--porcelain=v1', '--untracked-files=no', '--', ...ROOT_STATIC_FILES, 'public', 'pages']);
+  const dirty = git(repoRoot, [
+    'status',
+    '--porcelain=v1',
+    '--untracked-files=no',
+    '--',
+    ...ROOT_STATIC_FILES,
+    'public',
+    'pages',
+    `:(exclude)${LEGACY_SERVICE_WORKER_WITNESS}`,
+  ]);
   if (dirty) fail('GIT_PROVENANCE_DRIFT', 'Tracked eligible static sources must match the Git index and HEAD');
   const rows = trackedPathRows(repoRoot).map((row) => fileRow(repoRoot, row));
   const payload = inventoryPayload(rows);
