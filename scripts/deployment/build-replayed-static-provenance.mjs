@@ -210,7 +210,9 @@ export function buildReceiptsForSpecs({ repoRoot, replayRoot, inventory, specs, 
     }
   }
 
-  const preserved = (existingProvenance?.receipts ?? []).filter((receipt) => !targetPaths.has(receipt.outputPath));
+  const preserved = (existingProvenance?.receipts ?? []).filter((receipt) => (
+    inventoryByPath.has(receipt.outputPath) && !targetPaths.has(receipt.outputPath)
+  ));
   const receipts = [...preserved, ...replacementReceipts]
     .sort((left, right) => byteSort(left.outputPath, right.outputPath));
   const generatedProvenance = buildGeneratedProvenance({

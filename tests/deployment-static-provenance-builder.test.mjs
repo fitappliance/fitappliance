@@ -165,6 +165,26 @@ test('replay builder fails closed on output drift and duplicate output claims', 
   }), assertCode('REPLAY_SPEC_DUPLICATE_OUTPUT'));
 });
 
+test('replay builder drops receipts for outputs removed from the current inventory', () => {
+  const { repoRoot, replayRoot } = fixture();
+  const result = buildReceiptsForSpecs({
+    repoRoot,
+    replayRoot,
+    inventory: buildStaticSourceInventory({ repoRoot }),
+    specs: [spec()],
+    existingProvenance: {
+      schemaVersion: 1,
+      receipts: [{ outputPath: 'pages/products/removed.html' }],
+    },
+  });
+
+  assert.deepEqual(
+    result.generatedProvenance.receipts.map((receipt) => receipt.outputPath),
+    ['pages/products/widget.html'],
+  );
+  assert.equal(result.receiptsPreserved, 0);
+});
+
 test('replay builder rejects a replay root inside the repository or behind a symlink', () => {
   const { repoRoot, replayRoot } = fixture();
   const inventory = buildStaticSourceInventory({ repoRoot });
