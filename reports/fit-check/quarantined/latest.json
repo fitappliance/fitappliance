@@ -1,6 +1,211 @@
 {
   "schema_version": 1,
   "generated_at": "2026-05-07",
-  "blocker_count": 0,
-  "products": []
+  "blocker_count": 17,
+  "products": [
+    {
+      "id": "ao-11243",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SCE53M05AU",
+      "dimensions": {
+        "w": 595,
+        "h": 595,
+        "d": 500
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2392",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6870SA",
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2395",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874SA",
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2439",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 769
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2442",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM4502WC",
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2443",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB5400WC",
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2461",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE7074SA",
+      "dimensions": {
+        "w": 1728,
+        "h": 913,
+        "d": 803
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2495",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302AC",
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2538",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602WC",
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2540",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402AC",
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2921",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5650BA",
+      "dimensions": {
+        "w": 1795,
+        "h": 896,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2922",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5660BA",
+      "dimensions": {
+        "w": 1795,
+        "h": 896,
+        "d": 723
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf2944",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6160BA",
+      "dimensions": {
+        "w": 913,
+        "h": 1782,
+        "d": 749
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf3258",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6170BB",
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf3824",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5264SC",
+      "dimensions": {
+        "w": 796,
+        "h": 1725,
+        "d": 769
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf3868",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5204BC",
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 769
+      },
+      "reason": "dimension-axis-blocker"
+    },
+    {
+      "id": "fridge-arf3923",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 769
+      },
+      "reason": "dimension-axis-blocker"
+    }
+  ]
 }

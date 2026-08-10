@@ -331,6 +331,39 @@ test('sanitizer-bound catalog provenance removes the private-feed fallback only 
   }
 });
 
+test('edited public support data is first-party and evidence index remains provenance-gated', () => {
+  const repoRoot = initRepo({
+    'public/data/brands/metadata.json': '{}\n',
+    'public/data/clearance.json': '{}\n',
+    'public/data/rebates.json': '{}\n',
+    'public/data/sources/direct-urls.json': '{}\n',
+    'public/data/sources/manual-research.json': '{}\n',
+    'public/data/evidence-index.json': '{}\n',
+  });
+  const inventory = buildStaticSourceInventory({ repoRoot });
+  const result = classifyStaticSources({
+    inventory,
+    generatedProvenance: { schemaVersion: 1, receipts: [] },
+  });
+
+  for (const path of [
+    'public/data/brands/metadata.json',
+    'public/data/clearance.json',
+    'public/data/rebates.json',
+    'public/data/sources/direct-urls.json',
+    'public/data/sources/manual-research.json',
+  ]) {
+    const row = result.rows.find((candidate) => candidate.path === path);
+    assert.equal(row.sourceClass, 'FIRST_PARTY_CANDIDATE');
+    assert.deepEqual(row.dependencyIds, ['FIRST_PARTY']);
+    assert.deepEqual(row.blockers, []);
+  }
+  const evidenceIndex = result.rows.find((row) => row.path === 'public/data/evidence-index.json');
+  assert.equal(evidenceIndex.sourceClass, 'FIRST_PARTY_CANDIDATE');
+  assert.deepEqual(evidenceIndex.dependencyIds, ['FIRST_PARTY']);
+  assert.deepEqual(evidenceIndex.blockers, ['GENERATED_PROVENANCE_MISSING']);
+});
+
 test('exact government reference provenance does not inherit the retailer-feed fallback', () => {
   const repoRoot = initRepo({
     'public/data/replacement-reference/fridges.json': '{"records":[]}\n',

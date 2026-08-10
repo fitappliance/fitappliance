@@ -13,8 +13,16 @@ const ROOT_STATIC_FILES = [
   'index.html',
 ];
 const GENERATED_FIRST_PARTY_PATHS = new Set([
+  'public/data/evidence-index.json',
   'public/scripts/fit-engine.js',
   'public/service-worker.js',
+]);
+const EDITED_FIRST_PARTY_DATA_PATHS = new Set([
+  'public/data/brands/metadata.json',
+  'public/data/clearance.json',
+  'public/data/rebates.json',
+  'public/data/sources/direct-urls.json',
+  'public/data/sources/manual-research.json',
 ]);
 const HEX_64 = /^[0-9a-f]{64}$/;
 const HEX_OID = /^[0-9a-f]{40,64}$/;
@@ -336,6 +344,9 @@ export function validateGeneratedProvenanceRepositoryBindings({ repoRoot, invent
 
 function baseClassification(relativePath) {
   if (ROOT_STATIC_FILES.slice(0, 2).includes(relativePath)) return { sourceClass: 'GOOGLE_VERIFICATION_TOKEN', dependencyIds: ['GOOGLE_VERIFICATION'] };
+  if (EDITED_FIRST_PARTY_DATA_PATHS.has(relativePath) || relativePath === 'public/data/evidence-index.json') {
+    return { sourceClass: 'FIRST_PARTY_CANDIDATE', dependencyIds: ['FIRST_PARTY'] };
+  }
   if (/^public\/data\/replacement-reference\/(?:dishwashers|dryers|fridges|meta|washing-machines)\.json$/.test(relativePath)) {
     return { sourceClass: 'GENERATED_RETAIL_PRESENTATION', dependencyIds: ['FIRST_PARTY'] };
   }

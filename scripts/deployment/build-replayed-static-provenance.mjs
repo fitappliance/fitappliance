@@ -250,6 +250,22 @@ export function buildProductionReplaySpecs({ repoRoot, inventory }) {
     'data/videos/review-pilot-slugs.json',
     'data/videos/review-videos.json',
   ];
+  const contentIndexes = [
+    'pages/brands/index.json',
+    'pages/cavity/index.json',
+    'pages/compare/index.json',
+    'pages/doorway/index.json',
+    'pages/guides/index.json',
+    'pages/location/index.json',
+  ];
+  const catalogPartitions = [
+    'public/data/dishwashers.json',
+    'public/data/dryers.json',
+    'public/data/fridges.json',
+    'public/data/washing-machines.json',
+  ];
+  const fitCheckOutputs = outputsUnder(inventory, 'pages/fit-check/');
+  const ogOutputs = outputsUnder(inventory, 'public/og-images/');
   const pageSpec = (id, prefix, producerPath, inputPaths, toolEntryPaths = []) => ({
     id,
     outputPaths: outputsUnder(inventory, prefix),
@@ -306,6 +322,29 @@ export function buildProductionReplaySpecs({ repoRoot, inventory }) {
       producerPath: 'scripts/generate-ui-copy.js',
       toolEntryPaths: [],
       inputPaths: ['data/copy/footer.json', 'data/copy/hero.json'],
+      fontPaths: [],
+      dependencyIds: ['FIRST_PARTY'],
+    },
+    {
+      id: 'evidence-index',
+      outputPaths: ['public/data/evidence-index.json'],
+      producerPath: 'scripts/build-evidence-index.js',
+      toolEntryPaths: [],
+      inputPaths: ['data/manual-evidence.json'],
+      fontPaths: [],
+      dependencyIds: ['FIRST_PARTY'],
+    },
+    {
+      id: 'fit-check-pages',
+      outputPaths: fitCheckOutputs,
+      producerPath: 'scripts/generate-fit-check-pages.js',
+      toolEntryPaths: [],
+      inputPaths: [
+        'data/geo-treatment-pages.json',
+        'reports/dimension-axis/latest.json',
+        'public/data/evidence-index.json',
+        ...catalogPartitions,
+      ],
       fontPaths: [],
       dependencyIds: ['FIRST_PARTY'],
     },
@@ -388,6 +427,55 @@ export function buildProductionReplaySpecs({ repoRoot, inventory }) {
         'public/data/appliances.json',
       ],
     ),
+    {
+      id: 'og-images',
+      outputPaths: ogOutputs,
+      producerPath: 'scripts/generate-og-images.js',
+      toolEntryPaths: ['scripts/optimize-og-images.js'],
+      inputPaths: [
+        'pages/brands/index.json',
+        'pages/compare/index.json',
+        'pages/guides/index.json',
+      ],
+      fontPaths: [
+        'scripts/assets/fonts/Outfit-Bold.ttf',
+        'scripts/assets/fonts/Outfit-Medium.ttf',
+      ],
+      dependencyIds: ['FIRST_PARTY'],
+    },
+    {
+      id: 'image-sitemap',
+      outputPaths: ['public/image-sitemap.xml'],
+      producerPath: 'scripts/generate-image-sitemap.js',
+      toolEntryPaths: [],
+      inputPaths: [...contentIndexes, ...ogOutputs],
+      fontPaths: [],
+      dependencyIds: ['FIRST_PARTY'],
+    },
+    {
+      id: 'rss',
+      outputPaths: ['public/rss.xml'],
+      producerPath: 'scripts/generate-rss.js',
+      toolEntryPaths: [],
+      inputPaths: [...contentIndexes, 'public/data/appliances.json'],
+      fontPaths: [],
+      dependencyIds: ['FIRST_PARTY'],
+    },
+    {
+      id: 'sitemap',
+      outputPaths: ['public/sitemap.xml'],
+      producerPath: 'scripts/generate-sitemap.js',
+      toolEntryPaths: [],
+      inputPaths: [
+        'data/indexability-policy.json',
+        ...contentIndexes,
+        ...fitCheckOutputs,
+        'pages/products/index.json',
+        'public/data/appliances.json',
+      ],
+      fontPaths: [],
+      dependencyIds: ['FIRST_PARTY'],
+    },
   ];
 }
 

@@ -105,7 +105,13 @@ test('production replay specs include reproduced guides, product index, and vend
   for (const path of ['data/release/catalog.json', 'data/release/reference.json', 'data/release/authorization.json']) write(repoRoot, path, '{}\n');
   write(repoRoot, 'pages/products.html', 'index\n');
   write(repoRoot, 'pages/guides/index.json', '[]\n');
+  write(repoRoot, 'pages/fit-check/example.html', 'fit check\n');
   write(repoRoot, 'public/scripts/fit-engine.js', 'engine\n');
+  write(repoRoot, 'public/data/evidence-index.json', '{"products":{}}\n');
+  write(repoRoot, 'public/og-images/example.png', 'image\n');
+  write(repoRoot, 'public/image-sitemap.xml', '<xml/>\n');
+  write(repoRoot, 'public/rss.xml', '<rss/>\n');
+  write(repoRoot, 'public/sitemap.xml', '<xml/>\n');
   git(repoRoot, ['add', '.']);
   git(repoRoot, ['commit', '-qm', 'production paths']);
   const inventory = buildStaticSourceInventory({ repoRoot });
@@ -113,6 +119,14 @@ test('production replay specs include reproduced guides, product index, and vend
   assert.equal(specs.find((row) => row.id === 'product-pages').outputPaths.includes('pages/products.html'), true);
   assert.deepEqual(specs.find((row) => row.id === 'guide-pages').outputPaths, ['pages/guides/index.json']);
   assert.deepEqual(specs.find((row) => row.id === 'vendored-fit-engine').outputPaths, ['public/scripts/fit-engine.js']);
+  assert.deepEqual(specs.find((row) => row.id === 'evidence-index').outputPaths, ['public/data/evidence-index.json']);
+  assert.deepEqual(specs.find((row) => row.id === 'fit-check-pages').outputPaths, ['pages/fit-check/example.html']);
+  const ogImages = specs.find((row) => row.id === 'og-images');
+  assert.deepEqual(ogImages.outputPaths, ['public/og-images/example.png']);
+  assert.deepEqual(ogImages.toolEntryPaths, ['scripts/optimize-og-images.js']);
+  assert.deepEqual(specs.find((row) => row.id === 'image-sitemap').outputPaths, ['public/image-sitemap.xml']);
+  assert.deepEqual(specs.find((row) => row.id === 'rss').outputPaths, ['public/rss.xml']);
+  assert.deepEqual(specs.find((row) => row.id === 'sitemap').outputPaths, ['public/sitemap.xml']);
 });
 
 test('production replay specs bind the public sanitizer and never authorize the private retailer feed', () => {
