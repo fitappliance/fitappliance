@@ -6,6 +6,13 @@ import path from 'node:path';
 export const STATIC_RIGHTS_ACTION = 'PUBLIC_STATIC_DISTRIBUTION';
 export const STATIC_RIGHTS_CLASSIFIER_ID = 'fitappliance.static-rights-classifier/v1';
 export const STATIC_RIGHTS_SCHEMA_ID = 'fitappliance.reviewed-static-source-manifest/v2';
+export const PRODUCTION_STATIC_RIGHTS_DEPENDENCIES = Object.freeze([
+  'ENERGY_RATING_CC_BY',
+  'FIRST_PARTY',
+  'GOOGLE_VERIFICATION',
+  'OUTFIT_FONT',
+  'WEB_VITALS_APACHE_2',
+]);
 
 const ROOT_STATIC_FILES = [
   'google32758d7798f4a670.html',
@@ -549,7 +556,7 @@ export function validateAuthoritySet({ authoritySet, trustRoot, testMode = false
 }
 
 const DECISION_KEYS = [
-  'action', 'attributionObligationIds', 'decisionAsOf', 'dependencyId', 'disposition', 'evidenceHashes', 'inventoryId',
+  'action', 'attributionObligationIds', 'decisionAsOf', 'decisionSetId', 'dependencyId', 'disposition', 'evidenceHashes', 'inventoryId',
   'issuerId', 'keyId', 'predecessorDecisionId', 'reviewBy', 'role', 'schemaVersion', 'scopeHash', 'sourceObjectHash',
   'supersedesDecisionId', 'validFrom', 'validThrough', 'withdrawalHeadHash',
 ];
@@ -791,7 +798,8 @@ export function validateDecisionRegistryStructure({
     seenDependency.add(dependencyKey);
     if (payload.schemaVersion !== 1 || payload.action !== STATIC_RIGHTS_ACTION || payload.disposition !== 'ALLOWED'
       || !payload.dependencyId || !payload.issuerId || !payload.keyId || !payload.role
-      || !HEX_64.test(payload.sourceObjectHash ?? '') || !HEX_64.test(payload.scopeHash ?? '')
+      || !HEX_64.test(payload.decisionSetId ?? '') || !HEX_64.test(payload.sourceObjectHash ?? '')
+      || !HEX_64.test(payload.scopeHash ?? '')
       || !Array.isArray(payload.evidenceHashes) || payload.evidenceHashes.length === 0 || payload.evidenceHashes.some((hash) => !HEX_64.test(hash))
       || !Array.isArray(payload.attributionObligationIds)) fail('DECISION_SCHEMA_INVALID', `Decision payload is invalid: ${envelope.decisionId}`);
     sortedUnique(payload.evidenceHashes);
@@ -825,6 +833,8 @@ export function validateDecisionRegistry({
   publicationRows,
   trustRoot,
   testMode = false,
+  expectedDependencyDescriptors,
+  expectedDecisionSetId,
 }) {
   validateDecisionRegistryStructure({
     registry,
@@ -836,6 +846,13 @@ export function validateDecisionRegistry({
     publicationRows,
   });
   validateAuthoritySet({ authoritySet, trustRoot: testMode ? { source: 'TEST' } : trustRoot, testMode });
+  if (authoritySet.environment === 'PRODUCTION') {
+    validateProductionDecisionSet({
+      decisions: registry.decisions,
+      expectedDependencyDescriptors,
+      expectedDecisionSetId,
+    });
+  }
   const authorities = new Map(authoritySet.authorities.map((row) => [row.issuerId, row]));
   for (const envelope of registry.decisions) {
     const payload = envelope.payload;
@@ -856,6 +873,52 @@ export function validateDecisionRegistry({
     }
   }
   return { schemaVersion: 1, decisions: [...registry.decisions].sort((left, right) => byteSort(left.decisionId, right.decisionId)) };
+}
+
+export function validateProductionDecisionSet({ decisions, expectedDependencyDescriptors, expectedDecisionSetId }) {
+  if (!Array.isArray(decisions)) fail('PRODUCTION_DECISION_SET_INVALID', 'Production decisions must be an array');
+  const dependencies = decisions.map((row) => row?.payload?.dependencyId).sort(byteSort);
+  if (JSON.stringify(dependencies) !== JSON.stringify(PRODUCTION_STATIC_RIGHTS_DEPENDENCIES)) {
+    fail('PRODUCTION_DECISION_SET_INVALID', 'Production requires the exact five-dependency decision set');
+  }
+  const decisionSetIds = [...new Set(decisions.map((row) => row?.payload?.decisionSetId))];
+  if (decisionSetIds.length !== 1 || !HEX_64.test(decisionSetIds[0] ?? '')
+    || (expectedDecisionSetId !== undefined && decisionSetIds[0] !== expectedDecisionSetId)) {
+    fail('PRODUCTION_DECISION_SET_INVALID', 'Production decisions must bind one expected decision set');
+  }
+  for (const envelope of decisions) {
+    if (envelope.payload.predecessorDecisionId !== null || envelope.payload.supersedesDecisionId !== null) {
+      fail('PRODUCTION_DECISION_SET_INVALID', 'Initial production decisions cannot name predecessors or superseded decisions');
+    }
+  }
+  if (expectedDependencyDescriptors === undefined) return true;
+  if (!Array.isArray(expectedDependencyDescriptors)
+    || expectedDependencyDescriptors.length !== PRODUCTION_STATIC_RIGHTS_DEPENDENCIES.length) {
+    fail('PRODUCTION_DECISION_SET_INVALID', 'Candidate-derived dependency descriptors are required');
+  }
+  const descriptors = new Map();
+  for (const descriptor of expectedDependencyDescriptors) {
+    if (!descriptor || descriptors.has(descriptor.dependencyId)) {
+      fail('PRODUCTION_DECISION_SET_INVALID', 'Candidate dependency descriptors must be unique');
+    }
+    descriptors.set(descriptor.dependencyId, descriptor);
+  }
+  if (JSON.stringify([...descriptors.keys()].sort(byteSort)) !== JSON.stringify(PRODUCTION_STATIC_RIGHTS_DEPENDENCIES)) {
+    fail('PRODUCTION_DECISION_SET_INVALID', 'Candidate dependency descriptors must cover the exact production set');
+  }
+  for (const envelope of decisions) {
+    const payload = envelope.payload;
+    const descriptor = descriptors.get(payload.dependencyId);
+    if (payload.scopeHash !== descriptor.scopeHash
+      || payload.sourceObjectHash !== descriptor.sourceObjectHash
+      || canonicalJson(payload.evidenceHashes, { sortedArrays: ['evidenceHashes'] })
+        !== canonicalJson(descriptor.evidenceHashes, { sortedArrays: ['evidenceHashes'] })
+      || canonicalJson(payload.attributionObligationIds, { sortedArrays: ['attributionObligationIds'] })
+        !== canonicalJson(descriptor.attributionObligationIds, { sortedArrays: ['attributionObligationIds'] })) {
+      fail('PRODUCTION_DECISION_DESCRIPTOR_MISMATCH', `Decision differs from candidate descriptor: ${payload.dependencyId}`);
+    }
+  }
+  return true;
 }
 
 function blocker(code, scope = 'ALL_ELIGIBLE_STATIC_SOURCES') {
@@ -1042,6 +1105,9 @@ export function verifyStaticPublicationGate({
   routeConfigSha256,
   currentDecisionAsOf,
   currentWithdrawalHeadHash,
+  trustRoot,
+  expectedDependencyDescriptors,
+  expectedDecisionSetId,
 }) {
   if (authoritySet.environment === 'PRODUCTION') {
     if (!withdrawalLog) fail('WITHDRAWAL_LOG_NOT_ESTABLISHED', 'Production static publication requires a signed withdrawal log');
@@ -1049,6 +1115,19 @@ export function verifyStaticPublicationGate({
     if (signedHead !== currentWithdrawalHeadHash) {
       fail('WITHDRAWAL_HEAD_MISMATCH', 'Production static publication does not bind the current signed withdrawal head');
     }
+    validateDecisionRegistry({
+      registry,
+      authoritySet,
+      inventoryId: inventory.staticSourceInventoryId,
+      decisionAsOf: currentDecisionAsOf,
+      withdrawalHeadHash: currentWithdrawalHeadHash,
+      attributionFulfillments,
+      routeConfigSha256,
+      publicationRows: inventory.rows,
+      trustRoot,
+      expectedDependencyDescriptors,
+      expectedDecisionSetId,
+    });
   }
   validateFulfillments(attributionFulfillments, {
     inventoryId: inventory.staticSourceInventoryId,

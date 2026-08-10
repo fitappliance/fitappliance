@@ -22,7 +22,10 @@ import {
   runOwnerAttestationRequestCli,
 } from '../scripts/deployment/prepare-owner-attestation-request.mjs';
 import { canonicalJson, semanticId } from '../src/domain/static-publication-rights.mjs';
-import { buildOfflineSignerContract } from '../src/domain/offline-owner-signer-contract.mjs';
+import {
+  OFFLINE_SIGNER_BOUND_FILES,
+  buildOfflineSignerContract,
+} from '../src/domain/offline-owner-signer-contract.mjs';
 
 const ISSUED_AT = '2026-08-10T16:00:00.000Z';
 const EXPIRES_AT = '2026-08-10T17:00:00.000Z';
@@ -155,12 +158,7 @@ function fixture() {
   const offlineSignerContract = buildOfflineSignerContract({
     nodeVersion: process.versions.node,
     trustAnchor: { path: 'deployment/static-owner-trust-anchor.json', sha256: sha256(trustAnchorBytes) },
-    boundFiles: [
-      'src/domain/owner-attestation-request-contract.mjs',
-      'src/domain/offline-owner-signer-contract.mjs',
-      'scripts/deployment/offline-owner-secure-io.mjs',
-      'scripts/deployment/sign-owner-attestation.mjs',
-    ].map((filePath) => ({ path: filePath, sha256: sha256(filePath) })),
+    boundFiles: OFFLINE_SIGNER_BOUND_FILES.map((filePath) => ({ path: filePath, sha256: sha256(filePath) })),
   });
   const offlineSignerContractBytes = Buffer.from(canonicalJson(offlineSignerContract));
   const candidate = exactCandidate({

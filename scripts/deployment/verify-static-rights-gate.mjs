@@ -58,7 +58,7 @@ function preferredBlocker(review) {
 }
 
 export function verifyProductionRightsResult({ result, authorization }) {
-  const { inventory, generatedProvenance, authoritySet, registry, withdrawalLog, routeConfigSha256, review } = result;
+  const { inventory, generatedProvenance, authoritySet, registry, withdrawalLog, routeConfigSha256, review, trustRoot } = result;
   if (review.status !== 'APPROVED') {
     fail(preferredBlocker(review), 'Production static-publication rights gate remains blocked');
   }
@@ -75,6 +75,7 @@ export function verifyProductionRightsResult({ result, authorization }) {
     routeConfigSha256,
     currentDecisionAsOf: registry.decisionAsOf,
     currentWithdrawalHeadHash: registry.withdrawalHeadHash,
+    trustRoot,
   });
   return authorization.staticPublicationAuthorizationId;
 }

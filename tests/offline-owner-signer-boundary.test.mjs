@@ -250,6 +250,8 @@ test('offline signer contract binds exact runtime, trust anchor and signer depen
     { path: 'src/domain/offline-owner-signer-contract.mjs', sha256: sha256('signer-contract') },
     { path: 'scripts/deployment/offline-owner-secure-io.mjs', sha256: sha256('io') },
     { path: 'scripts/deployment/sign-owner-attestation.mjs', sha256: sha256('signer') },
+    { path: 'scripts/deployment/offline-signer-bootstrap.sh', sha256: sha256('bootstrap') },
+    { path: 'scripts/deployment/run-offline-owner-signer.sh', sha256: sha256('wrapper') },
   ];
   const contract = buildOfflineSignerContract({
     nodeVersion: '22.23.1',
@@ -262,6 +264,8 @@ test('offline signer contract binds exact runtime, trust anchor and signer depen
       'src/domain/offline-owner-signer-contract.mjs': 'signer-contract',
       'scripts/deployment/offline-owner-secure-io.mjs': 'io',
       'scripts/deployment/sign-owner-attestation.mjs': 'signer',
+      'scripts/deployment/offline-signer-bootstrap.sh': 'bootstrap',
+      'scripts/deployment/run-offline-owner-signer.sh': 'wrapper',
     }[row.path])])),
   }), contract);
   assert.throws(() => validateOfflineSignerContract(Buffer.from(canonicalOwnerJson(contract)), {
@@ -282,11 +286,14 @@ test('production wrapper combines sandbox-exec, Node permissions and core-dump d
   assert.doesNotMatch(wrapper, /offline-boundary\.invalid/);
   assert.match(wrapper, /--disable-sigusr1/);
   assert.match(wrapper, /unset NODE_OPTIONS NODE_PATH/);
+  assert.match(wrapper, /\/usr\/bin\/plutil -extract requestId/);
   for (const relativePath of [
     'src/domain/owner-attestation-request-contract.mjs',
     'src/domain/offline-owner-signer-contract.mjs',
     'scripts/deployment/offline-owner-secure-io.mjs',
     'scripts/deployment/sign-owner-attestation.mjs',
+    'scripts/deployment/offline-signer-bootstrap.sh',
+    'scripts/deployment/run-offline-owner-signer.sh',
   ]) {
     assert.match(wrapper, new RegExp(`--allow-fs-read=\\$\\{repo_root\\}/${relativePath.replaceAll('/', '\\/')}`));
   }

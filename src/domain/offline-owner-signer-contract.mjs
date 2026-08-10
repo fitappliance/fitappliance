@@ -12,6 +12,8 @@ const REQUIRED_FILES = [
   'src/domain/offline-owner-signer-contract.mjs',
   'scripts/deployment/offline-owner-secure-io.mjs',
   'scripts/deployment/sign-owner-attestation.mjs',
+  'scripts/deployment/offline-signer-bootstrap.sh',
+  'scripts/deployment/run-offline-owner-signer.sh',
 ];
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 

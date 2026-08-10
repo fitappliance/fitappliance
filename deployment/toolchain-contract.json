@@ -46,19 +46,19 @@
     },
     {
       "path": "scripts/deployment/reviewed-static-deployment.mjs",
-      "sha256": "92716ef2c787cfb136651e3f39767fd9a07c1bcc8b99f854f55c7fb87469621f"
+      "sha256": "339d54ee308367cd83d04931302b3cc43d7d6fdd941329e539c9ca79e3579e6d"
     },
     {
       "path": "src/domain/static-publication-rights.mjs",
-      "sha256": "08e5420f58192ec97d327c0d68449d278081aa27316967285ddcca35c84c5581"
+      "sha256": "726c96484df9d73ae6793240295dbca8c0aa5fcc0bf90cf55bd85003d2a2f447"
     },
     {
       "path": "scripts/deployment/build-static-rights-review.mjs",
-      "sha256": "d26f91c9823d70ca6a26d3274cfea32a575d9a2e97d8fde970395e90050de1b3"
+      "sha256": "124c703ce9198f395828af705722c401df05e159a0acd75ce3df221a9104f123"
     },
     {
       "path": "scripts/deployment/verify-static-rights-gate.mjs",
-      "sha256": "0b57dd7cbbf7c3e04ff16ec5d681ec5fce13a9c80f38f66b279f5a26ee0cec23"
+      "sha256": "9c0c760713cccf806d7ac7dabb3f09f8f8cb8e1eb6f94e8afb503990c6566e66"
     },
     {
       "path": "scripts/deployment/prepare-static-rights-signing-candidate.mjs",
@@ -78,7 +78,7 @@
     },
     {
       "path": "src/domain/offline-owner-signer-contract.mjs",
-      "sha256": "6985e5821a69108ebbb1712fa6c167abd2e47f2eee722b8d06579fa699f347bb"
+      "sha256": "e8a4b1a7c7db239f97a31e1f6b3b545c95a28397e17670ad356dc90d0a1ba0f5"
     },
     {
       "path": "scripts/deployment/offline-owner-secure-io.mjs",
@@ -86,19 +86,55 @@
     },
     {
       "path": "scripts/deployment/sign-owner-attestation.mjs",
-      "sha256": "31fcb6f114ad1bd212c639b9ec2295e51fa1e666128f3db9d7b8386f31ecf658"
+      "sha256": "d446852e3d4d134e03a6fc64a0a7f1bb720b5d2f09b1f8a59b10614a7baab483"
     },
     {
       "path": "scripts/deployment/accept-owner-attestation.mjs",
       "sha256": "930d73466b15cdadaef26627830ef4efe80d0db182136749e8047ec21e19d9d6"
     },
     {
+      "path": "scripts/deployment/offline-signer-bootstrap.sh",
+      "sha256": "fa2373c0db0b297e11d3d3a5895905d2fb671cd49d2649d3702245e97adda1d4"
+    },
+    {
       "path": "scripts/deployment/run-offline-owner-signer.sh",
-      "sha256": "f82b13a758703d8bc1b48147a661b1fab252236e72723aeebe97a623a50f372f"
+      "sha256": "fe886e2dd31f79b861da92553d6675b6e0e9a7179719a84824e63d268e67259d"
     },
     {
       "path": "deployment/offline-owner-signer-contract.json",
-      "sha256": "fb4cd62dec03904b785c5eb360bf2c0328833a896f58b1cf2a7ab0b0dd4d2bd5"
+      "sha256": "021ded9bd9f26221aaad1b7e4c3d1a01e966089d3df3f5faaa572097e04f1dfe"
+    },
+    {
+      "path": "src/domain/reviewer-artifact-request-contract.mjs",
+      "sha256": "26c6980addfc40400cba87709ce3c28c9ffb41d4014ecf0175beab0db5488690"
+    },
+    {
+      "path": "src/domain/offline-reviewer-signer-contract.mjs",
+      "sha256": "b926acef6706eedadbdaabd7f7a2dea1a0b3976b73306cb8a1838e3ede272595"
+    },
+    {
+      "path": "src/domain/offline-signer-bootstrap-contract.mjs",
+      "sha256": "ed749b185241e8de0e8f79ad0c87080ba97e63b2a174916830ab9e6795a2d4fc"
+    },
+    {
+      "path": "scripts/deployment/prepare-reviewer-artifact-request.mjs",
+      "sha256": "594ae9970d5953deaaa43ad48bfd4673371b817f9e85185a1678a8a630372285"
+    },
+    {
+      "path": "scripts/deployment/sign-static-rights-reviewer-artifact.mjs",
+      "sha256": "80252c46d41a1427539bd823cf77b884f2cc22e5b6c66a218df290cb3d8ec3d6"
+    },
+    {
+      "path": "scripts/deployment/finalize-static-rights-generation.mjs",
+      "sha256": "4e45be9c63358efe7dea76b32bb4f94ae2f1ea9fb8a41ad6c6a677187b112555"
+    },
+    {
+      "path": "scripts/deployment/run-offline-reviewer-signer.sh",
+      "sha256": "3769d5f86574948f7376f8359b74dad7f9266f43d922a9f40e7e8b5c3afecce4"
+    },
+    {
+      "path": "deployment/offline-reviewer-signer-contract.json",
+      "sha256": "7dfbdc4769c26fc6076705fa34372ed355b64371cf47a25e0f6f068d1ee9d036"
     }
   ]
 }

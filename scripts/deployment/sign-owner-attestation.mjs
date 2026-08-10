@@ -121,6 +121,8 @@ export function signOwnerAttestation({
 const CLI_NAMES = new Set([
   '--request', '--trust-anchor', '--signer-contract', '--owner-metadata', '--owner-public-key',
   '--owner-private-key', '--output', '--expected-request-id', '--expected-candidate-id', '--confirm',
+  '--authorized-bootstrap-sha256', '--authorized-wrapper-sha256', '--authorized-contract-sha256',
+  '--authorized-node-sha256', '--authorized-request-sha256', '--authorized-signer-contract-id',
 ]);
 
 function parseCli(argv) {
@@ -195,6 +197,9 @@ export function runOfflineOwnerSignerCli({ argv, repoRoot = path.resolve(path.di
     trustAnchorBytes: anchorBytes,
     fileBytes,
   });
+  if (args.get('--authorized-signer-contract-id') !== contract.contractId) {
+    fail('BOOTSTRAP_CONTRACT_ID_MISMATCH', 'Authorized owner signer-contract ID differs from the validated contract');
+  }
   if (contract.trustAnchor.path !== path.relative(repoRoot, path.resolve(args.get('--trust-anchor')))) {
     fail('SIGNER_TRUST_ANCHOR_DRIFT', 'Signer trust anchor path is not the tracked path');
   }

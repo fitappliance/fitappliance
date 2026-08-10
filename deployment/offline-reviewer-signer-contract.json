@@ -1,0 +1,43 @@
+{
+  "boundFiles": [
+    {
+      "path": "src/domain/reviewer-artifact-request-contract.mjs",
+      "sha256": "26c6980addfc40400cba87709ce3c28c9ffb41d4014ecf0175beab0db5488690"
+    },
+    {
+      "path": "src/domain/owner-attestation-request-contract.mjs",
+      "sha256": "92c0b9605574f143aaf750fabbb86eef4f01fb771bd2e68ad372ab5c70d32e9d"
+    },
+    {
+      "path": "src/domain/offline-reviewer-signer-contract.mjs",
+      "sha256": "b926acef6706eedadbdaabd7f7a2dea1a0b3976b73306cb8a1838e3ede272595"
+    },
+    {
+      "path": "scripts/deployment/offline-owner-secure-io.mjs",
+      "sha256": "3c1b1cce27eb9fda8d306b328cdfd1f34954df72226208a256a6fd2556043d58"
+    },
+    {
+      "path": "scripts/deployment/sign-static-rights-reviewer-artifact.mjs",
+      "sha256": "80252c46d41a1427539bd823cf77b884f2cc22e5b6c66a218df290cb3d8ec3d6"
+    },
+    {
+      "path": "src/domain/static-publication-rights.mjs",
+      "sha256": "726c96484df9d73ae6793240295dbca8c0aa5fcc0bf90cf55bd85003d2a2f447"
+    },
+    {
+      "path": "scripts/deployment/offline-signer-bootstrap.sh",
+      "sha256": "fa2373c0db0b297e11d3d3a5895905d2fb671cd49d2649d3702245e97adda1d4"
+    },
+    {
+      "path": "scripts/deployment/run-offline-reviewer-signer.sh",
+      "sha256": "3769d5f86574948f7376f8359b74dad7f9266f43d922a9f40e7e8b5c3afecce4"
+    }
+  ],
+  "contractId": "e75b62c317316a868aae9482318041368cbd56ca97e1e9e3a5c4a907967bc086",
+  "nodeVersion": "22.23.1",
+  "schemaVersion": 1,
+  "trustAnchor": {
+    "path": "deployment/static-owner-trust-anchor.json",
+    "sha256": "d298732073573c978c252393a71ab67d4fbb63c35c57058c44e0d44c2ddeef21"
+  }
+}

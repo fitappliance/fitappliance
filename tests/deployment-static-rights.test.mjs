@@ -8,6 +8,7 @@ import path from 'node:path';
 
 import {
   RightsContractError,
+  PRODUCTION_STATIC_RIGHTS_DEPENDENCIES,
   buildAttributionRouteReceipt,
   buildDependencyScopeHash,
   buildGeneratedProvenanceReceipt,
@@ -94,6 +95,7 @@ function signedDecision({ privateKey, inventoryId, dependencyId = 'FIRST_PARTY',
     evidenceHashes: ['c'.repeat(64)],
     attributionObligationIds: [],
     decisionAsOf: '2026-08-10T00:00:00.000Z',
+    decisionSetId: 'e'.repeat(64),
     validFrom: '2026-08-09T00:00:00.000Z',
     validThrough: '2026-08-20T00:00:00.000Z',
     reviewBy: '2026-08-15T00:00:00.000Z',
@@ -882,7 +884,6 @@ test('production gate CLI has a valid success path for fully bound signed fixtur
   }
   const inventory = buildStaticSourceInventory({ repoRoot });
   const classifiedRows = classifyStaticSources({ inventory, generatedProvenance: { schemaVersion: 1, receipts: [] } }).rows;
-  const dependencyId = 'FIRST_PARTY';
   const reviewer = generateKeyPairSync('ed25519');
   const owner = generateKeyPairSync('ed25519');
   const authorityPayload = {
@@ -906,28 +907,30 @@ test('production gate CLI has a valid success path for fully bound signed fixtur
   };
   const withdrawalLog = signedWithdrawalLog({ privateKey: reviewer.privateKey, authoritySet });
   const withdrawalHeadHash = withdrawalLog.heads[0].withdrawalHeadHash;
-  const decision = signedDecision({
+  const decisions = PRODUCTION_STATIC_RIGHTS_DEPENDENCIES.map((dependencyId) => signedDecision({
     privateKey: reviewer.privateKey,
     inventoryId: inventory.staticSourceInventoryId,
     dependencyId,
     overrides: {
       issuerId: 'FITAPPLIANCE_RIGHTS_REVIEWER',
       keyId: 'FITAPPLIANCE_RIGHTS_KEY_1',
-      scopeHash: scopeHashFor({ inventory, classifiedRows, dependencyId }),
+      scopeHash: dependencyId === 'FIRST_PARTY'
+        ? scopeHashFor({ inventory, classifiedRows, dependencyId })
+        : createHash('sha256').update(`unused-production-scope:${dependencyId}`).digest('hex'),
       withdrawalHeadHash,
     },
-  });
+  }));
   const registry = {
     schemaVersion: 1,
     decisionAsOf: '2026-08-10T00:00:00.000Z',
     withdrawalHeadHash,
     attributionFulfillments: [],
-    decisions: [decision],
+    decisions,
   };
   const review = buildRightsReview({
     inventory,
     classifiedRows,
-    verifiedDecisions: [decision],
+    verifiedDecisions: decisions,
     decisionAsOf: registry.decisionAsOf,
     withdrawalHeadHash: registry.withdrawalHeadHash,
   });

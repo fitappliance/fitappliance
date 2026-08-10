@@ -2308,6 +2308,193 @@ blocked until withdrawal genesis, the five scoped rights decisions, the
 approved source manifest and detached publication authorization are completed
 through their separate signed contracts.
 
+### WP0B-B1 offline rights-reviewer signing-chain plan - 2026-08-11
+
+**Status:** `READY_AFTER_PRIMARY_MAX_CLOSURE`. This is the next bounded security
+slice. It prepares the reviewer side of B1 without signing anything and without
+weakening the existing owner-attestation boundary. B2 real generation, B3A,
+WP4A, preview, push, deployment, promotion and activation remain prohibited.
+
+1. Add one pure reviewer-request contract with no filesystem, network,
+   browser, subprocess, dynamic-import or online-generator dependency. It owns
+   canonical JSON, exact schema keys and semantic IDs for exactly two artifact
+   types: `WITHDRAWAL_GENESIS_HEAD` and `STATIC_RIGHTS_DECISION`. It validates
+   the existing schema-1 withdrawal-head and decision payloads rather than
+   defining competing rights semantics. A request binds the exact artifact ID
+   and payload, authority-set ID and byte hash, reviewer issuer/key/fingerprint,
+   injected owner trust-root hash, reviewer metadata hash, reviewer signer
+   contract ID/hash, issue/expiry window and request ID. Unknown artifact types,
+   schema upgrades and cross-type payloads fail closed.
+2. Keep online construction and offline signing separate. The online request
+   builder validates the production authority enrollment through the injected
+   owner trust root, exact reviewer metadata/public key and the current B1
+   candidate. It may build the existing zero-event withdrawal genesis request
+   now. A decision request cannot be built from free-form CLI fields: it must
+   derive dependency ID, inventory, scope, source-object hash, evidence hashes
+   and attribution obligations from the current candidate; bind the accepted
+   owner-attestation receipt as FIRST_PARTY evidence; bind the current signed
+   withdrawal head; and use one explicit frozen decision clock and validity
+   window for the whole five-decision set. `RETAILER_FEED` and unknown
+   dependencies are unrepresentable.
+3. Add a separate reviewer offline-signer contract. It pins Node `22.23.1`, the
+   request contract, static-rights validator, reviewer signer, hardened shared
+   I/O, tracked owner trust anchor and wrapper bytes. It independently checks
+   the injected trust root, authority enrollment, reviewer metadata and exact
+   canonical Ed25519 public key before private-key access. Owner and reviewer
+   contracts and confirmation tokens are not interchangeable.
+4. The production reviewer signer accepts only request, authority set, owner
+   trust root, owner trust anchor, reviewer metadata, reviewer public/private
+   keys, signer contract, absent output path, exact expected request/artifact
+   IDs and literal `SIGN_EXACT_STATIC_RIGHTS_REVIEWER_ARTIFACT`. It reuses the
+   hardened stable readers and atomic no-clobber writer. All request, clock,
+   runtime, contract, trust, metadata, public-key and output checks complete
+   before opening the private key. It signs only canonical payload bytes and
+   writes the exact existing-domain envelope: `{withdrawalHeadHash,payload,
+   signature}` or `{decisionId,payload,signature}`. Production signing remains
+   forbidden without a fresh action-time authorization naming request ID,
+   artifact ID and absent output path.
+5. Use separate acceptance/assembly gates. A signed genesis is validated by
+   `validateWithdrawalLog` before an immutable zero-event production log is
+   written. Decisions are staged outside Git and accepted only as one exact
+   five-dependency set after all signatures validate against the same
+   candidate, owner-acceptance receipt, decision clock and withdrawal head.
+   Partial, duplicated, mixed-generation, expired, withdrawn or predecessor
+   decisions never mutate the active registry. The generated registry and
+   route fulfillments then pass the ordinary B1 builder; no alternate approval
+   path is introduced.
+6. Build `static-publication-authorization.json` deterministically only after
+   the ordinary review and schema-2 source manifest are `APPROVED`. It remains
+   the existing content-bound authorization object, not an invented unsigned
+   substitute for reviewer decisions. Re-run the production gate with the
+   injected trust root and require success before B2 may leave fixture-only
+   state.
+7. TDD uses ephemeral owner/reviewer keys only. RED/GREEN covers canonical and
+   semantic drift, artifact-type confusion, authority enrollment substitution,
+   reviewer key/metadata substitution, wrong candidate or dependency scope,
+   missing owner acceptance, stale withdrawal head, mixed decision clocks,
+   partial five-decision sets, request expiry, output races, fail-before-secret-
+   read, key mismatch, wrapper network/child-process denial and absence of
+   private/Partnerize markers in every request and envelope. Existing owner
+   signer, static-rights, B1, B2 protocol, PWA and publication-boundary tests
+   remain regression gates.
+8. After code hashes settle, reseal the B0 executable binding set and reviewer
+   signer contract, regenerate the blocked B1 review, and produce only one
+   deterministic unsigned withdrawal-genesis request outside Git. Decision
+   requests wait for a valid owner-acceptance receipt and signed genesis. Add a
+   private supersession ledger; retain all earlier artifacts as immutable
+   `MUST_NOT_SIGN` history. Commit locally only.
+
+**Normative max-review closure.** The independent max review returned `DRAFT`
+with four P0 and two P1 findings. The following corrections override any less
+specific wording above; implementation may start only against this corrected
+contract:
+
+| Finding | Required correction |
+| --- | --- |
+| P0 signer trusts an online-built request | Add one pure `deriveExpectedReviewerArtifact` operation used unchanged by builder, offline signer and acceptance. Before private-key access, the signer stable-reads and independently validates the immutable B1 base-candidate ID/bytes, accepted owner receipt, authority document/enrollment, and current withdrawal state. Genesis derives only from the owner-accepted candidate's exact genesis hash and a create-only no-prior-head condition; decisions additionally derive from the accepted signed genesis. Presented payload and artifact ID must equal the derivation byte-for-byte. |
+| P0 executable self-verification is circular | Put a minimal operator-authenticated bootstrap before either owner or reviewer signer receives private-key read permission. Exact action-time authorization must name bootstrap SHA-256, signer-contract ID and SHA-256, wrapper SHA-256, resolved Node executable SHA-256, request ID, artifact/candidate ID and absent output path. The bootstrap uses the pre-existing OS `shasum`/sandbox boundary to verify these exact bytes before launching a filesystem-permissioned immutable bundle. Internal Node contract checks remain defense-in-depth; a version string alone is insufficient. This correction also hardens the existing owner signer before any owner-root use. |
+| P0 acceptance and publication are separable | Add one fail-closed finalization entry point. It validates the injected owner root, authority enrollment, exact accepted owner receipt, signed genesis/current head, all decision signatures, candidate-derived descriptors, attribution and actual system `acceptanceNow`; it separately preserves the frozen `decisionAsOf`. It rechecks decision validity and withdrawal continuity immediately before committing one generation-specific packet, then rederives review, schema-2 manifest and publication authorization through the existing builder/gate. Low-level content hashes alone cannot activate B1. |
+| P0 five decisions/private-feed exclusion are conventional | Define one canonical sorted production dependency set: `ENERGY_RATING_CC_BY`, `FIRST_PARTY`, `GOOGLE_VERIFICATION`, `OUTFIT_FONT`, `WEB_VITALS_APACHE_2`. Derive and bind every full descriptor plus `decisionSetId`. Production registry validation, signer derivation, acceptance and the final gate require exact descriptor-set equality; four, six, duplicate, substituted, unknown or signed `RETAILER_FEED` decisions fail. String-marker absence remains diagnostic only. |
+| P1 withdrawal and registry commits can roll back or tear | Genesis acceptance is create-only and its no-prior-head proof is the owner-accepted candidate binding the exact genesis draft. Persist the accepted head as the CAS predecessor for future append operations. Stage envelopes privately, but assemble all five decisions and fulfillments into one canonical generation packet in memory and atomically write one generation-specific file. A partial staging set is never a registry input. Tracked artifacts are derived in an isolated worktree and become active only through one local Git commit whose pre-commit gate consumes that exact packet. |
+| P1 identity/separation/supersession is ambiguous | Bind `b1BaseCandidateId` and canonical byte SHA-256, owner-acceptance receipt ID/SHA-256, authority-enrollment payload ID, full authority-document SHA-256, frozen decision clock and accepted withdrawal head. Reject equal owner/reviewer SPKI fingerprints. Initial decision predecessor and supersedes IDs must both be `null`. Requests use a maximum 24-hour exclusive-expiry window. The private supersession ledger remains audit-only and is never claimed as signer authority; freshness comes from exact action-time authorization, bound current inputs and expiry. |
+
+The bootstrap does not make repository code magically self-trusting. Its trust
+root is the operator's fresh authorization of exact hashes before private-key
+read permission is granted. Tests must demonstrate that the signer process
+cannot open the private key when any authorized bootstrap, Node, contract,
+wrapper, request or derived-input byte differs.
+
+**Exit:** the reviewer request/signer/acceptance machinery is production-ready,
+the unsigned genesis request is byte-reproducible, no production secret was
+read and no signature exists. The next external action remains an exact,
+separately authorized signing operation. B1 is not complete until the owner
+attestation is accepted, genesis and all five decisions are signed and
+accepted, the generated review/manifest become approved and the deterministic
+publication authorization passes the real gate.
+
+#### WP0B-B1 implementation checkpoint - 2026-08-11
+
+**State:** `IMPLEMENTED_LOCAL_UNSIGNED`. The corrected owner/reviewer chain is
+implemented and verified in the isolated worktree. This state is not a signing
+authorization, publication approval, deployment approval or activation.
+
+Implemented security closures:
+
+- the reviewer builder, offline signer and finalizer share the same pure
+  candidate-derived artifact operation;
+- accepted owner evidence is bound to the exact candidate, FIRST_PARTY scope,
+  source object, owner signer contract, pinned trust anchor, authority
+  enrollment and withdrawal-genesis draft;
+- every signed decision carries the same candidate-derived `decisionSetId`, so
+  individually valid decisions from different candidates cannot be assembled;
+- production accepts exactly the sorted five-dependency set and cannot
+  represent a sixth, missing, duplicate, unknown or `RETAILER_FEED` decision;
+- the finalizer validates actual acceptance time separately from frozen
+  `decisionAsOf`, rejects expiry and system-clock rollback, then writes one
+  atomic generation packet;
+- the owner and reviewer wrappers require action-time bootstrap, wrapper,
+  signer-contract and resolved Node hashes before private-key access;
+- the reviewer signer contract transitively binds the owner-request contract,
+  and the current withdrawal-head hash is revalidated against each decision.
+
+Mechanically resealed contracts:
+
+- owner signer contract ID:
+  `3f6a63b76388156b2a2d7898f23e4dbbd7ee72bb4649b9caaf65a3b0901df0b6`;
+- owner signer contract file SHA-256:
+  `021ded9bd9f26221aaad1b7e4c3d1a01e966089d3df3f5faaa572097e04f1dfe`;
+- reviewer signer contract ID:
+  `e75b62c317316a868aae9482318041368cbd56ca97e1e9e3a5c4a907967bc086`;
+- reviewer signer contract file SHA-256:
+  `7dfbdc4769c26fc6076705fa34372ed355b64371cf47a25e0f6f068d1ee9d036`;
+- toolchain contract SHA-256:
+  `c069c76006f3678e4f61ef9377cdd41b82e24752a737972aad1606c618ed0775`.
+
+Current unsigned external artifacts:
+
+- active candidate v10 ID
+  `4ff4ba9acbf0dbba30fe18de8c4e42de2f8ea65facf1243140790d299ba9ac23`,
+  SHA-256
+  `124367e2dbd8e23dfd2f3eafc1eaf7a15bf3a9a2366e1f11e4b5dc70292e4158`;
+- active owner request v8 ID
+  `b81f70d5596d1ba79fc0b2f51152113618ae11e932bd97abdf9593c1628a19a7`,
+  SHA-256
+  `1f2b03eb35334bbd9440dc2d75f31c7f14c774863ef16c5ef90dbb52fd7b3412`,
+  exclusive expiry `2026-08-11T18:38:00.000Z`;
+- supersession ledger v5 SHA-256
+  `ea37c4d2b0af92354d580603a929f1f167da2365e2ee7e2c8afa71ab330a795f`;
+  it names v10/v8 as active and marks all 16 predecessor artifacts
+  `MUST_NOT_SIGN`;
+- all three files are outside Git, owner-only mode `0600` with one hard link;
+  the proposed owner-attestation output remains absent.
+
+Verification evidence:
+
+- focused reviewer/static-rights suites: `39/39` passed;
+- owner, reviewer, materializer, PWA, service-worker and publication regression
+  selection: `113/113` passed;
+- lint, changed-module syntax, shell syntax and both signer-contract validators
+  passed;
+- schema validation: 2,331 pages, 5,963 blocks, zero errors;
+- publication-boundary audit: 19 workflows and 2,331 public artifacts, zero
+  violations;
+- production rights gate fails closed with
+  `WITHDRAWAL_HEAD_NOT_ESTABLISHED`, as required before genesis exists.
+
+The reviewer-genesis request is intentionally not generated yet. Its pure
+derivation requires an accepted owner receipt, so generating it from the
+unsigned candidate would recreate the online-request trust flaw closed by this
+slice. After a separately authorized owner signature is accepted, the next
+sequence is: derive unsigned genesis request, obtain a separately authorized
+reviewer signature, accept genesis, derive all five decision requests, obtain
+and atomically finalize the five signed decisions, then rerun the ordinary B1
+gate.
+
+Partnerize login and feed data remain private internal evidence only. They are
+not a production rights dependency, are excluded from reviewer decisions,
+tracked public artifacts and publication authorization, and must never be
+copied into Git or a public release packet.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

@@ -130,7 +130,7 @@ export function buildProductionRightsReview({ repoRoot = process.cwd(), trustRoo
   writeJson(repoRoot, PATHS.registry, registry);
   writeJson(repoRoot, PATHS.review, reviewArtifact);
   writeJson(repoRoot, PATHS.manifest, review.sourceManifest);
-  return { inventory, generatedProvenance, authoritySet, registry, withdrawalLog, routeConfigSha256, review };
+  return { inventory, generatedProvenance, authoritySet, registry, withdrawalLog, routeConfigSha256, review, trustRoot };
 }
 
 async function main() {

@@ -72,8 +72,17 @@ const REQUIRED_EXECUTABLE_BINDINGS = [
   'scripts/deployment/offline-owner-secure-io.mjs',
   'scripts/deployment/sign-owner-attestation.mjs',
   'scripts/deployment/accept-owner-attestation.mjs',
+  'scripts/deployment/offline-signer-bootstrap.sh',
   'scripts/deployment/run-offline-owner-signer.sh',
   'deployment/offline-owner-signer-contract.json',
+  'src/domain/reviewer-artifact-request-contract.mjs',
+  'src/domain/offline-reviewer-signer-contract.mjs',
+  'src/domain/offline-signer-bootstrap-contract.mjs',
+  'scripts/deployment/prepare-reviewer-artifact-request.mjs',
+  'scripts/deployment/sign-static-rights-reviewer-artifact.mjs',
+  'scripts/deployment/finalize-static-rights-generation.mjs',
+  'scripts/deployment/run-offline-reviewer-signer.sh',
+  'deployment/offline-reviewer-signer-contract.json',
 ];
 
 export class DeploymentContractError extends Error {
