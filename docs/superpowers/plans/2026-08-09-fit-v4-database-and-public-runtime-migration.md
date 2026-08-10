@@ -2010,6 +2010,67 @@ activation.
   No private key was read, no signature was created, and no real worker,
   production output, push, deployment or activation was produced.
 
+### WP0B-B1 unsigned signing-candidate checkpoint - 2026-08-10
+
+- The real B1 inventory remains fixed at 3,283 eligible static rows. Generated
+  provenance replay binds 3,211 receipts, with zero unresolved outputs, zero
+  public `RETAILER_FEED` rows and zero public-source blockers. The final
+  inventory ID remains
+  `8ef9c64b370ca7c85c1267f48d861ed01c63aa8bc4ee696084642bf7bd86f791`.
+- The earlier free-form draft could not be used because it retained a private
+  retailer-feed dependency and did not bind the final inventory. The first
+  schema-1 candidate at
+  `2026-08-10-b1-signing-candidate.json` is also superseded by the hardened
+  schema below. Both files are retained as private audit history and must not
+  be signed.
+- The hardened unsigned candidate is stored outside Git at
+  `/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/decision-packets/2026-08-10-b1-signing-candidate-v2.json`.
+  It has candidate ID
+  `a794b630f2731b2b38e91a033c65ba865bb65f46f6087321df50e016adaf0b81`,
+  mode `0600`, one link, and deterministic repeat generation. Its bound
+  toolchain hash is
+  `56da5dbd6165d0915910cefa39b7c1bb68387ac6c82300bb10a3d537b38662ac`;
+  its generator hash is
+  `970947f8ad2e024d40953c4f43fb421b42df94fef401d3b9a9d68817feeff4e1`.
+- Candidate construction replays the exact five public dependencies only:
+  `FIRST_PARTY`, `GOOGLE_VERIFICATION`, `WEB_VITALS_APACHE_2`,
+  `OUTFIT_FONT` and `ENERGY_RATING_CC_BY`. It binds exact official evidence
+  bytes, capture checks, Git-bound generated provenance, route receipts and
+  fixed attribution targets. Missing, changed, symlinked or substituted
+  evidence fails closed. Partnerize, The Good Guys and retailer-feed URLs are
+  absent; `RETAILER_FEED` appears only in the forbidden-source constraint.
+- Owner attestation is no longer arbitrary text. It is a separately signed,
+  canonical schema-1 assertion for `PRODUCTION`,
+  `PUBLIC_STATIC_DISTRIBUTION`, `FIRST_PARTY`, the exact inventory, scope and
+  source-object hashes. Its public root must also be enrolled by the production
+  authority root. The generator reads no private key and creates no signature.
+- One focused `gpt-5.6-sol` max audit returned six P1 findings: provenance was
+  not replayed from repository bytes, owner attestation was under-bound,
+  attribution mappings were caller-controlled, generated routes were too
+  permissive, evidence paths could traverse symlinks, and private output writes
+  lacked complete inode/link durability checks. Primary remediation closed all
+  six with adversarial tests. The withdrawal payload is also fixed to schema 1
+  with exact array validation.
+- Full route replay found three dangling Vercel comparison aliases. They now
+  redirect only to existing reviewed pages. The sole deferred generated route
+  is the exact B2 handoff `/service-worker.js` to
+  `public/service-worker.js`; arbitrary generated routes remain rejected and
+  are labelled `DEFERRED_B2_ARTIFACT`, not published artifacts.
+- Final verification passes 87/87 focused static-rights, materializer, route,
+  PWA and service-worker tests; lint and syntax/JSON checks pass; publication
+  boundary audit reports 19 workflows and 2,331 public artifacts with no
+  violations. Candidate regeneration is byte-identical. The live production
+  gate still exits nonzero at `WITHDRAWAL_HEAD_NOT_ESTABLISHED`.
+- This checkpoint is intentionally `BLOCKED_OWNER_ATTESTATION`. Advancing B1
+  requires a cold-owner-root-signed attestation for this exact candidate,
+  followed by a separate explicit authorization to sign withdrawal genesis,
+  five scoped rights decisions and detached publication authorization. No
+  private key, signature, push, deployment or activation is authorized here.
+- Partnerize is authorized only as private internal evidence. The Chrome
+  extension currently redirects its attached tab to the Partnerize login page,
+  so no browser feed was accessed in this slice. Login state is not a B1
+  dependency and must never be used to weaken the public-source gate.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

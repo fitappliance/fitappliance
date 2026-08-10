@@ -42,11 +42,11 @@
     },
     {
       "path": "vercel.json",
-      "sha256": "16a70849b6a6c2a21885de8bcd15c836450bd78528ec99f4d4de2f970b0e1bab"
+      "sha256": "bb2d872971b14ab85ea51f2d3fe48ca19556b51ad33da207a0d2f2a40d668f1b"
     },
     {
       "path": "scripts/deployment/reviewed-static-deployment.mjs",
-      "sha256": "1267e145b28885c1fa88624fc9e9a295e0bb00b3e8e1ce3c9ea5f0ff37c46588"
+      "sha256": "9d5dea0b14261333ec48469e605d763c5a9d8adafc4a848c36da835d54f0ce95"
     },
     {
       "path": "src/domain/static-publication-rights.mjs",
@@ -59,6 +59,10 @@
     {
       "path": "scripts/deployment/verify-static-rights-gate.mjs",
       "sha256": "0b57dd7cbbf7c3e04ff16ec5d681ec5fce13a9c80f38f66b279f5a26ee0cec23"
+    },
+    {
+      "path": "scripts/deployment/prepare-static-rights-signing-candidate.mjs",
+      "sha256": "970947f8ad2e024d40953c4f43fb421b42df94fef401d3b9a9d68817feeff4e1"
     }
   ]
 }

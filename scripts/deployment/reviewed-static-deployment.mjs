@@ -48,6 +48,7 @@ const FORBIDDEN_SEGMENTS = new Set([
   'tests',
 ]);
 const EXPECTED_FUNCTION_ROUTES = ['/api/error', '/api/rum', '/api/subscribe'];
+const DEFERRED_B2_ROUTE = { route: '/service-worker.js', target: 'public/service-worker.js' };
 const DEFAULT_MANIFEST = 'deployment/reviewed-static-source-manifest.json';
 const DEFAULT_CONTRACT = 'deployment/toolchain-contract.json';
 const DEFAULT_OUTPUT_MANIFEST = '.deployment-private/deployment-output-manifest.json';
@@ -60,6 +61,7 @@ const REQUIRED_EXECUTABLE_BINDINGS = [
   'src/domain/static-publication-rights.mjs',
   'scripts/deployment/build-static-rights-review.mjs',
   'scripts/deployment/verify-static-rights-gate.mjs',
+  'scripts/deployment/prepare-static-rights-signing-candidate.mjs',
 ];
 
 export class DeploymentContractError extends Error {
@@ -431,6 +433,7 @@ export function validateRouteTerminations({
   config,
   sitemapPath,
   expectedFunctionRoutes = [],
+  expectedGeneratedRoutes = [],
   explicitRoutes = [],
   reviewedTombstones = [],
   maxDepth = 32,
@@ -439,6 +442,23 @@ export function validateRouteTerminations({
   const redirects = (config.redirects ?? []).filter((rule) => !rule.has && !/^https?:\/\//i.test(rule.destination));
   const rewrites = config.rewrites ?? [];
   const functionRoutes = new Set(expectedFunctionRoutes);
+  const generatedRoutes = new Map();
+  if (expectedGeneratedRoutes.length > 0
+    && (expectedGeneratedRoutes.length !== 1
+      || expectedGeneratedRoutes[0]?.route !== DEFERRED_B2_ROUTE.route
+      || expectedGeneratedRoutes[0]?.target !== DEFERRED_B2_ROUTE.target
+      || Object.keys(expectedGeneratedRoutes[0]).length !== 2)) {
+    fail('GENERATED_ROUTE_INVALID', 'Only the exact deferred B2 service-worker route is permitted');
+  }
+  for (const row of expectedGeneratedRoutes) {
+    if (!row || Object.keys(row).length !== 2 || typeof row.route !== 'string'
+      || !row.route.startsWith('/') || typeof row.target !== 'string'
+      || row.target.startsWith('/') || row.target.split('/').some((part) => !part || part === '.' || part === '..')
+      || generatedRoutes.has(row.route)) {
+      fail('GENERATED_ROUTE_INVALID', 'Expected generated routes must bind one canonical route to one relative target');
+    }
+    generatedRoutes.set(row.route, row.target);
+  }
   const tombstones = new Set(reviewedTombstones);
   const routes = new Set([...explicitRoutes, ...routesFromSitemap(distRoot, sitemapPath)]);
   for (const rule of [...redirects, ...rewrites]) {
@@ -465,6 +485,10 @@ export function validateRouteTerminations({
       const rewrite = rewrites.find((rule) => matchRoute(rule.source, current));
       if (rewrite) {
         const next = fillRoute(rewrite.destination, matchRoute(rewrite.source, current));
+        const generatedTarget = generatedRoutes.get(start);
+        if (generatedTarget && next === `/${generatedTarget}`) {
+          return { route: start, terminal: 'DEFERRED_B2_ARTIFACT', target: generatedTarget };
+        }
         if (next === current) {
           const sameStaticPath = existingStaticPath(distRoot, next, config.cleanUrls);
           if (sameStaticPath) return { route: start, terminal: 'STATIC_2XX', target: sameStaticPath };

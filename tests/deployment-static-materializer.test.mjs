@@ -185,6 +185,7 @@ test('B0 repository contract pins local tools and every output-affecting deploym
     'src/domain/static-publication-rights.mjs',
     'scripts/deployment/build-static-rights-review.mjs',
     'scripts/deployment/verify-static-rights-gate.mjs',
+    'scripts/deployment/prepare-static-rights-signing-candidate.mjs',
   ]);
   assert.equal(contract.executableBindingSetVersion, 1);
   assert.equal(contract.dependencyAvailability.offlinePackageBytesRetained, false);
@@ -457,6 +458,52 @@ test('B1 route validation resolves redirects, rewrites, clean URLs, functions, a
   assert.equal(result.ok, true);
   assert.equal(result.resolutions.every((row) => row.terminal === 'STATIC_2XX' || row.terminal === 'FUNCTION'), true);
   assert.equal(result.resolutions.some((row) => row.route === '/location/perth' && row.target === 'pages/location/perth/fridge.html'), true);
+});
+
+test('B1 route validation permits only explicitly bound B2 generated routes', async () => {
+  const { validateRouteTerminations } = await loadSubject();
+  const distRoot = mkdtempSync(path.join(os.tmpdir(), 'fit-generated-routes-'));
+  const config = {
+    cleanUrls: true,
+    rewrites: [
+      { source: '/service-worker.js', destination: '/public/service-worker.js' },
+    ],
+  };
+
+  const result = validateRouteTerminations({
+    distRoot,
+    config,
+    explicitRoutes: ['/service-worker.js'],
+    expectedGeneratedRoutes: [
+      { route: '/service-worker.js', target: 'public/service-worker.js' },
+    ],
+  });
+  assert.deepEqual(result.resolutions, [{
+    route: '/service-worker.js',
+    terminal: 'DEFERRED_B2_ARTIFACT',
+    target: 'public/service-worker.js',
+  }]);
+
+  assert.throws(() => validateRouteTerminations({
+    distRoot,
+    config,
+    explicitRoutes: ['/service-worker.js'],
+    expectedGeneratedRoutes: [
+      { route: '/service-worker.js', target: 'public/other-worker.js' },
+    ],
+  }), assertCode('GENERATED_ROUTE_INVALID'));
+
+  assert.throws(() => validateRouteTerminations({
+    distRoot,
+    config: {
+      cleanUrls: true,
+      rewrites: [{ source: '/arbitrary', destination: '/public/not-generated.js' }],
+    },
+    explicitRoutes: ['/arbitrary'],
+    expectedGeneratedRoutes: [
+      { route: '/arbitrary', target: 'public/not-generated.js' },
+    ],
+  }), assertCode('GENERATED_ROUTE_INVALID'));
 });
 
 test('B1 route validation rejects redirect cycles, depth overflow, and accidental 404s', async () => {

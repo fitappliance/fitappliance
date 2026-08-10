@@ -72,6 +72,22 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.has('/pdf-evidence/:path*'), false);
 });
 
+test('vercel production config: legacy comparison aliases have real fallbacks', () => {
+  const config = loadVercelConfig();
+  const redirects = new Map((config.redirects ?? []).map((row) => [row.source, row.destination]));
+
+  assert.equal(redirects.get('/compare/chiq-vs-lg-fridge'), '/brands/chiq-fridge-clearance');
+  assert.equal(redirects.get('/compare/smeg-vs-miele-dishwasher-clearance'), '/compare/miele-vs-smeg-dishwasher');
+  assert.equal(redirects.get('/compare/fisher-paykel-vs-lg-dryer'), '/brands/fisher-paykel-dryer-clearance');
+  for (const target of [
+    'pages/brands/chiq-fridge-clearance.html',
+    'pages/compare/miele-vs-smeg-dishwasher.html',
+    'pages/brands/fisher-paykel-dryer-clearance.html',
+  ]) {
+    assert.equal(fs.existsSync(path.join(repoRoot, target)), true, target);
+  }
+});
+
 test('third-party licenses and government data attribution are publicly disclosed', () => {
   const page = fs.readFileSync(path.join(repoRoot, 'pages/third-party-licenses.html'), 'utf8');
   const apache = fs.readFileSync(path.join(repoRoot, 'public/licenses/web-vitals-4.2.4-apache-2.0.txt'), 'utf8');
@@ -174,7 +190,7 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   });
   assert.deepEqual(redirects.get('/compare/smeg-vs-miele-dishwasher-clearance'), {
     source: '/compare/smeg-vs-miele-dishwasher-clearance',
-    destination: '/compare/fisher-paykel-vs-miele-dishwasher',
+    destination: '/compare/miele-vs-smeg-dishwasher',
     permanent: true
   });
   assert.deepEqual(redirects.get('/compare/midea-vs-inalto-washing-machine-clearance'), {
