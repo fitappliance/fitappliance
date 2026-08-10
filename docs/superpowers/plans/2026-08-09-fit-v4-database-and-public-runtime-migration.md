@@ -1930,6 +1930,52 @@ dependency cycle. This primary disposition changes status from `DRAFT` to
 signing, real B2 worker generation, B3A, preview, push, deployment or
 activation.
 
+### WP0B-B1 worker-exclusion implementation checkpoint - 2026-08-10
+
+- One bounded `gpt-5.6-sol` medium agent implemented the exact worker boundary
+  with TDD. RED recorded three rights-test failures and one materializer failure;
+  GREEN passed the two focused files 41/41. Primary review rejected and restored
+  one attempted weakening of the real-repository review/gate integration test,
+  then strengthened its terminal assertions to require zero unresolved outputs,
+  no worker review row and no missing-provenance blocker.
+- B1 inventory and materializer eligibility now exclude only the exact tracked
+  `public/service-worker.js` witness. The witness cannot enter a schema-2 source
+  manifest; another public path, including `public/service-worker.js.map`, still
+  causes ordinary source-set drift. The worker bytes themselves were not
+  changed. The two changed executable hashes are resealed in the B0 toolchain
+  contract.
+- The clean replay now emits 3,211 content-bound receipts with zero unresolved
+  outputs. The B1 inventory and rights review each contain 3,283 rows, no worker
+  row, no `GENERATED_PROVENANCE_MISSING`, and zero `RETAILER_FEED` rows or
+  blockers. Inventory ID is
+  `8ef9c64b370ca7c85c1267f48d861ed01c63aa8bc4ee696084642bf7bd86f791`;
+  rights review ID is
+  `018d4e645c73e017f0ecd5ed98efe9330571eba1d2bd1e6e277b9fbf975fa0b7`.
+- Exact generated artifact file hashes are: provenance
+  `d455ee96104933bd00b745291f5670f9e496773b0bd150fd352ab317532d8135`,
+  inventory
+  `d19cc0f51f3a08b8dd08851148960db5dc90eff3f6133a038acab28380fbd3e8`,
+  review
+  `a3060d52474ab964c8ccfa9beae620a13eb4df035a260d807a4dd7c596d9099a`
+  and blocked manifest
+  `74b6c5c4c09f1a2ffbcf716330312bc1e8ae2a6ba576305ea64ca2a8a5e6deb3`.
+- The complete deployment-static suite passes 48/48, including the retained
+  real-repository review/gate test. Lint passes; publication-boundary audit
+  passes 19 workflows and 2,331 public artifacts; schema validation passes
+  2,331 pages, 5,963 blocks and zero errors; `git diff --check` passes.
+- The production trust-root public file is present read-only at the documented
+  external path. Injecting it advances the real gate from
+  `PRODUCTION_TRUST_ROOT_NOT_ENROLLED` to `WITHDRAWAL_HEAD_NOT_ESTABLISHED`.
+  B1 therefore still needs the signed withdrawal genesis, the five scoped
+  decisions (`FIRST_PARTY`, `GOOGLE_VERIFICATION`,
+  `WEB_VITALS_APACHE_2`, `OUTFIT_FONT`, `ENERGY_RATING_CC_BY`), final route
+  receipts and detached publication authorization. `RETAILER_FEED` is excluded
+  from that signing packet.
+- No private key was read, no signature was created, and no Partnerize browser
+  state, feed download, public worker generation, B3 build, push, deployment or
+  activation occurred. The next code slice may implement only B2's fixture
+  protocol/receipt contract; real worker generation remains blocked on B1.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

@@ -982,8 +982,9 @@ test('real review command succeeds blocked while the production gate remains non
   assert.equal(manifest.schemaVersion, 2);
   assert.equal(manifest.status, 'BLOCKED');
   assert.equal(manifest.rows.length, 0);
-  assert.equal(provenance.unresolvedOutputs.length > 0, true);
-  assert.equal(provenance.unresolvedOutputs.every((row) => row.reason === 'GENERATED_PROVENANCE_NOT_REVIEWED'), true);
+  assert.deepEqual(provenance.unresolvedOutputs, []);
+  assert.equal(rightsReview.rows.some((row) => row.path === 'public/service-worker.js'), false);
+  assert.equal(rightsReview.blockers.some((row) => row.code === 'GENERATED_PROVENANCE_MISSING'), false);
   assert.equal(rightsReview.rows.every((row) => row.dependencyIds.length > 0), true);
   const gate = spawnSync(process.execPath, ['scripts/deployment/verify-static-rights-gate.mjs'], { cwd: repoRoot, encoding: 'utf8' });
   assert.notEqual(gate.status, 0);
