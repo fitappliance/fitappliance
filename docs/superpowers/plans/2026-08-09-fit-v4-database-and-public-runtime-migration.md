@@ -7,7 +7,7 @@
 > slice. One independent `gpt-5.6-sol` subagent at reasoning effort `max`
 > audits each substantial plan revision. Do not use `ultra` for this workflow.
 
-**Status:** IN PROGRESS; WP0A, WP0B-A, B0, WP1, WP2 and WP3 are complete; B1 replay provenance is partially recorded but rights-blocked
+**Status:** IN PROGRESS; WP0A, WP0B-A, B0, WP1, WP2 and WP3 are complete; B1 worker-exclusion slice is authorized after max-audit corrections, while production rights remain blocked
 **Date:** 2026-08-09
 **Supersedes:** The public-migration ordering in Task 12 and the later cutover
 remediation sections of
@@ -414,6 +414,7 @@ WP0A baseline witnesses + contract map
 WP0B-A source recovery anchor
   -> WP0B-B0 pinned deployment toolchain and environment contract
   -> WP0B-B1 reviewed static-output allowlist
+  -> WP0B-B2 B2_GENERATION_READY worker receipt
   -> WP0B-B3A deterministic containment baseline
 
 WP3 + WP0B-B1 + WP0B-B3A
@@ -429,7 +430,8 @@ WP3 + WP0B-B1 + WP0B-B3A
   -> WP0B-B4 immutable preview QA
   -> WP9/B5 detached owner activation gate
 
-WP0B-B1 -> WP0B-B2 release-handshake contract and adversarial harness
+WP0B-B1 technical closure -> WP0B-B2 fixture-only release-handshake contract
+WP0B-B1 authorization -> WP0B-B2 B2_GENERATION_READY -> WP0B-B3A
 WP7B + WP0B-B2 contract + WP0B-B3A
   -> WP8 full-surface migration + WP0B-B2 integration
   -> WP0B-B3B mandatory final rematerialization and complete output identity
@@ -470,12 +472,14 @@ claiming unavailable remote bytes, then establish a contained and reproducible
 successor deployment path. External evidence storage and acquisition network
 access cannot be normal deployment dependencies.
 
-WP0B-A proves source-level recovery and records the remote-byte gaps. WP0B-B0,
-B1 and B3 establish deterministic containment before WP4A. B2 is specified and
-tested before WP4A but integrates only with the complete public surface in WP8;
-B4 proves that exact prebuilt surface in preview; B5 performs the fresh
-predecessor and authorization gate inside WP9. No unavailable remote file tree
-is relabelled as a restorable predecessor snapshot.
+WP0B-A proves source-level recovery and records the remote-byte gaps. WP0B-B0
+and B1 establish the reviewed source boundary; B2 generates the worker from
+that boundary; B3 establishes deterministic containment over their complete
+composition before WP4A. B2's page/worker handshake integrates with the
+complete public surface only in WP8; B4 proves that exact prebuilt surface in
+preview; B5 performs the fresh predecessor and authorization gate inside WP9.
+No unavailable remote file tree is relabelled as a restorable predecessor
+snapshot.
 
 #### WP0B max-audit correction
 
@@ -588,7 +592,10 @@ and release evidence cannot define or verify themselves.
   containing every exact path, mode, size, SHA-256 and public-rights
   disposition. The initial eligible families are root `index.html`, the two
   exact Google verification HTML files, reviewed files under `public/**`, and
-  reviewed files under `pages/**`. A directory name is never authority.
+  reviewed files under `pages/**`, except the exact tracked legacy witness
+  `public/service-worker.js`. That file is never copied as a B1 source; B2
+  generates the deployable worker from reviewed inputs into private staging.
+  A directory name is never authority.
   Untracked, newly generated, changed or undeclared entries fail until the
   manifest is regenerated and reviewed.
 - `data/pdf-evidence/**`, `/pdf-evidence/*` and all raw/manual/review evidence
@@ -637,11 +644,21 @@ bytes.
 
 #### WP0B-B1 - Allowlisted static materialization
 
+**Generated-worker handoff:** B1 approves a source set, not a complete
+deployable tree. The tracked `public/service-worker.js` is a legacy behavior
+witness for B2 RED tests and is outside the B1 source inventory and manifest.
+B2 must generate the candidate worker after B1 materialization and emit an
+exact generation/cache-coverage receipt. B3 rejects a tree that lacks that
+receipt or contains the tracked witness bytes. This is an explicit staged
+composition, not a reduced-site approval: B1 output alone is never eligible
+for preview, deployment or activation.
+
 **TDD order**
 
 1. RED fixtures reject undeclared roots, dotfiles, traversal, Unicode/case-fold
    collisions, symlinks, special files, resource-limit overflow, an existing
-   unowned target and any output containing forbidden path families.
+   unowned target, a source-manifest row for `public/service-worker.js`, and any
+   output containing forbidden path families.
 2. Validate the reviewed source manifest independently, including exact bytes,
    Git-tracked provenance and `ALLOWED` public-rights disposition for every
    entry. Missing, changed, extra and untracked files under eligible families
@@ -667,9 +684,12 @@ static output; no redirect terminates at an accidental 404.
 ##### WP0B-B1 rights-adjudication closure slice
 
 The materializer gate above is mechanically complete, but the production
-manifest remains correctly blocked. The current eligible set contains `3,281`
-Git-tracked files and mixes first-party work, generated pages, third-party code,
-government data, service-verification tokens and retailer-feed derivatives.
+manifest remains correctly blocked. The eligible count is derived from the
+exact Git tree and never hardcoded in a test or authorization. The 2026-08-10
+pre-exclusion snapshot contains 3,284 paths; the corrected current snapshot is
+expected to contain 3,283 after excluding the tracked worker witness. It mixes
+first-party work, generated pages, third-party code, government data,
+service-verification tokens and private-observation-derived lifecycle state.
 Repository location, Git history, an existing deployment and the root MIT
 licence are provenance signals, not file-level publication authority.
 
@@ -725,7 +745,7 @@ bytes cannot preserve a stale authorization.
 | `web-vitals` 4.2.4 vendored browser bytes | Evidence candidates: exact package/output hashes and upstream Apache-2.0 material. A reviewer supplies obligations; code only verifies their candidate-output fulfillment. |
 | Google Search Console verification HTML | Evidence candidate: official unchanged-root-file workflow plus exact issued path/hash. A signed decision scopes only those files and cannot generalize to other Google content. |
 | Australian Government Energy Rating derivatives | Evidence candidates: exact dataset metadata/licence and field-source manifests. A signed decision scopes files/fields and declares attribution obligations; origin alone is insufficient. |
-| Partnerize/The Good Guys feed derivatives | Remain blocked until the active campaign's exact terms or an authorized written confirmation is stored privately and a non-secret hash/scope decision is registered. Public Partnerize documentation describing website feed integration is contextual evidence, not a substitute for campaign terms. |
+| Partnerize/The Good Guys supplied fields or byte-derived presentation | Permanently forbidden from public output under the owner's `PRIVATE_EVIDENCE_ONLY` decision. No production decision may authorize raw/copy feed redistribution. A coarse lifecycle conclusion may lose the public `RETAILER_FEED` dependency only through the exact private-to-public declassification contract below. |
 | Unknown or multi-source content | Block. Content-pattern absence cannot prove that a generated value was not derived from a restricted source. |
 
 Official evidence references are version/scope inputs, not live build
@@ -741,10 +761,10 @@ scope and bytes cannot yield `ALLOWED`.
   manifest and explicit provenance metadata. Broad positive regexes cannot
   grant rights. A narrow detector may add dependencies or blockers, never
   remove them.
-- A file may depend on multiple authorities. For example, a first-party product
-  page containing retailer-feed title, price or affiliate URL needs both the
-  first-party and campaign-feed decisions. One allowed dependency cannot mask
-  one unknown, expired, withdrawn or attribution-incomplete dependency.
+- A file may depend on multiple authorities. A first-party product page
+  containing any retailer-supplied title, price, URL, retailer identity,
+  product ID, timestamp, source hash or other supplied field remains forbidden;
+  no first-party decision can mask that private dependency.
 - Generated product, brand, comparison, location, fit-check and catalog data
   families are conservatively feed-dependent until their generation graph
   proves a narrower source set. Searching rendered text for Partnerize domains
@@ -752,8 +772,20 @@ scope and bytes cannot yield `ALLOWED`.
 - Binary files are classified by exact path, producer and hash. Binary content
   is never guessed from metadata or extension.
 - Every generated output inherits the full transitive dependency union of its
-  exact inputs. A source withdrawal blocks every derivative output and its
-  descendants even if their rendered bytes or URLs are unchanged.
+  exact public inputs. The sole exception is a typed
+  `PRIVATE_TO_PUBLIC_LIFECYCLE_DECLASSIFICATION_V1` receipt produced by the
+  exact reviewed sanitizer. It may emit only canonical first-party product ID,
+  the closed lifecycle/visibility enums and reason codes defined by the public
+  schema. The private receipt and source bytes remain outside Git. Paired-input
+  tests must prove changes to title, price, URL, retailer identity, product ID,
+  timestamps and raw hashes cannot change or enter public bytes when the closed
+  lifecycle conclusion is held constant. Any extra key, string, number, URL,
+  raw hash, unknown enum, producer/tool drift or missing private receipt blocks
+  declassification and restores the private-feed blocker. The public receipt
+  binds the sanitizer, schema and sanitized output hash and classifies the
+  resulting editorial lifecycle state as `FIRST_PARTY`; it never asserts that
+  the private observation had no influence and never grants feed redistribution
+  rights.
 - Decision evidence is immutable and content-addressed. A rights or source
   change creates a successor registry/review/manifest; it does not edit an
   approved historical decision in place.
@@ -784,9 +816,10 @@ scope and bytes cannot yield `ALLOWED`.
 
 **TDD and execution order**
 
-1. Preserve the current zero-row blocked manifest. RED: freeze every one of the
-   `3,281` current eligible paths without assigning rights; additions, removals,
-   renames, byte/mode drift and untracked eligible files invalidate the ID.
+1. Preserve the current zero-row blocked manifest. RED: freeze every path in
+   the dynamically enumerated eligible set without assigning rights; additions,
+   removals, renames, byte/mode drift and untracked eligible files invalidate
+   the ID. A numeric count is a generated diagnostic, never fixture authority.
 2. RED: reject unknown keys/actions/classes, empty scope, missing source or
    evidence hash, duplicate/contradictory decisions, expired/withdrawn state,
    wrong inventory, unbound or test issuer, invalid signature, unmet
@@ -795,7 +828,8 @@ scope and bytes cannot yield `ALLOWED`.
    verification, canonical hashing, the explicit classifier/provenance resolver
    and blocked gate. Keep the production authority set empty and require an
    injected read-only trust root; create no production key or enrollment.
-4. RED: prove every one of the current eligible paths is inventoried,
+4. RED: prove every current eligible source path is inventoried, the exact
+   tracked service-worker witness is excluded rather than silently copied,
    all generated catalog families receive their conservative data dependencies,
    inherit transitive dependencies, and invalidate every derivative after one
    input withdrawal.
@@ -819,7 +853,8 @@ scope and bytes cannot yield `ALLOWED`.
    registry, review, zero-row/approved manifest and authorization ID through the
    same pipeline.
 10. Run two clean reconstructions, adversarial tests and fresh clock/withdrawal
-   checks; clean generated outputs. Only the exact successful gate unlocks B2.
+   checks; clean generated outputs. The exact successful gate authorizes B2 to
+   generate a worker from this source set; it does not authorize deployment.
 
 **B1 rights gate**
 
@@ -843,26 +878,50 @@ scope and bytes cannot yield `ALLOWED`.
   `git diff --check` pass with no `dist/`, deployment, pointer, public activation,
   commit or push.
 
-Until this gate passes, B2, B3A, WP4A and every preview/release task remain
-closed. A reduced subset is not silently substituted for the intended site.
+Before this gate passes, B2 may implement and test only its pure protocol with
+fixtures and the tracked legacy worker as a RED witness. Real worker generation,
+B3A, WP4A and every preview/release task remain closed. After B1 passes, B2
+must add the generated worker before B3A; a B1-only reduced tree is never
+silently substituted for the intended site.
 Rollback also remains blocked unless its predecessor satisfies the fresh
 current static-publication authorization floor.
 
 #### WP0B-B2 - Release-bound service-worker protocol
 
-Two identities remain explicit. `applicationGenerationId` binds reviewed HTML,
-Fit-bearing modules/data, active retail release and cache protocol and is
-embedded into the page/worker handshake. `deploymentOutputId` is computed later
-by B3 over every final `.vercel/output` byte, including the generated worker,
+B2 has two explicit states. `B2_PROTOCOL_READY` is fixture-only implementation
+and adversarial proof; it may be reached while B1 rights decisions are still
+blocked. `B2_GENERATION_READY` requires a successful B1 authorization, then
+generates the real worker into private staging and binds its reviewed inputs,
+application generation and cache coverage. Only `B2_GENERATION_READY` may feed
+B3A. WP8 later completes page/worker integration; neither earlier state is a
+release candidate.
+
+Three identities remain explicit. `applicationSourceId` binds the exact B1
+source-manifest bytes before release-marker injection. `applicationGenerationId`
+is the semantic hash of a closed generation manifest containing
+`applicationSourceId`, the exact `staticPublicationAuthorizationId`, active
+retail release, Fit-bearing module/data identities, cache protocol version and
+captured predecessor identity. It never hashes marker-stamped output bytes, so
+embedding it into pages and the worker is not self-referential.
+`deploymentOutputId` is computed later by B3 over every final
+`.vercel/output` byte, including marker-stamped HTML, the generated worker,
 function bundles and `config.json`; it is detached and is the sole candidate,
-preview and authorization identity. Neither identity is represented as the
-other, which avoids both a self-hash and an API-source/final-bundle mismatch.
+preview and authorization identity. None of these identities is represented as
+another.
+
+`workerGenerationReceiptId` is the canonical hash of the exact B1
+`staticPublicationAuthorizationId`, B0 toolchain-contract hash,
+`applicationSourceId`, `applicationGenerationId`, active-retail-release ID,
+worker output path/hash, producer/tool/input hashes, cache-protocol version,
+predecessor-capture/cache identity and cache-coverage-manifest ID. B3 accepts
+the worker only through this receipt and compares every bound identity; a stale
+or cross-build worker cannot be paired with a fresh B1 authorization.
 
 The generated worker receives the complete application release identity and a
-closed retained-version set containing the current release plus the captured
-production predecessor cache version. Activation may remove only FitAppliance
-cache versions outside that set. It must never delete the immediate predecessor
-cache during candidate install or activation.
+closed retained-version set containing the current release plus the exact
+captured production predecessor cache version bound by its receipt. Activation
+may remove only FitAppliance cache versions outside that set. It must never
+delete the immediate predecessor cache during candidate install or activation.
 
 B2 first builds the pure protocol and adversarial browser harness. WP8 integrates
 the release marker into every HTML bootstrap and every Fit-bearing public data
@@ -879,7 +938,8 @@ verified cache-coverage receipt; unlisted pages remain explicitly online-only.
    `sw-version.test.mjs` and `sw-cache-strategy.test.mjs` into explicit RED
    legacy witnesses before changing implementation.
 2. Generate the deployed worker into the private staging output, not by trusting
-   the tracked `public/service-worker.js` bytes.
+   the tracked `public/service-worker.js` bytes, and emit the fully bound
+   `workerGenerationReceiptId` described above.
 3. Test marker absence/mismatch, old-page/new-worker, new-page/old-worker,
    failed precache, failed activation, stale tab, offline reload and
    rollback-worker combinations.
@@ -901,16 +961,22 @@ materializer and toolchain contract. `B3B` runs after WP8 from the integrated
 source and produces the only output eligible for B4 or WP9. A B3A output is a
 test baseline, never a release candidate.
 
-1. From two clean source reconstructions using the exact B0 contract, run only
-   the deployment materializer and repository-local `vercel build --prod` with
-   no external evidence volume or acquisition/publication writer.
+1. From two clean source reconstructions using the exact B0 contract, validate
+   the B1 source manifest and materialize it into an absent private staging
+   target with no tracked worker bytes.
 2. Fail if the separately reviewed source manifest does not match either clean
    reconstruction or its exact `staticPublicationAuthorizationId` is absent,
-   stale, expired, withdrawn or otherwise invalid before Vercel executes.
-3. Build an independent canonical `.vercel/output` manifest covering static
+   stale, expired, withdrawn or otherwise invalid. Then validate the exact B2
+   `workerGenerationReceiptId`, regenerate/verify its worker, and add only that
+   worker to the staging target. Reject a missing receipt, identity mismatch,
+   pre-existing worker path, tracked-witness byte reuse or any extra file.
+3. Run repository-local `vercel build --prod` only from that verified complete
+   B1+B2 composition, with no external evidence volume or
+   acquisition/publication writer.
+4. Build an independent canonical `.vercel/output` manifest covering static
    files, functions and `config.json` by path, mode, size and SHA-256. Ignore no
    byte-bearing file and do not compare compressed archive bytes or mtimes.
-4. Define `deploymentOutputId` as the canonical semantic hash of that complete
+5. Define `deploymentOutputId` as the canonical semantic hash of that complete
    final manifest. Compare the two IDs/manifests and independently assert the
    three expected Node functions, Sydney region, route/header semantics and
    absence of forbidden static files. Bind, but do not fold,
@@ -984,13 +1050,20 @@ the current clock and withdrawal head immediately before activation. A changed,
 expired or withdrawn authorization aborts without alias mutation. The retained
 rollback predecessor must pass that same current rights floor; if it does not,
 rollback is not represented as available and activation remains blocked.
+The fresh predecessor capture must equal the predecessor-capture and cache
+identity in the final B2 worker receipt. Any drift invalidates that receipt,
+B3B output, B4 preview evidence and detached owner authorization; the mandatory
+recovery path is fresh capture followed by B2 regeneration, B3B reconstruction,
+B4 QA and a new owner authorization. B5 never patches a retained-cache list or
+promotes an older preview in place.
 
 **Milestone gates**
 
-- `WP0B_CONTAINMENT_READY`: the B0 successor, B1 and B3A pass with the same
-  `staticPublicationAuthorizationId`; B2's pure protocol/harness is
-  ready; deployment output is contained and deterministic. This is required by
-  WP4A but does not claim cache or preview completion.
+- `WP0B_CONTAINMENT_READY`: the B0 successor and B1 pass, B2 reaches
+  `B2_GENERATION_READY`, and B3A passes with the same
+  `staticPublicationAuthorizationId`; deployment output is complete, contained
+  and deterministic. This is required by WP4A but does not claim final WP8
+  handshake integration, cache coverage for all routes or preview completion.
 - `WP0B_PREVIEW_PROVEN`: WP8 has integrated B2, B3B rematerializes the complete
   final output, and B4 binds every local manifest entry to an authoritative
   immutable-deployment receipt before proving browser behavior. The
@@ -1791,6 +1864,71 @@ baseline bytes are unchanged; no public file, commit, push or deployment change.
 - No production withdrawal signature, rights decision, Partnerize
   acknowledgement, email, commit, push, deployment or activation occurred.
   B1 remains blocked; B2 and later public migration work remain closed.
+
+### WP0B-B1 private-feed isolation and worker-handoff checkpoint - 2026-08-10
+
+- The owner decided that Partnerize/The Good Guys feed data is private internal
+  evidence only. It must not be redistributed, named as a public publication
+  dependency or included in a production signing scope. The reviewed private
+  source policy is `PRIVATE_EVIDENCE_ONLY`; public projection sanitization is
+  the only approved path from a feed-observed product to public catalog state.
+- The current lifecycle shadow contains 3,515 canonical products, a cleaned
+  legacy-current baseline of 1,348, 121 `CURRENT_RETAIL` products, 703 excluded
+  Partnerize observations and 12 unresolved legacy-current products. Cutover
+  remains correctly `BLOCKED`. The active public projection contains 3,513
+  products and exposes 117 as `CURRENT_RETAIL`; it does not promote the blocked
+  shadow candidate.
+- The sanitizer-bound provenance chain is now exact and transitive. The current
+  B1 review covers 3,284 static source objects; zero review rows and zero
+  blockers contain `RETAILER_FEED`. Replay produced 3,211 exact receipts and
+  only `public/service-worker.js` remains unresolved. The inventory ID is
+  `3ea5e6176e17db7b915dd0aa39727ed004826b1253d4449eb0ba6a9b07e3b5a7`;
+  rights review ID is
+  `dafaba416586acca6fbd1a90debf60f1fb6b5cce7f89569ac6faf460a92f2922`.
+- The remaining production blockers are the worker provenance handoff, signed
+  decisions for `FIRST_PARTY`, `GOOGLE_VERIFICATION`,
+  `WEB_VITALS_APACHE_2`, `OUTFIT_FONT` and `ENERGY_RATING_CC_BY`, trust-root
+  enrollment in the active gate input, and signed withdrawal genesis. The real
+  gate exits nonzero at `PRODUCTION_TRUST_ROOT_NOT_ENROLLED`; this is required
+  failure-closed behavior, not B1 completion.
+- Public-boundary audit passes 19 workflows and 2,331 public artifacts with no
+  violations. Schema validation passes 2,331 pages, 5,963 structured-data
+  blocks and zero errors. The complete deployment-static suite passes 47/47;
+  the current toolchain seal is commit `5ab770051` after the private-feed and
+  replay-family closures in commits `949791697` through `3e25ed23c`.
+- A dependency-cycle audit found that the prior plan required B1 to authorize
+  tracked `public/service-worker.js`, required B2 to replace it with a worker
+  generated from an independent release identity, and prohibited B2 until B1
+  passed. The corrected contract treats the tracked worker only as a B2 legacy
+  RED witness: it is excluded from the B1 source inventory and manifest, B1
+  alone is never deployable, B2 generates and receipts the worker in private
+  staging, and B3 rejects any output without both the B1 authorization and B2
+  worker receipt.
+- Because this changes a deployment dependency boundary, the plan returns to
+  `DRAFT` until one independent `gpt-5.6-sol` max review closes the revised
+  B1/B2/B3 sequence. After that review, one medium implementation slice must
+  first add RED tests for worker exclusion and incomplete-output rejection,
+  then make the smallest source-inventory/materializer change. Production
+  signing, B3A, preview, push and deployment remain prohibited.
+
+**Max-audit disposition:** the independent review returned `NOT_READY` with
+three P0 and three P1 findings. Primary closure incorporated each finding
+without starting a second reviewer/fixer loop:
+
+| Finding | Contract correction |
+| --- | --- |
+| P0 stale/cross-build worker can pair with B1 | `workerGenerationReceiptId` binds the exact B1 authorization, toolchain, source/generation/release IDs, worker bytes, predecessor and coverage manifest; B3 compares every field. |
+| P0 self-referential application generation | Added pre-stamp `applicationSourceId`; `applicationGenerationId` hashes a structured generation manifest, while B3 alone hashes marker-stamped output bytes. |
+| P0 private-feed rules contradicted zero public dependency | Raw/copy feed material is permanently forbidden; only the closed `PRIVATE_TO_PUBLIC_LIFECYCLE_DECLASSIFICATION_V1` sanitizer contract can emit first-party coarse lifecycle state, with paired non-leakage tests and fail-closed schema/tool checks. |
+| P1 B3 did not consume B2 explicitly | B3 now materializes B1 without a worker, validates/regenerates the exact B2 receipt, composes one worker into the absent path, then runs Vercel and hashes the complete result. |
+| P1 normative count was stale | Eligible count is dynamically derived; snapshot counts are diagnostics and cannot authorize a fixture or manifest. |
+| P1 B5 predecessor could differ from worker cache set | Any fresh-predecessor mismatch invalidates B2, B3B, B4 and owner authorization and forces the complete regeneration sequence. |
+
+The corrected normative DAG and work-package text have no remaining known
+dependency cycle. This primary disposition changes status from `DRAFT` to
+`READY_FOR_B1_WORKER_EXCLUSION_SLICE` only. It does not authorize production
+signing, real B2 worker generation, B3A, preview, push, deployment or
+activation.
 
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
