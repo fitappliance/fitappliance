@@ -10,6 +10,7 @@ node_modules/
 dist/
 .deployment-private/
 *.tmp-*
+*.private-retailer-*.tmp
 !public/data/appliances.json
 .vercel
 .DS_Store

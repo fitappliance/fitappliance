@@ -171,6 +171,24 @@ test('manual retailer enrich rejects private rows identified only by source poli
   assert.deepEqual(mergeRetailers([], privateRows), []);
 });
 
+test('manual retailer enrich rejects rows identified only by private feed fields', () => {
+  const privateFields = [
+    'affiliate_campaign',
+    'camref',
+    'pubref',
+    'tracking_verified_at',
+    'commission_exclusion_reason',
+  ];
+  const privateRows = privateFields.map((field, index) => ({
+    n: `The Good Guys ${index}`,
+    url: `https://www.thegoodguys.com.au/private-field-${index}`,
+    source: 'manual',
+    [field]: 'private Partnerize evidence',
+  }));
+
+  assert.deepEqual(mergeRetailers([], privateRows), []);
+});
+
 test('manual retailer enrich removes previously persisted private feed rows', () => {
   const products = [makeProduct({
     unavailable: false,

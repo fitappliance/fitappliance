@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -398,6 +398,38 @@ test('privacy successor release builder verifies the bound recovery archive byte
   await assert.rejects(
     verifyPrivateRecoveryArtifacts(manifestPath),
     /recovery archive/i,
+  );
+});
+
+test('privacy successor recovery verifier rejects manifest symlinks and escaping paths', async (t) => {
+  const root = await mkdtemp(join(tmpdir(), 'fitappliance-private-recovery-boundary-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const archivePath = join(root, 'tracked-partnerize-data.tar');
+  const manifestPath = join(root, 'manifest.json');
+  const manifestLinkPath = join(root, 'manifest-link.json');
+  const archiveBytes = Buffer.from('private recovery archive');
+  const manifest = {
+    schemaVersion: 1,
+    state: 'PRIVATE_RECOVERY_ONLY',
+    archiveSha256: sha256(archiveBytes),
+    paths: ['../escape'],
+  };
+  await Promise.all([
+    writeFile(archivePath, archiveBytes),
+    writeFile(manifestPath, jsonBytes(manifest)),
+  ]);
+
+  await assert.rejects(
+    verifyPrivateRecoveryArtifacts(manifestPath),
+    /recovery manifest/i,
+  );
+
+  manifest.paths = ['data/architecture-v2/releases/example/public-catalog-projection.json'];
+  await writeFile(manifestPath, jsonBytes(manifest));
+  await symlink(manifestPath, manifestLinkPath);
+  await assert.rejects(
+    verifyPrivateRecoveryArtifacts(manifestLinkPath),
+    /regular non-symlink/i,
   );
 });
 

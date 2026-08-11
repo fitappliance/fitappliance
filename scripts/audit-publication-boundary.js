@@ -17,7 +17,7 @@ const PUBLIC_ARTIFACT_ROOTS = [
   ['pages', 'doorway']
 ];
 const PUBLIC_ARTIFACT_EXTENSIONS = new Set(['.html', '.json']);
-const PRIVATE_FEED_PATTERN = /prf\.hn\/click|feeds\.(?:performancehorizon|partnerize)\.com|retailer-observation:affiliate_feed|partnerize-feed|the-good-guys-partnerize-feed-v1|"sourceType"\s*:\s*"affiliate_feed"|"affiliate_network"\s*:\s*"partnerize"|"(?:affiliate_url|feed_title|feed_model|tgg_sku|camref|pubref)"\s*:/i;
+const PRIVATE_FEED_PATTERN = /prf\.hn\/click|feeds\.(?:performancehorizon|partnerize)\.com|retailer-observation:affiliate_feed|partnerize-feed|the-good-guys-partnerize-feed-v1|"sourceType"\s*:\s*"affiliate_feed"|"affiliate_network"\s*:\s*"partnerize"|"(?:affiliate_campaign|affiliate_url|camref|commission_cookie_days|commission_eligible|commission_exclusion_reason|commission_model|commission_rate_percent|commission_terms_observed_at|feed_title|feed_model|pubref|retailer_dimension_hint(?:_catalog_delta_mm|_review_required|_source_text)?|tgg_sku|tracking_verified_at)"\s*:/i;
 const TGG_URL_PATTERN = /https?:\/\/(?:www\.)?thegoodguys\.com\.au\/[^\s"'<>\\]+/gi;
 
 function violation(file, line, rule, message) {

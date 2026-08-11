@@ -20,9 +20,43 @@ function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
 }
 
+async function readRegularFileNoFollow(path, label) {
+  let handle;
+  try {
+    handle = await open(path, constants.O_RDONLY | constants.O_NOFOLLOW);
+    if (!(await handle.stat()).isFile()) {
+      throw new TypeError(`${label} must be a regular non-symlink file`);
+    }
+    return await handle.readFile();
+  } catch (error) {
+    if (/regular non-symlink/i.test(error.message)) throw error;
+    if (error.code === 'ELOOP' || error.code === 'EMLINK') {
+      throw new TypeError(`${label} must be a regular non-symlink file`);
+    }
+    throw new Error(`${label} unavailable: ${error.message}`);
+  } finally {
+    await handle?.close();
+  }
+}
+
+function isCanonicalRecoveryPath(value) {
+  if (typeof value !== 'string'
+    || value.length === 0
+    || value !== value.normalize('NFC')
+    || value.includes('\\')
+    || value.includes('\0')
+    || value.startsWith('/')
+    || /^[A-Za-z]:/.test(value)) return false;
+  const segments = value.split('/');
+  return segments.every((segment) => segment && segment !== '.' && segment !== '..');
+}
+
 export async function verifyPrivateRecoveryArtifacts(manifestPath) {
   const resolvedManifestPath = resolve(manifestPath);
-  const manifestBytes = await readFile(resolvedManifestPath);
+  const manifestBytes = await readRegularFileNoFollow(
+    resolvedManifestPath,
+    'private recovery manifest',
+  );
   let manifest;
   try {
     manifest = JSON.parse(manifestBytes);
@@ -33,27 +67,23 @@ export async function verifyPrivateRecoveryArtifacts(manifestPath) {
     || manifest.state !== 'PRIVATE_RECOVERY_ONLY'
     || !/^[a-f0-9]{64}$/.test(manifest.archiveSha256 ?? '')
     || !Array.isArray(manifest.paths)
-    || manifest.paths.some((path) => typeof path !== 'string' || path.length === 0)) {
+    || manifest.paths.some((path) => !isCanonicalRecoveryPath(path))
+    || new Set(manifest.paths).size !== manifest.paths.length) {
     throw new TypeError('private recovery manifest must be PRIVATE_RECOVERY_ONLY');
   }
 
   const archivePath = join(dirname(resolvedManifestPath), 'tracked-partnerize-data.tar');
-  let archive;
-  try {
-    archive = await open(archivePath, constants.O_RDONLY | constants.O_NOFOLLOW);
-    const archiveStat = await archive.stat();
-    if (!archiveStat.isFile()) throw new TypeError('private recovery archive must be a regular non-symlink file');
-    const archiveSha256 = sha256(await archive.readFile());
-    if (archiveSha256 !== manifest.archiveSha256) {
-      throw new Error('private recovery archive hash mismatch');
-    }
-    return Object.freeze({ manifestBytes, archiveSha256, archivePath });
-  } catch (error) {
-    if (/private recovery archive/i.test(error.message)) throw error;
-    throw new Error(`private recovery archive unavailable: ${error.message}`);
-  } finally {
-    await archive?.close();
+  const archiveBytes = await readRegularFileNoFollow(archivePath, 'private recovery archive');
+  const archiveSha256 = sha256(archiveBytes);
+  if (archiveSha256 !== manifest.archiveSha256) {
+    throw new Error('private recovery archive hash mismatch');
   }
+  return Object.freeze({
+    manifestBytes,
+    archiveSha256,
+    archivePath,
+    manifestPath: resolvedManifestPath,
+  });
 }
 
 export function buildPrivacySuccessorDescriptor(result) {

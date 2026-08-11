@@ -155,7 +155,7 @@ test('publication boundary rejects private Partnerize data and stale retailer li
   await writeFile(path.join(root, 'pages', 'products', 'leak.html'), `
     <a href="https://prf.hn/click/camref:redacted">Buy</a>
     <a href="https://www.thegoodguys.com.au/private-feed-product">The Good Guys</a>
-    <script type="application/ld+json">{"source":"partnerize-feed"}</script>
+    <script type="application/ld+json">{"commission_exclusion_reason":"private"}</script>
   `);
 
   const result = await auditPublicationBoundary({

@@ -119,6 +119,26 @@ test('public normalization drops the whole retailer fact when only private feed 
   assert.equal(assertNoPrivateRetailerFeedPublication(result), true);
 });
 
+test('public normalization rejects commission exclusions even when source is labelled manual', () => {
+  const result = normalizePublicProduct({
+    id: 'dishwasher-private-commission-term',
+    cat: 'dishwasher',
+    brand: 'A',
+    model: 'M',
+    unavailable: false,
+    retailers: [{
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/example',
+      source: 'manual',
+      commission_exclusion_reason: 'Private Partnerize campaign term',
+    }],
+  });
+
+  assert.deepEqual(result.retailers, []);
+  assert.equal(result.unavailable, true);
+  assert.equal(assertNoPrivateRetailerFeedPublication(result), true);
+});
+
 test('public normalization derives door projection only from explicit 90-degree depth evidence', () => {
   const product = normalizePublicProduct({
     id: 'washer-a',

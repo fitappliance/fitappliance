@@ -2537,7 +2537,7 @@ tracked artifact, public build, rights packet or Fit decision.
 
 ### WP0B-B0/B1 privacy audit-remediation checkpoint - 2026-08-11
 
-**State:** `VERIFIED_LOCAL_COMMIT_READY`. The bounded final review of the
+**State:** `SUPERSEDED_BY_MAX_AUDIT_REPAIR`. The bounded final review of the
 privacy successor found three release-integrity gaps, and the primary review
 found one additional laundering path. All four are closed without changing
 the private-only Partnerize authorization boundary.
@@ -2626,6 +2626,37 @@ push, deployment, promotion or activation occurred.
   missing public inputs.
 
 No push, deployment, signing, promotion or activation occurred in this replay.
+
+### WP0B-B0/B1 independent max-audit repair checkpoint - 2026-08-11
+
+**State:** `IMPLEMENTATION_REPAIRED_PENDING_REPLAY_REVIEW`. The now-available
+independent max reviewer found four remaining privacy and recovery gaps in the
+previous local checkpoint. They are treated as blockers, not as a passed
+review.
+
+- recovery manifests and archives must be regular files opened without
+  following symlinks. Manifest paths must be unique canonical repository-
+  relative paths; absolute paths, empty segments, dot segments, backslashes,
+  NULs and non-NFC forms are rejected;
+- the sanitization transaction now binds old and new hashes, adjacent staging
+  files, and external old-byte backups in a versioned journal. A caught failure
+  restores all targets; a later run also repairs a mixed old/new crash state
+  before retrying. Symlinked targets, staging files, backups or journals fail
+  closed;
+- this is a recoverable, publication-isolated multi-file update, not a claim of
+  filesystem-level multi-file atomicity. Git provenance and static publication
+  gates must reject any uncommitted intermediate tree;
+- manual retailer enrichment, public projection and the static publication
+  audit now share the complete known set of private Partnerize-only field
+  markers, including commission exclusion terms. A manual source label cannot
+  launder those fields into public artifacts;
+- focused regression covers symlink rejection, path escape rejection, failed-
+  rename rollback, mixed-state resume and unchanged-document handling.
+
+The next mandatory sequence is controlled generated-artifact replay, relevant
+regression and audit gates, one bounded re-review by the same max reviewer,
+commit and push. Production deployment remains separately fail-closed until
+the rights registry, withdrawal head and detached authorization gates pass.
 
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 

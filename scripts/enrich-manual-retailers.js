@@ -16,6 +16,28 @@ const CATALOG_FILES = [
   'washing-machines.json',
 ];
 
+const PRIVATE_RETAILER_FIELDS = new Set([
+  'affiliate_campaign',
+  'affiliate_network',
+  'affiliate_url',
+  'camref',
+  'commission_cookie_days',
+  'commission_eligible',
+  'commission_exclusion_reason',
+  'commission_model',
+  'commission_rate_percent',
+  'commission_terms_observed_at',
+  'feed_model',
+  'feed_title',
+  'pubref',
+  'retailer_dimension_hint',
+  'retailer_dimension_hint_catalog_delta_mm',
+  'retailer_dimension_hint_review_required',
+  'retailer_dimension_hint_source_text',
+  'tgg_sku',
+  'tracking_verified_at',
+]);
+
 function normalizeRetailerName(value) {
   return String(value ?? '').trim().toLowerCase();
 }
@@ -35,9 +57,7 @@ function isPrivateRetailerEvidence(retailer) {
     || String(retailer.affiliate_network ?? '').trim().toLowerCase() === 'partnerize'
     || affiliateUrl.includes('prf.hn/click')
     || affiliateUrl.includes('feeds.performancehorizon.com')
-    || retailer.tgg_sku != null
-    || retailer.feed_title != null
-    || retailer.feed_model != null;
+    || Object.keys(retailer).some((key) => PRIVATE_RETAILER_FIELDS.has(key));
 }
 
 function cloneRetailer(retailer) {
@@ -49,18 +69,7 @@ function cloneRetailer(retailer) {
     verified_at: retailer?.verified_at ?? null,
     source: retailer?.source ?? 'manual',
   };
-  for (const key of [
-    'affiliate_url',
-    'affiliate_network',
-    'affiliate_campaign',
-    'camref',
-    'pubref',
-    'tracking_verified_at',
-    'stock',
-    'tgg_sku',
-    'feed_title',
-    'feed_model',
-  ]) {
+  for (const key of ['stock']) {
     const value = retailer?.[key];
     if (value !== undefined && value !== null && value !== '') {
       cloned[key] = String(value).trim();

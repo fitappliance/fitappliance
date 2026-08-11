@@ -20,6 +20,7 @@ const PRIVATE_RETAILER_FEED_KEYS = new Set([
   'camref',
   'commission_cookie_days',
   'commission_eligible',
+  'commission_exclusion_reason',
   'commission_model',
   'commission_rate_percent',
   'commission_terms_observed_at',
