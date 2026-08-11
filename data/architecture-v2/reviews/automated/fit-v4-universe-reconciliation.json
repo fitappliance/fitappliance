@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "policyVersion": "fit-v4-universe-reconciliation-v1",
-  "generatedAt": "2026-07-21T17:47:21.000Z",
+  "generatedAt": "2026-08-10T19:49:54.000Z",
   "releaseBinding": {
-    "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
-    "activatedAt": "2026-07-21T17:47:21.000Z",
-    "catalogSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
-    "historicalReferenceSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882"
+    "releaseCandidateId": "retail_lifecycle_release_30f746d33cd37b95496a9036",
+    "activatedAt": "2026-08-10T19:49:54.000Z",
+    "catalogSha256": "9164a5cb3cc096c23b47b04fe5b55937beaec369d5f1c35646c499f795426af5",
+    "historicalReferenceSha256": "c99ef0ac36db0a307128d32a9afc24473eecdeab8657c709c1153012d7c9dfba"
   },
   "rightsInterface": {
     "status": "BLOCKED",
@@ -30,7 +30,7 @@
     "explicitNonExactMappings": 0,
     "noMappingHistorical": 4577,
     "catalogOnly": 3,
-    "replacementCandidatesEligible": 349,
+    "replacementCandidatesEligible": 117,
     "effectiveAutoFill": 0
   },
   "mappings": [
@@ -26917,8 +26917,14 @@
       "registryModelKey": "CSS556NBD4E",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5faac75847cea56c0fca8133",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:116",
@@ -26971,8 +26977,14 @@
       "registryModelKey": "CTM118DW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_1e206f5a331a51f3b4111d20",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:119",
@@ -27159,8 +27171,14 @@
       "registryModelKey": "CTM347NB5E",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6d7fbc5b457f6ab6a30f8f74",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:129",
@@ -27213,8 +27231,14 @@
       "registryModelKey": "CTM407NB4",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_996b56d5849b3c38bbb89b5f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:132",
@@ -30467,8 +30491,14 @@
       "registryModelKey": "RB90S64MKIW1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c329036fcd9a7e869f97d899",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:295",
@@ -30721,8 +30751,14 @@
       "registryModelKey": "RF500QNUX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_08091b520d2f35b4bdda4dd0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:308",
@@ -30735,8 +30771,14 @@
       "registryModelKey": "RF500QNX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5085deee56fd8e90cf2cbe89",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:309",
@@ -30749,8 +30791,14 @@
       "registryModelKey": "RF505ANUB1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5a2bbfa2159289478833425d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:310",
@@ -30763,8 +30811,14 @@
       "registryModelKey": "RF505ANX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_990b0e29435cd698d4a5a0c4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:311",
@@ -30777,8 +30831,14 @@
       "registryModelKey": "RF505BRNUX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_99ae0cf47f51f2403f9c01a5",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:312",
@@ -30791,8 +30851,14 @@
       "registryModelKey": "RF505BRNX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_de83bf379e08bf767809c755",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:313",
@@ -30865,8 +30931,14 @@
       "registryModelKey": "RF605QDVX2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_79b647df76c64bdcf9d6aee1",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:317",
@@ -30879,8 +30951,14 @@
       "registryModelKey": "RF610ADX5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_16e200af705d96848d550e59",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:318",
@@ -30893,8 +30971,14 @@
       "registryModelKey": "RF730QNUVX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_abcdcf25fb2fa3bf54d9db90",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:319",
@@ -32227,8 +32311,14 @@
       "registryModelKey": "HRF330TG",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_eb1ac66afe14614596d4a989",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:386",
@@ -32341,8 +32431,14 @@
       "registryModelKey": "HRF420BS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_304f8ae0811c2ee504f6cf1f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:392",
@@ -32415,8 +32511,14 @@
       "registryModelKey": "HRF510BHC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_25003e7b5b8b98d96b7fe0c0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:396",
@@ -32429,8 +32531,14 @@
       "registryModelKey": "HRF510BS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_089e3f1040fc9894b9a6ffed",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:397",
@@ -32443,8 +32551,14 @@
       "registryModelKey": "HRF510FHC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a0a425e91fda2e3fc09e7833",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:398",
@@ -32497,8 +32611,14 @@
       "registryModelKey": "HRF575XC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_052919a85140b5eab22c5e60",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:401",
@@ -32511,8 +32631,14 @@
       "registryModelKey": "HRF680YZC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_9c2b3956f8d254c16ae21a93",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:402",
@@ -33707,8 +33833,14 @@
       "registryModelKey": "HRBM503S",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0ab5846810aecec3bf06527a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:463",
@@ -33781,8 +33913,14 @@
       "registryModelKey": "HRCD483G",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_db07939e165f67b569ddaf9c",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:467",
@@ -33795,8 +33933,14 @@
       "registryModelKey": "HRCD483TBW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_1007383838c55161f7d2bc37",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:468",
@@ -33809,8 +33953,14 @@
       "registryModelKey": "HRCD483TSW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_353cb059d1f1779b6ceae322",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:469",
@@ -33903,8 +34053,14 @@
       "registryModelKey": "HRCD610TS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:474",
@@ -33937,8 +34093,14 @@
       "registryModelKey": "HRCD615TBWV",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_95e3b44b273ad188a37e5088",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:476",
@@ -33971,8 +34133,14 @@
       "registryModelKey": "HRCD640TBW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_3c1ffa357f08b7a6a31b9c59",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:478",
@@ -34345,8 +34513,14 @@
       "registryModelKey": "HRFD634BW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0dd7df103229ad7727cd7a55",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:497",
@@ -34399,8 +34573,14 @@
       "registryModelKey": "HRSBS540BW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_81e5a7a087e1c12ec4603dba",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:500",
@@ -34473,8 +34653,14 @@
       "registryModelKey": "HRSBS633BW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_81029b581963bc7baf5dd337",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:504",
@@ -34487,8 +34673,14 @@
       "registryModelKey": "HRSBS649SW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7c855c0a031094e7aec44bcd",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:505",
@@ -34541,8 +34733,14 @@
       "registryModelKey": "HRTF206",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_08df5fafd0483ea667eb268f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:508",
@@ -34555,8 +34753,14 @@
       "registryModelKey": "HRTF325",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7a1394e22ee7510141eb6b2d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:509",
@@ -34629,8 +34833,14 @@
       "registryModelKey": "HRTF497SW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_17033117dd8dab27a7ed952e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:513",
@@ -37751,8 +37961,14 @@
       "registryModelKey": "GB455BLE",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_49fc0ffbeaa9f87742999691",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:670",
@@ -37785,8 +38001,14 @@
       "registryModelKey": "GBV300MBL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_11cbe69b0af1423b1befcc08",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:672",
@@ -37899,8 +38121,14 @@
       "registryModelKey": "GFB505MBL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_1771f539e944fea489dd2ffc",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:678",
@@ -37933,8 +38161,14 @@
       "registryModelKey": "GFB589PLE",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a6bcf8347c9ebea3e2293d7f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:680",
@@ -38047,8 +38281,14 @@
       "registryModelKey": "GFL700PL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_11ffa98746c515ba2ca419ca",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:686",
@@ -38081,8 +38321,14 @@
       "registryModelKey": "GFLN500MBL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_bc875abc81c2707ab1408408",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:688",
@@ -38135,8 +38381,14 @@
       "registryModelKey": "GFV500MBLC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:691",
@@ -38229,8 +38481,14 @@
       "registryModelKey": "GFV900MBLC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_01d5185431009397508769d2",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:696",
@@ -38343,8 +38601,14 @@
       "registryModelKey": "GSB599PL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_869851a1bac9b3b1017cae00",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:702",
@@ -38497,8 +38761,14 @@
       "registryModelKey": "GSN599PL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7599df17f78e36f6d7028d04",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:710",
@@ -38531,8 +38801,14 @@
       "registryModelKey": "GSV600MBLC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6dcc63b63357bdc04ed74847",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:712",
@@ -38625,8 +38901,14 @@
       "registryModelKey": "GT1SI",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c96490d9a4bc1eae75be731e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:717",
@@ -45679,8 +45961,14 @@
       "registryModelKey": "GGSTM266B",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_162cf9c0b12b4a2f0b588db6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1070",
@@ -46773,8 +47061,14 @@
       "registryModelKey": "P220TMW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_54d65783e57faf44a4c65a26",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1125",
@@ -46867,8 +47161,14 @@
       "registryModelKey": "P454TMB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2fe70f2a5e8746f401b241c9",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1130",
@@ -46961,8 +47261,14 @@
       "registryModelKey": "TRF445BB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_3082fc2370739093b28a6ec5",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1135",
@@ -49055,8 +49361,14 @@
       "registryModelKey": "WHE5600SD",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_3b058f8ba77c1ce64e650221",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1240",
@@ -49069,8 +49381,14 @@
       "registryModelKey": "WHE5650SD",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_71ab3a93124599360e847fcc",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1241",
@@ -49123,8 +49441,14 @@
       "registryModelKey": "WHE6170SB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0104ed72dd7e0c65ac094179",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1244",
@@ -49317,8 +49641,14 @@
       "registryModelKey": "WQE5400SD",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7733fd8ec1397b384bb8031e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1254",
@@ -49411,8 +49741,14 @@
       "registryModelKey": "WQE5700BD",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c3d4f5b9c67652f0275943fe",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1259",
@@ -49425,8 +49761,14 @@
       "registryModelKey": "WQE5750BB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6728c7ac996fcf304f365f0f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1260",
@@ -49499,8 +49841,14 @@
       "registryModelKey": "WQE6170BB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c8514fc95f69f69afdd33075",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1264",
@@ -49713,8 +50061,14 @@
       "registryModelKey": "WSE6200SB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b23021ddaa867704ca4a34c8",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1275",
@@ -49727,8 +50081,14 @@
       "registryModelKey": "WSE6200WB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a53b5396bb62baffbf2f9c7e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1276",
@@ -51575,8 +51935,14 @@
       "registryModelKey": "DBI364IDWAU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_baac6bfa3e68e8940c7465e6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1369",
@@ -51989,8 +52355,14 @@
       "registryModelKey": "BDFB1410X",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b0c98efa1fe4d75893ccf11e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1390",
@@ -53043,8 +53415,14 @@
       "registryModelKey": "ESF97400RKX",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_53bf59179578a7770519addf",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1443",
@@ -53057,8 +53435,14 @@
       "registryModelKey": "ESL79200RO",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_701f0289b839f1dc9ec22bbd",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1444",
@@ -53751,8 +54135,14 @@
       "registryModelKey": "DD60D4ZB9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_f8f39cf129071342dfdd355a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1479",
@@ -53825,8 +54215,14 @@
       "registryModelKey": "DD60DI9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_8adf1afdb4033a49ee4f54ad",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1483",
@@ -53839,8 +54235,14 @@
       "registryModelKey": "DD60DTX6I1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b7abbc2679a9f4713028f778",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1484",
@@ -53933,8 +54335,14 @@
       "registryModelKey": "DD60ST4ZB9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_425fbafb959841f0fbec2768",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1489",
@@ -53947,8 +54355,14 @@
       "registryModelKey": "DD60STI9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_12fa7a97c84ea65bb1b2a193",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1490",
@@ -53961,8 +54375,14 @@
       "registryModelKey": "DD60STX6I1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_54e551f7ae9f1191c4a42649",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1491",
@@ -54075,8 +54495,14 @@
       "registryModelKey": "DW60U2I2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_918bae231e94453aabc0457a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1497",
@@ -54149,8 +54575,14 @@
       "registryModelKey": "DW60UT4I2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5ce4ecf4af7b8feaf3401da0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1501",
@@ -54163,8 +54595,14 @@
       "registryModelKey": "DW60UZT4B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7e312f14aea67ef7ad49344a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1502",
@@ -54417,8 +54855,14 @@
       "registryModelKey": "HDW10F1S1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_87138c50bc0c3ed5e334eb48",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1515",
@@ -54471,8 +54915,14 @@
       "registryModelKey": "HDW15F1B1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_139b3d46667f01ed640fd337",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1518",
@@ -54485,8 +54935,14 @@
       "registryModelKey": "HDW15F3S1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_305fb25e88cf7bd7c30a449b",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1519",
@@ -54499,8 +54955,14 @@
       "registryModelKey": "HDW15F4B1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6f82241d306341cc2ed04d32",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1520",
@@ -54513,8 +54975,14 @@
       "registryModelKey": "HDW15U2I1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_8799d0d763798612cece5cf0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1521",
@@ -54587,8 +55055,14 @@
       "registryModelKey": "HS9B16FB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_9c00040582e400077dbb4719",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1525",
@@ -55275,8 +55749,14 @@
       "registryModelKey": "XD3A25UMB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_8a01d125e2690cf8464d28a9",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1560",
@@ -56383,8 +56863,14 @@
       "registryModelKey": "ODWF6014X",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_f45af278983267f5182e17fa",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1616",
@@ -56837,8 +57323,14 @@
       "registryModelKey": "DWA615DX3",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_eec6a94ecef8c54756fe5e46",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1639",
@@ -56891,8 +57383,14 @@
       "registryModelKey": "DWA6224X4",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b6474f1f69be9de6f585e804",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1642",
@@ -56905,8 +57403,14 @@
       "registryModelKey": "DWA6234X4",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_3890c0f95db68c51be16d4eb",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1643",
@@ -57019,8 +57523,14 @@
       "registryModelKey": "DWAU6D15XT3",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c57a3018c1108b210c3a5617",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1649",
@@ -57293,8 +57803,14 @@
       "registryModelKey": "TGDW6BK2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_308e4ad013001501a5dca955",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1663",
@@ -58207,8 +58723,14 @@
       "registryModelKey": "EDV605H3WC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_ab912480113732d0bfee93f4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1709",
@@ -58221,8 +58743,14 @@
       "registryModelKey": "EDV705H3WC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_38b52985ba83d88c1c5ccd2d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1710",
@@ -59175,8 +59703,14 @@
       "registryModelKey": "GGSVD8W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2e7aed66bf7ceee5e5544ed4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1758",
@@ -59189,8 +59723,14 @@
       "registryModelKey": "GGSVDE45W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_be73fa72cacdf8e091c09b38",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1759",
@@ -60183,8 +60723,14 @@
       "registryModelKey": "WFL100TDW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2d188ef7ee685abcfc8bfcd5",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1809",
@@ -61317,8 +61863,14 @@
       "registryModelKey": "WH1160HG1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_4235122c25bc5702539b6ebe",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1866",
@@ -61411,8 +61963,14 @@
       "registryModelKey": "WL1064G1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_fc688712a6abe43e6ed2293f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1871",
@@ -61445,8 +62003,14 @@
       "registryModelKey": "WL1264P1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_427fb406da2fb76a2d4fc5e0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1873",
@@ -61459,8 +62023,14 @@
       "registryModelKey": "WL8058G1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_99d641481d22e0e2b4c7fe32",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1874",
@@ -61473,8 +62043,14 @@
       "registryModelKey": "WL9058G1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_00ac440236409a9bb13c5fc8",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1875",
@@ -61847,8 +62423,14 @@
       "registryModelKey": "HWF5I1215",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_1320d0a02c0ddd2278437090",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1894",
@@ -61901,8 +62483,14 @@
       "registryModelKey": "HWF8I1015BX",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_42626b1ccba316dadd74c395",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1897",
@@ -62975,8 +63563,14 @@
       "registryModelKey": "WTG7520",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_d1cd38c0c07a2c3988923777",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1951",
@@ -63149,8 +63743,14 @@
       "registryModelKey": "WTX308W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a6b61cdaa805c37a177f42bc",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1960",
@@ -63163,8 +63763,14 @@
       "registryModelKey": "WTX309G",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_45619a894d2108cea1c77b4e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1961",
@@ -63197,8 +63803,14 @@
       "registryModelKey": "WTX914W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6aaee801fc788ee5555c5525",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1963",
@@ -63611,8 +64223,14 @@
       "registryModelKey": "WX31208W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_03e5fef4c14293b2677c3376",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1984",
@@ -63645,8 +64263,14 @@
       "registryModelKey": "WX31409W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_00f53227ca96e0b36b316ef4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1986",
@@ -63659,8 +64283,14 @@
       "registryModelKey": "WX31410W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_90ca6efa137425f6ee092550",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:1987",
@@ -66213,8 +66843,14 @@
       "registryModelKey": "GGSFLW6002W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_ba9ed432e1b519076e93df06",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2115",
@@ -66247,8 +66883,14 @@
       "registryModelKey": "GGSFLW8002W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_9de39e5ffcdc631c416c730d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2117",
@@ -66301,8 +66943,14 @@
       "registryModelKey": "GGSFLW9002B",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_39c4d890655affcd6eb41d8b",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2120",
@@ -66355,8 +67003,14 @@
       "registryModelKey": "GGSTLW100RCW2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_64feaed318341c4033dff86b",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2123",
@@ -66429,8 +67083,14 @@
       "registryModelKey": "GGSTLW70RC2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_daf7c2c41d750029e7627e83",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2127",
@@ -67571,8 +68231,14 @@
       "registryModelKey": "WWT6084J5WA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6c9fbb0ad07eebf735e5d970",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2185",
@@ -67585,8 +68251,14 @@
       "registryModelKey": "WWT7084J5WA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b67bd698c11568baf74d02b7",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2186",
@@ -67759,8 +68431,14 @@
       "registryModelKey": "WWT1910BX",
       "mappingDisposition": "NO_MAPPING",
       "historicalReferenceId": null,
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2195",
@@ -67773,8 +68451,14 @@
       "registryModelKey": "WWT1910FGX",
       "mappingDisposition": "NO_MAPPING",
       "historicalReferenceId": null,
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2196",
@@ -68115,8 +68799,14 @@
       "registryModelKey": "BDFB1410W",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_449101595b7730315582eb24",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2214",
@@ -70109,8 +70799,14 @@
       "registryModelKey": "DD60D2NB9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_bff29a8a6a6e257bb854e786",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2317",
@@ -70123,8 +70819,14 @@
       "registryModelKey": "DD60D2NX9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_9f93a5de01d06db7b9bc6f8f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2318",
@@ -70137,8 +70839,14 @@
       "registryModelKey": "DD60D4NB9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b3c5fff0b169a8e2dac9bc25",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2319",
@@ -70151,8 +70859,14 @@
       "registryModelKey": "DD60D4NX9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_566e36dba9cb7c9ee370e5e1",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2320",
@@ -70165,8 +70879,14 @@
       "registryModelKey": "DD60SCX9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_989a90fd26cef5186c53f412",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2321",
@@ -70213,8 +70933,14 @@
       "registryModelKey": "DD60ST4NB9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_61a6dd8f7fe4d41ee4d51bea",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2324",
@@ -70227,8 +70953,14 @@
       "registryModelKey": "DD60ST4NX9",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_56e05e7bf5832cc044fab0ab",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2325",
@@ -70381,8 +71113,14 @@
       "registryModelKey": "DE6060M2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_f289ada69d2bc793e73b83da",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2333",
@@ -70435,8 +71173,14 @@
       "registryModelKey": "DE7060G2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_fe571d1690658ccf55c12d64",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2336",
@@ -70649,8 +71393,14 @@
       "registryModelKey": "DH1060DG5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b9438874fce0f25b26e16993",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2347",
@@ -70663,8 +71413,14 @@
       "registryModelKey": "DH1060RG5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a1437436089d1eb6007e814a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2348",
@@ -70677,8 +71433,14 @@
       "registryModelKey": "DH8060J5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_34601f00c17825bfd5a8ca86",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2349",
@@ -70711,8 +71473,14 @@
       "registryModelKey": "DH8060P5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_72ba7ca17dd5af4443546ffc",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2351",
@@ -70745,8 +71513,14 @@
       "registryModelKey": "DH9060H1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_1ff73a2eab82a5cba3400c5e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2353",
@@ -70779,8 +71553,14 @@
       "registryModelKey": "DH9060HLG1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0f82e88d60c4d93981eeb0bc",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2355",
@@ -70993,8 +71773,14 @@
       "registryModelKey": "DV90BB9440GB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7755d327dbeb27d150333b8c",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2366",
@@ -71007,8 +71793,14 @@
       "registryModelKey": "DV90BB9440GH",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_af50d08e37651fa64382e235",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2367",
@@ -71041,8 +71833,14 @@
       "registryModelKey": "DVH108WP",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7aead6dc34c0fe035e925c12",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2369",
@@ -71355,8 +72153,14 @@
       "registryModelKey": "DW60FC1B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0355d23b2ee1e3aa50e64456",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2385",
@@ -71389,8 +72193,14 @@
       "registryModelKey": "DW60FC1X3",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_454ae2070d059e5af90697b3",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2387",
@@ -71403,8 +72213,14 @@
       "registryModelKey": "DW60FC2B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_de6f530979a34f6ea2a4ae31",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2388",
@@ -71457,8 +72273,14 @@
       "registryModelKey": "DW60FC2X3",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b350102a262b776a4f88199c",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2391",
@@ -71471,8 +72293,14 @@
       "registryModelKey": "DW60FC4B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5c0c2f3483d83ab97532a7ce",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2392",
@@ -71585,8 +72413,14 @@
       "registryModelKey": "DW60U4I2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_f57a1d0027332b6e4d827e24",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2398",
@@ -71627,8 +72461,14 @@
       "registryModelKey": "DW60UN2B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_24318a58bc96e85d6e24dc93",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2401",
@@ -71641,8 +72481,14 @@
       "registryModelKey": "DW60UN2X2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2da1122458a8e7c3241274d4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2402",
@@ -71655,8 +72501,14 @@
       "registryModelKey": "DW60UN4B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_86e4464bb89935d2003a0a20",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2403",
@@ -71669,8 +72521,14 @@
       "registryModelKey": "DW60UN4X2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c8140287c8195005e28fcfec",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2404",
@@ -71683,8 +72541,14 @@
       "registryModelKey": "DW60UNT4B2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_4920645753c9226532acd37a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2405",
@@ -71697,8 +72561,14 @@
       "registryModelKey": "DW60UNT4X2",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2e5a6fd65d68ea8c19e2c373",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2406",
@@ -72459,8 +73329,14 @@
       "registryModelKey": "DWAU615DB3",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_3e5c521a27340879d0163005",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2445",
@@ -72473,8 +73349,14 @@
       "registryModelKey": "DWAU615DX3",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_56d671156f9d207cbcf31bd6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2446",
@@ -76525,8 +77407,14 @@
       "registryModelKey": "GFL500MWH",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_702af8ff20fd7aa91a3e5457",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2657",
@@ -76613,8 +77501,14 @@
       "registryModelKey": "GFV700BSLC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_42633e3a0e381d885501a3a3",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2662",
@@ -76741,8 +77635,14 @@
       "registryModelKey": "GSB599MBL",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_928cbce24a6409f49fdb8079",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2669",
@@ -77477,8 +78377,14 @@
       "registryModelKey": "HDW13F0B1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_48ed60df19666622e4675c7e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2707",
@@ -77605,8 +78511,14 @@
       "registryModelKey": "HDW15F1S1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_137bbd7d1870b0e5467ded87",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2714",
@@ -77619,8 +78531,14 @@
       "registryModelKey": "HDW15F2B1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0a57f065095267779f5c4a25",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2715",
@@ -77633,8 +78551,14 @@
       "registryModelKey": "HDW15F2S1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7464673c55960e21e29cab3a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2716",
@@ -77647,8 +78571,14 @@
       "registryModelKey": "HDW15F3B1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_fb3d38ea98c0a7a389d812c8",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2717",
@@ -77701,8 +78631,14 @@
       "registryModelKey": "HDW15U3B1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_72315add7bf0cba64b42d65a",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2720",
@@ -77715,8 +78651,14 @@
       "registryModelKey": "HDW15U3S1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_da275f82fa4b501b6c070049",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2721",
@@ -78829,8 +79771,14 @@
       "registryModelKey": "HRAF242",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7e6292f1ca6f19e61575408f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2777",
@@ -79225,8 +80173,14 @@
       "registryModelKey": "HRF420BC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a97a2f89fb8cb87c4cdbfcb6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2798",
@@ -79401,8 +80355,14 @@
       "registryModelKey": "HRF510FHS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a330709b5aa3c5d0f9e8c444",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2808",
@@ -79595,8 +80555,14 @@
       "registryModelKey": "HRF580YHC",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7815e52e51f6b1e204354b2b",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2818",
@@ -80205,8 +81171,14 @@
       "registryModelKey": "HWF3S7514X",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2e9f6a627a0f32c442e19d94",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2850",
@@ -80219,8 +81191,14 @@
       "registryModelKey": "HWF3S8514X",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2851",
@@ -80233,8 +81211,14 @@
       "registryModelKey": "HWF5I1015",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_77aa37d3c00ecbafa5175c65",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2852",
@@ -80887,8 +81871,14 @@
       "registryModelKey": "KFD96AXEAA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0ebeeda61dda6e8bd615e14d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2885",
@@ -80921,8 +81911,14 @@
       "registryModelKey": "KFN96AXEAA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_d92c861c9dad5d633c612981",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2887",
@@ -80935,8 +81931,14 @@
       "registryModelKey": "KFN96VPEAA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_74619f76a94becad9e9993d0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2888",
@@ -82427,8 +83429,14 @@
       "registryModelKey": "P445BFG",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_bf285ec63993774e31f70e90",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2965",
@@ -82935,8 +83943,14 @@
       "registryModelKey": "RF505ANUX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_459121819909eec43e80f68d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:2991",
@@ -83403,8 +84417,14 @@
       "registryModelKey": "RF605QNUVB1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_95b66a122be871462ab3fa36",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3015",
@@ -83417,8 +84437,14 @@
       "registryModelKey": "RF605QNUVX1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_23b1072c79197cf384967575",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3016",
@@ -83431,8 +84457,14 @@
       "registryModelKey": "RF605QZUVB1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_63338b5d1bf869db290d3467",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3017",
@@ -83553,8 +84585,14 @@
       "registryModelKey": "RF610ANUB5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_4d8dac94ed27e905f8dc86cd",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3024",
@@ -83567,8 +84605,14 @@
       "registryModelKey": "RF610ANUX5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_37b87992b5c207176f912ef4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3025",
@@ -83581,8 +84625,14 @@
       "registryModelKey": "RF610AZUB5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_f6c2ca438f9b9f201b509477",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3026",
@@ -83595,8 +84645,14 @@
       "registryModelKey": "RF730QNUVB1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0fc3d66e9834ea3110807766",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3027",
@@ -83609,8 +84665,14 @@
       "registryModelKey": "RF730QZUVB1",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_39c570597a85d6be840c478f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3028",
@@ -84105,8 +85167,14 @@
       "registryModelKey": "SBI8ECS01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_46de0c84084926584c2d7b99",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3057",
@@ -84139,8 +85207,14 @@
       "registryModelKey": "SBT8ZC801A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_44a60c8ac3dbda0c427ed8fa",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3059",
@@ -84293,8 +85367,14 @@
       "registryModelKey": "SMI4HTS01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_65d7375cbcbcd7450d5b8de3",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3067",
@@ -84541,8 +85621,14 @@
       "registryModelKey": "SMP6HCB01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_778d660a2ada75ab06ff75aa",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3080",
@@ -84575,8 +85661,14 @@
       "registryModelKey": "SMS24AI01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_241b7aa2c67fa72ea85ea990",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3082",
@@ -84589,8 +85681,14 @@
       "registryModelKey": "SMS2ITI02A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_d9d497c3cc2291e3e179b336",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3083",
@@ -84603,8 +85701,14 @@
       "registryModelKey": "SMS2ITW01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_ff00493c5774eb1d00c9c4b0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3084",
@@ -84717,8 +85821,14 @@
       "registryModelKey": "SMS4HTI01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_85e1c60426153e99cfbe2dcf",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3090",
@@ -84731,8 +85841,14 @@
       "registryModelKey": "SMS4HVB01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_524c98885e79f862cc1a2aca",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3091",
@@ -84745,8 +85861,14 @@
       "registryModelKey": "SMS4HVI01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_e8810797b0168bc5b851bc12",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3092",
@@ -85019,8 +86141,14 @@
       "registryModelKey": "SMS6HAI02A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7d285e9c168e13cd0922c846",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3106",
@@ -85033,8 +86161,14 @@
       "registryModelKey": "SMS6HCB01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_c9907140ed9c7ef9ae6d7cd5",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3107",
@@ -85087,8 +86221,14 @@
       "registryModelKey": "SMS6HCI02A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5d80bf5c6d9510aa761f02a0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3110",
@@ -85175,8 +86315,14 @@
       "registryModelKey": "SMT8ZC801A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7c99fd7cfe73a7ebe8eb4c8e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3115",
@@ -85229,8 +86375,14 @@
       "registryModelKey": "SMU4HTS01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_fcc3a4f2af8d14c8c43f1d26",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3118",
@@ -85243,8 +86395,14 @@
       "registryModelKey": "SMU4HVS01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_536bd189d68f36fa349d167c",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3119",
@@ -85471,8 +86629,14 @@
       "registryModelKey": "SMU6HCS01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_bf3696c88e5aec6d5404284e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3131",
@@ -85625,8 +86789,14 @@
       "registryModelKey": "SMV4HTX01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2e67cb7ae20abdd380079383",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3139",
@@ -85799,8 +86969,14 @@
       "registryModelKey": "SPS6IKI01A",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_20206e910331934b9635fb92",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3148",
@@ -86127,8 +87303,14 @@
       "registryModelKey": "SRF5300SD",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_988c48ab891f6400e4b6a637",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3165",
@@ -86401,8 +87583,14 @@
       "registryModelKey": "SRF7500BB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_4414a56a5a364e5e78412031",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3179",
@@ -86435,8 +87623,14 @@
       "registryModelKey": "SRF7900BFH",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a30d97e8b5d66df690298a53",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3181",
@@ -86469,8 +87663,14 @@
       "registryModelKey": "SRF9400BFH",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_52a2ba13254bf6b4a1572bed",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3183",
@@ -86497,8 +87697,14 @@
       "registryModelKey": "SRF9800BFH",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_998274b933c86670d842a3f4",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3185",
@@ -86545,8 +87751,14 @@
       "registryModelKey": "SRL4200B",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_69115d64d7661cac09bb1628",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3188",
@@ -87481,8 +88693,14 @@
       "registryModelKey": "WAN28227AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6c80d8adbba8ba64a93d41de",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3236",
@@ -87495,8 +88713,14 @@
       "registryModelKey": "WAN28288AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7e2dd65af9e61749792759f6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3237",
@@ -88977,8 +90201,14 @@
       "registryModelKey": "WDV457H3WB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_cca0e127586860245c4be757",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3312",
@@ -89345,8 +90575,14 @@
       "registryModelKey": "WGG24403AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2b33eab14b5ba801450a6ac9",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3331",
@@ -89379,8 +90615,14 @@
       "registryModelKey": "WGG2441RAU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_135d961a7689550d811a2896",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3333",
@@ -89433,8 +90675,14 @@
       "registryModelKey": "WGG244A1AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_261e15b924e4f3e4d4a1e7c7",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3336",
@@ -89467,8 +90715,14 @@
       "registryModelKey": "WGG254Z1AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_d8ca96fe204b31b85a644ce6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3338",
@@ -89481,8 +90735,14 @@
       "registryModelKey": "WH1060DG5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_90fc8a14a91c4647f92d2174",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3339",
@@ -89495,8 +90755,14 @@
       "registryModelKey": "WH1060P5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b75d68ac2af262e6fe53a3b9",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3340",
@@ -89569,8 +90835,14 @@
       "registryModelKey": "WH1260DG5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_2dce716d84b8685ff21cef84",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3344",
@@ -89683,8 +90955,14 @@
       "registryModelKey": "WH1260RG5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_f69519c3a0704595e291379f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3350",
@@ -89817,8 +91095,14 @@
       "registryModelKey": "WH8060J5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_aadd3635eb4b4dd65bcc27b8",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3357",
@@ -89911,8 +91195,14 @@
       "registryModelKey": "WH9060P5",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_dae0d6eaef8645eab79f97ba",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3362",
@@ -90315,8 +91605,14 @@
       "registryModelKey": "WQE4960BA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_a4af37af5356d5f28042c13e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3384",
@@ -90409,8 +91705,14 @@
       "registryModelKey": "WQG235D8AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_22d30e11b3c02bc82ae65904",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3389",
@@ -90423,8 +91725,14 @@
       "registryModelKey": "WQG235DRAU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_bd23104d694c57a5bf4b2a47",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3390",
@@ -90437,8 +91745,14 @@
       "registryModelKey": "WQG24200AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6d746dc359aefbbc5a22fd20",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3391",
@@ -90451,8 +91765,14 @@
       "registryModelKey": "WQG24201AU",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_7f66f7da8299455969feea69",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3392",
@@ -90645,8 +91965,14 @@
       "registryModelKey": "WSE6670BA",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_d24c8b3ed352b75649ce7c6e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3402",
@@ -92201,8 +93527,14 @@
       "registryModelKey": "WW11CG60ADLE",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_4f3e38384076bca80a76e0a0",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3481",
@@ -92475,8 +93807,14 @@
       "registryModelKey": "WW90DG6U3ALB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_5eb7748103cd8267f3cd1f83",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3495",
@@ -92489,8 +93827,14 @@
       "registryModelKey": "WW90DG6U3ALE",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_0d8b341d79a8284a52a83ce6",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3496",
@@ -92577,8 +93921,14 @@
       "registryModelKey": "XD2A25MB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_b37a483d902f4f65f2653bff",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3501",
@@ -92611,8 +93961,14 @@
       "registryModelKey": "XD3A15MB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_8367b21520f3b62420993c9d",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3503",
@@ -92625,8 +93981,14 @@
       "registryModelKey": "XD3A15NS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_ae9f146cced7ec46bb84aba2",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3504",
@@ -92659,8 +94021,14 @@
       "registryModelKey": "XD3A25MB",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_947f1dfc695bdad623d85db7",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3506",
@@ -92673,8 +94041,14 @@
       "registryModelKey": "XD3A25MW",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_aa8e6ee287679805e6c4c74e",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3507",
@@ -92741,8 +94115,14 @@
       "registryModelKey": "XD4B24PS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_69267af0c13e5f5c03fc9bcc",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3511",
@@ -92755,8 +94135,14 @@
       "registryModelKey": "XD5B14PS",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_6b8f6dee4db0f665d00157a3",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     },
     {
       "rowIdentity": "CATALOG:3512",
@@ -92769,8 +94155,14 @@
       "registryModelKey": "XD5B14WH",
       "mappingDisposition": "EXACT_SAME_MODEL",
       "historicalReferenceId": "fa_ref_470bf4d92fee28294efced0f",
-      "replacementCandidateEligible": true,
-      "replacementCandidateReasonCodes": []
+      "replacementCandidateEligible": false,
+      "replacementCandidateReasonCodes": [
+        "NOT_CURRENT_OUTPUT",
+        "CURRENT_RETAIL_LIFECYCLE_MISSING",
+        "CANONICAL_PRODUCT_ID_MISMATCH",
+        "AUTHORIZING_OBSERVATION_INELIGIBLE",
+        "AUTHORIZING_SOURCE_HASH_INVALID"
+      ]
     }
   ],
   "historicalRows": [
@@ -222255,5 +223647,5 @@
       ]
     }
   ],
-  "semanticSha256": "519cf85e8121ea25d50dbbfaeee161636fc4564e1574369745d903d93dac397f"
+  "semanticSha256": "339af6f5f72265cee01b5f63caf108ca0076f5b63c4cbf1570bcecea31f9f42a"
 }

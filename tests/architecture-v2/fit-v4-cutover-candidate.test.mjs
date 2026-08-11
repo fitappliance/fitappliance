@@ -59,12 +59,12 @@ test('rebuilds a deterministic, fully blocked, non-public cutover candidate', as
   assert.equal(first.deltas.deployment.changed, false);
   assert.equal(first.isolation.publicMutation, false);
   assert.equal(first.rollback.proofType, 'PRIVATE_POINTER_REHEARSAL_ONLY');
-  assert.equal(first.bindings.publicTree.treeSha256, 'b9ee61351177e40f5a10a3e89647646d9b3a1e69587b57f1547500f3466732cf');
-  assert.equal(first.bindings.deploymentSurface.treeSha256, '3a978d666e292c4cc14e59a54e0e23e37d91ab7800d4172cef06a2df3d08f60e');
-  assert.equal(first.bindings.deploymentSurface.fileCount, 3290);
-  assert.equal(first.bindings.routeInventory.semanticSha256, 'f68cbec7b3119c58284b46ff167291b4139aafd275f9c8356190fbcd241b525a');
-  assert.equal(first.bindings.sitemap.bytesSha256, '2128a39c323e4deb59734cec22617c89013386cba4b6ae1bca685b78880768cc');
-  assert.equal(first.bindings.publicDataTree.treeSha256, '02747d05126140c2df9cafcff052dd60d8f694cec4fe9fccad32eaf8131811f4');
+  assert.equal(first.bindings.publicTree.treeSha256, '37c339c49719249e74f207705911a35fb6cc99c5647710d99edd4fb5923cacd7');
+  assert.equal(first.bindings.deploymentSurface.treeSha256, 'ca1c47034eb5b2cd33dba80ae1334487ea723547b041723cd822a46230a68e27');
+  assert.equal(first.bindings.deploymentSurface.fileCount, 3293);
+  assert.equal(first.bindings.routeInventory.semanticSha256, '86b42dadcb952d01afabd40b51a1948804a62d39fdfea5381cca5581590124d6');
+  assert.equal(first.bindings.sitemap.bytesSha256, '5b2cb9c65acdcdc59bc790fe4f071852196e4cb88d17dc680c8b59a165def9b3');
+  assert.equal(first.bindings.publicDataTree.treeSha256, 'c2bc01d73ddd3ed1aaf4e2d88b07bec8b59839ecda77f731f8b9b00ce58baa4f');
   assert.equal(first.bindings.calibrationLabelRegistry.registrySha256, first.bindings.calibrationManifest.labelRegistrySha256);
   const boundControlPaths = new Set(first.bindings.v4ControlSources.map((row) => row.path));
   for (const path of [
@@ -79,7 +79,15 @@ test('rebuilds a deterministic, fully blocked, non-public cutover candidate', as
     acceptedAsFitV4: false,
     reasonCode: 'DIFFERENT_CANDIDATE_AND_TEST_SCOPE',
   });
-  assert.equal(first.bindings.priorRetailLifecycleBrowserQa.candidateReleaseId, first.bindings.activeRelease.releaseCandidateId);
+  const activeDescriptor = JSON.parse(await readFile(resolve(ROOT, 'data/architecture-v2/decisions/active-retail-release.json')));
+  assert.equal(
+    first.bindings.priorRetailLifecycleBrowserQa.candidateReleaseId,
+    activeDescriptor.predecessorReleaseCandidateId,
+  );
+  assert.notEqual(
+    first.bindings.priorRetailLifecycleBrowserQa.candidateReleaseId,
+    first.bindings.activeRelease.releaseCandidateId,
+  );
   const laundryBranchBlocker = first.blockers.find((row) => row.code === 'NO_SUPPORTED_LAUNDRY_BRANCHES');
   assert.equal(laundryBranchBlocker.observed, first.cohorts.laundry.summary.policyBranchCoverage.supported);
   assert.equal(laundryBranchBlocker.required, first.cohorts.laundry.summary.policyBranchCoverage.total);

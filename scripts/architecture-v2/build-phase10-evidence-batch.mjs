@@ -14,6 +14,7 @@ const [input, catalog, sourceRegistry, phase08] = await Promise.all([
 ]);
 const output = buildActiveEvidenceBatch({
   selectedAt: input.selectedAt,
+  selectionBasis: input.selectionBasis,
   selectedLegacyIds: input.legacyRuntimeIds,
   products: catalog.products,
   sourceDocuments: sourceRegistry.documents,

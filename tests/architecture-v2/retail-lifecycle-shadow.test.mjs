@@ -12,6 +12,7 @@ import {
 } from '../../src/domain/retail-lifecycle-shadow.mjs';
 import { buildRetailerObservationLedger } from '../../src/domain/retailer-observation-ledger.mjs';
 import { normalizeRetailerSnapshot } from '../../src/domain/retailer-source-adapter.mjs';
+import { sanitizePrivateRetailerFeedPublication } from '../../src/domain/public-projection.mjs';
 
 const hash = (value) => createHash('sha256').update(value).digest('hex');
 
@@ -421,12 +422,7 @@ test('a lifecycle-neutral safety release may remove private feed data but no unr
     latestObservations: [{ sourceType: 'affiliate_feed' }],
   };
   baseline.products[0].lifecycleVisibility = 'CURRENT_OUTPUT';
-  const candidate = structuredClone(baseline);
-  candidate.products[0].retailers = [];
-  candidate.products[0].unavailable = true;
-  candidate.products[0].price = null;
-  delete candidate.products[0].retailLifecycle;
-  delete candidate.products[0].lifecycleVisibility;
+  const candidate = sanitizePrivateRetailerFeedPublication(baseline);
   const baselineBytes = `${JSON.stringify(baseline, null, 2)}\n`;
   const reboundMarket = marketLifecycle(baseline);
   const reboundShadow = buildRetailLifecycleShadow({

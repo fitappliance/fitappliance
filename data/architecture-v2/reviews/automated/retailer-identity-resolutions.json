@@ -3,8 +3,8 @@
   "policyVersion": "retailer-identity-resolution-v2",
   "generatedAt": "2026-07-21T12:12:18.070Z",
   "sourceBindings": {
-    "refreshInventorySemanticSha256": "fc38b0ac452d2a201bafe7f0b7e35263a89574617f5885127cde826614099dae",
-    "publicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+    "refreshInventorySemanticSha256": "b7379a4946d6be9a21428088a8c1458d5adb75f77fbbf6ed6a4a1c337b458b09",
+    "publicProjectionSemanticSha256": "fd7fc1c8828d1b2707067d148da2caa1cb46911e0f50397e0f1486949fa941c1",
     "registrySnapshots": {
       "energy-rating:dishwasher": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
       "energy-rating:dryer": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
@@ -15,7 +15,7 @@
   },
   "cases": [
     {
-      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "resolutionTaskId": "retail_resolution_8c0363b250389e76d2ed1312",
       "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
       "legacyRuntimeId": "f3",
       "expectedIdentity": {
@@ -24,34 +24,6 @@
         "model": "RF730QZUVX1 French Door 726L"
       },
       "mismatchSources": [
-        {
-          "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
-          "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-          "receivedModel": "RF730QZUVB1",
-          "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-          "listingFact": {
-            "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-            "adapterId": "the-good-guys-partnerize-feed-v1",
-            "retailer": "The Good Guys",
-            "sourceType": "affiliate_feed",
-            "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
-            "expectedCadenceHours": 24,
-            "maximumCurrentAgeHours": 72,
-            "observedAt": "2026-07-20T19:43:11.969Z",
-            "rawSourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-            "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-            "receivedModel": "RF730QZUVB1",
-            "receivedUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
-            "availability": "available",
-            "listingState": "current",
-            "priceAud": 3999,
-            "title": "Fisher & Paykel 690L Quad Door Refrigerator",
-            "imageUrl": null,
-            "retailerProductId": "50078267"
-          }
-        },
         {
           "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
           "retailer": "Appliances Online",
@@ -108,31 +80,6 @@
         "targetCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
         "linkDispositions": [
           {
-            "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-            "action": "REASSIGN_TO_EXISTING_CANONICAL",
-            "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
-            "resolvedListingFact": {
-              "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-              "adapterId": "the-good-guys-partnerize-feed-v1",
-              "retailer": "The Good Guys",
-              "sourceType": "affiliate_feed",
-              "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
-              "expectedCadenceHours": 24,
-              "maximumCurrentAgeHours": 72,
-              "observedAt": "2026-07-20T19:43:11.969Z",
-              "rawSourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-              "receivedModel": "RF730QZUVB1",
-              "receivedUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
-              "availability": "available",
-              "listingState": "current",
-              "priceAud": 3999,
-              "title": "Fisher & Paykel 690L Quad Door Refrigerator",
-              "imageUrl": null,
-              "retailerProductId": "50078267"
-            }
-          },
-          {
             "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
             "action": "REASSIGN_TO_EXISTING_CANONICAL",
             "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
@@ -159,19 +106,152 @@
           }
         ]
       }
+    },
+    {
+      "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
+      "canonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
+      "legacyRuntimeId": "f7",
+      "expectedIdentity": {
+        "category": "fridge",
+        "brand": "Haier",
+        "model": "HRF520BHS French Door 520L"
+      },
+      "mismatchSources": [
+        {
+          "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
+          "retailer": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/",
+          "reasonCode": "AO_MODEL_MISMATCH",
+          "receivedModel": "HRF520BHS",
+          "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
+          "listingFact": {
+            "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
+            "adapterId": "appliances-online-product-api-v1",
+            "retailer": "Appliances Online",
+            "sourceType": "public_retailer_api",
+            "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
+            "expectedCadenceHours": 24,
+            "maximumCurrentAgeHours": 72,
+            "observedAt": "2026-07-20T17:30:37.000Z",
+            "rawSourceReference": "retailer-object:sha256:97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
+            "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
+            "receivedModel": "HRF520BHS",
+            "receivedUrl": "https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/",
+            "availability": "unavailable",
+            "listingState": "unavailable",
+            "priceAud": 1649,
+            "title": "Haier 514L Bottom Mount Fridge HRF520BHS",
+            "imageUrl": null,
+            "retailerProductId": "62557"
+          }
+        }
+      ],
+      "officialEvidence": {
+        "expectedExact": [],
+        "receivedExactByModel": {
+          "HRF520BHS": [
+            {
+              "evidenceKind": "OFFICIAL_PDF_MINERU",
+              "evidenceId": "official_identity_haier_hrf520bhs_pdf",
+              "sourceId": "official-manufacturer:official_identity_haier_hrf520bhs_pdf",
+              "manifestSemanticSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0",
+              "category": "fridge",
+              "brand": "Haier",
+              "model": "HRF520BHS",
+              "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
+              "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
+              "observedAt": "2026-07-21T12:12:18.070Z",
+              "rawSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+              "rawObjectPath": "evidence/web/sha256/ed/0d/ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5.pdf",
+              "identityLocators": [
+                {
+                  "kind": "mineru_exact_model_fragment",
+                  "page": 5,
+                  "fragmentIndex": 13,
+                  "fragmentType": "paragraph",
+                  "fragmentSha256": "8c3afaa0b8e6c070cbadbc0425ea8a79637976ae191fe8c11368f71a00709e2f",
+                  "textSha256": "232670969458fcf66734f558601940dfd11d83b56946ad29f954b5054e2a95f1",
+                  "textExcerpt": "Due to technical changes and different models, some of the illustrations in this manual may differ from your model. The accessories illustrations with \"*\" are used for reversible door of BM 2 doors model HRF520BW, HRF520BS, HRF520BHS and HR"
+                },
+                {
+                  "kind": "mineru_exact_model_fragment",
+                  "page": 35,
+                  "fragmentIndex": 0,
+                  "fragmentType": "title",
+                  "fragmentSha256": "10f98b8f5ab32a0b7926f9e3bdb37c585795093df3b921836cbf5529d3aea0f3",
+                  "textSha256": "9ef7b899f375156db04a8c3ddcf7da1582661ee018e11510a63e2a55ec23dc62",
+                  "textExcerpt": "Door reversibility (Model HRF520BW, HRF520BS, HRF520BHS,HRF520BHC)"
+                }
+              ],
+              "derivedArtifact": {
+                "schemaVersion": 1,
+                "format": "content_list_v2",
+                "parserName": "MinerU",
+                "parserVersion": "3.4.4",
+                "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                "backend": "pipeline",
+                "method": "auto",
+                "tableEnabled": true,
+                "formulaEnabled": false,
+                "sourcePdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+                "contentSha256": "bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759",
+                "objectPath": "evidence/derived/mineru-json/sha256/bb/94/bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759.json",
+                "byteSize": 296668,
+                "pageCount": 38
+              }
+            }
+          ]
+        }
+      },
+      "decision": {
+        "status": "RESOLVED",
+        "action": "MERGE_DUPLICATE_CANONICAL",
+        "reasonCodes": [
+          "MARKETING_POLLUTED_IDENTITY_CONTAINS_EXACT_RECEIVED_MODEL_WITH_ONE_DESTINATION"
+        ],
+        "targetCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5",
+        "linkDispositions": [
+          {
+            "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
+            "action": "REASSIGN_TO_EXISTING_CANONICAL",
+            "destinationCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5",
+            "resolvedListingFact": {
+              "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
+              "adapterId": "appliances-online-product-api-v1",
+              "retailer": "Appliances Online",
+              "sourceType": "public_retailer_api",
+              "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
+              "expectedCadenceHours": 24,
+              "maximumCurrentAgeHours": 72,
+              "observedAt": "2026-07-20T17:30:37.000Z",
+              "rawSourceReference": "retailer-object:sha256:97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
+              "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
+              "receivedModel": "HRF520BHS",
+              "receivedUrl": "https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/",
+              "availability": "unavailable",
+              "listingState": "unavailable",
+              "priceAud": 1649,
+              "title": "Haier 514L Bottom Mount Fridge HRF520BHS",
+              "imageUrl": null,
+              "retailerProductId": "62557"
+            }
+          }
+        ]
+      }
     }
   ],
   "summary": {
-    "cases": 1,
-    "resolved": 1,
+    "cases": 2,
+    "resolved": 2,
     "unresolved": 0,
     "byAction": {
+      "MERGE_DUPLICATE_CANONICAL": 1,
       "QUARANTINE_UNSUPPORTED_CANONICAL": 1
     },
     "byLinkAction": {
       "REASSIGN_TO_EXISTING_CANONICAL": 2
     }
   },
-  "resolutionId": "retailer_identity_resolution_ceded7b749ca967973e517bb",
-  "semanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca"
+  "resolutionId": "retailer_identity_resolution_373e807eb44adf82ea20d923",
+  "semanticSha256": "373e807eb44adf82ea20d923990914bdc3d727c850786088dc097c962d6c8880"
 }

@@ -5,7 +5,6 @@ import test from 'node:test';
 
 import {
   buildRetailerObservationCoverage,
-  createBaselineRetailerLinkId,
   validateRetailerObservationCoverage,
 } from '../../src/domain/retailer-observation-coverage.mjs';
 import {
@@ -62,16 +61,6 @@ const sourcePolicy = readJsonWithHash(
 );
 const emptyV1Ledger = Object.freeze({ schemaVersion: 1, observations: [] });
 
-function authorizedPartnerizePolicy() {
-  const document = structuredClone(sourcePolicy.document);
-  const partnerize = document.sources.find((source) => (
-    source.id === 'the-good-guys-partnerize-feed-v1'
-  ));
-  partnerize.termsReviewState = 'authorized_partner_feed';
-  partnerize.legacyLinkAction = 'REPLAY_PARTNERIZE_FEED';
-  return { document, sha256: canonicalSha256(document) };
-}
-
 function adapterForPolicy(sourceId) {
   const policy = sourcePolicy.document;
   const source = policy.sources.find((row) => row.id === sourceId);
@@ -90,7 +79,7 @@ function adapterForPolicy(sourceId) {
   });
 }
 
-test('baseline migration accounts for all 1,614 retailer links without inventing availability', () => {
+test('baseline migration accounts for all 1,442 public retailer links without inventing availability', () => {
   const ledger = buildRetailerObservationLedger({
     existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
@@ -101,10 +90,10 @@ test('baseline migration accounts for all 1,614 retailer links without inventing
   });
 
   assert.equal(ledger.schemaVersion, 2);
-  assert.equal(ledger.observations.length, 1614);
-  assert.equal(ledger.summary.currentBaselineObservations, 1614);
+  assert.equal(ledger.observations.length, 1442);
+  assert.equal(ledger.summary.currentBaselineObservations, 1442);
   assert.equal(ledger.summary.preservedHistoricalObservations, 0);
-  assert.equal(ledger.summary.legacyUnknownObservations, 1614);
+  assert.equal(ledger.summary.legacyUnknownObservations, 1442);
   assert.equal(ledger.summary.authoritativeTypedObservations, 0);
   assert.ok(ledger.observations.every((row) => row.sourceType === 'legacy_catalog'));
   assert.ok(ledger.observations.every((row) => row.availability === 'unknown'));
@@ -168,21 +157,19 @@ test('coverage inventory classifies every baseline link as typed or a specific p
     sourcePolicySha256: sourcePolicy.sha256,
   });
 
-  assert.equal(coverage.summary.baselineLinks, 1614);
-  assert.equal(coverage.summary.accountedLinks, 1614);
+  assert.equal(coverage.summary.baselineLinks, 1442);
+  assert.equal(coverage.summary.accountedLinks, 1442);
   assert.equal(coverage.summary.typedLinks, 0);
-  assert.equal(coverage.summary.revalidationItems, 1614);
-  assert.equal(coverage.items.length, 1614);
-  assert.equal(new Set(coverage.items.map((item) => item.baselineLinkId)).size, 1614);
+  assert.equal(coverage.summary.revalidationItems, 1442);
+  assert.equal(coverage.items.length, 1442);
+  assert.equal(new Set(coverage.items.map((item) => item.baselineLinkId)).size, 1442);
   assert.deepEqual(coverage.summary.byOriginSource, {
     'appliances-online-api': 1204,
-    'partnerize-feed': 152,
-    sitemap: 100,
+    sitemap: 91,
     'websearch-appliances-online': 66,
     'websearch-bing-lee': 26,
     'websearch-harvey-norman': 20,
     'websearch-jbhifi': 35,
-    'websearch-the-good-guys': 11,
   });
   assert.ok(coverage.items.every((item) => (
     item.terminalObservationState !== 'TYPED_AVAILABLE'
@@ -200,9 +187,7 @@ test('coverage inventory classifies every baseline link as typed or a specific p
   assert.ok(coverage.items
     .filter((item) => item.sourcePolicyId === 'appliances-online-product-api-v1')
     .every((item) => item.revalidation.executionState === 'RUNNABLE_POLICY_REVIEWED_SOURCE'));
-  assert.ok(coverage.items
-    .filter((item) => item.sourcePolicyId === 'the-good-guys-partnerize-feed-v1')
-    .every((item) => item.revalidation.executionState === 'BLOCKED_BY_SOURCE_POLICY'));
+  assert.equal(coverage.items.some((item) => item.sourcePolicyId === 'the-good-guys-partnerize-feed-v1'), false);
 });
 
 test('a hash-bound typed snapshot appends once and replaces only its own coverage item', () => {
@@ -279,119 +264,29 @@ test('a hash-bound typed snapshot appends once and replaces only its own coverag
   ]);
 });
 
-test('coverage consumes a complete-feed per-listing identity quarantine without inventing availability', () => {
-  const fixturePolicy = authorizedPartnerizePolicy();
-  const adapter = adapterForPolicy('the-good-guys-partnerize-feed-v1');
-  const product = publicProjection.document.products.find((row) => (
-    row.retailers?.some((retailer) => retailer.n === 'The Good Guys')
-  ));
-  const retailer = product.retailers.find((row) => row.n === 'The Good Guys');
-  const sourceUrl = new URL(retailer.url).toString();
-  const baselineLinkId = createBaselineRetailerLinkId({
-    canonicalProductId: product.canonicalProductId,
-    retailer: 'The Good Guys',
-    url: sourceUrl,
-    originSource: retailer.source,
-  });
-  const snapshot = normalizeRetailerSnapshot(adapter, {
-    observedAt: '2026-07-20T00:00:00.000Z',
-    complete: true,
-    canonicalProductIds: [product.canonicalProductId],
-    rawPayloadSha256: 'e'.repeat(64),
-    rawSourceReference: 'fixture:tgg:identity-rebound',
-    rows: [],
-    listingReconciliations: [{
-      kind: 'identity_mismatch',
-      reasonCode: 'PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH',
-      baselineLinkId,
-      canonicalProductId: product.canonicalProductId,
-      sourceUrl,
-      expectedModel: product.model,
-      receivedModel: `${product.model}-OTHER`,
-      receivedUrl: `${sourceUrl}-other`,
-      rawPayloadSha256: 'e'.repeat(64),
-    }],
-  });
+test('public coverage cannot recreate private Partnerize listings from source policy metadata', () => {
   const ledger = buildRetailerObservationLedger({
     existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
-    sourcePolicy: fixturePolicy.document,
-    sourcePolicySha256: fixturePolicy.sha256,
-    typedSnapshots: [snapshot],
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [],
   });
   const coverage = buildRetailerObservationCoverage({
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     ledger,
     ledgerSha256: canonicalSha256(ledger),
-    sourcePolicy: fixturePolicy.document,
-    sourcePolicySha256: fixturePolicy.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
   });
-  const item = coverage.items.find((row) => row.baselineLinkId === baselineLinkId);
 
-  assert.equal(item.terminalObservationState, 'QUARANTINED_IDENTITY_MISMATCH');
-  assert.equal(item.typedObservation.receivedModel, `${product.model}-OTHER`);
-  assert.equal(item.revalidation, null);
-  assert.equal(ledger.summary.authoritativeTypedObservations, 0);
-  assert.equal(ledger.collectionAttempts.at(-1).listingReconciliations.length, 1);
-});
-
-test('coverage routes complete affiliate-feed absence to an alternate source without inferring unavailable', () => {
-  const fixturePolicy = authorizedPartnerizePolicy();
-  const adapter = adapterForPolicy('the-good-guys-partnerize-feed-v1');
-  const product = publicProjection.document.products.find((row) => (
-    row.retailers?.some((retailer) => retailer.n === 'The Good Guys')
-  ));
-  const retailer = product.retailers.find((row) => row.n === 'The Good Guys');
-  const sourceUrl = new URL(retailer.url).toString();
-  const baselineLinkId = createBaselineRetailerLinkId({
-    canonicalProductId: product.canonicalProductId,
-    retailer: 'The Good Guys',
-    url: sourceUrl,
-    originSource: retailer.source,
-  });
-  const snapshot = normalizeRetailerSnapshot(adapter, {
-    observedAt: '2026-07-20T00:00:00.000Z',
-    complete: true,
-    canonicalProductIds: [product.canonicalProductId],
-    rawPayloadSha256: 'f'.repeat(64),
-    rawSourceReference: 'fixture:tgg:source-absent',
-    rows: [],
-    listingReconciliations: [{
-      kind: 'source_absent',
-      reasonCode: 'PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED',
-      baselineLinkId,
-      canonicalProductId: product.canonicalProductId,
-      sourceUrl,
-      expectedModel: product.model,
-      retailerProductId: retailer.tgg_sku ?? null,
-      rawPayloadSha256: 'f'.repeat(64),
-    }],
-  });
-  const ledger = buildRetailerObservationLedger({
-    existingLedger: emptyV1Ledger,
-    publicProjection: publicProjection.document,
-    publicProjectionSha256: publicProjection.sha256,
-    sourcePolicy: fixturePolicy.document,
-    sourcePolicySha256: fixturePolicy.sha256,
-    typedSnapshots: [snapshot],
-  });
-  const coverage = buildRetailerObservationCoverage({
-    publicProjection: publicProjection.document,
-    publicProjectionSha256: publicProjection.sha256,
-    ledger,
-    ledgerSha256: canonicalSha256(ledger),
-    sourcePolicy: fixturePolicy.document,
-    sourcePolicySha256: fixturePolicy.sha256,
-  });
-  const item = coverage.items.find((row) => row.baselineLinkId === baselineLinkId);
-
-  assert.equal(item.terminalObservationState, 'SOURCE_ABSENT_IN_AUTHORIZED_FEED');
-  assert.equal(item.typedObservation.state, 'SOURCE_ABSENT_IN_AUTHORIZED_FEED');
-  assert.equal(item.revalidation.action, 'COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE');
-  assert.equal(item.revalidation.executionState, 'BLOCKED_BY_SOURCE_POLICY');
-  assert.equal(ledger.summary.authoritativeTypedObservations, 0);
+  assert.equal(coverage.items.some((item) => (
+    item.sourcePolicyId === 'the-good-guys-partnerize-feed-v1'
+      || item.originSource === 'partnerize-feed'
+  )), false);
+  assert.equal(ledger.observations.some((row) => row.sourceType === 'affiliate_feed'), false);
 });
 
 test('redirected typed listings remain explicit revalidation work rather than terminal coverage', () => {
@@ -545,7 +440,7 @@ test('schema-v2 replay freezes its migration baseline across later public projec
   });
   assert.ok(removedLinks > 0);
   assert.deepEqual(next, ledger);
-  assert.equal(next.summary.currentBaselineObservations, 1614);
+  assert.equal(next.summary.currentBaselineObservations, 1442);
   assert.equal(next.summary.preservedHistoricalObservations, 0);
   assert.equal(
     next.sourceBindings.filter((binding) => binding.kind === 'LEGACY_MIGRATION_INPUT').length,

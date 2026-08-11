@@ -10,7 +10,7 @@ Generated: 2026-07-12T12:40:00.000Z
 
 | Metric | Count |
 | --- | ---: |
-| Historical records | 8089 |
+| Historical records | 8087 |
 | Categories | 4 |
 | Category-brand groups | 358 |
 | MinerU documents | 1039 |
@@ -21,7 +21,7 @@ Generated: 2026-07-12T12:40:00.000Z
 | Mapped MinerU documents | 969 |
 | Unmapped MinerU documents | 56 |
 | Dimension-expression observations | 1272 |
-| Reusable PDF grammar profiles | 231 |
+| Reusable PDF grammar profiles | 230 |
 | Research gaps | 1099 |
 
 A marketing-series count is a proven minimum, never an estimate of the
@@ -93,13 +93,13 @@ and every extracted value still requires exact-model identity and receipt checks
 | EUROMATIC | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Eurotech | 32 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Fhiaba | 365 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Fisher & Paykel | 263 | 66 | 1 | 29 | `MINERU_SAMPLE_OBSERVED` |
+| Fisher & Paykel | 262 | 66 | 1 | 29 | `MINERU_SAMPLE_OBSERVED` |
 | GAGGENAU | 15 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Galanz | 8 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Gasmate | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Germanica | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | GRAM | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Haier | 219 | 15 | 0 | 11 | `MINERU_SAMPLE_OBSERVED` |
+| Haier | 218 | 15 | 0 | 11 | `MINERU_SAMPLE_OBSERVED` |
 | Harbour | 7 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | HELLER | 61 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Hisense | 176 | 44 | 0 | 4 | `MINERU_SAMPLE_OBSERVED` |
@@ -218,7 +218,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Eurotech | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Everdure | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EVOKE | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Fisher & Paykel | 98 | 133 | 1 | 26 | `MINERU_SAMPLE_OBSERVED` |
+| Fisher & Paykel | 98 | 133 | 1 | 25 | `MINERU_SAMPLE_OBSERVED` |
 | FOTILE | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Franke | 6 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | FUJIYAMA | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -487,7 +487,7 @@ model claim.
 
 ## Refrigerators
 
-Inventory: 4336 models across 116 category-brand groups.
+Inventory: 4334 models across 116 category-brand groups.
 
 ### AEG
 
@@ -1465,7 +1465,7 @@ Research gaps:
 ### Fisher & Paykel
 
 - Raw brand variants: `Fisher & Paykel`
-- Inventory models: 263
+- Inventory models: 262
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 66
 - Proven marketing series: 1; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 29
@@ -2360,7 +2360,7 @@ Research gaps:
 ### Haier
 
 - Raw brand variants: `Haier`
-- Inventory models: 219
+- Inventory models: 218
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 15
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 11
@@ -4369,7 +4369,7 @@ Research gaps:
 #### Document family bb77070e5331
 
 - Group type: `document_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WBB3400AH`, `WBB3700AH`
 - PDF SHA-256: `bb77070e533179e0de3e870ad70ad3a6d19b06d8d9ea38228f1e7fcc3d45cbcb`
 - PDF grammar profiles: `pdf_grammar_69524ec285a85e26`
@@ -4384,7 +4384,7 @@ Research gaps:
 #### Document family e316fc226e4d
 
 - Group type: `document_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WFB4204WC`, `WFM1700WE`, `WRB3504*A`, `WRB3504SA`, `WRB5004WC`, `WRM2400WE`
 - PDF SHA-256: `e316fc226e4dce0c2ce9f5c00b3d33659718a997b1a121883822fa75f35de954`
 - PDF grammar profiles: `pdf_grammar_0ec14965bf7d3f23`
@@ -4403,7 +4403,7 @@ Research gaps:
 #### Document family fa1629688c89
 
 - Group type: `document_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WTB3100AK`, `WTB3100WK`, `WTB3400WK`
 - PDF SHA-256: `fa1629688c89d0fec483a35539f4cf4ec7c078c2fe9f2f87bf024393b74db543`
 - PDF grammar profiles: `pdf_grammar_c4bef6e07fdfa9df`
@@ -4433,7 +4433,7 @@ Research gaps:
 #### Document family fd329081b852
 
 - Group type: `document_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WTB2300WH`, `WTB2800AH`, `WTB2800WH`, `WTB3400AH`, `WTB3400WH`, `WTB3700**`, `WTB3700WH`
 - PDF SHA-256: `fd329081b8523c1a23adf30143d6f3c4c02c0c6726434993770595a8f3290ef6`
 - PDF grammar profiles: `pdf_grammar_8fa44d420c63784c`
@@ -4638,7 +4638,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_16b1caee4e18da81
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `WTB2800WH`
 - PDF SHA-256: `ba1cc555cddd723fe1f94af9dd70a5732e3de3fbdd45076be4ca41d92bb9d787`
 - PDF grammar profiles: `pdf_grammar_16b1caee4e18da81`
@@ -4787,7 +4787,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_360bfc8ead68f688
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `WTB2300WH`
 - PDF SHA-256: `3dd61145ed4f25750ed963d8a0ab0fc06fee0644d1e3d4d9cd065dd1e188497f`
 - PDF grammar profiles: `pdf_grammar_360bfc8ead68f688`
@@ -4838,7 +4838,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_49a5f912538c8ab9
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `WHE6000SB`, `WHE6060SB`
 - PDF SHA-256: `147256f7acd15d9cabfd60c5eb333c8fd4bedb4f58d5ed4d67fe4182c90a8421`, `95faa1605404bd0eacb6804297f826bd73f827f39cd77d7311ce9d1bd376f2e5`
 - PDF grammar profiles: `pdf_grammar_49a5f912538c8ab9`
@@ -4888,7 +4888,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_54c02d74452c542a
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `WTB3400AH`, `WTB3400WH`, `WTB3700WH`
 - PDF SHA-256: `093085695070187f0bd284554635e3dd85876aab21416153ab0ea313632d7e99`, `5c8f1af45db3563e15c154a8d7c1878768a496dee568fd6a236b944a86619c31`, `6efe163d127f7a5f94e55db069b7929c54a47a9408122753467e3fc876f2f16a`
 - PDF grammar profiles: `pdf_grammar_54c02d74452c542a`
@@ -5097,7 +5097,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_dbf3e0b2699437a2
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `WTB2800AH`
 - PDF SHA-256: `f2346bc64c2a7dc568f98a92abdc43eca7394531f3fbd699a55f9eae6341831a`
 - PDF grammar profiles: `pdf_grammar_dbf3e0b2699437a2`
@@ -5134,7 +5134,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_f77a3bb1503ef8aa
 
 - Group type: `parser_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WBB3400WK`
 - PDF SHA-256: `073ebcb4c670c093141cae247ed177d1dee48087abb0b6b0c6c47c4f239e1735`
 - PDF grammar profiles: `pdf_grammar_f77a3bb1503ef8aa`
@@ -6961,8 +6961,8 @@ Research gaps:
 - Inventory models: 98
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 133
 - Proven marketing series: 1; total series count: `PROVEN_MINIMUM_ONLY`
-- PDF grammar profiles: 26
-- Complete exact-model parser replays: 23
+- PDF grammar profiles: 25
+- Complete exact-model parser replays: 22
 
 #### Document family 12b4379f29ec
 
@@ -7130,6 +7130,19 @@ Research gaps:
 
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family 97eff8a3208f
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `DW60FC4W1`, `DW60FC4X1`
+- PDF SHA-256: `97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 4: PRODUCT DIMENSIONS A Overall height of product with top panel in place with top panel removed* 850 - 870** 820 - 840** B Overall width of product 597 © Overa...
 
 #### Document family a1eabc7adffc
 
@@ -7837,24 +7850,6 @@ Research gaps:
 
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
-
-#### Fisher & Paykel DW60 installation applicability matrix
-
-- Group type: `parser_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `DW60FC4W1`, `DW60FC4X1`
-- PDF SHA-256: `97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf`
-- PDF grammar profiles: `fisher-paykel-dw60-install-applicability-v1`
-- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Grammar variant: Concatenated exact SKU matrix followed by shared product dimensions
-- Detection: An exact-model official document URL, one fixed-width SKU applicability matrix, one matching family header, and one adjacent product-dimensions table with an unambiguous page unit.
-- Semantic boundary: The installed top-panel height range, overall width and closed depth are projected; top-panel-removed height, cavity dimensions and door-open depth are excluded.
-- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf>
-
-`PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.
-
-Research gaps:
-- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 4: PRODUCT DIMENSIONS A Overall height of product with top panel in place with top panel removed* 850 - 870** 820 - 840** B Overall width of product 597 © Overa...
 
 #### PDF grammar pdf_grammar_03b031a157002101
 

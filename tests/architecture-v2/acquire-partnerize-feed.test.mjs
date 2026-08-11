@@ -8,7 +8,7 @@ import { acquirePartnerizeFeedToStorage } from '../../scripts/architecture-v2/ac
 
 const repoRoot = resolve(new URL('../..', import.meta.url).pathname);
 
-test('authorized Partnerize acquisition stores immutable bytes and a secret-safe receipt', async (t) => {
+test('private-use Partnerize acquisition stores immutable bytes outside Git with a secret-safe receipt', async (t) => {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-partnerize-acquisition-'));
   const policyRoot = await mkdtemp(join(tmpdir(), 'fitappliance-partnerize-policy-'));
   t.after(() => rm(storageRoot, { recursive: true, force: true }));
@@ -17,8 +17,8 @@ test('authorized Partnerize acquisition stores immutable bytes and a secret-safe
     repoRoot, 'data/architecture-v2/policies/retailer-source-policy.json',
   ), 'utf8'));
   const partnerize = policy.sources.find((source) => source.id === 'the-good-guys-partnerize-feed-v1');
-  partnerize.termsReviewState = 'authorized_partner_feed';
-  partnerize.legacyLinkAction = 'REPLAY_PARTNERIZE_FEED';
+  assert.equal(partnerize.termsReviewState, 'reviewed_private_campaign_use');
+  assert.equal(partnerize.legacyLinkAction, 'PRIVATE_EVIDENCE_ONLY');
   const policyPath = join(policyRoot, 'data/architecture-v2/policies/retailer-source-policy.json');
   await mkdir(join(policyRoot, 'data/architecture-v2/policies'), { recursive: true });
   await writeFile(policyPath, `${JSON.stringify(policy, null, 2)}\n`);
@@ -62,5 +62,5 @@ test('Partnerize acquisition requires an environment-provided URL and approved s
     storageRoot,
     sourcePolicyId: 'bing-lee-product-page-v1',
     url: 'https://www.binglee.com.au/product',
-  }, dependencies), /authorised partner feed|authorized partner feed/i);
+  }, dependencies), /private Partnerize acquisition/i);
 });

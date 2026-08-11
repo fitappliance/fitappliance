@@ -5,34 +5,15 @@
   "sourceBindings": {
     "resolutionEpochs": [
       {
-        "resolutionId": "retailer_identity_resolution_b4b95787ccc0f36d9b46eed8",
-        "semanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-        "generatedAt": "2026-07-20T21:01:16.038Z",
-        "summary": {
-          "cases": 18,
-          "resolved": 17,
-          "unresolved": 1,
-          "byAction": {
-            "CORRECT_CANONICAL_MODEL": 2,
-            "KEEP_CANONICAL_IDENTITY": 14,
-            "MERGE_DUPLICATE_CANONICAL": 1
-          },
-          "byLinkAction": {
-            "ACCEPT_AFTER_CANONICAL_CORRECTION": 2,
-            "INVALIDATE_WRONG_IDENTITY": 13,
-            "REASSIGN_TO_EXISTING_CANONICAL": 5
-          }
-        }
-      },
-      {
-        "resolutionId": "retailer_identity_resolution_ceded7b749ca967973e517bb",
-        "semanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+        "resolutionId": "retailer_identity_resolution_373e807eb44adf82ea20d923",
+        "semanticSha256": "373e807eb44adf82ea20d923990914bdc3d727c850786088dc097c962d6c8880",
         "generatedAt": "2026-07-21T12:12:18.070Z",
         "summary": {
-          "cases": 1,
-          "resolved": 1,
+          "cases": 2,
+          "resolved": 2,
           "unresolved": 0,
           "byAction": {
+            "MERGE_DUPLICATE_CANONICAL": 1,
             "QUARANTINE_UNSUPPORTED_CANONICAL": 1
           },
           "byLinkAction": {
@@ -42,258 +23,24 @@
       }
     ],
     "publicProjectionSemanticSha256": "fd7fc1c8828d1b2707067d148da2caa1cb46911e0f50397e0f1486949fa941c1",
-    "retailerLedgerSemanticSha256": "02c289d4ec3996e3730c961224c0e5ebcbd58c7c61f59f86add16f50e992efcc",
-    "predecessorMigrationSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
-    "projectionRebinds": [
-      {
-        "predecessorMigrationSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
-        "priorPublicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
-        "nextPublicProjectionSemanticSha256": "fd7fc1c8828d1b2707067d148da2caa1cb46911e0f50397e0f1486949fa941c1",
-        "identityInventorySha256": "ae7e8c9892b58f56a7674d52f53ec989f8a75428a7ebf8e77f4089cb52625733"
-      }
-    ]
+    "retailerLedgerSemanticSha256": "944a7652bc5cc0c8b608d203322fc163d4ff7cd05945893a1306f191202598ac"
   },
   "sourceResolutionSummary": {
-    "cases": 18,
-    "resolved": 18,
+    "cases": 2,
+    "resolved": 2,
     "unresolved": 0,
     "byAction": {
-      "CORRECT_CANONICAL_MODEL": 2,
-      "KEEP_CANONICAL_IDENTITY": 14,
       "MERGE_DUPLICATE_CANONICAL": 1,
       "QUARANTINE_UNSUPPORTED_CANONICAL": 1
     },
     "byLinkAction": {
-      "ACCEPT_AFTER_CANONICAL_CORRECTION": 2,
-      "INVALIDATE_WRONG_IDENTITY": 13,
-      "REASSIGN_TO_EXISTING_CANONICAL": 7
+      "REASSIGN_TO_EXISTING_CANONICAL": 2
     }
   },
   "cases": [
     {
-      "resolutionTaskId": "retail_resolution_0316aebf325e57640e08b749",
-      "sourceCanonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-      "sourceLegacyRuntimeId": "discovery-washing-machine-lg-1910fgx",
-      "expectedIdentity": {
-        "category": "washtower_combo",
-        "brand": "LG",
-        "model": "1910FGX"
-      },
-      "action": "CORRECT_CANONICAL_MODEL",
-      "reasonCodes": [
-        "STRICT_MISSING_PREFIX_PROVEN_BY_TWO_OFFICIAL_REGISTRY_SOURCES"
-      ],
-      "baselineLinkIds": [
-        "retail_link_445fbe05488583428292dd5e"
-      ],
-      "correctedModel": "WWT-1910FGX",
-      "targetCanonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_2e33de9112e46e5744f1f206",
-      "sourceCanonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-      "sourceLegacyRuntimeId": "discovery-washing-machine-lg-1910bx",
-      "expectedIdentity": {
-        "category": "washtower_combo",
-        "brand": "LG",
-        "model": "1910BX"
-      },
-      "action": "CORRECT_CANONICAL_MODEL",
-      "reasonCodes": [
-        "STRICT_MISSING_PREFIX_PROVEN_BY_TWO_OFFICIAL_REGISTRY_SOURCES"
-      ],
-      "baselineLinkIds": [
-        "retail_link_aa99e757908199d54ccd08f2"
-      ],
-      "correctedModel": "WWT-1910BX",
-      "targetCanonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_432fa9672be78073527940ce",
-      "sourceCanonicalProductId": "fa_prod_775e2ad9d935bc1e139a828d",
-      "sourceLegacyRuntimeId": "fridge-arf2745",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Westinghouse",
-        "model": "WBE4302WC"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_600a22968c1eed41e8df89f3"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
-      "sourceCanonicalProductId": "fa_prod_6c37a64f4db8aefb49934e79",
-      "sourceLegacyRuntimeId": "fridge-arf2861",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "CHIQ",
-        "model": "CTM202NW"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_28c476154978a439150af56e",
-        "retail_link_668a0c2034ea527c1b71d362"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_582a1016f738172e2612d5f1",
-      "sourceCanonicalProductId": "fa_prod_bf5f37509b82baf1044dfb42",
-      "sourceLegacyRuntimeId": "fridge-arf3827",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Westinghouse",
-        "model": "WBE5300WC"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_8d7ebf0556fe7391f2ee8b6d"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_5bcb63b8ebc2b87b11f6e11f",
-      "sourceCanonicalProductId": "fa_prod_4929eed99c994ef46671d689",
-      "sourceLegacyRuntimeId": "fridge-arf2472",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "CHIQ",
-        "model": "CRSR088DW"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_65f26ea70eff44308526c3c9"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_60e350a2ff72837f002ff89d",
-      "sourceCanonicalProductId": "fa_prod_8b35692597ff1ca7ab3820cf",
-      "sourceLegacyRuntimeId": "fridge-arf2444",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Westinghouse",
-        "model": "WQE6000BB"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_bd635e094915adab3c137132"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_6569b08c56179c5e6d50e0d7",
-      "sourceCanonicalProductId": "fa_prod_2058e392d0b85760f2db2265",
-      "sourceLegacyRuntimeId": "fridge-arf2606",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "LG",
-        "model": "GS-B655PL"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_8248f5525f2a0c2266b3970d"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_76128aa9f3fd0dc7bad74976",
-      "sourceCanonicalProductId": "fa_prod_507f501aa288199863392b3c",
-      "sourceLegacyRuntimeId": "fridge-arf2253",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Haier",
-        "model": "HRF130UW"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_7650808c2033fd93c7b9a526"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_933c3a7734d6c2259d384afa",
-      "sourceCanonicalProductId": "fa_prod_e191868e981538ab90701375",
-      "sourceLegacyRuntimeId": "fridge-arf2733",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Westinghouse",
-        "model": "WSE6640SA"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_01d2ab6ed14c8e14398a3858"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_a1140e77d7492d402dc2400c",
-      "sourceCanonicalProductId": "fa_prod_f491bf00786fabb93ac9861f",
-      "sourceLegacyRuntimeId": "fridge-arf3573",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Haier",
-        "model": "HRF505VW"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_3126b05b2c3db9a783d3d7dd"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_ab9b3b85e8c620cf2a6aff7a",
-      "sourceCanonicalProductId": "fa_prod_43d528262e412c5c2b74b9b7",
-      "sourceLegacyRuntimeId": "fridge-arf3570",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Fisher & Paykel",
-        "model": "RF522ADX6"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_54dabcb81a7aad73f6a80bf2"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
-      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "resolutionTaskId": "retail_resolution_8c0363b250389e76d2ed1312",
+      "resolutionSemanticSha256": "373e807eb44adf82ea20d923990914bdc3d727c850786088dc097c962d6c8880",
       "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
       "sourceLegacyRuntimeId": "f3",
       "expectedIdentity": {
@@ -306,69 +53,13 @@
         "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
       ],
       "baselineLinkIds": [
-        "retail_link_233a887b6f4f2956f70ddb4b",
         "retail_link_519e6530a163ff49992e0e39"
       ],
       "targetCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5"
     },
     {
-      "resolutionTaskId": "retail_resolution_d05ea1a30c6320e6cb2a6c4a",
-      "sourceCanonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
-      "sourceLegacyRuntimeId": "fridge-arf3865",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Westinghouse",
-        "model": "WBB3100AK"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_945a2a727616a6bde23662cf"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_d7d8fdf082df847a28fd0ddb",
-      "sourceCanonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
-      "sourceLegacyRuntimeId": "fridge-arf3423",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "LG",
-        "model": "GF-B505BB"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_1733635c1f742b6b4ecd55d4",
-        "retail_link_a3cf38d04073fd1cadb2de47"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_e577b4216f413b6e194e53d5",
-      "sourceCanonicalProductId": "fa_prod_ec08816aef599580a0e2159e",
-      "sourceLegacyRuntimeId": "fridge-arf2654",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "CHIQ",
-        "model": "CBM394NSS"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_7a0cb41d30ca0f5a97dcca5f",
-        "retail_link_fd6baded2b779ec33fad52af"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
       "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
+      "resolutionSemanticSha256": "373e807eb44adf82ea20d923990914bdc3d727c850786088dc097c962d6c8880",
       "sourceCanonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
       "sourceLegacyRuntimeId": "f7",
       "expectedIdentity": {
@@ -383,48 +74,10 @@
       "baselineLinkIds": [
         "retail_link_07e45482f34191845d62fdb5"
       ],
-      "targetCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_f98bdf55114c143a8527ed3c",
-      "sourceCanonicalProductId": "fa_prod_68d7810d7cb2acf101260e38",
-      "sourceLegacyRuntimeId": "fridge-arf3077",
-      "expectedIdentity": {
-        "category": "fridge",
-        "brand": "Haier",
-        "model": "HRF420BHS"
-      },
-      "action": "KEEP_CANONICAL_IDENTITY",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "baselineLinkIds": [
-        "retail_link_10fe1faa140aaaa7910af16e"
-      ],
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
+      "targetCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5"
     }
   ],
-  "canonicalCorrections": [
-    {
-      "resolutionTaskId": "retail_resolution_2e33de9112e46e5744f1f206",
-      "legacyRuntimeId": "discovery-washing-machine-lg-1910bx",
-      "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-      "category": "washtower_combo",
-      "brand": "LG",
-      "fromModel": "1910BX",
-      "toModel": "WWT-1910BX"
-    },
-    {
-      "resolutionTaskId": "retail_resolution_0316aebf325e57640e08b749",
-      "legacyRuntimeId": "discovery-washing-machine-lg-1910fgx",
-      "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-      "category": "washtower_combo",
-      "brand": "LG",
-      "fromModel": "1910FGX",
-      "toModel": "WWT-1910FGX"
-    }
-  ],
+  "canonicalCorrections": [],
   "canonicalMerges": [
     {
       "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
@@ -446,7 +99,7 @@
   ],
   "canonicalQuarantines": [
     {
-      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "resolutionTaskId": "retail_resolution_8c0363b250389e76d2ed1312",
       "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
       "sourceLegacyRuntimeId": "f3",
       "sourceIdentity": {
@@ -477,32 +130,16 @@
   ],
   "linkEvents": [
     {
-      "id": "retail_identity_event_c8c843f199ce471080e8c439",
-      "resolutionTaskId": "retail_resolution_933c3a7734d6c2259d384afa",
-      "baselineLinkId": "retail_link_01d2ab6ed14c8e14398a3858",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_e191868e981538ab90701375",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:32:30.000Z",
-      "rawSourceSha256": "f73077eb9d47e46044971fef05ce24861a7f663490dd077d098b3aacaeeb1d8e",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
       "id": "retail_identity_event_cab7ee38ec1277021b62faf1",
       "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
       "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
       "action": "REASSIGN_TO_EXISTING_CANONICAL",
       "sourceCanonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
       "destinationCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
+      "resolvedAt": "2026-07-21T12:12:18.070Z",
       "sourceObservedAt": "2026-07-20T17:30:37.000Z",
       "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
+      "resolutionSemanticSha256": "373e807eb44adf82ea20d923990914bdc3d727c850786088dc097c962d6c8880",
       "reasonCodes": [
         "MARKETING_POLLUTED_IDENTITY_CONTAINS_EXACT_RECEIVED_MODEL_WITH_ONE_DESTINATION"
       ],
@@ -530,167 +167,8 @@
       }
     },
     {
-      "id": "retail_identity_event_791bcc56f5626a5e243a6ffc",
-      "resolutionTaskId": "retail_resolution_f98bdf55114c143a8527ed3c",
-      "baselineLinkId": "retail_link_10fe1faa140aaaa7910af16e",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_68d7810d7cb2acf101260e38",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:28:44.000Z",
-      "rawSourceSha256": "00a0fe15627d288ff073a0bc469edef3cf43d04e16c9e8627dfdeb4e84ba0058",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_cb7557e9daa5f55795951c31",
-      "resolutionTaskId": "retail_resolution_d7d8fdf082df847a28fd0ddb",
-      "baselineLinkId": "retail_link_1733635c1f742b6b4ecd55d4",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:36:17.000Z",
-      "rawSourceSha256": "82de919e66a77df013604e10a0dd95fdf13a1bb0ceea962ab1da56092268f8b1",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_d0db14a16ab19be336826987",
-      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
-      "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-      "action": "REASSIGN_TO_EXISTING_CANONICAL",
-      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
-      "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
-      "resolvedAt": "2026-07-21T12:12:18.070Z",
-      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
-      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
-      "reasonCodes": [
-        "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
-      ],
-      "observation": {
-        "id": "obs_identity_de6154423c940c842eda3582",
-        "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
-        "retailer": "The Good Guys",
-        "adapterId": "the-good-guys-partnerize-feed-v1",
-        "observedAt": "2026-07-20T19:43:11.969Z",
-        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
-        "redirectUrl": null,
-        "availability": "available",
-        "priceAud": 3999,
-        "title": "Fisher & Paykel 690L Quad Door Refrigerator",
-        "imageUrl": null,
-        "retailerProductId": "50078267",
-        "sourceType": "affiliate_feed",
-        "listingState": "current",
-        "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_8584ea8b02cc1f6c469e91e5",
-      "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
-      "baselineLinkId": "retail_link_28c476154978a439150af56e",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_6c37a64f4db8aefb49934e79",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:36:17.000Z",
-      "rawSourceSha256": "693ee75073babec7b2184ecf442febe4b06e9a825af7a648221028e99cf30306",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_9a99ed3a08ac9c5994c7ec6e",
-      "resolutionTaskId": "retail_resolution_a1140e77d7492d402dc2400c",
-      "baselineLinkId": "retail_link_3126b05b2c3db9a783d3d7dd",
-      "action": "REASSIGN_TO_EXISTING_CANONICAL",
-      "sourceCanonicalProductId": "fa_prod_f491bf00786fabb93ac9861f",
-      "destinationCanonicalProductId": "fa_prod_7cb88e6a4719789496740fee",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:36:17.000Z",
-      "rawSourceSha256": "3b9e613357b0be1ec990076a6cb6cd6c85674148f3b8f0f18f58295ff72ce67a",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": {
-        "id": "obs_identity_f6d0a1fa220d2a0f1e758d57",
-        "canonicalProductId": "fa_prod_7cb88e6a4719789496740fee",
-        "retailer": "Appliances Online",
-        "adapterId": "appliances-online-product-api-v1",
-        "observedAt": "2026-07-20T17:36:17.000Z",
-        "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
-        "redirectUrl": null,
-        "availability": "available",
-        "priceAud": 1728,
-        "title": "Haier 600 Series 465L Vertical Refrigerator HRF505VS",
-        "imageUrl": null,
-        "retailerProductId": "92222",
-        "sourceType": "public_retailer_api",
-        "listingState": "current",
-        "sourceReference": "retailer-object:sha256:3b9e613357b0be1ec990076a6cb6cd6c85674148f3b8f0f18f58295ff72ce67a",
-        "rawSourceSha256": "3b9e613357b0be1ec990076a6cb6cd6c85674148f3b8f0f18f58295ff72ce67a",
-        "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_9d00e07d9e1a4c4748352f4b",
-      "resolutionTaskId": "retail_resolution_0316aebf325e57640e08b749",
-      "baselineLinkId": "retail_link_445fbe05488583428292dd5e",
-      "action": "ACCEPT_AFTER_CANONICAL_CORRECTION",
-      "sourceCanonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-      "destinationCanonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
-      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "STRICT_MISSING_PREFIX_PROVEN_BY_TWO_OFFICIAL_REGISTRY_SOURCES"
-      ],
-      "observation": {
-        "id": "obs_identity_75898f84b67104a12e5bc72d",
-        "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-        "retailer": "The Good Guys",
-        "adapterId": "the-good-guys-partnerize-feed-v1",
-        "observedAt": "2026-07-20T19:43:11.969Z",
-        "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
-        "redirectUrl": null,
-        "availability": "available",
-        "priceAud": 4999,
-        "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
-        "imageUrl": null,
-        "retailerProductId": "50097466",
-        "sourceType": "affiliate_feed",
-        "listingState": "current",
-        "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_b62234c63a74dfac5a61ef0a",
-      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "id": "retail_identity_event_959edc91a46cf010e7eacc40",
+      "resolutionTaskId": "retail_resolution_8c0363b250389e76d2ed1312",
       "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
       "action": "REASSIGN_TO_EXISTING_CANONICAL",
       "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
@@ -698,12 +176,12 @@
       "resolvedAt": "2026-07-21T12:12:18.070Z",
       "sourceObservedAt": "2026-07-20T17:23:04.000Z",
       "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
-      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "resolutionSemanticSha256": "373e807eb44adf82ea20d923990914bdc3d727c850786088dc097c962d6c8880",
       "reasonCodes": [
         "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
       ],
       "observation": {
-        "id": "obs_identity_62597b6e3d11c2b355e7e96e",
+        "id": "obs_identity_7d2ddcbd0bdeb105de99ab94",
         "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
         "retailer": "Appliances Online",
         "adapterId": "appliances-online-product-api-v1",
@@ -724,313 +202,19 @@
         "maximumCurrentAgeHours": 72,
         "legacyProjectionBinding": null
       }
-    },
-    {
-      "id": "retail_identity_event_71ff8fd7976923016e076148",
-      "resolutionTaskId": "retail_resolution_ab9b3b85e8c620cf2a6aff7a",
-      "baselineLinkId": "retail_link_54dabcb81a7aad73f6a80bf2",
-      "action": "REASSIGN_TO_EXISTING_CANONICAL",
-      "sourceCanonicalProductId": "fa_prod_43d528262e412c5c2b74b9b7",
-      "destinationCanonicalProductId": "fa_prod_be1e7c1c8ccea38235fa1c0d",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:15:00.000Z",
-      "rawSourceSha256": "80806d3bd66d2bf35ca91bf75e4f2a38f6da4843c89d999b8c82d2fa5f7a7a1f",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": {
-        "id": "obs_identity_370b862365983ecdab1a0e2f",
-        "canonicalProductId": "fa_prod_be1e7c1c8ccea38235fa1c0d",
-        "retailer": "Appliances Online",
-        "adapterId": "appliances-online-product-api-v1",
-        "observedAt": "2026-07-20T17:15:00.000Z",
-        "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf522adux5-519l-activesmart-french-door-fridge/",
-        "redirectUrl": null,
-        "availability": "unavailable",
-        "priceAud": 2307,
-        "title": "Fisher & Paykel Series 7 487L French Door Refrigerator with Ice and Water Stainless Steel RF522ADUX5",
-        "imageUrl": null,
-        "retailerProductId": "65002",
-        "sourceType": "public_retailer_api",
-        "listingState": "unavailable",
-        "sourceReference": "retailer-object:sha256:80806d3bd66d2bf35ca91bf75e4f2a38f6da4843c89d999b8c82d2fa5f7a7a1f",
-        "rawSourceSha256": "80806d3bd66d2bf35ca91bf75e4f2a38f6da4843c89d999b8c82d2fa5f7a7a1f",
-        "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_a3af8bdaf0fccc941f57bd0c",
-      "resolutionTaskId": "retail_resolution_432fa9672be78073527940ce",
-      "baselineLinkId": "retail_link_600a22968c1eed41e8df89f3",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_775e2ad9d935bc1e139a828d",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:19:17.000Z",
-      "rawSourceSha256": "a41fe1f397314b56b7095954f4bb7511608031ab66b269edacdf5ab883cfe99d",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_94d45a789dd03aae13ac23c0",
-      "resolutionTaskId": "retail_resolution_5bcb63b8ebc2b87b11f6e11f",
-      "baselineLinkId": "retail_link_65f26ea70eff44308526c3c9",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_4929eed99c994ef46671d689",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:32:30.000Z",
-      "rawSourceSha256": "28a17254602ece933ed093b447e8b4cfec9cde001cede693a959f8a921c64456",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_92400e88466b2b8f4cb9e462",
-      "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
-      "baselineLinkId": "retail_link_668a0c2034ea527c1b71d362",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_6c37a64f4db8aefb49934e79",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
-      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_77c31f44c000574db9307d25",
-      "resolutionTaskId": "retail_resolution_76128aa9f3fd0dc7bad74976",
-      "baselineLinkId": "retail_link_7650808c2033fd93c7b9a526",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_507f501aa288199863392b3c",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:21:11.000Z",
-      "rawSourceSha256": "0c3918dcc2cfca75d838bf1249fba4c47594671d2c9f904012013800fc11114b",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_511a4bd68735798a162ceaff",
-      "resolutionTaskId": "retail_resolution_e577b4216f413b6e194e53d5",
-      "baselineLinkId": "retail_link_7a0cb41d30ca0f5a97dcca5f",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_ec08816aef599580a0e2159e",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:32:30.000Z",
-      "rawSourceSha256": "74c3123b6019d75e4deac06b833ad60d75741c5d7b0e902d475172be4ffd25d0",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_4dc9b7e04e0521829cec8e2f",
-      "resolutionTaskId": "retail_resolution_6569b08c56179c5e6d50e0d7",
-      "baselineLinkId": "retail_link_8248f5525f2a0c2266b3970d",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_2058e392d0b85760f2db2265",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:28:44.000Z",
-      "rawSourceSha256": "77ca7a70e71be781693e4c6c967b64c9831e9ef917579d9b5fa235b9fa5f4aff",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_55c279f314ef7a25b556e17d",
-      "resolutionTaskId": "retail_resolution_582a1016f738172e2612d5f1",
-      "baselineLinkId": "retail_link_8d7ebf0556fe7391f2ee8b6d",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_bf5f37509b82baf1044dfb42",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:24:57.000Z",
-      "rawSourceSha256": "2038752b5a0f57b8695ab54c340b0d1ea317fe2fa65508e5318235382623e00c",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_d6879ad66e88998a5584f77b",
-      "resolutionTaskId": "retail_resolution_d05ea1a30c6320e6cb2a6c4a",
-      "baselineLinkId": "retail_link_945a2a727616a6bde23662cf",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:19:17.000Z",
-      "rawSourceSha256": "dd3a1c5880838c319b6f20ea689dec12847320b60339a0942d9014e02b66b929",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
-    },
-    {
-      "id": "retail_identity_event_cb781f32da6ff92a2b6ca909",
-      "resolutionTaskId": "retail_resolution_d7d8fdf082df847a28fd0ddb",
-      "baselineLinkId": "retail_link_a3cf38d04073fd1cadb2de47",
-      "action": "REASSIGN_TO_EXISTING_CANONICAL",
-      "sourceCanonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
-      "destinationCanonicalProductId": "fa_prod_271d36b2ad682a327f043ed5",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
-      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": {
-        "id": "obs_identity_95f030d5c1b164479aa8c64b",
-        "canonicalProductId": "fa_prod_271d36b2ad682a327f043ed5",
-        "retailer": "The Good Guys",
-        "adapterId": "the-good-guys-partnerize-feed-v1",
-        "observedAt": "2026-07-20T19:43:11.969Z",
-        "url": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl",
-        "redirectUrl": null,
-        "availability": "available",
-        "priceAud": 2199,
-        "title": "LG 530L French Door Refrigerator",
-        "imageUrl": null,
-        "retailerProductId": "50088913",
-        "sourceType": "affiliate_feed",
-        "listingState": "current",
-        "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_929be283f3d181a134b22396",
-      "resolutionTaskId": "retail_resolution_2e33de9112e46e5744f1f206",
-      "baselineLinkId": "retail_link_aa99e757908199d54ccd08f2",
-      "action": "ACCEPT_AFTER_CANONICAL_CORRECTION",
-      "sourceCanonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-      "destinationCanonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
-      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "STRICT_MISSING_PREFIX_PROVEN_BY_TWO_OFFICIAL_REGISTRY_SOURCES"
-      ],
-      "observation": {
-        "id": "obs_identity_b5b309a14d2f1fb4a646d79d",
-        "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-        "retailer": "The Good Guys",
-        "adapterId": "the-good-guys-partnerize-feed-v1",
-        "observedAt": "2026-07-20T19:43:11.969Z",
-        "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
-        "redirectUrl": null,
-        "availability": "available",
-        "priceAud": 4999,
-        "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
-        "imageUrl": null,
-        "retailerProductId": "50097464",
-        "sourceType": "affiliate_feed",
-        "listingState": "current",
-        "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-        "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_a653e8b6a2c5880bf49b57b1",
-      "resolutionTaskId": "retail_resolution_60e350a2ff72837f002ff89d",
-      "baselineLinkId": "retail_link_bd635e094915adab3c137132",
-      "action": "REASSIGN_TO_EXISTING_CANONICAL",
-      "sourceCanonicalProductId": "fa_prod_8b35692597ff1ca7ab3820cf",
-      "destinationCanonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T17:36:17.000Z",
-      "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": {
-        "id": "obs_identity_4875265c8fd347c32d575818",
-        "canonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
-        "retailer": "Appliances Online",
-        "adapterId": "appliances-online-product-api-v1",
-        "observedAt": "2026-07-20T17:36:17.000Z",
-        "url": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
-        "redirectUrl": null,
-        "availability": "available",
-        "priceAud": 2171,
-        "title": "Westinghouse 541L French Door Frost Free Fridge WQE6000SB",
-        "imageUrl": null,
-        "retailerProductId": "86355",
-        "sourceType": "public_retailer_api",
-        "listingState": "current",
-        "sourceReference": "retailer-object:sha256:e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
-        "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
-        "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
-        "expectedCadenceHours": 24,
-        "maximumCurrentAgeHours": 72,
-        "legacyProjectionBinding": null
-      }
-    },
-    {
-      "id": "retail_identity_event_0b292e5394c2639c9ed2fbf9",
-      "resolutionTaskId": "retail_resolution_e577b4216f413b6e194e53d5",
-      "baselineLinkId": "retail_link_fd6baded2b779ec33fad52af",
-      "action": "INVALIDATE_WRONG_IDENTITY",
-      "sourceCanonicalProductId": "fa_prod_ec08816aef599580a0e2159e",
-      "destinationCanonicalProductId": null,
-      "resolvedAt": "2026-07-20T21:01:16.038Z",
-      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
-      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
-      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
-      "reasonCodes": [
-        "EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS"
-      ],
-      "observation": null
     }
   ],
   "summary": {
-    "cases": 18,
-    "canonicalCorrections": 2,
+    "cases": 2,
+    "canonicalCorrections": 0,
     "canonicalMerges": 1,
     "canonicalQuarantines": 1,
-    "linkEvents": 22,
-    "generatedObservations": 9,
+    "linkEvents": 2,
+    "generatedObservations": 2,
     "byLinkAction": {
-      "ACCEPT_AFTER_CANONICAL_CORRECTION": 2,
-      "INVALIDATE_WRONG_IDENTITY": 13,
-      "REASSIGN_TO_EXISTING_CANONICAL": 7
+      "REASSIGN_TO_EXISTING_CANONICAL": 2
     }
   },
-  "migrationId": "retailer_identity_migration_c2d0541757cf48bbb16f977f",
-  "semanticSha256": "c2d0541757cf48bbb16f977fdba2de32c26ab7a6777a30a4ae79373335829708"
+  "migrationId": "retailer_identity_migration_3944df2e733e48173c55cd0a",
+  "semanticSha256": "3944df2e733e48173c55cd0a28d45d755b433c4272fece350b54f7edee832e2d"
 }

@@ -229,12 +229,26 @@ test('one target with two source URLs owns one state node and two candidate edge
 
 test('normal Architecture V2 build keeps the recovery queue frozen but replays its dependent plan', async () => {
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
+  const build = packageJson.scripts['build:architecture-v2'];
+  const position = (command) => {
+    const index = build.indexOf(command);
+    assert.notEqual(index, -1, `${command} must be present in build:architecture-v2`);
+    return index;
+  };
   assert.match(packageJson.scripts['build:historical-evidence-recovery-queue'], /build-historical-evidence-recovery-queue/);
-  assert.doesNotMatch(packageJson.scripts['build:architecture-v2'], /historical-evidence-recovery-queue/);
-  assert.match(
-    packageJson.scripts['build:architecture-v2'],
-    /build:historical-document-family-graph && npm run build:historical-parser-gap-priority && npm run build:historical-evidence-family-canaries && npm run build:historical-evidence-target-state && npm run audit:historical-recovery-active-release:pre-bounded && npm run build:historical-evidence-bounded-batches && npm run build:historical-evidence-program-status/,
-  );
+  assert.doesNotMatch(build, /historical-evidence-recovery-queue/);
+  assert.ok(position('build:historical-document-family-graph')
+    < position('build:historical-parser-gap-priority'));
+  assert.ok(position('build:historical-parser-gap-priority')
+    < position('build:historical-evidence-family-canaries'));
+  assert.ok(position('build:historical-evidence-family-canaries')
+    < position('build:historical-evidence-target-state'));
+  assert.ok(position('build:historical-evidence-target-state')
+    < position('audit:historical-recovery-active-release:pre-bounded'));
+  assert.ok(position('audit:historical-recovery-active-release:pre-bounded')
+    < position('build:historical-evidence-bounded-batches'));
+  assert.ok(position('audit:fit-publication')
+    < position('build:historical-evidence-program-status'));
 });
 
 test('normal Architecture V2 build seals publication audits before scale control and the system contract', async () => {
@@ -267,6 +281,7 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
     'utf8',
   );
   const inputRefresh = 'npm run audit:active-retail-release'
+      + ' && npm run audit:historical-acceptance-receipts'
       + ' && npm run build:dimension-expression-knowledge'
       + ' && npm run build:historical-evidence-recovery-queue'
       + ' && npm run build:historical-model-evidence-classification'
@@ -279,6 +294,8 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
       + ' && npm run build:historical-evidence-target-state'
       + ' && npm run audit:historical-recovery-active-release:pre-bounded'
       + ' && npm run build:historical-evidence-bounded-batches'
+      + ' && npm run audit:historical-replacement'
+      + ' && npm run audit:fit-publication'
       + ' && npm run build:historical-evidence-program-status';
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery:inputs'],

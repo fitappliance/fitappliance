@@ -14,7 +14,7 @@
     "exactModelReceiptStillRequired": true
   },
   "summary": {
-    "historicalRecords": 8089,
+    "historicalRecords": 8087,
     "categories": 4,
     "canonicalBrands": 358,
     "mineruDocuments": 1039,
@@ -26,9 +26,9 @@
     "unmappedMineruDocuments": 56,
     "observations": 1272,
     "researchGaps": 1099,
-    "parserProfiles": 231,
+    "parserProfiles": 230,
     "parserReplays": 1156,
-    "completeParserReplays": 455
+    "completeParserReplays": 447
   },
   "indexedDocuments": [
     {
@@ -29766,7 +29766,7 @@
   "categories": [
     {
       "category": "fridge",
-      "recordCount": 4336,
+      "recordCount": 4334,
       "brands": [
         {
           "canonicalBrand": "AEG",
@@ -41491,7 +41491,7 @@
           "rawBrandVariants": [
             "Fisher & Paykel"
           ],
-          "modelCount": 263,
+          "modelCount": 262,
           "observedMineruDocuments": 66,
           "observedMarketingSeriesCount": 1,
           "observedDocumentFamilyCount": 3,
@@ -51607,7 +51607,7 @@
           "rawBrandVariants": [
             "Haier"
           ],
-          "modelCount": 219,
+          "modelCount": 218,
           "observedMineruDocuments": 15,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
@@ -67651,30 +67651,22 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WBB3400AH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "bb77070e533179e0de3e870ad70ad3a6d19b06d8d9ea38228f1e7fcc3d45cbcb",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WBB3700AH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [
@@ -67843,8 +67835,8 @@
               "parserProfileIds": [
                 "pdf_grammar_69524ec285a85e26"
               ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             },
             {
               "groupType": "document_family",
@@ -68017,30 +68009,22 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WFB4204WC",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "e316fc226e4dce0c2ce9f5c00b3d33659718a997b1a121883822fa75f35de954",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WFM1700WE",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
                 },
                 {
                   "pdfSha256": "e316fc226e4dce0c2ce9f5c00b3d33659718a997b1a121883822fa75f35de954",
@@ -68058,45 +68042,33 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WRB3504SA",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "e316fc226e4dce0c2ce9f5c00b3d33659718a997b1a121883822fa75f35de954",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WRB5004WC",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "e316fc226e4dce0c2ce9f5c00b3d33659718a997b1a121883822fa75f35de954",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WRM2400WE",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
                 }
               ],
               "expressions": [
@@ -68723,8 +68695,8 @@
               "parserProfileIds": [
                 "pdf_grammar_0ec14965bf7d3f23"
               ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             },
             {
               "groupType": "document_family",
@@ -68852,45 +68824,33 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3100AK",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fa1629688c89d0fec483a35539f4cf4ec7c078c2fe9f2f87bf024393b74db543",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3100WK",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fa1629688c89d0fec483a35539f4cf4ec7c078c2fe9f2f87bf024393b74db543",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3400WK",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [
@@ -69257,8 +69217,8 @@
               "parserProfileIds": [
                 "pdf_grammar_c4bef6e07fdfa9df"
               ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             },
             {
               "groupType": "document_family",
@@ -69456,75 +69416,55 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB2300WH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fd329081b8523c1a23adf30143d6f3c4c02c0c6726434993770595a8f3290ef6",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB2800AH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fd329081b8523c1a23adf30143d6f3c4c02c0c6726434993770595a8f3290ef6",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB2800WH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fd329081b8523c1a23adf30143d6f3c4c02c0c6726434993770595a8f3290ef6",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3400AH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fd329081b8523c1a23adf30143d6f3c4c02c0c6726434993770595a8f3290ef6",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3400WH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "fd329081b8523c1a23adf30143d6f3c4c02c0c6726434993770595a8f3290ef6",
@@ -69542,15 +69482,11 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3700WH",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [
@@ -70090,8 +70026,8 @@
               "parserProfileIds": [
                 "pdf_grammar_8fa44d420c63784c"
               ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             },
             {
               "groupType": "model_specific",
@@ -77328,11 +77264,15 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB2800WH",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -77844,8 +77784,8 @@
               "parserProfileIds": [
                 "pdf_grammar_16b1caee4e18da81"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -79691,11 +79631,15 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WQE6060BB",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "1114024145d0ff43d97b1b63a89afcd06fe96a0f048d0e915a0891c9c3b29c87",
@@ -79717,11 +79661,15 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WQE6000SB",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -83496,11 +83444,15 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB2300WH",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -84017,8 +83969,8 @@
               "parserProfileIds": [
                 "pdf_grammar_360bfc8ead68f688"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -85740,22 +85692,30 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WHE6000SB",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "95faa1605404bd0eacb6804297f826bd73f827f39cd77d7311ce9d1bd376f2e5",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WHE6060SB",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -87086,8 +87046,8 @@
               "parserProfileIds": [
                 "pdf_grammar_49a5f912538c8ab9"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -87867,33 +87827,45 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3400AH",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "5c8f1af45db3563e15c154a8d7c1878768a496dee568fd6a236b944a86619c31",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3700WH",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "6efe163d127f7a5f94e55db069b7929c54a47a9408122753467e3fc876f2f16a",
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB3400WH",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -89432,8 +89404,8 @@
               "parserProfileIds": [
                 "pdf_grammar_54c02d74452c542a"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -89647,11 +89619,15 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WRB5004WC",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -93775,11 +93751,15 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WTB2800AH",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -94303,8 +94283,8 @@
               "parserProfileIds": [
                 "pdf_grammar_dbf3e0b2699437a2"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -94850,15 +94830,11 @@
                   "category": "fridge",
                   "brand": "Westinghouse",
                   "model": "WBB3400WK",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [
@@ -95173,8 +95149,8 @@
               "parserProfileIds": [
                 "pdf_grammar_f77a3bb1503ef8aa"
               ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             }
           ]
         },
@@ -111434,9 +111410,9 @@
           "modelCount": 98,
           "observedMineruDocuments": 133,
           "observedMarketingSeriesCount": 1,
-          "observedDocumentFamilyCount": 18,
-          "observedParserProfileCount": 26,
-          "completeParserReplayCount": 23,
+          "observedDocumentFamilyCount": 19,
+          "observedParserProfileCount": 25,
+          "completeParserReplayCount": 22,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -112312,6 +112288,60 @@
                   "contentSha256": "49175f9b2aed23e02b23cef4b369b47d6caea5648e1cfe8f62e3006736ba7754",
                   "page": null,
                   "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+            },
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 97eff8a3208f",
+              "models": [
+                "DW60FC4W1",
+                "DW60FC4X1"
+              ],
+              "pdfSha256s": [
+                "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
+              ],
+              "sourceUrls": [
+                "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+                "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+                  "category": "dishwasher",
+                  "brand": "Fisher & Paykel",
+                  "model": "DW60FC4W1",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                },
+                {
+                  "pdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+                  "category": "dishwasher",
+                  "brand": "Fisher & Paykel",
+                  "model": "DW60FC4X1",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+                  "contentSha256": "eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081",
+                  "page": 4,
+                  "quote": "PRODUCT DIMENSIONS A Overall height of product with top panel in place with top panel removed* 850 - 870** 820 - 840** B Overall width of product 597 © Overall depth of product 600 D Depth of open door (measured from front of kickstrip) 595"
                 }
               ],
               "parserProfileIds": [],
@@ -117655,90 +117685,6 @@
               "parserProfileIds": [],
               "completeParserReplay": false,
               "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
-            },
-            {
-              "groupType": "parser_family",
-              "groupName": "Fisher & Paykel DW60 installation applicability matrix",
-              "models": [
-                "DW60FC4W1",
-                "DW60FC4X1"
-              ],
-              "pdfSha256s": [
-                "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
-              ],
-              "sourceUrls": [
-                "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
-                "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
-              ],
-              "seriesEvidence": [],
-              "parserProfiles": [
-                {
-                  "parserProfileId": "fisher-paykel-dw60-install-applicability-v1",
-                  "grammarFamilyId": "fisher_paykel_dw60_installation_v1",
-                  "grammarFamilyName": "Fisher & Paykel DW60 installation applicability matrix",
-                  "variantName": "Concatenated exact SKU matrix followed by shared product dimensions",
-                  "brand": "Fisher & Paykel",
-                  "category": "dishwasher",
-                  "documentType": "installation_manual",
-                  "detectionSummary": "An exact-model official document URL, one fixed-width SKU applicability matrix, one matching family header, and one adjacent product-dimensions table with an unambiguous page unit.",
-                  "semanticBoundary": "The installed top-panel height range, overall width and closed depth are projected; top-panel-removed height, cavity dimensions and door-open depth are excluded.",
-                  "profileKind": "declared_brand_category_grammar",
-                  "signatureVersion": 1,
-                  "expressionShapes": [],
-                  "researchGapTypes": []
-                }
-              ],
-              "parserReplays": [
-                {
-                  "pdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
-                  "category": "dishwasher",
-                  "brand": "Fisher & Paykel",
-                  "model": "DW60FC4W1",
-                  "extractionState": "ALL_AXIS_RANGE",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
-                  "grammarProfileIds": [
-                    "fisher-paykel-dw60-install-applicability-v1"
-                  ],
-                  "reasonCode": "PARSED_COMPLETE"
-                },
-                {
-                  "pdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
-                  "category": "dishwasher",
-                  "brand": "Fisher & Paykel",
-                  "model": "DW60FC4X1",
-                  "extractionState": "ALL_AXIS_RANGE",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
-                  "grammarProfileIds": [
-                    "fisher-paykel-dw60-install-applicability-v1"
-                  ],
-                  "reasonCode": "PARSED_COMPLETE"
-                }
-              ],
-              "expressions": [],
-              "researchGaps": [
-                {
-                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
-                  "pdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
-                  "contentSha256": "eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081",
-                  "page": 4,
-                  "quote": "PRODUCT DIMENSIONS A Overall height of product with top panel in place with top panel removed* 850 - 870** 820 - 840** B Overall width of product 597 © Overall depth of product 600 D Depth of open door (measured from front of kickstrip) 595"
-                }
-              ],
-              "parserProfileIds": [
-                "fisher-paykel-dw60-install-applicability-v1"
-              ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
             },
             {
               "groupType": "parser_family",
@@ -154118,28 +154064,22 @@
                   "category": "washing_machine",
                   "brand": "LG",
                   "model": "WV9-1412B",
-                  "extractionState": "PARTIAL_AXIS",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
                   "category": "washing_machine",
                   "brand": "LG",
                   "model": "WV9-1412W",
-                  "extractionState": "PARTIAL_AXIS",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [
@@ -154514,14 +154454,11 @@
                   "category": "washing_machine",
                   "brand": "LG",
                   "model": "WD1275A1",
-                  "extractionState": "PARTIAL_AXIS",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [
@@ -167659,42 +167596,33 @@
                   "category": "dryer",
                   "brand": "LG",
                   "model": "DVH5-08W",
-                  "extractionState": "PARTIAL_AXIS",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
                   "category": "dryer",
                   "brand": "LG",
                   "model": "DVH9-09B",
-                  "extractionState": "PARTIAL_AXIS",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 },
                 {
                   "pdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
                   "category": "dryer",
                   "brand": "LG",
                   "model": "DVH9-09W",
-                  "extractionState": "PARTIAL_AXIS",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
                 }
               ],
               "expressions": [

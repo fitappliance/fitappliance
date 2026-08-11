@@ -242,18 +242,6 @@ test('tracked system contract replays from repository sources without external s
     'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json',
     'utf8',
   ));
-  const candidateShadow = JSON.parse(await readFile(
-    'data/architecture-v2/reviews/automated/retail-lifecycle-shadow-migration-candidate.json',
-    'utf8',
-  ));
-  const candidateRefresh = JSON.parse(await readFile(
-    'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory-migration-candidate.json',
-    'utf8',
-  ));
-  const releaseCandidate = JSON.parse(await readFile(
-    'data/architecture-v2/reviews/automated/retail-lifecycle-release-candidate.json',
-    'utf8',
-  ));
   const targetState = JSON.parse(await readFile(
     'data/architecture-v2/reviews/automated/historical-evidence-target-state.json',
     'utf8',
@@ -277,7 +265,7 @@ test('tracked system contract replays from repository sources without external s
     const bytes = await readFile(path);
     assert.equal(targetState.sourceBindings[binding], createHash('sha256').update(bytes).digest('hex'));
   }
-  assert.equal(first.stages.length, 39);
+  assert.equal(first.stages.length, 37);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
@@ -285,8 +273,8 @@ test('tracked system contract replays from repository sources without external s
   assert.equal(first.baseline.historicalModelReferences, 8087);
   assert.equal(first.baseline.currentProducts, 3513);
   assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 0);
-  assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
-  assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
+  assert.equal(first.baseline.retailerObservationBaselineLinks, 1442);
+  assert.equal(first.baseline.retailerObservationAccountedLinks, 1442);
   assert.equal(first.controllerDecision.status, 'RUN_P0');
   const observationStage = first.stages.find((stage) => stage.id === 'retailer-observations');
   const canonicalIdentity = first.stages.find((stage) => stage.id === 'canonical-identity');
@@ -298,24 +286,51 @@ test('tracked system contract replays from repository sources without external s
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
   const candidateRelease = first.stages.find((stage) => stage.id === 'candidate-release-gate');
   const acquisitionQueue = first.stages.find((stage) => stage.id === 'candidate-acquisition-queue');
+  const sourceDocuments = first.stages.find((stage) => stage.id === 'source-document-registry');
+  const recoveryQueue = first.stages.find((stage) => stage.id === 'source-recovery-queue');
   const activeRelease = first.stages.find((stage) => stage.id === 'active-release-recovery');
   const classification = first.stages.find((stage) => stage.id === 'classification');
   const dimensionKnowledge = first.stages.find((stage) => stage.id === 'mineru-knowledge');
+  const documentIdentity = first.stages.find((stage) => stage.id === 'document-identity');
+  const parserGap = first.stages.find((stage) => stage.id === 'parser-gap-priority');
   const replacementAudit = first.stages.find((stage) => stage.id === 'historical-replacement-publication');
   const fitAudit = first.stages.find((stage) => stage.id === 'fit-publication');
   assert.equal(activeRelease.artifactKey, 'historicalRecoveryActiveReleaseAudit');
-  for (const stage of [classification, dimensionKnowledge, acquisitionQueue, replacementAudit, fitAudit]) {
+  for (const stage of [recoveryQueue, classification, dimensionKnowledge, documentIdentity,
+    acquisitionQueue, replacementAudit, fitAudit]) {
     assert.ok(stage.releaseDependencies.includes(activeRelease.id));
     assert.ok(!stage.releaseDependencies.includes('lifecycle-reduction'));
     assert.ok(!stage.releaseDependencies.includes('current-publication'));
   }
+  assert.deepEqual(recoveryQueue.releaseDependencies.sort(), [
+    activeRelease.id,
+    sourceDocuments.id,
+  ].sort());
+  assert.deepEqual(dimensionKnowledge.releaseDependencies, [activeRelease.id]);
+  assert.deepEqual(classification.releaseDependencies.sort(), [
+    activeRelease.id,
+    dimensionKnowledge.id,
+    recoveryQueue.id,
+    'receipt-reconciliation',
+    'receipt-replay',
+  ].sort());
+  assert.deepEqual(documentIdentity.releaseDependencies.sort(), [
+    activeRelease.id,
+    classification.id,
+    dimensionKnowledge.id,
+  ].sort());
+  assert.deepEqual(parserGap.releaseDependencies.sort(), [
+    classification.id,
+    dimensionKnowledge.id,
+    documentIdentity.id,
+  ].sort());
   assert.equal(
     acquisitionQueue.declaredSemanticSha256,
     acquisitionQueueArtifact.semanticQueueSha256,
   );
   assert.equal(
     acquisitionQueueArtifact.activeReleaseSourceBinding.releaseCandidateId,
-    'retail_lifecycle_release_6c42c754aeb1ff49097b32b4',
+    'retail_lifecycle_release_30f746d33cd37b95496a9036',
   );
   assert.deepEqual(canonicalIdentity.releaseDependencies, []);
   assert.deepEqual(canonicalIdentity.lifecycleVisibility, ['CURRENT_INPUT', 'HISTORICAL_INPUT']);
@@ -363,23 +378,21 @@ test('tracked system contract replays from repository sources without external s
     first.baseline.knownContractGaps.some((gap) => gap.id === 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER'),
     shadow.cutover.status === 'BLOCKED',
   );
-  assert.equal(candidateRelease.releaseEpoch, 2);
-  assert.equal(candidateRelease.releaseState, 'PENDING_NEXT');
+  assert.equal(candidateRelease, undefined);
+  assert.equal(first.baseline.candidateMaterializationStatus, 'NOT_MATERIALIZED_BLOCKED');
+  assert.equal(first.baseline.candidateReleaseAuthorizationStatus, 'BLOCKED_NOT_MATERIALIZED');
+  for (const field of [
+    'candidateReleaseId',
+    'candidateUnresolvedLegacyCurrentProducts',
+    'candidateUnsafeRemovedLegacyCurrentProducts',
+    'candidateRefreshProducts',
+    'candidateFitPublicationViolations',
+    'candidateRollbackStatus',
+  ]) assert.equal(first.baseline[field], null);
   assert.equal(
-    first.baseline.candidateReleaseAuthorizationStatus,
-    releaseCandidate.authorization.status,
+    first.baseline.knownContractGaps.some((gap) => gap.id === 'LIFECYCLE_CANDIDATE_NOT_MATERIALIZED'),
+    true,
   );
-  assert.equal(
-    first.baseline.candidateUnresolvedLegacyCurrentProducts,
-    candidateShadow.cutover.unresolvedLegacyCurrentIds.length,
-  );
-  assert.equal(
-    first.baseline.candidateUnsafeRemovedLegacyCurrentProducts,
-    candidateShadow.cutover.unsafeRemovedLegacyCurrentIds.length,
-  );
-  assert.equal(first.baseline.candidateRefreshProducts, candidateRefresh.summary.products);
-  assert.equal(first.baseline.candidateFitPublicationViolations, 0);
-  assert.equal(first.baseline.candidateRollbackStatus, 'PROVEN_BYTE_IDENTICAL');
   assert.equal(
     first.baseline.knownContractGaps.some((gap) => gap.id === 'PARTIAL_REPOSITORY_BUILD_GRAPH'),
     false,
@@ -398,6 +411,7 @@ test('repository system-contract builder rejects a stale active-release audit ar
     await Promise.all([
       symlink(resolve('src'), join(root, 'src'), 'dir'),
       symlink(resolve('scripts'), join(root, 'scripts'), 'dir'),
+      symlink(resolve('tests'), join(root, 'tests'), 'dir'),
     ]);
     const auditPath = join(
       root,
@@ -412,6 +426,70 @@ test('repository system-contract builder rejects a stale active-release audit ar
     await assert.rejects(
       buildHistoricalEvidenceSystemContractFromRepository({ root }),
       /active.release audit.*replay|active.release audit.*stale/i,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('repository system-contract builder independently replays the source recovery queue', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'fitappliance-stale-source-queue-'));
+  try {
+    await execFileAsync('cp', ['-al', resolve('data'), join(root, 'data')]);
+    await Promise.all([
+      symlink(resolve('src'), join(root, 'src'), 'dir'),
+      symlink(resolve('scripts'), join(root, 'scripts'), 'dir'),
+      symlink(resolve('tests'), join(root, 'tests'), 'dir'),
+    ]);
+    const queuePath = join(
+      root,
+      'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json',
+    );
+    const stale = JSON.parse(await readFile(queuePath, 'utf8'));
+    stale.summary.targets += 1;
+    const replacement = `${queuePath}.stale`;
+    await writeFile(replacement, `${JSON.stringify(stale, null, 2)}\n`);
+    await rename(replacement, queuePath);
+
+    await assert.rejects(
+      buildHistoricalEvidenceSystemContractFromRepository({ root }),
+      /source recovery queue.*replay/i,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('repository system-contract builder rejects a self-rehashed parser-gap queue', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'fitappliance-stale-parser-gap-'));
+  try {
+    await execFileAsync('cp', ['-al', resolve('data'), join(root, 'data')]);
+    await Promise.all([
+      symlink(resolve('src'), join(root, 'src'), 'dir'),
+      symlink(resolve('scripts'), join(root, 'scripts'), 'dir'),
+      symlink(resolve('tests'), join(root, 'tests'), 'dir'),
+    ]);
+    const queuePath = join(
+      root,
+      'data/architecture-v2/reviews/automated/historical-parser-gap-priority.json',
+    );
+    const stale = JSON.parse(await readFile(queuePath, 'utf8'));
+    stale.summary.rows += 1;
+    stale.semanticQueueSha256 = canonicalJsonSha256({
+      schemaVersion: stale.schemaVersion,
+      policy: stale.policy,
+      sourceBindings: stale.sourceBindings,
+      summary: stale.summary,
+      selectedFamilyId: stale.selectedFamilyId,
+      rows: stale.rows,
+    });
+    const replacement = `${queuePath}.stale`;
+    await writeFile(replacement, `${JSON.stringify(stale, null, 2)}\n`);
+    await rename(replacement, queuePath);
+
+    await assert.rejects(
+      buildHistoricalEvidenceSystemContractFromRepository({ root }),
+      /parser gap priority.*replay/i,
     );
   } finally {
     await rm(root, { recursive: true, force: true });

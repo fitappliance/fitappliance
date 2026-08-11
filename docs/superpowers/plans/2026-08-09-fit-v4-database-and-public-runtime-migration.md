@@ -2495,6 +2495,38 @@ not a production rights dependency, are excluded from reviewer decisions,
 tracked public artifacts and publication authorization, and must never be
 copied into Git or a public release packet.
 
+### WP0B-B0/B1 privacy-successor checkpoint - 2026-08-11
+
+**State:** `IMPLEMENTED_LOCAL_UNSIGNED`. A privacy-only successor now replaces
+the predecessor release in the local active-release descriptor without claiming
+new lifecycle, Fit, publication or deployment authorization.
+
+- active successor:
+  `retail_lifecycle_release_30f746d33cd37b95496a9036`;
+- authorized predecessor:
+  `retail_lifecycle_release_6c42c754aeb1ff49097b32b4`;
+- public membership remains 3,513 products in the same ordered identity set;
+  117 are `CURRENT_RETAIL`, 309 are `UNKNOWN_RETAIL`, and 3,087 are
+  `CATALOG_ARCHIVED`;
+- every lifecycle or retailer field derived from the private Partnerize feed is
+  removed from the tracked/public projection. Affected products fail closed to
+  unknown/unavailable until a public-authorized source revalidates them;
+- the removed bytes are bound to the external private recovery manifest and
+  archive under `/Volumes/UGREEN-1TB/FitAppliance/private`; those bytes are not
+  a normal build input and must not be copied back into Git;
+- publication, Fit and active-release audits pass with zero private-evidence
+  violations. This checkpoint does not authorize V4 cutover, owner/reviewer
+  signing, push or deployment;
+- the previous owner request is expired. A fresh request can be prepared only
+  after the committed tree is replayed and B1 inventory/provenance is resealed.
+  The non-secret owner public key, owner metadata and trust-root/anchor inputs
+  are not currently available, so no signing operation is permitted.
+
+Partnerize acquisition remains an independent private evidence operation. It
+may write immutable CSV bytes and a secret-safe receipt to the external
+evidence store, but no raw URL, token, row or derived retailer fact may enter a
+tracked artifact, public build, rights packet or Fit decision.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

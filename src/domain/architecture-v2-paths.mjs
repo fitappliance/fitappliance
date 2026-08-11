@@ -115,6 +115,16 @@ export const architectureV2Paths = Object.freeze({
   historicalReferencePublicationManifest: `${base}/generated/historical-reference-publication-manifest.json`,
 });
 
+// These cutover artifacts are registered so their dependencies remain explicit,
+// but they must not exist until a new candidate is intentionally materialized.
+export const ARCHITECTURE_V2_INTENTIONALLY_UNMATERIALIZED_KEYS = Object.freeze([
+  'retailLifecycleShadowMigrationCandidate',
+  'retailLifecycleReleaseCandidate',
+  'retailLifecycleRefreshInventoryMigrationCandidate',
+  'publicProjectionReleaseCandidate',
+  'historicalApplianceReferenceReleaseCandidate',
+]);
+
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   officialRegistrySnapshots: Object.freeze([]),
   retailerIdentityOfficialEvidence: Object.freeze([]),

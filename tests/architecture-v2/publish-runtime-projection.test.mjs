@@ -69,7 +69,10 @@ test('publisher strips private Partnerize feed evidence before writing any publi
     const published = JSON.parse(await fs.readFile(path.join(root, 'public/data', relativePath)));
     assert.deepEqual(published.products[0].retailers, []);
     assert.equal(published.products[0].unavailable, true);
-    assert.equal(Object.hasOwn(published.products[0], 'retailLifecycle'), false);
+    assert.equal(published.products[0].retailLifecycle.lifecycleState, 'UNKNOWN_RETAIL');
+    assert.equal(published.products[0].retailLifecycle.authorizingObservation, null);
+    assert.deepEqual(published.products[0].retailLifecycle.latestObservations, []);
+    assert.equal(published.products[0].lifecycleVisibility, 'MARKET_REFERENCE_ONLY');
     assert.doesNotMatch(JSON.stringify(published), /affiliate_feed|feed_title|Private title/);
   }
 });

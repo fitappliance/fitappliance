@@ -4,6 +4,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import {
   ARCHITECTURE_V2_BUILD_GRAPH,
   ARCHITECTURE_V2_BUILD_ORDER,
+  ARCHITECTURE_V2_INTENTIONALLY_UNMATERIALIZED_KEYS,
   architectureV2Paths,
 } from '../../src/domain/architecture-v2-paths.mjs';
 
@@ -16,9 +17,16 @@ test('Architecture V2 data is separated by ownership and has no flat JSON artifa
     'policies/',
     'reviews/',
   ];
+  const intentionallyUnmaterialized = new Set(ARCHITECTURE_V2_INTENTIONALLY_UNMATERIALIZED_KEYS);
   const paths = Object.values(architectureV2Paths);
   assert.ok(paths.every((path) => expectedRoots.some((prefix) => path.startsWith(`data/architecture-v2/${prefix}`))));
-  assert.ok(paths.every(existsSync), 'every registered Architecture V2 path must exist');
+  for (const [key, path] of Object.entries(architectureV2Paths)) {
+    assert.equal(
+      existsSync(path),
+      !intentionallyUnmaterialized.has(key),
+      `${key} materialization state must match its registry contract`,
+    );
+  }
   assert.deepEqual(
     readdirSync('data/architecture-v2').filter((name) => name.endsWith('.json')),
     [],

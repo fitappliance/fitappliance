@@ -3793,6 +3793,63 @@
         "p1EligibleTargets": 0
       },
       "semanticRebaselineSha256": "fc8ae3e60f292da38531b47cf0bb01bf49e11d2588d8e68c65a6cf00202eff18"
+    },
+    {
+      "rebaselineId": "historical-dimensions-rebaseline-5e27546beb029821077dcc31",
+      "activatedAt": "2026-08-10T19:31:58Z",
+      "afterEntryCount": 45,
+      "reason": "RELEASE_DAG_RECONCILIATION",
+      "priorControlSha256": "02a533e92fb92aef901c26a5747119c029be63535ad688b60e400aa7bd128859",
+      "priorArtifactBindings": {
+        "nextBatchesSha256": "5e45221a6e1841ffd8a8bd005f981b6bcb4f2f4d70e445cdd030bb93c427825a",
+        "programStatusSha256": "65a0dd2bb0cbde7fbd5b640635ec7354113a2dd8bc3e5c9036d827bd0b3da92b",
+        "receiptAuditSha256": "4e49663416124255b41d267820f1f2a7553b5072cce9a8ee1536c4d84df1e315",
+        "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
+        "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
+        "epochsSha256": "59cb82bf811760465fd53be5b815233e08d93ab6b0eb7c35ebc70fba624af275"
+      },
+      "nextArtifactBindings": {
+        "nextBatchesSha256": "0641a7a12f8db39249305045a9aed949d841000c4a1387c9cbd076be21c365d9",
+        "programStatusSha256": "d9c742665682b393d7baeecc3b776e1687e7edb085e15e9c150feb1a447748a0",
+        "receiptAuditSha256": "4e49663416124255b41d267820f1f2a7553b5072cce9a8ee1536c4d84df1e315",
+        "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
+        "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
+        "epochsSha256": "bf3a11bfc6bf91b6d332cc4f4a4738ebeba439bf50c99ee13f22dde82578f509"
+      },
+      "changedArtifactBindings": [
+        "nextBatchesSha256",
+        "programStatusSha256",
+        "epochsSha256"
+      ],
+      "previousCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 184,
+        "p0EligibleTargets": 169,
+        "p1AssignedTargets": 4720,
+        "p1EligibleTargets": 4680
+      },
+      "nextCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 86,
+        "p0EligibleTargets": 78,
+        "p1AssignedTargets": 4818,
+        "p1EligibleTargets": 4771
+      },
+      "queueCounterDeltas": {
+        "p0AssignedTargets": -98,
+        "p0EligibleTargets": -91,
+        "p1AssignedTargets": 98,
+        "p1EligibleTargets": 91
+      },
+      "semanticRebaselineSha256": "c126ba266e7cc8132d9349d2c4f4dfee1f1a04413cc897d47e6c8876ce524c8f"
     }
   ]
 }

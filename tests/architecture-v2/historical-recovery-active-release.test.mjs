@@ -56,6 +56,25 @@ test('active recovery view overlays only catalogue-bound lifecycle decisions', (
   assert.equal(view.summary.unboundReferences, 1);
 });
 
+test('privacy successor archives a bound product whose private lifecycle evidence was withheld', () => {
+  const release = releaseFixture();
+  release.descriptor.schemaVersion = 2;
+  release.descriptor.releaseKind = 'PRIVACY_SANITIZATION_SUCCESSOR';
+  release.catalog.products[0] = {
+    id: 'current',
+    unavailable: true,
+    retailers: [],
+  };
+
+  const view = buildHistoricalRecoveryActiveReleaseView(release);
+  const reference = view.referencesById.get('ref-current');
+
+  assert.equal(reference.lifecycleState, 'CATALOG_ARCHIVED');
+  assert.deepEqual(reference.retailLifecycle.reasonCodes, [
+    'LIFECYCLE_NOT_RELEASED_IN_PRIVACY_SUCCESSOR',
+  ]);
+});
+
 test('active recovery view rejects missing, multiple, conflicting and duplicate bindings', () => {
   const missing = releaseFixture();
   missing.reference.records[0].catalogProductIds = ['missing'];
@@ -169,8 +188,12 @@ test('acquisition queue builder reads catalog and reference through the active r
 });
 
 test('committed recovery control graph is bound to the active release', async () => {
+  const activeDescriptor = JSON.parse(await readFile(
+    'data/architecture-v2/decisions/active-retail-release.json',
+    'utf8',
+  ));
   const audit = await runHistoricalRecoveryActiveReleaseAudit({ write: false });
-  assert.equal(audit.releaseCandidateId, 'retail_lifecycle_release_6c42c754aeb1ff49097b32b4');
+  assert.equal(audit.releaseCandidateId, activeDescriptor.releaseCandidateId);
   assert.equal(audit.summary.activeReferences, 8087);
   assert.equal(audit.summary.generatedOnlyIdentities, 2);
   assert.ok(audit.identityDispositions.every((row) => row.disposition === 'QUARANTINED_GENERATED_ONLY'));

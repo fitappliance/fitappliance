@@ -2,7 +2,7 @@
 
 ## Current State
 
-Candidate `fit_v4_cutover_d144848e18f7c0558d00df11` is **BLOCKED**. This preparation does not authorize a public adapter, deployment, score, or claim change.
+Candidate `fit_v4_cutover_25b35e0ab11d1898add11031` is **BLOCKED**. This preparation does not authorize a public adapter, deployment, score, or claim change.
 
 ## Preparation Preflight
 

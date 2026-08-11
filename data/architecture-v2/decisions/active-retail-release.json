@@ -1,24 +1,32 @@
 {
-  "schemaVersion": 1,
-  "policyVersion": "active-retail-release-v1",
-  "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
-  "activatedAt": "2026-07-21T17:47:21.000Z",
+  "schemaVersion": 2,
+  "policyVersion": "active-retail-release-v2",
+  "releaseKind": "PRIVACY_SANITIZATION_SUCCESSOR",
+  "releaseCandidateId": "retail_lifecycle_release_30f746d33cd37b95496a9036",
+  "predecessorReleaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+  "activatedAt": "2026-08-10T19:49:54.000Z",
   "artifacts": {
     "publicProjection": {
-      "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/public-catalog-projection.json",
-      "sha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90"
+      "path": "data/architecture-v2/releases/retail_lifecycle_release_30f746d33cd37b95496a9036/public-catalog-projection.json",
+      "sha256": "9164a5cb3cc096c23b47b04fe5b55937beaec369d5f1c35646c499f795426af5"
     },
     "historicalReference": {
-      "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/historical-appliance-reference.json",
-      "sha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882"
+      "path": "data/architecture-v2/releases/retail_lifecycle_release_30f746d33cd37b95496a9036/historical-appliance-reference.json",
+      "sha256": "c99ef0ac36db0a307128d32a9afc24473eecdeab8657c709c1153012d7c9dfba"
     },
     "authorizationManifest": {
-      "path": "data/architecture-v2/releases/retail_lifecycle_release_6c42c754aeb1ff49097b32b4/authorization-manifest.json",
+      "path": "data/architecture-v2/releases/retail_lifecycle_release_30f746d33cd37b95496a9036/authorization-manifest.json",
+      "sha256": "e6c4186b28f20f6578daf5a4d7b650b82098d44b5b07fa565e92321ae26d43eb"
+    },
+    "predecessorAuthorizationManifest": {
+      "path": "data/architecture-v2/releases/retail_lifecycle_release_30f746d33cd37b95496a9036/predecessor-authorization-manifest.json",
       "sha256": "1289e8ea9fcacdbbc81df305193a28937bfb8d80a0b63b654cb3e04427b78fd1"
     }
   },
-  "rollback": {
-    "status": "PROVEN_BYTE_IDENTICAL",
-    "baselinePublicProjectionSha256": "50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1"
+  "recovery": {
+    "status": "EXTERNAL_PRIVATE_RECOVERY_BOUND",
+    "manifestSha256": "b41ae09891735217442060e89242bc17c99185514a9cfe27eb1c5e327228ed64",
+    "archiveSha256": "df9919e96109effae2ad870e6580bf9e25a20595a8e486507d4a0e1b4b5ebe96",
+    "predecessorPublicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90"
   }
 }

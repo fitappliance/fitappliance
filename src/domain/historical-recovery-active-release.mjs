@@ -34,6 +34,22 @@ function sorted(values) {
   return [...values].sort((left, right) => left.localeCompare(right));
 }
 
+function releasedLifecycle(product, descriptor) {
+  if (product?.retailLifecycle?.lifecycleState) {
+    return structuredClone(product.retailLifecycle);
+  }
+  const privacyWithheld = descriptor?.schemaVersion === 2
+    && descriptor?.releaseKind === 'PRIVACY_SANITIZATION_SUCCESSOR'
+    && product?.unavailable === true;
+  if (!privacyWithheld) {
+    lifecycleState(null, `catalogue lifecycle ${product?.id}`);
+  }
+  return {
+    lifecycleState: 'CATALOG_ARCHIVED',
+    reasonCodes: ['LIFECYCLE_NOT_RELEASED_IN_PRIVACY_SUCCESSOR'],
+  };
+}
+
 export function buildHistoricalRecoveryActiveReleaseView(release) {
   if (!release?.descriptor || !release?.catalog || !release?.reference) {
     throw new TypeError('loaded active retail release required');
@@ -55,8 +71,9 @@ export function buildHistoricalRecoveryActiveReleaseView(release) {
     }
     const product = productsById.get(productIds[0]);
     if (!product) throw new Error(`missing catalogue product: ${productIds[0]}`);
+    const retailLifecycle = releasedLifecycle(product, release.descriptor);
     const state = lifecycleState(
-      product.retailLifecycle?.lifecycleState,
+      retailLifecycle.lifecycleState,
       `catalogue lifecycle ${product.id}`,
     );
     boundReferences += 1;
@@ -64,7 +81,7 @@ export function buildHistoricalRecoveryActiveReleaseView(release) {
     return {
       ...structuredClone(reference),
       lifecycleState: state,
-      retailLifecycle: structuredClone(product.retailLifecycle),
+      retailLifecycle,
     };
   });
   const referencesById = new Map(records.map((reference) => [reference.referenceId, reference]));

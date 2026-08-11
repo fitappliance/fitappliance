@@ -10,6 +10,7 @@ import {
   extractDimensionExpressions,
   renderDimensionExpressionKnowledgeMarkdown,
 } from '../../src/domain/dimension-expression-knowledge.mjs';
+import { loadHistoricalRecoveryActiveRelease } from '../../src/domain/historical-recovery-active-release.mjs';
 import { loadMineruDocuments } from '../../scripts/architecture-v2/build-dimension-expression-knowledge.mjs';
 
 const bbox = [50, 100, 900, 500];
@@ -895,10 +896,7 @@ test('generated dimension-expression knowledge preserves inventory and fail-clos
     '../../data/architecture-v2/generated/dimension-expression-observations.json',
     import.meta.url,
   ), 'utf8'));
-  const historical = JSON.parse(await fs.readFile(new URL(
-    '../../data/architecture-v2/generated/historical-appliance-reference.json',
-    import.meta.url,
-  ), 'utf8'));
+  const historical = (await loadHistoricalRecoveryActiveRelease()).reference;
   assert.equal(knowledge.summary.historicalRecords, historical.records.length);
   assert.equal(knowledge.categories.length, 4);
   assert.equal(

@@ -31,6 +31,7 @@ function sortedObject(counts) {
 
 export function buildActiveEvidenceBatch({
   selectedAt,
+  selectionBasis,
   selectedLegacyIds,
   products,
   sourceDocuments,
@@ -41,6 +42,7 @@ export function buildActiveEvidenceBatch({
   maximumObservationAgeDays,
 }) {
   const selectionDate = isoDate(selectedAt, 'selection date');
+  const basis = text(selectionBasis, 'selection basis');
   if (!Array.isArray(selectedLegacyIds) || !Array.isArray(products) || !Array.isArray(sourceDocuments)) {
     throw new TypeError('selection, products and source documents required');
   }
@@ -75,17 +77,6 @@ export function buildActiveEvidenceBatch({
     const category = text(product.cat, 'category');
     const brand = text(product.brand, 'brand');
     const canonicalProductId = text(product.canonicalProductId, 'canonical product ID');
-    const observations = (product.retailers ?? [])
-      .filter((row) => row?.source === 'partnerize-feed' && row?.url && row?.verified_at)
-      .sort((left, right) => String(right.verified_at).localeCompare(String(left.verified_at)));
-    const activeObservation = observations[0];
-    if (!activeObservation) throw new TypeError(`active affiliate-feed observation missing for ${legacyRuntimeId}`);
-    const observedAt = isoDate(activeObservation.verified_at, 'observation date');
-    const ageDays = (Date.parse(`${selectionDate}T00:00:00Z`) - Date.parse(`${observedAt}T00:00:00Z`)) / 86400000;
-    if (ageDays < 0 || ageDays > maximumObservationAgeDays) {
-      throw new TypeError(`active affiliate-feed observation is stale for ${legacyRuntimeId}`);
-    }
-
     categoryCounts.set(category, (categoryCounts.get(category) ?? 0) + 1);
     brandCounts.set(brand, (brandCounts.get(brand) ?? 0) + 1);
     const categoryBrandKey = `${category}\0${brand}`;
@@ -113,12 +104,6 @@ export function buildActiveEvidenceBatch({
       category,
       brand,
       model: text(product.model, 'model'),
-      activeObservation: {
-        retailer: text(activeObservation.n, 'retailer'),
-        url: text(activeObservation.url, 'retailer URL'),
-        source: 'partnerize-feed',
-        observedAt,
-      },
       sourceStatus: manufacturerCandidate ? 'manufacturer_candidate' : 'discovery_required',
       sourceCandidates,
     };
@@ -140,6 +125,7 @@ export function buildActiveEvidenceBatch({
   return freezeDeep({
     schemaVersion: 1,
     selectedAt: selectionDate,
+    selectionBasis: basis,
     policy: { categoryTargets, categoryBrandLimit, globalBrandLimit, maximumObservationAgeDays },
     products: batchProducts,
     summary: {

@@ -20,7 +20,22 @@ function normalizeRetailerName(value) {
   return String(value ?? '').trim().toLowerCase();
 }
 
+function isPrivateRetailerEvidence(retailer) {
+  if (!retailer || typeof retailer !== 'object') return false;
+  const source = String(retailer.source ?? retailer.sourceType ?? '').trim().toLowerCase();
+  const affiliateUrl = String(retailer.affiliate_url ?? '').trim().toLowerCase();
+  return source.includes('partnerize')
+    || source === 'affiliate_feed'
+    || String(retailer.affiliate_network ?? '').trim().toLowerCase() === 'partnerize'
+    || affiliateUrl.includes('prf.hn/click')
+    || affiliateUrl.includes('feeds.performancehorizon.com')
+    || retailer.tgg_sku != null
+    || retailer.feed_title != null
+    || retailer.feed_model != null;
+}
+
 function cloneRetailer(retailer) {
+  if (isPrivateRetailerEvidence(retailer)) return null;
   const cloned = {
     n: String(retailer?.n ?? '').trim(),
     url: String(retailer?.url ?? '').trim(),
@@ -55,7 +70,7 @@ function mergeRetailers(existingRetailers = [], manualRetailers = []) {
 
   for (const manualRetailer of manualRetailers) {
     const next = cloneRetailer(manualRetailer);
-    if (!next.n || !next.url) continue;
+    if (!next?.n || !next.url) continue;
 
     const index = merged.findIndex((retailer) => normalizeRetailerName(retailer?.n) === normalizeRetailerName(next.n));
     if (index === -1) {
@@ -88,7 +103,7 @@ function getApprovedManualEntry(product, manualDocument) {
   if (!Array.isArray(entry.retailers) || entry.retailers.length === 0) return null;
   const retailers = entry.retailers
     .map(cloneRetailer)
-    .filter((retailer) => retailer.n && isRetailerProductPageUrl(retailer.url));
+    .filter((retailer) => retailer?.n && isRetailerProductPageUrl(retailer.url));
   if (retailers.length === 0) return null;
   return { ...entry, retailers };
 }
@@ -98,15 +113,22 @@ function applyManualRetailers(products, manualDocument) {
 
   return products.map((product) => {
     const canonicalBrand = canonicalizeBrand(product?.brand);
+    const sourceRetailers = Array.isArray(product.retailers) ? product.retailers : [];
+    const existingPublicRetailers = sourceRetailers.filter((retailer) => !isPrivateRetailerEvidence(retailer));
+    const removedPrivateRetailer = existingPublicRetailers.length !== sourceRetailers.length;
     const entry = getApprovedManualEntry(product, manualDocument);
     if (!entry) {
       return {
         ...product,
         brand: canonicalBrand,
+        retailers: existingPublicRetailers.map((retailer) => ({ ...retailer })),
+        unavailable: existingPublicRetailers.length > 0
+          ? false
+          : (removedPrivateRetailer ? true : product.unavailable),
       };
     }
 
-    const existingRetailers = removeRetailers(product.retailers, entry.removed_retailers);
+    const existingRetailers = removeRetailers(existingPublicRetailers, entry.removed_retailers);
     const retailers = mergeRetailers(existingRetailers, entry.retailers);
     return {
       ...product,
@@ -166,6 +188,7 @@ if (require.main === module) {
 module.exports = {
   applyManualRetailers,
   enrichManualRetailers,
+  isPrivateRetailerEvidence,
   mergeRetailers,
   removeRetailers,
 };

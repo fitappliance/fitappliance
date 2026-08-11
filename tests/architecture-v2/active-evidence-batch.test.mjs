@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { buildActiveEvidenceBatch } from '../../src/domain/active-evidence-batch.mjs';
 
-test('builds an active batch from affiliate-feed observations without treating retailer PDFs as approval', () => {
+test('builds a tracked evidence batch without copying private selection observations', () => {
   const batch = buildActiveEvidenceBatch({
     selectedAt: '2026-07-11',
+    selectionBasis: 'historical_active_inventory_with_category_and_brand_bounds',
     selectedLegacyIds: ['fridge-a', 'fridge-b'],
     products: [
       { id: 'fridge-a', canonicalProductId: 'fa_a', cat: 'fridge', brand: 'A', model: 'A1', retailers: [
@@ -31,17 +32,18 @@ test('builds an active batch from affiliate-feed observations without treating r
   assert.equal(batch.products[0].sourceStatus, 'manufacturer_candidate');
   assert.equal(batch.products[1].sourceStatus, 'discovery_required');
   assert.equal(batch.products[1].sourceCandidates[0].transportHostType, 'retailer');
+  assert.equal(batch.selectionBasis, 'historical_active_inventory_with_category_and_brand_bounds');
+  assert.equal('activeObservation' in batch.products[0], false);
+  assert.doesNotMatch(JSON.stringify(batch), /partnerize|retailer\.example\/a/i);
 });
 
-test('rejects stale, duplicate, excluded, unbalanced, and over-concentrated selections', () => {
+test('rejects duplicate, excluded, unbalanced, and over-concentrated selections', () => {
   const base = {
-    selectedAt: '2026-07-11', selectedLegacyIds: ['fridge-a'], sourceDocuments: [], excludedLegacyIds: new Set(),
-    products: [{ id: 'fridge-a', canonicalProductId: 'fa_a', cat: 'fridge', brand: 'A', model: 'A1', retailers: [
-      { n: 'The Good Guys', url: 'https://retailer.example/a', source: 'partnerize-feed', verified_at: '2026-01-01' },
-    ] }],
+    selectedAt: '2026-07-11', selectionBasis: 'historical_active_inventory_with_category_and_brand_bounds',
+    selectedLegacyIds: ['fridge-a'], sourceDocuments: [], excludedLegacyIds: new Set(),
+    products: [{ id: 'fridge-a', canonicalProductId: 'fa_a', cat: 'fridge', brand: 'A', model: 'A1' }],
     categoryTargets: { fridge: 1 }, categoryBrandLimit: 1, globalBrandLimit: 1, maximumObservationAgeDays: 60,
   };
-  assert.throws(() => buildActiveEvidenceBatch(base), /active affiliate-feed observation/i);
   assert.throws(() => buildActiveEvidenceBatch({ ...base, selectedLegacyIds: ['fridge-a', 'fridge-a'] }), /duplicate/i);
   assert.throws(() => buildActiveEvidenceBatch({ ...base, excludedLegacyIds: new Set(['fridge-a']) }), /excluded/i);
 });
@@ -57,5 +59,6 @@ test('committed Phase 10 batch has 10 active non-overlapping models per category
   assert.ok(Math.max(...Object.values(batch.summary.categoryBrandMaximums)) <= 4);
   const prior = new Set(phase08.products.map((row) => row.legacyRuntimeId));
   assert.ok(batch.products.every((row) => !prior.has(row.legacyRuntimeId)));
-  assert.ok(batch.products.every((row) => row.activeObservation.source === 'partnerize-feed'));
+  assert.equal(batch.selectionBasis, 'historical_active_inventory_with_category_and_brand_bounds');
+  assert.ok(batch.products.every((row) => !('activeObservation' in row)));
 });

@@ -9,7 +9,7 @@
     },
     {
       "kind": "RETAILER_OBSERVATION_LEDGER",
-      "sha256": "24051b205e3998974e1dad23b860818568d35603b04b8ce9121a825b82a99cff"
+      "sha256": "0c8e4bd8e28f5c13a3727c6bc5fe4b505d5b32c371563ebd7676d9c736ee9c38"
     },
     {
       "kind": "RETAILER_SOURCE_POLICY",
@@ -277,18 +277,21 @@
       "url": "https://www.appliancesonline.com.au/product/westinghouse-619l-side-by-side-fridge-wse6640ba/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_c8c843f199ce471080e8c439",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:32:30.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_9fa69827c7e5e5327f87f975"
+        ],
+        "observedAt": "2026-07-20T17:32:30.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "f73077eb9d47e46044971fef05ce24861a7f663490dd077d098b3aacaeeb1d8e",
         "canonicalProductId": "fa_prod_e191868e981538ab90701375",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_01d2ab6ed14c8e14398a3858",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/westinghouse-619l-side-by-side-fridge-wse6640ba/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "WSE6640BA",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/westinghouse-619l-side-by-side-fridge-wse6640ba"
       },
       "revalidation": null
     },
@@ -1029,7 +1032,7 @@
         "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
         "eventId": "retail_identity_event_cab7ee38ec1277021b62faf1",
         "action": "REASSIGN_TO_EXISTING_CANONICAL",
-        "observedAt": "2026-07-20T21:01:16.038Z",
+        "observedAt": "2026-07-21T12:12:18.070Z",
         "sourceObservedAt": "2026-07-20T17:30:37.000Z",
         "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340",
         "canonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
@@ -2038,18 +2041,21 @@
       "url": "https://www.appliancesonline.com.au/product/haier-433l-bottom-mount-refrigerator-black-hrf420bec/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_791bcc56f5626a5e243a6ffc",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:28:44.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_11f12507219863d731181c5e"
+        ],
+        "observedAt": "2026-07-20T17:28:44.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "00a0fe15627d288ff073a0bc469edef3cf43d04e16c9e8627dfdeb4e84ba0058",
         "canonicalProductId": "fa_prod_68d7810d7cb2acf101260e38",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_10fe1faa140aaaa7910af16e",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/haier-433l-bottom-mount-refrigerator-black-hrf420bec/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "HRF420BEC",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/haier-433l-bottom-mount-refrigerator-black-hrf420bec"
       },
       "revalidation": null
     },
@@ -2779,18 +2785,21 @@
       "url": "https://www.appliancesonline.com.au/product/lg-530l-french-door-fridge-stainless-stteel-gf-b505pl/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_cb7557e9daa5f55795951c31",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:36:17.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_07038330f32ebc594b855c6d"
+        ],
+        "observedAt": "2026-07-20T17:36:17.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "82de919e66a77df013604e10a0dd95fdf13a1bb0ceea962ab1da56092268f8b1",
         "canonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_1733635c1f742b6b4ecd55d4",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/lg-530l-french-door-fridge-stainless-stteel-gf-b505pl/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "GF-B505PL",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/lg-530l-french-door-fridge-stainless-stteel-gf-b505pl"
       },
       "revalidation": null
     },
@@ -4522,18 +4531,21 @@
       "url": "https://www.appliancesonline.com.au/product/chiq-202l-top-mount-fridge-white-ctm202nw3/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_8584ea8b02cc1f6c469e91e5",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:36:17.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_a0489825fd2c92de7be69df2"
+        ],
+        "observedAt": "2026-07-20T17:36:17.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "693ee75073babec7b2184ecf442febe4b06e9a825af7a648221028e99cf30306",
         "canonicalProductId": "fa_prod_6c37a64f4db8aefb49934e79",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_28c476154978a439150af56e",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/chiq-202l-top-mount-fridge-white-ctm202nw3/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "CTM202NW3",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/chiq-202l-top-mount-fridge-white-ctm202nw3"
       },
       "revalidation": null
     },
@@ -5513,18 +5525,21 @@
       "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
-        "eventId": "retail_identity_event_9a99ed3a08ac9c5994c7ec6e",
-        "action": "REASSIGN_TO_EXISTING_CANONICAL",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:36:17.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_41ffa648b9c55f5b4f6a8976"
+        ],
+        "observedAt": "2026-07-20T17:36:17.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "3b9e613357b0be1ec990076a6cb6cd6c85674148f3b8f0f18f58295ff72ce67a",
         "canonicalProductId": "fa_prod_f491bf00786fabb93ac9861f",
-        "destinationCanonicalProductId": "fa_prod_7cb88e6a4719789496740fee",
-        "observationId": "obs_identity_f6d0a1fa220d2a0f1e758d57"
+        "baselineLinkId": "retail_link_3126b05b2c3db9a783d3d7dd",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "HRF505VS",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs"
       },
       "revalidation": null
     },
@@ -9267,15 +9282,19 @@
       "url": "https://www.appliancesonline.com.au/product/samsung-809l-ai-family-hub-french-door-fridge-with-internal-beverage-centre-matte-black-srf9800bfh",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_7109cfa9e0b6b67c68d960c4"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "b8b0cd4770007259aa76e9b1dc941b15fa18e6e5fc74228589d05da8d9c5ea28",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_51308d91605a304abc3e460f",
@@ -9368,14 +9387,14 @@
       "typedObservation": {
         "kind": "IDENTITY_RESOLUTION",
         "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
-        "eventId": "retail_identity_event_b62234c63a74dfac5a61ef0a",
+        "eventId": "retail_identity_event_959edc91a46cf010e7eacc40",
         "action": "REASSIGN_TO_EXISTING_CANONICAL",
         "observedAt": "2026-07-21T12:12:18.070Z",
         "sourceObservedAt": "2026-07-20T17:23:04.000Z",
         "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
         "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
         "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
-        "observationId": "obs_identity_62597b6e3d11c2b355e7e96e"
+        "observationId": "obs_identity_7d2ddcbd0bdeb105de99ab94"
       },
       "revalidation": null
     },
@@ -9487,15 +9506,19 @@
       "url": "https://www.appliancesonline.com.au/product/samsung-636l-ai-family-hub-french-door-fridge-with-internal-beverage-centre-matte-black-srf9400bfh",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_88577d16fda0db282d9f6e52"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "0afa73d7375fac7fd55a7a4ed1f6875c009b798d48eb464706066be749e96d5f",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_52c679b28da97785973d4b35",
@@ -9710,18 +9733,21 @@
       "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf522adux5-519l-activesmart-french-door-fridge/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
-        "eventId": "retail_identity_event_71ff8fd7976923016e076148",
-        "action": "REASSIGN_TO_EXISTING_CANONICAL",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:15:00.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_76fa5f4d166031de76c6a25e"
+        ],
+        "observedAt": "2026-07-20T17:15:00.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "80806d3bd66d2bf35ca91bf75e4f2a38f6da4843c89d999b8c82d2fa5f7a7a1f",
         "canonicalProductId": "fa_prod_43d528262e412c5c2b74b9b7",
-        "destinationCanonicalProductId": "fa_prod_be1e7c1c8ccea38235fa1c0d",
-        "observationId": "obs_identity_370b862365983ecdab1a0e2f"
+        "baselineLinkId": "retail_link_54dabcb81a7aad73f6a80bf2",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/fisher-paykel-rf522adux5-519l-activesmart-french-door-fridge/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "RF522ADUX5",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/fisher-paykel-rf522adux5-519l-activesmart-french-door-fridge"
       },
       "revalidation": null
     },
@@ -10951,18 +10977,21 @@
       "url": "https://www.appliancesonline.com.au/product/westinghouse-425l-bottom-mount-fridge-silver-wbe4302acr/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_a3af8bdaf0fccc941f57bd0c",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:19:17.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_9c7c88d39ea6973d0e3d472b"
+        ],
+        "observedAt": "2026-07-20T17:19:17.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "a41fe1f397314b56b7095954f4bb7511608031ab66b269edacdf5ab883cfe99d",
         "canonicalProductId": "fa_prod_775e2ad9d935bc1e139a828d",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_600a22968c1eed41e8df89f3",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/westinghouse-425l-bottom-mount-fridge-silver-wbe4302acr/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "WBE4302ACR",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/westinghouse-425l-bottom-mount-fridge-silver-wbe4302acr"
       },
       "revalidation": null
     },
@@ -11654,18 +11683,21 @@
       "url": "https://www.appliancesonline.com.au/product/chiq-90l-retro-bar-fridge-red-crsr089dr1/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_94d45a789dd03aae13ac23c0",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:32:30.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_05dcd378db69001ed0fe4dd7"
+        ],
+        "observedAt": "2026-07-20T17:32:30.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "28a17254602ece933ed093b447e8b4cfec9cde001cede693a959f8a921c64456",
         "canonicalProductId": "fa_prod_4929eed99c994ef46671d689",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_65f26ea70eff44308526c3c9",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/chiq-90l-retro-bar-fridge-red-crsr089dr1/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "CRSR089DR1",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/chiq-90l-retro-bar-fridge-red-crsr089dr1/"
       },
       "revalidation": null
     },
@@ -12673,15 +12705,19 @@
       "url": "https://www.appliancesonline.com.au/product/hisense-243l-upright-fridge-white-hraf242",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_96cdf1ce7bc8bd11fe1644cf"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "f8451410b66248687b57caa5a2facc5cb0f5097a77e91cf26be283bd63265688",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_6ff48bd18c900862c07592ee",
@@ -13384,18 +13420,21 @@
       "url": "https://www.appliancesonline.com.au/product/haier-300-series-129l-bar-fridge-black-hrf130ug2/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_77c31f44c000574db9307d25",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:21:11.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_d9b09dff8a34d67d91502b52"
+        ],
+        "observedAt": "2026-07-20T17:21:11.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "0c3918dcc2cfca75d838bf1249fba4c47594671d2c9f904012013800fc11114b",
         "canonicalProductId": "fa_prod_507f501aa288199863392b3c",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_7650808c2033fd93c7b9a526",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/haier-300-series-129l-bar-fridge-black-hrf130ug2/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "HRF130UG2",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/haier-300-series-129l-bar-fridge-black-hrf130ug2/"
       },
       "revalidation": null
     },
@@ -13835,18 +13874,21 @@
       "url": "https://www.appliancesonline.com.au/product/chiq-396l-bottom-mount-fridge-black-cbm393nb/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_511a4bd68735798a162ceaff",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:32:30.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_21da2613ad0e12acd31fb0ff"
+        ],
+        "observedAt": "2026-07-20T17:32:30.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "74c3123b6019d75e4deac06b833ad60d75741c5d7b0e902d475172be4ffd25d0",
         "canonicalProductId": "fa_prod_ec08816aef599580a0e2159e",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_7a0cb41d30ca0f5a97dcca5f",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/chiq-396l-bottom-mount-fridge-black-cbm393nb/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "CBM393NB",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/chiq-396l-bottom-mount-fridge-black-cbm393nb"
       },
       "revalidation": null
     },
@@ -14773,18 +14815,21 @@
       "url": "https://www.appliancesonline.com.au/product/lg-655l-side-by-side-fridge-gs-b655mbl/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_4dc9b7e04e0521829cec8e2f",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:28:44.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_d3448ad4720ae5e74eb630b3"
+        ],
+        "observedAt": "2026-07-20T17:28:44.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "77ca7a70e71be781693e4c6c967b64c9831e9ef917579d9b5fa235b9fa5f4aff",
         "canonicalProductId": "fa_prod_2058e392d0b85760f2db2265",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_8248f5525f2a0c2266b3970d",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/lg-655l-side-by-side-fridge-gs-b655mbl/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "GS-B655MBL",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/lg-655l-side-by-side-fridge-gs-b655mbl"
       },
       "revalidation": null
     },
@@ -15343,15 +15388,19 @@
       "url": "https://www.appliancesonline.com.au/product/hisense-series-5i-10kg-max-drum-front-load-washing-machine-white-hwf5i1015/",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_eae759665f172132317661e4"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "685f2e3f5d04cfb2c7662421e88eb4a99afc1cf26556299ee92e9f4778d56b55",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_86d2c8926417069db6b00ce4",
@@ -16034,18 +16083,21 @@
       "url": "https://www.appliancesonline.com.au/product/westinghouse-528l-bottom-mount-fridge-right-hinge-stainless-steel-wbe5304sc-r/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_55c279f314ef7a25b556e17d",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:24:57.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_f902f4086db9fc488d9dd2e4"
+        ],
+        "observedAt": "2026-07-20T17:24:57.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "2038752b5a0f57b8695ab54c340b0d1ea317fe2fa65508e5318235382623e00c",
         "canonicalProductId": "fa_prod_bf5f37509b82baf1044dfb42",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_8d7ebf0556fe7391f2ee8b6d",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/westinghouse-528l-bottom-mount-fridge-right-hinge-stainless-steel-wbe5304sc-r/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "WBE5304SC-R",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/westinghouse-528l-bottom-mount-fridge-right-hinge-stainless-steel-wbe5304sc-r"
       },
       "revalidation": null
     },
@@ -16813,18 +16865,21 @@
       "url": "https://www.appliancesonline.com.au/product/westinghouse-308l-bottom-mount-fridge-white-wbb3100wk/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_INVALIDATED_WRONG_MODEL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_INVALIDATED_WRONG_MODEL",
-        "eventId": "retail_identity_event_d6879ad66e88998a5584f77b",
-        "action": "INVALIDATE_WRONG_IDENTITY",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:19:17.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_f9d828dd35cab29930b88b8e"
+        ],
+        "observedAt": "2026-07-20T17:19:17.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "dd3a1c5880838c319b6f20ea689dec12847320b60339a0942d9014e02b66b929",
         "canonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
-        "destinationCanonicalProductId": null,
-        "observationId": null
+        "baselineLinkId": "retail_link_945a2a727616a6bde23662cf",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/westinghouse-308l-bottom-mount-fridge-white-wbb3100wk/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "WBB3100WK",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/westinghouse-308l-bottom-mount-fridge-white-wbb3100wk"
       },
       "revalidation": null
     },
@@ -18791,15 +18846,19 @@
       "url": "https://www.appliancesonline.com.au/product/samsung-427l-bottom-mount-refrigerator-matte-black-srl4200b",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_5c8bc2d53d3406dfcd1e1b02"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "6620c7a83c272ac1384c01dad7c45614b3d60829f2fe38a0ba1e735358e9933c",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_a65d459e8f23155cf553c8f4",
@@ -21517,18 +21576,21 @@
       "url": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
       "typedObservation": {
-        "kind": "IDENTITY_RESOLUTION",
-        "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
-        "eventId": "retail_identity_event_a653e8b6a2c5880bf49b57b1",
-        "action": "REASSIGN_TO_EXISTING_CANONICAL",
-        "observedAt": "2026-07-20T21:01:16.038Z",
-        "sourceObservedAt": "2026-07-20T17:36:17.000Z",
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_1bb3a93761fc6d6c61b35e7c"
+        ],
+        "observedAt": "2026-07-20T17:36:17.000Z",
+        "adapterId": "appliances-online-product-api-v1",
         "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
         "canonicalProductId": "fa_prod_8b35692597ff1ca7ab3820cf",
-        "destinationCanonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
-        "observationId": "obs_identity_4875265c8fd347c32d575818"
+        "baselineLinkId": "retail_link_bd635e094915adab3c137132",
+        "sourceUrl": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
+        "reasonCode": "AO_MODEL_MISMATCH",
+        "receivedModel": "WQE6000SB",
+        "receivedUrl": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb"
       },
       "revalidation": null
     },
@@ -22856,15 +22918,19 @@
       "url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_183ec9141a72a8816b006338"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "b329bd88874961f7f5a296790a8ae4930965fe9bf66d6fba96c2bc6663dd34fb",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_ca1d185967da894efcca0beb",
@@ -26193,15 +26259,19 @@
       "url": "https://www.appliancesonline.com.au/product/samsung-640l-family-hub-french-door-frost-free-smart-refrigerator-srf7900bfh",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_1bb55ea87fdf08830ebbbeb0"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "ab99b87b35b5444b52582f2d5a39f213de5036e96a03642557047689aab2cd5c",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_e840c849876d95a6dc80a8a3",
@@ -27320,15 +27390,19 @@
       "url": "https://www.appliancesonline.com.au/product/samsung-648l-french-door-fridge-srf7500bb",
       "originSource": "appliances-online-api",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REVALIDATE_AO_PRODUCT_API",
-        "policyState": "reviewed_bounded_exact_product_api",
-        "executionState": "RUNNABLE_POLICY_REVIEWED_SOURCE",
-        "collectionMode": "bounded_exact_product_api",
-        "sourcePolicyId": "appliances-online-product-api-v1"
-      }
+      "terminalObservationState": "TYPED_AVAILABLE",
+      "typedObservation": {
+        "state": "TYPED_AVAILABLE",
+        "observationIds": [
+          "obs_51e82385e1723d3651b1a9fd"
+        ],
+        "observedAt": "2026-08-10T19:13:03.000Z",
+        "adapterId": "appliances-online-product-api-v1",
+        "rawSourceSha256": "c99469a3124750401aab3acb17c601f67257f1c6fc90ae03c56f3d44a3dab417",
+        "redirectUrl": null,
+        "policyExcludedObservationIds": []
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_f24cd5ae4396026bbee1dc37",
@@ -29307,8 +29381,8 @@
   "summary": {
     "baselineLinks": 1442,
     "accountedLinks": 1442,
-    "typedLinks": 1189,
-    "revalidationItems": 253,
+    "typedLinks": 1197,
+    "revalidationItems": 245,
     "byOriginSource": {
       "appliances-online-api": 1204,
       "sitemap": 91,
@@ -29318,22 +29392,22 @@
       "websearch-jbhifi": 35
     },
     "byTerminalObservationState": {
-      "IDENTITY_INVALIDATED_WRONG_MODEL": 11,
-      "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL": 5,
-      "LEGACY_UNKNOWN": 253,
-      "TYPED_AVAILABLE": 119,
+      "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL": 2,
+      "LEGACY_UNKNOWN": 245,
+      "QUARANTINED_IDENTITY_MISMATCH": 14,
+      "TYPED_AVAILABLE": 127,
       "TYPED_UNAVAILABLE": 1054
     },
     "byRevalidationAction": {
       "HISTORICAL_ONLY_POLICY_BLOCKED": 91,
       "PAGE_REVALIDATION_POLICY_BLOCKED": 81,
-      "REVALIDATE_AO_PRODUCT_API": 81
+      "REVALIDATE_AO_PRODUCT_API": 73
     },
     "byPolicyExecutionState": {
       "BLOCKED_BY_SOURCE_POLICY": 172,
-      "RUNNABLE_POLICY_REVIEWED_SOURCE": 81
+      "RUNNABLE_POLICY_REVIEWED_SOURCE": 73
     }
   },
-  "coverageId": "retailer_observation_coverage_9218f68724e7772a95d7ef4c",
-  "semanticSha256": "cd41db33a6ded378b86ed5a3928587d29d77d8fac435391b3a120d39a620bd21"
+  "coverageId": "retailer_observation_coverage_8896d9f0a5010a6ab370d8a9",
+  "semanticSha256": "05752e5bfc5f4857b25bb457dae027fcd08bec247f272b94e044da1b40d01377"
 }

@@ -10,21 +10,31 @@ import {
   validateActiveRetailReleaseDescriptor,
 } from '../../src/domain/active-retail-release.mjs';
 
-test('active retail release is bound to the approved candidate and historical reference', async () => {
+test('active retail release is bound to the privacy successor and approved predecessor', async () => {
   const release = await loadActiveRetailRelease();
 
-  assert.equal(release.manifest.authorization.status, 'READY_FOR_CUTOVER');
+  assert.equal(release.descriptor.schemaVersion, 2);
+  assert.equal(release.manifest.authorization.status, 'READY_FOR_PRIVACY_SANITIZATION_ONLY');
+  assert.equal(release.predecessorManifest.authorization.status, 'READY_FOR_CUTOVER');
   assert.equal(release.descriptor.releaseCandidateId, release.manifest.releaseCandidateId);
+  assert.equal(
+    release.descriptor.predecessorReleaseCandidateId,
+    release.predecessorManifest.releaseCandidateId,
+  );
   assert.equal(release.catalog.products.length, 3513);
-  assert.equal(release.catalog.products.filter((product) => product.unavailable === false).length, 349);
+  assert.equal(release.catalog.products.filter((product) => product.unavailable === false).length, 117);
   assert.equal(release.reference.records.length, 8087);
   assert.equal(
     release.descriptor.artifacts.publicProjection.sha256,
-    release.manifest.sourceBindings.finalCandidateProjectionSha256,
+    release.manifest.sourceBindings.sanitizedPublicProjectionSha256,
   );
   assert.equal(
     release.descriptor.artifacts.historicalReference.sha256,
-    release.manifest.sourceBindings.historicalReferenceCandidateSha256,
+    release.manifest.sourceBindings.historicalReferenceSha256,
+  );
+  assert.equal(
+    release.descriptor.artifacts.predecessorAuthorizationManifest.sha256,
+    release.manifest.predecessor.authorizationManifestSha256,
   );
 });
 

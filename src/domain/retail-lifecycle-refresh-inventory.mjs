@@ -209,11 +209,18 @@ export function validateRetailLifecycleRefreshInventory(document) {
     }
     for (const task of controlTasks) {
       if (!CONTROL_EXECUTION_STATES.has(task.executionState)
-        || !Array.isArray(task.identityEventIds) || task.identityEventIds.length === 0
+        || !Array.isArray(task.identityEventIds)
         || new Set(task.identityEventIds).size !== task.identityEventIds.length
         || task.identityEventIds.some((id, index) => index > 0
           && task.identityEventIds[index - 1].localeCompare(id) > 0)) {
         throw new TypeError(`unsupported refresh control task: ${task.controlTaskId}`);
+      }
+      const noDeclarativeIdentityMigration = task.canonicalAction
+        === 'NO_DECLARATIVE_IDENTITY_MIGRATION';
+      if (noDeclarativeIdentityMigration
+        ? task.identityEventIds.length !== 0
+        : task.identityEventIds.length === 0) {
+        throw new TypeError(`refresh control task identity event contract mismatch: ${task.controlTaskId}`);
       }
       const merge = task.kind === 'CANONICAL_IDENTITY_MIGRATION'
         && task.action === 'APPLY_DECLARATIVE_CANONICAL_MERGE'
@@ -225,7 +232,8 @@ export function validateRetailLifecycleRefreshInventory(document) {
         && task.executionState === 'PENDING_ATOMIC_IDENTITY_CUTOVER';
       const discovery = task.kind === 'EXACT_MODEL_RETAIL_SOURCE_DISCOVERY'
         && task.action === 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE'
-        && task.canonicalAction === 'KEEP_CANONICAL_IDENTITY'
+        && ['KEEP_CANONICAL_IDENTITY', 'NO_DECLARATIVE_IDENTITY_MIGRATION']
+          .includes(task.canonicalAction)
         && task.executionState === 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY';
       if (!merge && !quarantine && !discovery) {
         throw new TypeError(`refresh control task contract mismatch: ${task.controlTaskId}`);
@@ -402,17 +410,18 @@ export function buildRetailLifecycleRefreshInventory({
     } else if (migrationCase?.action === 'CORRECT_CANONICAL_MODEL') {
       throw new Error(`corrected canonical identity remains unresolved: ${canonicalProductId}`);
     } else if (sourceTasks.length + resolutionTasks.length === 0
-      && migrationCase?.action === 'KEEP_CANONICAL_IDENTITY') {
+      && (migrationCase == null || migrationCase.action === 'KEEP_CANONICAL_IDENTITY')) {
+      const canonicalAction = migrationCase?.action ?? 'NO_DECLARATIVE_IDENTITY_MIGRATION';
       controlTasks = [{
         controlTaskId: `retail_control_${canonicalSha256({
           canonicalProductId,
-          canonicalAction: migrationCase.action,
+          canonicalAction,
           identityEventIds,
         }).slice(0, 24)}`,
         kind: 'EXACT_MODEL_RETAIL_SOURCE_DISCOVERY',
         action: 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE',
         executionState: 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY',
-        canonicalAction: migrationCase.action,
+        canonicalAction,
         identityEventIds,
       }];
     }

@@ -77,7 +77,7 @@ test('baseline reproduces all twelve audited migration risks', async () => {
   assert.equal(byId(baseline, EXPECTED_RISKS[11]).observation.dedicatedPolicyPresent, false);
 });
 
-test('baseline binds the corrected database and public-runtime snapshot', async () => {
+test('frozen baseline binds its predecessor while the privacy successor stays separately blocked', async () => {
   const baseline = await frozenBaseline();
   assert.ok(
     baseline.databaseRuntimeSnapshot,
@@ -132,8 +132,13 @@ test('baseline binds the corrected database and public-runtime snapshot', async 
   assert.match(snapshot.deploymentSurface.treeSha256, /^[a-f0-9]{64}$/);
 
   const candidate = await buildFitV4CutoverCandidate({ root: ROOT });
-  assert.equal(snapshot.deploymentSurface.treeSha256, candidate.bindings.deploymentSurface.treeSha256);
-  assert.equal(snapshot.deploymentSurface.fileCount, candidate.bindings.deploymentSurface.fileCount);
+  assert.equal(candidate.bindings.activeRelease.releaseCandidateId,
+    'retail_lifecycle_release_30f746d33cd37b95496a9036');
+  assert.notEqual(snapshot.activeRelease.releaseCandidateId,
+    candidate.bindings.activeRelease.releaseCandidateId);
+  assert.notEqual(snapshot.deploymentSurface.treeSha256,
+    candidate.bindings.deploymentSurface.treeSha256);
+  assert.equal(candidate.decision.status, 'BLOCKED');
 
   const rankWitness = baseline.characterizationWitnesses.find((row) => row.id === 'rank-v1-cross-outcome-comparison');
   assert.equal(rankWitness.observation.rankSchemaVersion, 1);

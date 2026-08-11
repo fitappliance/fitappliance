@@ -22,7 +22,7 @@ test('public normalization keeps unknown measurements null and fills presentatio
   assert.match(result.emoji, /\S/);
 });
 
-test('public normalization removes private affiliate-feed rows and their lifecycle evidence', () => {
+test('public normalization removes private affiliate-feed rows and replaces lifecycle evidence with an explicit unknown', () => {
   const result = normalizePublicProduct({
     id: 'fridge-private-feed',
     cat: 'fridge',
@@ -51,8 +51,15 @@ test('public normalization removes private affiliate-feed rows and their lifecyc
   assert.deepEqual(result.retailers, []);
   assert.equal(result.unavailable, true);
   assert.equal(result.price, null);
-  assert.equal(Object.hasOwn(result, 'retailLifecycle'), false);
-  assert.equal(Object.hasOwn(result, 'lifecycleVisibility'), false);
+  assert.equal(result.retailLifecycle.lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(result.retailLifecycle.catalogState, 'LISTED_UNVERIFIED');
+  assert.equal(result.retailLifecycle.authorizingObservation, null);
+  assert.deepEqual(result.retailLifecycle.latestObservations, []);
+  assert.deepEqual(result.retailLifecycle.reasonCodes, [
+    'PRIVATE_RETAILER_EVIDENCE_WITHHELD',
+    'RETAIL_STATE_REQUIRES_REVALIDATION',
+  ]);
+  assert.equal(result.lifecycleVisibility, 'MARKET_REFERENCE_ONLY');
   assert.equal(assertNoPrivateRetailerFeedPublication(result), true);
 });
 

@@ -25,11 +25,11 @@ const FIELD_MAP_PATH = 'data/architecture-v2/policies/fit-v4-field-map.json';
 const RECEIPT_BUNDLE_PATH = 'data/architecture-v2/reviews/automated/installation-evidence-receipts.json';
 const IDENTITY_MAP_PATH = 'data/architecture-v2/generated/canonical-registry.json';
 const PRIOR_BROWSER_QA_PATH = 'reports/release-candidate-qa/browser-qa.json';
-const PUBLIC_BASELINE_SHA256 = 'b9ee61351177e40f5a10a3e89647646d9b3a1e69587b57f1547500f3466732cf';
-const DEPLOYMENT_BASELINE_SHA256 = '3a978d666e292c4cc14e59a54e0e23e37d91ab7800d4172cef06a2df3d08f60e';
-const ROUTE_BASELINE_SHA256 = 'f68cbec7b3119c58284b46ff167291b4139aafd275f9c8356190fbcd241b525a';
-const SITEMAP_BASELINE_SHA256 = '2128a39c323e4deb59734cec22617c89013386cba4b6ae1bca685b78880768cc';
-const PUBLIC_DATA_BASELINE_SHA256 = '02747d05126140c2df9cafcff052dd60d8f694cec4fe9fccad32eaf8131811f4';
+const PUBLIC_BASELINE_SHA256 = '37c339c49719249e74f207705911a35fb6cc99c5647710d99edd4fb5923cacd7';
+const DEPLOYMENT_BASELINE_SHA256 = 'ca1c47034eb5b2cd33dba80ae1334487ea723547b041723cd822a46230a68e27';
+const ROUTE_BASELINE_SHA256 = '86b42dadcb952d01afabd40b51a1948804a62d39fdfea5381cca5581590124d6';
+const SITEMAP_BASELINE_SHA256 = '5b2cb9c65acdcdc59bc790fe4f071852196e4cb88d17dc680c8b59a165def9b3';
+const PUBLIC_DATA_BASELINE_SHA256 = 'c2bc01d73ddd3ed1aaf4e2d88b07bec8b59839ecda77f731f8b9b00ce58baa4f';
 
 const DEPLOYMENT_EXPLICIT_FILES = Object.freeze([
   '.vercelignore', 'vercel.json', 'package.json', 'package-lock.json', 'index.html',

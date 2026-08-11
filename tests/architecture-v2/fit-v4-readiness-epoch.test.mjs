@@ -259,7 +259,7 @@ async function withReceiptAndRights(input, { withdrawn = false } = {}) {
   };
 }
 
-test('active CURRENT_OUTPUT rows partition into the frozen WP2 applicability states', async () => {
+test('active privacy successor CURRENT_OUTPUT rows partition into the WP2 applicability states', async () => {
   const active = await loadActiveRetailRelease();
   const counts = {};
   for (const product of active.catalog.products.filter(
@@ -269,9 +269,8 @@ test('active CURRENT_OUTPUT rows partition into the frozen WP2 applicability sta
     counts[state] = (counts[state] ?? 0) + 1;
   }
   assert.deepEqual(counts, {
-    FORM_FACTOR_REQUIRED: 247,
-    POLICY_UNSUPPORTED: 6,
-    SUPPORTED: 96,
+    FORM_FACTOR_REQUIRED: 96,
+    SUPPORTED: 21,
   });
   assert.equal(classifyFitV4PolicyApplicability({ cat: 'unknown', geometry_v2: { formFactor: 'upright' } }).state, 'CATEGORY_UNSUPPORTED');
   assert.throws(() => classifyFitV4PolicyApplicability(
@@ -359,7 +358,7 @@ test('publication rights are exact, replayable, exhaustive and never inferred', 
   assert.throws(() => validateFitV4PublicationRightsRegistry({ ...registry, extra: true }, context), /schema|key set/i);
 });
 
-test('real epoch binds the complete predecessor graph and partitions all 349 rows once', async () => {
+test('real epoch binds the complete predecessor graph and partitions all 117 public-current rows once', async () => {
   const input = await loadRealInputs();
   const before = canonicalJsonBytes(input);
   const first = buildFitV4ReadinessEpoch(input);
@@ -369,19 +368,19 @@ test('real epoch binds the complete predecessor graph and partitions all 349 row
   assert.deepEqual(canonicalJsonBytes(input), before);
   assert.deepEqual(first.predecessors.map((row) => row.role), FIT_V4_READINESS_PREDECESSOR_ROLES);
   assert.deepEqual(first.summary.policyApplicability, {
-    SUPPORTED: 96,
-    POLICY_UNSUPPORTED: 6,
-    FORM_FACTOR_REQUIRED: 247,
+    SUPPORTED: 21,
+    POLICY_UNSUPPORTED: 0,
+    FORM_FACTOR_REQUIRED: 96,
     CONFIGURATION_REQUIRED: 0,
     CATEGORY_UNSUPPORTED: 0,
   });
-  assert.equal(first.summary.currentCatalogProducts, 349);
+  assert.equal(first.summary.currentCatalogProducts, 117);
   assert.equal(first.summary.privateKnowledgeCompilationEligible, 0);
   assert.equal(first.summary.publicKnowledgeCompilationEligible, 0);
   assert.deepEqual(input.publicationRights.document, publicationRegistry());
-  assert.equal(first.products.length, 349);
-  assert.equal(new Set(first.products.map((row) => row.sourceOrdinal)).size, 349);
-  assert.equal(new Set(first.products.map((row) => row.canonicalProductId)).size, 349);
+  assert.equal(first.products.length, 117);
+  assert.equal(new Set(first.products.map((row) => row.sourceOrdinal)).size, 117);
+  assert.equal(new Set(first.products.map((row) => row.canonicalProductId)).size, 117);
   assert.ok(first.products.every((row) => row.catalogProductId && row.wp1RowIdentity));
   assert.doesNotMatch(JSON.stringify(first), /fitScore|FitOutcome|requiredCavity|scenarioSet|knowledgePayload|evaluationStatus/);
   assert.deepEqual(validateFitV4ReadinessEpoch(JSON.parse(JSON.stringify(first))), first);

@@ -53,12 +53,12 @@ test('cohort contains exactly 50 washers and 50 dryers with honest lifecycle cou
   assert.deepEqual(artifact.summary.selected.byCategory, { dryer: 50, washing_machine: 50 });
   assert.deepEqual(artifact.summary.selected.byLifecycle, {
     CATALOG_ARCHIVED: 16,
-    CURRENT_RETAIL: 72,
-    UNKNOWN_RETAIL: 12,
+    CURRENT_RETAIL: 12,
+    UNKNOWN_RETAIL: 72,
   });
   assert.deepEqual(artifact.summary.selected.byCategoryLifecycle, {
-    dryer: { CATALOG_ARCHIVED: 16, CURRENT_RETAIL: 24, UNKNOWN_RETAIL: 10 },
-    washing_machine: { CURRENT_RETAIL: 48, UNKNOWN_RETAIL: 2 },
+    dryer: { CATALOG_ARCHIVED: 16, CURRENT_RETAIL: 4, UNKNOWN_RETAIL: 30 },
+    washing_machine: { CURRENT_RETAIL: 8, UNKNOWN_RETAIL: 42 },
   });
 });
 
@@ -67,15 +67,15 @@ test('current-retail shortfalls are explicit and separate from full cohort selec
   assert.deepEqual(artifact.scopeDecision.currentRetailSample, {
     targetPerCategory: 50,
     byCategory: {
-      dryer: { available: 24, selected: 24, shortfall: 26 },
-      washing_machine: { available: 48, selected: 48, shortfall: 2 },
+      dryer: { available: 4, selected: 4, shortfall: 46 },
+      washing_machine: { available: 8, selected: 8, shortfall: 42 },
     },
     targetMet: false,
   });
   assert.equal(artifact.scopeDecision.laundryCalibrationEligible, false);
   assert.deepEqual(artifact.scopeDecision.maximumFuturePublicCandidateScope, {
-    categoryCounts: { dryer: 24, washing_machine: 48 },
-    total: 72,
+    categoryCounts: { dryer: 4, washing_machine: 8 },
+    total: 12,
     status: 'EVIDENCE_NOT_ESTABLISHED',
     limitation: 'CURRENT_RETAIL_POPULATION_ONLY_NOT_PUBLICATION_ELIGIBILITY',
   });

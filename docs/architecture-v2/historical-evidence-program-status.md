@@ -37,7 +37,7 @@ Generated: 2026-08-05T12:11:28.783Z
 | Document-model edges with exact or internal model-list proof | Document Model Edge | 569 | 3972 | 14.33% |
 | Valid MinerU knowledge documents | Mineru Knowledge Document | 1025 | 1039 | 98.65% |
 | MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 543 | 1025 | 52.98% |
-| Complete parser replays | Parser Replay | 455 | 1156 | 39.36% |
+| Complete parser replays | Parser Replay | 447 | 1156 | 38.67% |
 
 ## Accepted source lanes
 

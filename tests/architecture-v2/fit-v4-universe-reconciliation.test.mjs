@@ -377,8 +377,8 @@ test('real active release reconciles exact populations with empty rights', async
     explicitNonExactMappings: 0,
     noMappingHistorical: 4577,
     catalogOnly: 3,
-    replacementCandidatesEligible: 349,
+    replacementCandidatesEligible: 117,
     effectiveAutoFill: 0,
   });
-  assert.equal(result.catalogRows.filter((row) => row.replacementCandidateEligible).length, 349);
+  assert.equal(result.catalogRows.filter((row) => row.replacementCandidateEligible).length, 117);
 });

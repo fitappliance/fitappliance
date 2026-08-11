@@ -6,7 +6,10 @@ import { resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
-import { sanitizePrivateRetailerFeedPublication } from '../../src/domain/public-projection.mjs';
+import {
+  assertNoPrivateRetailerFeedPublication,
+  sanitizePrivateRetailerFeedPublication,
+} from '../../src/domain/public-projection.mjs';
 import { runFitPublicationAudit } from './audit-fit-publication.mjs';
 import { runHistoricalReplacementAudit } from './audit-historical-replacement.mjs';
 import { validateCandidateReference } from './build-retail-lifecycle-release-candidate.mjs';
@@ -47,7 +50,10 @@ async function verifyPublishedRuntime(root, expectedCatalog) {
 
 export async function auditActiveRetailRelease({ root = defaultRoot, publish = false } = {}) {
   const release = await loadActiveRetailRelease({ root });
-  const publicCatalog = sanitizePrivateRetailerFeedPublication(release.catalog);
+  const publicCatalog = release.descriptor.schemaVersion === 2
+    ? release.catalog
+    : sanitizePrivateRetailerFeedPublication(release.catalog);
+  assertNoPrivateRetailerFeedPublication(publicCatalog);
   validateCandidateReference(release.reference, release.catalog);
   const publicationManifestPath = resolve(
     release.releaseDirectory,

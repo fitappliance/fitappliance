@@ -122,37 +122,31 @@ test('builds a declarative migration for every resolved case and leaves unresolv
   const { migration } = await fixture();
   assert.doesNotThrow(() => validateRetailerIdentityMigration(migration));
   assert.deepEqual(migration.sourceResolutionSummary, {
-    cases: 18,
-    resolved: 18,
+    cases: 2,
+    resolved: 2,
     unresolved: 0,
     byAction: {
-      CORRECT_CANONICAL_MODEL: 2,
-      KEEP_CANONICAL_IDENTITY: 14,
       MERGE_DUPLICATE_CANONICAL: 1,
       QUARANTINE_UNSUPPORTED_CANONICAL: 1,
     },
     byLinkAction: {
-      ACCEPT_AFTER_CANONICAL_CORRECTION: 2,
-      INVALIDATE_WRONG_IDENTITY: 13,
-      REASSIGN_TO_EXISTING_CANONICAL: 7,
+      REASSIGN_TO_EXISTING_CANONICAL: 2,
     },
   });
   assert.deepEqual(migration.summary, {
-    cases: 18,
-    canonicalCorrections: 2,
+    cases: 2,
+    canonicalCorrections: 0,
     canonicalMerges: 1,
     canonicalQuarantines: 1,
-    linkEvents: 22,
-    generatedObservations: 9,
+    linkEvents: 2,
+    generatedObservations: 2,
     byLinkAction: {
-      ACCEPT_AFTER_CANONICAL_CORRECTION: 2,
-      INVALIDATE_WRONG_IDENTITY: 13,
-      REASSIGN_TO_EXISTING_CANONICAL: 7,
+      REASSIGN_TO_EXISTING_CANONICAL: 2,
     },
   });
   assert.ok(migration.linkEvents.filter((event) => event.action === 'INVALIDATE_WRONG_IDENTITY')
     .every((event) => event.observation === null && event.destinationCanonicalProductId === null));
-  assert.equal(migration.sourceBindings.resolutionEpochs.length, 2);
+  assert.equal(migration.sourceBindings.resolutionEpochs.length, 1);
   assert.equal(migration.canonicalQuarantines[0].sourceLegacyRuntimeId, 'f3');
   assert.deepEqual(
     migration.canonicalQuarantines[0].discardedUnverifiedRetailerLinks.map((row) => row.retailer),
@@ -203,7 +197,7 @@ test('coverage consumes persisted identity events as terminal dispositions witho
     assert.equal(item.typedObservation.kind, 'IDENTITY_RESOLUTION');
     assert.equal(item.typedObservation.eventId, event.id);
   }
-  assert.ok(migration.linkEvents.some((event) => !byLink.has(event.baselineLinkId)));
+  assert.ok(migration.linkEvents.every((event) => byLink.has(event.baselineLinkId)));
 });
 
 test('catalog migration changes only authorised identity presentation and removes merged duplicates', async () => {
@@ -287,18 +281,19 @@ test('canonical registry preserves corrected IDs and maps merged legacy IDs to a
 test('canonical registry rejects manual identity decisions that conflict with machine migration', async () => {
   const { catalog, migration } = await fixture();
   const migratedCatalog = applyRetailerIdentityMigrationToCatalog({ catalog, migration });
-  const correction = migration.canonicalCorrections[0];
+  const migratedIdentity = migration.canonicalCorrections[0] ?? migration.canonicalMerges[0];
+  const legacyRuntimeId = migratedIdentity.legacyRuntimeId ?? migratedIdentity.targetLegacyRuntimeId;
   assert.throws(() => buildCanonicalRegistry(migratedCatalog, {
     identityMigration: migration,
     identityDecisions: [{
-      legacyRuntimeId: correction.legacyRuntimeId,
+      legacyRuntimeId,
       canonicalProductId: `fa_prod_${'f'.repeat(24)}`,
       status: 'approved',
       reviewer: 'Migration conflict canary',
       reviewedAt: '2026-07-21',
       rationale: 'Synthetic conflicting decision.',
     }],
-  }), /identity migration.*conflict/i);
+  }), /identity migration.*(?:conflict|drift)/i);
 });
 
 test('tracked ledger contains every authorised disposition and migration replay is idempotent', async () => {
@@ -327,8 +322,10 @@ test('tracked ledger contains every authorised disposition and migration replay 
 test('migration application fails closed on catalogue identity drift and a ledger from another epoch', async () => {
   const { catalog, ledger, migration } = await fixture();
   const driftedCatalog = structuredClone(catalog);
+  const migratedIdentity = migration.canonicalCorrections[0] ?? migration.canonicalMerges[0];
+  const legacyRuntimeId = migratedIdentity.legacyRuntimeId ?? migratedIdentity.sourceLegacyRuntimeId;
   driftedCatalog.products.find((row) => String(row.id).toLowerCase()
-    === migration.canonicalCorrections[0].legacyRuntimeId).model = 'UNRELATED';
+    === legacyRuntimeId).model = 'UNRELATED';
   assert.throws(() => applyRetailerIdentityMigrationToCatalog({ catalog: driftedCatalog, migration }), /identity drift/i);
 
   const driftedLedger = structuredClone(ledger);

@@ -11,8 +11,8 @@
 ## Evidence and Outcomes
 
 - Refrigerator/dishwasher cohort: **100 products**, 0 executable V4 results, 80 missing-evidence classifications and 20 identity defects.
-- Laundry cohort: **72 current / 12 unknown / 16 archived**, 0 receipt-bound exact products.
-- Current-retail shortfall: dryer **26** (24/50 available), washing machine **2** (48/50 available); supported laundry policy branches: **0/2796**.
+- Laundry cohort: **12 current / 72 unknown / 16 archived**, 0 receipt-bound exact products.
+- Current-retail shortfall: dryer **46** (4/50 available), washing machine **42** (8/50 available); supported laundry policy branches: **0/2796**.
 - Laundry quarantine/exclusion: **6** identity rows quarantined and **3** WashTower rows excluded.
 - Source-backed labels: **0**
 - Eligible categories: **0/4**
@@ -33,8 +33,8 @@
 - Sitemap: **unchanged**
 - Public data: **unchanged**
 - Complete deployment surface: **unchanged**
-- Public tree: `b9ee61351177e40f5a10a3e89647646d9b3a1e69587b57f1547500f3466732cf`
-- Deployment surface: `3a978d666e292c4cc14e59a54e0e23e37d91ab7800d4172cef06a2df3d08f60e`
+- Public tree: `37c339c49719249e74f207705911a35fb6cc99c5647710d99edd4fb5923cacd7`
+- Deployment surface: `ca1c47034eb5b2cd33dba80ae1334487ea723547b041723cd822a46230a68e27`
 - Rollback evidence: **PRIVATE_POINTER_REHEARSAL_ONLY**; no real post-change snapshot exists.
 
 ## Typed Blockers

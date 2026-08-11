@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "policyVersion": "official-market-lifecycle-v1",
-  "asOf": "2026-07-21T12:12:18.070Z",
+  "asOf": "2026-08-10T19:13:03.000Z",
   "sourceBindings": {
-    "publicProjectionSha256": "f4d03fb81fdcf704e234c6e15aff9c86a987eacf3abde2f8a9be5d940f63cadc",
-    "publicProjectionSemanticSha256": "491f4f6cb9e2e4b57d40466df52093a944328ded006f57f5f8a08cda5b781fdd",
+    "publicProjectionSha256": "cecbfc7ff8516176bcb912c451b58c3f61db2e81c8fcf52a8b8fe706cb5aa6c4",
+    "publicProjectionSemanticSha256": "670e711501f51f12942f770deb336d1f6e3f6d5b0f83ab8e74ec3b2532af8033",
     "historicalReferenceSha256": "c69a11b819aad8f3a1de31bd7ebba8f21c2bb145066c8a48c70b83261a200cc9",
     "historicalReferenceSemanticSha256": "1e9200acf54f47b1d340539fea0b8c1315a61f4ea44f4c9bead1608c72592355",
     "officialIdentityEvidenceSha256": "6dacb3bda6aeb00ce0dc2b4cea0ed8ee30a262e9d712df11108e7dca45023e1d",
@@ -24719,7 +24719,7 @@
       "legacyRuntimeId": "discovery-washing-machine-lg-1910bx",
       "category": "washtower_combo",
       "brand": "LG",
-      "model": "WWT-1910BX",
+      "model": "1910BX",
       "marketState": "UNKNOWN_AU",
       "registryMarketState": "NO_REGISTRY",
       "officialOfferAvailability": "UNKNOWN",
@@ -24736,7 +24736,7 @@
       "legacyRuntimeId": "discovery-washing-machine-lg-1910fgx",
       "category": "washtower_combo",
       "brand": "LG",
-      "model": "WWT-1910FGX",
+      "model": "1910FGX",
       "marketState": "UNKNOWN_AU",
       "registryMarketState": "NO_REGISTRY",
       "officialOfferAvailability": "UNKNOWN",
@@ -74596,6 +74596,6 @@
       "UNKNOWN": 3506
     }
   },
-  "projectionId": "official_market_lifecycle_1286395e69e1153ce74b4ece",
-  "semanticSha256": "1286395e69e1153ce74b4ece14002c2d52ed4bcc9d55f3ebf9115b978e7f7344"
+  "projectionId": "official_market_lifecycle_1bf953770dae5161df464421",
+  "semanticSha256": "1bf953770dae5161df464421310a180e5b43e9881a97432a9e8dc97b5c95882f"
 }

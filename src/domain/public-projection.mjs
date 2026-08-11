@@ -1,5 +1,8 @@
 import { classifyGeometryPublication } from './geometry-publication.mjs';
 
+export const PRIVATE_RETAILER_PUBLICATION_POLICY_VERSION =
+  'private-retailer-publication-sanitizer-v1';
+
 const CATEGORY_MARKERS = Object.freeze({
   fridge: 'FR',
   washing_machine: 'WM',
@@ -54,6 +57,26 @@ function stripPrivateRetailerFeedKeys(value) {
     .map(([key, child]) => [key, stripPrivateRetailerFeedKeys(child)]));
 }
 
+function withheldRetailLifecycle(product) {
+  const lifecycle = product.retailLifecycle;
+  return {
+    schemaVersion: lifecycle.schemaVersion,
+    policyVersion: lifecycle.policyVersion,
+    asOf: lifecycle.asOf,
+    canonicalProductId: product.canonicalProductId,
+    catalogState: 'LISTED_UNVERIFIED',
+    lifecycleState: 'UNKNOWN_RETAIL',
+    authorizingObservation: null,
+    latestObservations: [],
+    observationConflicts: [],
+    collectionAttempts: [],
+    reasonCodes: [
+      'PRIVATE_RETAILER_EVIDENCE_WITHHELD',
+      'RETAIL_STATE_REQUIRES_REVALIDATION',
+    ],
+  };
+}
+
 export function sanitizePrivateRetailerFeedPublication(value) {
   if (!value || typeof value !== 'object') return value;
   if (Array.isArray(value.products)) {
@@ -71,13 +94,14 @@ export function sanitizePrivateRetailerFeedPublication(value) {
   const sanitized = stripPrivateRetailerFeedKeys(value);
   sanitized.retailers = retailers;
   if (privateLifecycle) {
-    delete sanitized.retailLifecycle;
-    delete sanitized.lifecycleVisibility;
+    sanitized.retailLifecycle = withheldRetailLifecycle(value);
+    sanitized.lifecycleVisibility = 'MARKET_REFERENCE_ONLY';
     sanitized.price = null;
     sanitized.unavailable = true;
   } else if (sourceRetailers.length > 0 && retailers.length === 0) {
     sanitized.unavailable = true;
   }
+  if (sourceRetailers.length !== retailers.length) sanitized.price = null;
   return sanitized;
 }
 

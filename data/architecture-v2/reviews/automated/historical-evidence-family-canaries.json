@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-28T15:53:54.152Z",
-  "documentGraphSha256": "a95be570addca60f2d21ca11fb1dd9ef3ddb8e110db797e0babc304c7b138391",
-  "executableQueueSha256": "8ea4573807169ae8bfb2b0a759c0ab2942084e67f5812bb517664a196da5fd66",
+  "generatedAt": "2026-08-05T12:11:28.783Z",
+  "documentGraphSha256": "a81b51f979465d805097cad9a56c186dd4548ea7133e06f9a36ad52f344d4a09",
+  "executableQueueSha256": "77693173e875f7e4db6b750f9d171b502b33a4aa299dbe144e61e8cde33e8946",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "parserContractSha256": "26b62f77abcc8de8ce1641ff651a4f841f9468bbede336a24f0963d96f09dd97",
   "processorEpochs": {
@@ -7386,6 +7386,48 @@
           "smeg_au_techspec_pdf_dimensions_v1": "2cfc8a3fd202f1c36b1b3aa09fb56121708806c02ee73360bebdbd0b05b82c22"
         },
         "sha256": "7f858654b7d95ee75672202c934a78323ff1f221c3280e587dcbae8c8d58e989"
+      },
+      "state": "UNTESTED",
+      "stateReason": "NO_SINGLE_FAMILY_ACTIONABLE_TARGET"
+    },
+    {
+      "familyId": "document_family_42ece41ee7f39e8b9faca054",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family 97eff8a3208f",
+      "targetIds": [],
+      "representativeTargetId": null,
+      "provenRepresentativeTargetIds": [],
+      "contract": {
+        "schemaVersion": 1,
+        "family": {
+          "familyId": "document_family_42ece41ee7f39e8b9faca054",
+          "category": "dishwasher",
+          "brand": "Fisher & Paykel",
+          "groupType": "document_family",
+          "documentIds": [
+            "pdf_document_727c98ecad7a39b2052296ea"
+          ],
+          "pdfSha256s": [
+            "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
+          ],
+          "grammarProfileIds": []
+        },
+        "graphSourceUrls": [
+          "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+          "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
+        ],
+        "candidateSourceUrls": [],
+        "resolverContracts": [],
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "parserContractSha256": "26b62f77abcc8de8ce1641ff651a4f841f9468bbede336a24f0963d96f09dd97",
+        "processorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "2cfc8a3fd202f1c36b1b3aa09fb56121708806c02ee73360bebdbd0b05b82c22"
+        },
+        "sha256": "90ff20841cbc11b18a84d71764425b303afeddcc3154aa6f22d2ac1268e553a8"
       },
       "state": "UNTESTED",
       "stateReason": "NO_SINGLE_FAMILY_ACTIONABLE_TARGET"
@@ -24544,50 +24586,6 @@
           "smeg_au_techspec_pdf_dimensions_v1": "2cfc8a3fd202f1c36b1b3aa09fb56121708806c02ee73360bebdbd0b05b82c22"
         },
         "sha256": "0354c77b0c8019836e323a3c8c2b4de0b47294a90fd72c0e2692d8340ac476e1"
-      },
-      "state": "UNTESTED",
-      "stateReason": "NO_SINGLE_FAMILY_ACTIONABLE_TARGET"
-    },
-    {
-      "familyId": "document_family_dec3998b21d699d48c4b28c9",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "Fisher & Paykel DW60 installation applicability matrix",
-      "targetIds": [],
-      "representativeTargetId": null,
-      "provenRepresentativeTargetIds": [],
-      "contract": {
-        "schemaVersion": 1,
-        "family": {
-          "familyId": "document_family_dec3998b21d699d48c4b28c9",
-          "category": "dishwasher",
-          "brand": "Fisher & Paykel",
-          "groupType": "parser_family",
-          "documentIds": [
-            "pdf_document_727c98ecad7a39b2052296ea"
-          ],
-          "pdfSha256s": [
-            "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
-          ],
-          "grammarProfileIds": [
-            "fisher-paykel-dw60-install-applicability-v1"
-          ]
-        },
-        "graphSourceUrls": [
-          "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
-          "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
-        ],
-        "candidateSourceUrls": [],
-        "resolverContracts": [],
-        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
-        "parserContractSha256": "26b62f77abcc8de8ce1641ff651a4f841f9468bbede336a24f0963d96f09dd97",
-        "processorEpochs": {
-          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
-          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "2cfc8a3fd202f1c36b1b3aa09fb56121708806c02ee73360bebdbd0b05b82c22"
-        },
-        "sha256": "6fd4aa96ee226bb0013fd65201abd3b3b4b10b8eccfc6f3a515afd93265f32ff"
       },
       "state": "UNTESTED",
       "stateReason": "NO_SINGLE_FAMILY_ACTIONABLE_TARGET"
@@ -78803,7 +78801,7 @@
       "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
     }
   ],
-  "semanticCanarySha256": "007487946248803589e4f16c9201ef637ee9a00b8fb941be98715bb3f0f92487",
+  "semanticCanarySha256": "72ac4779145738b914c105367146160d5e92360a866ece904532d17814d9dc82",
   "summary": {
     "families": 560,
     "targets": 4967,

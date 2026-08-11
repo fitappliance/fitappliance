@@ -121,7 +121,7 @@ test('manual retailer enrich: decimal prices are normalized to the runtime integ
   assert.equal(merged[0].p, 1406);
 });
 
-test('manual retailer enrich: affiliate tracking fields are preserved separately from canonical url', () => {
+test('manual retailer enrich: private affiliate-feed rows never enter public catalogs', () => {
   const existing = [];
   const manualRetailers = [
     {
@@ -143,15 +143,25 @@ test('manual retailer enrich: affiliate tracking fields are preserved separately
 
   const merged = mergeRetailers(existing, manualRetailers);
 
-  assert.equal(merged.length, 1);
-  assert.equal(merged[0].url, manualRetailers[0].url);
-  assert.equal(merged[0].affiliate_url, manualRetailers[0].affiliate_url);
-  assert.equal(merged[0].affiliate_network, 'partnerize');
-  assert.equal(merged[0].tracking_verified_at, '2026-06-01');
-  assert.equal(merged[0].stock, 'Yes');
-  assert.equal(merged[0].tgg_sku, '50073316');
-  assert.equal(merged[0].feed_title, 'LG 420L Bottom Mount Refrigerator');
-  assert.equal(merged[0].feed_model, 'GB-455PL');
+  assert.deepEqual(merged, []);
+});
+
+test('manual retailer enrich removes previously persisted private feed rows', () => {
+  const products = [makeProduct({
+    unavailable: false,
+    retailers: [{
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/private-feed-product',
+      source: 'partnerize-feed',
+      affiliate_network: 'partnerize',
+      tgg_sku: '50073316',
+    }],
+  })];
+
+  const result = applyManualRetailers(products, { products: {} });
+
+  assert.deepEqual(result[0].retailers, []);
+  assert.equal(result[0].unavailable, true);
 });
 
 test('manual retailer enrich: new retailer is appended after existing retailers', () => {

@@ -13340,15 +13340,6 @@
               "fragmentSha256": "f0834ee47cb4a9d55646e036885e44a0c73a6a093e452bfb5803bcc95d62c871",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WBB3400WK",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -14492,6 +14483,15 @@
               "fragmentSha256": "b763d6892d522c181a5176caaa6abac352b32da8495f1f44c528841f44dcd563",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WTB3400AH",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -15883,6 +15883,15 @@
               "fragmentSha256": "e715afa160bdba3ac1fb89d85f184c31ce416cd5c0746fbed0ef32b9163475ca",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WQE6060BB",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -18668,6 +18677,15 @@
               "fragmentSha256": "9eb9d762e30621211c576cba4a4c9131fb7ce8fdbfbfb0c4e154ae559d68a0d5",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WHE6000SB",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -27930,15 +27948,6 @@
               "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "washing_machine",
-              "brand": "LG",
-              "model": "WV9-1412W",
-              "reasonCode": "PARSED_PARTIAL",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -27976,15 +27985,6 @@
               "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "washing_machine",
-              "brand": "LG",
-              "model": "WV9-1412B",
-              "reasonCode": "PARSED_PARTIAL",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -29303,15 +29303,6 @@
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "dryer",
-              "brand": "LG",
-              "model": "DVH5-08W",
-              "reasonCode": "PARSED_PARTIAL",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -29341,15 +29332,6 @@
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "dryer",
-              "brand": "LG",
-              "model": "DVH9-09B",
-              "reasonCode": "PARSED_PARTIAL",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -29379,15 +29361,6 @@
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "dryer",
-              "brand": "LG",
-              "model": "DVH9-09W",
-              "reasonCode": "PARSED_PARTIAL",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -34211,6 +34184,15 @@
               "fragmentSha256": "d819c09c1cc5b1c0f20a8a888cab5d955bf264a7f34045c890ba20772d79c6aa",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WTB2300WH",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -39186,6 +39168,15 @@
               "fragmentSha256": "8922117cfc222674994d28c3fda2e311e0c7d842b03455257ee8c8df7358a605",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WQE6000SB",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         },
@@ -40686,6 +40677,15 @@
               "fragmentSha256": "ce5e64e8a411b8a3f510060dfca88a217114f1062291d3b2c77120326aa301c4",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WRB5004WC",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -47658,6 +47658,15 @@
               "fragmentSha256": "b3ad0479c69b6a5866e5452635148cb7c2a069bd455ce274b3b476a6a12c62d4",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WTB3700WH",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         },
@@ -54503,6 +54512,15 @@
               "fragmentSha256": "efc1915d5d825e58e3115d4d1aad3c565d709a80d76788da0d5280c1ac1ec090",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WTB3400WH",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         },
@@ -56041,15 +56059,6 @@
               "fragmentSha256": "ac5ea0a069ae119c9db03c7dde6d92410b52f6b304090e0e2141fc9d25a178ad",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "washing_machine",
-              "brand": "LG",
-              "model": "WD1275A1",
-              "reasonCode": "PARSED_PARTIAL",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -69019,6 +69028,15 @@
               "fragmentSha256": "9eb9d762e30621211c576cba4a4c9131fb7ce8fdbfbfb0c4e154ae559d68a0d5",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WHE6060SB",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         },
@@ -69669,11 +69687,9 @@
         "byteSize": 101305,
         "pageCount": 12
       },
-      "grammarProfileIds": [
-        "fisher-paykel-dw60-install-applicability-v1"
-      ],
+      "grammarProfileIds": [],
       "familyIds": [
-        "document_family_dec3998b21d699d48c4b28c9"
+        "document_family_42ece41ee7f39e8b9faca054"
       ],
       "modelEdges": [
         {
@@ -69691,20 +69707,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_dec3998b21d699d48c4b28c9",
-              "groupType": "parser_family",
-              "groupName": "Fisher & Paykel DW60 installation applicability matrix"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "dishwasher",
-              "brand": "Fisher & Paykel",
-              "model": "DW60FC4W1",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": [
-                "fisher-paykel-dw60-install-applicability-v1"
-              ]
+              "familyId": "document_family_42ece41ee7f39e8b9faca054",
+              "groupType": "document_family",
+              "groupName": "Document family 97eff8a3208f"
             }
           ]
         },
@@ -69723,20 +69728,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_dec3998b21d699d48c4b28c9",
-              "groupType": "parser_family",
-              "groupName": "Fisher & Paykel DW60 installation applicability matrix"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "dishwasher",
-              "brand": "Fisher & Paykel",
-              "model": "DW60FC4X1",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": [
-                "fisher-paykel-dw60-install-applicability-v1"
-              ]
+              "familyId": "document_family_42ece41ee7f39e8b9faca054",
+              "groupType": "document_family",
+              "groupName": "Document family 97eff8a3208f"
             }
           ]
         }
@@ -85078,6 +85072,15 @@
               "fragmentSha256": "4f6fb6be816fd8c0a6092cbf409086639e8e4add18515605b6ec98ac71c4728d",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WTB2800WH",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -85703,15 +85706,6 @@
               "familyId": "document_family_14fb17ff8c3f515698940f46",
               "groupType": "document_family",
               "groupName": "Document family bb77070e5331"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WBB3400AH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -85733,15 +85727,6 @@
               "familyId": "document_family_14fb17ff8c3f515698940f46",
               "groupType": "document_family",
               "groupName": "Document family bb77070e5331"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WBB3700AH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -102228,15 +102213,6 @@
               "fragmentSha256": "ca5a33a87eda9295914e8e243b8dfe674dc627368c7df40cec23400052025ca6",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WRB3504SA",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -102266,15 +102242,6 @@
               "fragmentSha256": "ca5a33a87eda9295914e8e243b8dfe674dc627368c7df40cec23400052025ca6",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WFM1700WE",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -102296,15 +102263,6 @@
               "familyId": "document_family_c87099d461184b754a60f4ea",
               "groupType": "document_family",
               "groupName": "Document family e316fc226e4d"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WFB4204WC",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -102334,15 +102292,6 @@
               "fragmentSha256": "ca5a33a87eda9295914e8e243b8dfe674dc627368c7df40cec23400052025ca6",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WRM2400WE",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -102385,15 +102334,6 @@
               "familyId": "document_family_c87099d461184b754a60f4ea",
               "groupType": "document_family",
               "groupName": "Document family e316fc226e4d"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WRB5004WC",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -109115,6 +109055,15 @@
               "fragmentSha256": "00914fd440af5abd5f408ec630ef264f0b043a64efc22113a68c727bbd1d1e48",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "fridge",
+              "brand": "Westinghouse",
+              "model": "WTB2800AH",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": []
             }
           ]
         }
@@ -110990,15 +110939,6 @@
               "fragmentSha256": "c4ae47aeec52f09e3a9e130b05a87c75e0e1626699016f407cd14ef0a2149ca1",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB3400WK",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -111028,15 +110968,6 @@
               "fragmentSha256": "c4ae47aeec52f09e3a9e130b05a87c75e0e1626699016f407cd14ef0a2149ca1",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB3100WK",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -111066,15 +110997,6 @@
               "fragmentSha256": "c4ae47aeec52f09e3a9e130b05a87c75e0e1626699016f407cd14ef0a2149ca1",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB3100AK",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -112590,15 +112512,6 @@
               "familyId": "document_family_73f05253e743694564732c4f",
               "groupType": "document_family",
               "groupName": "Document family fd329081b852"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB3700WH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -112620,15 +112533,6 @@
               "familyId": "document_family_73f05253e743694564732c4f",
               "groupType": "document_family",
               "groupName": "Document family fd329081b852"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB2800AH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -112650,15 +112554,6 @@
               "familyId": "document_family_73f05253e743694564732c4f",
               "groupType": "document_family",
               "groupName": "Document family fd329081b852"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB3400WH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -112688,15 +112583,6 @@
               "fragmentSha256": "0a0dd5c2dccfcd9fd1dfba589243a0925875b056ff9321f01e7b5818a782373b",
               "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
               "patternKind": "MODEL_ROW_DIMENSION_MATRIX"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB2300WH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -112718,15 +112604,6 @@
               "familyId": "document_family_73f05253e743694564732c4f",
               "groupType": "document_family",
               "groupName": "Document family fd329081b852"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB2800WH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         },
@@ -112748,15 +112625,6 @@
               "familyId": "document_family_73f05253e743694564732c4f",
               "groupType": "document_family",
               "groupName": "Document family fd329081b852"
-            },
-            {
-              "type": "MINERU_REPLAY_HINT",
-              "identityScope": "EXACT_MODEL",
-              "category": "fridge",
-              "brand": "Westinghouse",
-              "model": "WTB3400AH",
-              "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
             }
           ]
         }
@@ -116805,6 +116673,24 @@
       "referenceIds": [
         "fa_ref_54e551f7ae9f1191c4a42649",
         "fa_ref_b7abbc2679a9f4713028f778"
+      ]
+    },
+    {
+      "familyId": "document_family_42ece41ee7f39e8b9faca054",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "groupType": "document_family",
+      "groupName": "Document family 97eff8a3208f",
+      "documentIds": [
+        "pdf_document_727c98ecad7a39b2052296ea"
+      ],
+      "pdfSha256s": [
+        "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
+      ],
+      "grammarProfileIds": [],
+      "referenceIds": [
+        "fa_ref_985bd11df50cc250fa22a55b",
+        "fa_ref_dfe5466d378a8a8761af724b"
       ]
     },
     {
@@ -123752,26 +123638,6 @@
       ]
     },
     {
-      "familyId": "document_family_dec3998b21d699d48c4b28c9",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "groupType": "parser_family",
-      "groupName": "Fisher & Paykel DW60 installation applicability matrix",
-      "documentIds": [
-        "pdf_document_727c98ecad7a39b2052296ea"
-      ],
-      "pdfSha256s": [
-        "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
-      ],
-      "grammarProfileIds": [
-        "fisher-paykel-dw60-install-applicability-v1"
-      ],
-      "referenceIds": [
-        "fa_ref_985bd11df50cc250fa22a55b",
-        "fa_ref_dfe5466d378a8a8761af724b"
-      ]
-    },
-    {
       "familyId": "document_family_dec998de5c525c2ad132aff8",
       "category": "dishwasher",
       "brand": "Westinghouse",
@@ -125263,5 +125129,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "a95be570addca60f2d21ca11fb1dd9ef3ddb8e110db797e0babc304c7b138391"
+  "semanticGraphSha256": "a81b51f979465d805097cad9a56c186dd4548ea7133e06f9a36ad52f344d4a09"
 }

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T15:53:54.152Z",
+  "generatedAt": "2026-08-05T12:11:28.783Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "4dcb77d338257226530d465bcb5741eeb0166227d54fc783ee1a2f12d53cb327",
+  "semanticClassificationSha256": "67586f57224f13666ac76b92e7e8a874fac3da9e25b71682df2f13eb102995d0",
   "summary": {
     "records": 8087,
     "uniqueReferenceIds": 8087,
@@ -17,9 +17,9 @@
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 3086,
-      "CURRENT_RETAIL": 347,
+      "CURRENT_RETAIL": 117,
       "REGISTRY_ONLY": 4577,
-      "UNKNOWN_RETAIL": 77
+      "UNKNOWN_RETAIL": 307
     },
     "byOperationalClass": {
       "COMPLETE_RECEIPT": 401,
@@ -4115,7 +4115,7 @@
       "category": "dishwasher",
       "canonicalBrand": "ASKO",
       "model": "DBI364ID.W.AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 38ad673e29cc",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -4150,7 +4150,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
@@ -6919,7 +6919,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Beko",
       "model": "BDFB1410W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -6969,7 +6969,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Beko",
         "BEKO"
@@ -7908,7 +7908,7 @@
       "category": "dishwasher",
       "canonicalBrand": "BEKO",
       "model": "BDFB1410X",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -7921,7 +7921,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "BEKO"
       ],
@@ -9364,7 +9364,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SBI8ECS01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -9434,7 +9434,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch"
       ],
@@ -9558,7 +9558,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SBT8ZC801A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -9628,7 +9628,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -10222,7 +10222,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMI4HTS01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -10292,7 +10292,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -11445,7 +11445,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMP6HCB01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -11515,7 +11515,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -11645,7 +11645,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS24AI01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 2",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -11715,7 +11715,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -11739,7 +11739,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS2ITI02A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 2",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -11809,7 +11809,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -11833,7 +11833,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS2ITW01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 2",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -11903,7 +11903,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -12388,7 +12388,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS4HTI01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -12458,7 +12458,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -12482,7 +12482,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS4HVB01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -12552,7 +12552,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -12576,7 +12576,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS4HVI01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -12632,7 +12632,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -13885,7 +13885,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS6HAI02A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -13955,7 +13955,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -13985,7 +13985,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS6HCB01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -14055,7 +14055,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -14285,7 +14285,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMS6HCI02A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -14340,7 +14340,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -14769,7 +14769,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMT8ZC801A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -14839,7 +14839,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch"
       ],
@@ -15062,7 +15062,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMU4HTS01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -15132,7 +15132,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -15166,7 +15166,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMU4HVS01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -15236,7 +15236,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -16355,7 +16355,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMU6HCS01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -16425,7 +16425,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -17188,7 +17188,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SMV4HTX01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -17258,7 +17258,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -18093,7 +18093,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Bosch",
       "model": "SPS6IKI01A",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -18163,7 +18163,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -20927,7 +20927,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Electrolux",
       "model": "ESF97400RKX",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -20940,7 +20940,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Electrolux",
         "ELECTROLUX"
@@ -21259,7 +21259,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Electrolux",
       "model": "ESL79200RO",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -21272,7 +21272,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Electrolux",
         "ELECTROLUX"
@@ -24065,7 +24065,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60D2NB9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 27fe801c2f33",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -24308,7 +24308,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -24352,7 +24352,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60D2NX9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_766c1f4c547cb6cf",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -24440,7 +24440,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -24464,7 +24464,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60D4NB9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 27fe801c2f33",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -24724,7 +24724,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -24783,7 +24783,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60D4NX9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_766c1f4c547cb6cf",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -24857,7 +24857,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -24881,7 +24881,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60D4ZB9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 27fe801c2f33",
       "bestCorpusState": "CURRENT_MINERU",
@@ -24973,7 +24973,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -25332,7 +25332,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60DI9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family e7adc05013ac",
       "bestCorpusState": "CURRENT_MINERU",
@@ -25524,7 +25524,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -25558,7 +25558,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60DTX6I1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 11",
       "bestCorpusState": "CURRENT_MINERU",
@@ -26045,7 +26045,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60SCX9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 3031e527077f",
       "bestCorpusState": "CURRENT_MINERU",
@@ -26177,7 +26177,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -27292,7 +27292,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60ST4NB9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 24cc9cefd1e2",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -27534,7 +27534,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -27593,7 +27593,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60ST4NX9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 24cc9cefd1e2",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -27835,7 +27835,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -27894,7 +27894,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60ST4ZB9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 24cc9cefd1e2",
       "bestCorpusState": "CURRENT_MINERU",
@@ -28006,7 +28006,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -28040,7 +28040,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60STI9",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family e7adc05013ac",
       "bestCorpusState": "CURRENT_MINERU",
@@ -28215,7 +28215,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DD60STX6I1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 11",
       "bestCorpusState": "CURRENT_MINERU",
@@ -29309,7 +29309,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60FC1B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_0488b1402df6bbba",
       "bestCorpusState": "CURRENT_MINERU",
@@ -29681,7 +29681,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60FC1X3",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_766c1f4c547cb6cf",
       "bestCorpusState": "CURRENT_MINERU",
@@ -29829,7 +29829,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60FC2B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_0488b1402df6bbba",
       "bestCorpusState": "CURRENT_MINERU",
@@ -30104,7 +30104,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60FC2X3",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family b5a036b18078",
       "bestCorpusState": "CURRENT_MINERU",
@@ -30328,7 +30328,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60FC4B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family ec7a5bf28b75",
       "bestCorpusState": "CURRENT_MINERU",
@@ -30460,7 +30460,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -30633,21 +30633,17 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "model_specific",
-          "groupName": "DW60FC4W1",
+          "groupType": "document_family",
+          "groupName": "Document family 97eff8a3208f",
           "grammarProfileIds": []
         },
         {
-          "groupType": "parser_family",
-          "groupName": "Fisher & Paykel DW60 installation applicability matrix",
-          "grammarProfileIds": [
-            "fisher-paykel-dw60-install-applicability-v1"
-          ]
+          "groupType": "model_specific",
+          "groupName": "DW60FC4W1",
+          "grammarProfileIds": []
         }
       ],
-      "grammarProfileIds": [
-        "fisher-paykel-dw60-install-applicability-v1"
-      ]
+      "grammarProfileIds": []
     },
     {
       "schemaVersion": 1,
@@ -30794,21 +30790,17 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "model_specific",
-          "groupName": "DW60FC4X1",
+          "groupType": "document_family",
+          "groupName": "Document family 97eff8a3208f",
           "grammarProfileIds": []
         },
         {
-          "groupType": "parser_family",
-          "groupName": "Fisher & Paykel DW60 installation applicability matrix",
-          "grammarProfileIds": [
-            "fisher-paykel-dw60-install-applicability-v1"
-          ]
+          "groupType": "model_specific",
+          "groupName": "DW60FC4X1",
+          "grammarProfileIds": []
         }
       ],
-      "grammarProfileIds": [
-        "fisher-paykel-dw60-install-applicability-v1"
-      ]
+      "grammarProfileIds": []
     },
     {
       "schemaVersion": 1,
@@ -31096,7 +31088,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60U2I2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -31109,7 +31101,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -31188,7 +31180,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60U4I2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_210afe7ab962ee3e",
       "bestCorpusState": "CURRENT_MINERU",
@@ -31321,7 +31313,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -31835,7 +31827,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UN2B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_172158620a7be002",
       "bestCorpusState": "CURRENT_MINERU",
@@ -31931,7 +31923,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UN2X2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_172158620a7be002",
       "bestCorpusState": "CURRENT_MINERU",
@@ -32052,7 +32044,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UN4B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 1906813b3c97",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -32124,7 +32116,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -32194,7 +32186,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UN4X2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 1906813b3c97",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -32287,7 +32279,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -32362,7 +32354,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UNT4B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_766c1f4c547cb6cf",
       "bestCorpusState": "CURRENT_MINERU",
@@ -32474,7 +32466,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -32503,7 +32495,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UNT4X2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -32553,7 +32545,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -32567,7 +32559,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UT4I2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_172158620a7be002",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -32624,7 +32616,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -32648,7 +32640,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DW60UZT4B2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_89d466ea29c76191",
       "bestCorpusState": "CURRENT_MINERU",
@@ -32740,7 +32732,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -33523,7 +33515,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW10F1S1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -33536,7 +33528,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -33638,7 +33630,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW13F0B1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -33688,7 +33680,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34350,7 +34342,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F1B1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_9e03a06b73c40457",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -34407,7 +34399,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34430,7 +34422,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F1S1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -34480,7 +34472,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34493,7 +34485,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F2B1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_e07d3543379f3feb",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -34549,7 +34541,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34572,7 +34564,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F2S1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -34622,7 +34614,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34661,7 +34653,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F3B1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -34711,7 +34703,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34724,7 +34716,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F3S1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_e07d3543379f3feb",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -34781,7 +34773,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -34830,7 +34822,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15F4B1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_2753ee0c4dfa3e38",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -34887,7 +34879,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -35127,7 +35119,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15U2I1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_e9a70106ba4be886",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -35184,7 +35176,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -35207,7 +35199,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15U3B1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -35257,7 +35249,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -35270,7 +35262,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Haier",
       "model": "HDW15U3S1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -35320,7 +35312,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -35882,7 +35874,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Hisense",
       "model": "HS9B16FB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -35895,7 +35887,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -39705,7 +39697,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD2A25MB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_714c8b8243e80174",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -39782,7 +39774,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40011,7 +40003,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD3A15MB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -40061,7 +40053,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40074,7 +40066,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD3A15NS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -40124,7 +40116,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40226,7 +40218,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD3A25MB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -40276,7 +40268,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40289,7 +40281,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD3A25MW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -40340,7 +40332,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40443,7 +40435,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD3A25UMB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
       "bestCorpusState": "CURRENT_MINERU",
@@ -40515,7 +40507,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40821,7 +40813,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD4B24PS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -40871,7 +40863,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40936,7 +40928,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD5B14PS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -40986,7 +40978,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -40999,7 +40991,7 @@
       "category": "dishwasher",
       "canonicalBrand": "LG",
       "model": "XD5B14WH",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -41049,7 +41041,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -47802,7 +47794,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Omega",
       "model": "ODWF6014X",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -47815,7 +47807,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Omega"
       ],
@@ -51892,7 +51884,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Smeg",
       "model": "DWA615DX3",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -51905,7 +51897,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Smeg"
       ],
@@ -52330,7 +52322,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Smeg",
       "model": "DWA6224X4",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -52343,7 +52335,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Smeg"
       ],
@@ -52408,7 +52400,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Smeg",
       "model": "DWA6234X4",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -52421,7 +52413,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Smeg"
       ],
@@ -54950,7 +54942,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Smeg",
       "model": "DWAU615DB3",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -55006,7 +54998,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Smeg"
       ],
@@ -55029,7 +55021,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Smeg",
       "model": "DWAU615DX3",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -55079,7 +55071,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Smeg"
       ],
@@ -55566,7 +55558,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Smeg",
       "model": "DWAU6D15XT3",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -55579,7 +55571,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Smeg"
       ],
@@ -56859,7 +56851,7 @@
       "category": "dishwasher",
       "canonicalBrand": "Technika",
       "model": "TGDW6BK-2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -56872,7 +56864,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Technika",
         "TECHNIKA"
@@ -64750,7 +64742,7 @@
       "category": "dryer",
       "canonicalBrand": "Bosch",
       "model": "WQG235D8AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -64807,7 +64799,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -64831,7 +64823,7 @@
       "category": "dryer",
       "canonicalBrand": "Bosch",
       "model": "WQG235DRAU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -64888,7 +64880,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -64916,7 +64908,7 @@
       "category": "dryer",
       "canonicalBrand": "Bosch",
       "model": "WQG24200AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -64973,7 +64965,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -65001,7 +64993,7 @@
       "category": "dryer",
       "canonicalBrand": "Bosch",
       "model": "WQG24201AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -65058,7 +65050,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -67591,7 +67583,7 @@
       "category": "dryer",
       "canonicalBrand": "Electrolux",
       "model": "EDV605H3WC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
       "bestCorpusState": "CURRENT_MINERU",
@@ -67790,7 +67782,7 @@
       "category": "dryer",
       "canonicalBrand": "Electrolux",
       "model": "EDV705H3WC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
       "bestCorpusState": "CURRENT_MINERU",
@@ -71042,7 +71034,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DE6060M2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -71099,7 +71091,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -71286,7 +71278,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DE7060G2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 946474b05d94",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -71380,7 +71372,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -71724,7 +71716,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DH1060DG5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_06f8b42af2dd898f",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -71781,7 +71773,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -72091,7 +72083,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DH1060RG5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_6ab607f729ee61e9",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -72224,7 +72216,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -72409,7 +72401,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DH8060J5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 5",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -72543,7 +72535,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -72788,7 +72780,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DH8060P5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_8c9e52242594826f",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -72845,7 +72837,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -73224,7 +73216,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DH9060H1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 55aa96e39e2b",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -73436,7 +73428,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -73806,7 +73798,7 @@
       "category": "dryer",
       "canonicalBrand": "Fisher & Paykel",
       "model": "DH9060HLG1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 55aa96e39e2b",
       "bestCorpusState": "CURRENT_MINERU",
@@ -78629,7 +78621,7 @@
       "category": "dryer",
       "canonicalBrand": "LG",
       "model": "DVH1-08WP",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "LG Australia dryer installation dimension diagram",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -78721,7 +78713,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -84739,7 +84731,7 @@
       "category": "dryer",
       "canonicalBrand": "Samsung",
       "model": "DV90BB9440GB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family d5682f81974d",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -84814,7 +84806,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -84833,7 +84825,7 @@
       "category": "dryer",
       "canonicalBrand": "Samsung",
       "model": "DV90BB9440GH",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family d5682f81974d",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -84908,7 +84900,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -87196,7 +87188,7 @@
       "category": "dryer",
       "canonicalBrand": "Solt",
       "model": "GGSVD8W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -87209,7 +87201,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -87300,7 +87292,7 @@
       "category": "dryer",
       "canonicalBrand": "Solt",
       "model": "GGSVDE45W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -87313,7 +87305,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -88731,7 +88723,7 @@
       "category": "dryer",
       "canonicalBrand": "Westinghouse",
       "model": "WDV457H3WB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_8eb9ae3a8581b2b4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -88808,7 +88800,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse"
       ],
@@ -94947,7 +94939,7 @@
       "category": "fridge",
       "canonicalBrand": "Bosch",
       "model": "KFD96AXEAA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -95004,7 +94996,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -95139,7 +95131,7 @@
       "category": "fridge",
       "canonicalBrand": "Bosch",
       "model": "KFN96AXEAA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -95209,7 +95201,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -95244,7 +95236,7 @@
       "category": "fridge",
       "canonicalBrand": "Bosch",
       "model": "KFN96VPEAA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -95314,7 +95306,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -104344,7 +104336,7 @@
       "category": "fridge",
       "canonicalBrand": "CHIQ",
       "model": "CSS556NBD4E",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
@@ -104416,7 +104408,7 @@
       ],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "CHIQ"
       ],
@@ -104959,7 +104951,7 @@
       "category": "fridge",
       "canonicalBrand": "CHIQ",
       "model": "CTM118DW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
@@ -105031,7 +105023,7 @@
       ],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "CHIQ"
       ],
@@ -106223,7 +106215,7 @@
       "category": "fridge",
       "canonicalBrand": "CHIQ",
       "model": "CTM347NB5E",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -106294,7 +106286,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "CHIQ"
       ],
@@ -106636,7 +106628,7 @@
       "category": "fridge",
       "canonicalBrand": "CHIQ",
       "model": "CTM407NB4",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -106708,7 +106700,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "CHIQ"
       ],
@@ -130511,7 +130503,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RB90S64MKIW1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -130524,7 +130516,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -133553,7 +133545,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF500QNUX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_898627710db56db6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -133609,7 +133601,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -133633,7 +133625,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF500QNX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_17e6d228ea6a23b6",
       "bestCorpusState": "CURRENT_MINERU",
@@ -133745,7 +133737,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -133808,7 +133800,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF505ANUB1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -133821,7 +133813,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -133835,7 +133827,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF505ANUX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -133885,7 +133877,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -133899,7 +133891,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF505ANX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -133912,7 +133904,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -134004,7 +133996,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF505BRNUX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -134017,7 +134009,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -134031,7 +134023,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF505BRNX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -134044,7 +134036,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -136232,7 +136224,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF605QDVX2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "SOURCE_URL_ONLY",
@@ -136263,7 +136255,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -136277,7 +136269,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF605QNUVB1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
       "bestCorpusState": "CURRENT_MINERU",
@@ -136348,7 +136340,7 @@
       ],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -136372,7 +136364,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF605QNUVX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "bestCorpusState": "CURRENT_MINERU",
@@ -136463,7 +136455,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -136492,7 +136484,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF605QZUVB1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -136565,7 +136557,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137136,7 +137128,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF610ADX5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_57c69466643bce8f",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -137193,7 +137185,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137217,7 +137209,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF610ANUB5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "bestCorpusState": "CURRENT_MINERU",
@@ -137308,7 +137300,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137337,7 +137329,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF610ANUX5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -137386,7 +137378,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137400,7 +137392,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF610AZUB5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -137449,7 +137441,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137489,7 +137481,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF730QNUVB1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family e2bb5c28d7c6",
       "bestCorpusState": "CURRENT_MINERU",
@@ -137581,7 +137573,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137613,7 +137605,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF730QNUVX1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family e2bb5c28d7c6",
       "bestCorpusState": "CURRENT_MINERU",
@@ -137741,7 +137733,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -137777,7 +137769,7 @@
       "category": "fridge",
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF730QZUVB1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -137827,7 +137819,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -146586,7 +146578,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF330TG",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -146635,7 +146627,7 @@
       ],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier",
         "HAIER"
@@ -147152,7 +147144,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF420BC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -147202,7 +147194,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -147388,7 +147380,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF420BS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -147445,7 +147437,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -148606,7 +148598,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF510BHC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_df874584410165d3",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -148663,7 +148655,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -148686,7 +148678,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF510BS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -148720,7 +148712,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -148785,7 +148777,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF510FHC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -148798,7 +148790,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -148811,7 +148803,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF510FHS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -148861,7 +148853,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -149905,7 +149897,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF575XC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -149939,7 +149931,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -150082,7 +150074,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF580YHC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_08bae037fd286cc6",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -150132,7 +150124,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -150509,7 +150501,7 @@
       "category": "fridge",
       "canonicalBrand": "Haier",
       "model": "HRF680YZC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -150522,7 +150514,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Haier"
       ],
@@ -156938,7 +156930,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRAF242",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -157008,7 +157000,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense"
       ],
@@ -159138,7 +159130,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRBM503S",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -159537,7 +159529,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRCD483G",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "CURRENT_MINERU",
@@ -159608,7 +159600,7 @@
       ],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -159658,7 +159650,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRCD483TBW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "HRCD483TBW",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -159747,7 +159739,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -159793,7 +159785,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRCD483TSW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "CURRENT_MINERU",
@@ -159864,7 +159856,7 @@
       ],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -160320,7 +160312,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRCD610TS",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "HRCD610TS",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -160390,7 +160382,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -160457,7 +160449,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRCD615TBWV",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "CURRENT_MINERU",
@@ -160642,7 +160634,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRCD640TBW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -160698,7 +160690,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -162238,7 +162230,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRFD634BW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "HRFD634BW",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -162327,7 +162319,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -162547,7 +162539,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRSBS540BW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -162597,7 +162589,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -162978,7 +162970,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRSBS633BW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "CURRENT_MINERU",
@@ -163073,7 +163065,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRSBS649SW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -163380,7 +163372,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRTF206",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -163418,7 +163410,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -163494,7 +163486,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRTF325",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -163550,7 +163542,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -163922,7 +163914,7 @@
       "category": "fridge",
       "canonicalBrand": "Hisense",
       "model": "HRTF497SW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -164012,7 +164004,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -183216,7 +183208,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GB-455BLE",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 6260a2216a20",
       "bestCorpusState": "CURRENT_MINERU",
@@ -183288,7 +183280,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -183643,7 +183635,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GB-V300MBL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "GB-V300MBL",
       "bestCorpusState": "CURRENT_MINERU",
@@ -183714,7 +183706,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -184505,7 +184497,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-B505MBL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -184538,7 +184530,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -184668,7 +184660,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-B589PLE",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -184719,7 +184711,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -185715,7 +185707,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-L500MWH",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -185765,7 +185757,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -186070,7 +186062,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-L700PL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_bcb760da6029f33b",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -186125,7 +186117,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -186237,7 +186229,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-LN500MBL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family c40bbeb07ba8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -186346,7 +186338,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -186586,7 +186578,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-V500MBLC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family c40bbeb07ba8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -186681,7 +186673,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -186960,7 +186952,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-V700BSLC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -187010,7 +187002,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -187419,7 +187411,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GF-V900MBLC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -187452,7 +187444,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -188027,7 +188019,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GS-B599MBL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -188077,7 +188069,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -188090,7 +188082,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GS-B599PL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "GS-B599PL",
       "bestCorpusState": "CURRENT_MINERU",
@@ -188161,7 +188153,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -189526,7 +189518,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GS-N599PL",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -189577,7 +189569,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -189738,7 +189730,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GS-V600MBLC",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "LG Australia side-by-side refrigerator installation diagram",
       "bestCorpusState": "CURRENT_MINERU",
@@ -189811,7 +189803,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -190182,7 +190174,7 @@
       "category": "fridge",
       "canonicalBrand": "LG",
       "model": "GT-1SI",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 84e5aa785d44",
       "bestCorpusState": "CURRENT_MINERU",
@@ -190254,7 +190246,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -209031,7 +209023,7 @@
       "category": "fridge",
       "canonicalBrand": "Samsung",
       "model": "SRF5300SD",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "SRF5300SD",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -209105,7 +209097,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -209957,7 +209949,7 @@
       "category": "fridge",
       "canonicalBrand": "Samsung",
       "model": "SRF7500BB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "SRF7500BB",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -210006,7 +209998,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -210113,7 +210105,7 @@
       "category": "fridge",
       "canonicalBrand": "Samsung",
       "model": "SRF7900BFH",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "SRF7900BFH",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -210162,7 +210154,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -210244,7 +210236,7 @@
       "category": "fridge",
       "canonicalBrand": "Samsung",
       "model": "SRF9400BFH",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family d4506d776937",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -210294,7 +210286,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -210381,7 +210373,7 @@
       "category": "fridge",
       "canonicalBrand": "Samsung",
       "model": "SRF9800BFH",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family d4506d776937",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -210431,7 +210423,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -210582,7 +210574,7 @@
       "category": "fridge",
       "canonicalBrand": "Samsung",
       "model": "SRL4200B",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "SRL4200B",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -210631,7 +210623,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -221592,7 +221584,7 @@
       "category": "fridge",
       "canonicalBrand": "Solt",
       "model": "GGSTM266B",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -221605,7 +221597,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -226812,7 +226804,7 @@
       "category": "fridge",
       "canonicalBrand": "TCL",
       "model": "P220TMW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -226825,7 +226817,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "TCL"
       ],
@@ -227172,7 +227164,7 @@
       "category": "fridge",
       "canonicalBrand": "TCL",
       "model": "P445BFG",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -227222,7 +227214,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "TCL"
       ],
@@ -227313,7 +227305,7 @@
       "category": "fridge",
       "canonicalBrand": "TCL",
       "model": "P454TMB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -227326,7 +227318,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "TCL"
       ],
@@ -227682,7 +227674,7 @@
       "category": "fridge",
       "canonicalBrand": "TCL",
       "model": "TRF445BB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -227695,7 +227687,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "TCL"
       ],
@@ -237464,7 +237456,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WHE5600SD",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_0b598fa8b30e9c42",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -237536,7 +237528,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -237560,7 +237552,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WHE5650SD",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_0b598fa8b30e9c42",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -237632,7 +237624,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -238250,7 +238242,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WHE6170SB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family b93c83bd4afe",
       "bestCorpusState": "CURRENT_MINERU",
@@ -239318,7 +239310,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WQE4960BA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -239368,7 +239360,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -239434,7 +239426,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WQE5400SD",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -239468,7 +239460,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -240035,7 +240027,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WQE5700BD",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -240048,7 +240040,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -240114,7 +240106,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WQE5750BB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -240127,7 +240119,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -241032,7 +241024,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WQE6170BB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_99b43c17b4c65725",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -241104,7 +241096,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -242651,7 +242643,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WSE6200SB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -242664,7 +242656,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -242741,7 +242733,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WSE6200WB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -242754,7 +242746,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -243079,7 +243071,7 @@
       "category": "fridge",
       "canonicalBrand": "Westinghouse",
       "model": "WSE6670BA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -243129,7 +243121,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -253869,7 +253861,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Bosch",
       "model": "WAN28227AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -253926,7 +253918,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -253954,7 +253946,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Bosch",
       "model": "WAN28288AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -254024,7 +254016,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -254994,7 +254986,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Bosch",
       "model": "WGG24403AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -255064,7 +255056,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -255204,7 +255196,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Bosch",
       "model": "WGG2441RAU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -255274,7 +255266,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -255508,7 +255500,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Bosch",
       "model": "WGG244A1AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -255578,7 +255570,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -255718,7 +255710,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Bosch",
       "model": "WGG254Z1AU",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -255775,7 +255767,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Bosch",
         "BOSCH"
@@ -257789,7 +257781,7 @@
       "category": "washing_machine",
       "canonicalBrand": "CHIQ",
       "model": "WFL100TDW",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -257802,7 +257794,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "CHIQ"
       ],
@@ -264417,7 +264409,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1060DG5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 65d9ee96a612",
       "bestCorpusState": "CURRENT_MINERU",
@@ -264551,7 +264543,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -264773,7 +264765,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1060P5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 3924d1301519",
       "bestCorpusState": "CURRENT_MINERU",
@@ -264865,7 +264857,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -265486,7 +265478,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1160HG1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_8c9e52242594826f",
       "bestCorpusState": "CURRENT_MINERU",
@@ -265770,7 +265762,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1260DG5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_a177edb17bdf9d08",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -265827,7 +265819,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -266743,7 +266735,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH1260RG5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 7",
       "bestCorpusState": "CURRENT_MINERU",
@@ -266876,7 +266868,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -267617,7 +267609,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH8060J5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7b036055fd9947bf",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -267674,7 +267666,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -268609,7 +268601,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH9060P5",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 3924d1301519",
       "bestCorpusState": "CURRENT_MINERU",
@@ -268742,7 +268734,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel",
         "FISHER & PAYKEL"
@@ -268905,7 +268897,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WL1064G1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "bestCorpusState": "CURRENT_MINERU",
@@ -269237,7 +269229,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WL1264P1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_c2159fa292bddcd7",
       "bestCorpusState": "CURRENT_MINERU",
@@ -269377,7 +269369,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WL8058G1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "SOURCE_URL_ONLY",
@@ -269408,7 +269400,7 @@
       ],
       "operationalClass": "IDENTITY_RESEARCH",
       "nextAction": "RUN_IDENTITY_CLOSURE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Fisher & Paykel"
       ],
@@ -269447,7 +269439,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Fisher & Paykel",
       "model": "WL9058G1",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "bestCorpusState": "CURRENT_MINERU",
@@ -272755,7 +272747,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Hisense",
       "model": "HWF3S7514X",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -272805,7 +272797,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -272872,7 +272864,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Hisense",
       "model": "HWF3S8514X",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "Hisense AU washer indexed dimension diagram",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -272964,7 +272956,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -272996,7 +272988,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Hisense",
       "model": "HWF5I1015",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
@@ -273046,7 +273038,7 @@
       ],
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense"
       ],
@@ -273074,7 +273066,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Hisense",
       "model": "HWF5I1215",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
       "bestCorpusState": "CURRENT_MINERU",
@@ -273300,7 +273292,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Hisense",
       "model": "HWF8I1015BX",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "model_specific",
       "groupName": "HWF8I1015BX",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -273393,7 +273385,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Hisense",
         "HISENSE"
@@ -281475,7 +281467,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WTG7520",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -281488,7 +281480,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -282441,7 +282433,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WTX3-08W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -282454,7 +282446,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -282493,7 +282485,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WTX3-09G",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -282506,7 +282498,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -282623,7 +282615,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WTX9-14W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -282636,7 +282628,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -284779,7 +284771,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WX3-1208W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -284792,7 +284784,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -284883,7 +284875,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WX3-1409W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -284896,7 +284888,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -284909,7 +284901,7 @@
       "category": "washing_machine",
       "canonicalBrand": "LG",
       "model": "WX3-1410W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -284922,7 +284914,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "LG"
       ],
@@ -292923,7 +292915,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Samsung",
       "model": "WW11CG60ADLE",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 1f2460ba7366",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -292999,7 +292991,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung",
         "SAMSUNG"
@@ -294180,7 +294172,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Samsung",
       "model": "WW90DG6U3ALB",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 0f60add258fa",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -294272,7 +294264,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -294295,7 +294287,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Samsung",
       "model": "WW90DG6U3ALE",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 0f60add258fa",
       "bestCorpusState": "RECEIPT_BOUND",
@@ -294371,7 +294363,7 @@
       ],
       "operationalClass": "COMPLETE_RECEIPT",
       "nextAction": "NO_ACTION",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -296845,7 +296837,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Solt",
       "model": "GGSFLW6002W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -296858,7 +296850,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -296949,7 +296941,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Solt",
       "model": "GGSFLW8002W",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -296962,7 +296954,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -297105,7 +297097,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Solt",
       "model": "GGSFLW9002B",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -297118,7 +297110,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -297495,7 +297487,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Solt",
       "model": "GGSTLW100RCW2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -297508,7 +297500,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -297885,7 +297877,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Solt",
       "model": "GGSTLW70RC2",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -297898,7 +297890,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Solt"
       ],
@@ -301364,7 +301356,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Westinghouse",
       "model": "WWT6084J5WA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -301377,7 +301369,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"
@@ -301391,7 +301383,7 @@
       "category": "washing_machine",
       "canonicalBrand": "Westinghouse",
       "model": "WWT7084J5WA",
-      "lifecycleState": "CURRENT_RETAIL",
+      "lifecycleState": "UNKNOWN_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
       "bestCorpusState": "NO_SOURCE",
@@ -301404,7 +301396,7 @@
       "documentLinks": [],
       "operationalClass": "OFFICIAL_DISCOVERY",
       "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
+      "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "Westinghouse",
         "WESTINGHOUSE"

@@ -590,6 +590,131 @@ export function validateRetailerObservationLedger(document) {
   return document;
 }
 
+function observationSourcePolicyId(observation) {
+  return observation.adapterId ?? observation.legacyProjectionBinding?.sourcePolicyId ?? null;
+}
+
+function baselineLinkId(observation) {
+  if (!observation.legacyProjectionBinding) return null;
+  const seed = [
+    observation.canonicalProductId,
+    observation.retailer,
+    retailerUrl(observation.url),
+    observation.legacyProjectionBinding.originSource,
+  ].join('\0');
+  return `retail_link_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`;
+}
+
+function retailerLedgerSummary(observations, attempts, currentProjectionHashes) {
+  const currentBaselineObservations = observations.filter((row) => (
+    row.sourceType === 'legacy_catalog'
+      && currentProjectionHashes.has(row.legacyProjectionBinding?.projectionSha256)
+  )).length;
+  return {
+    observations: observations.length,
+    currentBaselineObservations,
+    preservedHistoricalObservations: observations.length - currentBaselineObservations,
+    legacyUnknownObservations: observations.filter((row) => row.sourceType === 'legacy_catalog'
+      && row.availability === 'unknown').length,
+    authoritativeTypedObservations: observations.filter((row) => row.sourceType !== 'legacy_catalog').length,
+    collectionAttempts: attempts.length,
+    canonicalProducts: new Set(observations.map((row) => row.canonicalProductId)).size,
+  };
+}
+
+export function pruneRetailerSourceFromTrackedLedger(document, sourcePolicyId) {
+  validateRetailerObservationLedger(document);
+  const sourceId = required(sourcePolicyId, 'private retailer source policy ID');
+  const sourceBindingHashes = new Set(document.sourceBindings
+    .filter((binding) => binding.id.includes(sourceId))
+    .map((binding) => binding.sha256));
+  const removedObservations = document.observations.filter((row) => (
+    observationSourcePolicyId(row) === sourceId
+  ));
+  const observations = document.observations.filter((row) => (
+    observationSourcePolicyId(row) !== sourceId
+  ));
+  const removedBaselineLinkIds = new Set(removedObservations.map(baselineLinkId).filter(Boolean));
+  const removedAttempts = document.collectionAttempts.filter((row) => row.adapterId === sourceId);
+  const attempts = document.collectionAttempts.filter((row) => row.adapterId !== sourceId);
+  const privateRawHashes = new Set([
+    ...sourceBindingHashes,
+    ...removedObservations.map((row) => row.rawSourceSha256).filter(Boolean),
+    ...removedAttempts.flatMap((row) => [row.rawPayloadSha256, row.acquisitionReceiptSha256]).filter(Boolean),
+  ]);
+  const removedEvents = (document.identityResolutionEvents ?? []).filter((event) => (
+    removedBaselineLinkIds.has(event.baselineLinkId)
+      || observationSourcePolicyId(event.observation ?? {}) === sourceId
+      || privateRawHashes.has(event.rawSourceSha256)
+  ));
+  const identityResolutionEvents = (document.identityResolutionEvents ?? []).filter((event) => (
+    !removedEvents.includes(event)
+  ));
+  const removedResolutionHashes = new Set(removedEvents.map((event) => event.resolutionSemanticSha256));
+  const requiredHashes = new Set([
+    ...observations.map((row) => row.rawSourceSha256).filter(Boolean),
+    ...attempts.flatMap((row) => [row.rawPayloadSha256, row.acquisitionReceiptSha256]).filter(Boolean),
+    ...identityResolutionEvents.flatMap((event) => [
+      event.rawSourceSha256,
+      event.resolutionSemanticSha256,
+    ]),
+  ]);
+  const sourceBindings = document.sourceBindings.filter((binding) => {
+    if (['LEGACY_MIGRATION_INPUT', 'POLICY'].includes(binding.kind)) return true;
+    if (binding.id.includes(sourceId)) {
+      if (requiredHashes.has(binding.sha256)) {
+        throw new Error(`private retailer source binding is still required: ${binding.id}`);
+      }
+      return false;
+    }
+    if (requiredHashes.has(binding.sha256)) return true;
+    return !privateRawHashes.has(binding.sha256) && !removedResolutionHashes.has(binding.sha256);
+  });
+  const currentProjectionHashes = new Set(sourceBindings
+    .filter((binding) => binding.kind === 'LEGACY_MIGRATION_INPUT')
+    .map((binding) => binding.sha256));
+  const result = {
+    ...structuredClone(document),
+    sourceBindings,
+    observations,
+    collectionAttempts: attempts,
+    summary: retailerLedgerSummary(observations, attempts, currentProjectionHashes),
+  };
+  if (identityResolutionEvents.length) result.identityResolutionEvents = identityResolutionEvents;
+  else delete result.identityResolutionEvents;
+  delete result.semanticSha256;
+  result.semanticSha256 = canonicalSha256(result);
+  validateRetailerObservationLedger(result);
+  return freezeDeep(result);
+}
+
+export function resetRetailerIdentityResolutionReplay(document) {
+  validateRetailerObservationLedger(document);
+  const replayObservationIds = new Set((document.identityResolutionEvents ?? [])
+    .map((event) => event.observation?.id)
+    .filter(Boolean));
+  const observations = document.observations.filter((row) => !replayObservationIds.has(row.id));
+  const sourceBindings = document.sourceBindings.filter((binding) => binding.kind !== 'IDENTITY_RESOLUTION');
+  const currentProjectionHashes = new Set(sourceBindings
+    .filter((binding) => binding.kind === 'LEGACY_MIGRATION_INPUT')
+    .map((binding) => binding.sha256));
+  const result = {
+    ...structuredClone(document),
+    sourceBindings,
+    observations,
+    summary: retailerLedgerSummary(
+      observations,
+      document.collectionAttempts,
+      currentProjectionHashes,
+    ),
+  };
+  delete result.identityResolutionEvents;
+  delete result.semanticSha256;
+  result.semanticSha256 = canonicalSha256(result);
+  validateRetailerObservationLedger(result);
+  return freezeDeep(result);
+}
+
 function normalizeExisting(existingLedger, baselineById, normalizedPolicy) {
   if (existingLedger?.schemaVersion === 2) {
     validateRetailerObservationLedger(existingLedger);

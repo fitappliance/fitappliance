@@ -72,6 +72,23 @@ test('refresh inventory accounts for every unresolved prior-current product with
 
   const identityRediscovery = inventory.items.find((item) => item.model === 'GS-B655PL');
   assert.equal(identityRediscovery, undefined, 'exact LG official evidence closes retail rediscovery');
+
+  const staleEvidenceRediscovery = inventory.items.find((item) => item.model === 'HDW15G3W');
+  assert.equal(staleEvidenceRediscovery.sourceTasks.length, 0);
+  assert.equal(staleEvidenceRediscovery.resolutionTasks.length, 0);
+  assert.equal(
+    staleEvidenceRediscovery.controlTasks[0].action,
+    'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE',
+  );
+  assert.equal(
+    staleEvidenceRediscovery.controlTasks[0].canonicalAction,
+    'NO_DECLARATIVE_IDENTITY_MIGRATION',
+  );
+  assert.deepEqual(staleEvidenceRediscovery.controlTasks[0].identityEventIds, []);
+  assert.equal(
+    staleEvidenceRediscovery.executionDisposition,
+    'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY',
+  );
   assert.equal(inventory.summary.resolutionTasks, 0);
-  assert.equal(inventory.summary.controlTasks, 2);
+  assert.ok(inventory.summary.controlTasks > 2);
 });

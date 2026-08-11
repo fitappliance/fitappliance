@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "active-retail-privacy-successor-v1",
+  "mode": "PRIVACY_SANITIZATION_ONLY",
+  "generatedAt": "2026-08-10T19:49:54.000Z",
+  "predecessor": {
+    "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+    "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+    "publicProjectionSemanticSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85",
+    "authorizationManifestSha256": "1289e8ea9fcacdbbc81df305193a28937bfb8d80a0b63b654cb3e04427b78fd1",
+    "authorizationManifestSemanticSha256": "a4effdfcc738b659186bc0d4fc22b3317a732960eed4964a57c4cb955e059377",
+    "authorizationStatus": "READY_FOR_CUTOVER",
+    "historicalReferenceSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
+    "historicalReferenceSemanticSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13"
+  },
+  "sourceBindings": {
+    "sanitizerPolicyVersion": "private-retailer-publication-sanitizer-v1",
+    "sanitizerImplementationSha256": "8cf3f5a85e57902e48de43e7e745e8baa1c3997239a4c6424884707a4825655d",
+    "recoveryManifestSha256": "b41ae09891735217442060e89242bc17c99185514a9cfe27eb1c5e327228ed64",
+    "recoveryArchiveSha256": "df9919e96109effae2ad870e6580bf9e25a20595a8e486507d4a0e1b4b5ebe96",
+    "sanitizedPublicProjectionSha256": "9164a5cb3cc096c23b47b04fe5b55937beaec369d5f1c35646c499f795426af5",
+    "sanitizedPublicProjectionSemanticSha256": "e458311d4ed9a885c4f93399ca72135dc3c0ed4bf187c9b7c0637baf0b602f97",
+    "historicalReferenceSha256": "c99ef0ac36db0a307128d32a9afc24473eecdeab8657c709c1153012d7c9dfba",
+    "historicalReferenceSemanticSha256": "bfa010e5bc181257c4d539d83ba8c51f6d00577f2068231bcba697d9c30b94a5"
+  },
+  "invariants": {
+    "productsBefore": 3513,
+    "productsAfter": 3513,
+    "orderedIdentitySha256Before": "f8e923d37e17608817f6dc406a80ead66147b84587f7df72eef04d25ff9ff1f0",
+    "orderedIdentitySha256After": "f8e923d37e17608817f6dc406a80ead66147b84587f7df72eef04d25ff9ff1f0",
+    "referencesBefore": 8087,
+    "referencesAfter": 8087,
+    "orderedReferenceIdentitySha256Before": "4abe008ed6262389c818702b31185a025474d992e594723d8dbcd89ec4928d86",
+    "orderedReferenceIdentitySha256After": "4abe008ed6262389c818702b31185a025474d992e594723d8dbcd89ec4928d86",
+    "referenceContentSha256Before": "06f25c948ff1a60e1e14135c20d3b0e719f4938161abbdcd2b6dbad2a111611f",
+    "referenceContentSha256After": "06f25c948ff1a60e1e14135c20d3b0e719f4938161abbdcd2b6dbad2a111611f",
+    "changedProducts": 232,
+    "removedRetailerRows": 232,
+    "currentRetailProductsBefore": 349,
+    "currentRetailProductsAfter": 117,
+    "privateEvidenceViolationsAfter": 0
+  },
+  "authorization": {
+    "status": "READY_FOR_PRIVACY_SANITIZATION_ONLY",
+    "reasonCodes": [
+      "LIFECYCLE_NOT_REVALIDATED",
+      "PRIVATE_PARTNERIZE_EVIDENCE_REMOVED"
+    ]
+  },
+  "releaseCandidateId": "retail_lifecycle_release_30f746d33cd37b95496a9036",
+  "semanticSha256": "30f746d33cd37b95496a9036557e2ff8da2c602e28d83af6117e82bf1e7e4439"
+}

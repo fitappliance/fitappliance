@@ -73,11 +73,12 @@ export async function acquirePartnerizeFeedToStorage(options = {}, dependencies 
   const source = policy.sources?.find((candidate) => candidate.id === sourcePolicyId);
   if (!source || source.sourceType !== 'affiliate_feed'
     || source.collectionMode !== 'partnerize_feed_only'
-    || source.termsReviewState !== 'authorized_partner_feed') {
-    throw new Error(`source policy is not an authorised partner feed: ${sourcePolicyId}`);
+    || source.termsReviewState !== 'reviewed_private_campaign_use'
+    || source.legacyLinkAction !== 'PRIVATE_EVIDENCE_ONLY') {
+    throw new Error(`source policy is not approved for private Partnerize acquisition: ${sourcePolicyId}`);
   }
   if (!Array.isArray(source.acquisitionHosts) || source.acquisitionHosts.length === 0) {
-    throw new Error(`authorised partner feed lacks acquisition hosts: ${sourcePolicyId}`);
+    throw new Error(`private Partnerize source lacks acquisition hosts: ${sourcePolicyId}`);
   }
   const storageIdentity = dependencies.storageIdentity ?? await verifyEvidenceStorageRoot(storageRoot, {
     fs,
