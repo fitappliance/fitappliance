@@ -175,6 +175,11 @@ test('B0 repository contract pins local tools and every output-affecting deploym
 
   assert.equal(contract.schemaVersion, 2);
   assert.equal(packageJson.engines.node, contract.vercelNodeMajor);
+  assert.deepEqual(contract.managedVercelNormalization, {
+    path: 'vercel.json',
+    format: 'JSON_COMPACT_LF',
+    sha256: sha256(`${JSON.stringify(vercelConfig)}\n`),
+  });
   assert.equal(process.versions.node, contract.node);
   assert.equal(packageJson.packageManager, `npm@${contract.npm}`);
   assert.equal(packageJson.devDependencies.vercel, contract.vercel);
@@ -238,6 +243,24 @@ test('B0 repository contract pins local tools and every output-affecting deploym
     versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
     managedVercelNode: true,
   }), true);
+  const managedRepoRoot = initFixture(Object.fromEntries(
+    contract.boundFiles.map((row) => [row.path, readFileSync(path.join(repoRoot, row.path))]),
+  ));
+  writeFileSync(path.join(managedRepoRoot, 'vercel.json'), `${JSON.stringify(vercelConfig)}\n`);
+  assert.equal(validateToolchainContract({
+    repoRoot: managedRepoRoot,
+    contract,
+    versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
+    managedVercelNode: true,
+  }), true);
+  assert.throws(
+    () => validateToolchainContract({
+      repoRoot: managedRepoRoot,
+      contract,
+      versions: { node: contract.node, npm: contract.npm, vercel: vercelPackage.version },
+    }),
+    assertCode('TOOLCHAIN_FILE_DRIFT'),
+  );
   assert.throws(
     () => validateToolchainContract({
       repoRoot,

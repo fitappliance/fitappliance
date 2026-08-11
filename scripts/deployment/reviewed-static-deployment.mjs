@@ -307,6 +307,13 @@ export function validateToolchainContract({
   if (managedVercelNode && historicalReadOnly) {
     fail('MANAGED_VERCEL_MODE_INVALID', 'Historical replay cannot use managed Vercel Node mode');
   }
+  const managedNormalization = contract.managedVercelNormalization;
+  if (contract.schemaVersion === 2
+    && (managedNormalization?.path !== 'vercel.json'
+      || managedNormalization?.format !== 'JSON_COMPACT_LF'
+      || !/^[0-9a-f]{64}$/.test(managedNormalization?.sha256 ?? ''))) {
+    fail('TOOLCHAIN_CONTRACT_INVALID', 'Managed Vercel normalization contract is invalid');
+  }
   if (contract.schemaVersion === 2 && ![1, 2].includes(contract.executableBindingSetVersion)) {
     fail('TOOLCHAIN_EXECUTABLE_BINDINGS_INVALID', 'Toolchain schema 2 requires the executable binding set');
   }
@@ -367,7 +374,10 @@ export function validateToolchainContract({
     } catch {
       fail('TOOLCHAIN_FILE_DRIFT', `Bound file is unavailable: ${row.path}`);
     }
-    if (actual !== row.sha256) {
+    const acceptedManagedNormalization = managedVercelNode
+      && row.path === managedNormalization?.path
+      && actual === managedNormalization.sha256;
+    if (actual !== row.sha256 && !acceptedManagedNormalization) {
       fail('TOOLCHAIN_FILE_DRIFT', `Bound file hash drift: ${row.path}`, {
         path: row.path,
         expectedSha256: row.sha256,

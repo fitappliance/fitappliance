@@ -2724,6 +2724,13 @@ The first clean-install attempt also exposed one pre-existing lock mismatch:
 `^2.0.4`. Regenerating lock metadata with the pinned npm changed only that
 transitive entry to `2.0.4`; `npm ci --ignore-scripts --dry-run` then passed.
 
+Vercel subsequently normalized `vercel.json` to compact JSON plus one LF before
+the build command. Diagnostic hashes proved the exact actual value equals
+`sha256(JSON.stringify(reviewedConfig) + "\\n")`. The toolchain contract now
+binds both the Git source bytes and that single deterministic managed transform;
+only explicit managed Vercel mode accepts the second hash. Local/replay mode,
+other files and any other `vercel.json` bytes remain exact-hash failures.
+
 This compatibility rule does not authorize generation, publication or
 activation. A post-push Vercel build must advance to the existing
 `SOURCE_MANIFEST_BLOCKED`/withdrawal/rights stop and remain non-deployable until
