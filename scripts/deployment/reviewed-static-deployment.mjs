@@ -367,7 +367,13 @@ export function validateToolchainContract({
     } catch {
       fail('TOOLCHAIN_FILE_DRIFT', `Bound file is unavailable: ${row.path}`);
     }
-    if (actual !== row.sha256) fail('TOOLCHAIN_FILE_DRIFT', `Bound file hash drift: ${row.path}`);
+    if (actual !== row.sha256) {
+      fail('TOOLCHAIN_FILE_DRIFT', `Bound file hash drift: ${row.path}`, {
+        path: row.path,
+        expectedSha256: row.sha256,
+        actualSha256: actual,
+      });
+    }
   }
   return true;
 }

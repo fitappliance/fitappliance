@@ -283,6 +283,7 @@ test('B0 repository contract pins local tools and every output-affecting deploym
   );
   const managedBindingDrift = structuredClone(contract);
   managedBindingDrift.boundFiles[0].sha256 = '0'.repeat(64);
+  let managedBindingError;
   assert.throws(
     () => validateToolchainContract({
       repoRoot,
@@ -290,8 +291,16 @@ test('B0 repository contract pins local tools and every output-affecting deploym
       versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
       managedVercelNode: true,
     }),
-    assertCode('TOOLCHAIN_FILE_DRIFT'),
+    (error) => {
+      managedBindingError = error;
+      return error.code === 'TOOLCHAIN_FILE_DRIFT';
+    },
   );
+  assert.deepEqual(managedBindingError.details, {
+    path: managedBindingDrift.boundFiles[0].path,
+    expectedSha256: '0'.repeat(64),
+    actualSha256: sha256(readFileSync(path.join(repoRoot, managedBindingDrift.boundFiles[0].path))),
+  });
 
   for (const invalidRows of [
     contract.boundFiles.slice(1),
