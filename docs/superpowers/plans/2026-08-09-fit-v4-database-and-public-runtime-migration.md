@@ -2517,6 +2517,14 @@ new lifecycle, Fit, publication or deployment authorization.
 - publication, Fit and active-release audits pass with zero private-evidence
   violations. This checkpoint does not authorize V4 cutover, owner/reviewer
   signing, push or deployment;
+- committed-state clean replay for `a5b495da655a3d2d23bb2127d730efdc4bc485d3`
+  produced 3,211 content-bound receipts with zero unresolved outputs. The
+  resealed B1 inventory contains 3,283 rows and has ID
+  `d5cd66101ea84c9123ab8d04cf26335a02f0743a3058ae58a1a63be449226cc4`;
+  the B0/B1 deployment-static regression passes 60/60;
+- B1 remains correctly blocked by the five unsigned rights decisions,
+  un-enrolled production trust root, and missing withdrawal genesis/head. No
+  private retailer dependency or Partnerize row is present in the inventory;
 - the previous owner request is expired. A fresh request can be prepared only
   after the committed tree is replayed and B1 inventory/provenance is resealed.
   The non-secret owner public key, owner metadata and trust-root/anchor inputs
