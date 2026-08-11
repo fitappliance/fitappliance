@@ -146,6 +146,31 @@ test('manual retailer enrich: private affiliate-feed rows never enter public cat
   assert.deepEqual(merged, []);
 });
 
+test('manual retailer enrich rejects private rows identified only by source policy bindings', () => {
+  const privateRows = [
+    {
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/adapter-bound-product',
+      source: 'manual',
+      adapterId: 'the-good-guys-partnerize-feed-v1',
+    },
+    {
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/policy-bound-product',
+      source: 'manual',
+      sourcePolicyId: 'the-good-guys-partnerize-feed-v1',
+    },
+    {
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/masked-source-type-product',
+      source: 'manual',
+      sourceType: 'affiliate_feed',
+    },
+  ];
+
+  assert.deepEqual(mergeRetailers([], privateRows), []);
+});
+
 test('manual retailer enrich removes previously persisted private feed rows', () => {
   const products = [makeProduct({
     unavailable: false,

@@ -47,7 +47,7 @@
     "receiptAuditSha256": "4e49663416124255b41d267820f1f2a7553b5072cce9a8ee1536c4d84df1e315",
     "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
     "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
-    "epochsSha256": "aa6411886604ab52df61e5234d53dc44222c9b5118f3847ebcd89cb44c719408"
+    "epochsSha256": "fb3a682ac0b2fd1db965b0c40772291ad5a16bac104384c8664db6d33b4ed11a"
   },
   "epochs": [
     {
@@ -76,7 +76,7 @@
     },
     {
       "id": "publication",
-      "semanticSha256": "bd649135350157d387ddae84c762f7b139d65965ee26973882292a1a2b809bdf"
+      "semanticSha256": "959b03360a4a78e7d844f5f29a22816e64b2639cff237d95c2d1b450464ddf4b"
     },
     {
       "id": "receipt-policy",
@@ -1388,6 +1388,6 @@
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_702961cc22f5067d3c85fbbc"
   },
-  "controlId": "historical-dimensions-scale-aad169e58ce6ec6c7db9e27a",
-  "semanticControlSha256": "aad169e58ce6ec6c7db9e27afdccec1ff1d94bf01e5ed2e6842939c6060594d8"
+  "controlId": "historical-dimensions-scale-42ceaae2850b27c9f5960990",
+  "semanticControlSha256": "42ceaae2850b27c9f5960990155219d613b646ecc114b129237e167299ea4adf"
 }

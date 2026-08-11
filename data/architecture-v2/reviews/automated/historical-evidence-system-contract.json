@@ -130,10 +130,10 @@
         },
         {
           "path": "src/domain/public-projection.mjs",
-          "contentSha256": "8cf3f5a85e57902e48de43e7e745e8baa1c3997239a4c6424884707a4825655d"
+          "contentSha256": "62a0cc591d709168cda43e513840b5f55494948618ff17efb517f3ec7271bc46"
         }
       ],
-      "semanticSha256": "bd649135350157d387ddae84c762f7b139d65965ee26973882292a1a2b809bdf"
+      "semanticSha256": "959b03360a4a78e7d844f5f29a22816e64b2639cff237d95c2d1b450464ddf4b"
     },
     {
       "id": "receipt-policy",
@@ -1217,14 +1217,14 @@
         },
         {
           "path": "src/domain/public-projection.mjs",
-          "contentSha256": "8cf3f5a85e57902e48de43e7e745e8baa1c3997239a4c6424884707a4825655d"
+          "contentSha256": "62a0cc591d709168cda43e513840b5f55494948618ff17efb517f3ec7271bc46"
         },
         {
           "path": "src/domain/retailer-identity-migration.mjs",
           "contentSha256": "f61ffbb03da958733989d0a684b5351d449fdd9e939e7abf4a982736063d73ca"
         }
       ],
-      "producerSha256": "77e1c55c963a697c7abf366fa1ea2c440123a8c09e0d57dc2739fe365e7ea269",
+      "producerSha256": "5e028c9c8504ebc123f1fc7c74ec65d460cb8d7bcc047c80b795be86f02d4ea6",
       "consumers": [
         "candidate-official-market"
       ],
@@ -1290,10 +1290,10 @@
         },
         {
           "path": "src/domain/public-projection.mjs",
-          "contentSha256": "8cf3f5a85e57902e48de43e7e745e8baa1c3997239a4c6424884707a4825655d"
+          "contentSha256": "62a0cc591d709168cda43e513840b5f55494948618ff17efb517f3ec7271bc46"
         }
       ],
-      "producerSha256": "e254a3dabb201de2f15acc84a5ab83e255fb720d10b01f77ba33728734e1d406",
+      "producerSha256": "20463a72b336f847b4e5104591e7bcad5cd45133c63587c537110791d8481666",
       "consumers": [
         "lifecycle-reduction",
         "official-market-lifecycle",
@@ -2213,9 +2213,9 @@
       "consumers": [],
       "schemaVersion": 2,
       "generatedAt": "2026-08-05T12:11:28.783Z",
-      "contentSha256": "ffeff47fb3d07b2913628a9afc0937e105a10d4ca4c28f148e94698cad35a846",
-      "semanticSha256": "aad169e58ce6ec6c7db9e27afdccec1ff1d94bf01e5ed2e6842939c6060594d8",
-      "declaredSemanticSha256": "aad169e58ce6ec6c7db9e27afdccec1ff1d94bf01e5ed2e6842939c6060594d8",
+      "contentSha256": "5589a2969725453ecef64f579ead1092a16142e6ccf596c8d8a359c84a83781b",
+      "semanticSha256": "42ceaae2850b27c9f5960990155219d613b646ecc114b129237e167299ea4adf",
+      "declaredSemanticSha256": "42ceaae2850b27c9f5960990155219d613b646ecc114b129237e167299ea4adf",
       "sourceBindings": [
         {
           "sourceStageId": "bounded-planner",
@@ -2715,6 +2715,6 @@
     "cohortKey": "historical_cohort_702961cc22f5067d3c85fbbc",
     "checkpointCount": 45
   },
-  "contractId": "historical_evidence_system_7ba094aaf92bd3d25623a6b0",
-  "semanticContractSha256": "7ba094aaf92bd3d25623a6b0749ab3bd5e0283e850280f95fa31c7272b5df482"
+  "contractId": "historical_evidence_system_425177deeeb29b7bc79de3f4",
+  "semanticContractSha256": "425177deeeb29b7bc79de3f4080dfca5af3f0c1dcd60e2350b22b420b96278ae"
 }

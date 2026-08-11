@@ -16,6 +16,7 @@ import {
 import { assertNoPrivateRetailerFeedPublication } from '../../src/domain/public-projection.mjs';
 import { hashHistoricalCatalogBinding } from '../../src/domain/historical-catalog-binding.mjs';
 import { buildPrivacySuccessorDescriptor } from '../../scripts/architecture-v2/build-active-retail-privacy-successor.mjs';
+import { verifyPrivateRecoveryArtifacts } from '../../scripts/architecture-v2/build-active-retail-privacy-successor.mjs';
 
 const HASH = 'a'.repeat(64);
 
@@ -363,6 +364,40 @@ test('privacy successor rejects a recovery receipt that does not bind the predec
   assert.throws(
     () => buildActiveRetailPrivacySuccessor(input),
     /recovery manifest.*predecessor projection/i,
+  );
+});
+
+test('privacy successor release builder verifies the bound recovery archive bytes', async (t) => {
+  const root = await mkdtemp(join(tmpdir(), 'fitappliance-private-recovery-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const archivePath = join(root, 'tracked-partnerize-data.tar');
+  const manifestPath = join(root, 'manifest.json');
+  const archiveBytes = Buffer.from('private recovery archive');
+  const recoveryManifest = {
+    schemaVersion: 1,
+    state: 'PRIVATE_RECOVERY_ONLY',
+    archiveSha256: sha256(archiveBytes),
+    paths: ['data/architecture-v2/releases/example/public-catalog-projection.json'],
+  };
+  await Promise.all([
+    writeFile(archivePath, archiveBytes),
+    writeFile(manifestPath, jsonBytes(recoveryManifest)),
+  ]);
+
+  const verified = await verifyPrivateRecoveryArtifacts(manifestPath);
+  assert.equal(verified.archiveSha256, recoveryManifest.archiveSha256);
+  assert.equal(sha256(verified.manifestBytes), sha256(jsonBytes(recoveryManifest)));
+
+  await writeFile(archivePath, Buffer.from('tampered archive'));
+  await assert.rejects(
+    verifyPrivateRecoveryArtifacts(manifestPath),
+    /recovery archive hash mismatch/i,
+  );
+
+  await rm(archivePath);
+  await assert.rejects(
+    verifyPrivateRecoveryArtifacts(manifestPath),
+    /recovery archive/i,
   );
 });
 

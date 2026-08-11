@@ -22,10 +22,16 @@ function normalizeRetailerName(value) {
 
 function isPrivateRetailerEvidence(retailer) {
   if (!retailer || typeof retailer !== 'object') return false;
-  const source = String(retailer.source ?? retailer.sourceType ?? '').trim().toLowerCase();
+  const source = String(retailer.source ?? '').trim().toLowerCase();
+  const sourceType = String(retailer.sourceType ?? '').trim().toLowerCase();
   const affiliateUrl = String(retailer.affiliate_url ?? '').trim().toLowerCase();
+  const privateSourcePolicy = 'the-good-guys-partnerize-feed-v1';
   return source.includes('partnerize')
+    || sourceType.includes('partnerize')
     || source === 'affiliate_feed'
+    || sourceType === 'affiliate_feed'
+    || String(retailer.adapterId ?? '').trim() === privateSourcePolicy
+    || String(retailer.sourcePolicyId ?? '').trim() === privateSourcePolicy
     || String(retailer.affiliate_network ?? '').trim().toLowerCase() === 'partnerize'
     || affiliateUrl.includes('prf.hn/click')
     || affiliateUrl.includes('feeds.performancehorizon.com')

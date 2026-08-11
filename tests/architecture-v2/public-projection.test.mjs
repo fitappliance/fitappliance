@@ -72,6 +72,53 @@ test('public feed boundary rejects nested canaries instead of relying on visible
   }), /private retailer feed/i);
 });
 
+test('public normalization rejects policy-bound private rows even when source is labelled manual', () => {
+  const result = normalizePublicProduct({
+    id: 'fridge-private-policy-binding',
+    cat: 'fridge',
+    brand: 'A',
+    model: 'M',
+    unavailable: false,
+    retailers: [{
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/example',
+      source: 'manual',
+      sourcePolicyId: 'the-good-guys-partnerize-feed-v1',
+    }],
+  });
+
+  assert.deepEqual(result.retailers, []);
+  assert.equal(result.unavailable, true);
+  assert.equal(assertNoPrivateRetailerFeedPublication(result), true);
+});
+
+test('public normalization drops the whole retailer fact when only private feed residue identifies it', () => {
+  const result = normalizePublicProduct({
+    id: 'fridge-private-feed-residue',
+    cat: 'fridge',
+    brand: 'A',
+    model: 'M',
+    unavailable: false,
+    retailers: [
+      {
+        n: 'The Good Guys',
+        url: 'https://www.thegoodguys.com.au/feed-residue',
+        source: 'manual',
+        affiliate_url: 'https://prf.hn/click/private',
+      },
+      {
+        n: 'The Good Guys',
+        url: 'https://www.thegoodguys.com.au/source-residue',
+        source: 'partnerize-import',
+      },
+    ],
+  });
+
+  assert.deepEqual(result.retailers, []);
+  assert.equal(result.unavailable, true);
+  assert.equal(assertNoPrivateRetailerFeedPublication(result), true);
+});
+
 test('public normalization derives door projection only from explicit 90-degree depth evidence', () => {
   const product = normalizePublicProduct({
     id: 'washer-a',

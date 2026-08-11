@@ -2535,6 +2535,58 @@ may write immutable CSV bytes and a secret-safe receipt to the external
 evidence store, but no raw URL, token, row or derived retailer fact may enter a
 tracked artifact, public build, rights packet or Fit decision.
 
+### WP0B-B0/B1 privacy audit-remediation checkpoint - 2026-08-11
+
+**State:** `VERIFIED_LOCAL_COMMIT_READY`. The bounded final review of the
+privacy successor found three release-integrity gaps, and the primary review
+found one additional laundering path. All four are closed without changing
+the private-only Partnerize authorization boundary.
+
+- manual and public projection classifiers now evaluate `source`,
+  `sourceType`, `adapterId` and `sourcePolicyId` independently. A public-looking
+  `source: manual` value cannot mask an affiliate-feed or private policy
+  binding;
+- a retailer row containing a private feed-only field, affiliate URL residue,
+  or Partnerize-labelled source is removed as a whole. Removing only the
+  identifying field while retaining the retailer fact is forbidden;
+- the privacy successor builder opens the sibling private recovery archive
+  without following symlinks, requires a regular file, hashes the actual bytes,
+  and compares them with the bound manifest before using that manifest;
+- the three tracked sanitization targets use an external deterministic journal.
+  An interrupted rename resumes from old/new content hashes, while target,
+  temp or journal drift fails closed. The journal contains no private rows or
+  recovery bytes and is removed only after all targets match the intended
+  hashes;
+- the real external recovery archive was verified at
+  `df9919e96109effae2ad870e6580bf9e25a20595a8e486507d4a0e1b4b5ebe96`.
+  Its bytes remain outside Git and outside normal build inputs;
+- changing `src/domain/public-projection.mjs` advanced the controlled
+  publication epoch. The scale controller was regenerated as
+  `historical-dimensions-scale-42ceaae2850b27c9f5960990`, the active recovery
+  audit remained at zero issues, and the downstream system contract was
+  regenerated as `historical_evidence_system_425177deeeb29b7bc79de3f4`;
+- focused privacy regression passed 48/48, the complete Architecture V2 test
+  set exited 0, lint passed, the private-evidence audit checked 5,831 files with
+  zero violations, the publication audit checked 19 workflows and 2,331
+  artifacts with zero violations, and active-release/Fit audits reported zero
+  issues or publication violations;
+- Architecture V2 tests that use `cp -al` must keep their temporary directory
+  on the repository filesystem. Test logs and clean replay workspaces may live
+  on `UGREEN-1TB`, but setting the whole suite's `TMPDIR` to that external volume
+  causes an expected cross-device hard-link failure;
+- unsigned signing candidate
+  `e57b351a55a11e4d7c9dcb2f395843b80a98d938f41e7ff62497d38e27e46aa7`
+  is stale after these controlled-source changes and must not be signed. A new
+  candidate may be generated only after committed-state replay and B1
+  provenance resealing;
+- one `gpt-5.6-sol` medium implementation agent was used for the bounded code
+  slice. The requested max reviewer was not rerun because its model quota is
+  unavailable before 2026-08-17; the primary bounded review is recorded as the
+  current review evidence, not misreported as an independent max approval.
+
+No private key was read, no owner or reviewer signature was created, and no
+push, deployment, promotion or activation occurred.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

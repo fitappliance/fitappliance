@@ -3,6 +3,8 @@ import { classifyGeometryPublication } from './geometry-publication.mjs';
 export const PRIVATE_RETAILER_PUBLICATION_POLICY_VERSION =
   'private-retailer-publication-sanitizer-v1';
 
+const PRIVATE_SOURCE_POLICY_ID = 'the-good-guys-partnerize-feed-v1';
+
 const CATEGORY_MARKERS = Object.freeze({
   fridge: 'FR',
   washing_machine: 'WM',
@@ -35,8 +37,13 @@ const PRIVATE_RETAILER_FEED_KEYS = new Set([
 function isPrivateRetailerFeedMarker(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
   const source = String(value.source ?? '').trim().toLowerCase();
-  return String(value.sourceType ?? '').trim().toLowerCase() === 'affiliate_feed'
-    || String(value.adapterId ?? '').trim() === 'the-good-guys-partnerize-feed-v1'
+  const sourceType = String(value.sourceType ?? '').trim().toLowerCase();
+  return source.includes('partnerize')
+    || sourceType.includes('partnerize')
+    || Object.keys(value).some((key) => PRIVATE_RETAILER_FEED_KEYS.has(key))
+    || sourceType === 'affiliate_feed'
+    || String(value.adapterId ?? '').trim() === PRIVATE_SOURCE_POLICY_ID
+    || String(value.sourcePolicyId ?? '').trim() === PRIVATE_SOURCE_POLICY_ID
     || String(value.affiliate_network ?? '').trim().toLowerCase() === 'partnerize'
     || ['affiliate_feed', 'affiliate-feed', 'partnerize-feed', 'retailer-observation:affiliate_feed']
       .includes(source);

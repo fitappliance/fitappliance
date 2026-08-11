@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { constants } from 'node:fs';
+import { mkdir, open, readFile, rename, writeFile } from 'node:fs/promises';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import {
@@ -17,6 +18,42 @@ const sanitizerRelativePath = 'src/domain/public-projection.mjs';
 
 function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
+}
+
+export async function verifyPrivateRecoveryArtifacts(manifestPath) {
+  const resolvedManifestPath = resolve(manifestPath);
+  const manifestBytes = await readFile(resolvedManifestPath);
+  let manifest;
+  try {
+    manifest = JSON.parse(manifestBytes);
+  } catch {
+    throw new TypeError('private recovery manifest must contain JSON');
+  }
+  if (manifest?.schemaVersion !== 1
+    || manifest.state !== 'PRIVATE_RECOVERY_ONLY'
+    || !/^[a-f0-9]{64}$/.test(manifest.archiveSha256 ?? '')
+    || !Array.isArray(manifest.paths)
+    || manifest.paths.some((path) => typeof path !== 'string' || path.length === 0)) {
+    throw new TypeError('private recovery manifest must be PRIVATE_RECOVERY_ONLY');
+  }
+
+  const archivePath = join(dirname(resolvedManifestPath), 'tracked-partnerize-data.tar');
+  let archive;
+  try {
+    archive = await open(archivePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+    const archiveStat = await archive.stat();
+    if (!archiveStat.isFile()) throw new TypeError('private recovery archive must be a regular non-symlink file');
+    const archiveSha256 = sha256(await archive.readFile());
+    if (archiveSha256 !== manifest.archiveSha256) {
+      throw new Error('private recovery archive hash mismatch');
+    }
+    return Object.freeze({ manifestBytes, archiveSha256, archivePath });
+  } catch (error) {
+    if (/private recovery archive/i.test(error.message)) throw error;
+    throw new Error(`private recovery archive unavailable: ${error.message}`);
+  } finally {
+    await archive?.close();
+  }
 }
 
 export function buildPrivacySuccessorDescriptor(result) {
@@ -105,20 +142,20 @@ export async function buildActiveRetailPrivacySuccessorRelease({
     predecessorAuthorizationManifestPath = predecessor.paths.manifest;
     historicalReferencePath = predecessor.paths.reference;
   }
+  const verifiedRecovery = await verifyPrivateRecoveryArtifacts(recoveryManifestPath);
   const [predecessorCatalogBytes, historicalReferenceBytes, predecessorAuthorizationManifestBytes,
-    sanitizerImplementationBytes, recoveryManifestBytes] = await Promise.all([
+    sanitizerImplementationBytes] = await Promise.all([
     readFile(resolve(predecessorCatalogPath)),
     readFile(resolve(historicalReferencePath)),
     readFile(resolve(predecessorAuthorizationManifestPath)),
     readFile(resolve(root, sanitizerRelativePath)),
-    readFile(resolve(recoveryManifestPath)),
   ]);
   const result = buildActiveRetailPrivacySuccessor({
     predecessorCatalogBytes,
     predecessorAuthorizationManifestBytes,
     historicalReferenceBytes,
     sanitizerImplementationBytes,
-    recoveryManifestBytes,
+    recoveryManifestBytes: verifiedRecovery.manifestBytes,
     generatedAt,
   });
   const descriptor = buildPrivacySuccessorDescriptor(result);
