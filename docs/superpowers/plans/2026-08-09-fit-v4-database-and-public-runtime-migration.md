@@ -2587,6 +2587,46 @@ the private-only Partnerize authorization boundary.
 No private key was read, no owner or reviewer signature was created, and no
 push, deployment, promotion or activation occurred.
 
+#### Committed replay and unsigned-candidate refresh
+
+- privacy remediation and its controlled historical successors were committed
+  locally as `c9d6aff396a9315775d5c2453b42c17a8db39bd3`;
+- a clean `git archive` of that commit was generated under
+  `/Volumes/UGREEN-1TB/FitAppliance/tmp/b1-replay-c9d6aff39-20260811T123801`.
+  The normal build plus evidence index, fit-check pages, OG optimization, image
+  sitemap, RSS and final sitemap completed successfully;
+- replay produced 3,211 content-bound receipts and zero unresolved outputs.
+  A second run was byte-identical. The resealed files have SHA-256 values
+  `a2bf65f050ae70a9164f931de0fb4ec002a2db6304eab93c16246bee4f66aace`
+  for generated provenance,
+  `41d983803001929016d478e0eded63cfdb58f6d0beabc8987b2cf7f3bfae31a2`
+  for the blocked rights review, and
+  `cf9141255f940d09b8e0d547eacbfd7d5452bb6d7a8d86d205b783c412201c39`
+  for the reviewed manifest;
+- inventory ID remains
+  `d5cd66101ea84c9123ab8d04cf26335a02f0743a3058ae58a1a63be449226cc4`
+  because no public path or output byte changed. Rights review ID advanced to
+  `215a8ea62967c99c2f3b4f2b84a8d69f8100018fc9f41352bff3f886ce72ed3a`.
+  The reseal was committed locally as
+  `40c346831`;
+- the 60-test deployment-static regression passed 60/60. The real production
+  gate remains correctly nonzero at `PRODUCTION_TRUST_ROOT_NOT_ENROLLED`;
+- unsigned candidate v12 is stored at
+  `/Volumes/UGREEN-1TB/FitAppliance/private/static-rights/decision-packets/2026-08-11-b1-signing-candidate-v12.json`.
+  It is mode `0600`, has one link, status `BLOCKED_OWNER_ATTESTATION`, candidate
+  ID `e57b351a55a11e4d7c9dcb2f395843b80a98d938f41e7ff62497d38e27e46aa7`
+  and file SHA-256
+  `b88fb0778f1a3ae2e6bb1f3226b8e9e52561f36b8fbe096a39b82bc07e9df4ed`.
+  Two generations were byte-identical. Its equality with the superseded v11
+  bytes is expected: public inventory, exact output bytes and rights scopes did
+  not change, while provenance was independently resealed and revalidated;
+- no owner request was produced because the required non-secret owner metadata,
+  owner public key and enrolled trust-root/anchor inputs are not available.
+  The private owner key was not read and must not be used to invent those
+  missing public inputs.
+
+No push, deployment, signing, promotion or activation occurred in this replay.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public
