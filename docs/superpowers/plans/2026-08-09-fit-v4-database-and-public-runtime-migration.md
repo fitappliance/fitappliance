@@ -2719,6 +2719,11 @@ reviewed lock bytes and preventing dependency lifecycle scripts. Production
 Corepack configuration remains a separate pre-deployment prerequisite; its
 absence fails closed at the exact npm gate.
 
+The first clean-install attempt also exposed one pre-existing lock mismatch:
+`hasown@2.0.3` no longer satisfied the committed dependency requirement
+`^2.0.4`. Regenerating lock metadata with the pinned npm changed only that
+transitive entry to `2.0.4`; `npm ci --ignore-scripts --dry-run` then passed.
+
 This compatibility rule does not authorize generation, publication or
 activation. A post-push Vercel build must advance to the existing
 `SOURCE_MANIFEST_BLOCKED`/withdrawal/rights stop and remain non-deployable until
