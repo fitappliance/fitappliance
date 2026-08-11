@@ -2686,6 +2686,34 @@ no production artifact was materialized. The branch may be pushed for CI and
 review; production deployment must wait for the independent authorization
 chain rather than bypassing the gate.
 
+### WP0B-B0 managed Vercel Node patch checkpoint - 2026-08-11
+
+**State:** `VERIFIED_LOCAL_PUSH_READY_DEPLOYMENT_BLOCKED`. The preview created
+from commit `54a982c2c` failed before the publication-rights gate because the
+repository contract pinned local Node `22.23.1` while Vercel supplied managed
+Node `22.22.2`. Vercel's documented deployment contract selects the Node major
+through `engines.node`; Vercel manages the minor and patch versions.
+
+The deployment validator therefore keeps exact Node, npm and Vercel CLI
+versions for local builds and retained replays. Managed Node mode requires both
+the contract-bound Vercel build command's explicit `--managed-vercel-node` flag
+and `VERCEL=1`; an inherited `VERCEL=1` alone remains strict. Only in that mode
+may Node vary within the already reviewed `vercelNodeMajor` (`22.x`). It still
+rejects Node 20/24 or any npm, Vercel CLI, executable-binding or bound-file
+drift, and historical replay cannot select managed mode. The focused RED test
+proved the old validator rejected the managed patch, then passed after the
+minimum change; the complete static-materializer suite passed 15/15.
+
+The bounded max review found that the first implementation trusted
+caller-controlled `VERCEL=1` by itself. That finding was accepted: process-mode
+tests now prove the explicit flag/environment conjunction, managed-mode npm,
+Vercel CLI and bound-file drift rejection, and historical-mode rejection.
+
+This compatibility rule does not authorize generation, publication or
+activation. A post-push Vercel build must advance to the existing
+`SOURCE_MANIFEST_BLOCKED`/withdrawal/rights stop and remain non-deployable until
+the independent authorization chain is complete.
+
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
 Create one explicit deployment-surface manifest covering root HTML, public

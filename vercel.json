@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "fitappliance",
-  "buildCommand": "npm run build:deploy",
+  "buildCommand": "npm run build:deploy -- --managed-vercel-node",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,

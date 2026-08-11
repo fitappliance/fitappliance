@@ -165,10 +165,11 @@ test('B0 rejects toolchain version and bound-file drift', async () => {
 });
 
 test('B0 repository contract pins local tools and every output-affecting deployment file', async () => {
-  const { validateToolchainContract } = await loadSubject();
+  const { selectManagedVercelNodeMode, validateToolchainContract } = await loadSubject();
   const repoRoot = process.cwd();
   const packageJson = JSON.parse(readFileSync(path.join(repoRoot, 'package.json'), 'utf8'));
   const contract = JSON.parse(readFileSync(path.join(repoRoot, 'deployment/toolchain-contract.json'), 'utf8'));
+  const vercelConfig = JSON.parse(readFileSync(path.join(repoRoot, 'vercel.json'), 'utf8'));
   const vercelPackage = JSON.parse(readFileSync(path.join(repoRoot, 'node_modules/vercel/package.json'), 'utf8'));
   const boundPaths = contract.boundFiles.map((row) => row.path);
 
@@ -214,11 +215,82 @@ test('B0 repository contract pins local tools and every output-affecting deploym
   assert.equal(packageJson.scripts['review:b1-rights'], 'node scripts/deployment/build-static-rights-review.mjs');
   assert.equal(packageJson.scripts['verify:b1-rights-gate'], 'node scripts/deployment/verify-static-rights-gate.mjs');
   assert.doesNotMatch(packageJson.scripts['build:deploy'], /acquire|catalog|publish|pointer|generate|curl|wget|fetch/i);
+  assert.equal(vercelConfig.buildCommand, 'npm run build:deploy -- --managed-vercel-node');
+  assert.equal(selectManagedVercelNodeMode({ argv: ['node', 'build'], env: { VERCEL: '1' } }), false);
+  assert.equal(selectManagedVercelNodeMode({
+    argv: ['node', 'build', '--managed-vercel-node'],
+    env: { VERCEL: '1' },
+  }), true);
+  assert.throws(
+    () => selectManagedVercelNodeMode({ argv: ['node', 'build', '--managed-vercel-node'], env: {} }),
+    assertCode('MANAGED_VERCEL_MODE_INVALID'),
+  );
   assert.equal(validateToolchainContract({
     repoRoot,
     contract,
     versions: { node: process.versions.node, npm: contract.npm, vercel: vercelPackage.version },
   }), true);
+  const alternateManagedPatch = process.versions.node === '22.22.2' ? '22.23.1' : '22.22.2';
+  assert.equal(validateToolchainContract({
+    repoRoot,
+    contract,
+    versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
+    managedVercelNode: true,
+  }), true);
+  assert.throws(
+    () => validateToolchainContract({
+      repoRoot,
+      contract,
+      versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
+    }),
+    assertCode('TOOLCHAIN_VERSION_DRIFT'),
+  );
+  assert.throws(
+    () => validateToolchainContract({
+      repoRoot,
+      contract,
+      versions: { node: '20.19.0', npm: contract.npm, vercel: vercelPackage.version },
+      managedVercelNode: true,
+    }),
+    assertCode('TOOLCHAIN_VERSION_DRIFT'),
+  );
+  for (const [name, value] of [['npm', '0.0.0'], ['vercel', '0.0.0']]) {
+    assert.throws(
+      () => validateToolchainContract({
+        repoRoot,
+        contract,
+        versions: {
+          node: alternateManagedPatch,
+          npm: contract.npm,
+          vercel: vercelPackage.version,
+          [name]: value,
+        },
+        managedVercelNode: true,
+      }),
+      assertCode('TOOLCHAIN_VERSION_DRIFT'),
+    );
+  }
+  assert.throws(
+    () => validateToolchainContract({
+      repoRoot,
+      contract,
+      versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
+      managedVercelNode: true,
+      historicalReadOnly: true,
+    }),
+    assertCode('MANAGED_VERCEL_MODE_INVALID'),
+  );
+  const managedBindingDrift = structuredClone(contract);
+  managedBindingDrift.boundFiles[0].sha256 = '0'.repeat(64);
+  assert.throws(
+    () => validateToolchainContract({
+      repoRoot,
+      contract: managedBindingDrift,
+      versions: { node: alternateManagedPatch, npm: contract.npm, vercel: vercelPackage.version },
+      managedVercelNode: true,
+    }),
+    assertCode('TOOLCHAIN_FILE_DRIFT'),
+  );
 
   for (const invalidRows of [
     contract.boundFiles.slice(1),

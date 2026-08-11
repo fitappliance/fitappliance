@@ -286,9 +286,26 @@ export function validateClosedBuildEnvironment({ env = process.env, repoRoot }) 
   return true;
 }
 
-export function validateToolchainContract({ repoRoot, contract, versions, historicalReadOnly = false }) {
+export function selectManagedVercelNodeMode({ argv = process.argv, env = process.env } = {}) {
+  const requested = argv.includes('--managed-vercel-node');
+  if (requested && env.VERCEL !== '1') {
+    fail('MANAGED_VERCEL_MODE_INVALID', 'Managed Vercel Node mode requires the explicit build flag and VERCEL=1');
+  }
+  return requested;
+}
+
+export function validateToolchainContract({
+  repoRoot,
+  contract,
+  versions,
+  historicalReadOnly = false,
+  managedVercelNode = false,
+}) {
   if (!contract || ![1, 2].includes(contract.schemaVersion) || !Array.isArray(contract.boundFiles)) {
     fail('TOOLCHAIN_CONTRACT_INVALID', 'Toolchain contract schema is invalid');
+  }
+  if (managedVercelNode && historicalReadOnly) {
+    fail('MANAGED_VERCEL_MODE_INVALID', 'Historical replay cannot use managed Vercel Node mode');
   }
   if (contract.schemaVersion === 2 && ![1, 2].includes(contract.executableBindingSetVersion)) {
     fail('TOOLCHAIN_EXECUTABLE_BINDINGS_INVALID', 'Toolchain schema 2 requires the executable binding set');
@@ -314,6 +331,13 @@ export function validateToolchainContract({ repoRoot, contract, versions, histor
     fail('TOOLCHAIN_CONTRACT_INVALID', 'Toolchain environment or dependency boundary is invalid');
   }
   for (const name of ['node', 'npm', 'vercel']) {
+    if (name === 'node' && managedVercelNode) {
+      const actualMajor = `${String(versions.node).split('.')[0]}.x`;
+      if (actualMajor !== contract.vercelNodeMajor) {
+        fail('TOOLCHAIN_VERSION_DRIFT', `node version drift: expected ${contract.vercelNodeMajor}, received ${versions.node}`);
+      }
+      continue;
+    }
     if (versions[name] !== contract[name]) {
       fail('TOOLCHAIN_VERSION_DRIFT', `${name} version drift: expected ${contract[name]}, received ${versions[name]}`);
     }
@@ -627,11 +651,16 @@ function installedVersions(repoRoot, npmVersion) {
   return { node: process.versions.node, npm: npmVersion, vercel: vercelPackage.version };
 }
 
-function runClosedBuild(repoRoot, npmVersion) {
+function runClosedBuild(repoRoot, npmVersion, { managedVercelNode = false } = {}) {
   delete process.env.__CF_USER_TEXT_ENCODING;
   validateClosedBuildEnvironment({ env: process.env, repoRoot });
   const contract = readJson(path.join(repoRoot, DEFAULT_CONTRACT), 'TOOLCHAIN_CONTRACT_INVALID');
-  validateToolchainContract({ repoRoot, contract, versions: installedVersions(repoRoot, npmVersion) });
+  validateToolchainContract({
+    repoRoot,
+    contract,
+    versions: installedVersions(repoRoot, npmVersion),
+    managedVercelNode,
+  });
   const manifest = readJson(path.join(repoRoot, DEFAULT_MANIFEST), 'MANIFEST_SCHEMA_INVALID');
   const vercelConfig = readJson(path.join(repoRoot, 'vercel.json'), 'VERCEL_CONFIG_INVALID');
   return materializeReviewedStatic({ repoRoot, manifest, vercelConfig });
@@ -647,14 +676,17 @@ async function main() {
     cleanGeneratedStatic({ repoRoot });
     return;
   }
+  const managedVercelNode = selectManagedVercelNodeMode();
   const versionArg = process.argv.find((arg) => arg.startsWith('--npm-version='));
   if (process.env.WP0B_CLOSED_ENV === '1') {
     if (!versionArg) fail('TOOLCHAIN_VERSION_DRIFT', 'Closed build is missing the pinned npm version');
-    await runClosedBuild(repoRoot, versionArg.slice('--npm-version='.length));
+    await runClosedBuild(repoRoot, versionArg.slice('--npm-version='.length), { managedVercelNode });
     return;
   }
   const npmVersion = npmVersionFromHost();
-  const result = spawnSync(process.execPath, [fileURLToPath(import.meta.url), `--npm-version=${npmVersion}`], {
+  const childArgs = [fileURLToPath(import.meta.url), `--npm-version=${npmVersion}`];
+  if (managedVercelNode) childArgs.push('--managed-vercel-node');
+  const result = spawnSync(process.execPath, childArgs, {
     cwd: repoRoot,
     env: createClosedBuildEnvironment(process.env),
     stdio: 'inherit',
