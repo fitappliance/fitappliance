@@ -215,6 +215,7 @@ test('B0 repository contract pins local tools and every output-affecting deploym
   assert.equal(packageJson.scripts['review:b1-rights'], 'node scripts/deployment/build-static-rights-review.mjs');
   assert.equal(packageJson.scripts['verify:b1-rights-gate'], 'node scripts/deployment/verify-static-rights-gate.mjs');
   assert.doesNotMatch(packageJson.scripts['build:deploy'], /acquire|catalog|publish|pointer|generate|curl|wget|fetch/i);
+  assert.equal(vercelConfig.installCommand, 'npm ci --ignore-scripts');
   assert.equal(vercelConfig.buildCommand, 'npm run build:deploy -- --managed-vercel-node');
   assert.equal(selectManagedVercelNodeMode({ argv: ['node', 'build'], env: { VERCEL: '1' } }), false);
   assert.equal(selectManagedVercelNodeMode({

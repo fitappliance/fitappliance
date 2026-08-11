@@ -2709,6 +2709,16 @@ caller-controlled `VERCEL=1` by itself. That finding was accepted: process-mode
 tests now prove the explicit flag/environment conjunction, managed-mode npm,
 Vercel CLI and bound-file drift rejection, and historical-mode rejection.
 
+The first pushed preview then exposed managed npm `10.9.7` versus the exact
+contract pin `10.9.8`. Preview now enables Vercel's documented Corepack path,
+which consumes the existing `packageManager: npm@10.9.8` declaration rather
+than weakening npm validation. A redeploy confirmed npm `10.9.8`, then correctly
+found that Vercel's default `npm install` had changed `package-lock.json`.
+`vercel.json` now binds installation to `npm ci --ignore-scripts`, preserving the
+reviewed lock bytes and preventing dependency lifecycle scripts. Production
+Corepack configuration remains a separate pre-deployment prerequisite; its
+absence fails closed at the exact npm gate.
+
 This compatibility rule does not authorize generation, publication or
 activation. A post-push Vercel build must advance to the existing
 `SOURCE_MANIFEST_BLOCKED`/withdrawal/rights stop and remain non-deployable until

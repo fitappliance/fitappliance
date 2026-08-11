@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "fitappliance",
+  "installCommand": "npm ci --ignore-scripts",
   "buildCommand": "npm run build:deploy -- --managed-vercel-node",
   "outputDirectory": "dist",
   "cleanUrls": true,
