@@ -2629,7 +2629,7 @@ No push, deployment, signing, promotion or activation occurred in this replay.
 
 ### WP0B-B0/B1 independent max-audit repair checkpoint - 2026-08-11
 
-**State:** `IMPLEMENTATION_REPAIRED_PENDING_REPLAY_REVIEW`. The now-available
+**State:** `VERIFIED_LOCAL_PUSH_READY_DEPLOYMENT_BLOCKED`. The now-available
 independent max reviewer found four remaining privacy and recovery gaps in the
 previous local checkpoint. They are treated as blockers, not as a passed
 review.
@@ -2657,6 +2657,34 @@ The next mandatory sequence is controlled generated-artifact replay, relevant
 regression and audit gates, one bounded re-review by the same max reviewer,
 commit and push. Production deployment remains separately fail-closed until
 the rights registry, withdrawal head and detached authorization gates pass.
+
+#### Repair verification and deployment-gate result
+
+- implementation, tests and plan correction were committed as `d96548e10`;
+  controlled historical policy artifacts were resealed as `0560c7fef`; static
+  replay provenance was resealed as `f936d3af5`;
+- the clean replay root is
+  `/Volumes/UGREEN-1TB/FitAppliance/tmp/b1-replay-0560c7fef-20260811T114357Z`.
+  It produced 3,211 receipts, zero unresolved outputs, and a second complete
+  build had byte-identical `public/` and `pages/` hashes;
+- the focused privacy/deployment regression passed 105/105. Lint passed; the
+  private boundary checked 5,831 tracked operational files, the publication
+  boundary checked 19 workflows and 2,331 public artifacts, and active-release
+  and Fit audits reported zero violations;
+- the same independent `gpt-5.6-sol` max reviewer rechecked only its four
+  findings and marked all four closed, with no remaining Critical or Important
+  issue in that bounded scope;
+- the external production trust root is now readable and accepted far enough
+  for the live gate to reach `WITHDRAWAL_HEAD_NOT_ESTABLISHED`. The deployment
+  materializer remains correctly blocked by `SOURCE_MANIFEST_BLOCKED`: 4,161
+  blockers comprise 3,280 `FIRST_PARTY`, 871 `OUTFIT_FONT`, five
+  `ENERGY_RATING_CC_BY`, two `GOOGLE_VERIFICATION`, one
+  `WEB_VITALS_APACHE_2`, one withdrawal-head and one withdrawal-log blocker.
+
+No private key was read, no signature or rights decision was synthesized, and
+no production artifact was materialized. The branch may be pushed for CI and
+review; production deployment must wait for the independent authorization
+chain rather than bypassing the gate.
 
 ### WP4A/WP4B - Replace the fixed consumer count with semantic inventory
 
