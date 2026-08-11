@@ -2731,6 +2731,14 @@ binds both the Git source bytes and that single deterministic managed transform;
 only explicit managed Vercel mode accepts the second hash. Local/replay mode,
 other files and any other `vercel.json` bytes remain exact-hash failures.
 
+Preview deployment `dpl_J5ACq6mHJ6bR4vuVbCb9sr7fP4jc` for commit
+`1b70e1db5` passed the managed Node, exact npm, clean-install, lockfile and
+normalized-config gates, then stopped at `SOURCE_MANIFEST_BLOCKED` with the
+withdrawal head and log still unestablished. This is the required fail-closed
+result, not a successful public deployment. `ENABLE_EXPERIMENTAL_COREPACK=1`
+is now configured for both Preview and Production; no production deployment,
+alias promotion, signature or rights decision was performed.
+
 This compatibility rule does not authorize generation, publication or
 activation. A post-push Vercel build must advance to the existing
 `SOURCE_MANIFEST_BLOCKED`/withdrawal/rights stop and remain non-deployable until
