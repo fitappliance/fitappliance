@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "last_researched": "2026-07-12",
-  "cursor": 1758,
-  "researched": 1758,
-  "totalCatalog": 3518,
+  "last_researched": "2026-08-15",
+  "cursor": 1859,
+  "researched": 1859,
+  "totalCatalog": 3510,
   "skipped": [
     {
       "id": "f6",
@@ -37,7 +37,7 @@
     }
   ],
   "last_batch": {
-    "researched": 500,
+    "researched": 101,
     "skipped": 0
   },
   "products": {
@@ -326,11 +326,11 @@
     },
     "dryer-acd0788": {
       "retailersAvailable": 1,
-      "retailersChecked": 3,
-      "reviewCountSum": 55,
+      "retailersChecked": 2,
+      "reviewCountSum": 65,
       "priceMinAud": 11,
-      "priceMaxAud": 549,
-      "researchedAt": "2026-05-11",
+      "priceMaxAud": 649,
+      "researchedAt": "2026-08-15",
       "retailers": [
         {
           "n": "Appliances Online",
@@ -340,19 +340,13 @@
       ]
     },
     "dryer-acd0789": {
-      "retailersAvailable": 1,
-      "retailersChecked": 3,
-      "reviewCountSum": 22,
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 28,
       "priceMinAud": 11,
-      "priceMaxAud": 549,
-      "researchedAt": "2026-05-11",
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-7kg-vented-clothes-dryer-edv705h3wc/",
-          "p": null
-        }
-      ]
+      "priceMaxAud": 649,
+      "researchedAt": "2026-08-15",
+      "retailers": []
     },
     "dryer-acd0898": {
       "retailersAvailable": 1,
@@ -11571,6 +11565,270 @@
       "priceMaxAud": 189900,
       "researchedAt": "2026-07-12",
       "retailers": []
+    },
+    "ao-113734": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 86,
+      "priceMinAud": 11,
+      "priceMaxAud": 1599,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "ao-165971": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 2,
+      "priceMinAud": 11,
+      "priceMaxAud": 1599,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "ao-141585": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-08-15",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-15-place-quadwash-dishwasher-in-stainless-finish-with-truesteam-xd3a25ps",
+          "p": null
+        }
+      ]
+    },
+    "ao-113736": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 373,
+      "priceMinAud": 11,
+      "priceMaxAud": 1199,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "ao-65627": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 91,
+      "priceMinAud": 11,
+      "priceMaxAud": 799,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "ao-65628": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 734,
+      "priceMinAud": 11,
+      "priceMaxAud": 899,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-de6060m2": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 660,
+      "priceMinAud": 11,
+      "priceMaxAud": 492,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-de7060g2": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 784,
+      "priceMinAud": 11,
+      "priceMaxAud": 649,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-dh1060dg5": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 5,
+      "priceMinAud": 11,
+      "priceMaxAud": 1592,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-dh1060rg5": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 2,
+      "priceMinAud": 11,
+      "priceMaxAud": 1799,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-dh8060j5": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 11,
+      "priceMinAud": 11,
+      "priceMaxAud": 1092,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-dh8060p5": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 7,
+      "priceMinAud": 11,
+      "priceMaxAud": 1399,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-dh9060h1": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": 11,
+      "priceMaxAud": 40000,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-fisher-paykel-dh9060hlg1": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": 11,
+      "priceMaxAud": 40000,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-samsung-dv90bb9440gb": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 21,
+      "priceMinAud": 11,
+      "priceMaxAud": 1633,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-samsung-dv90bb9440gh": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": 11,
+      "priceMaxAud": 1799,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-lg-dvh1-08wp": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 15,
+      "priceMinAud": 11,
+      "priceMaxAud": 892,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "ao-178016": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-08-15",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-series-5i-9kg-heat-pump-dryer-white/",
+          "p": null
+        }
+      ]
+    },
+    "ao-56933": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-08-15",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-hdv60a1-6kg-vented-dryer",
+          "p": null
+        }
+      ]
+    },
+    "ao-100087": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-08-15",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/miele-tcb140wp-t1-7kg-heat-pump-dryer",
+          "p": null
+        }
+      ]
+    },
+    "ao-110216": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 815,
+      "priceMinAud": 11,
+      "priceMaxAud": 449,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-bosch-wqg235d8au": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 44,
+      "priceMinAud": 11,
+      "priceMaxAud": 1699,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-bosch-wqg235drau": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 25,
+      "priceMinAud": 11,
+      "priceMaxAud": 1549,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-bosch-wqg24200au": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 82,
+      "priceMinAud": 11,
+      "priceMaxAud": 1277,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "discovery-dryer-bosch-wqg24201au": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 26,
+      "priceMinAud": 11,
+      "priceMaxAud": 1399,
+      "researchedAt": "2026-08-15",
+      "retailers": []
+    },
+    "ao-93506": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-08-15",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/bosch-9-kg-8-heat-pump-tumble-dryer-wtx88mh0au",
+          "p": null
+        }
+      ]
     }
   }
 }
