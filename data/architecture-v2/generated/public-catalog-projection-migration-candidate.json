@@ -1516,7 +1516,7 @@
       "inferred_door_swing": true,
       "displayName": "Bosch Serie 4",
       "readableSpec": "368L Top-Mount",
-      "priorityScore": 65,
+      "priorityScore": 55,
       "canonicalProductId": "fa_prod_4926d033b923eeb92b097abd"
     },
     {
@@ -6427,7 +6427,7 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "520L Bottom-Mount",
-      "priorityScore": 54,
+      "priorityScore": 44,
       "canonicalProductId": "fa_prod_3e6e8125e8e8c79713f4b8af"
     },
     {
@@ -18752,7 +18752,7 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "563L Side-By-Side",
-      "priorityScore": 42,
+      "priorityScore": 32,
       "canonicalProductId": "fa_prod_5944f209522c848c9a71e636"
     },
     {
@@ -27386,7 +27386,7 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "708L French-Door",
-      "priorityScore": 59,
+      "priorityScore": 49,
       "canonicalProductId": "fa_prod_11e7d170123184afc40a72c1"
     },
     {
@@ -37971,7 +37971,7 @@
       "inferred_door_swing": true,
       "displayName": "Samsung Fridge",
       "readableSpec": "740L French-Door",
-      "priorityScore": 53,
+      "priorityScore": 43,
       "canonicalProductId": "fa_prod_b1ec1e75e3d50379fc58d7e4"
     },
     {
@@ -44240,7 +44240,7 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "528L Bottom-Mount",
-      "priorityScore": 53,
+      "priorityScore": 43,
       "canonicalProductId": "fa_prod_6ad5a9b7248a99bd2690f0e8"
     },
     {
@@ -50918,7 +50918,7 @@
       "unavailable": true,
       "displayName": "Bosch Serie 6",
       "readableSpec": "14-place Built-in",
-      "priorityScore": 65,
+      "priorityScore": 55,
       "canonicalProductId": "fa_prod_e976de941fbd4f97590bd8dd"
     },
     {
@@ -51725,7 +51725,7 @@
       "unavailable": true,
       "displayName": "Electrolux Dishwasher",
       "readableSpec": "14-place Built-in",
-      "priorityScore": 54,
+      "priorityScore": 44,
       "canonicalProductId": "fa_prod_9703582b187f0836545078d9"
     },
     {
@@ -58543,7 +58543,7 @@
       "unavailable": true,
       "displayName": "Samsung Smart",
       "readableSpec": "15-place Built-in",
-      "priorityScore": 65,
+      "priorityScore": 55,
       "canonicalProductId": "fa_prod_6f7a5eb6471b2ed6688b5e87"
     },
     {
@@ -60776,7 +60776,7 @@
       "unavailable": false,
       "displayName": "Electrolux Dryer",
       "readableSpec": "Heat Pump",
-      "priorityScore": 89,
+      "priorityScore": 79,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
@@ -60944,7 +60944,7 @@
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-6kg-vented-clothes-dryer-edv605h3wc/",
           "p": null,
-          "verified_at": "2026-05-11",
+          "verified_at": "2026-09-02",
           "source": "websearch-appliances-online"
         },
         {
@@ -61083,7 +61083,7 @@
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-7kg-vented-clothes-dryer-edv705h3wc/",
           "p": null,
-          "verified_at": "2026-05-11",
+          "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
         },
         {
@@ -61134,7 +61134,7 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 97,
+      "priorityScore": 93,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
@@ -61847,7 +61847,7 @@
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 89,
+      "priorityScore": 79,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf2923d5c/QRG/AU/QRG-AU-26081.pdf",
@@ -69197,7 +69197,7 @@
       "unavailable": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "10kg Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 50,
       "canonicalProductId": "fa_prod_6c2b14c2f729b0399bf43647"
     },
     {
@@ -73355,7 +73355,7 @@
       "direct_url": "https://www.jbhifi.com.au/search?query=WW90T684DLH",
       "displayName": "Samsung Smart",
       "readableSpec": "9kg Front Loader",
-      "priorityScore": 59,
+      "priorityScore": 49,
       "canonicalProductId": "fa_prod_75ca0674acd124bc1bc46cf7"
     },
     {
@@ -75711,7 +75711,7 @@
       "unavailable": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "10kg Front Loader",
-      "priorityScore": 48,
+      "priorityScore": 38,
       "canonicalProductId": "fa_prod_c7aa061ad9eae26048e45210"
     },
     {
@@ -89934,7 +89934,7 @@
       "price": 549,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 78,
+      "priorityScore": 100,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -90275,7 +90275,7 @@
       "price": 599,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 68,
+      "priorityScore": 100,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -91501,7 +91501,7 @@
       "price": 1799,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 50,
+      "priorityScore": 51,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -91903,7 +91903,7 @@
       "price": 1099,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 50,
+      "priorityScore": 51,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -92290,7 +92290,7 @@
       "price": 1399,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 50,
+      "priorityScore": 51,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -93918,7 +93918,7 @@
       "price": 2099,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 68,
+      "priorityScore": 70,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -94426,7 +94426,7 @@
       "price": 1199,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 50,
+      "priorityScore": 52,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -124450,8 +124450,8 @@
         {
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/hisense-series-5i-9kg-heat-pump-dryer-white/",
-          "p": 1184,
-          "verified_at": "2026-05-09",
+          "p": null,
+          "verified_at": "2026-09-02",
           "source": "appliances-online-api"
         }
       ],
@@ -124493,10 +124493,10 @@
         "source_type": "retailer_spec",
         "raw_json_path": "data/pdf-evidence-raw/HDF5I90H.json"
       },
-      "price": 1184,
+      "price": null,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 48,
+      "priorityScore": 53,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -124520,8 +124520,8 @@
         {
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/haier-hdv60a1-6kg-vented-dryer",
-          "p": 579,
-          "verified_at": "2026-05-09",
+          "p": null,
+          "verified_at": "2026-09-02",
           "source": "appliances-online-api"
         }
       ],
@@ -124675,10 +124675,10 @@
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA"
       },
-      "price": 579,
+      "price": null,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 48,
+      "priorityScore": 53,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -174126,8 +174126,8 @@
         {
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/miele-tcb140wp-t1-7kg-heat-pump-dryer",
-          "p": 1899,
-          "verified_at": "2026-05-09",
+          "p": null,
+          "verified_at": "2026-09-02",
           "source": "appliances-online-api"
         }
       ],
@@ -174169,10 +174169,10 @@
         "source_type": "retailer_spec",
         "raw_json_path": "data/pdf-evidence-raw/TCB140WP.json"
       },
-      "price": 1899,
+      "price": null,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 48,
+      "priorityScore": 53,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -185201,7 +185201,7 @@
       "price": 374,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 68,
+      "priorityScore": 100,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -193995,7 +193995,7 @@
       "price": 1549,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 50,
+      "priorityScore": 55,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -194210,7 +194210,7 @@
       "price": 1699,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 68,
+      "priorityScore": 71,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -194605,7 +194605,7 @@
       "price": 1399,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 68,
+      "priorityScore": 71,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -200951,8 +200951,8 @@
         {
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/bosch-9-kg-8-heat-pump-tumble-dryer-wtx88mh0au",
-          "p": 2011,
-          "verified_at": "2026-05-09",
+          "p": null,
+          "verified_at": "2026-09-02",
           "source": "appliances-online-api"
         }
       ],
@@ -201106,10 +201106,10 @@
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA"
       },
-      "price": 2011,
+      "price": null,
       "sponsored": false,
       "readableSpec": "Dryer",
-      "priorityScore": 48,
+      "priorityScore": 53,
       "emoji": "DR",
       "kwh_year": null,
       "stars": null,
@@ -205086,7 +205086,7 @@
       "price": 1535,
       "sponsored": false,
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 68,
+      "priorityScore": 77,
       "emoji": "DW",
       "kwh_year": null,
       "stars": null,
@@ -205201,8 +205201,8 @@
         {
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/lg-15-place-quadwash-dishwasher-in-stainless-finish-with-truesteam-xd3a25ps",
-          "p": 1349,
-          "verified_at": "2026-05-09",
+          "p": null,
+          "verified_at": "2026-09-02",
           "source": "appliances-online-api"
         }
       ],
@@ -205244,10 +205244,10 @@
         "source_type": "manual-evidence",
         "raw_json_path": "data/pdf-evidence-raw/XD3A25PS.json"
       },
-      "price": 1349,
+      "price": null,
       "sponsored": false,
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 48,
+      "priorityScore": 53,
       "emoji": "DW",
       "kwh_year": null,
       "stars": null,
@@ -205478,7 +205478,7 @@
       "price": 1136,
       "sponsored": false,
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 68,
+      "priorityScore": 100,
       "emoji": "DW",
       "kwh_year": null,
       "stars": null,
@@ -205583,7 +205583,7 @@
       "price": 843,
       "sponsored": false,
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 68,
+      "priorityScore": 77,
       "emoji": "DW",
       "kwh_year": null,
       "stars": null,
@@ -205674,7 +205674,7 @@
       "price": 799,
       "sponsored": false,
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 68,
+      "priorityScore": 100,
       "emoji": "DW",
       "kwh_year": null,
       "stars": null,
