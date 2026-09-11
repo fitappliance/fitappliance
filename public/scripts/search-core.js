@@ -183,42 +183,8 @@
     };
   }
 
-  function receiptBoundField(fieldEvidence, field) {
-    const row = fieldEvidence?.[field];
-    return Boolean(
-      row
-      && /^[a-f0-9]{64}$/i.test(String(row.contentSha256 ?? ''))
-      && /^[a-f0-9]{64}$/i.test(String(row.receiptBindingSha256 ?? ''))
-      && /^https:\/\//i.test(String(row.sourceUrl ?? ''))
-    );
-  }
-
   function receiptBackedEvidenceLevel(product, geometry) {
-    const provenance = product?.geometry_v2_provenance;
-    if (!provenance || !['dimensions', 'verified'].includes(provenance.evidenceLevel)) return 'none';
-    const fieldEvidence = provenance.fieldEvidence;
-    const closedFields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
-    if (!closedFields.every((field) => receiptBoundField(fieldEvidence, field))) return 'none';
-    const required = [
-      ...closedFields,
-      'installation.leftMm', 'installation.rightMm', 'installation.topMm', 'installation.rearMm'
-    ];
-    if (['dishwasher', 'washtower_combo'].includes(geometry.category)) {
-      required.push('operation.doorOpenDepthMm', 'service.rearServicesMm');
-    } else if (geometry.category === 'washing_machine') {
-      required.push('service.rearServicesMm');
-      if (geometry.formFactor === 'front_loader') required.push('operation.doorOpenDepthMm');
-      if (geometry.formFactor === 'top_loader') required.push('operation.lidOpenHeightMm');
-    } else if (geometry.category === 'dryer') {
-      required.push('operation.doorOpenDepthMm', 'service.rearVentilationMm');
-    } else if (geometry.category === 'fridge') {
-      if (geometry.formFactor === 'upright') required.push('operation.doorOpenDepthMm');
-      if (geometry.formFactor === 'chest') required.push('operation.lidOpenHeightMm');
-    }
-    return provenance.evidenceLevel === 'verified'
-      && required.every((field) => receiptBoundField(fieldEvidence, field))
-      ? 'verified'
-      : 'dimensions';
+    return fitEngine.resolveEvidenceLevel(geometry, product?.geometry_v2_provenance);
   }
 
   function nullableNonNegative(value) {
@@ -560,6 +526,17 @@
       evidenceLevel,
       advisoryChecks: operationAdvisoryChecks(geometry, cavity)
     });
+    const manufacturerGeometry = searchMode === 'cavity'
+      ? createFitGeometry(product, category, 'manufacturer', null)
+      : null;
+    const fitDecisionV4 = searchMode === 'cavity'
+      ? fitEngine.evaluateFitV4({
+        geometry: manufacturerGeometry,
+        cavity,
+        evidence: product?.geometry_v2_provenance,
+        advisoryChecks: operationAdvisoryChecks(manufacturerGeometry, cavity)
+      })
+      : null;
     const applianceByAxis = {
       width: geometry.closedEnvelope.widthMm,
       height: geometry.closedEnvelope.heightMm?.maximumMm ?? null,
@@ -670,7 +647,8 @@
         category,
         product?.brand
       ),
-      fitDecision
+      fitDecision,
+      fitDecisionV4
     };
   }
 

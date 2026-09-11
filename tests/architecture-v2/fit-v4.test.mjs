@@ -1,64 +1,88 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { evaluateFitV4 } from '../../src/domain/fit-v4.mjs';
+import { evaluateFitV4, resolveEvidenceLevel } from '../../src/domain/fit-v4.mjs';
 
-function geometry({ installation = {}, category = 'fridge' } = {}) {
+function geometry({
+  category = 'fridge',
+  formFactor = null,
+  closedEnvelope = {},
+  installation = {},
+  operation = {},
+  service = {},
+} = {}) {
   return {
     category,
-    formFactor: 'upright',
+    formFactor,
     closedEnvelope: {
       widthMm: 600,
       heightMm: { minimumMm: 1700, maximumMm: 1700 },
       depthMm: 650,
+      ...closedEnvelope,
     },
     installation: {
-      leftMm: null,
-      rightMm: null,
-      topMm: null,
-      rearMm: null,
+      leftMm: 5,
+      rightMm: 5,
+      topMm: 20,
+      rearMm: 10,
       frontMm: null,
       ...installation,
     },
-    operation: { doorOpenDepthMm: null, hingeSideSpaceMm: null, lidOpenHeightMm: null },
-    delivery: { widthMm: null, heightMm: null, depthMm: null },
-    service: { plumbingRearMm: null, rearServicesMm: null, rearVentilationMm: null },
+    operation: {
+      doorOpenDepthMm: null,
+      hingeSideSpaceMm: null,
+      lidOpenHeightMm: null,
+      ...operation,
+    },
+    service: {
+      plumbingRearMm: null,
+      rearServicesMm: null,
+      rearVentilationMm: null,
+      ...service,
+    },
   };
 }
 
-function product(overrides = {}) {
+function receiptEvidence(
+  fields = [
+    'closedEnvelope.widthMm',
+    'closedEnvelope.heightMm',
+    'closedEnvelope.depthMm',
+    'installation.leftMm',
+    'installation.rightMm',
+    'installation.topMm',
+    'installation.rearMm',
+  ],
+  { evidenceLevel = 'verified', identityOutcome = 'exact' } = {},
+) {
   return {
-    id: 'fridge-example',
-    cat: 'fridge',
-    w: 600,
-    h: 1700,
-    d: 650,
-    geometry_v2: geometry(),
-    ...overrides,
+    evidenceLevel,
+    identityOutcome,
+    fieldEvidence: Object.fromEntries(fields.map((field) => [field, {
+      contentSha256: 'a'.repeat(64),
+      receiptBindingSha256: 'b'.repeat(64),
+      sourceUrl: 'https://manufacturer.example/manual.pdf',
+    }])),
   };
 }
 
 const cavity = { widthMm: 620, heightMm: 1720, depthMm: 680 };
 
 test('keeps size matching while evidence-incomplete products are INSUFFICIENT_DATA', () => {
-  const result = evaluateFitV4({ product: product(), cavity });
+  const result = evaluateFitV4({ geometry: geometry(), cavity, evidence: null });
 
   assert.equal(result.outcome, 'INSUFFICIENT_DATA');
   assert.deepEqual(result.sizeMatch.statuses, { width: 'PASS', height: 'PASS', depth: 'PASS' });
   assert.deepEqual(result.sizeMatch.gapsMm, { width: 20, height: 20, depth: 30 });
+  assert.equal(result.evidenceLevel, 'none');
   assert.notEqual(result.outcome, 'VERIFIED_FIT');
 });
 
 test('preserves a hard dimensional conflict as NO_FIT without upgrading evidence', () => {
   const result = evaluateFitV4({
-    product: product({
-      w: 700,
-      geometry_v2: {
-        ...geometry(),
-        closedEnvelope: { ...geometry().closedEnvelope, widthMm: 700 },
-      },
-    }),
+    geometry: geometry({ closedEnvelope: { widthMm: 700 } }),
     cavity,
+    evidence: null,
   });
 
   assert.equal(result.outcome, 'NO_FIT');
@@ -68,33 +92,135 @@ test('preserves a hard dimensional conflict as NO_FIT without upgrading evidence
 
 test('legacy verified labels cannot authorize VERIFIED_FIT', () => {
   const result = evaluateFitV4({
-    product: product({
-      evidence: { trust_level: 'verified_fit', clearance_verified: true },
-      geometry_v2: undefined,
-    }),
+    geometry: geometry(),
     cavity,
+    evidence: { trust_level: 'verified_fit', clearance_verified: true },
   });
 
   assert.equal(result.outcome, 'INSUFFICIENT_DATA');
   assert.equal(result.evidenceLevel, 'none');
 });
 
-test('receipt-bound verified eligibility is the only positive verified gate', () => {
-  const source = product({
-    geometry_v2: geometry({ installation: { leftMm: 5, rightMm: 5, topMm: 20, rearMm: 10 } }),
-    geometry_v2_provenance: { evidenceLevel: 'verified', verifiedFitEligible: true },
+test('receipt-bound exact-model evidence is the only positive verified gate', () => {
+  const result = evaluateFitV4({
+    geometry: geometry(),
+    cavity,
+    evidence: receiptEvidence(),
   });
-  const result = evaluateFitV4({ product: source, cavity });
 
   assert.equal(result.outcome, 'VERIFIED_FIT');
   assert.equal(result.evidenceLevel, 'verified');
+  assert.deepEqual(result.sizeMatch.statuses, { width: 'PASS', height: 'PASS', depth: 'PASS' });
 });
 
-test('does not mutate the product or cavity inputs', () => {
-  const source = product();
-  const inputSnapshot = structuredClone({ source, cavity });
+test('verified evidence without exact-model identity stays insufficient', () => {
+  const evidence = receiptEvidence();
+  delete evidence.identityOutcome;
 
-  evaluateFitV4({ product: source, cavity });
+  const result = evaluateFitV4({ geometry: geometry(), cavity, evidence });
 
-  assert.deepEqual({ source, cavity }, inputSnapshot);
+  assert.equal(result.outcome, 'INSUFFICIENT_DATA');
+  assert.equal(result.evidenceLevel, 'none');
+});
+
+test('malformed HTTPS source URLs cannot authorize receipt-bound evidence', () => {
+  const evidence = receiptEvidence();
+  evidence.fieldEvidence['closedEnvelope.widthMm'].sourceUrl = 'https://';
+
+  const result = evaluateFitV4({ geometry: geometry(), cavity, evidence });
+
+  assert.equal(result.outcome, 'INSUFFICIENT_DATA');
+  assert.equal(result.evidenceLevel, 'none');
+});
+
+test('missing applicable installation evidence cannot produce VERIFIED_FIT', () => {
+  const result = evaluateFitV4({
+    geometry: geometry({ installation: { rearMm: null } }),
+    cavity,
+    evidence: receiptEvidence([
+      'closedEnvelope.widthMm',
+      'closedEnvelope.heightMm',
+      'closedEnvelope.depthMm',
+      'installation.leftMm',
+      'installation.rightMm',
+      'installation.topMm',
+    ]),
+  });
+
+  assert.equal(result.outcome, 'INSUFFICIENT_DATA');
+  assert.notEqual(result.evidenceLevel, 'verified');
+});
+
+test('applicable UNKNOWN advisory checks override a verified evidence level', () => {
+  const result = evaluateFitV4({
+    geometry: geometry(),
+    cavity,
+    evidence: receiptEvidence(),
+    advisoryChecks: [{ id: 'door_open_space', applicable: true, status: 'UNKNOWN' }],
+  });
+
+  assert.equal(result.outcome, 'INSUFFICIENT_DATA');
+});
+
+test('non-applicable UNKNOWN advisory checks do not block VERIFIED_FIT', () => {
+  const result = evaluateFitV4({
+    geometry: geometry(),
+    cavity,
+    evidence: receiptEvidence(),
+    advisoryChecks: [{ id: 'door_open_space', applicable: false, status: 'UNKNOWN' }],
+  });
+
+  assert.equal(result.outcome, 'VERIFIED_FIT');
+});
+
+test('invalid cavity values remain UNKNOWN instead of becoming zero or a fit', () => {
+  const result = evaluateFitV4({
+    geometry: geometry(),
+    cavity: { widthMm: 0, heightMm: -1, depthMm: '680' },
+    evidence: receiptEvidence(),
+  });
+
+  assert.deepEqual(result.sizeMatch.statuses, { width: 'UNKNOWN', height: 'UNKNOWN', depth: 'UNKNOWN' });
+  assert.equal(result.outcome, 'INSUFFICIENT_DATA');
+});
+
+test('inverted or incomplete height ranges remain UNKNOWN', () => {
+  const inverted = evaluateFitV4({
+    geometry: geometry({ closedEnvelope: { heightMm: { minimumMm: 1800, maximumMm: 1700 } } }),
+    cavity,
+    evidence: receiptEvidence(),
+  });
+  const incomplete = evaluateFitV4({
+    geometry: geometry({ closedEnvelope: { heightMm: { minimumMm: 1700 } } }),
+    cavity,
+    evidence: receiptEvidence(),
+  });
+
+  assert.equal(inverted.sizeMatch.statuses.height, 'UNKNOWN');
+  assert.equal(inverted.outcome, 'INSUFFICIENT_DATA');
+  assert.equal(incomplete.sizeMatch.statuses.height, 'UNKNOWN');
+  assert.equal(incomplete.outcome, 'INSUFFICIENT_DATA');
+});
+
+test('resolveEvidenceLevel keeps the gate reusable and fail-closed', () => {
+  assert.equal(resolveEvidenceLevel(geometry(), receiptEvidence()), 'verified');
+  assert.equal(resolveEvidenceLevel(geometry(), { evidenceLevel: 'verified' }), 'none');
+});
+
+test('returns a deeply frozen result without mutating inputs', () => {
+  const sourceGeometry = geometry();
+  const sourceCavity = structuredClone(cavity);
+  const sourceEvidence = receiptEvidence();
+  const snapshot = structuredClone({ sourceGeometry, sourceCavity, sourceEvidence });
+
+  const result = evaluateFitV4({
+    geometry: sourceGeometry,
+    cavity: sourceCavity,
+    evidence: sourceEvidence,
+  });
+
+  assert.deepEqual({ sourceGeometry, sourceCavity, sourceEvidence }, snapshot);
+  assert.equal(Object.isFrozen(result), true);
+  assert.equal(Object.isFrozen(result.sizeMatch), true);
+  assert.equal(Object.isFrozen(result.checks), true);
 });

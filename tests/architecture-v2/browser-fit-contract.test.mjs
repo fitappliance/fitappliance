@@ -110,10 +110,11 @@ test('receipt-bound complete manufacturer geometry can produce VERIFIED_FIT', ()
       service: { plumbingRearMm: null, rearServicesMm: null, rearVentilationMm: null },
       delivery: { widthMm: null, heightMm: null, depthMm: null },
     },
-    geometry_v2_provenance: { evidenceLevel: 'verified', fieldEvidence },
+    geometry_v2_provenance: { evidenceLevel: 'verified', identityOutcome: 'exact', fieldEvidence },
   };
   const result = SearchCore.computeFitMeta(product, {
     cat: 'fridge', w: 620, h: 1720, d: 680, clearanceMode: 'manufacturer',
   });
   assert.equal(result.fitDecision.outcome, 'VERIFIED_FIT');
+  assert.equal(result.fitDecisionV4.outcome, 'VERIFIED_FIT');
 });
