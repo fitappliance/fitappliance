@@ -20,6 +20,7 @@
     "audit:evidence-resolution": "node scripts/architecture-v2/audit-evidence-resolution.mjs",
     "audit:pdf-json-first": "node scripts/architecture-v2/audit-pdf-json-first.mjs",
     "audit:fit-publication": "node scripts/architecture-v2/audit-fit-publication.mjs",
+    "audit:fit-v4-phase10-replay": "node scripts/architecture-v2/audit-fit-v4-phase10-replay.mjs",
     "acquire:official-registries": "node scripts/architecture-v2/acquire-official-registries.mjs",
     "build:historical-reference": "node scripts/architecture-v2/build-historical-appliance-reference.mjs",
     "build:historical-evidence-recovery-queue": "node scripts/architecture-v2/build-historical-evidence-recovery-queue.mjs",

@@ -1,0 +1,1374 @@
+{
+  "schemaVersion": 1,
+  "replayPolicy": {
+    "evidenceMode": "none",
+    "cavityMarginMm": {
+      "width": 20,
+      "height": 20,
+      "depth": 30
+    },
+    "operationAdvisories": "excluded_from_axis_replay"
+  },
+  "summary": {
+    "selected": 40,
+    "approvedExact": 36,
+    "replayed": 36,
+    "excluded": 4,
+    "excludedByState": {
+      "no_source": 2,
+      "quarantined": 2
+    },
+    "categories": {
+      "dishwasher": {
+        "selected": 10,
+        "replayed": 8
+      },
+      "dryer": {
+        "selected": 10,
+        "replayed": 10
+      },
+      "fridge": {
+        "selected": 10,
+        "replayed": 9
+      },
+      "washing_machine": {
+        "selected": 10,
+        "replayed": 9
+      }
+    },
+    "outcomes": {
+      "INSUFFICIENT_DATA": 28,
+      "NO_FIT": 8
+    },
+    "verifiedFit": 0,
+    "unknownChecks": 92
+  },
+  "records": [
+    {
+      "legacyRuntimeId": "fridge-arf3054",
+      "canonicalProductId": "fa_prod_409ff88f87838c9d27705694",
+      "category": "fridge",
+      "model": "RF500QNUX1",
+      "sourcePdfSha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
+      "cavity": {
+        "widthMm": 810,
+        "heightMm": 1810,
+        "depthMm": 722
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3548",
+      "canonicalProductId": "fa_prod_4a7f77eb2399b59ca5563d51",
+      "category": "fridge",
+      "model": "RF610ADX5",
+      "sourcePdfSha256": "ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a",
+      "cavity": {
+        "widthMm": 920,
+        "heightMm": 1810,
+        "depthMm": 765
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3074",
+      "canonicalProductId": "fa_prod_10f6881d59d185463a57f8b6",
+      "category": "fridge",
+      "model": "HRF420BS",
+      "sourcePdfSha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
+      "cavity": {
+        "widthMm": 720,
+        "heightMm": 1745,
+        "depthMm": 705
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3501",
+      "canonicalProductId": "fa_prod_4619a1a7ecab2e53a1e21474",
+      "category": "fridge",
+      "model": "HRF510BHC",
+      "sourcePdfSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+      "cavity": {
+        "widthMm": 810,
+        "heightMm": 1745,
+        "depthMm": 737
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3335",
+      "canonicalProductId": "fa_prod_248ca182ae8e787affa25e3e",
+      "category": "fridge",
+      "model": "HRTF206",
+      "sourcePdfSha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+      "cavity": {
+        "widthMm": 570,
+        "heightMm": 1476,
+        "depthMm": 592
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "FAIL",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3316",
+      "canonicalProductId": "fa_prod_d9ca9d81328abfe22bcf7318",
+      "category": "fridge",
+      "model": "HRTF325",
+      "sourcePdfSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
+      "cavity": {
+        "widthMm": 615,
+        "heightMm": 1716,
+        "depthMm": 680
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "FAIL",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3094",
+      "canonicalProductId": "fa_prod_deb632c704c5620713dafb7b",
+      "category": "fridge",
+      "model": "GF-L700PL",
+      "sourcePdfSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+      "cavity": {
+        "widthMm": 934,
+        "heightMm": 1812,
+        "depthMm": 759
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3177",
+      "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d",
+      "category": "fridge",
+      "model": "GF-V500MBLC",
+      "sourcePdfSha256": "c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e",
+      "cavity": {
+        "widthMm": 855,
+        "heightMm": 1807,
+        "depthMm": 760
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "FAIL",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-fridge-bosch-kfd96axeaa",
+      "canonicalProductId": "fa_prod_8bc6f334dbf9c75416eea7fc",
+      "category": "fridge",
+      "model": "KFD96AXEAA",
+      "sourcePdfSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
+      "cavity": {
+        "widthMm": 925,
+        "heightMm": 1850,
+        "depthMm": 761
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "dishwasher-adw0959",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "model": "DW60UT4I2",
+      "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "cavity": {
+        "widthMm": 617,
+        "heightMm": 937,
+        "depthMm": 584
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-150984",
+      "canonicalProductId": "fa_prod_e83b25b67b2dd20a2a1c3b8c",
+      "category": "dishwasher",
+      "model": "DD60D4NX9",
+      "sourcePdfSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
+      "cavity": {
+        "widthMm": 619,
+        "heightMm": 900,
+        "depthMm": 603
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "dishwasher-adw1233",
+      "canonicalProductId": "fa_prod_6bd24b76c0d45dbdab1ec470",
+      "category": "dishwasher",
+      "model": "HDW15U2I1",
+      "sourcePdfSha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
+      "cavity": {
+        "widthMm": 617,
+        "heightMm": 900,
+        "depthMm": 584
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-132904",
+      "canonicalProductId": "fa_prod_43be0630d42f1bf6bdfcb231",
+      "category": "dishwasher",
+      "model": "HDW15F2B1",
+      "sourcePdfSha256": "8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02",
+      "cavity": {
+        "widthMm": 617,
+        "heightMm": 915,
+        "depthMm": 629
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms4hvi01a",
+      "canonicalProductId": "fa_prod_9bf075ae36ec6b6f15b3af01",
+      "category": "dishwasher",
+      "model": "SMS4HVI01A",
+      "sourcePdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 865,
+        "depthMm": 630
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-127312",
+      "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c",
+      "category": "dishwasher",
+      "model": "SMS6HCI02A",
+      "sourcePdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 865,
+        "depthMm": 630
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dishwasher-lg-xd2a25mb",
+      "canonicalProductId": "fa_prod_693c6fa3684bef1660a42e9f",
+      "category": "dishwasher",
+      "model": "XD2A25MB",
+      "sourcePdfSha256": "cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 870,
+        "depthMm": 630
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-101283",
+      "canonicalProductId": "fa_prod_0910660e1a804a67fa883688",
+      "category": "dishwasher",
+      "model": "DWAU615DB3",
+      "sourcePdfSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 838,
+        "depthMm": 600
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-de6060m2",
+      "canonicalProductId": "fa_prod_b3e0fbe01de9f8b2ceaf1e96",
+      "category": "dryer",
+      "model": "DE6060M2",
+      "sourcePdfSha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 850,
+        "depthMm": 605
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh1060dg5",
+      "canonicalProductId": "fa_prod_3c4cf61393faf23a2b645918",
+      "category": "dryer",
+      "model": "DH1060DG5",
+      "sourcePdfSha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
+      "cavity": {
+        "widthMm": 622,
+        "heightMm": 870,
+        "depthMm": 712
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060p5",
+      "canonicalProductId": "fa_prod_9367444b758eb067063afbea",
+      "category": "dryer",
+      "model": "DH8060P5",
+      "sourcePdfSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
+      "cavity": {
+        "widthMm": 622,
+        "heightMm": 870,
+        "depthMm": 712
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060h1",
+      "canonicalProductId": "fa_prod_e76a61684d5741f99bae29f6",
+      "category": "dryer",
+      "model": "DH9060H1",
+      "sourcePdfSha256": "c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 870,
+        "depthMm": 685
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg235d8au",
+      "canonicalProductId": "fa_prod_76db556f630f77aabe66a56e",
+      "category": "dryer",
+      "model": "WQG235D8AU",
+      "sourcePdfSha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 877,
+        "depthMm": 678
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg235drau",
+      "canonicalProductId": "fa_prod_6c4b23d24a467822bdaf0120",
+      "category": "dryer",
+      "model": "WQG235DRAU",
+      "sourcePdfSha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 877,
+        "depthMm": 678
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg24200au",
+      "canonicalProductId": "fa_prod_2f34addef166fe0b4b84ed15",
+      "category": "dryer",
+      "model": "WQG24200AU",
+      "sourcePdfSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 877,
+        "depthMm": 678
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg24201au",
+      "canonicalProductId": "fa_prod_9e6af77de4d1c1ca9e49e87f",
+      "category": "dryer",
+      "model": "WQG24201AU",
+      "sourcePdfSha256": "d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 877,
+        "depthMm": 678
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-lg-dvh1-08wp",
+      "canonicalProductId": "fa_prod_b9e8f9a4c487a6425fe07a4c",
+      "category": "dryer",
+      "model": "DVH1-08WP",
+      "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 870,
+        "depthMm": 690
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "PASS",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gh",
+      "canonicalProductId": "fa_prod_32d72774c1aeb04e7aea06e3",
+      "category": "dryer",
+      "model": "DV90BB9440GH",
+      "sourcePdfSha256": "d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 870,
+        "depthMm": 680
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "washing_machine-acw1701",
+      "canonicalProductId": "fa_prod_8dd1c56ffb418b190e22ecaf",
+      "category": "washing_machine",
+      "model": "WH1060P4",
+      "sourcePdfSha256": "4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 870,
+        "depthMm": 685
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260dg5",
+      "canonicalProductId": "fa_prod_ec5d273a25ab27339c67b6c0",
+      "category": "washing_machine",
+      "model": "WH1260DG5",
+      "sourcePdfSha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
+      "cavity": {
+        "widthMm": 622,
+        "heightMm": 870,
+        "depthMm": 691
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh8060j5",
+      "canonicalProductId": "fa_prod_2126b4d466a04092b0dff360",
+      "category": "washing_machine",
+      "model": "WH8060J5",
+      "sourcePdfSha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
+      "cavity": {
+        "widthMm": 622,
+        "heightMm": 870,
+        "depthMm": 623
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "washing_machine-acw1734",
+      "canonicalProductId": "fa_prod_37eedb080ca37aaedf4f6772",
+      "category": "washing_machine",
+      "model": "HWF5I1215",
+      "sourcePdfSha256": "a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06",
+      "cavity": {
+        "widthMm": 615,
+        "heightMm": 865,
+        "depthMm": 625
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-178018",
+      "canonicalProductId": "fa_prod_77299f50a5afccbd92f0551c",
+      "category": "washing_machine",
+      "model": "HWF3S8514X",
+      "sourcePdfSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "cavity": {
+        "widthMm": 615,
+        "heightMm": 865,
+        "depthMm": 570
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wan28227au",
+      "canonicalProductId": "fa_prod_24623740ae259266f9aefa6a",
+      "category": "washing_machine",
+      "model": "WAN28227AU",
+      "sourcePdfSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 877,
+        "depthMm": 662
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg24402au",
+      "canonicalProductId": "fa_prod_03c7b7d484ef495ac73a0b95",
+      "category": "washing_machine",
+      "model": "WGG24402AU",
+      "sourcePdfSha256": "7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 880,
+        "depthMm": 666
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg254z1au",
+      "canonicalProductId": "fa_prod_7d63ae58391d83fad7e6b543",
+      "category": "washing_machine",
+      "model": "WGG254Z1AU",
+      "sourcePdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+      "cavity": {
+        "widthMm": 618,
+        "heightMm": 877,
+        "depthMm": 666
+      },
+      "outcome": "INSUFFICIENT_DATA",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "UNKNOWN",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww90dg6u3ale",
+      "canonicalProductId": "fa_prod_b5c2676b464e0cd2c83bcb4b",
+      "category": "washing_machine",
+      "model": "WW90DG6U3ALE",
+      "sourcePdfSha256": "0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27",
+      "cavity": {
+        "widthMm": 620,
+        "heightMm": 870,
+        "depthMm": 655
+      },
+      "outcome": "NO_FIT",
+      "evidenceLevel": "none",
+      "sizeMatchStatuses": {
+        "width": "PASS",
+        "height": "PASS",
+        "depth": "PASS"
+      },
+      "checks": [
+        {
+          "id": "installation_width",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_height",
+          "status": "FAIL",
+          "applicable": true
+        },
+        {
+          "id": "installation_depth",
+          "status": "UNKNOWN",
+          "applicable": true
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "legacyRuntimeId": "ao-97642",
+      "category": "fridge",
+      "state": "quarantined",
+      "identityOutcome": "ambiguous",
+      "reason": "official PDF covers RF44A and RF50A model families but does not print sales model SRF5300SD"
+    },
+    {
+      "legacyRuntimeId": "ao-113734",
+      "category": "dishwasher",
+      "state": "no_source",
+      "identityOutcome": "no_source",
+      "reason": "no official-domain PDF found after product and support search"
+    },
+    {
+      "legacyRuntimeId": "ao-149199",
+      "category": "dishwasher",
+      "state": "no_source",
+      "identityOutcome": "no_source",
+      "reason": "official Beko PDF endpoint confirmed but automated acquisition remained blocked with HTTP 403"
+    },
+    {
+      "legacyRuntimeId": "washing_machine-acw1520",
+      "category": "washing_machine",
+      "state": "quarantined",
+      "identityOutcome": "ambiguous",
+      "reason": "official PDF filename references HWF8I1015BX but the rendered manual cover prints HWF8I1015B; suffix equivalence is not proven"
+    }
+  ]
+}

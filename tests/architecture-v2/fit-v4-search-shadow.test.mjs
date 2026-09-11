@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
+const Module = require('node:module');
+const FitEngine = require('../../public/scripts/fit-engine.js');
 const SearchCore = require('../../public/scripts/search-core.js');
 
 const fields = [
@@ -64,6 +66,22 @@ test('cavity search exposes Fit V4 as a shadow result without replacing legacy f
   assert.ok(Object.hasOwn(result, 'requiredCavityMm'));
 });
 
+test('cavity search result carries Fit V4 to the UI boundary', () => {
+  const result = SearchCore.searchWithFacets([{
+    ...product,
+    unavailable: false,
+    retailers: [{ n: 'Example', url: 'https://example.com/ex-600' }],
+  }], {
+    cat: 'fridge',
+    searchMode: 'cavity',
+    ...cavity,
+    clearanceMode: 'manufacturer',
+  }, {}, { retailerOnly: false });
+
+  assert.equal(result.rows.length, 1);
+  assert.equal(result.rows[0].fitDecisionV4.outcome, 'VERIFIED_FIT');
+});
+
 test('replacement search keeps Fit V4 isolated and returns no V4 decision', () => {
   const result = SearchCore.computeFitMeta(product, {
     cat: 'fridge',
@@ -73,9 +91,46 @@ test('replacement search keeps Fit V4 isolated and returns no V4 decision', () =
   });
 
   assert.equal(result.fitDecisionV4, null);
-  assert.ok(result.fitDecision);
+  assert.equal(result.fitDecision, null);
   assert.equal(result.searchMode, 'replacement');
   assert.ok(Object.hasOwn(result, 'sizeMatchGaps'));
+});
+
+test('replacement search does not invoke the FitDecision engine', () => {
+  const searchCorePath = require.resolve('../../public/scripts/search-core.js');
+  const originalCacheEntry = require.cache[searchCorePath];
+  const originalLoad = Module._load;
+  let calls = 0;
+  const instrumentedFitEngine = Object.freeze({
+    ...FitEngine,
+    evaluateFit: (...args) => {
+      calls += 1;
+      return FitEngine.evaluateFit(...args);
+    },
+  });
+
+  try {
+    Module._load = function load(request, parent, isMain) {
+      if (request === './fit-engine.js' && parent?.filename === searchCorePath) {
+        return instrumentedFitEngine;
+      }
+      return originalLoad.call(this, request, parent, isMain);
+    };
+    delete require.cache[searchCorePath];
+    const instrumentedSearchCore = require('../../public/scripts/search-core.js');
+    instrumentedSearchCore.computeFitMeta(product, {
+      cat: 'fridge',
+      searchMode: 'replacement',
+      ...cavity,
+      clearanceMode: 'manufacturer',
+    });
+  } finally {
+    Module._load = originalLoad;
+    delete require.cache[searchCorePath];
+    if (originalCacheEntry) require.cache[searchCorePath] = originalCacheEntry;
+  }
+
+  assert.equal(calls, 0);
 });
 
 test('cavity shadow remains insufficient when receipt-bound evidence is incomplete', () => {

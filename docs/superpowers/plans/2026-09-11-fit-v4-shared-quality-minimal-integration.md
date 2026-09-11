@@ -316,3 +316,13 @@ No UI slice may introduce a new Fit calculation, trust legacy labels, or render 
 - Verification: targeted Fit V4/browser tests 25/25; `npm run lint` passed; Architecture V2 386/386 passed; publication audit returned `products: 3521`, `receiptBoundVerified: 0`, `receiptBoundDimensions: 21`, `violations: 0`.
 - Full suite: 2003/2004 passed. The one remaining failure is the pre-existing `tests/cf-gsc-readiness.test.mjs` deployed-HTML join `RangeError: Invalid string length`; it is outside this plan and was not changed.
 - No public catalog data was modified, no database migration was made, and no commit/PR/deployment was created.
+
+## Continuation Record — 2026-09-11
+
+- Replacement mode now has a hard isolation gate: it computes only `sizeMatchGaps`, returns `fitDecision: null` and `fitDecisionV4: null`, and has a regression test proving the Fit engine is not invoked.
+- Added reasonableness tests for exact boundaries, installation/service precedence, front-operation separation, explainable `UNKNOWN`, monotonic cavity/clearance behavior, and evidence-removal non-promotion.
+- Replayed the Phase 10 review manifest as an audit-only report: 40 selected, 36 approved exact and replayed, 4 excluded (`2 no_source`, `2 quarantined`), outcomes `28 INSUFFICIENT_DATA` and `8 NO_FIT`, `0 VERIFIED_FIT`.
+- After the evidence and isolation gates passed, staged the first UI slice: cavity cards display `INSUFFICIENT_DATA`/Fit V4 outcomes, replacement cards suppress Fit V4, and W/H/D dimension filters remain available. No new Fit calculation was added to UI.
+- Fresh verification: lint passed; Architecture V2 `399/399` passed; publication audit returned `3521` products, `0` receipt-bound `VERIFIED_FIT`, `21` receipt-bound dimensions, `0` violations; Phase 10 replay audit passed.
+- Full suite remains `2018/2019`: the single failure is the pre-existing `tests/cf-gsc-readiness.test.mjs:52` HTML join `RangeError: Invalid string length`; no related file was changed.
+- Resolved that test-harness blocker by excluding repository worktree directories from deployed-HTML discovery; full suite now passes `2019/2019`.

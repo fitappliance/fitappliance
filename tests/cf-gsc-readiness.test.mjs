@@ -23,7 +23,7 @@ function walkFiles(dir, predicate, acc = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      if (entry.name === 'node_modules' || entry.name === '.git') continue;
+      if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === '.worktrees' || entry.name === 'worktrees') continue;
       walkFiles(full, predicate, acc);
     } else if (entry.isFile() && predicate(full)) {
       acc.push(full);

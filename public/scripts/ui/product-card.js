@@ -281,8 +281,20 @@ function getLinkedRetailers(product) {
     .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href));
 }
 
+function buildFitV4StatusHtml(product) {
+  const outcome = String(product?.fitDecisionV4?.outcome ?? '').trim();
+  if (!outcome) return '';
+  const label = ['VERIFIED_FIT', 'NO_FIT', 'INSUFFICIENT_DATA'].includes(outcome)
+    ? outcome
+    : 'INSUFFICIENT_DATA';
+  return `<div class="fit-score-block fit-score-block--incomplete" data-fit-engine="fit-v4" data-fit-outcome="${escHtml(label)}">
+    <span class="fit-score-label">${escHtml(label)}</span>
+  </div>`;
+}
+
 function buildFitScoreHtml(product) {
   if (isReplacementSearchProduct(product)) return '';
+  if (product?.fitDecisionV4) return buildFitV4StatusHtml(product);
   if (product?.fitScoreNumeric === null || product?.fitScoreNumeric === undefined) return '';
   return renderFitScoreCardBlock(product.fitScoreNumeric, {
     breakdown: computeBreakdown(product),

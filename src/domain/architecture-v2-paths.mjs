@@ -38,6 +38,7 @@ export const architectureV2Paths = Object.freeze({
   brandValidationSampleManifestSha256: `${base}/reviews/automated/brand-validation-sample-manifest.sha256`,
   officialRegistryFitV3Audit: `${base}/reviews/automated/official-registry-fit-v3-audit.json`,
   historicalReplacementAudit: `${base}/reviews/automated/historical-replacement-audit.json`,
+  fitV4Phase10ReplayAudit: `${base}/reviews/automated/fit-v4-phase10-replay-audit.json`,
   historicalEvidenceRecoveryQueue: `${base}/reviews/automated/historical-evidence-recovery-queue.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,

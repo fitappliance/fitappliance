@@ -83,6 +83,34 @@ test('fit score card exposes conditional and insufficient fit outcomes without a
   assert.doesNotMatch(insufficient, /fit-score-number[^>]*>92/);
 });
 
+test('cavity cards use Fit V4 status and do not show the legacy estimated verdict', async () => {
+  const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
+  const html = buildRow(makeProduct({
+    fitDecision: { outcome: 'LIKELY_FIT_ESTIMATED' },
+    fitDecisionV4: { outcome: 'INSUFFICIENT_DATA' },
+  }), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /INSUFFICIENT_DATA/);
+  assert.doesNotMatch(html, /Estimated clearance/);
+  assert.doesNotMatch(html, /fit-score-number[^>]*>92/);
+});
+
+test('replacement cards do not display a Fit V4 status', async () => {
+  const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
+  const html = buildRow(makeProduct({
+    searchMode: 'replacement',
+    fitDecisionV4: { outcome: 'INSUFFICIENT_DATA' },
+  }), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.doesNotMatch(html, /INSUFFICIENT_DATA/);
+});
+
 test('phase 58 card integration: missing fitScoreNumeric does not fall back to legacy fit health', async () => {
   const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
   const product = makeProduct();

@@ -517,6 +517,37 @@
       depthMm: toMm(filters?.d)
     };
     if ([cavity.widthMm, cavity.heightMm, cavity.depthMm].every((value) => value === null)) return null;
+    if (searchMode === SEARCH_MODES.replacement) {
+      const replacementEnvelope = productClosedEnvelope(product);
+      const replacementDimensions = {
+        width: replacementEnvelope.widthMm,
+        height: replacementEnvelope.heightMm?.maximumMm ?? null,
+        depth: replacementEnvelope.depthMm
+      };
+      const replacementCavity = {
+        width: cavity.widthMm,
+        height: cavity.heightMm,
+        depth: cavity.depthMm
+      };
+      const sizeMatchGaps = {
+        w: replacementCavity.width === null || replacementDimensions.width === null
+          ? null
+          : Math.round(replacementCavity.width - replacementDimensions.width),
+        h: replacementCavity.height === null || replacementDimensions.height === null
+          ? null
+          : Math.round(replacementCavity.height - replacementDimensions.height),
+        d: replacementCavity.depth === null || replacementDimensions.depth === null
+          ? null
+          : Math.round(replacementCavity.depth - replacementDimensions.depth)
+      };
+      return {
+        searchMode,
+        replacementSourceCategory,
+        sizeMatchGaps,
+        fitDecision: null,
+        fitDecisionV4: null
+      };
+    }
     const evidenceLevel = fitMode === 'manufacturer'
       ? receiptBackedEvidenceLevel(product, geometry)
       : 'none';
@@ -771,6 +802,7 @@
       bindingAxis: fitMeta.bindingAxis,
       tightestGapMm: fitMeta.tightestGapMm,
       fitDecision: fitMeta.fitDecision,
+      fitDecisionV4: fitMeta.fitDecisionV4,
       showPopularityBadge: Number(product?.priorityScore ?? 0) >= 70,
       sku: String(product?.model ?? '').trim().split(/\s+/)[0] ?? '',
       url: buildProductUrl(product, filters)
@@ -782,6 +814,7 @@
       fitScore: _fitScore,
       fitScoreNumeric: _fitScoreNumeric,
       fitDecision: _fitDecision,
+      fitDecisionV4: _fitDecisionV4,
       exactFit: _exactFit,
       fitsTightly: _fitsTightly,
       sortScore: _sortScore,
