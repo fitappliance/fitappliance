@@ -1,826 +1,694 @@
 # FitAppliance Architecture V3 Evidence Foundation Design
 
-- **Status:** APPROVED DESIGN — IMPLEMENTATION NOT STARTED
-- **Date:** 2026-09-13
+- **Status:** REVISED DESIGN — IMPLEMENTATION NOT STARTED
+- **Revision:** 2, 2026-09-13, incorporating the independent contract audit
 - **Owner:** FitAppliance
-- **Product contract:** [`../../product-core-brief.md`](../../product-core-brief.md)
-- **Implementation plan:** [`../plans/2026-09-13-architecture-v3-evidence-foundation.md`](../plans/2026-09-13-architecture-v3-evidence-foundation.md)
+- **Product contract:** [Product Core Brief](../../product-core-brief.md)
+- **Implementation authority:** [original implementation plan](../plans/2026-09-13-architecture-v3-evidence-foundation.md)
+- **Worker protocol:** [Terra Max execution](../../architecture-v3/terra-max-execution.md)
 
-## 1. Decision
+This revision replaces the original unsafe examples and ambiguous joins. It
+specifies target contracts, not completed implementation. The plan owns task
+order/progress and the worker protocol owns delegation. The Product Core Brief
+remains the authority for product promises, lifecycle and Fit. The completed V2
+system-first repair programme remains migration history; V3 does not reopen it.
+A green documentation PR verifies documents/current code, not future V3 behavior.
 
-FitAppliance will evolve from a collection of acquisition, PDF parsing and
-static-publication workflows into one deterministic evidence system. The
-upgrade is incremental: it formalises and connects capabilities already on
-`main`; it does not replace the working Architecture V2 pipelines in one cut.
+## 1. Result and architecture
 
-The foundation has four explicit registries:
+FitAppliance screens appliances against Australian users' measured space and
+documented conditions. Useful W/H/D filtering remains available with incomplete
+installation evidence. That evidence cannot produce a positive Verified Fit;
+a known, integrity-valid hard incompatibility can still produce `NO_FIT`.
 
-1. `BrandRegistry` owns canonical brand identity, market aliases, parent-group
-   relationships and official source boundaries.
-2. `ProductFamilyGraph` owns marketing-series, finite official model-group and
-   platform hypotheses without treating family membership as product truth.
-3. `DocumentFamilyRegistry` owns the structural differences between brand,
-   category and document layouts and chooses an extraction profile from
-   inspected content.
-4. `GeometryAndInstallationSemantics` owns field meaning, axis, scope, unit,
-   inclusion, applicability and category/form-factor requirements.
+Four registries remain independent:
 
-They feed an immutable chain:
-
-```text
-official source observation
-  -> content-addressed source artifact
-  -> content-addressed derived artifacts (native text / MinerU / OCR / images)
-  -> evidence fragment with a media-specific locator (page/bbox, JSON pointer,
-     HTML selector, CSV cell or text span)
-  -> authority-specific verified source binding
-  -> immutable claim
-  -> claim receipt binding the claim to source or finite derivation
-  -> deterministic adjudication or quarantine
-  -> exact-product evidence snapshot
-  -> public projection
-  -> runtime FitEvaluation + user cavity measurements
-```
-
-The online Fit Engine remains deterministic and does not call an LLM, vector
-database or OCR service. LLM and vision components may propose offline
-candidates; they cannot approve a claim, resolve product identity or produce a
-Fit outcome.
-
-## 2. Why this is an incremental V3, not a rewrite
-
-The live repository already has strong parts of this design:
-
-- canonical product identity and quarantine in
-  `src/domain/canonical-registry.mjs`;
-- official-source discovery and candidate-only adapter contracts in
-  `src/domain/evidence-source-adapter-contract.mjs`;
-- content-addressed acquisition in `src/domain/evidence-artifact-pipeline.mjs`;
-- PDF/MinerU validation and source receipts in
-  `src/domain/evidence-source-verifier.mjs`;
-- dimension Claim V2 semantics in
-  `src/domain/dimension-evidence-claim.mjs`;
-- conflict quarantine and exact-model reconciliation in
-  `src/domain/evidence-claim-reconciliation.mjs`;
-- installation requirements and exact-model receipts in
-  `src/domain/installation-knowledge-v3.mjs`;
-- content-hash document grouping in
-  `src/domain/historical-document-family-graph.mjs`;
-- receipt-bounded projection in
-  `src/domain/accepted-evidence-publication.mjs`; and
-- fail-closed runtime outcomes in `src/shared/fit-engine.js`.
-
-V3 adds the missing shared ontology and claim-level joins around those modules.
-Existing receipts and public artifacts remain valid under their own schema and
-policy versions. New schemas run in shadow until their replay and publication
-audits pass.
-
-### 2.1 Gaps confirmed in the current implementation
-
-The upgrade addresses concrete joins that are still missing on `main`:
-
-- `data/series-dictionary.json` is a small model-prefix presentation hint, not a
-  brand/product-family ontology.
-- `historical-document-family-graph.mjs` safely groups content-hash documents
-  for recovery, but does not define versioned brand/layout extraction profiles.
-- source receipts bind normalised source claim payloads, but there is no stable
-  cross-pipeline claim ID or append-preserved claim decision event.
-- source-document and MinerU records do not yet expose one complete graph for
-  PDF -> OCR/Markdown/chunk/diagram -> fragment provenance.
-- runtime geometry, Claim V2 and installation knowledge use two field naming
-  vocabularies.
-- `product-data-field-rights-dictionary.json` already contains field semantics
-  and action-scoped rights. V3 must compile and extend it, not create a second
-  authoritative field dictionary.
-- the current manufacturer source verifier cannot prove a government, GS1 or
-  retailer authority class. Arbitration therefore cannot trust a tier supplied
-  by a parser or claim; it needs an authority-specific, replay-valid source
-  binding.
-- the installation requirement matrix uses `powerConnection.voltage` as an
-  internal alternative-group label even though the real claim fields are
-  `voltageV` or the `minimumVoltageV`/`maximumVoltageV` pair.
-- `evidence-geometry-projector.mjs` can emit product-level
-  `verifiedFitEligible` and `successfulFitOutcome`, and current UI code can read
-  a persisted product `fitDecision`. Those legacy fields blur evidence readiness
-  with a user-specific Fit evaluation and are excluded from V3 publication.
-- manufacturer-clearance search currently drops an otherwise useful result when
-  its runtime outcome is `INSUFFICIENT_DATA`. V3 keeps the dimension match and
-  displays the incomplete-evidence state, as required by the product contract.
-- the rich `fit-v3.mjs` shadow evaluator and the smaller browser Fit Engine are
-  separate implementations. Fit V4 must converge them behind one shared pure
-  contract before the UI relies on a new outcome.
-
-These are migration targets, not grounds to discard the existing evidence and
-publication controls.
-
-## 3. Goals
-
-1. Represent brand, product-family, document-family and engineering semantics as
-   separate versioned concepts.
-2. Preserve the original PDF and every derived OCR/MinerU/vision artifact in a
-   hash-bound lineage.
-3. Bind every accepted field to one immutable claim, one exact subject and one
-   source fragment.
-4. Support different dimension orders, units, diagrams and installation methods
-   without global brand regexes or plausibility-based axis swapping.
-5. Allow safe reuse of a multi-model document while preventing implicit sibling
-   or platform inheritance.
-6. Keep evidence readiness separate from a user-specific Fit decision.
-7. Publish only deterministic projections that can be replayed from immutable
-   inputs.
-8. Add the minimum code required: pure domain functions, versioned JSON policy,
-   content-addressed artifacts and tests. No database is required for this
-   migration.
-
-## 4. Non-goals
-
-- Building a general-purpose RAG chatbot.
-- Sending online product searches through an LLM.
-- Migrating existing immutable evidence objects into a database.
-- Treating a brand, parent group, series, suffix or chassis as proof that two
-  products have the same geometry.
-- Automatically correcting W/H/D from typical appliance proportions.
-- Treating OCR confidence, model confidence or source tier as a substitute for
-  explicit identity and semantic evidence.
-- Reclassifying retailer dimensions as manufacturer-verified evidence.
-- Changing replacement-search publication rules.
-- Displaying `VERIFIED_FIT` before a user supplies the required site inputs.
-
-## 5. Non-negotiable invariants
-
-These exact constraints govern every implementation PR:
-
-1. Existing immutable source, PDF, MinerU, OCR and receipt objects are never
-   rewritten or deleted by migration code.
-2. Unknown values remain `null` or an explicit `UNKNOWN`/`unknown` state; missing
-   values are never converted to zero.
-3. Product-family membership alone never authorises a field claim for another
-   SKU.
-4. Parent-group membership never expands a brand's official-host allowlist.
-5. Filename, URL, retailer text and model-prefix matches are discovery hints,
-   not publication evidence.
-6. OCR, MinerU, vision and LLM outputs are derived candidate artifacts, never
-   source authority.
-7. Axis assignment requires an explicit label, ordered legend, table header or
-   diagram anchor from the evidence fragment.
-8. Unit conversion requires an explicit source unit and stores both source and
-   canonical values.
-9. `capacity.netLitres` and compartment capacity are not physical-envelope
-   dimensions and cannot participate in cavity Fit arithmetic.
-10. A claim receipt binds the claim ID, exact subject, source artifact hash,
-    derived artifact hash when used, fragment hash, locator, policy version and
-    toolchain version.
-11. Source authority and public-display rights come only from a replay-valid,
-    authority-specific source binding. A claim, parser or model cannot declare
-    its own authority tier.
-12. An unresolved same-field conflict quarantines that field; it cannot be
-    hidden by last-write-wins.
-13. Dimensions-only evidence may power size filtering and can prove `NO_FIT`
-    when a known hard dimension exceeds the cavity, but it cannot produce
-    `VERIFIED_FIT`.
-14. Product evidence may be called `FIT_READY`; `VERIFIED_FIT` is reserved for a
-    runtime evaluation with receipt-bound product evidence and required user
-    measurements.
-15. Replacement and cavity-fit projections remain separate consumers.
-16. Every new projection is shadow-only until old/new comparison, full tests,
-    publication audit and deterministic second-run checks pass.
-17. No new runtime database, vector store or online model dependency is added in
-    this programme.
-18. Architecture V3 feeds the existing retail release candidate, active-release
-    pointer and rollback controls; it does not create a parallel publisher.
-
-## 6. Architecture boundaries
+1. `BrandRegistry`: brand identity, market aliases and references to existing
+   official-host policies. Parent groups grant no authority.
+2. `ProductFamilyGraph`: series, finite official model groups and platform
+   relationships. Index membership grants no field inheritance.
+3. `DocumentFamilyRegistry`: inspected document/region structure and versioned
+   extraction profiles. A shared manual is not a shared chassis.
+4. `GeometryAndInstallationSemantics`: fields, units, range meanings, inclusions,
+   configuration and applicability, compiled from the existing field/rights
+   dictionary and installation matrix plus a narrow overlay.
 
 ```text
-Identity plane       BrandRegistry -> CanonicalProduct -> ProductFamilyGraph
-                                         |
-Document plane       SourceDocument -> ArtifactLineage -> DocumentFamilyRegistry
-                                         |
-Semantic plane       GeometryAndInstallationSemantics -> EvidenceClaim
-                                         |
-Trust plane          VerifiedSourceBinding -> ClaimReceipt -> Decision/Adjudication
-                                         |
-Read plane           EvidenceSnapshot -> PublicProjection -> FitEvaluation
+source observation -> immutable bytes -> derived artifacts
+  -> role-labelled anchors + witnessed joins -> candidate exact-product Claim
+  -> verified source/field binding + claim receipt
+  -> review admission + complete source inventory + current eligibility
+  -> field adjudication -> EvidenceSnapshot + profile readiness
+  -> existing release control plane
+  -> validated runtime snapshot + current site input -> pure Fit V4
 ```
 
-Dependencies flow downward. A read-plane result must never mutate an upstream
-claim, receipt, relationship or artifact. Generated files contain hashes of
-their authoritative inputs and are always rebuildable.
+OCR, MinerU and vision run offline and propose candidates. No online search
+requires an LLM, OCR service, vector store or external disk. This programme adds
+no authoritative database, generic RAG framework or arbitrary expression engine.
 
-### 6.1 What remains independent
+## 2. Current-state contract and migration map
 
-The following axes must not be collapsed into one status:
-
-- canonical identity;
-- Australian market/lifecycle state;
-- official-source authority;
-- field/action reuse rights;
-- document acquisition state;
-- document-to-model applicability;
-- field extraction state;
-- claim receipt validity;
-- field conflict state;
-- evidence readiness;
-- public visibility; and
-- user-specific Fit outcome.
-
-## 7. BrandRegistry
-
-`BrandRegistry` replaces scattered display aliases and source-host assumptions
-with one validated read model. It is not a product data source.
-
-Each brand record contains:
-
-```json
-{
-  "brandId": "brand_fisher_paykel",
-  "canonicalName": "Fisher & Paykel",
-  "market": "AU",
-  "aliases": ["Fisher and Paykel", "F&P"],
-  "parentGroupId": "group_haier",
-  "officialHostPolicyId": "manufacturer_fisher_paykel_au_v1",
-  "sourceStrategyIds": ["fisher_paykel_product", "fisher_paykel_support"],
-  "status": "active"
-}
-```
-
-Rules:
-
-- `brandId` is stable and is not derived from the current display label at
-  runtime.
-- Alias lookup is market-scoped and collision-rejecting.
-- `parentGroupId` is informational; it grants no domain, model or evidence
-  authority.
-- Official hosts continue to be governed by the existing manufacturer source
-  policy; the registry references that policy instead of duplicating it.
-- A brand may use several acquisition strategies and several document-family
-  profiles.
-
-## 8. ProductFamilyGraph
-
-This graph describes product relationships without converting them into field
-truth. It has separate node and edge types:
-
-### 8.1 Nodes
-
-- `brand`
-- `marketing_series`
-- `official_model_group`
-- `platform`
-- `canonical_product`
-
-### 8.2 Edges
-
-- `MARKETED_AS_SERIES`
-- `LISTED_IN_OFFICIAL_MODEL_GROUP`
-- `ASSERTED_SHARED_PLATFORM`
-- `HYPOTHESISED_SHARED_PLATFORM`
-- `VARIANT_OF`
-
-Every edge has a status and evidence:
-
-```json
-{
-  "edgeId": "family_edge_...",
-  "fromId": "fa_prod_...",
-  "toId": "platform_bosch_60_dishwasher_v1",
-  "edgeType": "ASSERTED_SHARED_PLATFORM",
-  "status": "active",
-  "authority": "official",
-  "relationshipAssertionIds": ["relationship_assertion_..."],
-  "sharedFieldPaths": ["closedEnvelope.widthMm"],
-  "market": "AU"
-}
-```
-
-`sharedFieldPaths` is required before any field-specific derivation. An official
-statement that models share a series or platform does not imply that dimensions,
-door geometry, ventilation and installation requirements are all equal.
-
-### 8.3 Publication rule
-
-A relationship may help create a target claim only when all conditions hold:
-
-1. the relationship is official, active and receipt-bound;
-2. the target SKU is named in a finite model list or exact official relation;
-3. the requested field appears in `sharedFieldPaths`, or the same evidence
-   fragment explicitly binds that field to every named model;
-4. a new immutable claim is materialised for the exact target product;
-5. the target claim retains `derivedFromClaimId` and every
-   `relationshipAssertionId`; and
-6. the target claim passes normal reconciliation and publication gates.
-
-`marketing_series`, `HYPOTHESISED_SHARED_PLATFORM`, wildcard suffix rules and
-open-ended model prefixes can prioritise research only. They never donate data.
-
-Every edge endpoint must resolve to a declared node, and each edge type has an
-explicit allowed `(fromType, toType)` matrix. Canonical-product nodes must exist
-in the canonical registry; group/platform/series nodes must exist in the V3
-relationship policy. Relationship assertion IDs must resolve to immutable
-assertion objects whose finite product set contains every product endpoint.
-
-The existing strict official marketing/variant rule remains dimensions-only and
-continues to require its current finite evidence signals. This design does not
-broaden it.
-
-### 8.4 Relationship assertions are not product-field claims
-
-An immutable `ProductRelationshipAssertion` contains a finite set of canonical
-product IDs, relation type, exact `sharedFieldPaths`, source artifact hash,
-fragment locator and its own receipt binding. Its ID is
-`relationship_assertion_<sha256>`. It cannot be projected as a product field.
-Claim V3 remains a simpler exact-product field contract; a derived Claim V3
-only references receipt-valid relationship assertion IDs in its applicability
-proof.
-
-## 9. DocumentFamilyRegistry
-
-Product families and document families are different graphs. A shared manual is
-not proof of a shared chassis, and a shared chassis is not proof of a shared PDF
-layout.
-
-The existing historical document-family graph continues to own content-hash
-deduplication and model proof levels. The new registry owns parsing behaviour.
-
-### 9.1 Profile key
-
-A profile is selected by inspected structure, not by brand alone:
-
-```json
-{
-  "profileId": "smeg_dishwasher_install_matrix_v1",
-  "brandId": "brand_smeg",
-  "categories": ["dishwasher"],
-  "documentTypes": ["installation_manual"],
-  "contentModes": ["vector", "hybrid"],
-  "structuralSignals": [
-    "model_dimension_matrix",
-    "dimension_legend_letters",
-    "technical_diagram"
-  ],
-  "extractorChain": [
-    "native_pdf",
-    "mineru_layout",
-    "diagram_crop",
-    "vision_candidate",
-    "manual_review"
-  ],
-  "parserVersion": "smeg_dishwasher_install_matrix_v1",
-  "status": "canary"
-}
-```
-
-One brand may have many profiles; unrelated brands may share a structural
-profile only after negative fixtures prove the grammar is safe. If zero or more
-than one profile matches, the router returns `unsupported` or `ambiguous` and no
-claim is accepted.
-
-### 9.2 Required structural variation
-
-Profiles must express, rather than assume:
-
-- `W x H x D`, `H x W x D`, `D x W x H` and named-value layouts;
-- millimetres, centimetres and mixed source display, with explicit unit per
-  value group;
-- separate product body, door, handle, installed envelope, cut-out/niche,
-  operation, service and delivery/package dimensions;
-- fixed and adjustable-height ranges;
-- top/front/side diagrams and their view orientation;
-- letter legends such as `A`, `B`, `C` mapped to field paths;
-- multi-model row/column matrices;
-- installation variants such as freestanding, built-in, under-bench, integrated
-  and removable-worktop configurations; and
-- capacity labels such as gross, net, refrigerator compartment and freezer
-  compartment, kept outside geometry arithmetic.
-
-## 10. GeometryAndInstallationSemantics
-
-One compiled semantic registry removes duplicate field lists and prevents
-parsers from assigning meaning by position. Its authoritative base is the
-existing `product-data-field-rights-dictionary.json`; a small V3 overlay adds
-explicit aliases, source-unit rules, capacity fields and category/form-factor
-requirement profiles. The generated registry is a rebuildable read model, not a
-second field policy.
-
-Each field definition includes:
-
-```json
-{
-  "field": "operation.doorOpenDepthMm",
-  "valueType": "integer",
-  "canonicalUnit": "mm",
-  "axis": "depth",
-  "measurementScope": "product_door_open_90",
-  "allowedInclusions": ["body", "door", "handle"],
-  "allowedApplicability": ["required", "optional", "not_applicable", "unknown"],
-  "fitRole": "advisory_or_hard_by_category",
-  "publicationClass": "installation"
-}
-```
-
-The registry covers:
-
-- `closedEnvelope.*`
-- `productBody.*`
-- `installation.*`
-- `cavityOpening.*`
-- `operation.*`
-- `service.*`
-- `ventilation.*`
-- `waterConnection.*`, `powerConnection.*`, `drainConnection.*`
-- `delivery.*`
-- `capacity.netLitres`, `capacity.grossLitres`,
-  `capacity.refrigeratorNetLitres`, `capacity.freezerNetLitres` and
-  `capacity.variableZoneNetLitres`
-- `professionalInstallation.required`
-
-The canonical field paths deliberately follow the existing runtime geometry and
-Claim V2 paths to avoid a second geometry model. The semantic registry carries
-an explicit field-by-field compatibility table for the longer
-installation-knowledge names. Prefix wildcards are forbidden because similarly
-named fields can have different scope. Representative mappings are:
-
-```text
-installationClearance.rearMm          -> installation.rearMm
-operationEnvelope.doorOpenDepthMm     -> operation.doorOpenDepthMm
-operationEnvelope.hingeSideSpaceMm    -> operation.hingeSideSpaceMm
-operationEnvelope.lidOpenHeightMm     -> operation.lidOpenHeightMm
-deliveryEnvelope.widthMm              -> delivery.widthMm
-```
-
-The aliases are accepted only at the existing installation-knowledge boundary;
-all new Claim V3 IDs use the canonical path on the right. `service.*`,
-`ventilation.*` and connection fields retain their existing distinct meanings.
-An envelope volume calculated from W/H/D, if ever shown, is a labelled derived
-display metric and not a manufacturer capacity claim.
-
-Category and form-factor applicability is a separate matrix referencing these
-field definitions. It must represent `unknown` and `not_applicable` separately.
-An explicit source zero is valid only for fields whose semantic definition
-allows zero.
-
-Numeric definitions distinguish integers from bounded decimals; source values
-are preserved and canonical decimals are normalised at the field's declared
-precision before hashing. Conditional requirements use explicit `allOf`/`oneOf`
-groups. For example,
-power voltage is satisfied by either `powerConnection.voltageV` or both
-`powerConnection.minimumVoltageV` and
-`powerConnection.maximumVoltageV`; `powerConnection.voltage` is a requirement
-group ID and can never be emitted as a field claim.
-
-## 11. Artifact lineage and multimodal extraction
-
-### 11.1 Source preservation
-
-The original response bytes are the root artifact. The canonical identity is
-its SHA-256, not its filename or URL. A root is `source_artifact` plus an
-explicit media type; it may be PDF, HTML, JSON, CSV, CAD or another policy-
-approved format. PDF-specific transformations require a PDF root, but Claim V3
-lineage is not restricted to PDFs. URLs and retrieval records point to the root
-object and may have multiple content versions.
-
-### 11.2 Derived artifacts
-
-Each transformation writes a new immutable node:
-
-- native PDF text and vector metadata;
-- MinerU `content_list_v2` JSON;
-- readable Markdown;
-- retrieval chunks with page/span locators;
-- rendered page images;
-- OCR page JSON;
-- table structures;
-- diagram crops; and
-- vision candidate annotations.
-
-Every derived node records:
-
-- its own content hash and object path;
-- parent artifact hash;
-- tool name, version/model revision and options hash;
-- page range;
-- creation time; and
-- validation status.
-
-Claim locators use a zero-based source-page index internally only where the
-existing MinerU object requires it; the public/receipt locator uses one-based
-page numbers. `bbox` is `[x0, y0, x1, y1]` in a 0..1000 coordinate space with a
-top-left origin, bound to the rendered-page artifact hash and its pixel
-dimensions. Raw PDF-point or OCR-pixel coordinates remain in the derived
-artifact so the normalisation is reproducible.
-
-No Markdown or chunk becomes a new authority. A claim always traces back to the
-original source artifact and the exact derived fragment used to locate it.
-
-### 11.3 Extraction routing
-
-```text
-validate PDF bytes
-  -> inspect native text/vector/image coverage
-  -> select one DocumentFamily profile
-  -> execute the profile's deterministic extractor chain
-  -> emit candidate fragments
-  -> validate model binding + semantic binding
-  -> create candidate claims
-  -> receipt/reconciliation/review
-```
-
-Raster OCR is used when the relevant page content is image-based or native
-extraction is insufficient. Vector PDFs are not rasterised as the primary path.
-Diagram vision is invoked only for selected diagram regions and returns
-candidates with bboxes; it does not make final axis or field decisions.
-
-## 12. Immutable claims and receipts
-
-### 12.1 Claim envelope
-
-Architecture V3 wraps existing dimension and installation values in one claim
-envelope:
-
-```json
-{
-  "schemaVersion": 3,
-  "claimId": "claim_...",
-  "subject": {
-    "type": "canonical_product",
-    "canonicalProductId": "fa_prod_...",
-    "market": "AU"
-  },
-  "field": "closedEnvelope.widthMm",
-  "value": {"kind": "fixed", "canonical": 598, "unit": "mm"},
-  "semantics": {
-    "axis": "width",
-    "measurementScope": "product_closed_external",
-    "inclusions": ["body", "door"],
-    "applicability": "required"
-  },
-  "sourceRepresentation": {
-    "kind": "ordered_dimensions",
-    "label": "Dimensions H x W x D",
-    "axisOrder": ["height", "width", "depth"],
-    "values": [850, 598, 600],
-    "unit": "mm"
-  },
-  "evidence": {
-    "sourceArtifactSha256": "...",
-    "derivedArtifactSha256": "...",
-    "fragmentSha256": "...",
-    "page": 7,
-    "bbox": [120, 340, 450, 680]
-  },
-  "applicabilityProof": {
-    "bindingType": "EXACT_MODEL",
-    "namedModels": ["EXAMPLE100"],
-    "relationshipAssertionIds": []
-  },
-  "derivedFromClaimId": null
-}
-```
-
-`claimId` is the SHA-256 of the complete canonical semantic payload, excluding
-only `claimId` itself. Review state is not stored in the claim; it is an
-append-preserved decision event.
-
-The claim `value` union is closed and explicit:
-
-- `{ "kind": "fixed", "canonical": 598, "unit": "mm" }`;
-- `{ "kind": "range", "minimumCanonical": 820, "maximumCanonical": 850,
-  "unit": "mm" }`;
-- `{ "kind": "boolean", "canonical": true, "unit": null }`; or
-- `{ "kind": "not_applicable", "canonical": null, "unit": null }`.
-
-Unknown does not create a claim. It remains an absent field plus an explicit
-missing/unknown readiness state.
-
-`sourceRepresentation` is also a closed union: `ordered_dimensions`,
-`named_scalar`, `named_range`, `boolean_statement` or `not_applicable_statement`.
-Only `ordered_dimensions` carries `axisOrder`; non-axis fields must instead bind
-their label and value/range/statement in the same fragment. This prevents the
-axis rule from making boolean and applicability claims impossible.
-
-### 12.2 Receipt
-
-`EvidenceClaimReceipt` schema 1 is a new envelope over, not a replacement for,
-the existing source receipt schemas 2 and 3 and installation-field receipts.
-It binds one Claim V3 ID, the exact subject, a replay-valid
-`VerifiedSourceBinding`, source and derived artifact hashes, fragment locator,
-toolchain/policy versions and rights decisions. `VerifiedSourceBinding` is
-created only by an allowlisted verifier adapter (manufacturer, official
-registry, licensed supplier or retailer observation) and supplies the trusted
-authority class. Unsupported source kinds cannot receive a claim receipt.
-
-For a target claim derived through a finite official relationship, the target's
-claim receipt binds the source claim receipt and every relationship-assertion
-receipt. It does not pretend that the source product's exact-model receipt was
-issued directly for the target SKU. Any change to value, subject, axis, scope,
-inclusion, locator, source authority, rights, toolchain, policy or relationship
-proof invalidates replay.
-
-### 12.3 Decision events
-
-Allowed decisions are:
-
-- `accepted`
-- `rejected`
-- `quarantined`
-- `superseded`
-
-Every decision stores claim ID, reason codes, policy version, actor and time.
-Automated decisions use a named deterministic policy actor. Human review is
-required where the policy returns ambiguity.
-
-The active decision is reduced from the append-only event graph: event IDs are
-unique, every superseded ID must exist for the same claim, the graph must be
-acyclic and exactly one terminal event may remain. Zero or multiple terminal
-events quarantine the claim.
-
-## 13. Deterministic arbitration
-
-The source hierarchy is a tie-break framework, not the first gate:
-
-```text
-official installation/engineering manual
-  > official product specification
-  > official AU government registry
-  > retailer observation
-```
-
-Before hierarchy is considered, claims must have the same exact subject, field,
-measurement scope, applicability and compatible inclusion semantics. Authority
-order is read from the verified claim receipt's source binding, never from the
-claim or extraction output.
-
-Rules:
-
-1. Identical claims from independent official artifacts corroborate each other.
-2. A newer official artifact may supersede an older one only through explicit
-   content/version lineage or a policy-approved current-document relation.
-3. An official field with explicit axis proof may be accepted while a lower
-   authority axis permutation is recorded as an anomaly. The lower claim is not
-   silently edited.
-4. Tier alone never repairs an ambiguous official axis. Ambiguous high-tier
-   evidence is quarantined.
-5. Same-tier, same-scope disagreement is quarantined unless explicit
-   supersession resolves it.
-6. Package, cavity, body, open-door and closed-envelope measurements never
-   conflict merely because their values differ; they are different semantics.
-7. Plausibility ranges may reject impossible candidates or prioritise review,
-   but cannot assign an axis.
-
-## 14. Evidence readiness versus Fit evaluation
-
-The product-level read model uses evidence states only:
-
-```text
-DIMENSIONS_UNKNOWN
-DIMENSIONS_READY
-INSTALLATION_PARTIAL
-FIT_READY
-CONFLICT_QUARANTINED
-```
-
-It also lists accepted claim IDs, conflicts and readiness by evaluation profile:
-`cavity_placement`, `operation`, `services`, `delivery` and
-`full_installation`. Delivery evidence is required only when delivery is in the
-selected evaluation profile; it cannot make cavity readiness falsely negative.
-It never stores a `VERIFIED_FIT` boolean.
-
-Runtime evaluation continues to return:
-
-- `NO_FIT`
-- `INSUFFICIENT_DATA`
-- `CONDITIONAL_FIT`
-- `LIKELY_FIT_ESTIMATED`
-- `VERIFIED_FIT`
-
-`VERIFIED_FIT` requires `FIT_READY`, valid claim receipts and all required user
-site measurements. A product with W/H/D but unknown clearances keeps useful
-dimension filtering and returns `INSUFFICIENT_DATA` for a positive fit claim.
-A known hard failure remains `NO_FIT` even if other fields are unknown.
-
-### 14.1 Fit V4 convergence contract
-
-Fit V4 is one pure implementation shared by Node tests and the browser. It
-reuses the existing Fit V3 checks and replaces the smaller browser-only outcome
-path; Fit V3 remains a compatibility adapter during shadow comparison.
-SearchCore emits two independent objects:
-
-- `sizeMatch`: W/H/D filter facts only; and
-- `fitDecisionV4`: the selected evaluation profile, typed checks, evidence and
-  site-input gaps, margins, outcome and receipt-set hash.
-
-Outcome precedence is fail-closed. A known lower bound such as bare product
-width exceeding cavity width produces `NO_FIT` even when clearance is unknown.
-If the known lower bound passes but a required product field or user input is
-unknown, the result is `INSUFFICIENT_DATA` or `CONDITIONAL_FIT` according to the
-check class. `VERIFIED_FIT` requires the selected readiness profile to be
-`FIT_READY`, a receipt-set hash matching the published evidence snapshot and no
-estimated input. Replacement mode never consumes or emits `fitDecisionV4`.
-
-## 15. Storage design
-
-The authoritative implementation uses the repository's current pattern:
-
-- versioned JSON policy under `data/architecture-v3/policies/`;
-- deterministic generated read models under `data/architecture-v3/generated/`;
-- audit and shadow comparison under `data/architecture-v3/reviews/automated/`;
-- immutable large/source objects in the configured evidence object store; and
-- pure ESM domain functions under `src/domain/`.
-
-SQLite, DuckDB and vector indexes may later be disposable query projections.
-They must be rebuildable and cannot become claim or receipt authority. This
-decision avoids a dual-source-of-truth migration before the schemas stabilise.
-
-## 16. Migration and PR sequence
-
-This design is delivered through small PRs. The current PR contains only this
-specification and the executable plan.
-
-| PR | Working result | Publication effect |
+| Boundary | Current owner | V3 treatment |
 | --- | --- | --- |
-| 0 | Design, file map, tests and gates | none |
-| 1 | Brand, product-family and semantic registries | none; generated shadow data only |
-| 2 | Document-family registry, routing and artifact lineage | none; candidate extraction only |
-| 3 | Claim V3 envelope, source bindings, claim receipts and decision events | none; dual-read/shadow write |
-| 4 | Finite-model relationship derivation and deterministic arbitration | none; shadow accepted set |
-| 5 | Profile-scoped evidence readiness, Fit V4 and end-to-end shadow projection | none until comparison gate passes |
-| 6 | Real PDF/MinerU/OCR/diagram canaries by structural profile | no broad fan-out |
-| 7 | Feed accepted fields into the existing release control plane | bounded, reversible release candidate |
-| 8 | Evidence drawer and transparent fit arithmetic | staged UI flag |
+| Product IDs/quarantine | `src/domain/canonical-registry.mjs` | Preserve canonical identities |
+| Candidate acquisition | `src/domain/evidence-source-adapter-contract.mjs` | Retain typed candidate outcomes |
+| Immutable source acquisition | `src/domain/evidence-artifact-pipeline.mjs` | Add lineage adapters, preserve bytes |
+| Source/MinerU receipts | `src/domain/evidence-source-verifier.mjs` | Preserve case and field-scoped replay |
+| Dimension value bounds | `src/domain/dimension-evidence-claim.mjs` | Compile shared semantics without weakening validation |
+| Installation knowledge | `src/domain/installation-knowledge-v3.mjs` | Exact aliases and context-aware adapter |
+| Required source completion | `src/domain/evidence-candidate-inventory.mjs` | Carry completion and all dispositions into V3 |
+| Conflict/supersession | `src/domain/evidence-claim-reconciliation.mjs` | Preserve tested resolution and stopping rules |
+| Manual deduplication | `src/domain/historical-document-family-graph.mjs` | Keep separate from parsing profiles |
+| Receipt-bound projection | `src/domain/accepted-evidence-publication.mjs` | Consume an explicit reviewed overlay |
+| Active release/rollback | `src/domain/active-retail-release.mjs` and `src/domain/retail-lifecycle-release-candidate.mjs` | Extend versioned bindings, retain sole publisher |
+| Browser/rich shadow Fit | `src/shared/fit-engine.js` and `src/domain/fit-v3.mjs` | Freeze independent legacy oracle before convergence |
 
-No PR may combine schema introduction, historical backfill and public cutover.
+The reviewed local plan base has 3,515 legacy generated records; its bound
+active release/runtime has 3,513 records, including 349 current-retail records.
+These are different artifacts/denominators, not acceptance targets or a fresh
+website observation. G0a must re-read code, descriptor, manifest, input hashes
+and counts. The default publication audit's legacy input is not the active
+release owner.
 
-## 17. Required test matrix
+The dirty recovery checkout is migration input only. Inventory its paths and
+hashes without stash/reset/delete/merge. Reuse validated source objects and
+regression witnesses. Its static Fit ledger and implicit optional-file merges
+cannot become V3 authority. Preserve each original object and its disposition.
 
-Every affected field path must have positive and negative witnesses across five
-boundaries: producer, consumer, receipt replay, public projection and repeated
-run.
+## 3. Global invariants
 
-Mandatory adversarial cases include:
+1. Existing immutable source, derived, claim and receipt objects are never
+   rewritten or deleted by migration code.
+2. Unknown remains `null` or `UNKNOWN`; it never becomes zero, false or an
+   unproved category/configuration default.
+3. Product identity, evidence identity, current sale status, rights, visibility,
+   evidence readiness and runtime Fit are independent facts.
+4. Parent groups, series, filenames, URLs, prefixes and cosmetic suffixes never
+   grant exact-model field authority.
+5. Every accepted field has an exact subject, explicit semantics, compatible
+   configuration and replay-valid source/field proof.
+6. OCR, MinerU, vision and LLM output is candidate material, not source authority.
+7. Axis, unit, inclusion, range and reference datum are proved, not assigned
+   from physical plausibility or an unlabelled value order.
+8. A complete source inventory and relevant unresolved conflicts participate in
+   adjudication; first success is not source-set completion.
+9. Historical receipt integrity and current eligibility are separate checks.
+   Revocation may lower readiness without erasing historical evidence.
+10. Dimensions-only evidence may support filtering and a valid hard `NO_FIT`,
+    but never `VERIFIED_FIT`.
+11. Static products may carry profile-scoped `FIT_READY`; only runtime evaluation
+    of a validated snapshot and adequate current site inputs yields `VERIFIED_FIT`.
+12. Replacement remains independent of cavity Fit and consumes neither Fit V4
+    nor evidence-readiness verdicts.
+13. Normal builds, portable tests and runtime are independent of the external
+    evidence store. Missing required acquisition evidence is an explicit
+    incomplete run, never an empty successful overwrite.
+14. Fixed-input replay is semantically deterministic. New retrieval, OCR or
+    review observations may create new immutable objects.
+15. V3 extends the existing release candidate, active pointer and rollback
+    controls; an adapter never expands publication/lifecycle authority.
+16. Schema introduction, historical backfill and public cutover are not combined
+    in one implementation PR.
 
-- `W x H x D`, `H x W x D` and `D x W x H`;
-- a value-only triple with no axis legend -> no claim;
-- centimetre conversion with preserved source values;
-- mixed or absent units -> quarantine;
-- product depth, depth including handle, cavity depth and open-door depth in one
-  document -> four distinct fields;
-- adjustable height range, including removable-worktop configuration;
-- capacity litres next to dimensions -> no geometry cross-assignment;
-- a multi-model table with exact finite rows;
-- a shared manual with no finite model binding -> family scope only;
-- a cosmetic suffix with no official relation -> no inheritance;
-- an official shared-field assertion -> exact target derived claim with full
-  lineage;
-- same-authority conflict -> quarantine;
-- lower-authority axis permutation -> anomaly, no mutation;
-- OCR text that disagrees with native text -> quarantine/review;
-- bbox or fragment-hash tampering -> receipt replay failure;
-- parser-supplied authority tier -> rejected unless reproduced by a source
-  verifier adapter;
-- boolean and not-applicable statements -> no fake axis requirement;
-- decimal `m3`, `kPa`, `A` or `kg` value -> preserved at declared precision;
-- missing installation data -> `INSUFFICIENT_DATA`, never `VERIFIED_FIT`;
-- known width failure plus other unknowns -> `NO_FIT`; and
-- replacement results never entering the cavity-fit publication path.
+## 4. Contract deltas and owners
 
-## 18. Cutover gates
+| Audit risk | Required change | Compatibility invariant | Gate |
+| --- | --- | --- | --- |
+| Numeric coercion | Raw type/finite checks before conversion; field bounds | V2 invalid-input witnesses still reject | G1a/G1b |
+| Inclusion ambiguity | Included/excluded/unknown component states | Legacy null never means false | G1a/G4a |
+| Configurations become ranges | Explicit context and range meaning | Unsupported context stays candidate-only | G1a/G8a |
+| Native header hides scan | Region-readable routing | Existing byte/MinerU gates retained | G3b |
+| Cross-page evidence lost/guessed | Role anchors and witnessed joins | No arbitrary number concatenation | G3a/G4a |
+| Same-PDF SKU/field leakage | Direct fact equality or finite derivation | Old receipt proves only its actual scope | G4b/G7 |
+| Conflicts filtered away | Admission distinct from adjudication | V2 complete-inventory gate retained | G5b |
+| Permanent event fork | CAS append and all-head resolution | History immutable; retries idempotent | G5a |
+| Stale derived eligibility | Transitive revocation evaluation | Historical replay is preserved | G5a/G7 |
+| Receipt hash used as snapshot hash | Separate digests; values inside snapshot | Runtime loader binds active expected digest | G6a/G8a |
+| Wrong publication baseline | Explicit active/legacy/candidate bindings | Preserve artifact identity and denominator | G0a/G9a |
+| CI does not execute V3 | Default test inclusion; per-file syntax check | Locked install, Node 20 compatibility | G0b |
+| Oracle equals implementation | Freeze independent V2/V3 comparison | Never regenerate expected results with V4 | G8b |
+| Partial client cutover | Separate calculation/drawer flags; bound asset bundle | Mixed-client and rollback validation | G10/G11 |
 
-Public cutover is authorised only when all gates pass on the same commit and
-evidence mount:
+## 5. Brand and product-family registries
 
-1. all repository tests pass;
-2. Architecture V3 focused tests pass;
-3. every Claim V3 receipt replays byte-for-byte;
-4. every accepted claim has a replay-valid authority-specific source binding
-   and sufficient action-scoped rights for its publication surface;
-5. zero accepted claim has an unresolved identity, axis, scope, unit or
-   applicability state;
-6. zero family-scope or hypothesis edge produces a public field;
-7. zero unsupported legacy field leaks through an accepted W/H/D receipt;
-8. Fit V4 passes Node/browser parity and V3 shadow-difference review;
-9. full publication audit reports zero violations;
-10. two consecutive builds produce byte-identical semantic outputs;
-11. the candidate-versus-active impact report is reviewed; and
-12. rollback uses the existing active-release pointer, not evidence deletion.
+A brand has stable ID, market-scoped collision-rejecting aliases, optional parent
+group and references to the existing manufacturer-host/source-strategy policies.
+The registry hashes those inputs and never copies parent hosts into child policy.
 
-## 19. Stop conditions
+Family nodes distinguish `brand`, `marketing_series`, `official_model_group`,
+`platform` and `canonical_product`. Edge kinds are `MARKETED_AS_SERIES`,
+`LISTED_IN_OFFICIAL_MODEL_GROUP`, `ASSERTED_SHARED_PLATFORM`,
+`HYPOTHESISED_SHARED_PLATFORM` and `VARIANT_OF`. Validate endpoint types, finite
+membership, canonical identity, duplicate IDs and variant cycles.
 
-Implementation pauses for a first-principles product decision when any of these
-occurs:
+Research edges can have no shared fields/receipts. An official platform statement
+without field sharing can also be retained as a relationship, but is ineligible
+for derivation. `ProductRelationshipAssertion` is an immutable finite product
+set, relation, market, exact shared fields/contexts and anchored official proof.
+Its own receipt proves a relationship, not a product measurement; use the same
+PDF/HTML/JSON/CSV locator union as field evidence.
 
-- an official source relation names a product group but does not state which
-  fields are shared;
-- a document profile can match more than one axis or measurement scope;
-- an apparent platform relation depends only on model prefixes, suffixes,
-  retailer text or physical plausibility;
-- the proposed schema cannot represent a source distinction without discarding
-  information;
-- migration would require rewriting immutable evidence or accepting a receipt
-  that cannot replay;
-- a new requirement would make product evidence readiness and runtime Fit
-  outcome the same state; or
-- a public cutover would alter unrelated lifecycle or replacement data.
+G7 permits one direct source claim and one finite official route to an exact
+target. Both products, the requested field and context must be covered explicitly.
+Materialize an exact-target claim and derived receipt binding the source claim
+receipt and relationship receipts. No unbounded/transitive platform fan-out.
+A source-product verifier is never called as though it directly proved the target.
+Current eligibility of every dependency is rechecked at projection time; target-
+specific conflicting evidence remains part of normal adjudication.
 
-The question to resolve is always: **what exact product claim may a user rely on,
-what evidence proves that exact meaning, and what information would make the
-claim false?**
+## 6. Shared engineering semantics
+
+### 6.1 Field definitions
+
+Compile `data/architecture-v2/policies/product-data-field-rights-dictionary.json`
+with the installation applicability matrix and a narrow V3 overlay. Preserve
+existing field identity, rights and Fit roles; require explicit versioned deltas
+for actual semantic refinements. Canonical paths follow runtime geometry, plus
+separate product-body, cavity and capacity fields. Litres never enter Fit math.
+
+Aliases are exact mappings, including `installationClearance.rearMm` to
+`installation.rearMm`. Ambiguous `operationEnvelope.depthMm` stays review-only.
+`powerConnection.voltage` is a requirement-group ID, satisfied by `voltageV` or
+the minimum/maximum voltage pair, and can never be a claim field.
+
+Each field defines numeric type, permitted value kinds, canonical unit/precision,
+source-unit conversions, typed bounds and endpoint inclusivity, axis, scope,
+inclusion components, allowed applicability/range meanings, Fit role and evidence
+requirements. Non-negative dimensions/clearances and explicit zero rules preserve
+V2 protections. Other signed quantities require their own explicit field policy.
+
+### 6.2 Strict normalization
+
+Before multiplication, require each raw number/range endpoint to be a finite
+JavaScript number. Reject null, booleans, strings, arrays, non-finite numbers and
+unknown object keys. Then check allowed unit dimension/conversion, precision,
+bounds and ordered range endpoints. Reject unjustified rounding. Decimal units
+such as A, kPa and m3 retain their declared precision; do not apply a universal
+integer-mm rule. Validate allowed applicability/inclusions on every value branch.
+
+Inclusions are a component map with `included`, `excluded`, `unknown` values.
+Missing components mean unknown. Old `includesDoor`/`includesHandle` nulls cannot
+be converted to exclusion. A not-applicable claim has null value/unit and cannot
+fill a hard numeric requirement unless the requirement policy makes it N/A.
+
+### 6.3 EngineeringContext
+
+Every claim contains a closed context object; this is a schema fixture, not a
+measurement for a real SKU:
+
+```json
+{
+  "configurationKey": "underbench_worktop_removed",
+  "conditions": [
+    {"parameter": "installationMode", "operator": "eq", "value": "underbench"},
+    {"parameter": "worktop", "operator": "eq", "value": "removed"}
+  ],
+  "referenceDatum": "finished_floor",
+  "operatingState": {"kind": "closed", "angleDegrees": null}
+}
+```
+
+Conditions initially form only an `allOf` of allowlisted equality predicates.
+The policy defines finite parameter names/types/values for installation mode,
+worktop, adjacent wall, opening state and optional service configuration. Unknown
+condition values do not satisfy a predicate. Unsupported conditions are preserved
+as candidate gaps, never evaluated as arbitrary code or guessed false.
+
+Configuration keys are exact-product/market-scoped. Null means unspecified;
+reserved `unconditional` requires evidence of applicability across the evaluated
+configurations. Reference datums initially include `envelope_extent`,
+`finished_floor`, `product_front_plane`, `product_rear_plane`,
+`cavity_front_plane` and `unknown`. Operating-state kind is `closed`, `door_open`,
+`lid_open` or `unknown`, with an explicit angle where required. Unknown context
+blocks the checks that require it, not unrelated proved fields.
+
+One evaluation selects compatible values across all fields. Do not independently
+choose small dimensions from different configurations. Composing ventilation and
+service gaps with max requires compatible reference planes and an explicit rule.
+Reject contradictory equality predicates and configuration keys inconsistent with
+their witnessed conditions. An unconditional claim applies to every configuration
+it proves; an applicable conditional claim does not silently override it. Compare
+overlapping applicable claims together, unless a witnessed supersession resolves
+them. Only demonstrably disjoint configurations avoid such a conflict.
+
+### 6.4 Range meaning and compatibility
+
+Range meaning is `adjustment`, `uncertainty` or `allowed_interval`. Discrete
+worktop-present/removed heights are separate contextual claims, not a continuous
+range. Preserve original endpoints and unsupported distinctions.
+
+For uncertain required space, the upper bound supports a conservative positive
+result and a lower bound exceeding available space supports a hard failure.
+Overlapping uncertain values need confirmation. Allowed operating intervals use
+membership checks. An adjustment needs evidence of an achievable setting and the
+relevant configuration/site inputs before selecting that value.
+
+An adjustment range 820–850 with cavity height 830 and no selected setting gives
+placement UNKNOWN, not a max-only NO_FIT. Conservative maximum still supports a
+positive result when it fits and all documented conditions hold. G8a clarifies
+Product Core Brief section 8.1 accordingly; old V2/V3 output stays frozen and any
+V4 difference is an explicit, reviewed range-semantics delta.
+
+## 7. Artifacts, evidence anchors and extraction
+
+### 7.1 Immutable lineage and typed locators
+
+Root identity is the SHA-256 of original response bytes, not URL/filename. Roots
+can be PDF, HTML, JSON, CSV or another approved format. Derived artifacts include
+native text, MinerU/OCR JSON, Markdown, chunks, tables, page images, crops and
+vision annotations. Bind own hash, parent, media type, tool/model revision and
+options hash. Different nondeterministic outputs are distinct observations.
+Paths are validated locators, not identity; large objects stay in the configured
+store, while normal builds use bounded portable records and accepted snapshots.
+
+Fragments bind content, parent artifact and a typed locator: `pdf_bbox`,
+`json_pointer`, `html_selector`, `csv_cell`, `text_span`. PDF receipts use one-
+based pages and 0..1000 top-left `[x0,y0,x1,y1]` boxes bound to rendered-page hash,
+pixel dimensions, rotation and crop transform. Retain raw PDF/OCR coordinates
+for replay; a crop cannot reuse full-page coordinates without its transform.
+
+### 7.2 Multi-anchor field proof
+
+An anchor is `{ anchorId, role, fragmentSha256 }`. Roles are `subject`, `value`,
+`axis`, `unit`, `legend`, `condition`, `configuration`, `reference_datum`.
+Each anchor resolves independently. A direct claim has one source root and can
+use several anchors across pages/regions. Independent roots create separate
+claims for corroboration, not an undocumented composite claim.
+
+Relations contain kind, from/to anchor IDs and witness anchor IDs. Closed kinds
+are `same_table_row`, `diagram_legend`, `explicit_continuation`,
+`exact_model_scope`, `condition_applies`. Joins must prove the same finite model/
+row and diagram context. Proximity or a matching letter is insufficient where
+multiple diagrams could match. Unit headers and installation footnotes are
+retained as evidence rather than guessed into the numeric fragment.
+
+### 7.3 Region-based DocumentFamilyRegistry
+
+Profiles contain ID, brandIds, categories, document types, content modes,
+required/forbidden structural signals, extractor chain, version and status.
+Different brands can share grammar only with appropriate positive/negative
+witnesses; brand alone never assigns dimensions or parsing scope.
+
+Inspect relevant regions for native text readability, numeric/label coverage,
+raster content and vector/table/diagram structure. Native header glyphs do not
+prove that a scanned dimension drawing is readable. Mixed regions on one page
+and mixed page types require distinct observations. Select exactly one eligible
+profile per extraction region/context; unsupported/ambiguous regions return typed
+candidate failures. Independent proved regions can be retained, but unresolved
+relevant diagrams/footnotes remain part of completion/conflict handling.
+
+Native extraction preserves vector precision; MinerU supplies structured layout;
+OCR/vision operates on required unreadable/image regions. Every result remains
+candidate-only. Disabling a profile also affects eligibility of earlier derived
+fields under section 10, not just future routing.
+Direct PDF acceptance retains the original PDF plus validated, policy-pinned
+MinerU content_list_v2 artifact pair and source-receipt replay. Native text,
+Markdown, OCR or vision output cannot bypass that gate. New cross-region proof
+support is an explicit, canary-tested verifier-policy delta; it never upgrades
+an older receipt beyond the fields and model scope it actually verified.
+
+### 7.4 Canary evidence and portability
+
+G3b introduces real structural canaries before the complete chain. Cover W/H/D
+orders, missing/mixed units, multi-model rows, scanned bodies with native headers,
+same-page hybrid regions, cross-page legends/footnotes, rotation/crops, capacity
+next to dimensions, distinct top-cover configurations and multiple door angles.
+Each active profile has at least one positive and two negative source-hash
+witnesses; this is a coverage floor, not statistical proof of accuracy.
+
+Expected subject/value/unit/context/anchors and forbidden claims are independently
+checked against original evidence, never generated by the tested extractor.
+G6b adds complete Claim/Receipt canaries. A bounded attestation binds code commit,
+profile/policy hashes, source/derived hashes, expected-fixture hash, results and
+review identity. Sanitized portable fixtures permit CI replay. CI can verify the
+manifest/portable cases, not claim it re-read unmounted PDFs. Missing original
+objects/mount gives NOT_RUN or BLOCKED and cannot overwrite valid prior results
+with empty output. Acquisition validation separately requires original objects.
+
+Additional OCR tools, including Unlimited OCR Works, are optional executors only
+after existing extraction fails the required region. Record license, pinned
+source/model revisions, output contract and measured canaries before adoption.
+Installing new OCR tools is not part of this documentation change.
+
+## 8. Immutable Claim V3
+
+The closed envelope is:
+
+```text
+schemaVersion: 3
+claimId: canonical payload hash excluding claimId
+subject: canonicalProductId, market
+field: canonical path
+value: fixed | range | boolean | not_applicable
+semantics: axis, measurementScope, component inclusions, applicability
+context: EngineeringContext
+sourceRepresentation: ordered_dimensions | named_scalar | named_range |
+                      boolean_statement | not_applicable_statement
+evidence: sourceArtifactSha256, anchors[], relations[]
+applicabilityProof: EXACT_MODEL | FINITE_OFFICIAL_RELATION,
+                    namedModels[], relationshipAssertionIds[]
+semanticPolicySha256, extractionProfileSha256
+derivedFromClaimId: direct source claim ID or null
+```
+
+Fixed has canonical value/unit; range has minimumCanonical, maximumCanonical,
+unit and rangeMeaning; boolean has boolean canonical value/null unit; N/A has
+null value/unit. Unknown produces no value claim and stays in disposition and
+readiness. Reject mixed union keys. Preserve original source labels, units,
+values/statements and declared order. Only ordered dimensions carry axisOrder;
+other kinds prove their labels via the anchored mapping, without fake axes.
+
+Hashes cover subject, semantics, context, source representation, anchors/joins
+and declared semantic/profile hashes. Sort set-valued IDs but retain meaningful
+ordered arrays such as axisOrder and value tuples. Reject duplicate IDs and
+normalize decimal representation before hashing. Reuse the repository's canonical
+serialization contract rather than creating a second hash convention.
+
+V2 wrappers create V3 candidates only without semantic loss. Old objects retain
+schema versions/bytes. Unknown legacy scope/inclusion cannot become proved V3
+context through an alias or wrapper.
+
+## 9. Source bindings and Claim Receipts
+
+The initial adapter allowlist covers manufacturer verification and installation
+field receipts. Replay original case identity, source hash and verified field
+set under their own historical policy/version. `VerifiedSourceBinding` contains
+trusted authority/document role, rights decisions and `verifiedFactBindings`.
+Each fact binding identifies exact product/market, field, typed value, semantic/
+context proof and source-anchor proof.
+The binding producer receives original receipt/case/objects and replays the
+allowlisted verifier; authority and fact bindings are derived outputs. A caller-
+constructed `verified: true` or fact array cannot substitute for that replay.
+
+Direct claim receipts require equality with the verified fact after explicit
+legacy mapping. Same PDF hash or official host is insufficient. Prove the exact
+multi-model row, not merely that the SKU appears somewhere in the manual.
+Legacy W/H/D receipts cannot authorize a new installation field or stronger
+configuration claim; obtain compatible field verification/re-attestation first.
+Document classification needs anchored official title/metadata. Unclassified
+manufacturer material does not gain a stronger tier by parser declaration.
+
+Government/provider/retailer observations remain existing typed candidates/hints
+under V2 policy in the first implementation. A policy unit test may use a clearly
+labelled adapter stub; that is not end-to-end acceptance. Additional production
+adapters need a separately defined field/rights-verification task and authority.
+
+A direct `EvidenceClaimReceipt` binds claim ID/payload, exact fact binding,
+source binding, anchor set, toolchain/policy and rights decisions. A derived
+receipt instead binds its direct source and finite relationship receipts. Replay
+checks exact binding equality, not the presence of digest-looking strings.
+
+Internal validity grants no `public_display`, `quote_excerpt`, `link_documents`
+or image right. Evaluate each existing action-scoped right independently.
+Historical proof can remain valid when present-day use is forbidden.
+
+## 10. Review, persistence and current eligibility
+
+### 10.1 Admission and recoverable event history
+
+`ClaimReviewDecision` has admitted/rejected/quarantined/superseded decisions.
+Admission only permits participation in adjudication; accepted fields are an
+adjudication output. Events bind claim ID, typed reason/scope, policy, actor,
+decidedAt, idempotencyKey and sorted `supersedesDecisionIds`.
+
+Normal decisions replace one head. An explicit reviewed resolution can reference
+all terminal heads of a fork for that claim. Validate same-claim parents,
+existence, unique IDs and an acyclic graph. Multiple heads remain quarantined
+until resolved, without making recovery structurally impossible.
+
+### 10.2 Durable single-writer commit
+
+Use a local single-writer lock/lease and `expectedHeadSha256` compare-and-swap.
+A stale writer receives STALE_HEAD and reloads. Same idempotency key/payload
+returns the original event/time; a conflicting payload under that key fails.
+
+Write and validate temporary immutable events, then atomically rename them.
+Commit the head/batch manifest only after all referenced inputs/events verify.
+Flush event bytes and required parent-directory entries before advancing the
+manifest, then durably flush its commit before acknowledging success. Reuse
+existing persistence helpers after checking these guarantees; do not claim
+power-loss durability on a storage backend that cannot provide them.
+An atomic event write is not an atomic whole-batch commit. Define recovery for:
+
+- crash before event commit: old head remains authoritative;
+- event committed, head not committed: retain the unreferenced object; resume
+  validates job/key/expected parent before attaching it once or retaining it as
+  unreferenced history;
+- head committed: retry returns the same head/result;
+- concurrent/stale lock: do not steal a live writer's lock on elapsed time alone;
+- batch B: merge stable records with committed batch A, never replace cumulative
+  state with only B's successes.
+
+Small operational ledger/head/manifest state stays in the internal workspace
+under existing storage rules; large artifacts stay in the optional object store.
+This adds no runtime database or second publisher. Evidence/operational ledgers
+are not the orchestration progress ledger and must not be deleted with scratch.
+
+### 10.3 Transitive CurrentEligibility
+
+Use fixed explicit asOf and eligibility policy with active review heads, source
+policy, extraction-profile status, source/relationship dependencies and rights.
+Historical replay at a receipt's original verification date is a separate check.
+Revocation invalidates current use of dependent derived claims, accepted views,
+readiness and future release candidates. Preserve all historical objects;
+rebuild in dependency order and reject missing/cyclic dependency graphs.
+
+Readiness can decrease after new conflicts or revocation. Protect history from
+silent loss, not public eligibility from legitimate correction. Disabling a
+parser cannot leave earlier fields eligible solely because their hashes match.
+A deployed static bundle changes through the existing release process; a current
+safety revocation may also disqualify an otherwise replay-valid rollback bundle.
+
+## 11. Complete-source adjudication
+
+Inputs include exact claims/receipts/source bindings, review heads, eligibility,
+semantic policy and a hash-bound candidate inventory declaring required source/
+discovery scope and every typed candidate disposition. Preserve V2 completion or
+prove an adapter; an empty list/first success is not completed research.
+
+Validate input/schema/hash/source-set completion, then receipt integrity/current
+eligibility, then subject/field/context/scope/inclusions/datum, then relevant
+unresolved claims, before source-tier resolution. A definitely wrong-model or
+invalid candidate can be excluded with scoped proof. A valid competing claim
+awaiting review blocks that field; unclear scope blocks possibly affected
+requirements. Unrelated fields remain usable. Transport/parser failures are
+accounted for by completion policy, never silently dropped.
+
+Conflict keys and results are partitioned by product, context and field, not a
+catalogue-wide field name. Accepted results refer to claim IDs, not a second
+unproved value store. Equivalent independent sources corroborate; two extraction
+outputs of one source are not independent evidence.
+The partition is the resolved evaluation context, not merely the claim's raw
+configuration key. An unconditional width and an applicable conditional width
+enter the same field decision for that configuration; differing keys cannot hide
+a real disagreement. Unknown condition applicability remains an explicit gap.
+
+Apply the installation-manual/specification/lower-authority policy only after
+eligibility and semantics, retaining V2 corroboration/anomaly rules. Tier cannot
+repair ambiguous axes. Same-scope official disagreement quarantines unless a
+witnessed supersession or existing approved resolution applies. Package/body/
+cavity/open-door values do not conflict merely because their numbers differ.
+
+## 12. EvidenceSnapshot and profile readiness
+
+An immutable snapshot binds schemaVersion, exact product/market/category/form
+factor/context, requirements with typed values and accepted claim/receipt refs,
+profile plans/readiness/receipt sets, conflicts/gaps, claim/receipt/source-binding
+IDs, adjudicationSha256, eligibilitySha256, semanticPolicySha256,
+requirementPolicySha256, asOf and snapshotSha256.
+
+Snapshot hash covers the whole canonical payload except itself. Each profile's
+receiptSetSha256 covers only its sorted receipt IDs; these different digest
+domains are never compared for equality. Every requirement equals its claim-
+backed value. Changed product/value/context/policy/eligibility/asOf changes the
+snapshot. Output path/report-generation time is metadata; a time affecting
+eligibility is not removed merely for deterministic tests.
+
+Profiles are cavity_placement, operation, services, delivery and full_installation.
+Profile states are UNKNOWN/PARTIAL/FIT_READY/CONFLICT_QUARANTINED, with required and
+alternative fields, conflicts, missing hard fields, site-dependent conditions
+and receipt sets. Product summary states are DIMENSIONS_UNKNOWN,
+DIMENSIONS_READY, INSTALLATION_PARTIAL, FIT_READY and CONFLICT_QUARANTINED.
+Top-level FIT_READY means full-installation evidence for the stated context.
+Delivery does not block cavity-only readiness. Readiness never proves that site
+conditions are satisfied and cannot contain a Fit outcome.
+The snapshot factory resolves actual adjudicated Claims/receipts and current
+eligibility, derives requirements, computes readiness from those requirements,
+then seals the snapshot. Neither values nor readiness arrive as independent
+caller authority. There is no circular snapshot/readiness construction.
+
+## 13. Fit V4 and independent comparison
+
+### 13.1 Validated loader, pure calculation
+
+The loader verifies snapshot schema, canonical payload hash, policy compatibility
+and expected product/snapshot binding from the active release. Use Node/Web
+Crypto adapters with existing canonical serialization; no new SHA algorithm.
+The pure entrypoint is `evaluateFitV4({ evidenceSnapshot, siteProfile,
+evaluationProfile })`. It derives requirements only from that validated snapshot.
+No separately supplied numbers or caller-declared equal receipt hashes can
+approve requirements. Reject altered payload, wrong subject/context or unsupported
+schema before a physical verdict. Invalid evidence yields typed unavailable/
+insufficient data, not a positive Fit or a physical NO_FIT from untrusted numbers.
+
+Bind displayed results to snapshot hash, profile, rule version and canonical
+site-input hash. Input changes or delayed responses invalidate previous results.
+Use documented minimum site measurements and explicit uncertainty.
+For a bounded required-space interval R and available-space interval A in the
+same datum/configuration: R.max <= A.min proves PASS; R.min > A.max proves FAIL;
+overlap is UNKNOWN. Derive the available interval from the minimum of the relevant
+site measurements and their declared uncertainty, not a generic penalty. Missing
+uncertainty is not silently zero. A selected achievable adjustment is resolved
+under section 6.4 before these checks. Preserve legacy results in the oracle and
+record any resulting V4 differences explicitly.
+
+### 13.2 Physical outcomes and range policy
+
+For valid input: applicable hard FAIL -> NO_FIT; unknown hard placement ->
+INSUFFICIENT_DATA; operation/service uncertainty -> existing check-class
+CONDITIONAL_FIT; explicit estimates -> LIKELY_FIT_ESTIMATED; all applicable checks
+passed with ready exact evidence and adequate inputs -> VERIFIED_FIT.
+
+Known lower bounds precede completeness checks but must themselves be proved and
+context-compatible. Section 6 range rules apply. Do not broaden professional,
+electrical or plumbing promises beyond approved product policies; unsupported
+requirements stay conditional/insufficient by established check class.
+
+SearchCore separates sizeMatch and fitDecisionV4, retains useful insufficient-
+evidence manufacturer-mode results, and strips Fit/readiness from replacement.
+
+### 13.3 Safe convergence and flags
+
+Use one pure V4 implementation for Node/browser as a separate initial browser
+asset. Preserve the old FitEngine asset/export until consumer cutover. Calculation
+and drawer flags are independent.
+
+Before sharing old evaluator code, freeze an independent legacy oracle at its
+code hash and preserve reviewed inputs/outputs. Comparing a V3 adapter to V4
+when both call V4 proves adapter parity only. Every intentional difference has
+a reviewed witness/reason; expected results are never regenerated by V4.
+
+## 14. Existing publication and client compatibility
+
+The overlay consumes accepted snapshot fields plus explicit lifecycle lists.
+It emits current-retail and historical-dimension lanes without changing membership.
+Historical/reference rows donate no current CTA, price, availability, readiness
+or Fit outcome. Existing visibility rules remain authoritative.
+
+Check each current action-scoped right. Blocked display rights exclude fields
+and block inconsistent candidates; excerpt, link and image actions are separate.
+Static output never carries verifiedFitEligible, successfulFitOutcome, persisted
+fitDecision or verified_fit promotion. Legacy values remain readable for audit.
+
+Extend the existing candidate/descriptor with versioned bindings for overlay,
+product snapshots, evidence index, engine/schema compatibility and public asset
+bundle; retain legacy replay. Promotion selects a complete validated bundle,
+not files discovered by existence. Candidate creation is not promotion authority.
+
+Test old client/new data, new client/old data, delayed mixed responses, stale
+cache, missing index and compatible rollback. Unknown schema/digest/product
+mismatch cannot fall back to a stale Verified Fit badge. A safety-revoked prior
+bundle cannot be promoted just because historical replay works; select a safe
+compatible bundle or disable affected Fit through the existing release controls.
+
+The drawer follows calculation integration, with honest readiness and current-
+session Fit copy. Render only rights-approved source/locator/receipt details and
+content-addressed images; bind page/crop hash and bbox, escape text, validate URLs
+and never expose local object-store paths.
+
+## 15. Persistence and deterministic replay
+
+Versioned policy, generated views and bounded audit manifests follow the existing
+layout under `data/architecture-v3/`. Every view declares exact input identities/
+hashes. No optional-file discovery affects a release. Sort sets, preserve ordered
+tuples, validate a temporary complete output, then atomically replace its manifest.
+Batch/resume uses persisted input/job/parent identity, not in-memory recollection.
+
+Fixed-input projection replay is semantic-deterministic; old immutable receipts
+also replay byte-for-byte under their own versions. A new OCR/retrieval/review is
+a new observation and may differ. Acquisition and projection replay are different
+commands. Disposable query indexes are outside this programme's implementation.
+
+## 16. Delivery dependencies
+
+| Gates | Independent deliverable | Requires |
+| --- | --- | --- |
+| G0a | Active baseline/migration inventory | Current main and revised plan |
+| G0b | Default CI coverage | G0a |
+| G1a | Strict semantic compiler/shared canonical codec | G0b |
+| G1b | Lossless legacy adapters | G1a |
+| G2a | Brand registry | G0b |
+| G2b | Research-only family registry | G2a, G1a |
+| G3a | Multi-anchor lineage | G1a |
+| G3b | Regional router and early canaries | G3a, G2a |
+| G4a | Exact-product Claim | G1b, G3a |
+| G4b | Replayed direct source/fact receipts | G4a, G3b |
+| G5a | Durable review/current eligibility | G4b |
+| G5b | Complete-source adjudication | G5a, G1a |
+| G6a | Bound snapshot/readiness | G5b |
+| G6b | Direct vertical canary | G6a, G3b |
+| G7 | Verified relationship receipt and single-hop derivation | G2b, G6b |
+| G8a | Shared Fit V4 and snapshot loader | G6b |
+| G8b | Independent legacy shadow | G8a |
+| G9a | Whole-chain shadow | G7, G8b |
+| G9b | Publication overlay | G9a |
+| G10a | Existing release integration | G9b |
+| G10b | Compatibility and rollback drill | G10a |
+| G11a | Flagged SearchCore calculation | G10b |
+| G11b | Evidence drawer | G11a |
+
+The plan contains exact files/interfaces/tests for each small task; downstream
+work consumes reviewed commits and bound outputs. A gate cannot require a future
+module to pass. Label unit stubs separately from real adapter/canary completion.
+
+## 17. Required adversarial scenarios
+
+| Scenario | Expected observable result |
+| --- | --- |
+| Null/false/string/negative clearance | Rejected before conversion; proved permitted zero works |
+| Unknown handle inclusion | Preserved through wrapper, Claim and Fit |
+| Missing axis legend or mixed units | Typed unresolved candidate, no guessed mapping |
+| Separate top-cover configurations | No synthetic continuous range or mixed-config Fit |
+| Unconditional and conditional conflicting values | Adjudicated together wherever applicability overlaps |
+| Adjustment 820–850, available 830, unselected setting | Placement UNKNOWN, not max-only NO_FIT |
+| Required 608, available 607–611 | Placement UNKNOWN, not optimistic PASS or conservative-only FAIL |
+| Door depth 90 vs 135 degrees | Distinct context and selection |
+| Native header over scanned drawing | Image extraction for relevant region |
+| Cross-page row/legend/footnote | Witnessed joins or explicit unresolved evidence |
+| Same PDF, different SKU/unverified field | No direct Claim Receipt |
+| Admitted 598 and unresolved competing 600 | Relevant field quarantined |
+| Unfinished required source set | No acceptance from first successful source |
+| Repeat batch/retry | Prior history retained, no duplicate committed event |
+| Crash at event/head boundaries | Old coherent head or once-only recovered new head |
+| Concurrent writer and review fork | Stale CAS rejected; all-head resolution possible |
+| Upstream parser/claim/relationship/rights revocation | Current dependencies invalidated; history replays |
+| Old schema/range migration | No in-place edits; legacy oracle independently retained |
+| Changed requirement with old digest | Loader rejects before Fit display |
+| Profile subset vs full snapshot | Different hash domains handled correctly |
+| Changed input/delayed result | Old evaluation suppressed |
+| Archived/reference target | Authorized historical lane only, no current donation |
+| Missing external evidence store | Normal build passes; canary not run; prior result retained |
+| New source bytes/tool revision | New object, dependent attestation revalidated |
+| Shared implementation used as oracle | Classified as parity only, not independent comparison |
+| Mixed-client and rollback | Compatible complete bundle or fail-closed Fit surface |
+
+Implementer tests cover producer, consumer, replay and repeated operation as
+applicable. Publication gates inspect actual bound final artifacts. An initial
+ERR_MODULE_NOT_FOUND is not proof that the dangerous counterexample was tested;
+red/green evidence must demonstrate the intended assertion after imports resolve.
+
+## 18. Completion and escalation
+
+Each gate records code commit, tests, artifact hashes, canary/review evidence,
+unresolved dispositions and the main agent's decision. Programme completion
+requires the intended release's authorization, compatibility and rollback gates.
+Coverage and truth have separate denominators; zero false positives in tested
+fixtures does not mean all catalogue models have complete evidence.
+
+Pause the dependent task for a first-principles decision when the evidence cannot
+establish required meaning, product promises/rights/source scope need new
+authority, or migration would damage user-owned state. Preserve candidates and
+continue independent authorized work. Routine implementation choices and settled
+constraints do not require repeated owner confirmation. Do not label structural
+failures minor merely to continue.
