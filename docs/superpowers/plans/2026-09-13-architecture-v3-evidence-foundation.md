@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 2 Plan
 
-> Status: PLAN ONLY — no V3 implementation has started.
+> Status: EXECUTION STARTED — G0a complete; G0b is next. No V3 production behavior is enabled.
 >
 > Design authority: Revision 2 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -164,9 +164,9 @@ NOT_STARTED -> READY -> RUNNING -> REVIEW_REQUIRED -> COMPLETE
 
 The main agent updates this table after each review. `.superpowers/sdd/` notes/reports are local auxiliary material only and cannot be the sole resume memory.
 
-| Task ID | Deliverable | Required predecessors | Initial status | Acceptance HEAD | Report path | Blocker/note | Next task |
+| Task ID | Deliverable | Required predecessors | Status | Acceptance HEAD | Report path | Blocker/note | Next task |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| G0a | Baseline + dirty migration inventory | — | NOT_STARTED | — | — | — | — |
+| G0a | Baseline + dirty migration inventory | — | COMPLETE | `ae7ac7d7d` | [G0a report](../../architecture-v3/execution/G0a-baseline-migration-inventory.md) | 13 tests passed; main rechecked 3 formerly failing witnesses and documentation audit. 176 recovery rows preserved; 2 stale migration inputs remain explicitly unaccepted. | G0b |
 | G0b | CI/default test wiring | G0a | NOT_STARTED | — | — | — | — |
 | G1a | Semantics + EngineeringContext compiler | G0b | NOT_STARTED | — | — | — | — |
 | G1b | Lossless legacy adapters | G1a | NOT_STARTED | — | — | — | — |
@@ -242,7 +242,7 @@ A single `<!-- doc-audit: ignore -->` line immediately before a planned nonexist
 
 ## G0a — baseline and dirty migration inventory
 
-**Status:** NOT_STARTED · **Depends on:** none · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE · **Depends on:** none · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Bind active release, runtime, default legacy audit, manifest, code, policy inputs, and dirty migration input as separate hash-bound records without changing data or runtime.
 
@@ -281,6 +281,8 @@ node --test tests/architecture-v3/baseline-contract.test.mjs
 ```
 
 **Accept.** Report distinguishes all artifact owners/denominators, preserves dirty work, and makes only G0b eligible.
+
+**Main review (2026-09-13).** Code acceptance is `ae7ac7d7d`; the report binds the reviewed implementation/test bytes, input hashes, and pre-commit execution identity. Source semantics now reuse the existing V2 validators. Live identity-migration input is correctly matched; candidate shadow and official-market migration inputs genuinely differ and are preserved as migration-only gaps. Former false-stale, whitespace-path and literal-pathspec failures now pass independent targeted checks. The public projection, active descriptor, policies and original recovery state were not changed. This gate does not attest PDF/source completeness or authorize release. The implementation branch is stacked on docs-only PR 201, not merged into production.
 
 ## G0b — CI and default-test wiring
 

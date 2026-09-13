@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation Design
 
-- **Status:** REVISED DESIGN — IMPLEMENTATION NOT STARTED
+- **Status:** REVISED DESIGN — implementation status is tracked only in the linked plan
 - **Revision:** 2, 2026-09-13, incorporating the independent contract audit
 - **Owner:** FitAppliance
 - **Product contract:** [Product Core Brief](../../product-core-brief.md)
