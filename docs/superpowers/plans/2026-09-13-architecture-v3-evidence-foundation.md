@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 2 Plan
 
-> Status: EXECUTION STARTED — G0a complete; G0b is next. No V3 production behavior is enabled.
+> Status: EXECUTION STARTED — G0a complete; G0b awaits remote CI acceptance. G1a is held for the codec compatibility decision below. No V3 production behavior is enabled.
 >
 > Design authority: Revision 2 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -167,10 +167,10 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | Task ID | Deliverable | Required predecessors | Status | Acceptance HEAD | Report path | Blocker/note | Next task |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | G0a | Baseline + dirty migration inventory | — | COMPLETE | `ae7ac7d7d` | [G0a report](../../architecture-v3/execution/G0a-baseline-migration-inventory.md) | 13 tests passed; main rechecked 3 formerly failing witnesses and documentation audit. 176 recovery rows preserved; 2 stale migration inputs remain explicitly unaccepted. | G0b |
-| G0b | CI/default test wiring | G0a | NOT_STARTED | — | — | — | — |
-| G1a | Semantics + EngineeringContext compiler | G0b | NOT_STARTED | — | — | — | — |
+| G0b | CI/default test wiring | G0a | REVIEW_REQUIRED | — | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Reviewed code `a6f9e0eca`; local 2,982 tests passed. Await Node 20 PR CI; existing workflow remains unchanged. | Resolve G1a codec decision |
+| G1a | Semantics + EngineeringContext compiler | G0b | BLOCKED | — | — | Preflight found legacy canonicalization information loss; compatibility decision pending, no implementation. See execution note below. | Owner decision, then revised packet |
 | G1b | Lossless legacy adapters | G1a | NOT_STARTED | — | — | — | — |
-| G2a | AU BrandRegistry | G0b | NOT_STARTED | — | — | — | — |
+| G2a | AU BrandRegistry | G0b | NOT_STARTED | — | — | No implementation. Select the registry digest's codec/version explicitly before persisting new V3 identities; see pending decision below. | — |
 | G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
 | G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
 | G3b | Region router + canary attestation | G3a, G2a | NOT_STARTED | — | — | — | — |
@@ -193,6 +193,33 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 Each task package names its actual base/inputs/hashes, exact write whitelist, read-first files, test/witness expectation, stop condition, and report path. It specifies one `gpt-5.6-terra` executor with `reasoning_effort=max`, no subdelegation, no automatic next task, and no automatic release action.
 
 Any statement below that a task becomes eligible is conditional on every predecessor in this table being reviewed COMPLETE. One predecessor passing never makes the other dependencies optional.
+
+### Execution preflight decision — 2026-09-14, pending user answer
+
+The private `canonicalJson` in `src/domain/historical-evidence-recovery-contract.mjs`
+assigns sorted keys onto `{}` and uses `Array.map`. Read-only reproduction found:
+
+- `{a:1}` and `JSON.parse('{"__proto__":{"x":2},"a":1}')` receive the same digest because an own `__proto__` entry is lost during normalization.
+- `[null]` and a sparse `Array(1)` receive the same digest because a hole is normalized to `null`.
+
+This is input-information loss before hashing, not a SHA-256 collision. A bounded
+scan of checked-in V2 JSON found no own `__proto__` key text; external historical
+objects have not been exhaustively audited. No old code, hash, receipt or data
+was changed. The G1a instruction to extract this function as a strict shared
+codec unchanged must therefore not be executed literally without resolution.
+
+**Proposed, not approved:** preserve original legacy replay and bytes; use an
+explicitly versioned, corrected strict JSON codec for new V3 identities. Define
+the compatibility discriminator and golden tests before any new identity is
+persisted. Do not silently rehash historical receipts, label old/new encoders
+identical for all inputs, or copy the defect into a new authority module.
+
+The user has been asked to confirm that compatibility approach. G0b is independent
+and continues through CI. G1a dispatch and G2a's first persisted registry digest
+remain held for this choice, not for permission to merge the plan PR. The main
+agent must update the affected plan/spec contract and dependency ownership after
+the answer, then issue a fresh hash-bound packet. Other evidence collection,
+production releases and Fit promotion remain outside this execution slice.
 
 ## 4. Mapping from the replaced 15-task plan
 
@@ -286,7 +313,7 @@ node --test tests/architecture-v3/baseline-contract.test.mjs
 
 ## G0b — CI and default-test wiring
 
-**Status:** NOT_STARTED · **Depends on:** G0a · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED · **Depends on:** G0a · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Ensure future V3 tests and per-file syntax checks are mandatory in default local/Node-20 CI execution without adding business behavior.
 
@@ -326,7 +353,7 @@ npm test
 
 ## G1a — semantics compiler and EngineeringContext validation
 
-**Status:** NOT_STARTED · **Depends on:** G0b · **Worker:** `gpt-5.6-terra` / max
+**Status:** BLOCKED (preflight codec compatibility decision; no implementation) · **Depends on:** G0b · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Compile V2 field/rights/applicability policy plus narrow versioned overlay into closed V3 semantics; validate numeric values, inclusions, ranges, and finite contexts.
 
