@@ -1,0 +1,1762 @@
+{
+  "schemaVersion": 1,
+  "inputVersion": "fitappliance-brand-registry-input-v1",
+  "canonicalizationVersion": "fit-evidence-json-v3-1",
+  "market": "AU",
+  "sourceInputs": [
+    {
+      "path": "data/architecture-v2/generated/canonical-registry.json",
+      "rawSha256": "2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f",
+      "role": "observed_raw_brand_spellings"
+    },
+    {
+      "path": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "rawSha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "role": "official_host_policy_references"
+    },
+    {
+      "path": "data/brand-canon.json",
+      "rawSha256": "fc78352526e25ed6288b6f6f157f1598e1e2c24759b680e75154f33a776ce5b6",
+      "role": "case_only_display_spelling_selection"
+    }
+  ],
+  "brands": [
+    {
+      "stableBrandKey": "legacy-display:3j",
+      "displayName": "3J",
+      "observedSpellings": [
+        "3J"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:aeg",
+      "displayName": "AEG",
+      "observedSpellings": [
+        "AEG"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:airflo",
+      "displayName": "Airflo",
+      "observedSpellings": [
+        "Airflo"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:akai",
+      "displayName": "AKAI",
+      "observedSpellings": [
+        "AKAI"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:altus",
+      "displayName": "Altus",
+      "observedSpellings": [
+        "Altus"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:anko",
+      "displayName": "Anko",
+      "observedSpellings": [
+        "Anko"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:ariston",
+      "displayName": "ARISTON",
+      "observedSpellings": [
+        "ARISTON"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:artic",
+      "displayName": "ARTIC",
+      "observedSpellings": [
+        "ARTIC"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:artusi",
+      "displayName": "Artusi",
+      "observedSpellings": [
+        "Artusi"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:asko",
+      "displayName": "ASKO",
+      "observedSpellings": [
+        "ASKO"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:astivita",
+      "displayName": "Astivita",
+      "observedSpellings": [
+        "Astivita"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:aucma",
+      "displayName": "AUCMA",
+      "observedSpellings": [
+        "AUCMA"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:award",
+      "displayName": "AWARD",
+      "observedSpellings": [
+        "AWARD"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:baumatic",
+      "displayName": "Baumatic",
+      "observedSpellings": [
+        "Baumatic"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:beko",
+      "displayName": "BEKO",
+      "observedSpellings": [
+        "BEKO",
+        "Beko"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:belling",
+      "displayName": "Belling",
+      "observedSpellings": [
+        "Belling"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:bellini",
+      "displayName": "Bellini",
+      "observedSpellings": [
+        "Bellini"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:bellissimo",
+      "displayName": "Bellissimo",
+      "observedSpellings": [
+        "Bellissimo"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:bertazzoni",
+      "displayName": "Bertazzoni",
+      "observedSpellings": [
+        "Bertazzoni"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:blanco",
+      "displayName": "BLANCO",
+      "observedSpellings": [
+        "BLANCO"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:blaupunkt",
+      "displayName": "Blaupunkt",
+      "observedSpellings": [
+        "Blaupunkt"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:bosch",
+      "displayName": "Bosch",
+      "observedSpellings": [
+        "Bosch"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:brabantia",
+      "displayName": "Brabantia",
+      "observedSpellings": [
+        "Brabantia"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:bromic",
+      "displayName": "BROMIC",
+      "observedSpellings": [
+        "BROMIC"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:camec",
+      "displayName": "CAMEC",
+      "observedSpellings": [
+        "CAMEC"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:carson",
+      "displayName": "carson",
+      "observedSpellings": [
+        "carson"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:casa",
+      "displayName": "CASA",
+      "observedSpellings": [
+        "CASA"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:chiq",
+      "displayName": "CHIQ",
+      "observedSpellings": [
+        "CHIQ",
+        "CHiQ"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:coldstream",
+      "displayName": "Coldstream",
+      "observedSpellings": [
+        "Coldstream"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:comfee",
+      "displayName": "Comfee",
+      "observedSpellings": [
+        "Comfee"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:crossray infrared bbq",
+      "displayName": "Crossray Infrared BBQ",
+      "observedSpellings": [
+        "Crossray Infrared BBQ"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:de dietrich",
+      "displayName": "De Dietrich",
+      "observedSpellings": [
+        "De Dietrich"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:devanti",
+      "displayName": "Devanti",
+      "observedSpellings": [
+        "Devanti"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:de’longhi",
+      "displayName": "De’Longhi",
+      "observedSpellings": [
+        "De’Longhi"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:di lusso",
+      "displayName": "Di Lusso",
+      "observedSpellings": [
+        "Di Lusso"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:domain",
+      "displayName": "Domain",
+      "observedSpellings": [
+        "Domain"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:dometic",
+      "displayName": "Dometic",
+      "observedSpellings": [
+        "Dometic"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:duos",
+      "displayName": "Duos",
+      "observedSpellings": [
+        "Duos"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:electrolux",
+      "displayName": "Electrolux",
+      "observedSpellings": [
+        "Electrolux"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:emilia",
+      "displayName": "Emilia",
+      "observedSpellings": [
+        "Emilia"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:esatto",
+      "displayName": "Esatto",
+      "observedSpellings": [
+        "Esatto"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:euro",
+      "displayName": "EURO",
+      "observedSpellings": [
+        "EURO"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:euroclean",
+      "displayName": "Euroclean",
+      "observedSpellings": [
+        "Euroclean"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:euromaid",
+      "displayName": "Euromaid",
+      "observedSpellings": [
+        "Euromaid"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:euromatic",
+      "displayName": "EUROMATIC",
+      "observedSpellings": [
+        "EUROMATIC"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:eurotech",
+      "displayName": "Eurotech",
+      "observedSpellings": [
+        "Eurotech"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:everdure",
+      "displayName": "Everdure",
+      "observedSpellings": [
+        "Everdure"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:evoke",
+      "displayName": "EVOKE",
+      "observedSpellings": [
+        "EVOKE"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:fhiaba",
+      "displayName": "Fhiaba",
+      "observedSpellings": [
+        "Fhiaba"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:fisher & paykel",
+      "displayName": "Fisher & Paykel",
+      "observedSpellings": [
+        "Fisher & Paykel"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:fotile",
+      "displayName": "FOTILE",
+      "observedSpellings": [
+        "FOTILE"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:franke",
+      "displayName": "Franke",
+      "observedSpellings": [
+        "Franke"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:fujiyama",
+      "displayName": "FUJIYAMA",
+      "observedSpellings": [
+        "FUJIYAMA"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:fulgor",
+      "displayName": "Fulgor",
+      "observedSpellings": [
+        "Fulgor"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:furon",
+      "displayName": "FURON",
+      "observedSpellings": [
+        "FURON"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:galanz",
+      "displayName": "Galanz",
+      "observedSpellings": [
+        "Galanz"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:gasmate",
+      "displayName": "Gasmate",
+      "observedSpellings": [
+        "Gasmate"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:germanica",
+      "displayName": "Germanica",
+      "observedSpellings": [
+        "Germanica"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:glen dimplex",
+      "displayName": "Glen Dimplex",
+      "observedSpellings": [
+        "Glen Dimplex"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:gram",
+      "displayName": "GRAM",
+      "observedSpellings": [
+        "GRAM"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:hafele",
+      "displayName": "Hafele",
+      "observedSpellings": [
+        "Hafele"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:haier",
+      "displayName": "Haier",
+      "observedSpellings": [
+        "Haier"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:harbour",
+      "displayName": "Harbour",
+      "observedSpellings": [
+        "Harbour"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:heller",
+      "displayName": "HELLER",
+      "observedSpellings": [
+        "HELLER"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:hisense",
+      "displayName": "Hisense",
+      "observedSpellings": [
+        "Hisense"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:hitachi",
+      "displayName": "Hitachi",
+      "observedSpellings": [
+        "Hitachi"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:home appliances",
+      "displayName": "Home Appliances",
+      "observedSpellings": [
+        "Home Appliances"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:hoover",
+      "displayName": "HOOVER",
+      "observedSpellings": [
+        "HOOVER"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:husky",
+      "displayName": "Husky",
+      "observedSpellings": [
+        "Husky"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:iceland",
+      "displayName": "ICELAND",
+      "observedSpellings": [
+        "ICELAND"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:ikea",
+      "displayName": "Ikea",
+      "observedSpellings": [
+        "Ikea"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:ilve",
+      "displayName": "Ilve",
+      "observedSpellings": [
+        "ILVE",
+        "Ilve"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:imprasio",
+      "displayName": "Imprasio",
+      "observedSpellings": [
+        "Imprasio"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:inalto",
+      "displayName": "Inalto",
+      "observedSpellings": [
+        "Inalto"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:kelvinator",
+      "displayName": "KELVINATOR",
+      "observedSpellings": [
+        "KELVINATOR"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:kingsbottle",
+      "displayName": "KingsBottle",
+      "observedSpellings": [
+        "KingsBottle"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:kleenmaid",
+      "displayName": "KLEENMAID",
+      "observedSpellings": [
+        "KLEENMAID"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:kogan",
+      "displayName": "Kogan",
+      "observedSpellings": [
+        "Kogan"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:konka",
+      "displayName": "KONKA",
+      "observedSpellings": [
+        "KONKA"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:lg",
+      "displayName": "LG",
+      "observedSpellings": [
+        "LG"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:licensing essentials",
+      "displayName": "LICENSING ESSENTIALS",
+      "observedSpellings": [
+        "LICENSING ESSENTIALS"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:liebherr",
+      "displayName": "Liebherr",
+      "observedSpellings": [
+        "Liebherr"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:linarie",
+      "displayName": "Linarie",
+      "observedSpellings": [
+        "Linarie"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:living & co",
+      "displayName": "Living & Co",
+      "observedSpellings": [
+        "Living & Co"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:majestic",
+      "displayName": "majestic",
+      "observedSpellings": [
+        "majestic"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:makita",
+      "displayName": "Makita",
+      "observedSpellings": [
+        "Makita"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:malber",
+      "displayName": "MALBER",
+      "observedSpellings": [
+        "MALBER"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:master kitchen",
+      "displayName": "Master Kitchen",
+      "observedSpellings": [
+        "Master Kitchen"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:meisda",
+      "displayName": "meisda",
+      "observedSpellings": [
+        "meisda"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:midea",
+      "displayName": "Midea",
+      "observedSpellings": [
+        "Midea"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:miele",
+      "displayName": "Miele",
+      "observedSpellings": [
+        "Miele"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:milano",
+      "displayName": "Milano",
+      "observedSpellings": [
+        "Milano"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:mistral",
+      "displayName": "Mistral",
+      "observedSpellings": [
+        "Mistral"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:mitsubishi",
+      "displayName": "Mitsubishi",
+      "observedSpellings": [
+        "Mitsubishi"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:mitsubishi electric",
+      "displayName": "MITSUBISHI ELECTRIC",
+      "observedSpellings": [
+        "MITSUBISHI ELECTRIC",
+        "Mitsubishi Electric"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:moborv",
+      "displayName": "MOBORV",
+      "observedSpellings": [
+        "MOBORV"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:modello",
+      "displayName": "modello",
+      "observedSpellings": [
+        "modello"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:mykin",
+      "displayName": "Mykin",
+      "observedSpellings": [
+        "Mykin"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:nakita",
+      "displayName": "NAKITA",
+      "observedSpellings": [
+        "NAKITA"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:nce",
+      "displayName": "NCE",
+      "observedSpellings": [
+        "NCE"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:nero",
+      "displayName": "Nero",
+      "observedSpellings": [
+        "Nero"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:nisbets essentials",
+      "displayName": "Nisbets Essentials",
+      "observedSpellings": [
+        "Nisbets Essentials"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:norj",
+      "displayName": "Norj",
+      "observedSpellings": [
+        "Norj"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:novello",
+      "displayName": "Novello",
+      "observedSpellings": [
+        "Novello"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:nulon",
+      "displayName": "Nulon",
+      "observedSpellings": [
+        "Nulon"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:omega",
+      "displayName": "Omega",
+      "observedSpellings": [
+        "Omega"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:panasonic",
+      "displayName": "Panasonic",
+      "observedSpellings": [
+        "Panasonic"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:parmco",
+      "displayName": "PARMCO",
+      "observedSpellings": [
+        "PARMCO"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:platinum",
+      "displayName": "Platinum",
+      "observedSpellings": [
+        "Platinum"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:polar refrigeration",
+      "displayName": "Polar Refrigeration",
+      "observedSpellings": [
+        "Polar Refrigeration"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:polo",
+      "displayName": "POLO",
+      "observedSpellings": [
+        "POLO"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:prinetti",
+      "displayName": "Prinetti",
+      "observedSpellings": [
+        "Prinetti"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:pulmuone",
+      "displayName": "Pulmuone",
+      "observedSpellings": [
+        "Pulmuone"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:robinhood",
+      "displayName": "Robinhood",
+      "observedSpellings": [
+        "Robinhood"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:ryobi",
+      "displayName": "RYOBI",
+      "observedSpellings": [
+        "RYOBI"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:samsung",
+      "displayName": "Samsung",
+      "observedSpellings": [
+        "Samsung"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:samsung electronics",
+      "displayName": "SAMSUNG ELECTRONICS",
+      "observedSpellings": [
+        "SAMSUNG ELECTRONICS"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:schmick",
+      "displayName": "Schmick",
+      "observedSpellings": [
+        "Schmick"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:seiki",
+      "displayName": "SEIKI",
+      "observedSpellings": [
+        "SEIKI"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:sharp",
+      "displayName": "SHARP",
+      "observedSpellings": [
+        "SHARP"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:sheffield",
+      "displayName": "Sheffield",
+      "observedSpellings": [
+        "Sheffield"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:shome i seiki",
+      "displayName": "SHOME I SEIKI",
+      "observedSpellings": [
+        "SHOME I SEIKI"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:simmons",
+      "displayName": "Simmons",
+      "observedSpellings": [
+        "Simmons"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:smeg",
+      "displayName": "Smeg",
+      "observedSpellings": [
+        "Smeg"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:solt",
+      "displayName": "Solt",
+      "observedSpellings": [
+        "Solt"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:stirling",
+      "displayName": "Stirling",
+      "observedSpellings": [
+        "Stirling"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:sub-zero",
+      "displayName": "Sub-Zero",
+      "observedSpellings": [
+        "Sub-Zero"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:supreme",
+      "displayName": "Supreme",
+      "observedSpellings": [
+        "Supreme"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:swift",
+      "displayName": "Swift",
+      "observedSpellings": [
+        "Swift"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:tcl",
+      "displayName": "TCL",
+      "observedSpellings": [
+        "TCL"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:technika",
+      "displayName": "Technika",
+      "observedSpellings": [
+        "Technika"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:teco",
+      "displayName": "TECO",
+      "observedSpellings": [
+        "TECO"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:teka",
+      "displayName": "Teka",
+      "observedSpellings": [
+        "Teka"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:telefunken",
+      "displayName": "TELEFUNKEN",
+      "observedSpellings": [
+        "TELEFUNKEN"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:thermaster",
+      "displayName": "Thermaster",
+      "observedSpellings": [
+        "Thermaster"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:tisira",
+      "displayName": "Tisira",
+      "observedSpellings": [
+        "Tisira"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:toshiba",
+      "displayName": "Toshiba",
+      "observedSpellings": [
+        "Toshiba"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:trade tested",
+      "displayName": "Trade Tested",
+      "observedSpellings": [
+        "Trade Tested"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:trieste",
+      "displayName": "TRIESTE",
+      "observedSpellings": [
+        "TRIESTE"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:tuscany",
+      "displayName": "Tuscany",
+      "observedSpellings": [
+        "Tuscany"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:v-zug",
+      "displayName": "V-ZUG",
+      "observedSpellings": [
+        "V-ZUG"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:veneto",
+      "displayName": "Veneto",
+      "observedSpellings": [
+        "Veneto"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:venini",
+      "displayName": "Venini",
+      "observedSpellings": [
+        "Venini"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:vinopro",
+      "displayName": "Vinopro",
+      "observedSpellings": [
+        "Vinopro"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:vision",
+      "displayName": "Vision",
+      "observedSpellings": [
+        "Vision"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:vogue",
+      "displayName": "VOGUE",
+      "observedSpellings": [
+        "VOGUE"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:warrior refrigeration",
+      "displayName": "Warrior Refrigeration",
+      "observedSpellings": [
+        "Warrior Refrigeration"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:westinghouse",
+      "displayName": "Westinghouse",
+      "observedSpellings": [
+        "Westinghouse"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:whirlpool",
+      "displayName": "WHIRLPOOL",
+      "observedSpellings": [
+        "WHIRLPOOL",
+        "Whirlpool"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:winterwulf",
+      "displayName": "WINTERWULF",
+      "observedSpellings": [
+        "WINTERWULF"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:yokohama",
+      "displayName": "yokohama",
+      "observedSpellings": [
+        "yokohama"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    },
+    {
+      "stableBrandKey": "legacy-display:zzz",
+      "displayName": "zzz",
+      "observedSpellings": [
+        "zzz"
+      ],
+      "aliases": [],
+      "researchAliases": [],
+      "parentGroup": null
+    }
+  ],
+  "officialHostPolicyRefs": [
+    {
+      "brandStableKey": "legacy-display:artusi",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/artusi"
+    },
+    {
+      "brandStableKey": "legacy-display:asko",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/asko"
+    },
+    {
+      "brandStableKey": "legacy-display:beko",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/beko"
+    },
+    {
+      "brandStableKey": "legacy-display:bosch",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/bosch"
+    },
+    {
+      "brandStableKey": "legacy-display:chiq",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/chiq"
+    },
+    {
+      "brandStableKey": "legacy-display:electrolux",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/electrolux"
+    },
+    {
+      "brandStableKey": "legacy-display:esatto",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/esatto"
+    },
+    {
+      "brandStableKey": "legacy-display:euromaid",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/euromaid"
+    },
+    {
+      "brandStableKey": "legacy-display:fisher & paykel",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/fisherpaykel"
+    },
+    {
+      "brandStableKey": "legacy-display:haier",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/haier"
+    },
+    {
+      "brandStableKey": "legacy-display:hisense",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/hisense"
+    },
+    {
+      "brandStableKey": "legacy-display:inalto",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/inalto"
+    },
+    {
+      "brandStableKey": "legacy-display:kelvinator",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/kelvinator"
+    },
+    {
+      "brandStableKey": "legacy-display:kogan",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/kogan"
+    },
+    {
+      "brandStableKey": "legacy-display:lg",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/lg"
+    },
+    {
+      "brandStableKey": "legacy-display:liebherr",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/liebherr"
+    },
+    {
+      "brandStableKey": "legacy-display:midea",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/midea"
+    },
+    {
+      "brandStableKey": "legacy-display:miele",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/miele"
+    },
+    {
+      "brandStableKey": "legacy-display:omega",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/omega"
+    },
+    {
+      "brandStableKey": "legacy-display:robinhood",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/robinhood"
+    },
+    {
+      "brandStableKey": "legacy-display:samsung",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/samsung"
+    },
+    {
+      "brandStableKey": "legacy-display:smeg",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/smeg"
+    },
+    {
+      "brandStableKey": "legacy-display:sub-zero",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/subzero"
+    },
+    {
+      "brandStableKey": "legacy-display:teco",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/teco"
+    },
+    {
+      "brandStableKey": "legacy-display:vogue",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/vogue"
+    },
+    {
+      "brandStableKey": "legacy-display:westinghouse",
+      "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "policySchemaVersion": 1,
+      "policyVersion": "2026-07-21.1",
+      "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+      "brandPointer": "/brands/westinghouse"
+    }
+  ]
+}
