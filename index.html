@@ -1393,6 +1393,7 @@ function lifetimeCost(price, kwh_year, years=10) { return price + kwh_year * TAR
    STATE
 ══════════════════════════════════════════════════════════ */
 let currentCat = 'fridge';
+let categoryIntent = 0;
 let filteredResults = [];
 let currentMatchRows = [];
 let activeFacetState = {
@@ -1424,6 +1425,7 @@ let PRODUCTS = [];
 let APPLIANCES_META = null;
 let EVIDENCE_INDEX = {};
 const loadedCats = new Set();
+const pendingCategoryLoads = new Map();
 const CATEGORY_CAPTURED_DATES = {};
 const CATEGORY_DATA_FILES = {
   fridge: '/data/fridges.json',
@@ -1618,7 +1620,8 @@ async function applySavedApplianceForReplacement(id) {
   }
   const targetCategory = categoryForReplacementSearch(item.category);
   if (targetCategory && targetCategory !== currentCat) {
-    await setCategory(targetCategory);
+    const categoryApplied = await setCategory(targetCategory);
+    if (categoryApplied === false) return false;
   }
   currentReplacementSourceCategory = item.category;
   currentReplacementSourceCategory = SearchCore.normalizeReplacementSourceCategory?.(currentReplacementSourceCategory) ?? '';
@@ -1915,6 +1918,11 @@ function setSearchControlsReady(isReady) {
   });
 }
 
+function handleCategoryLoadError(error) {
+  console.error('Category load failed', error);
+  showToast('Unable to load appliance data. Please refresh.');
+}
+
 function readUrlParamCat() {
   const params = new URLSearchParams(window.location.search);
   const cat = params.get('cat');
@@ -1923,6 +1931,8 @@ function readUrlParamCat() {
 
 async function loadCategory(cat) {
   if (!VALID_CATEGORIES.includes(cat) || loadedCats.has(cat)) return;
+  const pending = pendingCategoryLoads.get(cat);
+  if (pending) return pending;
 
   const resultEl = document.getElementById('productGrid');
   if (resultEl) {
@@ -1935,14 +1945,23 @@ async function loadCategory(cat) {
   }
 
   const url = APPLIANCES_META?.files?.[cat] ?? CATEGORY_DATA_FILES[cat];
-  const categoryData = await fetch(url).then(requireJson);
-  if (!Array.isArray(categoryData.products)) {
-    throw new Error(`Invalid category payload for ${cat}`);
-  }
+  const load = fetch(url)
+    .then(requireJson)
+    .then((categoryData) => {
+      if (!Array.isArray(categoryData.products)) {
+        throw new Error(`Invalid category payload for ${cat}`);
+      }
+      if (loadedCats.has(cat)) return;
 
-  CATEGORY_CAPTURED_DATES[cat] = categoryData.last_updated ?? APPLIANCES_META?.last_updated ?? '';
-  PRODUCTS = [...PRODUCTS, ...categoryData.products];
-  loadedCats.add(cat);
+      CATEGORY_CAPTURED_DATES[cat] = categoryData.last_updated ?? APPLIANCES_META?.last_updated ?? '';
+      PRODUCTS = [...PRODUCTS, ...categoryData.products];
+      loadedCats.add(cat);
+    })
+    .finally(() => {
+      pendingCategoryLoads.delete(cat);
+    });
+  pendingCategoryLoads.set(cat, load);
+  return load;
 }
 
 async function bootstrapApplianceData() {
@@ -1955,7 +1974,10 @@ async function bootstrapApplianceData() {
     await loadCategory(initialCat);
   } catch {
     const appData = await fetch('/data/appliances.json').then(requireJson);
-    PRODUCTS = Array.isArray(appData.products) ? appData.products : [];
+    if (!Array.isArray(appData.products)) {
+      throw new Error('Invalid appliance fallback payload');
+    }
+    PRODUCTS = appData.products;
     VALID_CATEGORIES.forEach((category) => loadedCats.add(category));
     VALID_CATEGORIES.forEach((category) => {
       CATEGORY_CAPTURED_DATES[category] = appData.last_updated ?? '';
@@ -2010,7 +2032,8 @@ function readCompareIntent(params = new URLSearchParams(window.location.search))
   return null;
 }
 
-async function readUrlParams() {
+async function readUrlParams({ initialization = false } = {}) {
+  if (initialization && categoryIntent !== 0) return false;
   const params = new URLSearchParams(window.location.search);
   const parsedState = SearchCore.parseSearchParams(window.location.search);
   COMPARE_INTENT = readCompareIntent(params);
@@ -2020,7 +2043,8 @@ async function readUrlParams() {
   const d = parsedState.d;
 
   if (cat && VALID_CATEGORIES.includes(cat)) {
-    await setCategory(cat);
+    const categoryApplied = await setCategory(cat, { initialization });
+    if (categoryApplied === false) return false;
   }
 
   activeFacetState = normalizeHomeFacets(parsedState.facets ?? {});
@@ -2086,38 +2110,48 @@ async function readUrlParams() {
 /* ══════════════════════════════════════════════════════════
    CATEGORY TABS
 ══════════════════════════════════════════════════════════ */
-async function setCategory(cat, { scroll = false } = {}) {
+async function setCategory(cat, { scroll = false, initialization = false } = {}) {
+  if (initialization && categoryIntent !== 0) return false;
   const allowed = new Set(VALID_CATEGORIES);
   const nextCat = allowed.has(cat) ? cat : 'fridge';
   const nextPill = document.querySelector(`#catPills .cat-pill[data-cat="${nextCat}"]`);
-  if (!nextPill) return;
+  if (!nextPill) return false;
+  const intent = initialization ? categoryIntent : ++categoryIntent;
   resetReplacementForCategoryChange(nextCat);
   document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
   nextPill.classList.add('active');
   currentCat = nextCat;
   await loadCategory(nextCat);
+  if (intent !== categoryIntent) return false;
   refreshBrandOptions();
   renderSavedApplianceChips();
   if (scroll) {
     document.getElementById('search')?.scrollIntoView({ behavior:'smooth', block:'start' });
   }
   updateFloatBarSummary();
+  return true;
 }
 
 window.jumpToCategory = async (cat) => {
-  await setCategory(cat, { scroll: true });
+  try {
+    return await setCategory(cat, { scroll: true });
+  } catch (error) {
+    handleCategoryLoadError(error);
+    return false;
+  }
 };
 
-document.getElementById('catPills').addEventListener('click', async e => {
+document.getElementById('catPills').addEventListener('click', e => {
   const p = e.target.closest('.cat-pill');
   if (!p) return;
-  await setCategory(p.dataset.cat);
+  void setCategory(p.dataset.cat).catch(handleCategoryLoadError);
 });
 
 bindHeroSampleSearches(document, {
   setCategory,
   search: () => doSearch(),
   scrollTarget: () => document.getElementById('resultsSection'),
+  onError: handleCategoryLoadError,
 });
 
 function scrollToSearch() {
@@ -2459,7 +2493,9 @@ function getCurrentSearchState() {
 
 function renderSavedSearchControls() {
   const state = getCurrentSearchState();
-  const restore = (savedState) => restoreSavedSearchState(savedState);
+  const restore = (savedState) => {
+    void restoreSavedSearchState(savedState).catch(handleCategoryLoadError);
+  };
   const onStorageError = () => showToast("Storage full, can't save search");
   SearchDom.renderSaveSearchButton(document.querySelector('[data-save-search]'), {
     store: savedSearchStore,
@@ -2481,7 +2517,8 @@ function renderSavedSearchControls() {
 
 async function restoreSavedSearchState(state = {}) {
   if (state.cat) {
-    await setCategory(state.cat, { scroll: false });
+    const categoryApplied = await setCategory(state.cat, { scroll: false });
+    if (categoryApplied === false) return false;
   }
   if (state.w) document.getElementById('inW').value = String(state.w);
   if (state.h) document.getElementById('inH').value = String(state.h);
@@ -3488,7 +3525,8 @@ function renderSearchHistoryChips() {
 
 async function applySearch(params = {}) {
   if (params.cat) {
-    await setCategory(params.cat);
+    const categoryApplied = await setCategory(params.cat);
+    if (categoryApplied === false) return false;
   }
 
   if (params.w) document.getElementById('inW').value = String(params.w);
@@ -3650,7 +3688,9 @@ Object.assign(window, {
   scrollToSearch,
   openRetailerModal,
   closeRetailerModal,
-  applySearch,
+  applySearch: (params) => {
+    void applySearch(params).catch(handleCategoryLoadError);
+  },
   clearSearchHistoryUi,
 });
 window.openCompareTable = openCompareTable;
@@ -3707,7 +3747,7 @@ document.addEventListener('fitappliance:replacement-search', (event) => {
 document.querySelector('[data-saved-appliance-chips]')?.addEventListener('click', (event) => {
   const button = event.target.closest('[data-saved-appliance-id]');
   if (!button) return;
-  applySavedApplianceForReplacement(button.getAttribute('data-saved-appliance-id'));
+  void applySavedApplianceForReplacement(button.getAttribute('data-saved-appliance-id')).catch(handleCategoryLoadError);
 });
 function renderSpaceAlertsFromInputs() {
   renderSpaceAlertsForDimensions({
@@ -3734,9 +3774,9 @@ document.querySelectorAll('[data-search-submit]').forEach((button) => {
 
 const initialCategory = await bootstrapApplianceData();
 restoreSavedFromUrlParam();
-await setCategory(initialCategory);
+await setCategory(initialCategory, { initialization: true });
 renderSearchHistoryChips();
-await readUrlParams();
+await readUrlParams({ initialization: true });
 restoreCompareFromUrlParam();
 renderSavedSearchControls();
 updateCompareBar();
