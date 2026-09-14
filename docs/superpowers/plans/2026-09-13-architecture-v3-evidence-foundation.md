@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a and G0b complete; G1a passed local implementation review and awaits Node20 CI. No V3 receipt has been issued or production behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b and G1a complete; G1b is next under Revision 3. No V3 receipt has been issued or production behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -170,7 +170,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | G0a | Baseline + dirty migration inventory | — | COMPLETE | `ae7ac7d7d` | [G0a report](../../architecture-v3/execution/G0a-baseline-migration-inventory.md) | 13 tests passed; main rechecked 3 formerly failing witnesses and documentation audit. 176 recovery rows preserved; 2 stale migration inputs remain explicitly unaccepted. | G0b |
 | G0b | CI/default test wiring | G0a | COMPLETE | `a6f9e0eca` | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Local 2,982 tests passed; all six PR203 checks passed at `1a66dfee7`, including Node20 test/build/publication validation in run `34768449369`. Existing workflow and protected data are unchanged. | G1a |
-| G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | REVIEW_REQUIRED | — | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Local 3,007 tests passed; main reviewed source/context/hash boundaries and matched all 11 report input/artifact hashes. Node20 CI is still required. No legacy reissue or public writes. | G1b / G2a / G3a after CI acceptance |
+| G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | COMPLETE | `3a9df4356` | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Main reviewed code and all 11 report input/artifact hashes. All six [PR205](https://github.com/fitappliance/fitappliance/pull/205) checks passed at `3a9df4356`; Node20.20.2 run `34800123395` passed 3,007 tests, build and publication validation. No legacy reissue or public writes. | G1b; G2a / G3a also eligible |
 | G1b | Lossless legacy adapters | G1a | NOT_STARTED | — | — | — | — |
 | G2a | AU BrandRegistry | G1a | NOT_STARTED | — | — | Uses G1a's shared versioned V3 codec, not a separate hash implementation. | — |
 | G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
@@ -388,7 +388,7 @@ npm test
 
 ## G1a — semantics compiler and EngineeringContext validation
 
-**Status:** REVIEW_REQUIRED · **Depends on:** G0b · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE · **Depends on:** G0b · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Compile V2 field/rights/applicability policy plus narrow versioned overlay into closed V3 semantics; validate numeric values, inclusions, ranges, and finite contexts.
 
@@ -516,6 +516,7 @@ adaptLegacyInstallationCandidate({ legacyObject, semantics })
 - An adapter candidate is not an admitted Claim.
 - Resolve fields at their real source/case/index owner before flagging a summary-field absence as missing evidence. Preserve original labels/order and origin references in candidate metadata.
 - Each missing semantic facet has a typed unresolved reason and required witness kind, never a guessed replacement. G1b uses G1a semantics only and must not call future G4b/G6c validators.
+- V2 `mm`/`minMm`/`maxMm` are already canonical even when the source label is `cm`; preserve their value without another conversion. If applicability or range meaning is absent, retain the original assertion and endpoints as a partial candidate with typed gaps. Do not invent `required`, `optional` or `adjustment` merely to obtain a non-null G1a normalization result.
 
 **Run.**
 
@@ -1557,7 +1558,7 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Next dispatch:** G1b after G1a's Node20 CI acceptance. G0a/G0b remain complete
+**Next dispatch:** G1b. G0a/G0b/G1a remain complete
 and are not rerun without changed inputs, failure or new risk. Main freezes the
 reviewed G1a interfaces and current input-owner hashes in the next packet. G1b
 only adapts reusable candidates and typed supplementation gaps; it does not

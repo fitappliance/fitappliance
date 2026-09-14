@@ -1,15 +1,15 @@
 # G1a common-standard legacy receipt semantics
 
-Status: REVIEW_REQUIRED
+Status: Main review accepted; task progress is recorded in the original plan.
 
 ## Scope and byte binding
 
 | field | value |
 | --- | --- |
-| branch / current HEAD | `codex/architecture-v3-g1a-semantics` / `e9a02d6887e46e60dd48d9a84b63a732e9e175cb` |
+| execution branch / base HEAD | `codex/architecture-v3-g1a-semantics` / `e9a02d6887e46e60dd48d9a84b63a732e9e175cb` |
 | G1a brief | `.superpowers/sdd/2026-09-13-architecture-v3-evidence-foundation/G1a-brief.md` / `5b458166d46ffacfb124f15cc32778c25932bf12dcecc1b7b46ffe6bc78cbeed` |
 | compiled policy | `fit-semantics-v3-1` / `716e6f13199569c5b35c1c3525ef383e71fa6ed18e7b5c396aa3cc0d43ce0df8` / 56 claim fields |
-| main-owned plan | pre-existing modified `docs/superpowers/plans/2026-09-13-architecture-v3-evidence-foundation.md`; not read or written as a G1a artifact |
+| main-owned plan | pre-existing modified `docs/superpowers/plans/2026-09-13-architecture-v3-evidence-foundation.md`; read as contract, not modified by the worker |
 
 | frozen input | raw SHA-256 |
 | --- | --- |
@@ -72,4 +72,18 @@ Existing `DimensionEvidenceClaimV2.value.mm`, `minMm`, and `maxMm` remain alread
 | `tests/architecture-v3/semantics.test.mjs` | `767e0ad1a2e3c003df939dd75471f5ef1af2bee6b92c8d5a58dd9d8b02499b62` |
 | `docs/architecture-v3/execution/G1a-semantics.md` | self-hash supplied in the final handoff rather than recursively attested here |
 
-No legacy input was rewritten. No build, publication, sync, OCR/recovery operation, evidence promotion, commit, or push was performed. G1b and later work were not started.
+The worker did not rewrite legacy inputs or run build, publication, sync, OCR/recovery, evidence promotion, commit or push. G1b and later work were not started.
+
+## Main acceptance
+
+Main reviewed the actual codec, numeric and context implementation and the
+behavioral counterexamples, matched all 11 input/artifact hashes above, and
+checked the seven-file worker boundary plus the two main-owned plan/spec edits.
+Code commit `3a9df43567cb774d6f9ea4f1d836a36d7f7ac1d0` was pushed in
+[Draft PR205](https://github.com/fitappliance/fitappliance/pull/205), stacked on
+the docs-only Revision 3 PR204. All six checks passed at that code commit.
+Run `34800123395` used Node20.20.2 and passed 3,007 tests with zero failures or
+skips, followed by build and publication-boundary validation. No local duplicate
+whole-suite rerun or second reviewer agent was used. This accepts G1a only, not
+source facts, repaired/reissued receipts, Verified Fit coverage or production
+promotion. The plan/spec now match the explicit resolver witness contract.
