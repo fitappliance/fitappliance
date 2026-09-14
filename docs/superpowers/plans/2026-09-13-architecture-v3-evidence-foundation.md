@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b and G1a complete; G1b has passed local implementation review and awaits exact-commit Node20 CI. No V3 receipt has been issued or production behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b, G1a and G1b complete; G2a is next under Revision 3. No V3 receipt has been issued or production behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -171,7 +171,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G0a | Baseline + dirty migration inventory | — | COMPLETE | `ae7ac7d7d` | [G0a report](../../architecture-v3/execution/G0a-baseline-migration-inventory.md) | 13 tests passed; main rechecked 3 formerly failing witnesses and documentation audit. 176 recovery rows preserved; 2 stale migration inputs remain explicitly unaccepted. | G0b |
 | G0b | CI/default test wiring | G0a | COMPLETE | `a6f9e0eca` | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Local 2,982 tests passed; all six PR203 checks passed at `1a66dfee7`, including Node20 test/build/publication validation in run `34768449369`. Existing workflow and protected data are unchanged. | G1a |
 | G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | COMPLETE | `3a9df4356` | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Main reviewed code and all 11 report input/artifact hashes. All six [PR205](https://github.com/fitappliance/fitappliance/pull/205) checks passed at `3a9df4356`; Node20.20.2 run `34800123395` passed 3,007 tests, build and publication validation. No legacy reissue or public writes. | G1b; G2a / G3a also eligible |
-| G1b | Lossless legacy adapters | G1a | REVIEW_REQUIRED | — | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | Based on `38883f4e4`; 21 focused, 66 compatibility and 3,028 full-suite tests passed locally. Main reviewed owner joins/context and independently rechecked null-mm, conflicting-unit and canonical-range witnesses; all 16 frozen inputs and original recovery status/diff unchanged. Node20 CI remains required. | G2a after acceptance |
+| G1b | Lossless legacy adapters | G1a | COMPLETE | `ac93a8d3c` | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | All six [Draft PR206](https://github.com/fitappliance/fitappliance/pull/206) checks passed at this commit. Node20.20.2 run `34807285975`: 3,028 pass, 0 fail/skip; build and publication validation passed. Main reviewed owner/context joins and independently rechecked null-mm and canonical-range unit witnesses; all 16 frozen inputs and original recovery status/diff unchanged. No source replay/reissue/public writes. | G2a: identity/index-only BrandRegistry |
 | G2a | AU BrandRegistry | G1a | NOT_STARTED | — | — | Uses G1a's shared versioned V3 codec, not a separate hash implementation. | — |
 | G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
 | G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
@@ -487,7 +487,7 @@ npm test
 
 ## G1b — lossless legacy consumer adapters
 
-**Status:** REVIEW_REQUIRED · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Adapt V2 geometry/install inputs into reusable V3 candidates and explicit supplementation gaps; retain old consumers/bytes, without treating the adapter as a completed receipt upgrade.
 

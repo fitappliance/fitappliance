@@ -1,6 +1,6 @@
 # G1b — Lossless legacy-candidate adapters
 
-Status: **REVIEW_REQUIRED**
+Worker handoff: **REVIEW_REQUIRED**; main acceptance: **COMPLETE** (below).
 Worktree: `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.worktrees/architecture-v3-g0a-baseline`
 Branch / base: `codex/architecture-v3-g1b-legacy-adapters` / `38883f4e466dc5ab5eb69f653bb45958020ede1e`
 
@@ -59,4 +59,12 @@ range-unit isolation and consistent850–895mm normalization. The original recov
 checkout's HEAD,175-row status digest and tracked-diff digest match this turn's
 before snapshot. No old source, receipt, public data or release pointer changed.
 The original plan records the accepted transport union and optional-case limit.
-Exact-commit Node20 CI is still required before G1b becomes COMPLETE.
+Accepted code: `ac93a8d3c55f23589c2301830efa469c1cfa869c` in
+[Draft PR206](https://github.com/fitappliance/fitappliance/pull/206), stacked on
+G1a/PR205. All six checks passed at this code commit. Node20.20.2
+[run34807285975](https://github.com/fitappliance/fitappliance/actions/runs/34807285975)
+passed3,028 tests with0 failures/skips, canonical-output build, publication-boundary
+audit, sitemap/content gates and generated-output checks. G1b is COMPLETE.
+This acceptance/progress prose does not change the tested adapter or test hashes.
+Actual all-origin legacy supplementation and same-standard receipt reissue remain
+unfinished; this gate issued no receipts and did not merge/promote to production.
