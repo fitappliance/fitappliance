@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b, G2a and G2b complete; G3a is the next bounded task. Foundation integration PR209 is merged and production-verified; G2b is accepted in Draft PR210, not merged or promoted. No V3 receipt has been issued or V3 Fit behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b, G2a and G2b complete; G3a is REVIEW_REQUIRED. Foundation integration PR209 is merged and production-verified; G2b is accepted in Draft PR210, not merged or promoted. No V3 receipt has been issued or V3 Fit behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -221,7 +221,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G1b | Lossless legacy adapters | G1a | COMPLETE | `ac93a8d3c` | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | All six [Draft PR206](https://github.com/fitappliance/fitappliance/pull/206) checks passed at this commit. Node20.20.2 run `34807285975`: 3,028 pass, 0 fail/skip; build and publication validation passed. Main reviewed owner/context joins and independently rechecked null-mm and canonical-range unit witnesses; all 16 frozen inputs and original recovery status/diff unchanged. No source replay/reissue/public writes. | G2a: identity/index-only BrandRegistry |
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
-| G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
+| G3a | Typed lineage/anchors/relations | G1a | REVIEW_REQUIRED | — | [G3a report](../../architecture-v3/execution/G3a-lineage.md) | Terra/max handoff from accepted G2b e529d640. Main reviewed the two modules, witness/coordinate boundaries and negative tests; final-head CI and preview isolation remain required. No original-source replay or receipt issuance. | G3b after acceptance |
 | G3b | Region router + canary attestation | G3a, G2a | NOT_STARTED | — | — | — | — |
 | G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
 | G4b | Direct source binding + receipt | G4a, G3b | NOT_STARTED | — | — | — | — |
@@ -748,7 +748,7 @@ a handoff record; this plan records acceptance. Production stays on7f4c988.
 
 ## G3a — typed artifact lineage, anchors, and relations
 
-**Status:** NOT_STARTED · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Model immutable artifacts/fragments and multi-anchor proof without undocumented cross-page/region composition.
 
@@ -762,7 +762,7 @@ a handoff record; this plan records acceptance. Production stays on7f4c988.
 createArtifactRecord({ sha256, parentSha256, mediaType, toolRevision, optionsSha256 })
   -> immutable artifact record
 
-createFragment({ fragmentSha256, parentArtifactSha256, locator })
+createFragment({ fragmentSha256, content, parentArtifactSha256, locator })
   -> typed fragment | validation error
 
 validateEvidenceAnchors({
@@ -772,6 +772,16 @@ validateEvidenceAnchors({
 ```
 
 Artifact/fragment records are explicit hash-indexed inputs. Validate fragment payload hashes, ancestor/root links and referenced IDs against them, not the presence of hash-shaped strings. Original source-byte replay remains a separate G4b acceptance requirement.
+
+**Dispatch clarification (2026-09-14).** `content` is required strict JSON:
+without it, the original signature could only check hash syntax, not recompute
+fragment payload identity. Bind content, parent, locator and schema/codec version
+in that identity; keep raw source/derived byte hashes separate. Constructors and
+anchor validation perform no filesystem/network acquisition and grant no source
+or receipt authority. A relation needs an independently resolved witness bound
+to its kind and exact endpoint fragments; merely naming any existing anchor is
+not proof of a join. G3a verifies structural bindings; G4b must still replay the
+original evidence and prove model/row/diagram meaning before admission.
 
 **Must prove.**
 
@@ -924,6 +934,13 @@ createDirectClaimReceipt({
 ```
 
 `verifyAndBindSource` replays the actual original receipt, case, source bytes and derived artifacts through the allowlisted verifier. Authority, role and `verifiedFactBindings` are outputs, never caller assertions. A copied `verified: true` or caller-made fact array cannot issue a binding. New fields/configurations require explicit re-attestation against source anchors; old receipt scope is not widened. The binding itself carries digest-bound replay inputs for later verification.
+
+**G3a consumer handoff.** Those replay inputs must bind the complete normalized
+G3a proof, including the artifact provenance closure and schema/codec version,
+not only source-byte hashes or the anchor subset. A valid change to a parent,
+media type, tool revision or options hash changes that binding even when raw
+bytes are unchanged. G3a performs structural validation, not original-source
+approval; G4a schema construction cannot stand in for this G4b replay gate.
 
 The new receipt's hashed envelope includes `receiptType: 'EvidenceClaimReceipt'`,
 `schemaVersion: 3` and `canonicalizationVersion: 'fit-evidence-json-v3-1'` for
@@ -1699,11 +1716,12 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Next task:** prepare the bounded G3a typed-lineage/anchor packet from accepted
-G2b `531172adb` and the current documentation checkpoint. G3a is NOT_STARTED;
-no executor is running. The Terra/max implementer was closed after a usage-limit
-error; main completed its small test-only repair. Preserve this model/workflow
-preference for the next dispatch; no reset or paid credit was used. Both production hotfixes
+**Current task:** G3a portable typed lineage/anchors from accepted G2b checkpoint
+`e529d64045f6aa46b3ce2ebfd4cf5868da47393e`. User confirms quota was reset and
+requires the unchanged GPT-5.6 Terra / Max implementer/main-review workflow.
+G3a is REVIEW_REQUIRED after the sole implementer's handoff. Main owns final
+CI/preview acceptance; no executor is running. No reset or paid
+credit was used by this task. Both production hotfixes
 are included in this branch. Do not re-dispatch completed G2a or rebuild its seed
 from changed inputs without a reviewed version update.
 No new V3 preview may use the old root-output configuration. G0a/G0b/G1a/G1b stay
