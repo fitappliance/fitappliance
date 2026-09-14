@@ -83,10 +83,13 @@ the fallback if new release-specific failure appears. Do not roll back to a
 pre-PR207 root-output deployment. No data migration means no receipt/ledger
 reverse migration is required for this foundation release.
 
-Original recovery checkout begins this turn with176 status rows, SHA256
+Original recovery checkout begins this turn with176 expanded status rows
+(`git status --porcelain --untracked-files=all`), SHA256
 `199e6e9f1c1799b9b61d8b921f82a282844102b6f157af27b4247730daed2e2f`; its binary diff
 SHA256 remains `fea1454bddd5afba9dd779f54f498353bb5b6c4d45a88a49711cdf9c87447f93`.
-Do not reuse the previous175-row status identity as this turn's baseline.
+The same command and hash still match at G2b review. Default collapsed status
+has175 rows and SHA256 `c32e9b78ecb28a6b63a6978cddb49e5fbfcb40c4d1c59576479319bd802048e6`;
+these two listing modes are not evidence of an untracked-file change.
 No original evidence, untracked user material, old branch, worktree or audit
 history was deleted.
 

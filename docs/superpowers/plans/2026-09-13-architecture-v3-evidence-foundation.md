@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b and G2a complete; G2b is REVIEW_REQUIRED pending remote gates. Foundation integration PR209 is merged and production-verified. No V3 receipt has been issued or V3 Fit behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b, G2a and G2b complete; G3a is the next bounded task. Foundation integration PR209 is merged and production-verified; G2b is accepted in Draft PR210, not merged or promoted. No V3 receipt has been issued or V3 Fit behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -220,7 +220,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | COMPLETE | `3a9df4356` | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Main reviewed code and all 11 report input/artifact hashes. All six [PR205](https://github.com/fitappliance/fitappliance/pull/205) checks passed at `3a9df4356`; Node20.20.2 run `34800123395` passed 3,007 tests, build and publication validation. No legacy reissue or public writes. | G1b; G2a / G3a also eligible |
 | G1b | Lossless legacy adapters | G1a | COMPLETE | `ac93a8d3c` | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | All six [Draft PR206](https://github.com/fitappliance/fitappliance/pull/206) checks passed at this commit. Node20.20.2 run `34807285975`: 3,028 pass, 0 fail/skip; build and publication validation passed. Main reviewed owner/context joins and independently rechecked null-mm and canonical-range unit witnesses; all 16 frozen inputs and original recovery status/diff unchanged. No source replay/reissue/public writes. | G2a: identity/index-only BrandRegistry |
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
-| G2b | Family research graph/index | G2a, G1a | REVIEW_REQUIRED | — | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | Main domain/seed review passed; 43 focused tests pass after ten witnessed RED-to-GREEN seed mutations. Worker full suite: 3,105 pass before test-only amendment. Final remote CI/artifact/boundary gates pending. No field inheritance. | G3a after acceptance |
+| G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
 | G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
 | G3b | Region router + canary attestation | G3a, G2a | NOT_STARTED | — | — | — | — |
 | G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
@@ -678,7 +678,7 @@ npm test
 
 ## G2b — family research graph and relation index
 
-**Status:** REVIEW_REQUIRED · **Depends on:** G2a, G1a · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE · **Depends on:** G2a, G1a · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Record finite product relationship research without any field inheritance.
 
@@ -731,7 +731,20 @@ worker's full-suite handoff, main completed a test/report-only seed-closure
 amendment when the worker hit its usage limit. Ten new mutations demonstrably
 failed before the test helper was strengthened; all43 focused tests now pass.
 No module, seed, source policy, receipt, runtime or public data changed in this
-amendment. Git/remote CI/preview gates remain pending; do not mark COMPLETE yet.
+amendment. Remote gates were pending at this handoff, then passed below.
+
+**Main acceptance (2026-09-14).** [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210)
+at `531172adb7772b2ba1fdd58687edafe5ef061a64` has all six checks successful.
+Node20.20.2 run `34839185517` / job `103959910956` confirms3,115 tests pass with
+zero failures/skips, canonical build, publication audit and generated-output
+checks. Node24 preview `dpl_BTFqWzVEdNUaN4L3zeRMHeHSimzU` is READY at the exact
+code commit with `.site-public`; all10 scoped HTTP controls pass. Its3,281-file,
+54,856,568-byte public artifact SHA256
+`5c8127aa6be4391a52ca624c59f6960493a8be32ca219237ccd8cdf61fd44ec3`
+matches the previous accepted artifact after only the commit-specific cache
+version. All new research/module/test/report paths return404. No runtime wiring,
+receipt upgrade or V3 Fit activation occurred. The implementer report remains
+a handoff record; this plan records acceptance. Production stays on7f4c988.
 
 ## G3a — typed artifact lineage, anchors, and relations
 
@@ -1686,10 +1699,11 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Current task:** finish G2b remote acceptance from merged foundation `7f4c988`.
-The Terra/max implementer is closed after a usage-limit error; its completed
-implementation/full-suite evidence is retained and main finished the small
-test-only repair. Complete remote gates before dispatching G3a. Both production hotfixes
+**Next task:** prepare the bounded G3a typed-lineage/anchor packet from accepted
+G2b `531172adb` and the current documentation checkpoint. G3a is NOT_STARTED;
+no executor is running. The Terra/max implementer was closed after a usage-limit
+error; main completed its small test-only repair. Preserve this model/workflow
+preference for the next dispatch; no reset or paid credit was used. Both production hotfixes
 are included in this branch. Do not re-dispatch completed G2a or rebuild its seed
 from changed inputs without a reviewed version update.
 No new V3 preview may use the old root-output configuration. G0a/G0b/G1a/G1b stay
