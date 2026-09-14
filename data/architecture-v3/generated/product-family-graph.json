@@ -1,0 +1,164 @@
+{
+  "graph": {
+    "schemaVersion": 1,
+    "graphVersion": "fitappliance-product-family-graph-v1",
+    "canonicalizationVersion": "fit-evidence-json-v3-1",
+    "graphHashDomain": "fitappliance.product-family-graph.hash.v1",
+    "researchNodeIdDomain": "fitappliance.product-family-graph.research-node-id.v1",
+    "nodes": [
+      {
+        "id": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "kind": "brand",
+        "market": "AU",
+        "brandId": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "name": "Bosch",
+        "references": [
+          {
+            "sourcePath": "data/architecture-v3/generated/brand-registry.json",
+            "sourceSha256": "cbb4dac77938ae0f9bf40278325b42a33b0e61c6403a5212eff9e9a05e7dbf0d",
+            "locator": {
+              "kind": "json_pointer",
+              "value": "/registry/brands/0"
+            },
+            "status": "unverified"
+          }
+        ]
+      },
+      {
+        "id": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "kind": "brand",
+        "market": "AU",
+        "brandId": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "name": "Fisher & Paykel",
+        "references": [
+          {
+            "sourcePath": "data/architecture-v3/generated/brand-registry.json",
+            "sourceSha256": "cbb4dac77938ae0f9bf40278325b42a33b0e61c6403a5212eff9e9a05e7dbf0d",
+            "locator": {
+              "kind": "json_pointer",
+              "value": "/registry/brands/98"
+            },
+            "status": "unverified"
+          }
+        ]
+      },
+      {
+        "id": "fa_prod_23e982600e8a5108ac9c8db9",
+        "kind": "canonical_product",
+        "market": "AU",
+        "brandId": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "name": "SBI8ECS01A",
+        "references": [
+          {
+            "sourcePath": "data/architecture-v2/generated/canonical-registry.json",
+            "sourceSha256": "2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f",
+            "locator": {
+              "kind": "json_pointer",
+              "value": "/products/120"
+            },
+            "status": "unverified"
+          }
+        ]
+      },
+      {
+        "id": "fa_prod_4c5dd632cbad6b5d410cb718",
+        "kind": "canonical_product",
+        "market": "AU",
+        "brandId": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "name": "DD60D2NB9",
+        "references": [
+          {
+            "sourcePath": "data/architecture-v2/generated/canonical-registry.json",
+            "sourceSha256": "2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f",
+            "locator": {
+              "kind": "json_pointer",
+              "value": "/products/294"
+            },
+            "status": "unverified"
+          }
+        ]
+      },
+      {
+        "id": "fa_prod_6868cdde53bfa347a96e1a20",
+        "kind": "canonical_product",
+        "market": "AU",
+        "brandId": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "name": "DD60D2NX9",
+        "references": [
+          {
+            "sourcePath": "data/architecture-v2/generated/canonical-registry.json",
+            "sourceSha256": "2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f",
+            "locator": {
+              "kind": "json_pointer",
+              "value": "/products/295"
+            },
+            "status": "unverified"
+          }
+        ]
+      },
+      {
+        "id": "fa_prod_f4d4ad87e43eb868c9a4670b",
+        "kind": "canonical_product",
+        "market": "AU",
+        "brandId": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "name": "SBI8EDS01A",
+        "references": [
+          {
+            "sourcePath": "data/architecture-v2/generated/canonical-registry.json",
+            "sourceSha256": "2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f",
+            "locator": {
+              "kind": "json_pointer",
+              "value": "/products/121"
+            },
+            "status": "unverified"
+          }
+        ]
+      },
+      {
+        "id": "fa_product_family_30ccdfb2d791ebdfe1b650c4d5c6b93c543668ee4b141d1ed5123fa743dcdedd",
+        "kind": "platform",
+        "market": "AU",
+        "brandId": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "name": "Bosch research group: SBI8ECS01A + SBI8EDS01A",
+        "references": [],
+        "researchKey": "research-hypothesis:bosch:sbi8ecs01a+sbi8eds01a"
+      },
+      {
+        "id": "fa_product_family_b36b38d629f56fc2ca727b9965bea22f067de12f5598ae54d93b0b50035b0212",
+        "kind": "platform",
+        "market": "AU",
+        "brandId": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "name": "Fisher & Paykel research group: DD60D2NB9 + DD60D2NX9",
+        "references": [],
+        "researchKey": "research-hypothesis:fisher-paykel:dd60d2nb9+dd60d2nx9"
+      }
+    ],
+    "edges": [
+      {
+        "kind": "HYPOTHESISED_SHARED_PLATFORM",
+        "fromId": "fa_prod_23e982600e8a5108ac9c8db9",
+        "toId": "fa_product_family_30ccdfb2d791ebdfe1b650c4d5c6b93c543668ee4b141d1ed5123fa743dcdedd",
+        "references": []
+      },
+      {
+        "kind": "HYPOTHESISED_SHARED_PLATFORM",
+        "fromId": "fa_prod_4c5dd632cbad6b5d410cb718",
+        "toId": "fa_product_family_b36b38d629f56fc2ca727b9965bea22f067de12f5598ae54d93b0b50035b0212",
+        "references": []
+      },
+      {
+        "kind": "HYPOTHESISED_SHARED_PLATFORM",
+        "fromId": "fa_prod_6868cdde53bfa347a96e1a20",
+        "toId": "fa_product_family_b36b38d629f56fc2ca727b9965bea22f067de12f5598ae54d93b0b50035b0212",
+        "references": []
+      },
+      {
+        "kind": "HYPOTHESISED_SHARED_PLATFORM",
+        "fromId": "fa_prod_f4d4ad87e43eb868c9a4670b",
+        "toId": "fa_product_family_30ccdfb2d791ebdfe1b650c4d5c6b93c543668ee4b141d1ed5123fa743dcdedd",
+        "references": []
+      }
+    ]
+  },
+  "graphSha256": "6ae2707d1e4996b452e2db19563d25c363f074a10dfa16ffcf369e2e10e2499c"
+}

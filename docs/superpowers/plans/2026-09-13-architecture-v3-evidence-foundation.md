@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b and G2a complete; G2b is the next bounded task. Production hotfixes PR207 and PR208 are integrated. Draft PR209 is not merged. No V3 receipt has been issued or V3 production behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b and G2a complete; G2b is REVIEW_REQUIRED pending remote gates. Foundation integration PR209 is merged and production-verified. No V3 receipt has been issued or V3 Fit behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -100,6 +100,23 @@ the six pre-existing dirty files were copied and byte-checked before integration
 That integration check alone was not G2a acceptance or V3 production release.
 The complete G2a artifact and protected preview were subsequently verified below.
 Older V3 branches remain unsafe to push without the same publication boundary.
+
+**Foundation-only release authorization (2026-09-14).** After G2a acceptance,
+the user explicitly requested “合并 发布 继续下一步”. PR209 was retargeted to
+`main` as the aggregate of reviewed PR201–206 and G2a, then merged as
+`7f4c988407d0cf61e61624d49b2c309839867d26`. All historical task heads and the
+previous production main are ancestors. The merge tree is exactly the tested
+`230166ddfbd058a2c61951b17743da153729ca52`; no conflict or application/data change
+was introduced. This authorizes deployment of the dormant foundation code only,
+not completion of legacy receipt repair, public evidence cutover, or V3 Fit
+activation. G6c and all downstream evidence/release gates remain mandatory.
+Production is READY at `dpl_D77p8czQMYPj8DNfYj2hTyQ1w22B`, exact merge `7f4c988`,
+Node24 and `.site-public`. The public artifact is3,281 files/54,856,568 bytes,
+SHA256 `4d513216621ab80f0a554240c98c8ad72debd50c090b0e20aef9cb597ff916b7`,
+reproduced from the prior artifact with only the commit-specific service-worker
+version. All26 scoped production HTTP checks pass; zero error-level log entries
+were returned in the post-release15-minute query. This is a point-in-time result,
+not continuous monitoring. See the [foundation release proof](../../architecture-v3/execution/2026-09-14-foundation-g2a-release.md).
 
 ### 2.3 Mandatory semantics
 
@@ -203,7 +220,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | COMPLETE | `3a9df4356` | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Main reviewed code and all 11 report input/artifact hashes. All six [PR205](https://github.com/fitappliance/fitappliance/pull/205) checks passed at `3a9df4356`; Node20.20.2 run `34800123395` passed 3,007 tests, build and publication validation. No legacy reissue or public writes. | G1b; G2a / G3a also eligible |
 | G1b | Lossless legacy adapters | G1a | COMPLETE | `ac93a8d3c` | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | All six [Draft PR206](https://github.com/fitappliance/fitappliance/pull/206) checks passed at this commit. Node20.20.2 run `34807285975`: 3,028 pass, 0 fail/skip; build and publication validation passed. Main reviewed owner/context joins and independently rechecked null-mm and canonical-range unit witnesses; all 16 frozen inputs and original recovery status/diff unchanged. No source replay/reissue/public writes. | G2a: identity/index-only BrandRegistry |
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
-| G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
+| G2b | Family research graph/index | G2a, G1a | REVIEW_REQUIRED | — | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | Main domain/seed review passed; 43 focused tests pass after ten witnessed RED-to-GREEN seed mutations. Worker full suite: 3,105 pass before test-only amendment. Final remote CI/artifact/boundary gates pending. No field inheritance. | G3a after acceptance |
 | G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
 | G3b | Region router + canary attestation | G3a, G2a | NOT_STARTED | — | — | — | — |
 | G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
@@ -598,7 +615,7 @@ npm test
 **Continuation (2026-09-14).** The six-file interrupted checkpoint was preserved
 before integrating PR207/208. G2a code and its five-file report/seed/snapshot scope
 are now pushed as `cf4a632a21d1cb727871c265350560efd8e365de` in
-[Draft PR209](https://github.com/fitappliance/fitappliance/pull/209), stacked on PR206.
+[PR209](https://github.com/fitappliance/fitappliance/pull/209), originally stacked on PR206.
 Main verified all152 initial groups/157 spellings and26 exact policy references,
 versioned identity, shared local validators and no public/source changes. The
 16 focused tests include a final spelling-to-stable-ID assertion; all3,072 tests
@@ -621,8 +638,9 @@ the163-byte Vercel preview feedback script). No API writes or duplicate browser
 flow suite was needed: deployed application sources match validated PR208.
 The original recovery checkout's175-row status/diff identities are unchanged.
 The report remains the implementer's immutable REVIEW_REQUIRED handoff; this plan
-records acceptance separately. The V3 stack remains Draft/unmerged and production
-stays on main `2315b30cf0309d0da23e2de8781362d30865f17a`.
+records acceptance separately. That was the pre-release acceptance checkpoint.
+The subsequent user-authorized foundation-only release is merged and verified
+as `7f4c988407d0cf61e61624d49b2c309839867d26`, as recorded in section2.2.
 
 **Goal.** Add market-scoped brand identity and aliases without duplicating existing host/source authority.
 
@@ -660,7 +678,7 @@ npm test
 
 ## G2b — family research graph and relation index
 
-**Status:** NOT_STARTED · **Depends on:** G2a, G1a · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED · **Depends on:** G2a, G1a · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Record finite product relationship research without any field inheritance.
 
@@ -676,11 +694,18 @@ npm test
 buildProductFamilyGraph({ nodes, edges }) -> { graph, graphSha256 }
 
 createProductRelationshipAssertion({
-  relation, market, namedModels, sharedFields, contexts, evidence
+  relation, market, namedModels, sharedFields, contexts, evidence, semantics
 }) -> assertion | typed validation error
 ```
 
 Nodes distinguish `brand`, `marketing_series`, `official_model_group`, `platform`, and `canonical_product`. G2b validates graph, finite membership and G1a context shape; assertions and proof references are research candidates only. It does not call the future G3 anchor verifier. G7 owns original-source/anchor verification and the relationship receipt.
+
+`semantics` is the explicit compiled G1a policy input, never a second dictionary
+or implicit filesystem load. Validate candidate contexts with the existing G1a
+validator and an empty witness list; syntactic validity is not witnessed
+applicability. Bind its policy digest in each assertion. All G2b assertions,
+including structurally complete ones, remain research-only and not
+derivation-eligible until the separate G7 proof/receipt gate.
 
 **Must prove.**
 
@@ -697,6 +722,16 @@ npm test
 ```
 
 **Accept.** G2b grants no field/receipt/public authority; G7 waits for G6b too.
+
+**Review checkpoint (2026-09-14).** Main independently checked the domain
+contracts and frozen seed closure: two brands, four exact products and two
+hypothesised groups only. The implementer fixed ID syntax and inherited-key
+allowlist gaps; main verified their concrete rejection witnesses. After the
+worker's full-suite handoff, main completed a test/report-only seed-closure
+amendment when the worker hit its usage limit. Ten new mutations demonstrably
+failed before the test helper was strengthened; all43 focused tests now pass.
+No module, seed, source policy, receipt, runtime or public data changed in this
+amendment. Git/remote CI/preview gates remain pending; do not mark COMPLETE yet.
 
 ## G3a — typed artifact lineage, anchors, and relations
 
@@ -1651,8 +1686,10 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Next dispatch:** prepare the bounded G2b family-research packet from accepted
-G2a `cf4a632a2` and the current documentation checkpoint. Both production hotfixes
+**Current task:** finish G2b remote acceptance from merged foundation `7f4c988`.
+The Terra/max implementer is closed after a usage-limit error; its completed
+implementation/full-suite evidence is retained and main finished the small
+test-only repair. Complete remote gates before dispatching G3a. Both production hotfixes
 are included in this branch. Do not re-dispatch completed G2a or rebuild its seed
 from changed inputs without a reviewed version update.
 No new V3 preview may use the old root-output configuration. G0a/G0b/G1a/G1b stay
