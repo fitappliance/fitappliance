@@ -1,0 +1,1900 @@
+{
+  "registry": {
+    "schemaVersion": 1,
+    "registryVersion": "fitappliance-brand-registry-v1",
+    "canonicalizationVersion": "fit-evidence-json-v3-1",
+    "brandIdDomain": "fitappliance.brand-registry.id.v1",
+    "aliasNormalizationVersion": "trim-collapse-whitespace-lowercase-v1",
+    "market": "AU",
+    "brands": [
+      {
+        "brandId": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "stableBrandKey": "legacy-display:bosch",
+        "displayName": "Bosch",
+        "observedSpellings": [
+          "Bosch"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_030aba4d78ed09d73128a34895309faea194d4d97b292fcace31a4036659c447",
+        "stableBrandKey": "legacy-display:seiki",
+        "displayName": "SEIKI",
+        "observedSpellings": [
+          "SEIKI"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_03c6401521564295de4f4ae5850faf90777c4831d346dcc963f39171c7a302bb",
+        "stableBrandKey": "legacy-display:lg",
+        "displayName": "LG",
+        "observedSpellings": [
+          "LG"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_03cf034e6dc1d913930ea7aa0c4206978d8f889896fcd3b4b1f162d409d2a116",
+        "stableBrandKey": "legacy-display:anko",
+        "displayName": "Anko",
+        "observedSpellings": [
+          "Anko"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0605ec7541b1ec33b2f1dacc9c29ec68401bfce9b90ddfc285795127976ba90b",
+        "stableBrandKey": "legacy-display:altus",
+        "displayName": "Altus",
+        "observedSpellings": [
+          "Altus"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_073da9c6046413419c249a439c2dc20d0e1c3fc44e9696b5d1700d712d7a9500",
+        "stableBrandKey": "legacy-display:nakita",
+        "displayName": "NAKITA",
+        "observedSpellings": [
+          "NAKITA"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0803eb0d87399377d2c728a662885e7f870e1a55ab7c5f505ed5a98b80918fe4",
+        "stableBrandKey": "legacy-display:polar refrigeration",
+        "displayName": "Polar Refrigeration",
+        "observedSpellings": [
+          "Polar Refrigeration"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0a00cf7d6a31f83577b124ea7ad3f3d0c99245863475a42de46f361f99e42cc7",
+        "stableBrandKey": "legacy-display:trieste",
+        "displayName": "TRIESTE",
+        "observedSpellings": [
+          "TRIESTE"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0a56bf3db0e2b8059be9708dc2f9dc159a82e4af3f9af79e3ec0111366e73acf",
+        "stableBrandKey": "legacy-display:ryobi",
+        "displayName": "RYOBI",
+        "observedSpellings": [
+          "RYOBI"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0b39f178d841b869d1308071447efce9d6515f19ebead391fb8bf7687bd3ef37",
+        "stableBrandKey": "legacy-display:ariston",
+        "displayName": "ARISTON",
+        "observedSpellings": [
+          "ARISTON"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0bf10b8d2d9e811fef9e9b34aef18f1323bed26ee49ee1c8040c906e47994f5d",
+        "stableBrandKey": "legacy-display:kleenmaid",
+        "displayName": "KLEENMAID",
+        "observedSpellings": [
+          "KLEENMAID"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0ed16d93110bd0f291543c9dfaaeb4a990e88e8c9f7ffbc47f25bea9c832dbf2",
+        "stableBrandKey": "legacy-display:astivita",
+        "displayName": "Astivita",
+        "observedSpellings": [
+          "Astivita"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0f294fd56a6813482473d6ecde8b1a1abd524e129f66ac4fb074de242e9b7177",
+        "stableBrandKey": "legacy-display:kelvinator",
+        "displayName": "KELVINATOR",
+        "observedSpellings": [
+          "KELVINATOR"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_0fc5bd576cb72ab0b8587b3b1f39ed41ceafe326a932f8053fe86cc21ef0d44f",
+        "stableBrandKey": "legacy-display:ikea",
+        "displayName": "Ikea",
+        "observedSpellings": [
+          "Ikea"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_11269a74e8877454b469c8f880c74346347e22907ca0f61f8e17f4819efd6335",
+        "stableBrandKey": "legacy-display:tuscany",
+        "displayName": "Tuscany",
+        "observedSpellings": [
+          "Tuscany"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_117c79788f7ceb2eb9b045e4d5aaa8127e0e6eaf7c32edc1b9bceecd03691a76",
+        "stableBrandKey": "legacy-display:fujiyama",
+        "displayName": "FUJIYAMA",
+        "observedSpellings": [
+          "FUJIYAMA"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_137000d80b696020e23b61b702f67caadddb843efa550085b86a37eac4c311c6",
+        "stableBrandKey": "legacy-display:akai",
+        "displayName": "AKAI",
+        "observedSpellings": [
+          "AKAI"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_1598292245730fa6e9186f454683aeb2bd0bae9b6ef0a52889365bda2c6a2fef",
+        "stableBrandKey": "legacy-display:stirling",
+        "displayName": "Stirling",
+        "observedSpellings": [
+          "Stirling"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_160a7c80d50c5ce078b93cbd8a838175391db778a0fc30e5363f9e87866745a9",
+        "stableBrandKey": "legacy-display:winterwulf",
+        "displayName": "WINTERWULF",
+        "observedSpellings": [
+          "WINTERWULF"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_167204ed66cd186585fbe678809a62a47aa63f1be3d2d5fa0586ef9cd3ccaa68",
+        "stableBrandKey": "legacy-display:platinum",
+        "displayName": "Platinum",
+        "observedSpellings": [
+          "Platinum"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_17e0e1173b6e634aca096fb86278503a0b1349fcc5d2998c9e679b4eea5718df",
+        "stableBrandKey": "legacy-display:modello",
+        "displayName": "modello",
+        "observedSpellings": [
+          "modello"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_18f29948d106f05164a062984d1f20345a36d5b71dfe7d05af53ff24cad34185",
+        "stableBrandKey": "legacy-display:hafele",
+        "displayName": "Hafele",
+        "observedSpellings": [
+          "Hafele"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_1c0b816e5d0f1e3d64f68cec7551f7a7b9918839936d48cebea87cc8a0ead7ed",
+        "stableBrandKey": "legacy-display:furon",
+        "displayName": "FURON",
+        "observedSpellings": [
+          "FURON"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_1c22acfad15785a27ada2b66cbccc0fa45c35b138576c85ed8a708da82e00e97",
+        "stableBrandKey": "legacy-display:smeg",
+        "displayName": "Smeg",
+        "observedSpellings": [
+          "Smeg"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_1ccaab2ecf637e4b80a24f5339b7be71b70d26c572f17f684dcb7dbc3b019d5e",
+        "stableBrandKey": "legacy-display:harbour",
+        "displayName": "Harbour",
+        "observedSpellings": [
+          "Harbour"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_1d7165613054c00de3893af228327e473a6da8324572f3961729f87299511664",
+        "stableBrandKey": "legacy-display:eurotech",
+        "displayName": "Eurotech",
+        "observedSpellings": [
+          "Eurotech"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_20c84d23ac69d26be524b5caca49882c49be6c097e623aee859cb8ab08e65f28",
+        "stableBrandKey": "legacy-display:haier",
+        "displayName": "Haier",
+        "observedSpellings": [
+          "Haier"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_20f4f6edfbca0422189b91c9f4a2ea9815e86367befb3be5cb23066681172458",
+        "stableBrandKey": "legacy-display:galanz",
+        "displayName": "Galanz",
+        "observedSpellings": [
+          "Galanz"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_21d2aa6ead95c94f181072b4304b93e5e089730b6a84a70eafe77bb8ef252262",
+        "stableBrandKey": "legacy-display:makita",
+        "displayName": "Makita",
+        "observedSpellings": [
+          "Makita"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_242abdb7719b9d69bf9ce55f322402b3f234ac326d0607952172086a8bd89a55",
+        "stableBrandKey": "legacy-display:hitachi",
+        "displayName": "Hitachi",
+        "observedSpellings": [
+          "Hitachi"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_24964f1dc8f05672ade8d48ccb7c10d19e6338d8fd717b9e090fedfd4dce944f",
+        "stableBrandKey": "legacy-display:parmco",
+        "displayName": "PARMCO",
+        "observedSpellings": [
+          "PARMCO"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_29abd4259e7e35819f1521f93006b077d4fb8cb638a404a023982ec64197d143",
+        "stableBrandKey": "legacy-display:teka",
+        "displayName": "Teka",
+        "observedSpellings": [
+          "Teka"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_2d89af5004ccbe39f394e777ee5b970a111e8345705cc6bc5f58992c28ca898c",
+        "stableBrandKey": "legacy-display:de dietrich",
+        "displayName": "De Dietrich",
+        "observedSpellings": [
+          "De Dietrich"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_2db8ef721481ccc6de68886adc3d796148347400fb00f1e617737bf867a3e0ed",
+        "stableBrandKey": "legacy-display:hisense",
+        "displayName": "Hisense",
+        "observedSpellings": [
+          "Hisense"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_2eabbd86c24d708169adb0443ee0cd245bbddb79bb448d4053499e10f6206659",
+        "stableBrandKey": "legacy-display:trade tested",
+        "displayName": "Trade Tested",
+        "observedSpellings": [
+          "Trade Tested"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_31cbd4f3171f10314ca12f183eb39d3d9509e2a0f93183b7cf45ea4d0bfd58e3",
+        "stableBrandKey": "legacy-display:vinopro",
+        "displayName": "Vinopro",
+        "observedSpellings": [
+          "Vinopro"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_347e060f51eca37be5bf61f0e073cb947549c245fc60f1435bc21b0c83aaf2a9",
+        "stableBrandKey": "legacy-display:master kitchen",
+        "displayName": "Master Kitchen",
+        "observedSpellings": [
+          "Master Kitchen"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_35a21f29ecc184907619e39d35431648e4834ba5e54ee27f91bee2bec177818c",
+        "stableBrandKey": "legacy-display:nce",
+        "displayName": "NCE",
+        "observedSpellings": [
+          "NCE"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_39e3ace97a805b0bf26435a3b655fbb910cdc09287bfb221815ff364671e8996",
+        "stableBrandKey": "legacy-display:artic",
+        "displayName": "ARTIC",
+        "observedSpellings": [
+          "ARTIC"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_3b91171a2c5040fccc8be37747c6debc7135752a5226f437dddf64ecd19676fb",
+        "stableBrandKey": "legacy-display:vogue",
+        "displayName": "VOGUE",
+        "observedSpellings": [
+          "VOGUE"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_3bd7e7b6bbdedf0b00485a0c7fe32731d5a00a6f23a546b0c2cbb08ad924e9f4",
+        "stableBrandKey": "legacy-display:fotile",
+        "displayName": "FOTILE",
+        "observedSpellings": [
+          "FOTILE"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_3ccc69f7dd51c8b3435752da0c1abf134592063bb147b353bddc49a90de02723",
+        "stableBrandKey": "legacy-display:artusi",
+        "displayName": "Artusi",
+        "observedSpellings": [
+          "Artusi"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_3ce9098ea2ab685c29fc09052c333c81a9efcc52e8a40c3a3bfc08a730a471a4",
+        "stableBrandKey": "legacy-display:whirlpool",
+        "displayName": "WHIRLPOOL",
+        "observedSpellings": [
+          "WHIRLPOOL",
+          "Whirlpool"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_3f785833324ec0da1adf242ef82df952c9faf6b3e3eae78cf2ba53107dfab45d",
+        "stableBrandKey": "legacy-display:sub-zero",
+        "displayName": "Sub-Zero",
+        "observedSpellings": [
+          "Sub-Zero"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_40c07cdaf257de896382024b84b2abe23ac4ff3cfaf51332bc27b2f265f37ac1",
+        "stableBrandKey": "legacy-display:yokohama",
+        "displayName": "yokohama",
+        "observedSpellings": [
+          "yokohama"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_41010d2959a4c6cab401a990a16ca8dfed1c0a1415a733db0308359d3cb7a3b6",
+        "stableBrandKey": "legacy-display:imprasio",
+        "displayName": "Imprasio",
+        "observedSpellings": [
+          "Imprasio"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_42fa9e5fc31901e0ce43ab9bca0c705d91d1772d9e1641c6ecafb6120382861e",
+        "stableBrandKey": "legacy-display:fulgor",
+        "displayName": "Fulgor",
+        "observedSpellings": [
+          "Fulgor"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_43f0844f99a3be053747dff12037bb291677e8dc81bf343d2a5d18d22df41ee9",
+        "stableBrandKey": "legacy-display:omega",
+        "displayName": "Omega",
+        "observedSpellings": [
+          "Omega"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_4794d21fa4125648c710aa6839246006426685ad35d9caa4218e13c65e144ad1",
+        "stableBrandKey": "legacy-display:majestic",
+        "displayName": "majestic",
+        "observedSpellings": [
+          "majestic"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_48667f6ad3008431e1480b39405c08b01012f59c9c6b11e6e4c2bb408fc469ae",
+        "stableBrandKey": "legacy-display:liebherr",
+        "displayName": "Liebherr",
+        "observedSpellings": [
+          "Liebherr"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_49d333917d880d236967e8abad0fac88675b2e4fb6398dcf4cfa190b5e35f399",
+        "stableBrandKey": "legacy-display:telefunken",
+        "displayName": "TELEFUNKEN",
+        "observedSpellings": [
+          "TELEFUNKEN"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_4be2bfd044451fc255a4089e2cf22d03997b73ab508bd1fe7b0f9bb5e0d3b778",
+        "stableBrandKey": "legacy-display:iceland",
+        "displayName": "ICELAND",
+        "observedSpellings": [
+          "ICELAND"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_4c02f108b68d9cfdbf65cf29e4d240ab07a680b2195707b27e27a022e0ecee0b",
+        "stableBrandKey": "legacy-display:glen dimplex",
+        "displayName": "Glen Dimplex",
+        "observedSpellings": [
+          "Glen Dimplex"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_4d7ce8d9ccdae77cea16255f331600cef9f06c47c3f9e7a8e6efcf5d9cb23144",
+        "stableBrandKey": "legacy-display:midea",
+        "displayName": "Midea",
+        "observedSpellings": [
+          "Midea"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_4f6886f047547f1718a026d96b909dad0aef0265d81aff8fc9015143e1dc3855",
+        "stableBrandKey": "legacy-display:brabantia",
+        "displayName": "Brabantia",
+        "observedSpellings": [
+          "Brabantia"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5056e07e5720e0fba5dbbfba04517fed0ff52e926d76109a20df6072f9f74ffe",
+        "stableBrandKey": "legacy-display:nulon",
+        "displayName": "Nulon",
+        "observedSpellings": [
+          "Nulon"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_51e182085be16f846056c5deb0c74079b5f39090c13fb7acfff6177b71a9d500",
+        "stableBrandKey": "legacy-display:pulmuone",
+        "displayName": "Pulmuone",
+        "observedSpellings": [
+          "Pulmuone"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_52ac1ac6e9f5cce3bbcddcdc426ba42d001075c249b36bf51e883cf8198df445",
+        "stableBrandKey": "legacy-display:blaupunkt",
+        "displayName": "Blaupunkt",
+        "observedSpellings": [
+          "Blaupunkt"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_52ccec9943bfa0f686504c26f347f8bc9c8acafed94a48bf4df83a96c671149a",
+        "stableBrandKey": "legacy-display:sheffield",
+        "displayName": "Sheffield",
+        "observedSpellings": [
+          "Sheffield"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_54de27d9dad194e0768d799c50bc350d59a1d99cf0ba8a3a2928f4f12127097f",
+        "stableBrandKey": "legacy-display:inalto",
+        "displayName": "Inalto",
+        "observedSpellings": [
+          "Inalto"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_57d4f975f5c4fe01568a6e3f2bfa93ef46ea6b37b7dc6da632beb62960cf9fb8",
+        "stableBrandKey": "legacy-display:tisira",
+        "displayName": "Tisira",
+        "observedSpellings": [
+          "Tisira"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5a51d3a3d7c0b13bacc3f14a1816747769b2adda13135ac4fcee3ba66534e038",
+        "stableBrandKey": "legacy-display:moborv",
+        "displayName": "MOBORV",
+        "observedSpellings": [
+          "MOBORV"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5b7a658f10ce11f893ff0be307e54a3d3626e62bc2c66a7378214573e5041e07",
+        "stableBrandKey": "legacy-display:kogan",
+        "displayName": "Kogan",
+        "observedSpellings": [
+          "Kogan"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5db0c83bef2925d97201604fbf98d044e8cc720508aff4ccde1ad48b9a5fa273",
+        "stableBrandKey": "legacy-display:euroclean",
+        "displayName": "Euroclean",
+        "observedSpellings": [
+          "Euroclean"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5dd666d6fe8e596197ddb004aee21a11a8f2d774544188e5d6829f4bc9e8c8e6",
+        "stableBrandKey": "legacy-display:camec",
+        "displayName": "CAMEC",
+        "observedSpellings": [
+          "CAMEC"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5e5b2ef9c0f89772262dfe9cc18a26ebd201bc68bc7c5e8ecb83212fed41643b",
+        "stableBrandKey": "legacy-display:domain",
+        "displayName": "Domain",
+        "observedSpellings": [
+          "Domain"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5f1dc05f1ceeba143afeca91c1743dc0b79357167786400d78c9df948fa04294",
+        "stableBrandKey": "legacy-display:crossray infrared bbq",
+        "displayName": "Crossray Infrared BBQ",
+        "observedSpellings": [
+          "Crossray Infrared BBQ"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_5f58774bd3ebea75a715a60cc4e67dc4593cf7e9053e7d5b8918168eb3d87057",
+        "stableBrandKey": "legacy-display:thermaster",
+        "displayName": "Thermaster",
+        "observedSpellings": [
+          "Thermaster"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_62312d2962772a87e90c5ea208b1944976506810db7431d2375be80e05d2f593",
+        "stableBrandKey": "legacy-display:westinghouse",
+        "displayName": "Westinghouse",
+        "observedSpellings": [
+          "Westinghouse"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_62f41f2e36cd9a4a40f42128baa039a61607f6b1c92e2af93b93f45a1304b9a7",
+        "stableBrandKey": "legacy-display:chiq",
+        "displayName": "CHIQ",
+        "observedSpellings": [
+          "CHIQ",
+          "CHiQ"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_63384c2db09ab4e549ccaf956493c3a4a08328a70fdd0b2dd5557e45fa068338",
+        "stableBrandKey": "legacy-display:gasmate",
+        "displayName": "Gasmate",
+        "observedSpellings": [
+          "Gasmate"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_64b4bef89710996ca4649570795c8916f61fd5a7bde6d26c1342dd505f56e4c5",
+        "stableBrandKey": "legacy-display:hoover",
+        "displayName": "HOOVER",
+        "observedSpellings": [
+          "HOOVER"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_65b15d2453df99b0f58461080e9a0bd113798981fe97091990a344fb1c277bf8",
+        "stableBrandKey": "legacy-display:schmick",
+        "displayName": "Schmick",
+        "observedSpellings": [
+          "Schmick"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_65d492830a9cd713aa8ecc4da5a7f69d4d615ec2c7f92a6cd7cd0c73bc35fd41",
+        "stableBrandKey": "legacy-display:heller",
+        "displayName": "HELLER",
+        "observedSpellings": [
+          "HELLER"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c",
+        "stableBrandKey": "legacy-display:beko",
+        "displayName": "BEKO",
+        "observedSpellings": [
+          "BEKO",
+          "Beko"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_6a20bb5d026244ba5cdbdbe57b9a11b40131b3c106208c26bd4bdef0e98613b4",
+        "stableBrandKey": "legacy-display:home appliances",
+        "displayName": "Home Appliances",
+        "observedSpellings": [
+          "Home Appliances"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_6a9a864faa5c3f38b839f039558d6e28998da61b0969974df3677907180db8e7",
+        "stableBrandKey": "legacy-display:veneto",
+        "displayName": "Veneto",
+        "observedSpellings": [
+          "Veneto"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_6d62c248f75b4311a182e1e53bcdc669e73aa067d6925241c5932a4d59ff0883",
+        "stableBrandKey": "legacy-display:bellini",
+        "displayName": "Bellini",
+        "observedSpellings": [
+          "Bellini"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_6edd9127d6bcda3bef9d790733592594daf3313a51ad87513f870919c590f151",
+        "stableBrandKey": "legacy-display:nisbets essentials",
+        "displayName": "Nisbets Essentials",
+        "observedSpellings": [
+          "Nisbets Essentials"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_700840141b79b61c9d6dac19e81a5c2f078915fcc5e9cd614f72d8f8e7739120",
+        "stableBrandKey": "legacy-display:venini",
+        "displayName": "Venini",
+        "observedSpellings": [
+          "Venini"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_80a3877666e7fcf916237853f7eb85a334747c710c065f96a02785c4cdee0d79",
+        "stableBrandKey": "legacy-display:miele",
+        "displayName": "Miele",
+        "observedSpellings": [
+          "Miele"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_80b4e61a19f06ef0b52e8985ac381fd68c169109410a26fd02ae4fbcc5882eca",
+        "stableBrandKey": "legacy-display:supreme",
+        "displayName": "Supreme",
+        "observedSpellings": [
+          "Supreme"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_8284b158580a4ccb3de7eab1a1694a8137708e00ec1ea3ab97e2e03687c24fab",
+        "stableBrandKey": "legacy-display:novello",
+        "displayName": "Novello",
+        "observedSpellings": [
+          "Novello"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_83d23a0097e9ea910727423b1bdc422264d159312071a59a889247ba3a3d6135",
+        "stableBrandKey": "legacy-display:award",
+        "displayName": "AWARD",
+        "observedSpellings": [
+          "AWARD"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_85cf055177ad2aeba27f941792f8ce519d37a95b70d88987bafd00b8b5bd0441",
+        "stableBrandKey": "legacy-display:asko",
+        "displayName": "ASKO",
+        "observedSpellings": [
+          "ASKO"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_875efa9e6a9d546086e939253ab6abaae6faebfd2274946e0cb0609986b9d730",
+        "stableBrandKey": "legacy-display:bromic",
+        "displayName": "BROMIC",
+        "observedSpellings": [
+          "BROMIC"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_8850a9d1c439a532e877156f13450ad3e779f033ca27881f5b29f92232a6b85d",
+        "stableBrandKey": "legacy-display:aeg",
+        "displayName": "AEG",
+        "observedSpellings": [
+          "AEG"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_8c1034d5a7d1187cd0b5246fb8983f26ad813ed15755088770473ab34e947c6d",
+        "stableBrandKey": "legacy-display:devanti",
+        "displayName": "Devanti",
+        "observedSpellings": [
+          "Devanti"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_8c77b3871652ef175ec3efcf9415d98eddb0850b50bf105d17fe7b1ab2832519",
+        "stableBrandKey": "legacy-display:samsung electronics",
+        "displayName": "SAMSUNG ELECTRONICS",
+        "observedSpellings": [
+          "SAMSUNG ELECTRONICS"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_905a7eafaf75378efe73e1ef7837a60773ddd36925fd7f97160a960985ab9c00",
+        "stableBrandKey": "legacy-display:mistral",
+        "displayName": "Mistral",
+        "observedSpellings": [
+          "Mistral"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_90cc5667171a2be35c144dc8dbfd4f7d1a52dc91cb995cf4f9957d047e6bca83",
+        "stableBrandKey": "legacy-display:germanica",
+        "displayName": "Germanica",
+        "observedSpellings": [
+          "Germanica"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_91d86983f30a587e7ed99ab6f66d5b42fae225c57c683417172c8383cc7f33d1",
+        "stableBrandKey": "legacy-display:vision",
+        "displayName": "Vision",
+        "observedSpellings": [
+          "Vision"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_935b8b6f5f68eec68599b184d70a47c5ee3b2910bf67eeed3dd9a212c7b2c4ba",
+        "stableBrandKey": "legacy-display:bellissimo",
+        "displayName": "Bellissimo",
+        "observedSpellings": [
+          "Bellissimo"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_944f644172a7ec775933bbbc583622803be22fe40d82eb75b522095408572ec5",
+        "stableBrandKey": "legacy-display:electrolux",
+        "displayName": "Electrolux",
+        "observedSpellings": [
+          "Electrolux"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_96c93da287d55e1593395c03d32158e2ec3edc03984ff6de35e1033ec3832bc4",
+        "stableBrandKey": "legacy-display:technika",
+        "displayName": "Technika",
+        "observedSpellings": [
+          "Technika"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_96ff3f8ae11201d085eecdbc3d70b2deb1443b35ec46440ee8ad0f6f753c5de5",
+        "stableBrandKey": "legacy-display:emilia",
+        "displayName": "Emilia",
+        "observedSpellings": [
+          "Emilia"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_9a3eb0559b198eeda698b5b87bd9a09c49836db48322d345fff0e6f470a3d652",
+        "stableBrandKey": "legacy-display:euro",
+        "displayName": "EURO",
+        "observedSpellings": [
+          "EURO"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_9b299a5355f00c9d54f643ec877e3ac4bad87fdf8295b94787d30c95484bd93a",
+        "stableBrandKey": "legacy-display:living & co",
+        "displayName": "Living & Co",
+        "observedSpellings": [
+          "Living & Co"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "stableBrandKey": "legacy-display:fisher & paykel",
+        "displayName": "Fisher & Paykel",
+        "observedSpellings": [
+          "Fisher & Paykel"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_9c30c3c1e526f90079337cefd76611379a3fa12d916ecce55befb5cd14683fdc",
+        "stableBrandKey": "legacy-display:everdure",
+        "displayName": "Everdure",
+        "observedSpellings": [
+          "Everdure"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_9d03a1a0dd2cf34527c0b1537689ba27c7a6448289c78ac5d642788405e16d62",
+        "stableBrandKey": "legacy-display:panasonic",
+        "displayName": "Panasonic",
+        "observedSpellings": [
+          "Panasonic"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_9d06641ddd92ee452ee45203625bd0751ca5d23a3d888a96240861aa601b05fe",
+        "stableBrandKey": "legacy-display:mitsubishi",
+        "displayName": "Mitsubishi",
+        "observedSpellings": [
+          "Mitsubishi"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_a1fa475e79e7c1cb666fdf8219fb97ae4c537d3378da66240c1d35315819d23a",
+        "stableBrandKey": "legacy-display:airflo",
+        "displayName": "Airflo",
+        "observedSpellings": [
+          "Airflo"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_a4352b534a9a6c2246b04b0d59234b7ce1365035d405835ab8af965aa3d050ba",
+        "stableBrandKey": "legacy-display:bertazzoni",
+        "displayName": "Bertazzoni",
+        "observedSpellings": [
+          "Bertazzoni"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_a5c4617d3fe55ff06130169be25692ce0dc40b9b51953192019201bda30dbe58",
+        "stableBrandKey": "legacy-display:licensing essentials",
+        "displayName": "LICENSING ESSENTIALS",
+        "observedSpellings": [
+          "LICENSING ESSENTIALS"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_a90ce3f14998f02088b4b3def8407d57419718b3d288aaa48f0fe3c75efa78a1",
+        "stableBrandKey": "legacy-display:sharp",
+        "displayName": "SHARP",
+        "observedSpellings": [
+          "SHARP"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_aa55fecc125cf38552047919c536689dcfa3e5e5910d10c18c0c409c677c99c8",
+        "stableBrandKey": "legacy-display:mitsubishi electric",
+        "displayName": "MITSUBISHI ELECTRIC",
+        "observedSpellings": [
+          "MITSUBISHI ELECTRIC",
+          "Mitsubishi Electric"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_aa5beee862d39f3faf3e12da514d71b563e8c02b09cc58f6942d184a4149313a",
+        "stableBrandKey": "legacy-display:konka",
+        "displayName": "KONKA",
+        "observedSpellings": [
+          "KONKA"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_ab6b968ad5a8dbec26183b3fbcc9dceaf060498e9d49b01ade2afa92a8756b13",
+        "stableBrandKey": "legacy-display:polo",
+        "displayName": "POLO",
+        "observedSpellings": [
+          "POLO"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_ad8d7ed741fef2fe91e9649eab0c05f051c403164390c0728caa566f10adb873",
+        "stableBrandKey": "legacy-display:carson",
+        "displayName": "carson",
+        "observedSpellings": [
+          "carson"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_b697b78325b2c4851b0883b9b368ee4726da8bf0abe9dabd8451676d8a96e80e",
+        "stableBrandKey": "legacy-display:euromatic",
+        "displayName": "EUROMATIC",
+        "observedSpellings": [
+          "EUROMATIC"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_b7cc84a2256f906d381577ada28f5b1fc280b865961abb76533444ee64d1ead4",
+        "stableBrandKey": "legacy-display:fhiaba",
+        "displayName": "Fhiaba",
+        "observedSpellings": [
+          "Fhiaba"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_b8be9443a7b9b4a9313e6452e8c441d71fdcdf2ce2df877e92cc2320a1f934ac",
+        "stableBrandKey": "legacy-display:franke",
+        "displayName": "Franke",
+        "observedSpellings": [
+          "Franke"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_bbbba177ece2e6677e872d1732e353b3f720375126c9436944f7452db4c8facc",
+        "stableBrandKey": "legacy-display:euromaid",
+        "displayName": "Euromaid",
+        "observedSpellings": [
+          "Euromaid"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_bc307172ba58fc1ac6d100d68bcdb84ad0b46f0d9cb61e45e5ca85ef44c36919",
+        "stableBrandKey": "legacy-display:solt",
+        "displayName": "Solt",
+        "observedSpellings": [
+          "Solt"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_bc848ebfc02c9b317a33c79869950117fcc74048d7ee21e66049f7ad984c6503",
+        "stableBrandKey": "legacy-display:toshiba",
+        "displayName": "Toshiba",
+        "observedSpellings": [
+          "Toshiba"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_bfaaa6e58a54f2c2e8bcd5bda3e488e635df56ec4dca2258d536e42a5f8d0016",
+        "stableBrandKey": "legacy-display:swift",
+        "displayName": "Swift",
+        "observedSpellings": [
+          "Swift"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c0b81b821682120c69d807e38ce9836f688b01592b2d407993476414d7c371dc",
+        "stableBrandKey": "legacy-display:kingsbottle",
+        "displayName": "KingsBottle",
+        "observedSpellings": [
+          "KingsBottle"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c133d6692023217e0e6802cc0b4c692a281b99049f003ee9bf16b795e0a77063",
+        "stableBrandKey": "legacy-display:baumatic",
+        "displayName": "Baumatic",
+        "observedSpellings": [
+          "Baumatic"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c504c14400e81baa4bcc6c0d5de6ef98dd28dcccaffe90808473eff69f98f295",
+        "stableBrandKey": "legacy-display:warrior refrigeration",
+        "displayName": "Warrior Refrigeration",
+        "observedSpellings": [
+          "Warrior Refrigeration"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c5c271922cada8e8862fef65bd1903e41ca61fe4e60fa112379964a8ee43c905",
+        "stableBrandKey": "legacy-display:3j",
+        "displayName": "3J",
+        "observedSpellings": [
+          "3J"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c6b2a45f25def499f6dd46f6d8cc881f5348872dab2ec95c12471f2c5a7787fd",
+        "stableBrandKey": "legacy-display:gram",
+        "displayName": "GRAM",
+        "observedSpellings": [
+          "GRAM"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c83ded1a6760a1efce546ba13d5800e125c2daaef09a0d3e71e4c431c2bbd36e",
+        "stableBrandKey": "legacy-display:milano",
+        "displayName": "Milano",
+        "observedSpellings": [
+          "Milano"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c92265c583de694840d98981316169ba396018ba4471bb2d9f194b0cb3b08c92",
+        "stableBrandKey": "legacy-display:di lusso",
+        "displayName": "Di Lusso",
+        "observedSpellings": [
+          "Di Lusso"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_c94f8527279132173af9bc4101f862c100a0d80a0e22ec5f99b43c7d3e1fa286",
+        "stableBrandKey": "legacy-display:mykin",
+        "displayName": "Mykin",
+        "observedSpellings": [
+          "Mykin"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_cbcb69a7d5bf8ac0a19a47d1432bb28e3caaf025abb4cec010c7f2926d8fbcb4",
+        "stableBrandKey": "legacy-display:v-zug",
+        "displayName": "V-ZUG",
+        "observedSpellings": [
+          "V-ZUG"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_ce34a48a938792075f782a9393b94ba6901a319d72dc852f34190ea899738a7b",
+        "stableBrandKey": "legacy-display:husky",
+        "displayName": "Husky",
+        "observedSpellings": [
+          "Husky"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d0d7201d1543bbd4cf3370281ea829138dac6457c70cec2a3452416205f7522c",
+        "stableBrandKey": "legacy-display:aucma",
+        "displayName": "AUCMA",
+        "observedSpellings": [
+          "AUCMA"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d15245756f719728a2ca12d9bb82532417295d72e12332b95775146f1527e8fa",
+        "stableBrandKey": "legacy-display:nero",
+        "displayName": "Nero",
+        "observedSpellings": [
+          "Nero"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d5070c3eda7c3864fa0558cd943cf386e59adf35680550c119781b5606a80886",
+        "stableBrandKey": "legacy-display:simmons",
+        "displayName": "Simmons",
+        "observedSpellings": [
+          "Simmons"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d529a95e1de9486e747500927a9267957a5576c0d6b1cc2400f361ead2f47cbf",
+        "stableBrandKey": "legacy-display:dometic",
+        "displayName": "Dometic",
+        "observedSpellings": [
+          "Dometic"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d6ef7e3555b009eb0d737717996715dd2d7dffee3a95b81d1307865d73113095",
+        "stableBrandKey": "legacy-display:duos",
+        "displayName": "Duos",
+        "observedSpellings": [
+          "Duos"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d85aa8482ad56a0cc55c669a98777b963dcb4fb11e61bb0556781fc8ce35227b",
+        "stableBrandKey": "legacy-display:linarie",
+        "displayName": "Linarie",
+        "observedSpellings": [
+          "Linarie"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_d91c997a059cf5b5724f665992ec8b6cc203a8b909dc53ec33869a7f694adb07",
+        "stableBrandKey": "legacy-display:blanco",
+        "displayName": "BLANCO",
+        "observedSpellings": [
+          "BLANCO"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_e01ea9cee7a5af34661c9d291c82f9fbece45013a91ad3d195069b2927f1bc8b",
+        "stableBrandKey": "legacy-display:belling",
+        "displayName": "Belling",
+        "observedSpellings": [
+          "Belling"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_e17fab68b2e427b94d29c8f924be6942e72c565d8bf15cc9ce9c00248ae792e2",
+        "stableBrandKey": "legacy-display:norj",
+        "displayName": "Norj",
+        "observedSpellings": [
+          "Norj"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_e5dec99760d54944a837c2b8e78e71fabbd13e90f9781a4308bafe3129e5032c",
+        "stableBrandKey": "legacy-display:teco",
+        "displayName": "TECO",
+        "observedSpellings": [
+          "TECO"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_e62de988e22082e385817a52ac757a73b44a7e55935d2fd0a9b4e32c79b43c99",
+        "stableBrandKey": "legacy-display:robinhood",
+        "displayName": "Robinhood",
+        "observedSpellings": [
+          "Robinhood"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_e84a1b9c946d6741235d272098c21b392a5414e8fe814aad9129e9bf3201af4c",
+        "stableBrandKey": "legacy-display:tcl",
+        "displayName": "TCL",
+        "observedSpellings": [
+          "TCL"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_e9564ec57c3dc2ee5a6bb4a9b4a6b6101edcf759b9e8f174d7b1604aa0731ac0",
+        "stableBrandKey": "legacy-display:samsung",
+        "displayName": "Samsung",
+        "observedSpellings": [
+          "Samsung"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_eb2f660405ab44cb33c55f7b3a25443e26e7579361bb2f40c982b613bb172d55",
+        "stableBrandKey": "legacy-display:shome i seiki",
+        "displayName": "SHOME I SEIKI",
+        "observedSpellings": [
+          "SHOME I SEIKI"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_eca5576c1c7991caefd89e330b5e6006423b3869c57ce485574b3a127a32fda5",
+        "stableBrandKey": "legacy-display:casa",
+        "displayName": "CASA",
+        "observedSpellings": [
+          "CASA"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_ee10c8f74aa9870a036152a44db33e1296bbd561373b111d2ce9800aae0977d3",
+        "stableBrandKey": "legacy-display:de’longhi",
+        "displayName": "De’Longhi",
+        "observedSpellings": [
+          "De’Longhi"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_eff39e95918f526bc35f3242c59dbf6a25647d88f7026b5b42de30a2f90b6050",
+        "stableBrandKey": "legacy-display:evoke",
+        "displayName": "EVOKE",
+        "observedSpellings": [
+          "EVOKE"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_f386437ff9ad19f556b9e4f932be5f0eacb27cdd74c3c4ce19be260db5fe3d6f",
+        "stableBrandKey": "legacy-display:comfee",
+        "displayName": "Comfee",
+        "observedSpellings": [
+          "Comfee"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_f4d0bccfadf3d7016649ff76917686a98df576b5df524fe46ccbc9754a22d1a1",
+        "stableBrandKey": "legacy-display:zzz",
+        "displayName": "zzz",
+        "observedSpellings": [
+          "zzz"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_f64fc09409e2a41aa6152b4c8e1a2e65464765f4afa6e62c384f8d63b574ae78",
+        "stableBrandKey": "legacy-display:malber",
+        "displayName": "MALBER",
+        "observedSpellings": [
+          "MALBER"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_f696fd38dfee7ca24530632d765cf370a7f540c29b5789bdca913fcd093c2706",
+        "stableBrandKey": "legacy-display:prinetti",
+        "displayName": "Prinetti",
+        "observedSpellings": [
+          "Prinetti"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_f84c018b34f65b6d0d7b9eebf2d0b33ecbba43e4f9cdaf7ef4eb5c69ef4aaf50",
+        "stableBrandKey": "legacy-display:esatto",
+        "displayName": "Esatto",
+        "observedSpellings": [
+          "Esatto"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_fde6a32da42bc9a15121b8633f0b8e8c342bdbf9e56452cc103977a7ffb2e70a",
+        "stableBrandKey": "legacy-display:ilve",
+        "displayName": "Ilve",
+        "observedSpellings": [
+          "ILVE",
+          "Ilve"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_ff38f6c023fa1be4292d234397211425dbc47cb0b92f7cfeb7407b9dc1d2b97c",
+        "stableBrandKey": "legacy-display:meisda",
+        "displayName": "meisda",
+        "observedSpellings": [
+          "meisda"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      },
+      {
+        "brandId": "fa_brand_ffd80453bfdd0b7f43d8a63ead37c59212a919c82736ce000dd3c274c7ce78f2",
+        "stableBrandKey": "legacy-display:coldstream",
+        "displayName": "Coldstream",
+        "observedSpellings": [
+          "Coldstream"
+        ],
+        "aliases": [],
+        "researchAliases": [],
+        "parentGroup": null
+      }
+    ],
+    "officialHostPolicyRefs": [
+      {
+        "brandId": "fa_brand_014735a20237bd116392309fd1e4528127a7c6a32ca3a2737455c5e1432313b1",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/bosch"
+      },
+      {
+        "brandId": "fa_brand_03c6401521564295de4f4ae5850faf90777c4831d346dcc963f39171c7a302bb",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/lg"
+      },
+      {
+        "brandId": "fa_brand_0f294fd56a6813482473d6ecde8b1a1abd524e129f66ac4fb074de242e9b7177",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/kelvinator"
+      },
+      {
+        "brandId": "fa_brand_1c22acfad15785a27ada2b66cbccc0fa45c35b138576c85ed8a708da82e00e97",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/smeg"
+      },
+      {
+        "brandId": "fa_brand_20c84d23ac69d26be524b5caca49882c49be6c097e623aee859cb8ab08e65f28",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/haier"
+      },
+      {
+        "brandId": "fa_brand_2db8ef721481ccc6de68886adc3d796148347400fb00f1e617737bf867a3e0ed",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/hisense"
+      },
+      {
+        "brandId": "fa_brand_3b91171a2c5040fccc8be37747c6debc7135752a5226f437dddf64ecd19676fb",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/vogue"
+      },
+      {
+        "brandId": "fa_brand_3ccc69f7dd51c8b3435752da0c1abf134592063bb147b353bddc49a90de02723",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/artusi"
+      },
+      {
+        "brandId": "fa_brand_3f785833324ec0da1adf242ef82df952c9faf6b3e3eae78cf2ba53107dfab45d",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/subzero"
+      },
+      {
+        "brandId": "fa_brand_43f0844f99a3be053747dff12037bb291677e8dc81bf343d2a5d18d22df41ee9",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/omega"
+      },
+      {
+        "brandId": "fa_brand_48667f6ad3008431e1480b39405c08b01012f59c9c6b11e6e4c2bb408fc469ae",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/liebherr"
+      },
+      {
+        "brandId": "fa_brand_4d7ce8d9ccdae77cea16255f331600cef9f06c47c3f9e7a8e6efcf5d9cb23144",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/midea"
+      },
+      {
+        "brandId": "fa_brand_54de27d9dad194e0768d799c50bc350d59a1d99cf0ba8a3a2928f4f12127097f",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/inalto"
+      },
+      {
+        "brandId": "fa_brand_5b7a658f10ce11f893ff0be307e54a3d3626e62bc2c66a7378214573e5041e07",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/kogan"
+      },
+      {
+        "brandId": "fa_brand_62312d2962772a87e90c5ea208b1944976506810db7431d2375be80e05d2f593",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/westinghouse"
+      },
+      {
+        "brandId": "fa_brand_62f41f2e36cd9a4a40f42128baa039a61607f6b1c92e2af93b93f45a1304b9a7",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/chiq"
+      },
+      {
+        "brandId": "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/beko"
+      },
+      {
+        "brandId": "fa_brand_80a3877666e7fcf916237853f7eb85a334747c710c065f96a02785c4cdee0d79",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/miele"
+      },
+      {
+        "brandId": "fa_brand_85cf055177ad2aeba27f941792f8ce519d37a95b70d88987bafd00b8b5bd0441",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/asko"
+      },
+      {
+        "brandId": "fa_brand_944f644172a7ec775933bbbc583622803be22fe40d82eb75b522095408572ec5",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/electrolux"
+      },
+      {
+        "brandId": "fa_brand_9bbfd8e1944afddcd625ec5d401ba9c39230fdb4b169b1a096d0994aacf7bf71",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/fisherpaykel"
+      },
+      {
+        "brandId": "fa_brand_bbbba177ece2e6677e872d1732e353b3f720375126c9436944f7452db4c8facc",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/euromaid"
+      },
+      {
+        "brandId": "fa_brand_e5dec99760d54944a837c2b8e78e71fabbd13e90f9781a4308bafe3129e5032c",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/teco"
+      },
+      {
+        "brandId": "fa_brand_e62de988e22082e385817a52ac757a73b44a7e55935d2fd0a9b4e32c79b43c99",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/robinhood"
+      },
+      {
+        "brandId": "fa_brand_e9564ec57c3dc2ee5a6bb4a9b4a6b6101edcf759b9e8f174d7b1604aa0731ac0",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/samsung"
+      },
+      {
+        "brandId": "fa_brand_f84c018b34f65b6d0d7b9eebf2d0b33ecbba43e4f9cdaf7ef4eb5c69ef4aaf50",
+        "policyPath": "data/architecture-v2/policies/manufacturer-source-policy.json",
+        "policySchemaVersion": 1,
+        "policyVersion": "2026-07-21.1",
+        "policySha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1",
+        "brandPointer": "/brands/esatto"
+      }
+    ]
+  },
+  "registrySha256": "9f462e007851692a191fe47d462dce390129afd4d6edf0b047a41e9492bd04eb"
+}
