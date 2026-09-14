@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "fit-semantics-v3-1",
+  "canonicalizationVersion": "fit-evidence-json-v3-1",
+  "aliases": {
+    "installationClearance.leftMm": "installation.leftMm",
+    "installationClearance.rightMm": "installation.rightMm",
+    "installationClearance.topMm": "installation.topMm",
+    "installationClearance.rearMm": "installation.rearMm",
+    "installationClearance.frontMm": "installation.frontMm",
+    "operationEnvelope.doorOpenDepthMm": "operation.doorOpenDepthMm",
+    "operationEnvelope.hingeSideSpaceMm": "operation.hingeSideSpaceMm",
+    "operationEnvelope.lidOpenHeightMm": "operation.lidOpenHeightMm",
+    "deliveryEnvelope.widthMm": "delivery.widthMm",
+    "deliveryEnvelope.heightMm": "delivery.heightMm",
+    "deliveryEnvelope.depthMm": "delivery.depthMm",
+    "packagedEnvelope.widthMm": "delivery.widthMm",
+    "packagedEnvelope.heightMm": "delivery.heightMm",
+    "packagedEnvelope.depthMm": "delivery.depthMm"
+  },
+  "reviewOnlyFieldPaths": [
+    "operationEnvelope.depthMm"
+  ],
+  "legacyDimensionFields": [
+    { "fieldPath": "closedEnvelope.widthMm", "axis": "width", "measurementScope": "product_closed_external" },
+    { "fieldPath": "closedEnvelope.heightMm", "axis": "height", "measurementScope": "product_closed_external" },
+    { "fieldPath": "closedEnvelope.depthMm", "axis": "depth", "measurementScope": "product_closed_external" },
+    { "fieldPath": "installation.leftMm", "axis": "left", "measurementScope": "installation_clearance" },
+    { "fieldPath": "installation.rightMm", "axis": "right", "measurementScope": "installation_clearance" },
+    { "fieldPath": "installation.topMm", "axis": "top", "measurementScope": "installation_clearance" },
+    { "fieldPath": "installation.rearMm", "axis": "rear", "measurementScope": "installation_clearance" },
+    { "fieldPath": "installation.frontMm", "axis": "front", "measurementScope": "installation_clearance" },
+    { "fieldPath": "operation.doorOpenDepthMm", "axis": "depth", "measurementScope": "door_open_envelope" },
+    { "fieldPath": "operation.hingeSideSpaceMm", "axis": "hinge_side", "measurementScope": "door_open_envelope" },
+    { "fieldPath": "operation.lidOpenHeightMm", "axis": "height", "measurementScope": "door_open_envelope" },
+    { "fieldPath": "service.plumbingRearMm", "axis": "rear", "measurementScope": "service_space" },
+    { "fieldPath": "service.rearServicesMm", "axis": "rear", "measurementScope": "service_space" },
+    { "fieldPath": "service.rearVentilationMm", "axis": "rear", "measurementScope": "service_space" },
+    { "fieldPath": "delivery.widthMm", "axis": "width", "measurementScope": "delivery_package" },
+    { "fieldPath": "delivery.heightMm", "axis": "height", "measurementScope": "delivery_package" },
+    { "fieldPath": "delivery.depthMm", "axis": "depth", "measurementScope": "delivery_package" }
+  ],
+  "requirementGroups": {
+    "powerConnection.voltage": {
+      "alternatives": [
+        [
+          "powerConnection.voltageV"
+        ],
+        [
+          "powerConnection.minimumVoltageV",
+          "powerConnection.maximumVoltageV"
+        ]
+      ]
+    }
+  },
+  "additionalFields": {
+    "productBody.widthMm": {
+      "valueType": "numeric",
+      "canonicalUnit": "mm",
+      "measurementScope": "product_body",
+      "fitRole": "candidate_only",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed",
+        "range"
+      ]
+    },
+    "productBody.heightMm": {
+      "valueType": "numeric",
+      "canonicalUnit": "mm",
+      "measurementScope": "product_body",
+      "fitRole": "candidate_only",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed",
+        "range"
+      ]
+    },
+    "productBody.depthMm": {
+      "valueType": "numeric",
+      "canonicalUnit": "mm",
+      "measurementScope": "product_body",
+      "fitRole": "candidate_only",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed",
+        "range"
+      ]
+    },
+    "cavity.openingWidthMm": {
+      "valueType": "numeric",
+      "canonicalUnit": "mm",
+      "measurementScope": "cavity_opening",
+      "fitRole": "candidate_only",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed"
+      ]
+    },
+    "cavity.openingHeightMm": {
+      "valueType": "numeric",
+      "canonicalUnit": "mm",
+      "measurementScope": "cavity_opening",
+      "fitRole": "candidate_only",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed"
+      ]
+    },
+    "cavity.openingDepthMm": {
+      "valueType": "numeric",
+      "canonicalUnit": "mm",
+      "measurementScope": "cavity_opening",
+      "fitRole": "candidate_only",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed"
+      ]
+    },
+    "capacity.litres": {
+      "valueType": "numeric",
+      "canonicalUnit": "L",
+      "measurementScope": "capacity",
+      "fitRole": "informational",
+      "isFitLength": false,
+      "allowedValueKinds": [
+        "fixed"
+      ]
+    }
+  },
+  "unitConversions": {
+    "mm": {
+      "mm": { "numerator": 1, "denominator": 1 },
+      "cm": { "numerator": 10, "denominator": 1 },
+      "m": { "numerator": 1000, "denominator": 1 }
+    },
+    "mm2": {
+      "mm2": { "numerator": 1, "denominator": 1 }
+    },
+    "m3": {
+      "m3": { "numerator": 1, "denominator": 1 }
+    },
+    "kPa": {
+      "kPa": { "numerator": 1, "denominator": 1 }
+    },
+    "V": {
+      "V": { "numerator": 1, "denominator": 1 }
+    },
+    "A": {
+      "A": { "numerator": 1, "denominator": 1 }
+    },
+    "kg": {
+      "kg": { "numerator": 1, "denominator": 1 }
+    },
+    "L": {
+      "L": { "numerator": 1, "denominator": 1 }
+    }
+  },
+  "allowedRangeMeanings": [
+    "adjustment",
+    "uncertainty",
+    "allowed_interval"
+  ],
+  "rangeMeaningOverrides": {
+    "adjustableRange.widthMm": [
+      "adjustment"
+    ],
+    "adjustableRange.heightMm": [
+      "adjustment"
+    ],
+    "adjustableRange.depthMm": [
+      "adjustment"
+    ]
+  },
+  "context": {
+    "configurationConditions": {
+      "underbench_worktop_removed": [
+        { "parameter": "installationMode", "operator": "eq", "value": "underbench" },
+        { "parameter": "worktop", "operator": "eq", "value": "removed" }
+      ],
+      "underbench_worktop_present": [
+        { "parameter": "installationMode", "operator": "eq", "value": "underbench" },
+        { "parameter": "worktop", "operator": "eq", "value": "present" }
+      ],
+      "freestanding": [
+        { "parameter": "installationMode", "operator": "eq", "value": "freestanding" }
+      ],
+      "integrated": [
+        { "parameter": "installationMode", "operator": "eq", "value": "integrated" }
+      ],
+      "unconditional": []
+    },
+    "parameters": {
+      "installationMode": { "type": "string", "values": ["underbench", "freestanding", "integrated", "drawer"] },
+      "worktop": { "type": "string", "values": ["present", "removed"] },
+      "adjacentWall": { "type": "string", "values": ["left", "right", "none"] },
+      "openingState": { "type": "string", "values": ["closed", "door_open", "lid_open"] },
+      "serviceConfiguration": { "type": "string", "values": ["standard", "alternative"] }
+    },
+    "referenceDatums": [
+      "envelope_extent",
+      "finished_floor",
+      "product_front_plane",
+      "product_rear_plane",
+      "cavity_front_plane",
+      "unknown"
+    ],
+    "operatingStates": {
+      "closed": { "angleDegrees": "forbidden" },
+      "door_open": { "angleDegrees": "required" },
+      "lid_open": { "angleDegrees": "required" },
+      "unknown": { "angleDegrees": "forbidden" }
+    }
+  }
+}

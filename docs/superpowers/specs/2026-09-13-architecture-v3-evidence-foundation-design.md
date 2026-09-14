@@ -223,6 +223,13 @@ worktop, adjacent wall, opening state and optional service configuration. Unknow
 condition values do not satisfy a predicate. Unsupported conditions are preserved
 as candidate gaps, never evaluated as arbitrary code or guessed false.
 
+A named conditional configuration defines required base predicates, not an
+exhaustive list: additional allowlisted, non-contradictory predicates are valid
+but all must be known in the requested facts before positive applicability.
+Reserved `unconditional` has no configuration predicates; it still requires
+explicit applicability evidence. `openingState` must agree with the separate
+`operatingState.kind` rather than contradict it.
+
 Configuration keys are exact-product/market-scoped. Null means unspecified;
 reserved `unconditional` requires evidence of applicability across the evaluated
 configurations. Reference datums initially include `envelope_extent`,
@@ -239,6 +246,16 @@ their witnessed conditions. An unconditional claim applies to every configuratio
 it proves; an applicable conditional claim does not silently override it. Compare
 overlapping applicable claims together, unless a witnessed supersession resolves
 them. Only demonstrably disjoint configurations avoid such a conflict.
+
+The resolver takes explicit `witnessedConditions` alongside product, requested
+context, candidate context and semantics. Each assertion binds exact
+`canonicalProductId`, `market`, `configurationKey`, complete `conditions`,
+conditional/unconditional `applicability` and `membership: exact_product_market`.
+G1a validates and matches this structure only; G4b verifies the underlying
+source proof. Missing or wrong-subject assertions remain unknown even when the
+request appears contradictory, so unproved evidence cannot be hidden as
+inapplicable. Differing reference datums alone remain unknown without a
+witnessed transform; they do not prove disjoint configurations.
 
 ### 6.4 Range meaning and compatibility
 

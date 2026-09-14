@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a and G0b complete. The user's legacy-repair direction is incorporated; G1a is the next packet to prepare. No V3 receipt has been issued or production behavior enabled by this revision.
+> Status: EXECUTION STARTED — G0a and G0b complete; G1a passed local implementation review and awaits Node20 CI. No V3 receipt has been issued or production behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -169,8 +169,8 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | Task ID | Deliverable | Required predecessors | Status | Acceptance HEAD | Report path | Blocker/note | Next task |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | G0a | Baseline + dirty migration inventory | — | COMPLETE | `ae7ac7d7d` | [G0a report](../../architecture-v3/execution/G0a-baseline-migration-inventory.md) | 13 tests passed; main rechecked 3 formerly failing witnesses and documentation audit. 176 recovery rows preserved; 2 stale migration inputs remain explicitly unaccepted. | G0b |
-| G0b | CI/default test wiring | G0a | COMPLETE | `a6f9e0eca` | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Local 2,982 tests passed; all six PR203 checks passed at `1a66dfee7`, including Node20 test/build/publication validation in run `34768449369`. Existing workflow and protected data are unchanged. | Resolve G1a codec decision |
-| G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | NOT_STARTED | — | — | User requires old receipts repaired to the same V3 standard. Revision 3 resolves the contract; prepare a fresh packet, no implementation yet. | G1b / G2a / G3a after acceptance |
+| G0b | CI/default test wiring | G0a | COMPLETE | `a6f9e0eca` | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Local 2,982 tests passed; all six PR203 checks passed at `1a66dfee7`, including Node20 test/build/publication validation in run `34768449369`. Existing workflow and protected data are unchanged. | G1a |
+| G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | REVIEW_REQUIRED | — | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Local 3,007 tests passed; main reviewed source/context/hash boundaries and matched all 11 report input/artifact hashes. Node20 CI is still required. No legacy reissue or public writes. | G1b / G2a / G3a after CI acceptance |
 | G1b | Lossless legacy adapters | G1a | NOT_STARTED | — | — | — | — |
 | G2a | AU BrandRegistry | G1a | NOT_STARTED | — | — | Uses G1a's shared versioned V3 codec, not a separate hash implementation. | — |
 | G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
@@ -388,7 +388,7 @@ npm test
 
 ## G1a — semantics compiler and EngineeringContext validation
 
-**Status:** NOT_STARTED · **Depends on:** G0b · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED · **Depends on:** G0b · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Compile V2 field/rights/applicability policy plus narrow versioned overlay into closed V3 semantics; validate numeric values, inclusions, ranges, and finite contexts.
 
@@ -416,9 +416,24 @@ normalizeV3FieldValue({ rawValue, unit, fieldPath, inclusions, applicability, se
 validateEngineeringContext({ context, semantics, witnessedConditions })
   -> normalized context | typed validation error
 
-resolveEvaluationContext({ product, requestedContext, candidateContext, semantics })
+resolveEvaluationContext({ product, requestedContext, candidateContext, semantics, witnessedConditions })
   -> applicable | inapplicable | unknown | invalid
 ```
+
+`product` supplies exact `canonicalProductId` and `market`. Each structured
+configuration assertion in `witnessedConditions` supplies those same two subject
+keys plus `configurationKey`, the complete `conditions`, `applicability`
+(`conditional` or `unconditional`) and `membership: exact_product_market`.
+This explicit input closes the original resolver's missing applicability-input
+contract; it is not source verification, which remains G4b's responsibility.
+The validator returns the normalized context itself, not a wrapper.
+
+Conditional keys define required base predicates and may carry additional
+allowlisted predicates. Reserved `unconditional` permits no predicates and still
+requires its own exact-product/market assertion. Before excluding a candidate as
+inapplicable, require that assertion. Missing requested predicates or differing
+reference datums remain unknown; known contrary configuration predicates may
+prove disjoint applicability. `openingState` agrees with `operatingState.kind`.
 
 **Must prove.**
 
@@ -1542,8 +1557,9 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Next dispatch:** G1a. G0a/G0b remain complete and are not rerun without changed
-inputs, failure or new risk. Main first freezes Revision 3 plan/spec and current
-input hashes, exact write whitelist and negative codec/semantics witnesses. The
-executor performs G1a only and returns `REVIEW_REQUIRED` or concrete `BLOCKED`;
-it does not begin historical receipt rewriting, G6c backfill or public cutover.
+**Next dispatch:** G1b after G1a's Node20 CI acceptance. G0a/G0b remain complete
+and are not rerun without changed inputs, failure or new risk. Main freezes the
+reviewed G1a interfaces and current input-owner hashes in the next packet. G1b
+only adapts reusable candidates and typed supplementation gaps; it does not
+re-convert already-canonical V2 mm values, rewrite historical receipts, run G6c
+backfill or perform public cutover.
