@@ -79,8 +79,8 @@ The crop box has the same normalized-box rules and maps the crop to its declared
 full-page artifact. Raw coordinates retain source order and their declared
 coordinate space without axis/unit inference. Page numbers, rendered pixels,
 `csv_cell` indexes, and `text_span` offsets are safe integers. `csv_cell`
-`rowIndex` and `columnIndex` are zero-based parsed-record indexes, with row zero
-representing a header record when one is present; physical line numbers and
+`rowIndex` is a zero-based parsed-record index and `columnIndex` a zero-based
+cell index, with row zero representing a header record when present; physical line numbers and
 quoted embedded newlines do not change that convention. This is a replay locator
 convention, not CSV parsing. `text_span` offsets are zero-based UTF-16 code units
 with an end-exclusive end.
@@ -136,7 +136,9 @@ The normalized structural `Proof` is:
 }
 ```
 
-All arrays are deterministically sorted and deeply frozen. The source artifact
+Proof record/anchor/relation arrays and witness-ID sets are deterministically
+sorted; ordered coordinates and content arrays retain their source order. The
+entire output is deeply frozen. The source artifact
 must be the sole root of the complete referenced artifact closure. Every parent,
 fragment parent, rendered-page reference, and crop full-page reference resolves
 within that root. A crop's declared full-page artifact must be a distinct actual
@@ -286,3 +288,43 @@ without a rerun. Exact-head CI is the authoritative next full-suite evidence.
    digest nor can detect forged but well-shaped raw provenance metadata.
 3. G3a does not establish a model, row, diagram, axis, unit, configuration,
    physical-installation, source-authority, or receipt conclusion.
+
+## Main integration acceptance — 2026-09-14
+
+This append-only review records acceptance of code
+`868f10a7911ecc46dc7fbf440f7de4a05ae9ef63`, tree
+`5209e96975c56a24ba782efa5af33bcd2ecb9741`, in
+[Draft PR211](https://github.com/fitappliance/fitappliance/pull/211). The worker
+handoff above remains historical; the canonical plan owns formal task status.
+
+- Main read both modules and the negative witnesses, verified the three final
+  implementation/test hashes above, and closed the unnecessary exported locator
+  helper. Constructors reject accessors without evaluation. No unresolved Critical
+  or Important finding remains in this bounded structural implementation.
+- The earlier local full-suite PASS was not accepted. Complete original CI logs
+  for [run34844532895](https://github.com/fitappliance/fitappliance/actions/runs/34844532895),
+  job103977144788, show Node20.20.2, **3,141 pass,0 fail,0 skipped,0 cancelled**.
+  All26 new test definitions run through the default V3 glob. Lint, canonical
+  build, publication boundary, sitemap, review gate and generated-output checks
+  pass. All five check runs and the Vercel commit status are successful.
+- Exact-code preview `dpl_GsZQXUDm29zEBVRaQPSuSMJCvDmd`,
+  `https://fitappliance-4xmdlliam-fitappliances-projects.vercel.app`, is READY on
+  Node24 with `.site-public`. Public artifact:3,281 files /54,856,568 bytes /
+  SHA256 `f184ec490cd04e5ffe0cbc03df66a1f8fa39ace7a3a903f58782a9a3cfa0d2ba`.
+  Main independently reproduced this from the accepted manifest by changing
+  only the service-worker commit cache version; no local full build was rerun.
+- Eight protected-preview controls pass: root/UI-script/service-worker return
+  their expected application bytes (apart from Vercel's isolated preview script
+  insertion), and the two new sources, test, report and canonical plan return404.
+- All9 frozen upstream hashes and original recovery HEAD/status/diff match the
+  preflight. Five-file scope only. No original source, OCR output, receipt,
+  active release pointer, dependency or runtime consumer changed.
+- Real-source canary remains NOT_RUN. No legacy receipt was repaired/reissued,
+  no product Fit grade changed, and neither PR210 nor PR211 was merged or
+  production-promoted. G3b is the next bounded task under the same Terra/max
+  implementer and main-review workflow.
+
+The documentation-only acceptance checkpoint will be checked at its own final
+head; immutable CI and preview results are recorded in the PR and local QA
+ledger without changing implementation bytes or retroactively certifying the
+truncated local test observation.
