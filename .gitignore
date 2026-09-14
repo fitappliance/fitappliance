@@ -5,6 +5,9 @@ outreach-private/
 .tmp/
 /tmp
 .worktrees/
+.site-public/
+.site-public-stage-*
+.site-public-backup-*
 .superpowers/
 node_modules/
 *.tmp-*

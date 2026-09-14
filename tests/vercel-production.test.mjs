@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -18,12 +19,34 @@ function headerValue(rule, key) {
   return (rule?.headers ?? []).find((header) => header.key.toLowerCase() === key.toLowerCase())?.value ?? '';
 }
 
+function resolveStaticFile(staticRoot, requestPath) {
+  const candidate = path.resolve(staticRoot, `.${requestPath}`);
+  if (candidate !== staticRoot && !candidate.startsWith(`${staticRoot}${path.sep}`)) return null;
+  return fs.existsSync(candidate) ? candidate : null;
+}
+
 test('vercel production config: clean urls and canonical slash behavior are explicit', () => {
   const config = loadVercelConfig();
 
   assert.equal(config.cleanUrls, true);
   assert.equal(config.trailingSlash, false);
   assert.equal(config.buildCommand, 'npm run build');
+});
+
+test('vercel production config: static deployment is an explicit public artifact, not the repository root', (t) => {
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-vercel-static-root-'));
+  t.after(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(fixtureRoot, 'docs'), { recursive: true });
+  fs.mkdirSync(path.join(fixtureRoot, '.site-public'), { recursive: true });
+  fs.writeFileSync(path.join(fixtureRoot, 'docs', 'private.md'), 'not public');
+
+  assert.equal(
+    resolveStaticFile(fixtureRoot, '/docs/private.md'),
+    path.join(fixtureRoot, 'docs', 'private.md'),
+    'a root static resolver would expose a non-public repository document',
+  );
+  assert.equal(resolveStaticFile(path.join(fixtureRoot, '.site-public'), '/docs/private.md'), null);
+  assert.equal(loadVercelConfig().outputDirectory, '.site-public');
 });
 
 test('vercel production config: apex host permanently redirects to canonical www host', () => {
@@ -65,6 +88,7 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.get('/products'), '/pages/products');
   assert.equal(routes.get('/products/:slug'), '/pages/products/:slug');
   assert.equal(routes.get('/data/:path*'), '/public/data/:path*');
+  assert.equal(routes.get('/pdf-evidence/:path*'), '/public/pdf-evidence/:path*');
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
 });
 
