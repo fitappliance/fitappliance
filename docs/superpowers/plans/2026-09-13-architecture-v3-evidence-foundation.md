@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b and G1a complete; G1b is next under Revision 3. No V3 receipt has been issued or production behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b and G1a complete; G1b has passed local implementation review and awaits exact-commit Node20 CI. No V3 receipt has been issued or production behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -171,7 +171,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G0a | Baseline + dirty migration inventory | — | COMPLETE | `ae7ac7d7d` | [G0a report](../../architecture-v3/execution/G0a-baseline-migration-inventory.md) | 13 tests passed; main rechecked 3 formerly failing witnesses and documentation audit. 176 recovery rows preserved; 2 stale migration inputs remain explicitly unaccepted. | G0b |
 | G0b | CI/default test wiring | G0a | COMPLETE | `a6f9e0eca` | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Local 2,982 tests passed; all six PR203 checks passed at `1a66dfee7`, including Node20 test/build/publication validation in run `34768449369`. Existing workflow and protected data are unchanged. | G1a |
 | G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | COMPLETE | `3a9df4356` | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Main reviewed code and all 11 report input/artifact hashes. All six [PR205](https://github.com/fitappliance/fitappliance/pull/205) checks passed at `3a9df4356`; Node20.20.2 run `34800123395` passed 3,007 tests, build and publication validation. No legacy reissue or public writes. | G1b; G2a / G3a also eligible |
-| G1b | Lossless legacy adapters | G1a | NOT_STARTED | — | — | — | — |
+| G1b | Lossless legacy adapters | G1a | REVIEW_REQUIRED | — | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | Based on `38883f4e4`; 21 focused, 66 compatibility and 3,028 full-suite tests passed locally. Main reviewed owner joins/context and independently rechecked null-mm, conflicting-unit and canonical-range witnesses; all 16 frozen inputs and original recovery status/diff unchanged. Node20 CI remains required. | G2a after acceptance |
 | G2a | AU BrandRegistry | G1a | NOT_STARTED | — | — | Uses G1a's shared versioned V3 codec, not a separate hash implementation. | — |
 | G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
 | G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
@@ -487,7 +487,7 @@ npm test
 
 ## G1b — lossless legacy consumer adapters
 
-**Status:** NOT_STARTED · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Adapt V2 geometry/install inputs into reusable V3 candidates and explicit supplementation gaps; retain old consumers/bytes, without treating the adapter as a completed receipt upgrade.
 
@@ -507,6 +507,38 @@ adaptLegacyInstallationCandidate({ legacyObject, semantics })
   -> { candidate, losses[], unresolved[] }
 ```
 
+Implemented transport contract (main review, 2026-09-14):
+
+```text
+legacyObject = {
+  kind,
+  record: original selected legacy JSON object,
+  origin: { containerSha256: raw SHA256 | null, jsonPointer: string | null },
+  owner: null | { case: original case JSON | null,
+                  source: original source JSON | null,
+                  claimIndex: nonnegative integer | null }
+}
+```
+
+The envelope is closed; malformed envelopes/unsafe JSON throw
+`LegacySemanticsAdapterValidationError`. The strict G1a policy remains required.
+Empty JSON Pointer means a standalone object; null origin fields remain gaps.
+Hash-shaped origin references are declarations, not raw-byte attestations.
+Geometry supports `dimension_claim_v2` and `manufacturer_verification_binding`;
+installation supports `installation_requirement_v2` and
+`installation_field_receipt_v1`. Unsupported contracts remain preserved candidates.
+
+Every output is `candidate_only` and independently copies the complete legacy
+record, supplied owners and origin. Its assertion is `normalized`, `partial` or
+`unsupported`; `rawValue` means the stored legacy value, not an unconverted PDF
+token. A normalized value is not an admitted fact or complete evidence. Losses
+identify retained but unmapped keys; unresolved entries identify their actual
+path, reason and required witness kind. No new candidate identity/hash is issued.
+Compact bindings require their matching supplied source receipt and explicit
+claim index; case membership/brand/model assertions are checked when a case is
+supplied. Their field gaps target `/owner/source/claims/<index>/...`, not the
+compact `/record` receipt. G4 still owns source replay and exact-product proof.
+
 **Must prove.**
 
 - Legacy null inclusion stays unknown.
@@ -517,6 +549,8 @@ adaptLegacyInstallationCandidate({ legacyObject, semantics })
 - Resolve fields at their real source/case/index owner before flagging a summary-field absence as missing evidence. Preserve original labels/order and origin references in candidate metadata.
 - Each missing semantic facet has a typed unresolved reason and required witness kind, never a guessed replacement. G1b uses G1a semantics only and must not call future G4b/G6c validators.
 - V2 `mm`/`minMm`/`maxMm` are already canonical even when the source label is `cm`; preserve their value without another conversion. If applicability or range meaning is absent, retain the original assertion and endpoints as a partial candidate with typed gaps. Do not invent `required`, `optional` or `adjustment` merely to obtain a non-null G1a normalization result.
+- Legacy installation `minimumMm`/`maximumMm` also denote canonical mm. An explicit contradictory unit remains a `RANGE_UNIT_CONFLICT` gap; it must not multiply the endpoints. `fixed.mm: null` produces a numeric supplementation request, never zero or an empty gap list.
+- Present context reuses G1a `validateEngineeringContext` with an empty witness collection: closed configuration/angle/predicate validation only, no invented product/source witness or second context validator. Output copying cannot freeze or alias mutable caller input.
 
 **Run.**
 
