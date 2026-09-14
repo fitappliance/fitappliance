@@ -14,6 +14,19 @@ The active redirect is a Vercel project-domain setting:
 
 `vercel.json` also includes a host-conditional permanent redirect rule as a repository-level guardrail, but Vercel's project-domain redirect can run before route-level config. If production ever returns `307` again, check the project-domain `redirectStatusCode` first.
 
+## Static publication artifact
+
+Vercel publishes only the generated `.site-public/` artifact. The canonical
+build completes first, then `npm run build:public-deployment` copies only the
+reviewed root entry pages, `public/`, and `pages/` into a fresh artifact.
+Interrupted generated stage and backup directories use ignored
+`.site-public-stage-*` and `.site-public-backup-*` names.
+
+Repository `data/`, source, documentation, tests, reports, and local PDF
+evidence are not static deployment inputs. `/pdf-evidence/:path*` resolves only
+to the explicitly public `/public/pdf-evidence/` namespace; no local PDFs are
+approved there in this hotfix, so absent paths correctly return 404.
+
 ## Verification after deployment
 
 ```bash

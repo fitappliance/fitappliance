@@ -2,6 +2,9 @@
 .tmp
 tmp
 .vercel
+.site-public/
+.site-public-stage-*
+.site-public-backup-*
 node_modules
 test-results
 reports
