@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b, G1a and G1b complete; G2a is next under Revision 3. No V3 receipt has been issued or production behavior enabled.
+> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b and G2a complete; G2b is the next bounded task. Production hotfixes PR207 and PR208 are integrated. Draft PR209 is not merged. No V3 receipt has been issued or V3 production behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -70,6 +70,36 @@ At plan time:
 These counts are not implementation acceptance targets. G0a must verify current descriptor/manifest/code/input identities and keep legacy/default-audit, active-release, runtime, current-retail, historical, and reference lanes distinct.
 
 Existing GitHub push capability does not grant automatic push/merge/promotion. V3 reuses the existing release candidate, active pointer, rollback, and publisher; it does not invent another publisher.
+
+On 2026-09-14 the user explicitly authorized continuing supplementation, then merging and releasing this upgrade. Main may execute that final integration after the required tasks, evidence gates, exact-final-commit checks and release/rollback gates pass. This does not treat a foundation-only PR as completed receipt repair, relax Fit/rights thresholds, import unrelated recovery changes, or authorize unrelated PRs and external paid services.
+
+**Release sequencing resolved (2026-09-14).** The user chose to prioritize and
+independently release the publication-boundary correction. [PR207](https://github.com/fitappliance/fitappliance/pull/207)
+was merged as `87b2a8cda2e9ee1ddce4320e2bf56585fd85b8fa`; production deployment
+`dpl_p9NRxdBZWK4i5hNCsrgNrDTYrA8W` is READY and uses the allowlisted static artifact.
+The17 negative HTTP cases,22 public routes,3 API controls and desktop/mobile
+search/cache checks passed. See the [release proof](../../architecture-v3/execution/2026-09-14-publication-boundary-release.md)
+and the historical [preflight audit](../../architecture-v3/execution/2026-09-14-release-boundary-preflight.md).
+This fixes current production, not old branches or immutable prior deployments.
+Before any new V3 preview push, integrate the reviewed hotfix into that branch
+without overwriting its dirty checkpoint, then revalidate its artifact and
+affected release contracts. The remote project default alone is not a safe guard
+for old branches. No V3 PR was merged, receipt repaired, or Fit threshold changed.
+G2a may resume locally from its preserved partial implementation; it remains
+unaccepted. The old early-sample/bootstrap duplicate-load race is separately
+recorded and was not changed by the packaging hotfix. No original evidence was removed.
+
+**Continuation (2026-09-14).** The separately reviewed category-loading/search-intent
+fix is also merged and production-verified in [PR208](https://github.com/fitappliance/fitappliance/pull/208),
+main `2315b30cf0309d0da23e2de8781362d30865f17a`. The user requested push and continuation.
+Both hotfixes were integrated into this V3 branch at local merge `d4d4244c1`.
+The same integration tree is published as `fbcc4e225ef09099bfc74597c3c303b1c213d3ff`.
+The only merge conflict was adjacent package scripts: preserve main's bounded
+public build and G0b's mandatory V3 tests. All45 affected integration checks passed;
+the six pre-existing dirty files were copied and byte-checked before integration.
+That integration check alone was not G2a acceptance or V3 production release.
+The complete G2a artifact and protected preview were subsequently verified below.
+Older V3 branches remain unsafe to push without the same publication boundary.
 
 ### 2.3 Mandatory semantics
 
@@ -172,7 +202,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G0b | CI/default test wiring | G0a | COMPLETE | `a6f9e0eca` | [G0b report](../../architecture-v3/execution/G0b-ci.md) | Local 2,982 tests passed; all six PR203 checks passed at `1a66dfee7`, including Node20 test/build/publication validation in run `34768449369`. Existing workflow and protected data are unchanged. | G1a |
 | G1a | Semantics + EngineeringContext compiler + strict V3 codec | G0b | COMPLETE | `3a9df4356` | [G1a report](../../architecture-v3/execution/G1a-semantics.md) | Main reviewed code and all 11 report input/artifact hashes. All six [PR205](https://github.com/fitappliance/fitappliance/pull/205) checks passed at `3a9df4356`; Node20.20.2 run `34800123395` passed 3,007 tests, build and publication validation. No legacy reissue or public writes. | G1b; G2a / G3a also eligible |
 | G1b | Lossless legacy adapters | G1a | COMPLETE | `ac93a8d3c` | [G1b report](../../architecture-v3/execution/G1b-legacy-adapters.md) | All six [Draft PR206](https://github.com/fitappliance/fitappliance/pull/206) checks passed at this commit. Node20.20.2 run `34807285975`: 3,028 pass, 0 fail/skip; build and publication validation passed. Main reviewed owner/context joins and independently rechecked null-mm and canonical-range unit witnesses; all 16 frozen inputs and original recovery status/diff unchanged. No source replay/reissue/public writes. | G2a: identity/index-only BrandRegistry |
-| G2a | AU BrandRegistry | G1a | NOT_STARTED | — | — | Uses G1a's shared versioned V3 codec, not a separate hash implementation. | — |
+| G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | NOT_STARTED | — | — | — | — |
 | G3a | Typed lineage/anchors/relations | G1a | NOT_STARTED | — | — | — | — |
 | G3b | Region router + canary attestation | G3a, G2a | NOT_STARTED | — | — | — | — |
@@ -563,7 +593,36 @@ npm test
 
 ## G2a — AU BrandRegistry
 
-**Status:** NOT_STARTED · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE · **Depends on:** G1a · **Worker:** `gpt-5.6-terra` / max
+
+**Continuation (2026-09-14).** The six-file interrupted checkpoint was preserved
+before integrating PR207/208. G2a code and its five-file report/seed/snapshot scope
+are now pushed as `cf4a632a21d1cb727871c265350560efd8e365de` in
+[Draft PR209](https://github.com/fitappliance/fitappliance/pull/209), stacked on PR206.
+Main verified all152 initial groups/157 spellings and26 exact policy references,
+versioned identity, shared local validators and no public/source changes. The
+16 focused tests include a final spelling-to-stable-ID assertion; all3,072 tests
+passed before that test-only strengthening, and focused tests passed afterward.
+The complete build without external-storage configuration retains the same3,281-
+file public artifact and0 Fit violations. The protected Node24 preview uses the
+bounded artifact;15 HTTP checks pass, including9 private paths returning404 and
+3 read-only API controls returning405. All6 exact-code checks passed; main accepts
+G2a at `cf4a632a2`. No receipt is repaired or Fit rule changed.
+
+**Main acceptance.** [Node20 validation run](https://github.com/fitappliance/fitappliance/actions/runs/34826534937)
+re-ran all3,072 tests, including the last assertion, with0 fail/skip; generated
+diff and publication checks passed. The local/CI artifact is3,281 files/54,856,568
+bytes, SHA256 `583df3972cf42eaed499df28dd4ea2c2c0b4013d5fc2116bed8351991fafed62`.
+Node24 preview `dpl_G2yAx3FRofMDqbUEK7b66cDGAqVv` uses `.site-public`;
+artifact SHA256 `15dd344f9cd43a0b3a64a1b6fe35b9b1c34ea1218109b92015f272bee2bbd20f`
+is reproduced by changing only the commit-specific service-worker version.
+The actual HTML/hero/service-worker responses were byte-checked (HTML adds only
+the163-byte Vercel preview feedback script). No API writes or duplicate browser
+flow suite was needed: deployed application sources match validated PR208.
+The original recovery checkout's175-row status/diff identities are unchanged.
+The report remains the implementer's immutable REVIEW_REQUIRED handoff; this plan
+records acceptance separately. The V3 stack remains Draft/unmerged and production
+stays on main `2315b30cf0309d0da23e2de8781362d30865f17a`.
 
 **Goal.** Add market-scoped brand identity and aliases without duplicating existing host/source authority.
 
@@ -1592,9 +1651,11 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Next dispatch:** G1b. G0a/G0b/G1a remain complete
-and are not rerun without changed inputs, failure or new risk. Main freezes the
-reviewed G1a interfaces and current input-owner hashes in the next packet. G1b
-only adapts reusable candidates and typed supplementation gaps; it does not
-re-convert already-canonical V2 mm values, rewrite historical receipts, run G6c
-backfill or perform public cutover.
+**Next dispatch:** prepare the bounded G2b family-research packet from accepted
+G2a `cf4a632a2` and the current documentation checkpoint. Both production hotfixes
+are included in this branch. Do not re-dispatch completed G2a or rebuild its seed
+from changed inputs without a reviewed version update.
+No new V3 preview may use the old root-output configuration. G0a/G0b/G1a/G1b stay
+complete; recheck only contracts affected by changed code/inputs or new risk.
+G2a is brand identity/index work, not geometry inheritance, legacy receipt repair,
+G6c backfill or V3 production cutover.
