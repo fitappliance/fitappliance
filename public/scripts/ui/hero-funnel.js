@@ -22,7 +22,8 @@ export async function applyHeroSampleSearch(button, {
   const sample = parseHeroSamplePayload(button?.dataset?.sampleSearch);
   if (!sample || !sample.w || !sample.h || !sample.d) return false;
 
-  await setCategory(sample.cat);
+  const categoryApplied = await setCategory(sample.cat);
+  if (categoryApplied === false) return false;
   root.getElementById('inW').value = String(sample.w);
   root.getElementById('inH').value = String(sample.h);
   root.getElementById('inD').value = String(sample.d);
@@ -40,7 +41,10 @@ export async function applyHeroSampleSearch(button, {
 }
 
 export function bindHeroSampleSearches(root = document, options = {}) {
+  const onError = typeof options.onError === 'function' ? options.onError : () => {};
   root.querySelectorAll('[data-sample-search]').forEach((button) => {
-    button.addEventListener('click', () => applyHeroSampleSearch(button, { root, ...options }));
+    button.addEventListener('click', () => {
+      void applyHeroSampleSearch(button, { root, ...options }).catch(onError);
+    });
   });
 }
