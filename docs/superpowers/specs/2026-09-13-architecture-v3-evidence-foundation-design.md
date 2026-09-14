@@ -1,7 +1,7 @@
 # FitAppliance Architecture V3 Evidence Foundation Design
 
 - **Status:** REVISED DESIGN — implementation status is tracked only in the linked plan
-- **Revision:** 2, 2026-09-13, incorporating the independent contract audit
+- **Revision:** 3, 2026-09-14, requiring legacy evidence repair to the same V3 standard
 - **Owner:** FitAppliance
 - **Product contract:** [Product Core Brief](../../product-core-brief.md)
 - **Implementation authority:** [original implementation plan](../plans/2026-09-13-architecture-v3-evidence-foundation.md)
@@ -13,6 +13,9 @@ order/progress and the worker protocol owns delegation. The Product Core Brief
 remains the authority for product promises, lifecycle and Fit. The completed V2
 system-first repair programme remains migration history; V3 does not reopen it.
 A green documentation PR verifies documents/current code, not future V3 behavior.
+The user's 2026-09-14 direction requires old receipts to be supplemented,
+corrected and reissued to the same standard as new receipts. Historical replay
+is retained for provenance and compatibility, not as the final repair outcome.
 
 ## 1. Result and architecture
 
@@ -110,6 +113,9 @@ cannot become V3 authority. Preserve each original object and its disposition.
     controls; an adapter never expands publication/lifecycle authority.
 16. Schema introduction, historical backfill and public cutover are not combined
     in one implementation PR.
+17. Repaired and newly acquired facts pass the same V3 source/Claim/receipt,
+    review, eligibility and adjudication gates. A migration flag, old PASS,
+    schema-number change or recomputed digest cannot waive a missing fact.
 
 ## 4. Contract deltas and owners
 
@@ -121,6 +127,8 @@ cannot become V3 authority. Preserve each original object and its disposition.
 | Native header hides scan | Region-readable routing | Existing byte/MinerU gates retained | G3b |
 | Cross-page evidence lost/guessed | Role anchors and witnessed joins | No arbitrary number concatenation | G3a/G4a |
 | Same-PDF SKU/field leakage | Direct fact equality or finite derivation | Old receipt proves only its actual scope | G4b/G7 |
+| Legacy encoding loses fields | Versioned strict V3 JSON identity codec | Original bytes and historical replay remain unchanged | G1a |
+| Legacy objects remain permanently weaker | Supplement evidence and reissue through the common V3 chain | No migration-only approval path or in-place edits | G1b/G4b/G6b/G6c |
 | Conflicts filtered away | Admission distinct from adjudication | V2 complete-inventory gate retained | G5b |
 | Permanent event fork | CAS append and all-head resolution | History immutable; retries idempotent | G5a |
 | Stale derived eligibility | Transitive revocation evaluation | Historical replay is preserved | G5a/G7 |
@@ -337,6 +345,7 @@ The closed envelope is:
 
 ```text
 schemaVersion: 3
+canonicalizationVersion: 'fit-evidence-json-v3-1'
 claimId: canonical payload hash excluding claimId
 subject: canonicalProductId, market
 field: canonical path
@@ -362,8 +371,23 @@ other kinds prove their labels via the anchored mapping, without fake axes.
 Hashes cover subject, semantics, context, source representation, anchors/joins
 and declared semantic/profile hashes. Sort set-valued IDs but retain meaningful
 ordered arrays such as axisOrder and value tuples. Reject duplicate IDs and
-normalize decimal representation before hashing. Reuse the repository's canonical
-serialization contract rather than creating a second hash convention.
+normalize decimal representation before hashing. G1a owns one browser-safe
+strict V3 serializer and exports `CANONICAL_EVIDENCE_JSON_VERSION` with value
+`fit-evidence-json-v3-1`. Every new V3 canonical-JSON identity payload includes
+`canonicalizationVersion` with that value before computing its digest; validators
+reject absent/unsupported versions. Raw source/derived byte SHA-256 and existing
+V2 input hashes keep their original domains and bytes. No new SHA algorithm is
+introduced, and individual V3 modules cannot invent their own serializer.
+
+Keep the existing historical encoder/export unchanged for archive replay and
+the unchanged V2 path. The new strict codec preserves own `__proto__` keys,
+rejects sparse arrays, undefined/non-finite values, accessors, symbol keys and
+other non-JSON inputs rather than silently dropping information. Preserve array
+order and deterministically order object keys; reject non-enumerable object
+entries and extra non-index array properties rather than dropping them (the
+array's built-in length is not a data entry). Golden legacy bytes/digests and
+negative V3 witnesses make the compatibility boundary explicit. Reissued V3
+receipts use the corrected codec, never the defective historical encoder.
 
 V2 wrappers create V3 candidates only without semantic loss. Old objects retain
 schema versions/bytes. Unknown legacy scope/inclusion cannot become proved V3
@@ -394,6 +418,11 @@ under V2 policy in the first implementation. A policy unit test may use a clearl
 labelled adapter stub; that is not end-to-end acceptance. Additional production
 adapters need a separately defined field/rights-verification task and authority.
 
+A new `EvidenceClaimReceipt` has `receiptType: 'EvidenceClaimReceipt'`,
+`schemaVersion: 3` and the section 8 `canonicalizationVersion`, all inside its
+identity payload. A legacy manufacturer verification receipt may already have
+`schemaVersion: 3`; it is a different contract and is not already upgraded.
+Dispatch by named contract/schema/policy/codec, never a schema integer alone.
 A direct `EvidenceClaimReceipt` binds claim ID/payload, exact fact binding,
 source binding, anchor set, toolchain/policy and rights decisions. A derived
 receipt instead binds its direct source and finite relationship receipts. Replay
@@ -402,6 +431,78 @@ checks exact binding equality, not the presence of digest-looking strings.
 Internal validity grants no `public_display`, `quote_excerpt`, `link_documents`
 or image right. Evaluate each existing action-scoped right independently.
 Historical proof can remain valid when present-day use is forbidden.
+
+### 9.1 Repair legacy receipts to the common V3 standard
+
+All old receipt types belong in a versioned upgrade inventory, including
+unresolved references and rejected/incomplete old assertions. Inventory coverage
+is not the count of product rows, acceptance cases or old PASS summaries. Each
+origin retains an immutable container byte hash and a JSON pointer (empty for a
+standalone receipt), original schema/ID where present, and the exact case/source
+bindings needed by its type. Two origins with the same old digest are not
+silently collapsed; distinguish copies from contradictory payloads and scopes
+using resolved objects, not an old hash alone. Missing referenced objects stay
+explicit inventory entries. Do not modify or reserialize archived source bytes.
+Each type targets its corresponding new contract: acquisition/discovery proof
+cannot become a geometry fact receipt. The initial field-reissue allowlist is
+the same manufacturer/installation set as G4b. An unsupported source/target
+contract is `BLOCKED_CONTRACT`, not missing evidence, automatic field authority
+or a silently excluded origin; it needs a separately defined adapter before
+that origin can be declared upgraded.
+Freeze the declared field/context scope of each origin. One source receipt may
+require multiple new field receipts; a partial success cannot shrink that scope
+or mark the whole origin upgraded. Keep successful field outputs and outstanding
+gaps separately, with scoped reviewed exclusions rather than silent omission.
+
+Repair follows the existing chain, not a second verification engine:
+
+1. Resolve receipt, case, source record, original artifact, derived index/object
+   and historical policies. Some source receipts are only small binding
+   summaries; an absent field in that summary is not proof that the source
+   evidence is missing. Check the referenced owners first.
+2. Reuse valid anchors and artifacts where the common V3 validators can verify
+   them. Record missing exact-model/market, field scope, units/axes, inclusion,
+   configuration/range meaning, reference datum, region joins, parser lineage,
+   policy or rights proof as field-scoped evidence requests. Re-extract only
+   where required; do not guess missing values or require unnecessary new OCR.
+3. Supplement or correct facts only from verified source evidence. A rejected
+   historical assertion can be replaced by independently proved new evidence;
+   its replay failure and conflict disposition remain visible. Never relabel an
+   invalid old binding as valid or extend an old dimension proof to installation.
+4. Feed the supplemented candidate to the same G4a/G4b factories as a new
+   acquisition, then the same G5a/G5b/G6a review, eligibility, complete-source
+   adjudication and snapshot path. Current review times and policy identities
+   are genuine new records; original observation/review times are not rewritten.
+5. G6c commits a separate immutable `LegacyReceiptUpgradeRecord` connecting old
+   origin references to new exact Claim/receipt IDs, field-level corrections,
+   supplementation evidence, target contract versions and validation outputs.
+   This is an audit relation, not field authority or family inheritance. Do not
+   overload `derivedFromClaimId` or cross-Claim `supersedesDecisionIds` for it.
+
+The latest per-origin upgrade disposition is `UPGRADED`, `NEEDS_EVIDENCE`,
+`CONFLICT_QUARANTINED`, `BLOCKED_CONTRACT` or `REJECTED_WITH_REASON`. `UPGRADED` requires the common
+V3 receipt checks, and is not an assertion of current eligibility, complete
+installation evidence, publication or Verified Fit. Report those independently.
+Missing source/context/proof cannot produce a stronger receipt; retain useful
+size filtering under its existing policy and show `INSUFFICIENT_DATA` for an
+unsupported Fit conclusion.
+
+The bounded batch manifest binds inventory scope/hash, selected origin IDs,
+target schema/codec/policies, source inputs, code identity and prior committed
+head. Reuse G5a's single-writer/CAS/durable immutable commit path; no second
+ledger writer. Retry returns the same committed objects, a changed input creates
+a new attempt, and batch B retains A. The inventory records both processed and
+unprocessed origins; no successful subset can replace the cumulative manifest.
+An unavailable external store does not mark repair complete or erase prior work.
+
+Coverage and success use separate denominators: accounted origins, upgraded
+origins/fields, unresolved evidence, conflicts and reasoned rejections. No
+pending item is counted as repaired. A small canary or completed runner task is
+not whole-inventory repair completion. New V3 release consumers require the new
+receipts; historical replay is not a fallback when V3 evidence is incomplete.
+Actual consumer replacement and any rollback remain G9b/G10 release decisions,
+never an automatic effect of repair. The currently deployed V2 bundle is not
+mutated by this programme's backfill or the plan revision.
 
 ## 10. Review, persistence and current eligibility
 
@@ -422,6 +523,20 @@ until resolved, without making recovery structurally impossible.
 Use a local single-writer lock/lease and `expectedHeadSha256` compare-and-swap.
 A stale writer receives STALE_HEAD and reloads. Same idempotency key/payload
 returns the original event/time; a conflicting payload under that key fails.
+
+G5a exposes pure `prepareClaimReviewDecisions` and one bounded
+`commitImmutableEvidenceBatch` primitive for the fixed `reviews` and
+`legacy-upgrades` object namespaces. They share one cumulative committed head
+and coordinated writer; they do not advance separate transaction pointers.
+The preparation API validates against a committed basis without writing. G6c
+validates its proposed common V3 chain, then commits new receipts, prepared
+review events and audit mappings together. A changed basis fails CAS and must
+be revalidated; do not commit review admission first and the upgrade pointer
+later. The commit primitive checks hashes/references and durability, not source
+truth or review authority. An upgrade audit is not a cross-Claim review event.
+Reject unknown namespaces. G5a's portable transaction tests require no future
+G6c module; G6c supplies the later typed integration tests. Do not create a
+second writer/database for repair.
 
 Write and validate temporary immutable events, then atomically rename them.
 Commit the head/batch manifest only after all referenced inputs/events verify.
@@ -524,7 +639,9 @@ caller authority. There is no circular snapshot/readiness construction.
 
 The loader verifies snapshot schema, canonical payload hash, policy compatibility
 and expected product/snapshot binding from the active release. Use Node/Web
-Crypto adapters with existing canonical serialization; no new SHA algorithm.
+Crypto adapters with the versioned shared V3 serialization from section 8;
+reject unknown canonicalization versions and do not retry V3 verification with
+the legacy codec. No new SHA algorithm.
 The pure entrypoint is `evaluateFitV4({ evidenceSnapshot, siteProfile,
 evaluationProfile })`. It derives requirements only from that validated snapshot.
 No separately supplied numbers or caller-declared equal receipt hashes can
@@ -618,7 +735,7 @@ commands. Disposable query indexes are outside this programme's implementation.
 | G0b | Default CI coverage | G0a |
 | G1a | Strict semantic compiler/shared canonical codec | G0b |
 | G1b | Lossless legacy adapters | G1a |
-| G2a | Brand registry | G0b |
+| G2a | Brand registry using the shared V3 identity codec | G1a |
 | G2b | Research-only family registry | G2a, G1a |
 | G3a | Multi-anchor lineage | G1a |
 | G3b | Regional router and early canaries | G3a, G2a |
@@ -628,10 +745,11 @@ commands. Disposable query indexes are outside this programme's implementation.
 | G5b | Complete-source adjudication | G5a, G1a |
 | G6a | Bound snapshot/readiness | G5b |
 | G6b | Direct vertical canary | G6a, G3b |
+| G6c | Legacy receipt inventory, supplementation and reissue batches | G6b |
 | G7 | Verified relationship receipt and single-hop derivation | G2b, G6b |
 | G8a | Shared Fit V4 and snapshot loader | G6b |
 | G8b | Independent legacy shadow | G8a |
-| G9a | Whole-chain shadow | G7, G8b |
+| G9a | Whole-chain shadow including legacy upgrade dispositions | G7, G8b, G6c |
 | G9b | Publication overlay | G9a |
 | G10a | Existing release integration | G9b |
 | G10b | Compatibility and rollback drill | G10a |
@@ -664,6 +782,14 @@ module to pass. Label unit stubs separately from real adapter/canary completion.
 | Concurrent writer and review fork | Stale CAS rejected; all-head resolution possible |
 | Upstream parser/claim/relationship/rights revocation | Current dependencies invalidated; history replays |
 | Old schema/range migration | No in-place edits; legacy oracle independently retained |
+| Old receipt missing a field in its summary | Resolve actual case/source/index owners before declaring an evidence gap |
+| Legacy manufacturer schemaVersion3 / acquisition receipt | Not already a V3 Claim Receipt; preserve kind, no cross-contract promotion |
+| Old PASS plus missing configuration/anchor | No V3 receipt until the same new-acquisition checks pass |
+| Own __proto__ key / sparse array | V3 retains the key / rejects the sparse input; historical bytes remain unchanged |
+| Two legacy payloads share an old digest | Preserve both origins; no digest-only deduplication or approval |
+| Repaired versus newly acquired equivalent evidence | Same validators and acceptance rules, not a migration bypass |
+| Reissue commit interrupted / second batch | No partial committed head, no duplicate receipt or loss of earlier origins |
+| Corrected new receipt / conflicting old assertion | Preserve the old conflict and require scoped adjudication, not silent overwrite |
 | Changed requirement with old digest | Loader rejects before Fit display |
 | Profile subset vs full snapshot | Different hash domains handled correctly |
 | Changed input/delayed result | Old evaluation suppressed |
@@ -685,6 +811,10 @@ unresolved dispositions and the main agent's decision. Programme completion
 requires the intended release's authorization, compatibility and rollback gates.
 Coverage and truth have separate denominators; zero false positives in tested
 fixtures does not mean all catalogue models have complete evidence.
+The user-requested legacy repair is not complete merely because every old object
+has been inventoried or can replay under its old policy. It must have common-
+standard V3 replacements, or explicit reviewed exclusion decisions for entries
+that cannot support a valid assertion; outstanding gaps remain unfinished work.
 
 Pause the dependent task for a first-principles decision when the evidence cannot
 establish required meaning, product promises/rights/source scope need new
