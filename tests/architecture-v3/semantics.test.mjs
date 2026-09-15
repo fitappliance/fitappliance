@@ -11,6 +11,7 @@ import {
 import {
   resolveEvaluationContext,
   validateEngineeringContext,
+  V3EngineeringContextValidationError,
 } from '../../src/domain/architecture-v3/engineering-context.mjs';
 
 const [fieldDictionary, installationMatrix] = await Promise.all([
@@ -735,4 +736,143 @@ test('conditional and unconditional candidates need their own explicit witnesses
     }),
     'invalid',
   );
+});
+
+test('three-field context API remains shape-only for named configurations', () => {
+  const semantics = compileV3Semantics({ fieldDictionary, installationMatrix, overlay });
+  for (const context of [
+    underbenchContext(),
+    underbenchContext({ configurationKey: 'unconditional', conditions: [] }),
+  ]) {
+    for (const witnessedConditions of [[], [exactProductWitness({ canonicalProductId: 'fa_prod_other', market: 'NZ' })]]) {
+      assert.deepEqual(validateEngineeringContext({ context, semantics, witnessedConditions }), context);
+    }
+  }
+  assert.throws(
+    () => validateEngineeringContext({ context: underbenchContext(), semantics, witnessedConditions: [], bypass: true }),
+    /unknown key/i,
+  );
+});
+
+for (const [label, change] of [
+  ['missing witness', (input) => { input.witnessedConditions = []; }],
+  ['wrong product', (input) => { input.witnessedConditions[0].canonicalProductId = 'fa_prod_other'; }],
+  ['wrong market', (input) => { input.witnessedConditions[0].market = 'NZ'; }],
+  ['wrong key', (input) => {
+    input.witnessedConditions[0].configurationKey = 'integrated';
+    input.witnessedConditions[0].conditions = [{ parameter: 'installationMode', operator: 'eq', value: 'integrated' }];
+  }],
+  ['missing predicate', (input) => {
+    input.context.conditions.push({ parameter: 'adjacentWall', operator: 'eq', value: 'left' });
+  }],
+  ['wrong predicate', (input) => {
+    input.context.conditions.push({ parameter: 'adjacentWall', operator: 'eq', value: 'left' });
+    input.witnessedConditions[0].conditions.push({ parameter: 'adjacentWall', operator: 'eq', value: 'right' });
+  }],
+  ['extra predicate', (input) => {
+    input.witnessedConditions[0].conditions.push({ parameter: 'adjacentWall', operator: 'eq', value: 'left' });
+  }],
+  ['unwitnessed unconditional', (input) => {
+    input.context = underbenchContext({ configurationKey: 'unconditional', conditions: [] });
+    input.witnessedConditions = [];
+  }],
+]) {
+  test(`product-bound context rejects ${label} as a configuration witness mismatch`, () => {
+    const input = {
+      context: underbenchContext(),
+      semantics: compileV3Semantics({ fieldDictionary, installationMatrix, overlay }),
+      witnessedConditions: [exactProductWitness()],
+      product: { canonicalProductId: 'fa_prod_example', market: 'AU' },
+    };
+    change(input);
+    assert.throws(
+      () => validateEngineeringContext(input),
+      (error) => error instanceof V3EngineeringContextValidationError && error.code === 'CONFIGURATION_WITNESS',
+    );
+  });
+}
+
+test('product-bound context uses one normalized complete witness among unrelated valid witnesses', () => {
+  const context = underbenchContext();
+  const wall = { parameter: 'adjacentWall', operator: 'eq', value: 'left' };
+  context.conditions.push(wall);
+  const normalized = validateEngineeringContext({
+    context,
+    semantics: compileV3Semantics({ fieldDictionary, installationMatrix, overlay }),
+    product: { canonicalProductId: ' fa_prod_example ', market: ' AU ' },
+    witnessedConditions: [
+      exactProductWitness({ canonicalProductId: 'fa_prod_other' }),
+      exactProductWitness({ market: 'NZ' }),
+      exactProductWitness({ conditions: [...context.conditions].reverse() }),
+    ],
+  });
+
+  assert.deepEqual(normalized, underbenchContext({ conditions: [
+    wall,
+    { parameter: 'installationMode', operator: 'eq', value: 'underbench' },
+    { parameter: 'worktop', operator: 'eq', value: 'removed' },
+  ] }));
+  assert.ok(Object.isFrozen(normalized));
+});
+
+for (const [label, overrides] of [
+  ['unknown datum', { referenceDatum: 'unknown' }],
+  ['unknown state', { operatingState: { kind: 'unknown', angleDegrees: null } }],
+  ['both unknowns', { referenceDatum: 'unknown', operatingState: { kind: 'unknown', angleDegrees: null } }],
+  ['null configuration with predicates', { configurationKey: null }],
+  ['fully unspecified', {
+    configurationKey: null, conditions: [], referenceDatum: 'unknown',
+    operatingState: { kind: 'unknown', angleDegrees: null },
+  }],
+]) {
+  test(`product-bound context preserves ${label} without asserting runtime applicability`, () => {
+    const context = underbenchContext(overrides);
+    const input = {
+      context,
+      semantics: compileV3Semantics({ fieldDictionary, installationMatrix, overlay }),
+      product: { canonicalProductId: 'fa_prod_example', market: 'AU' },
+      witnessedConditions: context.configurationKey === null ? [] : [exactProductWitness()],
+    };
+    assert.deepEqual(validateEngineeringContext(input), context);
+    assert.equal(resolveEvaluationContext({
+      candidateContext: context, requestedContext: context, product: input.product,
+      witnessedConditions: input.witnessedConditions, semantics: input.semantics,
+    }), 'unknown');
+  });
+}
+
+test('product-bound unconditional context requires its exact unconditional witness', () => {
+  const context = underbenchContext({ configurationKey: 'unconditional', conditions: [] });
+  const input = {
+    context,
+    semantics: compileV3Semantics({ fieldDictionary, installationMatrix, overlay }),
+    product: { canonicalProductId: 'fa_prod_example', market: 'AU' },
+    witnessedConditions: [exactProductWitness({ configurationKey: 'unconditional', conditions: [], applicability: 'unconditional' })],
+  };
+  assert.deepEqual(validateEngineeringContext(input), context);
+  input.witnessedConditions[0].market = 'NZ';
+  assert.throws(
+    () => validateEngineeringContext(input),
+    (error) => error instanceof V3EngineeringContextValidationError && error.code === 'CONFIGURATION_WITNESS',
+  );
+});
+
+test('optional context product is shape-validated even for an unspecified configuration', () => {
+  const input = {
+    context: underbenchContext({ configurationKey: null }),
+    semantics: compileV3Semantics({ fieldDictionary, installationMatrix, overlay }),
+    witnessedConditions: [],
+  };
+  for (const [product, code] of [
+    [undefined, 'INVALID_OBJECT'], [null, 'INVALID_OBJECT'], [[], 'INVALID_OBJECT'],
+    [{ canonicalProductId: 'fa_prod_example' }, 'MISSING_KEY'],
+    [{ canonicalProductId: '', market: 'AU' }, 'INVALID_TEXT'],
+    [{ canonicalProductId: 'fa_prod_example', market: '' }, 'INVALID_TEXT'],
+    [{ canonicalProductId: 'fa_prod_example', market: 'AU', extra: true }, 'UNKNOWN_KEY'],
+  ]) {
+    assert.throws(
+      () => validateEngineeringContext({ ...input, product }),
+      (error) => error instanceof V3EngineeringContextValidationError && error.code === code,
+    );
+  }
 });
