@@ -1,0 +1,210 @@
+{
+  "fixtureKind": "sanitized_portable_region_fixture",
+  "sourceBytesIncluded": false,
+  "document": {
+    "brandId": "fa_brand_944f644172a7ec775933bbbc583622803be22fe40d82eb75b522095408572ec5",
+    "category": "washing_machine",
+    "documentType": "manufacturer_product_sheet",
+    "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+  },
+  "mineruDocument": {
+    "contentSha256": "f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181",
+    "pageCount": 7,
+    "blocks": [
+      {
+        "sourceJsonPointer": "/5/1",
+        "pageNumber": 6,
+        "fragmentSha256": "0afc7b01f755b30fb9fb44be55b8520f6276231740bdfba900079d4d10bea0e9",
+        "rawBlock": {
+          "bbox": [
+            200,
+            229,
+            712,
+            671
+          ],
+          "content": {
+            "content": "600mm\n575*mm\n850mm",
+            "image_caption": [],
+            "image_footnote": [
+              {
+                "content": "*Add 20mm for the hose protruslon ot the bock",
+                "type": "text"
+              }
+            ],
+            "image_source": {
+              "path": "images/f060597eba14b7c00493ab28c834777960c1c0f531ea244936569404fa5903ee.jpg"
+            }
+          },
+          "sub_type": "text_image",
+          "type": "image"
+        }
+      },
+      {
+        "sourceJsonPointer": "/5/3",
+        "pageNumber": 6,
+        "fragmentSha256": "8afcaa5595b045d2e03bae9318878dc29e656840c3e65e1203be0e09e40f3c15",
+        "rawBlock": {
+          "bbox": [
+            205,
+            746,
+            630,
+            755
+          ],
+          "content": {
+            "paragraph_content": [
+              {
+                "content": "This is a guide of product dimensiors only.For complete instdlotionirstructions, refer to the manud provided wilth product.",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "paragraph"
+        }
+      }
+    ]
+  },
+  "nativeObservations": [],
+  "pageImageMetadata": [
+    {
+      "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+      "pageNumber": 6,
+      "renderedPageArtifactSha256": "a9ef7651e4cb4c502c869bad029cabb61ca49c58c18f4851b7cef5df1b738a75",
+      "renderedPixels": {
+        "width": 1275,
+        "height": 1650
+      },
+      "rotationDegreesClockwise": 0,
+      "transform": {
+        "kind": "full_page"
+      },
+      "artifactRecords": [
+        {
+          "schemaVersion": 1,
+          "sha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "parentSha256": null,
+          "mediaType": "application/pdf",
+          "toolRevision": null,
+          "optionsSha256": null
+        },
+        {
+          "schemaVersion": 1,
+          "sha256": "a9ef7651e4cb4c502c869bad029cabb61ca49c58c18f4851b7cef5df1b738a75",
+          "parentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "mediaType": "image/png",
+          "toolRevision": "pdftoppm@26.06.0:sha256-76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+          "optionsSha256": "f3c8cb6cd0453a53c87cb5315893dd96426cdd00ecc308b33e61020105f75007"
+        }
+      ],
+      "fragments": [
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "bdb15ebbfb1cbf41a439856c6b9fb3a24b8b5960de11d0718c7fbc9c2f7a8e52",
+          "content": {
+            "bbox": [
+              200,
+              229,
+              712,
+              671
+            ],
+            "content": {
+              "content": "600mm\n575*mm\n850mm",
+              "image_caption": [],
+              "image_footnote": [
+                {
+                  "content": "*Add 20mm for the hose protruslon ot the bock",
+                  "type": "text"
+                }
+              ],
+              "image_source": {
+                "path": "images/f060597eba14b7c00493ab28c834777960c1c0f531ea244936569404fa5903ee.jpg"
+              }
+            },
+            "sub_type": "text_image",
+            "type": "image"
+          },
+          "parentArtifactSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 6,
+            "normalizedTopLeftBox": [
+              200,
+              229,
+              712,
+              671
+            ],
+            "renderedPageArtifactSha256": "a9ef7651e4cb4c502c869bad029cabb61ca49c58c18f4851b7cef5df1b738a75",
+            "renderedPixels": {
+              "width": 1275,
+              "height": 1650
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                200,
+                229,
+                712,
+                671
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "b0c80986a497d4256f16a6017af95e4f7a10ab5c448cfc09a547f73c224f045b",
+          "content": {
+            "bbox": [
+              205,
+              746,
+              630,
+              755
+            ],
+            "content": {
+              "paragraph_content": [
+                {
+                  "content": "This is a guide of product dimensiors only.For complete instdlotionirstructions, refer to the manud provided wilth product.",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "paragraph"
+          },
+          "parentArtifactSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 6,
+            "normalizedTopLeftBox": [
+              205,
+              746,
+              630,
+              755
+            ],
+            "renderedPageArtifactSha256": "a9ef7651e4cb4c502c869bad029cabb61ca49c58c18f4851b7cef5df1b738a75",
+            "renderedPixels": {
+              "width": 1275,
+              "height": 1650
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                205,
+                746,
+                630,
+                755
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

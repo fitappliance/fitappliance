@@ -1,0 +1,212 @@
+{
+  "fixtureKind": "sanitized_portable_region_fixture",
+  "sourceBytesIncluded": false,
+  "document": {
+    "brandId": "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c",
+    "category": "dryer",
+    "documentType": "manufacturer_product_sheet",
+    "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+  },
+  "mineruDocument": {
+    "contentSha256": "3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f",
+    "pageCount": 2,
+    "blocks": [
+      {
+        "sourceJsonPointer": "/1/7",
+        "pageNumber": 2,
+        "fragmentSha256": "24c827f4550c86e7acdfd3f7897b1b947b8759fc729d192662b1d60ac5f041d8",
+        "rawBlock": {
+          "bbox": [
+            144,
+            511,
+            850,
+            551
+          ],
+          "content": {
+            "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>A</td><td rowspan=1 colspan=1>B</td><td rowspan=1 colspan=1>C</td><td rowspan=1 colspan=1>E</td><td rowspan=1 colspan=1>F</td><td rowspan=1 colspan=1>Unit</td></tr><tr><td rowspan=1 colspan=1>597</td><td rowspan=1 colspan=1>568</td><td rowspan=1 colspan=1>846</td><td rowspan=1 colspan=1>1054</td><td rowspan=1 colspan=1>523</td><td rowspan=1 colspan=1>31</td><td rowspan=1 colspan=1>496</td><td rowspan=1 colspan=1>215</td><td rowspan=1 colspan=1>mm</td></tr></table>",
+            "image_source": {
+              "path": "images/00bd81cffab5ab5eef184a838d0478329eff3d321b47c6a0c5230e5e461967ea.jpg"
+            },
+            "table_caption": [
+              {
+                "content": "Dimensions",
+                "type": "text"
+              }
+            ],
+            "table_footnote": [],
+            "table_nest_level": 1,
+            "table_type": "complex_table"
+          },
+          "type": "table"
+        }
+      },
+      {
+        "sourceJsonPointer": "/1/9",
+        "pageNumber": 2,
+        "fragmentSha256": "6765c7913d4b85475408927ee9dedcb8d7f2ec6489565c409b35170a1369415e",
+        "rawBlock": {
+          "bbox": [
+            18,
+            8,
+            539,
+            55
+          ],
+          "content": {
+            "page_header_content": [
+              {
+                "content": "BDP810W 8 kg Sensor Controlled Heat Pump Tumble Dryer",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "page_header"
+        }
+      }
+    ]
+  },
+  "nativeObservations": [],
+  "pageImageMetadata": [
+    {
+      "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+      "pageNumber": 2,
+      "renderedPageArtifactSha256": "f998ee095d1f417749e5fe0c8e12f013941748b8dd21de9a3f4d385ef60aa767",
+      "renderedPixels": {
+        "width": 1241,
+        "height": 1754
+      },
+      "rotationDegreesClockwise": 0,
+      "transform": {
+        "kind": "full_page"
+      },
+      "artifactRecords": [
+        {
+          "schemaVersion": 1,
+          "sha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "parentSha256": null,
+          "mediaType": "application/pdf",
+          "toolRevision": null,
+          "optionsSha256": null
+        },
+        {
+          "schemaVersion": 1,
+          "sha256": "f998ee095d1f417749e5fe0c8e12f013941748b8dd21de9a3f4d385ef60aa767",
+          "parentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "mediaType": "image/png",
+          "toolRevision": "pdftoppm@26.06.0:sha256-76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+          "optionsSha256": "ce2572ee39e4df77bbfc4efbbcc1dbade44c1884f84eaab8ee81c00bc9d750f8"
+        }
+      ],
+      "fragments": [
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "43499ac52b3af605734ddbaa0b51e3d98f8e10e21d87370e890ca176619f8582",
+          "content": {
+            "bbox": [
+              144,
+              511,
+              850,
+              551
+            ],
+            "content": {
+              "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>A</td><td rowspan=1 colspan=1>B</td><td rowspan=1 colspan=1>C</td><td rowspan=1 colspan=1>E</td><td rowspan=1 colspan=1>F</td><td rowspan=1 colspan=1>Unit</td></tr><tr><td rowspan=1 colspan=1>597</td><td rowspan=1 colspan=1>568</td><td rowspan=1 colspan=1>846</td><td rowspan=1 colspan=1>1054</td><td rowspan=1 colspan=1>523</td><td rowspan=1 colspan=1>31</td><td rowspan=1 colspan=1>496</td><td rowspan=1 colspan=1>215</td><td rowspan=1 colspan=1>mm</td></tr></table>",
+              "image_source": {
+                "path": "images/00bd81cffab5ab5eef184a838d0478329eff3d321b47c6a0c5230e5e461967ea.jpg"
+              },
+              "table_caption": [
+                {
+                  "content": "Dimensions",
+                  "type": "text"
+                }
+              ],
+              "table_footnote": [],
+              "table_nest_level": 1,
+              "table_type": "complex_table"
+            },
+            "type": "table"
+          },
+          "parentArtifactSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 2,
+            "normalizedTopLeftBox": [
+              144,
+              511,
+              850,
+              551
+            ],
+            "renderedPageArtifactSha256": "f998ee095d1f417749e5fe0c8e12f013941748b8dd21de9a3f4d385ef60aa767",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                144,
+                511,
+                850,
+                551
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "274a3d7cb1d72fbf20fc2f6fa9c242905dd456599c1934d2bc17e31619ce49bd",
+          "content": {
+            "bbox": [
+              18,
+              8,
+              539,
+              55
+            ],
+            "content": {
+              "page_header_content": [
+                {
+                  "content": "BDP810W 8 kg Sensor Controlled Heat Pump Tumble Dryer",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "page_header"
+          },
+          "parentArtifactSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 2,
+            "normalizedTopLeftBox": [
+              18,
+              8,
+              539,
+              55
+            ],
+            "renderedPageArtifactSha256": "f998ee095d1f417749e5fe0c8e12f013941748b8dd21de9a3f4d385ef60aa767",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                18,
+                8,
+                539,
+                55
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

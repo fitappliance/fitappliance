@@ -1,0 +1,668 @@
+{
+  "schemaVersion": 3,
+  "fixtureSetId": "g3b-profile-canary-attestation-v1",
+  "purpose": "Bounded structural routing canaries. Portable records are not a Claim, receipt, Fit result, or public output.",
+  "status": "STRUCTURAL_CANARY_ATTESTATION_ONLY",
+  "acceptedBatch": {
+    "objectPath": "evidence/architecture-v3/canary-preparation/records/sha256/93/4d/934db1b37339d66a5843fa7a6cc9234283f2d5a90f3ea80573d81a42794d8733.json",
+    "sha256": "934db1b37339d66a5843fa7a6cc9234283f2d5a90f3ea80573d81a42794d8733"
+  },
+  "policy": {
+    "path": "data/architecture-v3/policies/document-family-profiles.json",
+    "sha256": "7eda21ad3693e8934808d4ff7e38203ba4b97e93c61d54a7fd8f52af270294a8",
+    "policySha256": "9e3c2d99de044203bdf1f33fa74f754fea89f42a2d4310429204c57c82120326"
+  },
+  "brandRegistry": {
+    "path": "data/architecture-v3/generated/brand-registry.json",
+    "fileSha256": "cbb4dac77938ae0f9bf40278325b42a33b0e61c6403a5212eff9e9a05e7dbf0d",
+    "registrySha256": "9f462e007851692a191fe47d462dce390129afd4d6edf0b047a41e9492bd04eb"
+  },
+  "codeIdentity": {
+    "schemaVersion": 1,
+    "files": [
+      {
+        "path": "src/domain/architecture-v3/document-family-registry.mjs",
+        "sha256": "9083962d1b34cc14f8bdaf98215d80637b55099f9c7bd41694f8e68649ec9aea"
+      },
+      {
+        "path": "src/domain/architecture-v3/region-router.mjs",
+        "sha256": "4b2d359872ad97df22041bd3e582df4f7401d31b90e65e21bf1d2de666b97a6c"
+      },
+      {
+        "path": "scripts/architecture-v3/run-profile-canaries.mjs",
+        "sha256": "ecfea8365d16f7144554b990e4838e158f3d7588b70a8766cba1262453a1042e"
+      },
+      {
+        "path": "data/architecture-v3/policies/document-family-profiles.json",
+        "sha256": "7eda21ad3693e8934808d4ff7e38203ba4b97e93c61d54a7fd8f52af270294a8"
+      },
+      {
+        "path": "data/architecture-v3/generated/brand-registry.json",
+        "sha256": "cbb4dac77938ae0f9bf40278325b42a33b0e61c6403a5212eff9e9a05e7dbf0d"
+      },
+      {
+        "path": "src/domain/architecture-v3/extraction-region-observation.mjs",
+        "sha256": "1a62e4d492a575fd3046553a7eba0b0180d5dcafe57bc51fe0031b24fce7dff3"
+      },
+      {
+        "path": "src/domain/architecture-v3/artifact-lineage.mjs",
+        "sha256": "bb375d5a809d3b4137a79e526b21980a1a73ea5d49961c6d73472facd9660eb0"
+      },
+      {
+        "path": "src/domain/architecture-v3/evidence-anchors.mjs",
+        "sha256": "19f76808cf5886cf397af31429fc3c7c8e5e497b5e912b8ba3b2dd999286524c"
+      },
+      {
+        "path": "src/domain/architecture-v3/brand-registry.mjs",
+        "sha256": "48ef3cf23f6df1473e00d6eb559d3fe450742207dbac76ea0cd442bf0f61ae0b"
+      },
+      {
+        "path": "src/shared/canonical-evidence-json.mjs",
+        "sha256": "9bdf42c479827662497e1cf74c1ffd13a13d85085675c024c5809dd69647d451"
+      }
+    ]
+  },
+  "toolIdentity": {
+    "selectedMineru": {
+      "format": "content_list_v2",
+      "acceptedToolRevisions": [
+        "MinerU@3.4.4:bff20d4ae2bf202df9f45284b4d43681555a97ed",
+        "MinerU@3.4.4:ed6b654c018d742e65a17671e379c5e6ecc87ec9"
+      ]
+    },
+    "renderer": {
+      "binarySha256": "76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+      "version": "26.06.0",
+      "commandOptions": {
+        "format": "png",
+        "pageRotationInspection": "pdfinfo -f PAGE -l PAGE",
+        "pageSelection": "one_page_per_invocation",
+        "resolutionDpi": 150
+      }
+    }
+  },
+  "sourceExpectations": [
+    {
+      "sourceId": "bdf1620w",
+      "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+      "sourcePdfObjectPath": "evidence/web/sha256/fe/73/fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283.pdf",
+      "selectedMineruJsonSha256": "f79e8b2f1130389a1257bf5dcc2317a8f2c18b6754f46eab99ddf98702bf182c",
+      "selectedMineruJsonObjectPath": "evidence/derived/mineru-json/sha256/f7/9e/f79e8b2f1130389a1257bf5dcc2317a8f2c18b6754f46eab99ddf98702bf182c.json",
+      "selectedMineruToolRevision": "MinerU@3.4.4:bff20d4ae2bf202df9f45284b4d43681555a97ed",
+      "pageCount": 2,
+      "lineageObjectPath": "evidence/architecture-v3/canary-preparation/lineage/sha256/42/32/4232a93b5184082e5dd0024b3f52df6f34a092d3b88f57f7f724eccff65fb4fd.json",
+      "lineageSha256": "4232a93b5184082e5dd0024b3f52df6f34a092d3b88f57f7f724eccff65fb4fd",
+      "blocks": [
+        {
+          "sourceJsonPointer": "/0/14",
+          "pageNumber": 1,
+          "fragmentSha256": "1fec5fb4cf408c9c9ad08b7eb99b291ebfaefa3c4c609262365177c179bd402d",
+          "rawBlockCanonicalSha256": "d07f5f7af3e8a8a399342244c20514adc63fe4e677a1a34009afd34fc4852d7d"
+        },
+        {
+          "sourceJsonPointer": "/0/15",
+          "pageNumber": 1,
+          "fragmentSha256": "5c29b215ebddebc521c81510101cd080a8028309c43bd410cbf003416f1e43cd",
+          "rawBlockCanonicalSha256": "952c6be728abff62789f687d28523b9d1799d4316331537329f57011ad206b93"
+        },
+        {
+          "sourceJsonPointer": "/1/4",
+          "pageNumber": 2,
+          "fragmentSha256": "8af5f5b365bc161f38a948d96996b6225329e56a3a6f5943b3d2249a1d7d2301",
+          "rawBlockCanonicalSha256": "ee6b1ad285c5bd862540eda4be8d4fa3c5c80d1862d3cdc23293df6e3c90a1c5"
+        },
+        {
+          "sourceJsonPointer": "/1/5",
+          "pageNumber": 2,
+          "fragmentSha256": "37b21590d6b5c9e29401cb8ed4ef7c0797ecc0ac8bc5b92af9c5ee0eb5cf49f0",
+          "rawBlockCanonicalSha256": "cdd949cf5f90beb14276292f801db3c4481faf6e6c6e5255c19f3f1606e16339"
+        }
+      ],
+      "renderedPages": [
+        {
+          "pageNumber": 1,
+          "objectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/9d/47/9d473a6bd008d2acde3d7f17668df263c2fdaada17315002e3190758a3fd1681.png",
+          "sha256": "9d473a6bd008d2acde3d7f17668df263c2fdaada17315002e3190758a3fd1681",
+          "renderedPixels": {
+            "width": 1241,
+            "height": 1754
+          },
+          "rotationDegreesClockwise": 0,
+          "transform": {
+            "kind": "full_page"
+          }
+        },
+        {
+          "pageNumber": 2,
+          "objectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/35/33/35331eb7214e9367637210ce6050da365f7f21b223e0f73fadd8ff083023d3f9.png",
+          "sha256": "35331eb7214e9367637210ce6050da365f7f21b223e0f73fadd8ff083023d3f9",
+          "renderedPixels": {
+            "width": 1241,
+            "height": 1754
+          },
+          "rotationDegreesClockwise": 0,
+          "transform": {
+            "kind": "full_page"
+          }
+        }
+      ]
+    },
+    {
+      "sourceId": "bdp810w",
+      "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+      "sourcePdfObjectPath": "evidence/web/sha256/bf/ef/bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6.pdf",
+      "selectedMineruJsonSha256": "3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f",
+      "selectedMineruJsonObjectPath": "evidence/derived/mineru-json/sha256/39/47/3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f.json",
+      "selectedMineruToolRevision": "MinerU@3.4.4:ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "pageCount": 2,
+      "lineageObjectPath": "evidence/architecture-v3/canary-preparation/lineage/sha256/82/07/8207c2f531c6dcc1e659659e83adf031ee02833d3f331ed45b8331f0940c47a1.json",
+      "lineageSha256": "8207c2f531c6dcc1e659659e83adf031ee02833d3f331ed45b8331f0940c47a1",
+      "blocks": [
+        {
+          "sourceJsonPointer": "/0/29",
+          "pageNumber": 1,
+          "fragmentSha256": "aabc2a6fc44eb72175107fdc142c9c34d928e7a06c4bb8927162769852b0f04c",
+          "rawBlockCanonicalSha256": "d49d2fc0d2d1952722a185daf4856b1ad7c0cc3b20dc7b813e3a6f79fa2b5ea2"
+        },
+        {
+          "sourceJsonPointer": "/0/30",
+          "pageNumber": 1,
+          "fragmentSha256": "67770fbb7890e961429f9c0df2a58e5e1d1290f27d494ed734f88c29f1f995ee",
+          "rawBlockCanonicalSha256": "9653cc832c18aada18c9e0a60c6bbb71a44818e909f4d7e39df0f86a96d3dddd"
+        },
+        {
+          "sourceJsonPointer": "/0/47",
+          "pageNumber": 1,
+          "fragmentSha256": "a9c16b87bae0164d675283e159f54ebc0d212579f2742d35532803f0f9e37900",
+          "rawBlockCanonicalSha256": "28c3406f2d0eb736f8065f194db99595e8f16d9fc74596039b85564c379273da"
+        },
+        {
+          "sourceJsonPointer": "/0/52",
+          "pageNumber": 1,
+          "fragmentSha256": "76e28cfbf78015970b318647df203ad13d82c6319280fc76ae7f1c01987ff5e0",
+          "rawBlockCanonicalSha256": "71b55cf8cdfe60d1a758382d4dc44f23a1555320c4798aa7de14ce6a4ec1fe76"
+        },
+        {
+          "sourceJsonPointer": "/1/7",
+          "pageNumber": 2,
+          "fragmentSha256": "24c827f4550c86e7acdfd3f7897b1b947b8759fc729d192662b1d60ac5f041d8",
+          "rawBlockCanonicalSha256": "dd038b83c5bccdda2489954fa1b5c5b45ed2e18a8956bee2878d0b3803ef9b90"
+        },
+        {
+          "sourceJsonPointer": "/1/9",
+          "pageNumber": 2,
+          "fragmentSha256": "6765c7913d4b85475408927ee9dedcb8d7f2ec6489565c409b35170a1369415e",
+          "rawBlockCanonicalSha256": "89353168b54a4d24d5c4bbddc7e92e93ce6203eaf1add76c8de387cc7684af42"
+        }
+      ],
+      "renderedPages": [
+        {
+          "pageNumber": 1,
+          "objectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/ba/e3/bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0.png",
+          "sha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+          "renderedPixels": {
+            "width": 1241,
+            "height": 1754
+          },
+          "rotationDegreesClockwise": 0,
+          "transform": {
+            "kind": "full_page"
+          }
+        },
+        {
+          "pageNumber": 2,
+          "objectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/f9/98/f998ee095d1f417749e5fe0c8e12f013941748b8dd21de9a3f4d385ef60aa767.png",
+          "sha256": "f998ee095d1f417749e5fe0c8e12f013941748b8dd21de9a3f4d385ef60aa767",
+          "renderedPixels": {
+            "width": 1241,
+            "height": 1754
+          },
+          "rotationDegreesClockwise": 0,
+          "transform": {
+            "kind": "full_page"
+          }
+        }
+      ]
+    },
+    {
+      "sourceId": "ewf7524cdwa",
+      "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+      "sourcePdfObjectPath": "evidence/web/sha256/1b/89/1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244.pdf",
+      "selectedMineruJsonSha256": "f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181",
+      "selectedMineruJsonObjectPath": "evidence/derived/mineru-json/sha256/f9/fe/f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181.json",
+      "selectedMineruToolRevision": "MinerU@3.4.4:bff20d4ae2bf202df9f45284b4d43681555a97ed",
+      "pageCount": 7,
+      "lineageObjectPath": "evidence/architecture-v3/canary-preparation/lineage/sha256/b8/91/b89197f0bac18c2de0b8e22d65b1a7122cb21141a5d09b37edcd41f5a7029e59.json",
+      "lineageSha256": "b89197f0bac18c2de0b8e22d65b1a7122cb21141a5d09b37edcd41f5a7029e59",
+      "blocks": [
+        {
+          "sourceJsonPointer": "/2/3",
+          "pageNumber": 3,
+          "fragmentSha256": "8463dfb5a9903f4dc6e913348de67038edcb48eb0ae4c12dd01c72375fe40df9",
+          "rawBlockCanonicalSha256": "55e36e829e0ead85655d36f8783692050811ae764d7a170723d76b1eedeb80ed"
+        },
+        {
+          "sourceJsonPointer": "/2/4",
+          "pageNumber": 3,
+          "fragmentSha256": "b609f41793589598e5fb2385b5f65d635a13223b58415e6400fe969ca0b06b08",
+          "rawBlockCanonicalSha256": "9239c568adf8220857995f639045f6c72ec2f901d2c98db83b2c139fc05c3115"
+        },
+        {
+          "sourceJsonPointer": "/2/10",
+          "pageNumber": 3,
+          "fragmentSha256": "e7a3607ad614afbd9465127c3421fd9bf776de8ef8d5a3c96b4b4d58ad89370c",
+          "rawBlockCanonicalSha256": "83e0bb2c20e1cdd9e9684d0945ae8a0bb99b43c202f35223ecdef9773e988216"
+        },
+        {
+          "sourceJsonPointer": "/5/1",
+          "pageNumber": 6,
+          "fragmentSha256": "0afc7b01f755b30fb9fb44be55b8520f6276231740bdfba900079d4d10bea0e9",
+          "rawBlockCanonicalSha256": "872b310ea39203a18dae2c2e946d27c18f201e1dd3e13e7dc6f669e12c0d11e6"
+        },
+        {
+          "sourceJsonPointer": "/5/3",
+          "pageNumber": 6,
+          "fragmentSha256": "8afcaa5595b045d2e03bae9318878dc29e656840c3e65e1203be0e09e40f3c15",
+          "rawBlockCanonicalSha256": "c07c3f4e14008a42e121fcf8052d3ca7bee00e074737a6ea11f196f09be3b22a"
+        }
+      ],
+      "renderedPages": [
+        {
+          "pageNumber": 3,
+          "objectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/58/4a/584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970.png",
+          "sha256": "584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970",
+          "renderedPixels": {
+            "width": 1275,
+            "height": 1650
+          },
+          "rotationDegreesClockwise": 0,
+          "transform": {
+            "kind": "full_page"
+          }
+        },
+        {
+          "pageNumber": 6,
+          "objectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/a9/ef/a9ef7651e4cb4c502c869bad029cabb61ca49c58c18f4851b7cef5df1b738a75.png",
+          "sha256": "a9ef7651e4cb4c502c869bad029cabb61ca49c58c18f4851b7cef5df1b738a75",
+          "renderedPixels": {
+            "width": 1275,
+            "height": 1650
+          },
+          "rotationDegreesClockwise": 0,
+          "transform": {
+            "kind": "full_page"
+          }
+        }
+      ]
+    }
+  ],
+  "profileWitnesses": [
+    {
+      "profileId": "beko-au-dishwasher-image-v1",
+      "profileSha256": "f9af6c36a9dd996cd433871c174b9a104f326115135c9e8b8b02fb8d05b80a9b",
+      "positiveSourceSha256s": [
+        "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+      ],
+      "negativeSourceSha256s": [
+        "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+        "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+      ],
+      "fixtureIds": [
+        "bdf-image"
+      ],
+      "negativeWitnesses": [
+        {
+          "fixtureId": "ewf-image-context",
+          "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "expected": {
+            "status": "selected",
+            "profileId": "electrolux-au-washer-image-context-v1",
+            "route": "mineru"
+          }
+        },
+        {
+          "fixtureId": "bdp-table",
+          "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dryer-table-v1",
+            "route": "mineru"
+          }
+        }
+      ],
+      "sourceIdentityTamper": {
+        "kind": "source_pdf_sha256",
+        "target": "document.sourcePdfSha256",
+        "expected": {
+          "status": "fail",
+          "reason": "FIXTURE_SOURCE_PDF_MISMATCH"
+        }
+      }
+    },
+    {
+      "profileId": "beko-au-dishwasher-structured-v1",
+      "profileSha256": "c32ffcf74bfe0d99b06039d4900ef6ba413603f54ecef5cb710f1e4e5d92bee2",
+      "positiveSourceSha256s": [
+        "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+      ],
+      "negativeSourceSha256s": [
+        "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+        "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+      ],
+      "fixtureIds": [
+        "bdf-structured"
+      ],
+      "negativeWitnesses": [
+        {
+          "fixtureId": "ewf-table",
+          "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "expected": {
+            "status": "selected",
+            "profileId": "electrolux-au-washer-table-v1",
+            "route": "mineru"
+          }
+        },
+        {
+          "fixtureId": "bdp-split-columns",
+          "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dryer-split-columns-v1",
+            "route": "mineru"
+          }
+        }
+      ],
+      "sourceIdentityTamper": {
+        "kind": "source_pdf_sha256",
+        "target": "document.sourcePdfSha256",
+        "expected": {
+          "status": "fail",
+          "reason": "FIXTURE_SOURCE_PDF_MISMATCH"
+        }
+      }
+    },
+    {
+      "profileId": "beko-au-dryer-split-columns-v1",
+      "profileSha256": "de973bba87363bcbfce1d6ca6a99fd21453e71ef38f0554c5261de89ec0b54ea",
+      "positiveSourceSha256s": [
+        "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+      ],
+      "negativeSourceSha256s": [
+        "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+        "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+      ],
+      "fixtureIds": [
+        "bdp-split-columns"
+      ],
+      "negativeWitnesses": [
+        {
+          "fixtureId": "ewf-table",
+          "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "expected": {
+            "status": "selected",
+            "profileId": "electrolux-au-washer-table-v1",
+            "route": "mineru"
+          }
+        },
+        {
+          "fixtureId": "bdf-structured",
+          "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dishwasher-structured-v1",
+            "route": "mineru"
+          }
+        }
+      ],
+      "sourceIdentityTamper": {
+        "kind": "source_pdf_sha256",
+        "target": "document.sourcePdfSha256",
+        "expected": {
+          "status": "fail",
+          "reason": "FIXTURE_SOURCE_PDF_MISMATCH"
+        }
+      }
+    },
+    {
+      "profileId": "beko-au-dryer-table-v1",
+      "profileSha256": "dceaa0ba027d625abc8b5d925ee839b855bc175b5723edaf6f10337501464446",
+      "positiveSourceSha256s": [
+        "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+      ],
+      "negativeSourceSha256s": [
+        "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+        "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+      ],
+      "fixtureIds": [
+        "bdp-table"
+      ],
+      "negativeWitnesses": [
+        {
+          "fixtureId": "ewf-table",
+          "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "expected": {
+            "status": "selected",
+            "profileId": "electrolux-au-washer-table-v1",
+            "route": "mineru"
+          }
+        },
+        {
+          "fixtureId": "bdf-structured",
+          "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dishwasher-structured-v1",
+            "route": "mineru"
+          }
+        }
+      ],
+      "sourceIdentityTamper": {
+        "kind": "source_pdf_sha256",
+        "target": "document.sourcePdfSha256",
+        "expected": {
+          "status": "fail",
+          "reason": "FIXTURE_SOURCE_PDF_MISMATCH"
+        }
+      }
+    },
+    {
+      "profileId": "electrolux-au-washer-image-context-v1",
+      "profileSha256": "a496c5c2b76e5e51439dba57b42178140f774a5b5156c218c0ca513dfc0e59b3",
+      "positiveSourceSha256s": [
+        "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+      ],
+      "negativeSourceSha256s": [
+        "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+        "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+      ],
+      "fixtureIds": [
+        "ewf-image-context"
+      ],
+      "negativeWitnesses": [
+        {
+          "fixtureId": "bdp-split-columns",
+          "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dryer-split-columns-v1",
+            "route": "mineru"
+          }
+        },
+        {
+          "fixtureId": "bdf-image",
+          "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dishwasher-image-v1",
+            "route": "ocr_or_vision"
+          }
+        }
+      ],
+      "sourceIdentityTamper": {
+        "kind": "source_pdf_sha256",
+        "target": "document.sourcePdfSha256",
+        "expected": {
+          "status": "fail",
+          "reason": "FIXTURE_SOURCE_PDF_MISMATCH"
+        }
+      }
+    },
+    {
+      "profileId": "electrolux-au-washer-table-v1",
+      "profileSha256": "9791f3b295cefaa62840b610ad156a9be8223747eb10ae4ce6aac28b3369b4e2",
+      "positiveSourceSha256s": [
+        "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+      ],
+      "negativeSourceSha256s": [
+        "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+        "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+      ],
+      "fixtureIds": [
+        "ewf-table"
+      ],
+      "negativeWitnesses": [
+        {
+          "fixtureId": "bdp-table",
+          "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dryer-table-v1",
+            "route": "mineru"
+          }
+        },
+        {
+          "fixtureId": "bdf-structured",
+          "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "expected": {
+            "status": "selected",
+            "profileId": "beko-au-dishwasher-structured-v1",
+            "route": "mineru"
+          }
+        }
+      ],
+      "sourceIdentityTamper": {
+        "kind": "source_pdf_sha256",
+        "target": "document.sourcePdfSha256",
+        "expected": {
+          "status": "fail",
+          "reason": "FIXTURE_SOURCE_PDF_MISMATCH"
+        }
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "fixtureId": "bdf-structured",
+      "fixtureFile": "bdf1620w-p1-structured.json",
+      "fixtureFileSha256": "f05adf83cc8aaf221f7979b9bc90bf9d6c781d80a062564de565bbe539dd23b1",
+      "sourceId": "bdf1620w",
+      "target": {
+        "sourceJsonPointer": "/0/15",
+        "pageNumber": 1,
+        "fragmentSha256": "5c29b215ebddebc521c81510101cd080a8028309c43bd410cbf003416f1e43cd"
+      },
+      "expected": {
+        "profileId": "beko-au-dishwasher-structured-v1",
+        "profileSha256": "c32ffcf74bfe0d99b06039d4900ef6ba413603f54ecef5cb710f1e4e5d92bee2",
+        "route": "mineru",
+        "requiresPageRender": false
+      }
+    },
+    {
+      "fixtureId": "bdf-image",
+      "fixtureFile": "bdf1620w-p2-image.json",
+      "fixtureFileSha256": "1c0172c54c4cdcdf85c841361d4f1b151ac00dcded53446bf8026291895f8f48",
+      "sourceId": "bdf1620w",
+      "target": {
+        "sourceJsonPointer": "/1/4",
+        "pageNumber": 2,
+        "fragmentSha256": "8af5f5b365bc161f38a948d96996b6225329e56a3a6f5943b3d2249a1d7d2301"
+      },
+      "expected": {
+        "profileId": "beko-au-dishwasher-image-v1",
+        "profileSha256": "f9af6c36a9dd996cd433871c174b9a104f326115135c9e8b8b02fb8d05b80a9b",
+        "route": "ocr_or_vision",
+        "requiresPageRender": true
+      }
+    },
+    {
+      "fixtureId": "bdp-split-columns",
+      "fixtureFile": "bdp810w-p1-split-columns.json",
+      "fixtureFileSha256": "6961b5210b87cfc541ee6de96d7996ae5a847a30db5d4129e3816c6e36445fc8",
+      "sourceId": "bdp810w",
+      "target": {
+        "sourceJsonPointer": "/0/47",
+        "pageNumber": 1,
+        "fragmentSha256": "a9c16b87bae0164d675283e159f54ebc0d212579f2742d35532803f0f9e37900"
+      },
+      "expected": {
+        "profileId": "beko-au-dryer-split-columns-v1",
+        "profileSha256": "de973bba87363bcbfce1d6ca6a99fd21453e71ef38f0554c5261de89ec0b54ea",
+        "route": "mineru",
+        "requiresPageRender": false
+      }
+    },
+    {
+      "fixtureId": "bdp-table",
+      "fixtureFile": "bdp810w-p2-table.json",
+      "fixtureFileSha256": "6a39860184009b0ec801f61b3840a935e915e2fb321906b4e3a3eb53ac54bdfc",
+      "sourceId": "bdp810w",
+      "target": {
+        "sourceJsonPointer": "/1/7",
+        "pageNumber": 2,
+        "fragmentSha256": "24c827f4550c86e7acdfd3f7897b1b947b8759fc729d192662b1d60ac5f041d8"
+      },
+      "expected": {
+        "profileId": "beko-au-dryer-table-v1",
+        "profileSha256": "dceaa0ba027d625abc8b5d925ee839b855bc175b5723edaf6f10337501464446",
+        "route": "mineru",
+        "requiresPageRender": false
+      }
+    },
+    {
+      "fixtureId": "ewf-table",
+      "fixtureFile": "ewf7524cdwa-p3-table.json",
+      "fixtureFileSha256": "8314bf6dc98ff9a520d1126ffe370b04f303c7132643e0bad257dddf978ee8fc",
+      "sourceId": "ewf7524cdwa",
+      "target": {
+        "sourceJsonPointer": "/2/4",
+        "pageNumber": 3,
+        "fragmentSha256": "b609f41793589598e5fb2385b5f65d635a13223b58415e6400fe969ca0b06b08"
+      },
+      "expected": {
+        "profileId": "electrolux-au-washer-table-v1",
+        "profileSha256": "9791f3b295cefaa62840b610ad156a9be8223747eb10ae4ce6aac28b3369b4e2",
+        "route": "mineru",
+        "requiresPageRender": false
+      }
+    },
+    {
+      "fixtureId": "ewf-image-context",
+      "fixtureFile": "ewf7524cdwa-p6-image-context.json",
+      "fixtureFileSha256": "3eb1c266eb2b45f1f9ab7118e856a6a1fa1959edef068b1a59086a55fc5793c5",
+      "sourceId": "ewf7524cdwa",
+      "target": {
+        "sourceJsonPointer": "/5/1",
+        "pageNumber": 6,
+        "fragmentSha256": "0afc7b01f755b30fb9fb44be55b8520f6276231740bdfba900079d4d10bea0e9"
+      },
+      "expected": {
+        "profileId": "electrolux-au-washer-image-context-v1",
+        "profileSha256": "a496c5c2b76e5e51439dba57b42178140f774a5b5156c218c0ca513dfc0e59b3",
+        "route": "mineru",
+        "requiresPageRender": true
+      }
+    }
+  ],
+  "historicalOcrAttempt": {
+    "recordObjectPath": "evidence/architecture-v3/canary-preparation/records/sha256/6d/50/6d5088dcab372bb3d4018354fd34a711e768a8a067b6cb6d11559f5753767b63.json",
+    "recordSha256": "6d5088dcab372bb3d4018354fd34a711e768a8a067b6cb6d11559f5753767b63",
+    "status": "INCOMPLETE_RECORDED_TOOL_PROVENANCE",
+    "unrecordedProfileFlags": [
+      "tableEnabled",
+      "formulaEnabled"
+    ],
+    "completeToolAttestation": false
+  },
+  "manifestSha256": "985ca87f91c1669e44d1e88a74baadf205d23139557f028982a368aa3cf758f0"
+}

@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a through G3a complete and merged; G3b bounded real-source preparation is independently reviewed and accepted, while region routing/profile attestation remains unfinished. PR211 includes PR210 and is merged as `2deb715`, with production verified. This preparation patch is local/uncommitted. No V3 receipt has been issued or V3 Fit behavior enabled.
+> Status: EXECUTION STARTED — G0a through G3a and bounded real-source preparation are accepted and merged. PR212 is production-verified at `c83aa47` (2026-09-15). Formal G3b code/spec is independently approved and main-accepted; exact-head full CI and actual release verification remain pending. No V3 receipt has been issued or V3 Fit behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -233,7 +233,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
 | G3a | Typed lineage/anchors/relations | G1a | COMPLETE | `868f10a79` | [G3a report](../../architecture-v3/execution/G3a-lineage.md) | All6 [Draft PR211](https://github.com/fitappliance/fitappliance/pull/211) checks pass at this code commit. Node20.20.2 run34844532895: 3,141 pass,0 fail/skip/cancelled; build/publication/generated gates pass. Main reviewed structural/witness/coordinate contracts and8 preview controls. Original-source replay remains NOT_RUN; no receipt or production promotion. | G3b: region routing and canary attestation |
-| G3b | Region router + canary attestation | G3a, G2a | RUNNING | — | [Preparation acceptance](../../architecture-v3/execution/real-evidence-canary-acceptance.md) | Bounded preparation accepted after separate audit:4/4 findings resolved,39 independent targeted tests and accepted3180 full-test capture/exit0. Local patch only; router/profile attestation and receipt issuance remain unfinished. | Version-control handoff of accepted preparation, then region router/profile canaries |
+| G3b | Region router + canary attestation | G3a, G2a | REVIEW_REQUIRED | Preparation: `c83aa47`; router uncommitted | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) | F1/F2/F3 and N1 independently ADDRESSED; v3 spec/quality APPROVED, main code acceptance recorded. Affected26/26 and modes0/0/2 bind39 unchanged inputs. Final full CI/release pending; no receipt issuance. | Commit/push scoped patch, exact-head full CI, preview controls, guarded merge and production verification |
 | G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
 | G4b | Direct source binding + receipt | G4a, G3b | NOT_STARTED | — | — | — | — |
 | G5a | Append review store + CurrentEligibility | G4b | NOT_STARTED | — | — | — | — |
@@ -846,9 +846,9 @@ G3b real canaries, G4b original-source replay and G6c receipt repair are unfinis
 
 ## G3b — region router and portable/real canary attestation
 
-**Status:** RUNNING — real-source inputs first · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED — independent code approval and main acceptance; exact-head CI/release pending · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
 
-Current executor: Euler (`01a0a015-c1bb-7462-95fb-54f74f431358`). Its test and
+Preparation executor: Euler (`01a0a015-c1bb-7462-95fb-54f74f431358`). Its test and
 source-replay results are execution evidence, not independent audit approval.
 Independent read-only auditor: Anscombe (`01a0a058-3493-7661-87e0-adb11909928e`),
 dispatched as Terra / Max. Its frozen v1 review remains CHANGES_REQUIRED for v1.
@@ -859,6 +859,141 @@ complete formal G3b. [Main acceptance](../../architecture-v3/execution/real-evid
 binds the reviewed package and unchanged functional files. New immutable batch:
 `934db1b37339d66a5843fa7a6cc9234283f2d5a90f3ea80573d81a42794d8733`.
 Main's original-page notes remain a separate input, not substitute approval.
+
+**Release and next dispatch (2026-09-15).** [PR212](https://github.com/fitappliance/fitappliance/pull/212)
+commits the exact nine accepted files as `cdbd080dece85cc74a99aa0851be9b0d5b518f40`.
+All six checks pass; CI34911073664/job104198445298 confirms3180 tests pass with
+zero fail/skip/cancelled, lint/build/publication/generated-output gates successful.
+Merge `c83aa475d892e5bdb8bc7f65a0cee4cb05292a50` has the identical reviewed tree.
+Node24/.site-public production `dpl_3dZcH7Xtzr2zC4wg22AG6sVXaFuA` is READY at
+that merge and owns both canonical aliases. Its3281-file/54856568-byte artifact
+SHA256 `4830547f396ca20e06226059f4adb649b6db79b653ff82182f21ac428138df64`
+matches the accepted application after only the commit-specific cache version.
+All16 preview and17 production controls pass, including five public byte checks,
+all nine changed internal paths plus two earlier modules returning404, and the
+production apex308. Previous production2deb715 remains available for rollback;
+original recovery status/diff hashes remain unchanged. This release publishes
+isolated code, not PDFs/OCR data, new receipts, or V3 Fit activation.
+
+Formal G3b executor: Dalton (`01a0a264-0a86-7ae0-a250-764c686e384d`),
+`gpt-5.6-terra` / max, isolated context, branch
+`codex/architecture-v3-g3b-region-canaries` based on that merge. The independent
+auditor is NOT_STARTED and will be a different agent after frozen handoff.
+Main's full task packet is `G3b-router-brief.md` in the ignored SDD workspace;
+the contracts, source expectations and acceptance below remain the durable
+authority. Main owns this plan/release/source review; Dalton only owns the
+listed G3b implementation/fixtures/tests and executor report. No repeat OCR,
+source acquisition, verifier widening, receipt approval or public wiring here.
+
+**Implementation checkpoint A.** Dalton's corrected inspection/selection/routing
+has11/11 focused tests, following an integration RED with8 failures. Main
+inspected those capture footers; these remain execution evidence, not independent
+acceptance. Routing consumes the complete selected envelope and replays its raw
+region/selector bindings. Normal attached/separated metric units are retained;
+plain JSON-pointer text is not forced to invent page-image evidence. Checkpoint B
+is now running: profile attestation, strict CLI, real-object/portable/missing-store
+controls and the stable-version full-test capture. Full G3b stays RUNNING and its
+independent auditor stays NOT_STARTED until that complete handoff freezes.
+
+**Checkpoint B progress (2026-09-15).** After a bounded status request, the same
+executor reports16/16 focused tests and successful portable/actual-store CLI
+runs, with missing-store/invalid-argument coverage. These are executor claims,
+not yet a frozen audited handoff. No full suite is running or claimed complete.
+Dalton continues only the remaining bound command captures, one stable full-suite
+run and execution report; no additional features or repeated A/preflight work.
+Main prepared a separate auditor packet and reconfirmed GitHub push permissions.
+No G3b commit, merge, source conversion, receipt issuance or public activation has
+occurred. Independent audit remains NOT_STARTED pending the complete freeze.
+
+**Complete executor handoff (2026-09-15).** The [execution record](../../architecture-v3/execution/G3b-router-canaries.md)
+has raw SHA256 `ff84a975f68f10a1db061a280e864506f1489406156158fb6bd870a49f591442`.
+Main verified all five capture/log hashes, actual child exits and36 before/after
+input hashes against current bytes. Focused16/16 and full3196/3196 pass with no
+fail/skip/cancel; the full run ends at01:42:52Z with actual exit0. Portable and
+actual original-object runs exit0; missing-store exits2/blocked. Those are
+execution results, not profile/semantic approval. Dalton is closed after the
+handoff to enforce one writer and distinct audit. Main freezes the complete
+version, including this plan checkpoint, before dispatching another Terra / Max
+auditor. No G3b code is committed/released yet; prior receipts stay unchanged.
+
+**Independent v1 audit and fix round1 (2026-09-15).** Dewey
+`01a0a2c0-4b22-7cb0-884c-f2e03755915b` was separately dispatched as Terra / Max;
+its report conservatively states that its own context exposes only a generic
+model label. The [independent report](../../architecture-v3/execution/G3b-independent-audit.md)
+returns CHANGES_REQUIRED for spec/quality and NO for merge. It independently
+checks3 PDF/3 MinerU/3 lineage/6 rendered-page objects and6 raw targets; no full
+suite repetition. Open findings: twelve negative rows only exercise one hash
+guard, G3b's crop shape rejects/weakened G3a crop_from_full_page semantics, and
+direct selection trusts a submitted inspected status that full routing rejects.
+Main corroborated the cited producer/consumer code; these are fixes to existing
+contracts, not permission to change installation facts. v1 report/captures and
+all14 reviewed files are preserved in a checked snapshot. Dewey is closed;
+the same Dalton resumes only these three fixes, with targeted/canary captures
+and then distinct re-review. One small internal shared-observation module may be
+extracted if needed to prevent inspector duplication or registry/router cycles;
+G3a producers, old originals and public paths remain unchanged. No new rendering,
+OCR, credentials or semantic verification is part of this repair.
+
+**Fix1 handoff (2026-09-15).** Main checked executor report raw SHA256
+`fd3b2f06f3df2f1b4a7bdedeacab3065bd2098ffa6d884c1b637f0200d6d1e63`, whose complete
+v1 prefix remains byte-identical. The corrected v1 RED has four actual assertion
+failures, not missing imports. Final affected47/47 pass with actual exit0 and no
+fail/skip/cancel. Main rechecks all four final captures/log hashes and39 current
+input bytes against before/after inventories. Twelve negative regions now reach
+inspection/selection and select their independently specified alternate profile;
+twelve hash-tamper controls are separately counted. Portable and real-object modes
+exit0; missing-store exits2/blocked. Shared inspection is in the neutral internal
+`extraction-region-observation.mjs`, used by both direct selection and routing,
+with G3a artifact/anchor checks reused. Tests use explicitly synthetic valid-crop
+records; no original crop image/render or OCR was created. The accepted17 external
+objects remain unchanged. Dalton is closed; a second freeze and scoped independent
+re-review follow. v1 full3196 is historical only; exact fix-version full CI is
+still required before any merge. This is execution evidence, not acceptance.
+
+**Independent v2 result / fix2 (2026-09-15).** Same distinct Dewey marks F1/F2/F3
+ADDRESSED, including the expressly structural synthetic-crop scope. It verifies
+six fixture copies against3 actual lineages/selected JSONs,16 frozen files and10
+code dependencies. New N1/P2: the shared inspector defaults missing/unknown raw
+types to structured text; the old selector rejected them, and the index-specific
+axis gap disappears. Its isolated diagnostic retains the valid index control and
+reproduces unknown/missing-type regressions; existing47/full3196 suites are not
+rerun. Main confirms the cited default branch and missing guard. v2 stays
+CHANGES_REQUIRED/NO merge and is preserved with its checked16-file snapshot.
+Dewey closes; original Dalton handles only N1 in shared replay, retaining unknown
+regions and usable supported neighbours rather than rejecting a whole PDF. No
+new parser kind, profile, image, source meaning or authority is permitted. Fresh
+targeted/canary captures, independent re-review and final full CI remain required.
+
+**Fix2 frozen handoff (2026-09-15).** Dalton closes after the N1-only repair.
+One shared closed raw-kind mapping now retains unsupported/missing/malformed
+regions as incomplete candidates without guessing structured text or donating
+page context; valid neighbours and the legitimate index axis-gap control remain
+usable. No profile, original source, image or evidence meaning changes. Main
+checks the actual RED assertion failures (1 control pass,4 failures), final
+affected26/26 capture (exit0, no skip/cancel), all39 current before/after input
+hashes, log hashes and the preserved v2 report prefix. Portable and original-object
+modes each have6 positives,12 genuine alternate-source negatives and12 separate
+source-tamper controls; both exit0, and missing-store exits2/blocked. Original-object
+mode binds actual accepted inputs; portable mode does not claim that authority.
+Executor report SHA256 is
+`7b80cceaeb409ab4967dc9589aa1dba3b3e527c8fe64973d631cc44b148d06e1`.
+The old full3196 and fix1 affected47 results are historical; no unchanged suite
+was rerun for this repair. Freeze v3 and compare against the preserved v2 bytes;
+same distinct Dewey re-reviews N1 and the new fix diff only. This is execution
+evidence, not approval, receipt repair or release. Final exact-head full CI remains
+a main-owned pre-merge gate.
+
+**Independent v3 / main acceptance (2026-09-15).** Same distinct Dewey marks N1
+ADDRESSED with no new concrete finding; spec and code quality are APPROVED.
+Its [v3 report](../../architecture-v3/execution/G3b-independent-rereview-v3.md)
+retains the exact-head full-CI condition and does not reclassify old tests as
+current. Main closes Dewey, verifies all17 frozen files unchanged and report
+SHA256 `39023ebb73ab7bfeacf83c0266e7dac311c4a2cc21ed333376a426420a67ec52`,
+and records [bounded acceptance](../../architecture-v3/execution/G3b-main-acceptance.md).
+Both agents are closed. No more implementation changes are requested. Main now
+owns the authorized scoped commit/PR, exact-head full CI, preview isolation,
+guarded merge and actual production checks. G3b stays REVIEW_REQUIRED until
+these remaining gates pass. No original source, OCR, receipt or Fit change.
 
 **Current bounded preparation.** Start with Beko BDF1620W, Beko BDP810W and
 Electrolux EWF7524CDWA, selected by exact recovery-target/source/derived hashes,
@@ -919,6 +1054,8 @@ G3b/G4/G6b/G6c or claim the whole legacy inventory is upgraded.
 <!-- doc-audit: ignore -->
 - G3b creates `src/domain/architecture-v3/document-family-registry.mjs`, `src/domain/architecture-v3/region-router.mjs`, `scripts/architecture-v3/run-profile-canaries.mjs`, `tests/architecture-v3/region-router.test.mjs`, and `docs/architecture-v3/execution/G3b-router-canaries.md`.
 <!-- doc-audit: ignore -->
+- The reviewed fix may extract shared inspection into `src/domain/architecture-v3/extraction-region-observation.mjs`; registry and router must consume the same replay without a cyclic import or second inspector.
+<!-- doc-audit: ignore -->
 - G3b creates `tests/fixtures/architecture-v3/profile-canaries/manifest.json` plus its bounded portable fixture set.
 <!-- doc-audit: ignore -->
 - G3b creates `data/architecture-v3/policies/document-family-profiles.json`; profile brand IDs resolve through G2a. Region observations come from existing native/MinerU outputs, not caller guesses about PDF type.
@@ -940,6 +1077,18 @@ verifyProfileCanaryAttestation({ manifest, portableFixtures, codeIdentity })
 ```
 
 The canary runner supports separately tested `--portable` and `--original-objects` modes. The latter uses the configured evidence store; portable success alone does not complete a real-source gate. PDF acceptance keeps the original PDF / policy-pinned MinerU content_list_v2 pair. OCR/native/vision candidates never bypass it; new cross-region verification requires a versioned, canary-tested verifier delta in G4b.
+
+**Implementation clarification (2026-09-15).** A claimed `inspected` status,
+copied digest, caller-authored readability text or extractor chain cannot replace
+validated raw-region/profile bindings. Check the closed profile schema, codec,
+status, selector vocabulary and all brand references as well as hashes. Keep
+replay data-based; do not introduce an opaque in-memory authority registry.
+JSON-pointer text/table evidence remains a structural candidate without a
+fabricated rendered-page record. When the route uses an image/crop representation,
+retain the existing G3a page/rotation/transform contract rather than a weaker
+box-containment-only check. Missing-unit detection must not flag a complete
+number such as `Height: 850 mm` through regular-expression digit backtracking.
+These are scoped implementation corrections, not relaxed source/receipt gates.
 
 **Must prove.**
 
@@ -1825,12 +1974,12 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Current task:** the three-source raw/untyped preparation is accepted after
-Euler's implementation/TDD, distinct Anscombe's passing re-review, and main's
-final evidence/scope checks. The local patch has not been committed or published.
-Next: complete its normal authorized version-control handoff, then implement the
-G3b region router/profile canaries using these accepted real inputs. Use a Terra
-/ Max executor and a distinct Terra / Max read-only auditor again. Main owns
+**Current task:** PR212 has released the accepted three-source raw/untyped
+preparation at `c83aa47`; it does not complete G3b. Dalton and the distinct
+Terra / Max auditor are closed after fix2/v3 approval. Main accepts the reviewed
+code/spec; full exact-head CI and the guarded preview/merge/production checks
+still precede G3b completion. G4 remains NOT_STARTED.
+Main owns
 original-page/semantic review, contract decisions and the original plan. The router/profile
 attestation and G4/G6 common-standard reissue remain unfinished; continue those
 using the real prepared inputs, not only synthetic fixtures. PR210/211 are merged

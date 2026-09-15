@@ -1,0 +1,484 @@
+{
+  "fixtureKind": "sanitized_portable_region_fixture",
+  "sourceBytesIncluded": false,
+  "document": {
+    "brandId": "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c",
+    "category": "dryer",
+    "documentType": "manufacturer_product_sheet",
+    "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+  },
+  "mineruDocument": {
+    "contentSha256": "3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f",
+    "pageCount": 2,
+    "blocks": [
+      {
+        "sourceJsonPointer": "/0/29",
+        "pageNumber": 1,
+        "fragmentSha256": "aabc2a6fc44eb72175107fdc142c9c34d928e7a06c4bb8927162769852b0f04c",
+        "rawBlock": {
+          "bbox": [
+            526,
+            607,
+            709,
+            625
+          ],
+          "content": {
+            "level": 2,
+            "title_content": [
+              {
+                "content": "Dimensions & Weights",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "title"
+        }
+      },
+      {
+        "sourceJsonPointer": "/0/30",
+        "pageNumber": 1,
+        "fragmentSha256": "67770fbb7890e961429f9c0df2a58e5e1d1290f27d494ed734f88c29f1f995ee",
+        "rawBlock": {
+          "bbox": [
+            526,
+            626,
+            658,
+            770
+          ],
+          "content": {
+            "paragraph_content": [
+              {
+                "content": "Unpacked Height: Unpacked Width: Unpacked Depth: Unpacked Weight: Packed Height: Packed Width: Packed Depth: Packed Weight:",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "paragraph"
+        }
+      },
+      {
+        "sourceJsonPointer": "/0/47",
+        "pageNumber": 1,
+        "fragmentSha256": "a9c16b87bae0164d675283e159f54ebc0d212579f2742d35532803f0f9e37900",
+        "rawBlock": {
+          "bbox": [
+            763,
+            625,
+            830,
+            770
+          ],
+          "content": {
+            "list_items": [
+              {
+                "item_content": [
+                  {
+                    "content": "846 mm",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "597 mm",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "589 mm",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "45 kg",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "885 mm",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "650 mm",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "600 mm",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              },
+              {
+                "item_content": [
+                  {
+                    "content": "46.5 kg",
+                    "type": "text"
+                  }
+                ],
+                "item_type": "text"
+              }
+            ],
+            "list_type": "text_list"
+          },
+          "type": "index"
+        }
+      },
+      {
+        "sourceJsonPointer": "/0/52",
+        "pageNumber": 1,
+        "fragmentSha256": "76e28cfbf78015970b318647df203ad13d82c6319280fc76ae7f1c01987ff5e0",
+        "rawBlock": {
+          "bbox": [
+            45,
+            24,
+            171,
+            45
+          ],
+          "content": {
+            "page_header_content": [
+              {
+                "content": "BDP810W",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "page_header"
+        }
+      }
+    ]
+  },
+  "nativeObservations": [],
+  "pageImageMetadata": [
+    {
+      "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+      "pageNumber": 1,
+      "renderedPageArtifactSha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+      "renderedPixels": {
+        "width": 1241,
+        "height": 1754
+      },
+      "rotationDegreesClockwise": 0,
+      "transform": {
+        "kind": "full_page"
+      },
+      "artifactRecords": [
+        {
+          "schemaVersion": 1,
+          "sha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "parentSha256": null,
+          "mediaType": "application/pdf",
+          "toolRevision": null,
+          "optionsSha256": null
+        },
+        {
+          "schemaVersion": 1,
+          "sha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+          "parentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "mediaType": "image/png",
+          "toolRevision": "pdftoppm@26.06.0:sha256-76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+          "optionsSha256": "8dd571deb14906d8e55b69f3136dc379980d2d082baed8418815ee2e4476aa26"
+        }
+      ],
+      "fragments": [
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "8034fed3f9ff161f31819a283ec65dfe784cb63fc3a45ad0c1228ab4ed1d0bf6",
+          "content": {
+            "bbox": [
+              526,
+              607,
+              709,
+              625
+            ],
+            "content": {
+              "level": 2,
+              "title_content": [
+                {
+                  "content": "Dimensions & Weights",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "title"
+          },
+          "parentArtifactSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 1,
+            "normalizedTopLeftBox": [
+              526,
+              607,
+              709,
+              625
+            ],
+            "renderedPageArtifactSha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                526,
+                607,
+                709,
+                625
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "b44288bfa16c18847b801a67abea6848b08ac106c0eb1e9b92aa021dbcd31ee1",
+          "content": {
+            "bbox": [
+              526,
+              626,
+              658,
+              770
+            ],
+            "content": {
+              "paragraph_content": [
+                {
+                  "content": "Unpacked Height: Unpacked Width: Unpacked Depth: Unpacked Weight: Packed Height: Packed Width: Packed Depth: Packed Weight:",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "paragraph"
+          },
+          "parentArtifactSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 1,
+            "normalizedTopLeftBox": [
+              526,
+              626,
+              658,
+              770
+            ],
+            "renderedPageArtifactSha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                526,
+                626,
+                658,
+                770
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "b05aa33e3161d32230487e900c19db66c3dcc521037aca637d3d5da15389faee",
+          "content": {
+            "bbox": [
+              763,
+              625,
+              830,
+              770
+            ],
+            "content": {
+              "list_items": [
+                {
+                  "item_content": [
+                    {
+                      "content": "846 mm",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "597 mm",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "589 mm",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "45 kg",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "885 mm",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "650 mm",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "600 mm",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                },
+                {
+                  "item_content": [
+                    {
+                      "content": "46.5 kg",
+                      "type": "text"
+                    }
+                  ],
+                  "item_type": "text"
+                }
+              ],
+              "list_type": "text_list"
+            },
+            "type": "index"
+          },
+          "parentArtifactSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 1,
+            "normalizedTopLeftBox": [
+              763,
+              625,
+              830,
+              770
+            ],
+            "renderedPageArtifactSha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                763,
+                625,
+                830,
+                770
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "a801c307aca05839efe0dd87d6a9789609f76f4a3c12bc2ecfccc5c91be625a2",
+          "content": {
+            "bbox": [
+              45,
+              24,
+              171,
+              45
+            ],
+            "content": {
+              "page_header_content": [
+                {
+                  "content": "BDP810W",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "page_header"
+          },
+          "parentArtifactSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 1,
+            "normalizedTopLeftBox": [
+              45,
+              24,
+              171,
+              45
+            ],
+            "renderedPageArtifactSha256": "bae37c330d14558f206e9e7dc780b6758e4754e8d338a1ac8056f903c8954cd0",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                45,
+                24,
+                171,
+                45
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

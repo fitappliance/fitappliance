@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "canonicalizationVersion": "fit-evidence-json-v3-1",
+  "policyId": "fitappliance-document-family-profiles-v1",
+  "policyVersion": "2026-09-15.1",
+  "brandRegistryBinding": {
+    "market": "AU",
+    "registryPath": "data/architecture-v3/generated/brand-registry.json",
+    "registrySha256": "9f462e007851692a191fe47d462dce390129afd4d6edf0b047a41e9492bd04eb"
+  },
+  "profiles": [
+    {
+      "profileId": "beko-au-dishwasher-image-v1",
+      "profileSha256": "f9af6c36a9dd996cd433871c174b9a104f326115135c9e8b8b02fb8d05b80a9b",
+      "version": 1,
+      "status": "active",
+      "brandIds": [
+        "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c"
+      ],
+      "categories": [
+        "dishwasher"
+      ],
+      "documentTypes": [
+        "manufacturer_product_sheet"
+      ],
+      "contentModes": [
+        "image"
+      ],
+      "requiredStructuralSignals": [
+        "dimension_context",
+        "empty_body_text",
+        "image_region",
+        "raw_block_identity"
+      ],
+      "forbiddenStructuralSignals": [
+        "numeric_unit_text",
+        "paragraph",
+        "table_region"
+      ],
+      "extractorChain": [
+        "ocr_or_vision",
+        "unresolved"
+      ],
+      "canaryWitnesses": {
+        "positiveSourceSha256s": [
+          "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ],
+        "negativeSourceSha256s": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+        ]
+      }
+    },
+    {
+      "profileId": "beko-au-dishwasher-structured-v1",
+      "profileSha256": "c32ffcf74bfe0d99b06039d4900ef6ba413603f54ecef5cb710f1e4e5d92bee2",
+      "version": 1,
+      "status": "active",
+      "brandIds": [
+        "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c"
+      ],
+      "categories": [
+        "dishwasher"
+      ],
+      "documentTypes": [
+        "manufacturer_product_sheet"
+      ],
+      "contentModes": [
+        "structured_text"
+      ],
+      "requiredStructuralSignals": [
+        "dimension_context",
+        "numeric_unit_text",
+        "paragraph",
+        "raw_block_identity",
+        "unpackaged_context"
+      ],
+      "forbiddenStructuralSignals": [
+        "empty_body_text",
+        "image_region",
+        "mixed_units"
+      ],
+      "extractorChain": [
+        "mineru",
+        "unresolved"
+      ],
+      "canaryWitnesses": {
+        "positiveSourceSha256s": [
+          "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ],
+        "negativeSourceSha256s": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+        ]
+      }
+    },
+    {
+      "profileId": "beko-au-dryer-split-columns-v1",
+      "profileSha256": "de973bba87363bcbfce1d6ca6a99fd21453e71ef38f0554c5261de89ec0b54ea",
+      "version": 1,
+      "status": "active",
+      "brandIds": [
+        "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c"
+      ],
+      "categories": [
+        "dryer"
+      ],
+      "documentTypes": [
+        "manufacturer_product_sheet"
+      ],
+      "contentModes": [
+        "structured_text"
+      ],
+      "requiredStructuralSignals": [
+        "page_has_split_columns",
+        "raw_block_identity",
+        "split_column_region"
+      ],
+      "forbiddenStructuralSignals": [
+        "image_region",
+        "table_region"
+      ],
+      "extractorChain": [
+        "mineru",
+        "unresolved"
+      ],
+      "canaryWitnesses": {
+        "positiveSourceSha256s": [
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+        ],
+        "negativeSourceSha256s": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ]
+      }
+    },
+    {
+      "profileId": "beko-au-dryer-table-v1",
+      "profileSha256": "dceaa0ba027d625abc8b5d925ee839b855bc175b5723edaf6f10337501464446",
+      "version": 1,
+      "status": "active",
+      "brandIds": [
+        "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c"
+      ],
+      "categories": [
+        "dryer"
+      ],
+      "documentTypes": [
+        "manufacturer_product_sheet"
+      ],
+      "contentModes": [
+        "table"
+      ],
+      "requiredStructuralSignals": [
+        "dimension_context",
+        "numeric_unit_text",
+        "raw_block_identity",
+        "table_region",
+        "table_with_headers"
+      ],
+      "forbiddenStructuralSignals": [
+        "empty_body_text",
+        "image_region",
+        "mixed_units"
+      ],
+      "extractorChain": [
+        "mineru",
+        "unresolved"
+      ],
+      "canaryWitnesses": {
+        "positiveSourceSha256s": [
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+        ],
+        "negativeSourceSha256s": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ]
+      }
+    },
+    {
+      "profileId": "electrolux-au-washer-image-context-v1",
+      "profileSha256": "a496c5c2b76e5e51439dba57b42178140f774a5b5156c218c0ca513dfc0e59b3",
+      "version": 1,
+      "status": "active",
+      "brandIds": [
+        "fa_brand_944f644172a7ec775933bbbc583622803be22fe40d82eb75b522095408572ec5"
+      ],
+      "categories": [
+        "washing_machine"
+      ],
+      "documentTypes": [
+        "manufacturer_product_sheet"
+      ],
+      "contentModes": [
+        "image",
+        "structured_text"
+      ],
+      "requiredStructuralSignals": [
+        "image_or_disclaimer_region",
+        "page_has_image_and_disclaimer",
+        "raw_block_identity"
+      ],
+      "forbiddenStructuralSignals": [
+        "mixed_units",
+        "table_region"
+      ],
+      "extractorChain": [
+        "mineru",
+        "ocr_or_vision",
+        "unresolved"
+      ],
+      "canaryWitnesses": {
+        "positiveSourceSha256s": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+        ],
+        "negativeSourceSha256s": [
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ]
+      }
+    },
+    {
+      "profileId": "electrolux-au-washer-table-v1",
+      "profileSha256": "9791f3b295cefaa62840b610ad156a9be8223747eb10ae4ce6aac28b3369b4e2",
+      "version": 1,
+      "status": "active",
+      "brandIds": [
+        "fa_brand_944f644172a7ec775933bbbc583622803be22fe40d82eb75b522095408572ec5"
+      ],
+      "categories": [
+        "washing_machine"
+      ],
+      "documentTypes": [
+        "manufacturer_product_sheet"
+      ],
+      "contentModes": [
+        "table"
+      ],
+      "requiredStructuralSignals": [
+        "dimension_context",
+        "numeric_unit_text",
+        "raw_block_identity",
+        "table_region",
+        "table_with_headers"
+      ],
+      "forbiddenStructuralSignals": [
+        "empty_body_text",
+        "image_region",
+        "mixed_units"
+      ],
+      "extractorChain": [
+        "mineru",
+        "unresolved"
+      ],
+      "canaryWitnesses": {
+        "positiveSourceSha256s": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+        ],
+        "negativeSourceSha256s": [
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ]
+      }
+    }
+  ],
+  "policySha256": "9e3c2d99de044203bdf1f33fa74f754fea89f42a2d4310429204c57c82120326"
+}

@@ -1,0 +1,200 @@
+{
+  "fixtureKind": "sanitized_portable_region_fixture",
+  "sourceBytesIncluded": false,
+  "document": {
+    "brandId": "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c",
+    "category": "dishwasher",
+    "documentType": "manufacturer_product_sheet",
+    "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+  },
+  "mineruDocument": {
+    "contentSha256": "f79e8b2f1130389a1257bf5dcc2317a8f2c18b6754f46eab99ddf98702bf182c",
+    "pageCount": 2,
+    "blocks": [
+      {
+        "sourceJsonPointer": "/0/14",
+        "pageNumber": 1,
+        "fragmentSha256": "1fec5fb4cf408c9c9ad08b7eb99b291ebfaefa3c4c609262365177c179bd402d",
+        "rawBlock": {
+          "bbox": [
+            527,
+            715,
+            710,
+            733
+          ],
+          "content": {
+            "level": 2,
+            "title_content": [
+              {
+                "content": "Dimensions & Weights",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "title"
+        }
+      },
+      {
+        "sourceJsonPointer": "/0/15",
+        "pageNumber": 1,
+        "fragmentSha256": "5c29b215ebddebc521c81510101cd080a8028309c43bd410cbf003416f1e43cd",
+        "rawBlock": {
+          "bbox": [
+            526,
+            732,
+            833,
+            916
+          ],
+          "content": {
+            "paragraph_content": [
+              {
+                "content": "Unpackaged Height: 850 mm Height (max - feet adjustment): 865 mm Unpackaged Width: 598 mm Unpackaged Depth: 600 mm Depth with Door Opened: 1150 mm Unpackaged Weight: 50.6 kg Packaged Height: 897 mm Packaged Width: 657 mm Packaged Depth: 674 mm Packaged Weight: 56.2 kg",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "paragraph"
+        }
+      }
+    ]
+  },
+  "nativeObservations": [],
+  "pageImageMetadata": [
+    {
+      "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+      "pageNumber": 1,
+      "renderedPageArtifactSha256": "9d473a6bd008d2acde3d7f17668df263c2fdaada17315002e3190758a3fd1681",
+      "renderedPixels": {
+        "width": 1241,
+        "height": 1754
+      },
+      "rotationDegreesClockwise": 0,
+      "transform": {
+        "kind": "full_page"
+      },
+      "artifactRecords": [
+        {
+          "schemaVersion": 1,
+          "sha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "parentSha256": null,
+          "mediaType": "application/pdf",
+          "toolRevision": null,
+          "optionsSha256": null
+        },
+        {
+          "schemaVersion": 1,
+          "sha256": "9d473a6bd008d2acde3d7f17668df263c2fdaada17315002e3190758a3fd1681",
+          "parentSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "mediaType": "image/png",
+          "toolRevision": "pdftoppm@26.06.0:sha256-76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+          "optionsSha256": "8dd571deb14906d8e55b69f3136dc379980d2d082baed8418815ee2e4476aa26"
+        }
+      ],
+      "fragments": [
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "7cc274bc30e2c73dca2b004b5a4a1c45effaf61b631fdad3feedec9a228bf357",
+          "content": {
+            "bbox": [
+              527,
+              715,
+              710,
+              733
+            ],
+            "content": {
+              "level": 2,
+              "title_content": [
+                {
+                  "content": "Dimensions & Weights",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "title"
+          },
+          "parentArtifactSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 1,
+            "normalizedTopLeftBox": [
+              527,
+              715,
+              710,
+              733
+            ],
+            "renderedPageArtifactSha256": "9d473a6bd008d2acde3d7f17668df263c2fdaada17315002e3190758a3fd1681",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                527,
+                715,
+                710,
+                733
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "a56d7cb8d53182c56430a631f7d2ef06623657152fb4116466b8fcc0938395fd",
+          "content": {
+            "bbox": [
+              526,
+              732,
+              833,
+              916
+            ],
+            "content": {
+              "paragraph_content": [
+                {
+                  "content": "Unpackaged Height: 850 mm Height (max - feet adjustment): 865 mm Unpackaged Width: 598 mm Unpackaged Depth: 600 mm Depth with Door Opened: 1150 mm Unpackaged Weight: 50.6 kg Packaged Height: 897 mm Packaged Width: 657 mm Packaged Depth: 674 mm Packaged Weight: 56.2 kg",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "paragraph"
+          },
+          "parentArtifactSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 1,
+            "normalizedTopLeftBox": [
+              526,
+              732,
+              833,
+              916
+            ],
+            "renderedPageArtifactSha256": "9d473a6bd008d2acde3d7f17668df263c2fdaada17315002e3190758a3fd1681",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                526,
+                732,
+                833,
+                916
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

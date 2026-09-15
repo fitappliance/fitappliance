@@ -1,0 +1,277 @@
+{
+  "fixtureKind": "sanitized_portable_region_fixture",
+  "sourceBytesIncluded": false,
+  "document": {
+    "brandId": "fa_brand_944f644172a7ec775933bbbc583622803be22fe40d82eb75b522095408572ec5",
+    "category": "washing_machine",
+    "documentType": "manufacturer_product_sheet",
+    "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+  },
+  "mineruDocument": {
+    "contentSha256": "f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181",
+    "pageCount": 7,
+    "blocks": [
+      {
+        "sourceJsonPointer": "/2/3",
+        "pageNumber": 3,
+        "fragmentSha256": "8463dfb5a9903f4dc6e913348de67038edcb48eb0ae4c12dd01c72375fe40df9",
+        "rawBlock": {
+          "bbox": [
+            517,
+            203,
+            643,
+            223
+          ],
+          "content": {
+            "level": 2,
+            "title_content": [
+              {
+                "content": "DIMENSIONS",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "title"
+        }
+      },
+      {
+        "sourceJsonPointer": "/2/4",
+        "pageNumber": 3,
+        "fragmentSha256": "b609f41793589598e5fb2385b5f65d635a13223b58415e6400fe969ca0b06b08",
+        "rawBlock": {
+          "bbox": [
+            516,
+            228,
+            939,
+            405
+          ],
+          "content": {
+            "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>575</td></tr></table>",
+            "image_source": {
+              "path": "images/0e37af74b48a1bea0accb5a0fad474f9700d16efa03ea233e3a696eb38ae6eeb.jpg"
+            },
+            "table_caption": [],
+            "table_footnote": [],
+            "table_nest_level": 1,
+            "table_type": "simple_table"
+          },
+          "type": "table"
+        }
+      },
+      {
+        "sourceJsonPointer": "/2/10",
+        "pageNumber": 3,
+        "fragmentSha256": "e7a3607ad614afbd9465127c3421fd9bf776de8ef8d5a3c96b4b4d58ad89370c",
+        "rawBlock": {
+          "bbox": [
+            743,
+            40,
+            965,
+            64
+          ],
+          "content": {
+            "page_header_content": [
+              {
+                "content": "EWF7524CDWA",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "page_header"
+        }
+      }
+    ]
+  },
+  "nativeObservations": [],
+  "pageImageMetadata": [
+    {
+      "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+      "pageNumber": 3,
+      "renderedPageArtifactSha256": "584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970",
+      "renderedPixels": {
+        "width": 1275,
+        "height": 1650
+      },
+      "rotationDegreesClockwise": 0,
+      "transform": {
+        "kind": "full_page"
+      },
+      "artifactRecords": [
+        {
+          "schemaVersion": 1,
+          "sha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "parentSha256": null,
+          "mediaType": "application/pdf",
+          "toolRevision": null,
+          "optionsSha256": null
+        },
+        {
+          "schemaVersion": 1,
+          "sha256": "584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970",
+          "parentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "mediaType": "image/png",
+          "toolRevision": "pdftoppm@26.06.0:sha256-76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+          "optionsSha256": "0568a91bc0c5a0fb201f11865353e426c9f583cffa6f406868cb6f0454f8a687"
+        }
+      ],
+      "fragments": [
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "434f12be2eeac1ede0c2171562a6bf0016ecb23fef96edb5554e478495b94228",
+          "content": {
+            "bbox": [
+              517,
+              203,
+              643,
+              223
+            ],
+            "content": {
+              "level": 2,
+              "title_content": [
+                {
+                  "content": "DIMENSIONS",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "title"
+          },
+          "parentArtifactSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 3,
+            "normalizedTopLeftBox": [
+              517,
+              203,
+              643,
+              223
+            ],
+            "renderedPageArtifactSha256": "584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970",
+            "renderedPixels": {
+              "width": 1275,
+              "height": 1650
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                517,
+                203,
+                643,
+                223
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "3283d87c6d9c51836f704220899e29d350357783dce3a8c80ecc8e7d1e27c380",
+          "content": {
+            "bbox": [
+              516,
+              228,
+              939,
+              405
+            ],
+            "content": {
+              "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>575</td></tr></table>",
+              "image_source": {
+                "path": "images/0e37af74b48a1bea0accb5a0fad474f9700d16efa03ea233e3a696eb38ae6eeb.jpg"
+              },
+              "table_caption": [],
+              "table_footnote": [],
+              "table_nest_level": 1,
+              "table_type": "simple_table"
+            },
+            "type": "table"
+          },
+          "parentArtifactSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 3,
+            "normalizedTopLeftBox": [
+              516,
+              228,
+              939,
+              405
+            ],
+            "renderedPageArtifactSha256": "584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970",
+            "renderedPixels": {
+              "width": 1275,
+              "height": 1650
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                516,
+                228,
+                939,
+                405
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "cd60963cbc74477200e8bb10c9916afa931c32c5b1891f30565a25788a4f9d2d",
+          "content": {
+            "bbox": [
+              743,
+              40,
+              965,
+              64
+            ],
+            "content": {
+              "page_header_content": [
+                {
+                  "content": "EWF7524CDWA",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "page_header"
+          },
+          "parentArtifactSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 3,
+            "normalizedTopLeftBox": [
+              743,
+              40,
+              965,
+              64
+            ],
+            "renderedPageArtifactSha256": "584ada38e72a7e0959d876ed7aeaa79d8a20a47c29129642337df75c62386970",
+            "renderedPixels": {
+              "width": 1275,
+              "height": 1650
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                743,
+                40,
+                965,
+                64
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
