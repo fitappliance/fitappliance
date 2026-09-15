@@ -25,9 +25,9 @@ function plainObject(value, label) {
   return value;
 }
 
-function exactKeys(value, label, required) {
+function exactKeys(value, label, required, optional = []) {
   plainObject(value, label);
-  const allowed = new Set(required);
+  const allowed = new Set([...required, ...optional]);
   for (const key of Object.keys(value)) {
     if (!allowed.has(key)) invalid('UNKNOWN_KEY', `${label} unknown key: ${key}`);
   }
@@ -260,19 +260,27 @@ function witnessedForProductAndContext(witness, product, context) {
 function validatedEngineeringContext(input) {
   exactKeys(input, 'engineering context validation input', [
     'context', 'semantics', 'witnessedConditions',
-  ]);
+  ], ['product']);
   const semanticPolicy = requireV3Semantics(input.semantics);
   if (!Array.isArray(input.witnessedConditions)) {
     invalid('WITNESS_COLLECTION', 'witnessedConditions must be an array');
   }
-  return Object.freeze({
-    context: normalizeContextWithPolicy(input.context, semanticPolicy.context, 'engineering context'),
-    witnessedConditions: Object.freeze(input.witnessedConditions.map((witness) => (
-      normalizeWitness(witness, semanticPolicy.context)
-    ))),
-  });
+  const context = normalizeContextWithPolicy(input.context, semanticPolicy.context, 'engineering context');
+  const witnessedConditions = Object.freeze(input.witnessedConditions.map((witness) => (
+    normalizeWitness(witness, semanticPolicy.context)
+  )));
+  if (Object.hasOwn(input, 'product')) {
+    const product = normalizeProduct(input.product);
+    if (context.configurationKey !== null && !witnessedConditions.some((witness) => (
+      witnessedForProductAndContext(witness, product, context)
+    ))) {
+      invalid('CONFIGURATION_WITNESS', 'named engineering context requires an exact product-market configuration witness');
+    }
+  }
+  return Object.freeze({ context, witnessedConditions });
 }
 
+/** Optional product binds named configurations structurally; it does not assert applicability. */
 export function validateEngineeringContext(input) {
   return validatedEngineeringContext(input).context;
 }

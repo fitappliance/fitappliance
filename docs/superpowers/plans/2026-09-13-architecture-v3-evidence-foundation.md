@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a through G3a and bounded real-source preparation are accepted and merged. PR212 is production-verified at `c83aa47` (2026-09-15). G3b source/spec and its CI missing-return test repair are independently approved and main-accepted; the new committed head still requires full CI and actual release gates. No V3 receipt has been issued or V3 Fit behavior enabled.
+> Status: EXECUTION STARTED — G0a through G3b are accepted and merged. PR213 is production-verified at `34e7ae0` (2026-09-15). G4a is ACCEPTED_PENDING_RELEASE after distinct v1/v2 audit and main acceptance; final-commit CI and deployment remain pending. No V3 receipt has been issued or V3 Fit behavior enabled; old-receipt repair remains unfinished.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -233,8 +233,8 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
 | G3a | Typed lineage/anchors/relations | G1a | COMPLETE | `868f10a79` | [G3a report](../../architecture-v3/execution/G3a-lineage.md) | All6 [Draft PR211](https://github.com/fitappliance/fitappliance/pull/211) checks pass at this code commit. Node20.20.2 run34844532895: 3,141 pass,0 fail/skip/cancelled; build/publication/generated gates pass. Main reviewed structural/witness/coordinate contracts and8 preview controls. Original-source replay remains NOT_RUN; no receipt or production promotion. | G3b: region routing and canary attestation |
-| G3b | Region router + canary attestation | G3a, G2a | REVIEW_REQUIRED | [PR213](https://github.com/fitappliance/fitappliance/pull/213); fix3 accepted, new head pending | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) | Source/spec and one-line CI test repair independently APPROVED. Main verifies frozen diff and39 bound inputs; missing-store clean skip and mounted original pass remain separate. New exact-head full CI/release required. | Commit/push fix3, new exact-head full CI, guarded merge and production verification |
-| G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
+| G3b | Region router + canary attestation | G3a, G2a | COMPLETE | Code `6b66125`; [PR213](https://github.com/fitappliance/fitappliance/pull/213) merge `34e7ae0` | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) and release checkpoint below | Distinct v3/v4 reviews approved; all6 PR checks pass. Exact-head Node20 CI3205pass/0fail/1explicit absent-store skip; mounted original test separately pass1/skip0. Preview27 and production28 controls pass; reviewed/merged tree identical. No receipt/Fit promotion. | G4a immutable exact-product Claims, not yet started; preserve G4b/G6 reissue gates |
+| G4a | Exact-product Claim V3 | G1b, G3a | ACCEPTED_PENDING_RELEASE | Base `34e7ae0`; source `30b55f2f` and context `8e5495ae` | [Main acceptance](../../architecture-v3/execution/G4a-main-acceptance.md); [v2 re-review](../../architecture-v3/execution/G4a-independent-rereview-v2.md) | Distinct audit closes F1/F2, affected83pass/0fail; unknowns/old API preserved; no receipt/Fit authority | Commit, exact-head3271-test CI, all PR checks and actual release verification |
 | G4b | Direct source binding + receipt | G4a, G3b | NOT_STARTED | — | — | — | — |
 | G5a | Append review store + CurrentEligibility | G4b | NOT_STARTED | — | — | — | — |
 | G5b | Complete-inventory adjudication | G5a, G1a | NOT_STARTED | — | — | — | — |
@@ -846,7 +846,7 @@ G3b real canaries, G4b original-source replay and G6c receipt repair are unfinis
 
 ## G3b — region router and portable/real canary attestation
 
-**Status:** REVIEW_REQUIRED — fix3 independently approved/main-accepted; new CI and release pending · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE — PR213 merged and production-verified at34e7ae0 · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
 
 Preparation executor: Euler (`01a0a015-c1bb-7462-95fb-54f74f431358`). Its test and
 source-replay results are execution evidence, not independent audit approval.
@@ -1029,6 +1029,42 @@ and appends acceptance. Both agents are closed. Main owns the next scoped commit
 fresh exact-head Node20 full CI and release checks; previous failed CI/preview
 records cannot satisfy those gates. No runtime or evidence change in this fix.
 
+**Final CI / merged production checkpoint (2026-09-15).** Main commits the
+approved fix and records as `6b66125b6c7fc7900613f798a2be46f4b2680745`, confirms
+all20 branch files match the accepted identities, then obtains all6 passing PR
+checks. Exact-head Node20 run34926696209/job104246151219 passes3205 tests with
+0fail/0cancel and1 explicit no-store original test skip. The mounted original
+test separately passes1/skip0 against the same repaired test identity. All9
+required dependency/lint/test/build/publication/format/sitemap/review/generated
+steps pass. Complete CI logSHA256 is
+`999aafb62b841382b71711ab319db043503c08493d70493657553d12eb547e62`.
+
+New preview `dpl_EfNRUDGUrgRQeLGhVK9wcwMX9K18` passes27 controls at6b66125;
+artifactSHA256 `172b4335474ab9dff76207c080a8fb3c5730a147acf0a5974d2817dee538bdf7`.
+Main rechecks GitHub permissions, exact PR head/base and all checks, then performs
+a head-guarded merge at2026-09-15T04:00:01Z. Merge commit
+`34e7ae033c63bd2fb96d74d313e5d4c540f42b89` has exactly the reviewed tree
+`533ce7c2a62a97e6c0ec042f339ddb3e6fe11c84`, with c83aa47/6b66125 parents.
+
+Production `dpl_3Ayh9a2Ba2AqY35jqUsBWqdVoKwZ` is READY at that merge. At04:02:21Z,
+all28 controls pass: actual Node24/.site-public build,3281files/54856568bytes,
+artifactSHA256 `24bbd8401fef5271e5a06a6ebea0a6e0f4cfe73912877a1e18fdaa4bbd367ea8`,
+exact canonical application bytes apart from the commit cache version,20changed
+internal paths plus2 internal controls returning404, both custom aliases and
+apex308. At04:02:33Z, the bounded provider5xx query since merge returns0rows,
+limit100; this is not long-term monitoring. Previous productionc83aa47 remains
+READY and retained for rollback; original recovery status199e6e9f/difffea1454b
+remain unchanged. No source/receipt/public-data/Fit/runtime behavior change.
+
+Detailed proof is in the ignored SDD directory: G3b-ci-6b66125.json/log,
+G3b-final-head-inputs.json, G3b-premerge-6b66125.json,
+G3b-preview-6b66125.json, G3b-production-34e7ae0.json,
+G3b-production-log-snapshot-34e7ae0.json and G3b-merged-release-2026-09-15.md.
+Old failed CI/audits/previews and original v4 report bytes remain preserved.
+This post-release plan checkpoint is saved locally for the next implementation
+commit, avoiding a documentation-only deployment and keeping this release bound
+to its actually tested head. No next-stage implementation has started.
+
 **Current bounded preparation.** Start with Beko BDF1620W, Beko BDP810W and
 Electrolux EWF7524CDWA, selected by exact recovery-target/source/derived hashes,
 not model-name similarity. Resolve original case/receipt owners, replay actual
@@ -1147,7 +1183,55 @@ npm test
 
 ## G4a — immutable exact-product Claim V3
 
-**Status:** NOT_STARTED · **Depends on:** G1b, G3a · **Worker:** `gpt-5.6-terra` / max
+**Status:** ACCEPTED_PENDING_RELEASE · **Depends on:** G1b, G3a · **Worker:** `gpt-5.6-terra` / max
+
+2026-09-15 preflight: current main is `34e7ae0`, GitHub write rights verified,
+and the existing linked worktree is reused on a new G4a branch. The prior
+post-release G3b checkpoint is preserved. G4a reuses the G1a codec/value/context
+validators and G3a anchor validator; it introduces no I/O, receipt, lifecycle,
+publication or Fit authority. Stored-Claim validation must reject unsupported
+versions and mismatched identity. G4b will bind the complete normalized G3a proof,
+including provenance metadata, when replaying sources. Structural fixtures here
+do not count as repaired original evidence. Independent audit follows implementation.
+
+Executor Dirac `01a0a357-1dcd-7e91-ba8b-c5b97064d67e` delivered only the
+planned Claim module, tests and report. Source SHA `6d437558e4084cd98f3d5084ad420adf429b7401df43b256ff51a457fb695ac7`;
+test SHA `53ebc5744d1134084397ae42c256c4a0f97e4ea5780c81cd65449df6be4c5fff`.
+The first report preserved summaries only; main required complete raw outputs.
+Fresh verification manifest `ac7ebb0bb0285eaaee9b54cf1d4caf65e0b0ecae33f1a74a2ee254c03613971d`
+binds 16 unchanged inputs: focused10/full3216 pass, zero failures/skips/cancellations,
+lint exit0, schema2330pages/6145blocks/0errors. Historical RED remains a summary,
+not a recovered raw log. This is self-test evidence, not independent approval.
+
+Independent auditor Einstein `01a0a37a-1c3b-7251-b737-392e8345ff19` found
+two Important issues: opaque relationship IDs and witnesses not tied to the
+Claim's product/market. Main confirmed the established relationship ID format.
+For context, do not demand that runtime resolution always return applicable:
+that would discard permitted unknown datum/state and unspecified configurations.
+The bounded fix extends existing `validateEngineeringContext` with optional
+`product` membership checking for named configurations, using its existing
+normalized matcher. G4a must pass its exact subject; old three-field shape-only
+callers retain their behavior. Null configurations and unknown facets remain
+unknown. Shared context owner and its semantic tests are the only two added
+write targets. Actual source replay/receipt authority remains G4b/G7.
+
+F1/F2 repair handoff: Claim source `30b55f2fa23ac55eb91663f3e9cdf0621fffe7d49e3710f998bf1a08f49907a3`,
+context source `8e5495aebecab28e42945f021fbeb35e98ac54a59bf6383605c417a09e3669ff`.
+Complete fresh capture manifest `04bf984c92e32268b3d9383db000dfbd72ae339ee09641fdde7c46e94d2b54e8`
+binds20 inputs and preserved report history: F1 RED12fail -> GREEN23pass;
+F2 RED34fail -> GREEN83pass (48Claim,35semantic tests), actual exits1 ->0.
+V3 syntax and scoped whitespace checks pass. Main checked the raw hashes,
+before/after identities and unchanged report prefix. No new full-suite, lint or
+schema run was repeated; old3216 applies only to v1. The unchanged test entrypoint
+plus83 new affected tests replacing old10Claim+18semantic tests predicts3271
+total tests for final-head CI. Independent repair acceptance remains pending.
+
+Independent v2 re-review now approves F1/F2/spec/quality, SHA
+`7292e3b3034b104117944921f9469ef6327f0d16ecbbf146b8c62792ede5e9c7`.
+Main [acceptance](../../architecture-v3/execution/G4a-main-acceptance.md) confirms
+the narrow unknown-preserving repair and evidence accounting. Both agents are
+closed. Final commit, complete Node20 CI, all PR checks and actual production
+verification are still required; this paragraph does not mark release complete.
 
 **Goal.** Create canonical schema-3 exact-product Claims with explicit semantics, context, source representation, and typed evidence.
 
@@ -2008,16 +2092,16 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Current task:** PR212 has released the accepted three-source raw/untyped
-preparation at `c83aa47`; it does not complete G3b. PR213 head1038467 has reviewed
-source/spec and26 passing preview controls but failed its full-CI unavailable-
-store test. Original Dalton and the distinct auditor are closed after fix3
-approval/main acceptance. New exact-head CI
-and guarded merge/production checks still precede completion. G4 remains NOT_STARTED.
-Main owns
-original-page/semantic review, contract decisions and the original plan. The router/profile
-attestation and G4/G6 common-standard reissue remain unfinished; continue those
-using the real prepared inputs, not only synthetic fixtures. PR210/211 are merged
+**Current task:** G4a is ACCEPTED_PENDING_RELEASE after separate implementation,
+v1/v2 independent audit and main acceptance. Both agents are closed. Main proceeds
+with scoped commit, exact-head CI and existing deployment gates; G4b remains
+NOT_STARTED until this release is verified.
+G3b remains complete and production-verified. G4b/G6 receipt replay/reissue and
+whole-corpus repair are not completed by schema construction.
+Main retains original-page/semantic review, contract decisions and the original
+plan. G4/G6 common-standard Claim construction, replay and receipt reissue remain
+unfinished and must use real prepared inputs, not only synthetic fixtures.
+PR212 preparation and PR210/211 are merged
 and production-verified. No reset or paid credit was used. Both production hotfixes
 are included. Do not re-dispatch completed G2a or rebuild its seed from changed
 inputs without a reviewed version update.
