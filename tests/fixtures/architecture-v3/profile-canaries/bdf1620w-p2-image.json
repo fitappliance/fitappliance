@@ -1,0 +1,222 @@
+{
+  "fixtureKind": "sanitized_portable_region_fixture",
+  "sourceBytesIncluded": false,
+  "document": {
+    "brandId": "fa_brand_6772010bb759fb58352948257fe00bf4c9bc9b8c9331e8e4342964c508ccc64c",
+    "category": "dishwasher",
+    "documentType": "manufacturer_product_sheet",
+    "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+  },
+  "mineruDocument": {
+    "contentSha256": "f79e8b2f1130389a1257bf5dcc2317a8f2c18b6754f46eab99ddf98702bf182c",
+    "pageCount": 2,
+    "blocks": [
+      {
+        "sourceJsonPointer": "/1/4",
+        "pageNumber": 2,
+        "fragmentSha256": "8af5f5b365bc161f38a948d96996b6225329e56a3a6f5943b3d2249a1d7d2301",
+        "rawBlock": {
+          "bbox": [
+            67,
+            543,
+            915,
+            909
+          ],
+          "content": {
+            "content": "",
+            "image_caption": [
+              {
+                "content": "Dimensions",
+                "type": "text"
+              }
+            ],
+            "image_footnote": [],
+            "image_source": {
+              "path": "images/9a4dc22c5bb1a1079afe4341d45fb0d3ef92d8d1466783dd96701585468a2223.jpg"
+            }
+          },
+          "type": "image"
+        }
+      },
+      {
+        "sourceJsonPointer": "/1/5",
+        "pageNumber": 2,
+        "fragmentSha256": "37b21590d6b5c9e29401cb8ed4ef7c0797ecc0ac8bc5b92af9c5ee0eb5cf49f0",
+        "rawBlock": {
+          "bbox": [
+            18,
+            9,
+            159,
+            27
+          ],
+          "content": {
+            "page_header_content": [
+              {
+                "content": "BDF1620W",
+                "type": "text"
+              }
+            ]
+          },
+          "type": "page_header"
+        }
+      }
+    ]
+  },
+  "nativeObservations": [
+    {
+      "sourceJsonPointer": "/1/5",
+      "pageNumber": 2,
+      "bbox": [
+        18,
+        9,
+        159,
+        27
+      ],
+      "rawText": "BDF1620W",
+      "readable": true,
+      "declaredRoute": "native"
+    }
+  ],
+  "pageImageMetadata": [
+    {
+      "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+      "pageNumber": 2,
+      "renderedPageArtifactSha256": "35331eb7214e9367637210ce6050da365f7f21b223e0f73fadd8ff083023d3f9",
+      "renderedPixels": {
+        "width": 1241,
+        "height": 1754
+      },
+      "rotationDegreesClockwise": 0,
+      "transform": {
+        "kind": "full_page"
+      },
+      "artifactRecords": [
+        {
+          "schemaVersion": 1,
+          "sha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "parentSha256": null,
+          "mediaType": "application/pdf",
+          "toolRevision": null,
+          "optionsSha256": null
+        },
+        {
+          "schemaVersion": 1,
+          "sha256": "35331eb7214e9367637210ce6050da365f7f21b223e0f73fadd8ff083023d3f9",
+          "parentSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "mediaType": "image/png",
+          "toolRevision": "pdftoppm@26.06.0:sha256-76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+          "optionsSha256": "ce2572ee39e4df77bbfc4efbbcc1dbade44c1884f84eaab8ee81c00bc9d750f8"
+        }
+      ],
+      "fragments": [
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "ddd62e7a1e28819b62678317d2e17f2708dd2e87c620d90d7f0786f867970db6",
+          "content": {
+            "bbox": [
+              67,
+              543,
+              915,
+              909
+            ],
+            "content": {
+              "content": "",
+              "image_caption": [
+                {
+                  "content": "Dimensions",
+                  "type": "text"
+                }
+              ],
+              "image_footnote": [],
+              "image_source": {
+                "path": "images/9a4dc22c5bb1a1079afe4341d45fb0d3ef92d8d1466783dd96701585468a2223.jpg"
+              }
+            },
+            "type": "image"
+          },
+          "parentArtifactSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 2,
+            "normalizedTopLeftBox": [
+              67,
+              543,
+              915,
+              909
+            ],
+            "renderedPageArtifactSha256": "35331eb7214e9367637210ce6050da365f7f21b223e0f73fadd8ff083023d3f9",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                67,
+                543,
+                915,
+                909
+              ]
+            }
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "canonicalizationVersion": "fit-evidence-json-v3-1",
+          "fragmentSha256": "d8c20ebb7f6e0a7b088794439b693909802db99389426bbc1ae7e26225cf6788",
+          "content": {
+            "bbox": [
+              18,
+              9,
+              159,
+              27
+            ],
+            "content": {
+              "page_header_content": [
+                {
+                  "content": "BDF1620W",
+                  "type": "text"
+                }
+              ]
+            },
+            "type": "page_header"
+          },
+          "parentArtifactSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "locator": {
+            "kind": "pdf_bbox",
+            "pageNumber": 2,
+            "normalizedTopLeftBox": [
+              18,
+              9,
+              159,
+              27
+            ],
+            "renderedPageArtifactSha256": "35331eb7214e9367637210ce6050da365f7f21b223e0f73fadd8ff083023d3f9",
+            "renderedPixels": {
+              "width": 1241,
+              "height": 1754
+            },
+            "rotationDegreesClockwise": 0,
+            "transform": {
+              "kind": "full_page"
+            },
+            "rawCoordinates": {
+              "coordinateSpace": "mineru_normalized_top_left_1000",
+              "values": [
+                18,
+                9,
+                159,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
