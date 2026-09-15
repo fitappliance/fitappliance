@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a through G3a and bounded real-source preparation are accepted and merged. PR212 is production-verified at `c83aa47` (2026-09-15). Formal G3b code/spec is independently approved and main-accepted; exact-head full CI and actual release verification remain pending. No V3 receipt has been issued or V3 Fit behavior enabled.
+> Status: EXECUTION STARTED — G0a through G3a and bounded real-source preparation are accepted and merged. PR212 is production-verified at `c83aa47` (2026-09-15). G3b source/spec and its CI missing-return test repair are independently approved and main-accepted; the new committed head still requires full CI and actual release gates. No V3 receipt has been issued or V3 Fit behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -233,7 +233,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
 | G3a | Typed lineage/anchors/relations | G1a | COMPLETE | `868f10a79` | [G3a report](../../architecture-v3/execution/G3a-lineage.md) | All6 [Draft PR211](https://github.com/fitappliance/fitappliance/pull/211) checks pass at this code commit. Node20.20.2 run34844532895: 3,141 pass,0 fail/skip/cancelled; build/publication/generated gates pass. Main reviewed structural/witness/coordinate contracts and8 preview controls. Original-source replay remains NOT_RUN; no receipt or production promotion. | G3b: region routing and canary attestation |
-| G3b | Region router + canary attestation | G3a, G2a | REVIEW_REQUIRED | Preparation: `c83aa47`; router uncommitted | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) | F1/F2/F3 and N1 independently ADDRESSED; v3 spec/quality APPROVED, main code acceptance recorded. Affected26/26 and modes0/0/2 bind39 unchanged inputs. Final full CI/release pending; no receipt issuance. | Commit/push scoped patch, exact-head full CI, preview controls, guarded merge and production verification |
+| G3b | Region router + canary attestation | G3a, G2a | REVIEW_REQUIRED | [PR213](https://github.com/fitappliance/fitappliance/pull/213); fix3 accepted, new head pending | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) | Source/spec and one-line CI test repair independently APPROVED. Main verifies frozen diff and39 bound inputs; missing-store clean skip and mounted original pass remain separate. New exact-head full CI/release required. | Commit/push fix3, new exact-head full CI, guarded merge and production verification |
 | G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
 | G4b | Direct source binding + receipt | G4a, G3b | NOT_STARTED | — | — | — | — |
 | G5a | Append review store + CurrentEligibility | G4b | NOT_STARTED | — | — | — | — |
@@ -846,7 +846,7 @@ G3b real canaries, G4b original-source replay and G6c receipt repair are unfinis
 
 ## G3b — region router and portable/real canary attestation
 
-**Status:** REVIEW_REQUIRED — independent code approval and main acceptance; exact-head CI/release pending · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
+**Status:** REVIEW_REQUIRED — fix3 independently approved/main-accepted; new CI and release pending · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
 
 Preparation executor: Euler (`01a0a015-c1bb-7462-95fb-54f74f431358`). Its test and
 source-replay results are execution evidence, not independent audit approval.
@@ -994,6 +994,40 @@ Both agents are closed. No more implementation changes are requested. Main now
 owns the authorized scoped commit/PR, exact-head full CI, preview isolation,
 guarded merge and actual production checks. G3b stays REVIEW_REQUIRED until
 these remaining gates pass. No original source, OCR, receipt or Fit change.
+
+**PR213 exact-head CI / fix3 (2026-09-15).** Main commits/pushes the19 accepted
+files as `1038467a2648e5b6be768362a7061ac852a0cc82`. Five checks and actual preview
+26 controls pass, but run34925203676/job104241682021 exits1 in the full suite.
+Totals3206tests/3205pass/0fail/1skip do not mean success: the skipped original-store
+test continues after `t.skip`, reads the absent external batch and throws ENOENT.
+Build/publication/generated gates were therefore skipped, not passed. No merge
+or production change. Main diagnoses the missing callback return; original Dalton
+handles that test-only control-flow fix, reproducing the actual no-store branch
+and retaining a mounted-source positive control. No business/source/manifest
+change is authorized. A separate scoped review and fresh exact-head full CI are
+still mandatory. Existing audits, failed CI log and preview proof are preserved.
+
+**Fix3 handoff (2026-09-15).** Original Dalton adds only the missing callback
+`return` and appends its report, preserving the32958-byte old report prefix.
+Main checks both final captures/logs and39 current input identities: no-store
+test cleanly skips/exit0 with no post-skip read error; mounted test executes its
+actual-object and substitution assertions, pass1/skip0/exit0. Node22 pre-fix
+diagnostics exit0 despite `not ok + SKIP + ERR_ACCESS_DENIED`; they prove the
+bad continued read, not Node20's exit1. Existing failed exact-head Node20 CI is
+the real CI RED and remains preserved. No new runtime/profile/manifest/source
+change, new tests or full local rerun. Dalton closes. Freeze the three-file
+test/report/plan diff against1038467 for same distinct Dewey's focused re-review;
+new exact-head Node20 CI is still mandatory before any merge.
+
+**Fix3 independent acceptance (2026-09-15).** Same distinct Dewey's
+[v4 report](../../architecture-v3/execution/G3b-independent-rereview-v4.md)
+APPROVES the one-line test repair: skip scope is unchanged, mounted reads and
+all CLI/original/substitution assertions remain active. No new concrete finding.
+Main verifies the three frozen files and reportSHA256
+`0cb3f2ddca1545381acd499297fef15d3131bde60bd71e31961506b40c694f55`, closes Dewey
+and appends acceptance. Both agents are closed. Main owns the next scoped commit,
+fresh exact-head Node20 full CI and release checks; previous failed CI/preview
+records cannot satisfy those gates. No runtime or evidence change in this fix.
 
 **Current bounded preparation.** Start with Beko BDF1620W, Beko BDP810W and
 Electrolux EWF7524CDWA, selected by exact recovery-target/source/derived hashes,
@@ -1975,10 +2009,11 @@ counted as repaired. Code-gate completion, receipt upgrade, installation evidenc
 coverage and production cutover are four different claims.
 
 **Current task:** PR212 has released the accepted three-source raw/untyped
-preparation at `c83aa47`; it does not complete G3b. Dalton and the distinct
-Terra / Max auditor are closed after fix2/v3 approval. Main accepts the reviewed
-code/spec; full exact-head CI and the guarded preview/merge/production checks
-still precede G3b completion. G4 remains NOT_STARTED.
+preparation at `c83aa47`; it does not complete G3b. PR213 head1038467 has reviewed
+source/spec and26 passing preview controls but failed its full-CI unavailable-
+store test. Original Dalton and the distinct auditor are closed after fix3
+approval/main acceptance. New exact-head CI
+and guarded merge/production checks still precede completion. G4 remains NOT_STARTED.
 Main owns
 original-page/semantic review, contract decisions and the original plan. The router/profile
 attestation and G4/G6 common-standard reissue remain unfinished; continue those

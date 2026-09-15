@@ -262,3 +262,78 @@ This appended report is the remaining documentation change; its final whole-file
 - No source acquisition, rendering, OCR, network action, new feature/parser/module, subdelegation, commit, push, merge or deployment was performed in fix2.
 
 Executor handoff: **REVIEW_REQUIRED**. Stop writing; main freezes and dispatches the distinct re-review.
+
+---
+
+## Fix round 3 — 2026-09-15 CI test-control-flow handoff
+
+Status: **REVIEW_REQUIRED**. Only the fix3 packet's already-diagnosed test portability bug was changed. Base HEAD was read as `1038467a2648e5b6be768362a7061ac852a0cc82`; no Git mutation or independent audit was performed. The entire preceding report is preserved as a 32,958-byte prefix, SHA-256 `7b80cceaeb409ab4967dc9589aa1dba3b3e527c8fe64973d631cc44b148d06e1`. Main's separate canonical-plan working change was left untouched.
+
+The packet's saved CI log `G3b-ci-1038467-failed.log` was checksum-checked as `0128d2686abb815fbcd83ac1ff3750462db7301b42d4e0759305a477342e3d7f`; its diagnosed Node20 CI failure was not re-investigated or treated as a new local run. V3 production-code approval was not reopened.
+
+### Exact test change
+
+At `tests/architecture-v3/region-router.test.mjs:912`, marking the test skipped now also returns from its callback:
+
+```diff
+-  if (!await evidenceStoreIsAvailable()) t.skip('bounded original evidence store is not mounted');
++  if (!await evidenceStoreIsAvailable()) return t.skip('bounded original evidence store is not mounted');
+```
+
+This is the only test-file change. No assertion, original-source test, store path, production module, profile, manifest, fixture, source record or CI workflow was changed. No new regression test/helper was added: the existing real test under inaccessible-store conditions is the regression guard. The ignored capture harness is the previous harness reused with fix3 output identifiers only.
+
+- Test before: 44,923 bytes, SHA-256 `8b17b55951f04d5287661ca9d8d5371d8b324cac0514fb8371b5d3e278a7f14c`.
+- Test after: 44,930 bytes, SHA-256 `24746080113c8944e522bf87bb02c360b1af988e5c2d79c5d15a7549f8bf5860`.
+- Complete `git diff -- tests/architecture-v3/region-router.test.mjs` output: 854 bytes, SHA-256 `afb5d5256d5b3846f9e338b21b8a71c1728ea1ccfe3d0f4eca43c9f94fba756f`.
+- New capture harness: `.superpowers/sdd/2026-09-13-architecture-v3-evidence-foundation/G3b-fix3-capture.mjs`, 8089 bytes, SHA-256 `c1ea5d717a3bf8e120561fa6a2aeca45450b42eae8e07af3481950dcba188a46`.
+- This report is the only other executor-owned tracked-file change; its final whole-file checksum is supplied in the handoff.
+
+### Actual-test RED / GREEN and mounted positive
+
+All local executions used **Node v22.23.1, not CI's Node20**, binary SHA-256 `2e3f1286a7eb3736346ed1803e458a0ff909e2b2d5bc746144dcb76970e9b99d`. They selected this exact existing test:
+
+`original-object mode replays actual bytes and rejects PDF, page, and crop substitutions`
+
+The absent-store pair ran the real repository test with Node filesystem permission allowing only the linked repository. The external drive stayed mounted and unchanged. Default test isolation required `--allow-child-process`; the resulting stock permission warning is retained in both logs. The test-process filesystem denial itself is demonstrated by the RED stack at its accepted-batch read, not by a mocked helper.
+
+The paired isolated RED/GREEN child command was:
+
+```text
+node --permission --allow-fs-read=/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.worktrees/architecture-v3-g0a-baseline --allow-child-process --test --test-reporter=tap --test-name-pattern='^original-object mode replays actual bytes and rejects PDF, page, and crop substitutions$' tests/architecture-v3/region-router.test.mjs
+```
+
+The initial diagnostic used `--experimental-test-isolation=none` instead of `--allow-child-process`. Both pre-fix attempts reached the real test, reported `not ok ... # SKIP`, then `testCodeFailure / ERR_ACCESS_DENIED` at line 914 after skip. **Both actual Node22 child exits were 0**, with summary fail 0 / skip 1. Their capture harnesses exited 1 because the supplied expected child exit was 1; `actualExitMatchesExpected: false` is preserved. These are RED evidence for the post-skip execution/error, **not a reproduction of Node20 CI's process exit 1**. No child exit or expectation was rewritten.
+
+After the one-line change, the identical isolated command produced `ok ... # SKIP` without the source-read error and exited 0. The mounted positive ran the same named test normally, without permission restrictions:
+
+```text
+node --test --test-reporter=tap --test-name-pattern='^original-object mode replays actual bytes and rejects PDF, page, and crop substitutions$' tests/architecture-v3/region-router.test.mjs
+```
+
+That positive executed the original-object CLI and actual-source assertions, including accepted-batch before/after byte equality and rejection of changed anchor, PDF, page and crop inputs. It passed with zero skips; portable success was not substituted for original evidence.
+
+| Capture label | Actual child exit | TAP tests / pass / fail / cancelled / skipped / todo | Observed behavior | Started → ended (UTC); duration |
+| --- | ---: | --- | --- | --- |
+| `absent-store-red` | 0 | 1 / 0 / 0 / 0 / 1 / 0 | not ok + SKIP; testCodeFailure / ERR_ACCESS_DENIED at the accepted-batch read | `2026-09-15T03:37:34.298Z` → `2026-09-15T03:37:34.343Z`; 16.91125 ms |
+| `absent-store-red-isolated` | 0 | 1 / 0 / 0 / 0 / 1 / 0 | not ok + SKIP; testCodeFailure / ERR_ACCESS_DENIED at the accepted-batch read | `2026-09-15T03:38:14.812Z` → `2026-09-15T03:38:14.897Z`; 54.476958 ms |
+| `absent-store-green` | 0 | 1 / 0 / 0 / 0 / 1 / 0 | ok + SKIP; no testCodeFailure or post-skip source-read error | `2026-09-15T03:38:42.356Z` → `2026-09-15T03:38:42.443Z`; 54.038584 ms |
+| `mounted-positive` | 0 | 1 / 1 / 0 / 0 / 0 / 0 | ok; original replay and all substitution assertions executed | `2026-09-15T03:38:42.356Z` → `2026-09-15T03:38:48.834Z`; 6444.434083 ms |
+
+Capture directory: `.superpowers/sdd/2026-09-13-architecture-v3-evidence-foundation`. All four captures preserve actual child PID, start/end, exit, null signal/spawn-error, complete TAP totals and full logs. Each binds 39 before/after inputs, including the real accepted source objects, and records no changed/missing/added input during execution. The capture parent could read and hash mounted originals while only the absent-store child was denied those reads. Comparing RED with the final mounted capture shows only the test file changed among those shared inputs. No previous capture was overwritten.
+
+| Capture filename | Capture SHA-256 | Log filename | Log SHA-256 |
+| --- | --- | --- | --- |
+| `G3b-fix3-absent-store-red.capture.json` | `6e49496c800ca391ffccbc3db0b614ce2db6df9247f7b9aa8619f37d6595fdc7` | `G3b-fix3-absent-store-red.log` | `8f9f75cd1be297d526a69a8eed93ee9c1652b50f2f62f280c6637e387b92eab9` |
+| `G3b-fix3-absent-store-red-isolated.capture.json` | `723177a4350df7cc6c0b7a029087fff640b352044e5a769c74784127bd9b8a26` | `G3b-fix3-absent-store-red-isolated.log` | `64fd76940fcb1d12f5ffaaa82548b9fd49592381f2e7a1415e32d78135685572` |
+| `G3b-fix3-absent-store-green.capture.json` | `62e2a53ee588e0ef6bf9d97f3c19b867775639368bd60cdb6482a8bedc176d1c` | `G3b-fix3-absent-store-green.log` | `0261b83d549784861ce1255ef69efc134429328da5e4776a680ad1a650b13f57` |
+| `G3b-fix3-mounted-positive.capture.json` | `15e6d660e324bf0ef2aa619e92f85a2038bf86f0afaa1ef628e8575cb8aa1d4b` | `G3b-fix3-mounted-positive.log` | `79b1b85bd25bdca7944ab651b34dc1773640db090a4e1ee9141203308b995388` |
+
+### Handoff boundary
+
+TDD and completion verification used the actual repository test, retaining the Node22 RED exit discrepancy instead of inferring a failure from totals alone. GREEN and mounted positive have no unexpected test failure. `git diff --check` returned exit 0.
+
+No full suite, separate G3a suite or unchanged standalone three-mode rerun was performed. Missing-store CLI blocked2 behavior remains unchanged, not freshly re-attested here. Historical OCR gaps and the previously disclosed local docs-audit EISDIR limitation are unchanged; neither audit-docs nor source acquisition/render/OCR was run. No plan/source/credential writes, commits, pushes, merge, release or audit occurred.
+
+Remaining: main obtains Dewey's distinct small fix-diff review and exact-final-head **Node20 full CI** before any merge/release. The local Node22 results do not replace that gate. No additional implementation decision is required.
+
+Executor handoff: **REVIEW_REQUIRED**. Stop writing.

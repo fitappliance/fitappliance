@@ -89,3 +89,40 @@ BDP589/568 depth meaning, EWF575/hose20 context, installation requirements, fiel
 witnesses and common-standard old-receipt reissue. New V3 receipts and newly
 VERIFIED_FIT products:0. G4 remains NOT_STARTED; code release does not complete
 these semantic and evidence obligations.
+
+## Follow-up acceptance — exact-head CI portability repair
+
+The first committed head1038467 failed Node20 CI run34925203676/job104241682021:
+the absent-store test marked skip but continued into ENOENT. Its3205pass/0fail/
+1skip summary did not override process exit1; later build/publication gates were
+skipped. The failed log and successful26-control preview are preserved, neither
+is final release approval.
+
+Original Dalton adds only `return` at the existing skip branch and preserves all
+mounted original-object assertions. Same distinct Dewey's
+[v4 focused review](G3b-independent-rereview-v4.md) approves the fix with no new
+finding, retaining previous source/spec approvals. Report SHA256:
+`0cb3f2ddca1545381acd499297fef15d3131bde60bd71e31961506b40c694f55`.
+Main checks the three-file freeze and that report unchanged after closing the
+auditor, then accepts the test-only repair. Both agents are closed.
+
+The repaired test SHA256 is
+`24746080113c8944e522bf87bb02c360b1af988e5c2d79c5d15a7549f8bf5860`.
+Main verifies final capture/log hashes and39 unchanged input bytes: Node22
+inaccessible-store test cleanly skips/exit0; mounted positive executes actual
+object and substitution assertions, pass1/skip0/exit0. Node22 RED's not-ok/skip/
+denied-read output with exit0 is distinct from the already observed Node20 CI
+exit1. No original assertion, production code, fixture, manifest or workflow
+changed. The whole previous executor-report prefix is preserved.
+
+**The new committed head still requires complete Node20 CI and actual preview/
+production verification before merge/release.** A CI-only absent-store skip is
+not original-source success; mounted-source proof remains a separate required
+record. No silent skip-policy relaxation or installation/receipt promotion.
+
+Before commit, the auditor normalized four report link targets for repository
+Markdown compatibility, retaining the visible line labels and every other byte.
+Main verified the exact four replacements. Original reportSHA256
+`69ed4217263737dc88ae4172fb1fdd08a81a6da1d61fb3fdabe243caf0a35b9e`
+is preserved in the SDD original-report snapshot; the current report identity
+above is the author's link-only corrected version, not a changed verdict.

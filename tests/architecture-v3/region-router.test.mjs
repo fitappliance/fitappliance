@@ -909,7 +909,7 @@ test('strict CLI keeps portable, invalid-argument, and missing-store outcomes se
 });
 
 test('original-object mode replays actual bytes and rejects PDF, page, and crop substitutions', async (t) => {
-  if (!await evidenceStoreIsAvailable()) t.skip('bounded original evidence store is not mounted');
+  if (!await evidenceStoreIsAvailable()) return t.skip('bounded original evidence store is not mounted');
   const portable = await portableCanaryInput();
   const before = await readFile(join(evidenceStore, portable.manifest.acceptedBatch.objectPath));
   const child = await runCanaryCli([
