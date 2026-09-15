@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a, G0b, G1a, G1b, G2a, G2b and G3a complete; G3b is the next bounded task. Foundation integration PR209 is merged and production-verified; G2b/G3a are accepted in Draft PR210/211, not merged or promoted. No V3 receipt has been issued or V3 Fit behavior enabled.
+> Status: EXECUTION STARTED — G0a through G3a complete and merged; G3b bounded real-source preparation is independently reviewed and accepted, while region routing/profile attestation remains unfinished. PR211 includes PR210 and is merged as `2deb715`, with production verified. This preparation patch is local/uncommitted. No V3 receipt has been issued or V3 Fit behavior enabled.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -118,6 +118,17 @@ version. All26 scoped production HTTP checks pass; zero error-level log entries
 were returned in the post-release15-minute query. This is a point-in-time result,
 not continuous monitoring. See the [foundation release proof](../../architecture-v3/execution/2026-09-14-foundation-g2a-release.md).
 
+**G2b/G3a release and data-first continuation (2026-09-14).** The user requested
+merge, then explicitly said “开始” to the three-real-source repair sequence.
+[PR211](https://github.com/fitappliance/fitappliance/pull/211), including PR210,
+is merged as `2deb71568c19b44af6bbca69a24d074fdb74d07a`. The merge tree
+`8be4b3041e92b632d0bfea3a461671fdc9ac726e` equals the accepted 3,141-test tree.
+Production `dpl_C4Fz124J1pHn2VNYp1HhoMhpJL8L` is READY; 24 HTTP controls passed.
+This is foundation deployment, not evidence repair. Original PDFs, JSON and
+receipts remain untouched. Preparation now starts from three actual source
+pairs; conversion is reused where valid, not delayed until all G6c contracts
+exist. Formal V3 reissue still uses the unchanged common G4–G6 gates.
+
 ### 2.3 Mandatory semantics
 
 Before conversion or multiplication, require `typeof raw === 'number'` and finite value. Validate the source unit/dimension and declared source precision, convert, then enforce canonical V2-tested field bounds/precision and ordered endpoints. Validate applicability and inclusion states on every branch. Reject `null`, booleans, strings, arrays, unknown objects, `NaN`, infinities, and negative dimensions/clearances where the field is non-negative. Explicit permitted zero remains valid; do not apply integer-mm validation to an unconverted decimal metre value.
@@ -207,8 +218,8 @@ NOT_STARTED -> READY -> RUNNING -> REVIEW_REQUIRED -> COMPLETE
 - `NOT_STARTED`: no prepared task package. All rows begin here.
 - `READY`: predecessors, inputs, working-tree state, and write whitelist are verified.
 - `RUNNING`: exactly one Terra Max executor is active.
-- `REVIEW_REQUIRED`: executor submitted scoped change/check/witness report.
-- `COMPLETE`: main agent recorded reviewed acceptance HEAD, report path, note, and next task.
+- `REVIEW_REQUIRED`: executor froze the scoped change and self-test/witness report; a different read-only agent must independently audit it before main acceptance.
+- `COMPLETE`: independent audit passed and main agent recorded matching acceptance code/input identity, separate audit/report paths, note, and next task.
 - `BLOCKED`: state the fact, impact, preserved work, and exact recoverable input.
 
 The main agent updates this table after each review. `.superpowers/sdd/` notes/reports are local auxiliary material only and cannot be the sole resume memory.
@@ -222,7 +233,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
 | G3a | Typed lineage/anchors/relations | G1a | COMPLETE | `868f10a79` | [G3a report](../../architecture-v3/execution/G3a-lineage.md) | All6 [Draft PR211](https://github.com/fitappliance/fitappliance/pull/211) checks pass at this code commit. Node20.20.2 run34844532895: 3,141 pass,0 fail/skip/cancelled; build/publication/generated gates pass. Main reviewed structural/witness/coordinate contracts and8 preview controls. Original-source replay remains NOT_RUN; no receipt or production promotion. | G3b: region routing and canary attestation |
-| G3b | Region router + canary attestation | G3a, G2a | NOT_STARTED | — | — | — | — |
+| G3b | Region router + canary attestation | G3a, G2a | RUNNING | — | [Preparation acceptance](../../architecture-v3/execution/real-evidence-canary-acceptance.md) | Bounded preparation accepted after separate audit:4/4 findings resolved,39 independent targeted tests and accepted3180 full-test capture/exit0. Local patch only; router/profile attestation and receipt issuance remain unfinished. | Version-control handoff of accepted preparation, then region router/profile canaries |
 | G4a | Exact-product Claim V3 | G1b, G3a | NOT_STARTED | — | — | — | — |
 | G4b | Direct source binding + receipt | G4a, G3b | NOT_STARTED | — | — | — | — |
 | G5a | Append review store + CurrentEligibility | G4b | NOT_STARTED | — | — | — | — |
@@ -241,6 +252,16 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G11b | Evidence drawer | G11a | NOT_STARTED | — | — | — | — |
 
 Each task package names its actual base/inputs/hashes, exact write whitelist, read-first files, test/witness expectation, stop condition, and report path. It specifies one `gpt-5.6-terra` executor with `reasoning_effort=max`, no subdelegation, no automatic next task, and no automatic release action.
+
+**Role-separation correction (user, 2026-09-14).** The implementation executor
+and independent auditor must be different subagents with separate IDs and
+contexts. The executor owns TDD/self-tests and fixes; another `gpt-5.6-terra` /
+max agent reads the frozen patch and source evidence, without editing them.
+Main owns integration and final acceptance. A script called an audit is still a
+self-test when run by the executor. Preserve distinct execution, independent
+audit and main-acceptance records. This applies to the current unaccepted work
+and future tasks; historical records are not retroactively labelled independently
+audited. Follow the [updated role and freeze protocol](../../architecture-v3/terra-max-execution.md).
 
 Any statement below that a task becomes eligible is conditional on every predecessor in this table being reviewed COMPLETE. One predecessor passing never makes the other dependencies optional.
 
@@ -333,7 +354,8 @@ Every gate follows this order:
 2. Minimal pure implementation.
 3. Existing-interface adapter compatibility test.
 4. Portable witness; plus real-source witness where the gate owns real evidence.
-5. Main-agent review and status update.
+5. Freeze exact code/input identities; a different read-only subagent independently audits them.
+6. Executor fixes any findings; independent auditor rechecks affected frozen changes; main records final acceptance and status.
 
 A module import error, absent fixture, syntax failure, skipped test, or a fixture regenerated by the implementation is not sufficient red-stage evidence.
 
@@ -824,7 +846,72 @@ G3b real canaries, G4b original-source replay and G6c receipt repair are unfinis
 
 ## G3b — region router and portable/real canary attestation
 
-**Status:** NOT_STARTED · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
+**Status:** RUNNING — real-source inputs first · **Depends on:** G3a, G2a · **Worker:** `gpt-5.6-terra` / max
+
+Current executor: Euler (`01a0a015-c1bb-7462-95fb-54f74f431358`). Its test and
+source-replay results are execution evidence, not independent audit approval.
+Independent read-only auditor: Anscombe (`01a0a058-3493-7661-87e0-adb11909928e`),
+dispatched as Terra / Max. Its frozen v1 review remains CHANGES_REQUIRED for v1.
+Fix round1 passed the separate v2 re-review:4/4 findings resolved,39 independent
+targeted tests and the captured3180-test actual exit0 accepted. Main accepted
+the bounded raw/untyped preparation; both agents are closed. This does not
+complete formal G3b. [Main acceptance](../../architecture-v3/execution/real-evidence-canary-acceptance.md)
+binds the reviewed package and unchanged functional files. New immutable batch:
+`934db1b37339d66a5843fa7a6cc9234283f2d5a90f3ea80573d81a42794d8733`.
+Main's original-page notes remain a separate input, not substitute approval.
+
+**Current bounded preparation.** Start with Beko BDF1620W, Beko BDP810W and
+Electrolux EWF7524CDWA, selected by exact recovery-target/source/derived hashes,
+not model-name similarity. Resolve original case/receipt owners, replay actual
+source and MinerU objects, inspect original relevant pages, preserve labelled
+axes/units/ranges/context, and prepare real G3a lineage/fragments plus explicit
+field-scoped supplementation gaps. Reuse valid conversions; run existing local
+policy-pinned MinerU only when required structured content is missing or unreadable.
+No bulk rebuild, new OCR service, new verifier or receipt-approval shortcut.
+
+The supporting preparation runner is a thin data adapter, not a second evidence
+engine, review ledger or publisher. Its immutable outputs are candidate artifacts;
+an old replay PASS is not a new V3 receipt. Pure JSON/text evidence uses its typed
+locator; rendered-page/rotation/crop provenance is supplied where that representation
+is used, never fabricated for every legacy object. Preserve each original assertion
+and missing semantic facet. Independent original-page review supplies expected
+canary facts; the tested parser cannot generate its own expected answers.
+
+<!-- doc-audit: ignore -->
+- G3b preparation creates `scripts/architecture-v3/prepare-evidence-canary-inputs.mjs`, `tests/architecture-v3/evidence-canary-inputs.test.mjs`, `data/architecture-v3/research/legacy-evidence-canary-selection.json`, and `docs/architecture-v3/execution/real-evidence-canary-inputs.md`.
+
+Main's independent original-page observations and prohibited semantic inferences
+are recorded in [the real-source semantic review](../../architecture-v3/execution/real-evidence-canary-semantic-review.md).
+
+**Actual-data checkpoint (2026-09-14).** The explicit three-source historical
+replay passed 3/3; six original pages were reviewed and their render hashes
+reproduced with a bound renderer identity. Three prior conversions were reused.
+One new local MinerU conversion of BDF1620W page 2 completed, but its diagram
+labels remain unreadable to the structured output (no newly recovered labels).
+BDP810W depth scope and the Electrolux hose/disclaimer context remain explicit
+supplementation issues. New V3 receipts: 0. This is not thin-runner acceptance or
+G3b completion, and these three PDFs are outside the older 590-PDF manifest.
+
+**Independent audit correction.** The preparation may retain raw source blocks
+and their exact fragment identities, but must not emit manifest-authored numeric
+values as source-witnessed geometry. Actual axis/unit/range extraction belongs
+to the later witnessed profile/claim stages. Preserve BDP's two raw depth sources
+and all other source contexts without inventing a semantic join. Bind the extra
+OCR attempt to its full recorded parser/model/profile and observation metadata;
+missing historical flags remain explicit provenance gaps, not policy defaults
+retroactively asserted as observations. Count existing OCR records separately
+from conversions actually executed by this runner (zero). Preserve unaccepted
+batch `404721ce590473439738b589bda74a97dbbc4024c967d8479efe0c38386cb380`
+and its objects as history; a repaired batch must receive a new immutable identity.
+
+The explicit selection never defaults to the corpus. Check-only performs no
+render/conversion/write/network. Same-input repeat preserves existing results;
+failed attempts cannot replace earlier success. Existing source/JSON/receipt/cache
+objects stay byte-identical. Large candidate/render artifacts remain in the
+configured external store; normal tests/builds stay portable. Report reused versus
+new conversions, replayed sources, new fragment/page artifacts, actual reissued
+receipts and unresolved fields separately. This preparation does not complete
+G3b/G4/G6b/G6c or claim the whole legacy inventory is upgraded.
 
 **Goal.** Select one extraction profile per relevant region and prove early canary behavior without claiming portable replay re-read original sources.
 
@@ -1738,15 +1825,18 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Next task:** prepare bounded G3b region-routing/profile-canary work from
-accepted G3a `868f10a7911ecc46dc7fbf440f7de4a05ae9ef63` and this documentation
-checkpoint. G3b is NOT_STARTED; no executor is running. Preserve the unchanged
-GPT-5.6 Terra / Max implementer/main-review workflow. Bind the existing brand
-registry and G3a coordinate/lineage contracts; portable success cannot replace
-independent original-source canaries. No reset or paid credit was used by this
-task. PR210/211 remain Draft/unmerged. Both production hotfixes
-are included in this branch. Do not re-dispatch completed G2a or rebuild its seed
-from changed inputs without a reviewed version update.
+**Current task:** the three-source raw/untyped preparation is accepted after
+Euler's implementation/TDD, distinct Anscombe's passing re-review, and main's
+final evidence/scope checks. The local patch has not been committed or published.
+Next: complete its normal authorized version-control handoff, then implement the
+G3b region router/profile canaries using these accepted real inputs. Use a Terra
+/ Max executor and a distinct Terra / Max read-only auditor again. Main owns
+original-page/semantic review, contract decisions and the original plan. The router/profile
+attestation and G4/G6 common-standard reissue remain unfinished; continue those
+using the real prepared inputs, not only synthetic fixtures. PR210/211 are merged
+and production-verified. No reset or paid credit was used. Both production hotfixes
+are included. Do not re-dispatch completed G2a or rebuild its seed from changed
+inputs without a reviewed version update.
 No new V3 preview may use the old root-output configuration. G0a/G0b/G1a/G1b stay
 complete; recheck only contracts affected by changed code/inputs or new risk.
 G2a is brand identity/index work, not geometry inheritance, legacy receipt repair,

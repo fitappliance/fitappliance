@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 3,
+  "manifestId": "architecture-v3-real-evidence-canary-selection-v3-raw-round1",
+  "purpose": "Non-public candidate preparation only; this manifest cannot issue a V3 claim, receipt, review event, eligibility result, or publication state.",
+  "frozenInputs": {
+    "acceptanceBundle": {
+      "path": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json",
+      "sha256": "d947f8bcf15173ceb23fbba98a62459140f8ed9b93bf15c7d5fc5314f6785550"
+    },
+    "targetState": {
+      "path": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json",
+      "sha256": "1ef5a7a794149eb7f601da650be0a4166a08289405739ac55f28af0d52c1e1fc"
+    },
+    "recoveryPolicy": {
+      "path": "data/architecture-v2/policies/historical-evidence-recovery-policy.json",
+      "sha256": "8a990ba19339788d57dd8c60168e78bd4296d8098e281ef1f7379c7733bd35ac"
+    },
+    "artifactLineage": {
+      "path": "src/domain/architecture-v3/artifact-lineage.mjs",
+      "sha256": "bb375d5a809d3b4137a79e526b21980a1a73ea5d49961c6d73472facd9660eb0"
+    },
+    "evidenceAnchors": {
+      "path": "src/domain/architecture-v3/evidence-anchors.mjs",
+      "sha256": "19f76808cf5886cf397af31429fc3c7c8e5e497b5e912b8ba3b2dd999286524c"
+    },
+    "legacyAdapter": {
+      "path": "src/domain/architecture-v3/legacy-semantics-adapter.mjs",
+      "sha256": "12b3a6dbb860b2a4e035bd348ac82c68b809bee4561ca7fc895252c036696505"
+    },
+    "sourceVerifier": {
+      "path": "src/domain/evidence-source-verifier.mjs",
+      "sha256": "0a6f656e9fa71136ad2ba3dde76425fa4ac58094dbe439a53be9dc44e777992d"
+    },
+    "historicalAudit": {
+      "path": "src/domain/historical-evidence-recovery-audit.mjs",
+      "sha256": "fde70a9e26725667d3611c44e302685f9894b2edd1186f9b67a4ce1675299f47"
+    }
+  },
+  "runtimeBindings": {
+    "semanticsModule": {
+      "path": "src/domain/architecture-v3/semantics.mjs",
+      "sha256": "5b096ae9b2ef154e63b108bc19adcc6803eb8bb2e1dfe2db660c8b39f90be807"
+    },
+    "fieldDictionary": {
+      "path": "data/architecture-v2/policies/product-data-field-rights-dictionary.json",
+      "sha256": "69c1dac30edb4b736777592eb70be541f7aa99fbe7e4f0982c6be5b573291d03"
+    },
+    "installationMatrix": {
+      "path": "data/architecture-v2/generated/installation-evidence-applicability-matrix.json",
+      "sha256": "96182572d9d8da3aa6b6bb688dbf1cdbb55724e8252f4493722620aadba1a80f"
+    },
+    "semanticsOverlay": {
+      "path": "data/architecture-v3/policies/semantics-overlay.json",
+      "sha256": "b08b15a0c9134231f280ae03b1919409e566f62784031cc736897cc6e2554b44"
+    },
+    "evidenceResolutionPolicy": {
+      "path": "data/architecture-v2/policies/evidence-resolution-policy.json",
+      "sha256": "4b5072aa7f85cf59640cc464a1217de5aff11e218589989a31b0e30a5a864f7b"
+    }
+  },
+  "initialReplayRenderCheckpoint": {
+    "kind": "real_canary_initial_replay_render_checkpoint",
+    "objectPath": "evidence/architecture-v3/canary-preparation/records/sha256/c3/21/c3216a655e327e33f1d7ddd28068485cee982605b7eecc42997d9e2f304a0b7d.json",
+    "sha256": "c3216a655e327e33f1d7ddd28068485cee982605b7eecc42997d9e2f304a0b7d",
+    "observedAt": "2026-09-14T13:41:47.237Z",
+    "scope": "three_explicit_selected_source_owners_only",
+    "publicationStatus": "NOT_EVALUATED_CANDIDATE_ONLY"
+  },
+  "renderingAttestation": {
+    "kind": "real_canary_initial_rendered_page_attestation",
+    "objectPath": "evidence/architecture-v3/canary-preparation/records/sha256/f7/9e/f79e8562c4606ecd020069f5f1f007028a4b24f1ad6656981c7e6a1f445be657.json",
+    "sha256": "f79e8562c4606ecd020069f5f1f007028a4b24f1ad6656981c7e6a1f445be657",
+    "status": "SUCCEEDED",
+    "renderer": {
+      "binarySha256": "76126535b3a04b7be1db84808e39c4e71218903d4d7cbe846b9b4514c97caf0a",
+      "version": "26.06.0",
+      "format": "png",
+      "resolutionDpi": 150
+    }
+  },
+  "targets": [
+    {
+      "targetId": "recovery_target_c4295ee36eb7c14ebebe7c87",
+      "canonicalProductId": "fa_prod_c03f70546b84eff87f02746a",
+      "brand": "Beko",
+      "model": "BDF1620W",
+      "category": "dishwasher",
+      "bundleEntryPointer": "/entries/289",
+      "sourcePointer": "/entries/289/sources/0",
+      "receiptPointer": "/entries/289/sources/0/verificationReceipt",
+      "sourcePdfSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+      "selectedMineruJsonSha256": "f79e8b2f1130389a1257bf5dcc2317a8f2c18b6754f46eab99ddf98702bf182c",
+      "renderPages": [
+        1,
+        2
+      ],
+      "modelScopeBlocks": [
+        {
+          "pointer": "/1/5",
+          "pageNumber": 2,
+          "expectedText": "BDF1620W"
+        }
+      ],
+      "contextBlocks": [
+        {
+          "pointer": "/0/14",
+          "pageNumber": 1,
+          "expectedText": "Dimensions & Weights"
+        }
+      ],
+      "valueBlocks": [
+        {
+          "pointer": "/0/15",
+          "pageNumber": 1,
+          "expectedText": "Unpackaged Height"
+        }
+      ],
+      "visualCandidateBlocks": [
+        {
+          "pointer": "/1/4",
+          "pageNumber": 2,
+          "expectedText": "Dimensions",
+          "semanticDisposition": "UNADJUDICATED_ORIGINAL_PAGE_DIAGRAM",
+          "observationsToPreserve": [
+            "The original p2 diagram shows two upper 598 mm labels, a lower 570 mm label, a 30 mm top dimension, and a cabinet opening minimum 598 mm label.",
+            "The p2 diagram's measurement ranges, datum, and relationship to p1 Unpackaged Depth 600 mm are not established by this preparation.",
+            "Neither the 30 mm top dimension nor the cabinet opening minimum 598 mm label is mapped to appliance height, zero clearance, or a body dimension."
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "legacyClaimPointer": "/entries/289/sources/0/claims/0",
+          "field": "closedEnvelope.widthMm"
+        },
+        {
+          "legacyClaimPointer": "/entries/289/sources/0/claims/1",
+          "field": "closedEnvelope.heightMm"
+        },
+        {
+          "legacyClaimPointer": "/entries/289/sources/0/claims/2",
+          "field": "closedEnvelope.depthMm"
+        }
+      ],
+      "semanticNotes": [
+        "p1 preserves the labelled Unpackaged dimensions, including 600 mm depth, while p2 preserves a separate Dimensions diagram region without an asserted cross-page join.",
+        "The p2 diagram candidates are retained without treating its 30 mm top dimension, cabinet opening minimum 598 mm, or lower 570 mm label as an appliance closed-envelope dimension or clearance assertion."
+      ],
+      "parallelCandidateConversions": [
+        {
+          "recordObjectPath": "evidence/architecture-v3/canary-preparation/records/sha256/6d/50/6d5088dcab372bb3d4018354fd34a711e768a8a067b6cb6d11559f5753767b63.json",
+          "recordSha256": "6d5088dcab372bb3d4018354fd34a711e768a8a067b6cb6d11559f5753767b63",
+          "candidateJsonObjectPath": "evidence/architecture-v3/canary-preparation/objects/sha256/45/e9/45e9e43bf173c314152cceb64cb878fbff6392f104542ba09c85bb5ac514a7fb.json",
+          "candidateJsonSha256": "45e9e43bf173c314152cceb64cb878fbff6392f104542ba09c85bb5ac514a7fb",
+          "attemptedAt": "2026-09-14T13:57:59.035Z",
+          "profileId": "hybrid-image-high-v1",
+          "selectedPages": [
+            2
+          ],
+          "sourcePageCount": 2,
+          "cache": false,
+          "status": "SUCCEEDED_WITH_DIAGRAM_LABELS_UNREADABLE",
+          "attemptRecordStatus": "SUCCEEDED",
+          "attemptRecordTypedGap": null,
+          "typedGap": "DIAGRAM_LABELS_UNREADABLE",
+          "selectionDisposition": "PARALLEL_CANDIDATE_NOT_SELECTED",
+          "expectedProcessing": {
+            "strategy": "selected_page_ranges",
+            "ranges": [
+              [
+                1,
+                1
+              ]
+            ],
+            "selectedPages": [
+              2
+            ],
+            "sourcePageCount": 2
+          },
+          "readjudication": "NOT_PERFORMED",
+          "publicationStatus": "NOT_EVALUATED_CANDIDATE_ONLY"
+        }
+      ]
+    },
+    {
+      "targetId": "recovery_target_7638b53459b92a54af9a6109",
+      "canonicalProductId": "fa_prod_5fa0e9d93b2bd1d9c0240b57",
+      "brand": "Beko",
+      "model": "BDP810W",
+      "category": "dryer",
+      "bundleEntryPointer": "/entries/175",
+      "sourcePointer": "/entries/175/sources/0",
+      "receiptPointer": "/entries/175/sources/0/verificationReceipt",
+      "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+      "selectedMineruJsonSha256": "3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f",
+      "renderPages": [
+        1,
+        2
+      ],
+      "modelScopeBlocks": [
+        {
+          "pointer": "/0/52",
+          "pageNumber": 1,
+          "expectedText": "BDP810W"
+        },
+        {
+          "pointer": "/1/9",
+          "pageNumber": 2,
+          "expectedText": "BDP810W"
+        }
+      ],
+      "contextBlocks": [
+        {
+          "pointer": "/0/29",
+          "pageNumber": 1,
+          "expectedText": "Dimensions & Weights"
+        },
+        {
+          "pointer": "/0/30",
+          "pageNumber": 1,
+          "expectedText": "Unpacked Height"
+        },
+        {
+          "pointer": "/0/47",
+          "pageNumber": 1,
+          "expectedText": "846"
+        }
+      ],
+      "valueBlocks": [
+        {
+          "pointer": "/0/30",
+          "pageNumber": 1,
+          "expectedText": "Unpacked Height"
+        },
+        {
+          "pointer": "/0/47",
+          "pageNumber": 1,
+          "expectedText": "846"
+        },
+        {
+          "pointer": "/1/7",
+          "pageNumber": 2,
+          "expectedText": "597"
+        }
+      ],
+      "fields": [
+        {
+          "legacyClaimPointer": "/entries/175/sources/0/claims/0",
+          "field": "closedEnvelope.widthMm"
+        },
+        {
+          "legacyClaimPointer": "/entries/175/sources/0/claims/1",
+          "field": "closedEnvelope.heightMm"
+        },
+        {
+          "legacyClaimPointer": "/entries/175/sources/0/claims/2",
+          "field": "closedEnvelope.depthMm"
+        }
+      ],
+      "semanticNotes": [
+        "The p1 label/value columns and p2 W/D/H table remain separate candidate representations until original-page scope, datum, and protrusion semantics are reviewed.",
+        "The p2 D=568 table/diagram is not labelled body-only by the original page and is not promoted to a body dimension or to closedEnvelope.depthMm by this preparation.",
+        "Neither 589 mm nor 568 mm is classified as a same-semantics conflict or selected by this preparation."
+      ]
+    },
+    {
+      "targetId": "recovery_target_5f8e2af40b047d20e6ef4573",
+      "canonicalProductId": "fa_prod_753f1244da4a93aeab2c6008",
+      "brand": "Electrolux",
+      "model": "EWF7524CDWA",
+      "category": "washing_machine",
+      "bundleEntryPointer": "/entries/135",
+      "sourcePointer": "/entries/135/sources/0",
+      "receiptPointer": "/entries/135/sources/0/verificationReceipt",
+      "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+      "selectedMineruJsonSha256": "f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181",
+      "renderPages": [
+        3,
+        6
+      ],
+      "modelScopeBlocks": [
+        {
+          "pointer": "/2/10",
+          "pageNumber": 3,
+          "expectedText": "EWF7524CDWA"
+        }
+      ],
+      "contextBlocks": [
+        {
+          "pointer": "/2/3",
+          "pageNumber": 3,
+          "expectedText": "DIMENSIONS"
+        },
+        {
+          "pointer": "/5/3",
+          "pageNumber": 6,
+          "expectedText": "guide of product"
+        }
+      ],
+      "valueBlocks": [
+        {
+          "pointer": "/2/4",
+          "pageNumber": 3,
+          "expectedText": "Total height"
+        },
+        {
+          "pointer": "/5/1",
+          "pageNumber": 6,
+          "expectedText": "600mm"
+        }
+      ],
+      "fields": [
+        {
+          "legacyClaimPointer": "/entries/135/sources/0/claims/0",
+          "field": "closedEnvelope.widthMm"
+        },
+        {
+          "legacyClaimPointer": "/entries/135/sources/0/claims/1",
+          "field": "closedEnvelope.heightMm"
+        },
+        {
+          "legacyClaimPointer": "/entries/135/sources/0/claims/2",
+          "field": "closedEnvelope.depthMm"
+        }
+      ],
+      "semanticNotes": [
+        "The p6 diagram item /5/1 preserves the 575* mm label and the raw MinerU footnote text, including its OCR spelling; the original page visually reads '*Add 20mm for the hose protrusion at the back'.",
+        "The p6 note /5/3 says this is a guide of product dimensions only and complete installation instructions are in the manual; the 20 mm remains an observed physical hose protrusion, not rear ventilation clearance, and no 595 mm depth or replacement of the historic 575 mm value is inferred.",
+        "The required installation manual is not supplied in this batch and remains an explicit gap."
+      ]
+    }
+  ],
+  "preparationContract": "raw_source_observations_v1",
+  "supersedesUnacceptedBatch": {
+    "objectPath": "evidence/architecture-v3/canary-preparation/records/sha256/40/47/404721ce590473439738b589bda74a97dbbc4024c967d8479efe0c38386cb380.json",
+    "sha256": "404721ce590473439738b589bda74a97dbbc4024c967d8479efe0c38386cb380",
+    "status": "UNACCEPTED_HISTORICAL_OUTPUT_DO_NOT_CONSUME"
+  }
+}
