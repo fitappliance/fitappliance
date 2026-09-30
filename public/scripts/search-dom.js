@@ -823,6 +823,14 @@
   }
 
   function getRetailerPrice(retailer) {
+    const verifiedAt = String(retailer?.verified_at ?? '').trim();
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(verifiedAt)) return null;
+    const observed = new Date(`${verifiedAt}T00:00:00Z`);
+    if (!Number.isFinite(observed.getTime()) || observed.toISOString().slice(0, 10) !== verifiedAt) return null;
+    const now = new Date();
+    const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    const ageDays = (today - observed.getTime()) / 86_400_000;
+    if (ageDays < 0 || ageDays > 30) return null;
     for (const key of ['p', 'price', 'current_price', 'sale_price']) {
       const parsed = Number(retailer?.[key]);
       if (Number.isFinite(parsed) && parsed > 0) return Math.round(parsed);
@@ -1251,8 +1259,9 @@
     const bits = [];
     const stars = Number(match?.stars);
     if (Number.isFinite(stars) && stars > 0) bits.push(`⚡ ${stars}★ GEMS`);
-    const kwh = Number(match?.kwh_year ?? match?.energy_kwh_year ?? match?.kwh);
-    if (Number.isFinite(kwh) && kwh > 0) {
+    const rawKwh = match?.kwh_year ?? match?.energy_kwh_year ?? match?.kwh;
+    const kwh = rawKwh == null || String(rawKwh).trim() === '' ? NaN : Number(rawKwh);
+    if (Number.isFinite(kwh) && kwh >= 0) {
       const annual = Math.round(kwh * 0.3);
       bits.push(`~${formatAud(annual)}/yr`);
     }
@@ -1369,7 +1378,10 @@
         name: getRetailerName(retailer),
         price: getRetailerPrice(retailer)
       })).filter((retailer) => retailer.name),
-      stars: Number.isFinite(Number(match?.stars)) ? Number(match.stars) : null
+      stars: match?.stars != null && String(match.stars).trim() !== '' && Number.isFinite(Number(match.stars))
+        ? Number(match.stars) : null,
+      kwh_year: match?.kwh_year != null && String(match.kwh_year).trim() !== '' && Number.isFinite(Number(match.kwh_year))
+        ? Number(match.kwh_year) : null
     };
   }
 

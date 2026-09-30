@@ -19,6 +19,7 @@ function normalizeText(value, fallback = '') {
 }
 
 function num(value) {
+  if (value == null || String(value).trim() === '') return null;
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : null;
 }

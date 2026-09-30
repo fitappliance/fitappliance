@@ -51,6 +51,37 @@ test('phase 48 card redesign: buildCardHtml uses ecommerce three-column card str
   assert.doesNotMatch(html, /TCO/);
 });
 
+test('result card and comparison snapshot do not quote stale or undated retailer prices', async () => {
+  const { buildCardHtml, buildCompareSnapshot } = await loadSearchDom();
+  const futureDate = new Date(Date.now() + 366 * 86_400_000).toISOString().slice(0, 10);
+  for (const verified_at of [undefined, '2026-05-09', futureDate, 'invalid']) {
+    const product = makeMatch({ retailers: [{
+      n: 'Appliances Online', p: 289,
+      url: 'https://www.appliancesonline.com.au/product/esatto-ebf91b', verified_at
+    }] });
+    const html = buildCardHtml(product);
+    assert.match(html, /Check retailer price/);
+    assert.doesNotMatch(html, /\$289/);
+    assert.equal(buildCompareSnapshot(product).retailers[0].price, null);
+  }
+  const current = makeMatch({ retailers: [{
+    n: 'Appliances Online', p: 289,
+    url: 'https://www.appliancesonline.com.au/product/esatto-ebf91b', verified_at: new Date().toISOString().slice(0, 10)
+  }] });
+  assert.equal(buildCompareSnapshot(current).retailers[0].price, 289);
+});
+
+test('homepage result energy keeps unknown distinct from measured zero', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  for (const value of [undefined, null, '', ' ', 'invalid', Infinity, NaN]) {
+    const html = buildCardHtml(makeMatch({ stars: value, kwh_year: value }));
+    assert.doesNotMatch(html, /0★ GEMS|\$0\/yr|★ GEMS|\/yr/);
+  }
+  const measuredZero = buildCardHtml(makeMatch({ stars: null, kwh_year: 0 }));
+  assert.match(measuredZero, /~\$0\/yr/);
+  assert.doesNotMatch(measuredZero, /0★ GEMS/);
+});
+
 test('hotfix card layout: save and compare controls live in the title area, not the retailer footer', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch());

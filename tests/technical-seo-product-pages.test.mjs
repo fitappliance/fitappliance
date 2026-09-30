@@ -295,45 +295,111 @@ test('technical SEO: product schema adds real Offer from captured retailer price
   const schema = buildProductJsonLd(makeProduct({
     price: null,
     retailers: [
-      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 }
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999, verified_at: '2026-09-20', stock: 'Yes' }
     ]
-  }));
+  }), { now: new Date('2026-09-30T00:00:00Z') });
 
   assert.equal(schema.offers['@type'], 'Offer');
   assert.equal(schema.offers.price, 3999);
   assert.equal(schema.offers.priceCurrency, 'AUD');
-  assert.equal(schema.offers.availability, 'https://schema.org/InStock');
+  assert.equal(schema.offers.availability, undefined);
   assert.equal(schema.offers.url, 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx');
   assert.deepEqual(schema.offers.seller, { '@type': 'Organization', name: 'Appliances Online' });
-  assert.equal(schema.offers.shippingDetails['@type'], 'OfferShippingDetails');
-  assert.deepEqual(schema.offers.shippingDetails.shippingDestination, { '@type': 'DefinedRegion', addressCountry: 'AU' });
-  assert.equal(schema.offers.shippingDetails.shippingRate.currency, 'AUD');
-  assert.equal(schema.offers.hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
-  assert.equal(schema.offers.hasMerchantReturnPolicy.merchantReturnLink, 'https://www.fitappliance.com.au/terms#affiliate-retailer-policies');
-  assert.equal(schema.offers.hasMerchantReturnPolicy.returnPolicyCategory, undefined);
-  assert.equal(schema.offers.hasMerchantReturnPolicy.applicableCountry, undefined);
+  assert.equal(schema.offers.shippingDetails, undefined);
+  assert.equal(schema.offers.hasMerchantReturnPolicy, undefined);
+  assert.equal(schema.offers.itemCondition, undefined);
 });
 
 test('technical SEO: product schema aggregates multiple real retailer prices', () => {
   const offers = buildOfferJsonLd(makeProduct({
     retailers: [
-      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 },
-      { n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/lg-wwt-1910bx', p: 4099 }
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999, verified_at: '2026-09-20' },
+      { n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/lg-wwt-1910bx', p: 4099, verified_at: '2026-09-20' }
     ]
-  }));
+  }), { now: new Date('2026-09-30T00:00:00Z') });
 
   assert.equal(offers['@type'], 'AggregateOffer');
   assert.equal(offers.lowPrice, 3999);
   assert.equal(offers.highPrice, 4099);
   assert.equal(offers.offerCount, 2);
   assert.equal(offers.priceCurrency, 'AUD');
-  assert.equal(offers.shippingDetails['@type'], 'OfferShippingDetails');
-  assert.equal(offers.hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
-  assert.equal(offers.hasMerchantReturnPolicy.returnPolicyCategory, undefined);
+  assert.equal(offers.shippingDetails, undefined);
+  assert.equal(offers.hasMerchantReturnPolicy, undefined);
   assert.equal(offers.offers.length, 2);
-  assert.equal(offers.offers[0].shippingDetails['@type'], 'OfferShippingDetails');
-  assert.equal(offers.offers[0].hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
-  assert.equal(offers.offers[0].hasMerchantReturnPolicy.returnPolicyCategory, undefined);
+  assert.equal(offers.offers[0].shippingDetails, undefined);
+  assert.equal(offers.offers[0].hasMerchantReturnPolicy, undefined);
+});
+
+test('old EBF91B retailer price has a visible observation date but no current Offer', () => {
+  const product = makeProduct({
+    id: 'ao-73153', cat: 'fridge', brand: 'Esatto', model: 'EBF91B', price: null,
+    retailers: [{ n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/esatto-ebf91b', p: 289, verified_at: '2026-05-09' }]
+  });
+  const options = { now: new Date('2026-09-30T00:00:00Z') };
+  assert.equal(buildProductJsonLd(product, options).offers, undefined);
+  const html = buildProductPageHtml(product, options);
+  assert.match(html, /<h2>Retailer links<\/h2>/);
+  assert.match(html, /Observed \$289 on 2026-05-09; check current price/);
+  assert.doesNotMatch(html, /"availability":"https:\/\/schema.org\/InStock"/);
+});
+
+test('fresh retailer price without explicit stock evidence does not claim InStock', () => {
+  const product = makeProduct({ retailers: [{
+    n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/example',
+    p: 3999, verified_at: '2026-09-20'
+  }] });
+  const offer = buildOfferJsonLd(product, { now: new Date('2026-09-30T00:00:00Z') });
+  assert.equal(offer.price, 3999);
+  assert.equal(offer.availability, undefined);
+});
+
+test('legacy stock flag does not override unknown availability in retailer observation ledger', () => {
+  const product = makeProduct({ retailers: [{
+    n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/example-appliance',
+    p: 3999, verified_at: '2026-09-20', stock: 'Yes', availability_state: 'unavailable'
+  }] });
+  const offer = buildOfferJsonLd(product, { now: new Date('2026-09-30T00:00:00Z') });
+  assert.equal(offer.price, 3999);
+  assert.equal(offer.availability, undefined);
+});
+
+test('each retailer Offer must have its own fresh price observation', () => {
+  const product = makeProduct({ retailers: [
+    { n: 'Fresh', url: 'https://www.appliancesonline.com.au/product/fresh', p: 499, verified_at: '2026-09-20' },
+    { n: 'Stale', url: 'https://www.appliancesonline.com.au/product/stale', p: 299, verified_at: '2026-05-09' }
+  ] });
+  const offer = buildOfferJsonLd(product, { now: new Date('2026-09-30T00:00:00Z') });
+  assert.equal(offer['@type'], 'Offer');
+  assert.equal(offer.price, 499);
+  assert.match(offer.url, /fresh$/);
+});
+
+test('missing, future, invalid, and expired price dates cannot create a current Offer', () => {
+  for (const verified_at of [undefined, null, '', ' ', '2026-10-01', '2026-08-30', '2026-09-31', 'invalid']) {
+    const product = makeProduct({ retailers: [{
+      n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/example',
+      p: 3999, verified_at, stock: 'Yes'
+    }] });
+    assert.equal(buildOfferJsonLd(product, { now: new Date('2026-09-30T00:00:00Z') }), null);
+  }
+});
+
+test('missing, blank, zero, and nonfinite retailer prices cannot create an Offer', () => {
+  for (const p of [undefined, null, '', ' ', 0, NaN, Infinity]) {
+    const product = makeProduct({ retailers: [{
+      n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/example',
+      p, verified_at: '2026-09-20'
+    }] });
+    assert.equal(buildOfferJsonLd(product, { now: new Date('2026-09-30T00:00:00Z') }), null);
+  }
+});
+
+test('retailer price at the 30-day freshness boundary remains eligible', () => {
+  const product = makeProduct({ retailers: [{
+    n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/example',
+    p: 3999, verified_at: '2026-08-31'
+  }] });
+  assert.equal(buildOfferJsonLd(product, { now: new Date('2026-09-30T00:00:00Z') })?.price, 3999);
 });
 
 test('technical SEO: product schema falls back to stable image asset when brand category image is absent', () => {
@@ -372,9 +438,9 @@ test('technical SEO: product page avoids Product schema when no rich-result qual
 test('technical SEO: product page emits Product schema only with real priced offer', () => {
   const html = buildProductPageHtml(makeProduct({
     retailers: [
-      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 }
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999, verified_at: '2026-09-20' }
     ]
-  }));
+  }), { now: new Date('2026-09-30T00:00:00Z') });
   const jsonLd = extractJsonLd(html);
   const productSchema = jsonLd.find((block) => block['@type'] === 'Product');
 
@@ -386,11 +452,11 @@ test('technical SEO: product page emits Product schema only with real priced off
 test('technical SEO: product page displays captured retailer price used by Offer schema', () => {
   const html = buildProductPageHtml(makeProduct({
     retailers: [
-      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 }
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999, verified_at: '2026-09-20' }
     ]
-  }));
+  }), { now: new Date('2026-09-30T00:00:00Z') });
 
-  assert.match(html, />Appliances Online · \$3,999<\/a>/);
+  assert.match(html, />Appliances Online · \$3,999 \(observed 2026-09-20\)<\/a>/);
 });
 
 test('technical SEO: product names always include model for unique GSC crawl signals', () => {

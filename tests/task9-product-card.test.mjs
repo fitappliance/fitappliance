@@ -73,6 +73,28 @@ test('task 9.3 product-card: no-price card renders live shopping URL instead of 
   assert.doesNotMatch(html, /Price unavailable/);
 });
 
+test('unknown energy on a product card and row is not shown as zero', async () => {
+  const { buildCard, buildRow } = await import(productCardModuleUrl);
+  const product = makeProduct({ stars: null, kwh_year: null });
+  for (const render of [buildCard, buildRow]) {
+    const html = render(product, { annualEnergyCost: (kwh) => String(Number(kwh) * 0.3) });
+    assert.doesNotMatch(html, /0★ GEMS|\$0\/yr estimated energy/);
+    assert.doesNotMatch(html, /★ GEMS|estimated energy/);
+  }
+});
+
+test('blank and nonfinite energy stay unknown while explicit zero usage remains zero', async () => {
+  const { buildCard } = await import(productCardModuleUrl);
+  const annualEnergyCost = (kwh) => String(Number(kwh) * 0.3);
+  for (const value of ['', ' ', 'invalid', Infinity, NaN]) {
+    const html = buildCard(makeProduct({ stars: value, kwh_year: value }), { annualEnergyCost });
+    assert.doesNotMatch(html, /★ GEMS|estimated energy/);
+  }
+  const zero = buildCard(makeProduct({ stars: null, kwh_year: 0 }), { annualEnergyCost });
+  assert.match(zero, /~\$0\/yr estimated energy/);
+  assert.doesNotMatch(zero, /0★ GEMS/);
+});
+
 test('task 9.3 product-card: no-price list row renders shopping fallback and display brand mapping', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct(), {
