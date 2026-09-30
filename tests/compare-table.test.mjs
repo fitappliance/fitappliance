@@ -66,6 +66,15 @@ test('phase 58 compare table: empty compare state is explicit', async () => {
   assert.match(renderCompareTable([]), /Add products to compare/);
 });
 
+test('comparison energy distinguishes missing fields from measured zero usage', async () => {
+  const { renderCompareTable } = await loadCompareTable();
+  const unknown = renderCompareTable([product({ stars: null, kwh_year: null })]);
+  assert.doesNotMatch(unknown, /0★ GEMS|0 kWh\/year/);
+  assert.match(unknown, /Not captured/);
+  const zero = renderCompareTable([product({ stars: null, kwh_year: 0 })]);
+  assert.match(zero, /0 kWh\/year/);
+});
+
 test('replacement comparison renders direct W H D deltas and excludes fit semantics', async () => {
   const { renderCompareTable } = await loadCompareTable();
   const html = renderCompareTable([

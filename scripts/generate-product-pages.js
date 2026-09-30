@@ -34,8 +34,8 @@ const CATEGORY_IMAGE_SLUGS = Object.freeze({
   washtower_combo: 'washing-machine'
 });
 
-const MERCHANT_POLICY_URL = `${SITE_ORIGIN}/terms#affiliate-retailer-policies`;
 const FALLBACK_PRODUCT_IMAGE = `${SITE_ORIGIN}/og-images/guide-appliance-fit-sizing-handbook.png`;
+const PRICE_MAX_AGE_DAYS = 30;
 
 function escAttr(value) {
   return escHtml(value);
@@ -511,93 +511,52 @@ function retailerClickUrl(retailer) {
   return String(retailer?.url ?? '').trim();
 }
 
-function getPricedRetailerOffers(product) {
-  const productPrice = normalizePrice(product?.price);
+function observedDate(value, now = new Date()) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value ?? ''))) return null;
+  const observed = new Date(`${value}T00:00:00Z`);
+  if (!Number.isFinite(observed.getTime()) || observed.toISOString().slice(0, 10) !== value) return null;
+  const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const ageDays = (today - observed.getTime()) / 86_400_000;
+  return ageDays >= 0 ? { date: value, ageDays } : null;
+}
+
+function getPricedRetailerOffers(product, { now = new Date() } = {}) {
   const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
 
   return retailers
     .filter((retailer) => isHttpUrl(retailer?.url))
     .map((retailer) => {
       const retailerPrice = normalizePrice(retailer?.p);
-      const price = retailerPrice ?? productPrice;
-      if (price == null) return null;
+      const observed = observedDate(retailer?.verified_at, now);
+      if (retailerPrice == null || !observed || observed.ageDays > PRICE_MAX_AGE_DAYS) return null;
       return {
         name: String(retailer?.n ?? 'Retailer').trim() || 'Retailer',
         url: String(retailer.url),
-        price
+        price: retailerPrice
       };
     })
     .filter(Boolean);
 }
 
-function buildShippingDetailsJsonLd() {
-  return {
-    '@type': 'OfferShippingDetails',
-    deliveryTime: {
-      '@type': 'ShippingDeliveryTime',
-      handlingTime: {
-        '@type': 'QuantitativeValue',
-        minValue: 0,
-        maxValue: 7,
-        unitCode: 'DAY'
-      },
-      transitTime: {
-        '@type': 'QuantitativeValue',
-        minValue: 1,
-        maxValue: 30,
-        unitCode: 'DAY'
-      }
-    },
-    shippingDestination: {
-      '@type': 'DefinedRegion',
-      addressCountry: 'AU'
-    },
-    shippingRate: {
-      '@type': 'MonetaryAmount',
-      currency: 'AUD',
-      minValue: 0,
-      maxValue: 999
-    }
-  };
-}
-
-function buildMerchantReturnPolicyJsonLd() {
-  // Google Merchant listings reject MerchantReturnUnspecified in offer-level
-  // markup. FitAppliance is an affiliate utility, so we link to the retailer
-  // policy disclosure without inventing a universal return window.
-  return {
-    '@type': 'MerchantReturnPolicy',
-    merchantReturnLink: MERCHANT_POLICY_URL
-  };
-}
-
-function buildRetailerOfferJsonLd(offer, availability) {
+function buildRetailerOfferJsonLd(offer) {
   return {
     '@type': 'Offer',
     price: offer.price,
     priceCurrency: 'AUD',
-    availability,
-    itemCondition: 'https://schema.org/NewCondition',
     url: offer.url,
     seller: {
       '@type': 'Organization',
       name: offer.name
-    },
-    shippingDetails: buildShippingDetailsJsonLd(),
-    hasMerchantReturnPolicy: buildMerchantReturnPolicyJsonLd()
+    }
   };
 }
 
-function buildOfferJsonLd(product) {
-  const offers = getPricedRetailerOffers(product);
+function buildOfferJsonLd(product, options = {}) {
+  const offers = getPricedRetailerOffers(product, options);
   if (offers.length === 0) return null;
 
-  const availability = product?.unavailable === true
-    ? 'https://schema.org/OutOfStock'
-    : 'https://schema.org/InStock';
-
   if (offers.length === 1) {
-    return buildRetailerOfferJsonLd(offers[0], availability);
+    return buildRetailerOfferJsonLd(offers[0]);
   }
 
   const prices = offers.map((offer) => offer.price);
@@ -607,15 +566,12 @@ function buildOfferJsonLd(product) {
     highPrice: Math.max(...prices),
     offerCount: offers.length,
     priceCurrency: 'AUD',
-    availability,
     url: productUrl(product),
-    shippingDetails: buildShippingDetailsJsonLd(),
-    hasMerchantReturnPolicy: buildMerchantReturnPolicyJsonLd(),
-    offers: offers.map((offer) => buildRetailerOfferJsonLd(offer, availability))
+    offers: offers.map(buildRetailerOfferJsonLd)
   };
 }
 
-function buildProductJsonLd(product) {
+function buildProductJsonLd(product, options = {}) {
   const width = getDimension(product, 'width_mm', 'w');
   const height = getHeightRange(product);
   const depth = getDimension(product, 'depth_mm', 'd');
@@ -642,7 +598,7 @@ function buildProductJsonLd(product) {
     mainEntityOfPage: canonical
   };
 
-  const offers = buildOfferJsonLd(product);
+  const offers = buildOfferJsonLd(product, options);
   if (offers) {
     schema.offers = offers;
   }
@@ -757,20 +713,25 @@ function safeJsonLd(value) {
   });
 }
 
-function renderRetailerLinks(product) {
+function renderRetailerLinks(product, { now = new Date() } = {}) {
   const links = (Array.isArray(product?.retailers) ? product.retailers : [])
     .filter((retailer) => isHttpUrl(retailer?.url) && retailer?.n)
     .slice(0, 5)
     .map((retailer) => {
-      const price = normalizePrice(retailer?.p) ?? normalizePrice(product?.price);
-      const priceText = price == null ? '' : ` · $${price.toLocaleString('en-AU')}`;
+      const price = normalizePrice(retailer?.p);
+      const observed = observedDate(retailer?.verified_at, now);
+      const priceText = price == null || !observed
+        ? ' · Check current price'
+        : observed.ageDays > PRICE_MAX_AGE_DAYS
+          ? ` · Observed $${price.toLocaleString('en-AU')} on ${observed.date}; check current price`
+          : ` · $${price.toLocaleString('en-AU')} (observed ${observed.date})`;
       return `<a href="${escAttr(retailerClickUrl(retailer))}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}${escHtml(priceText)}</a>`;
     })
     .join('');
   return links || '<span>No verified retailer link recorded.</span>';
 }
 
-function buildProductPageHtml(product) {
+function buildProductPageHtml(product, options = {}) {
   const name = productName(product);
   const category = categoryLabel(product);
   const trustCopy = getEvidenceTrustCopy(product);
@@ -794,7 +755,7 @@ function buildProductPageHtml(product) {
     ? `${String(product.evidence.verified_at).slice(0, 10)}T00:00:00+08:00`
     : '2026-05-09T00:00:00+08:00';
   const head = buildHtmlHead({ title, description, canonical, modifiedTime });
-  const productSchema = buildProductJsonLd(product);
+  const productSchema = buildProductJsonLd(product, options);
   const productSchemaScript = hasProductRichResultQualifier(productSchema)
     ? `  <script type="application/ld+json">${safeJsonLd(productSchema)}</script>\n`
     : '';
@@ -882,8 +843,8 @@ ${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `            <t
       </div>
     </section>${buildV2ReviewHtml(product)}
     <section class="sku-panel" style="margin-top:24px">
-      <h2>Retailer availability</h2>
-      <div class="retailer-strip">${renderRetailerLinks(product)}</div>
+      <h2>Retailer links</h2>
+      <div class="retailer-strip">${renderRetailerLinks(product, options)}</div>
     </section>
   </main>
   <footer class="site-footer">

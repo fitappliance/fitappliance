@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const searchDomPath = path.join(repoRoot, 'public', 'scripts', 'search-dom.js');
+const observedToday = new Date().toISOString().slice(0, 10);
 
 async function loadSearchDom() {
   const module = await import(`${pathToFileURL(searchDomPath).href}?cacheBust=${Date.now()}`);
@@ -32,9 +33,9 @@ test('phase 45b result card: multiple retailers render price range and count', a
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({
     retailers: [
-      { n: 'The Good Guys', p: 899, url: 'https://www.thegoodguys.com.au/lg-gf-l708mbl-fridge' },
-      { n: 'JB Hi-Fi', p: 1099, url: 'https://www.jbhifi.com.au/products/lg' },
-      { n: 'Appliances Online', p: 1299, url: 'https://www.appliancesonline.com.au/product/lg/' }
+      { n: 'The Good Guys', p: 899, verified_at: observedToday, url: 'https://www.thegoodguys.com.au/lg-gf-l708mbl-fridge' },
+      { n: 'JB Hi-Fi', p: 1099, verified_at: observedToday, url: 'https://www.jbhifi.com.au/products/lg' },
+      { n: 'Appliances Online', p: 1299, verified_at: observedToday, url: 'https://www.appliancesonline.com.au/product/lg/' }
     ]
   }));
 
@@ -50,7 +51,7 @@ test('phase 45b result card: single retailer renders one price without range cop
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({
     retailers: [
-      { n: 'Harvey Norman', p: 1099, url: 'https://www.harveynorman.com.au/lg-gf-l708mbl-fridge.html' }
+      { n: 'Harvey Norman', p: 1099, verified_at: observedToday, url: 'https://www.harveynorman.com.au/lg-gf-l708mbl-fridge.html' }
     ]
   }));
 

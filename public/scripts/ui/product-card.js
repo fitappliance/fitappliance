@@ -949,12 +949,18 @@ function getCapacityLabel(product) {
 function buildTechSpecsHtml(product, deps = {}) {
   const annualEnergyCost = deps.annualEnergyCost ?? (() => '');
   const bits = [];
-  if (Number.isFinite(Number(product?.stars))) bits.push(`${Number(product.stars)}★ GEMS`);
+  if (product?.stars != null && String(product.stars).trim() !== ''
+    && Number.isFinite(Number(product.stars)) && Number(product.stars) > 0) {
+    bits.push(`${Number(product.stars)}★ GEMS`);
+  }
   if (featureIncludes(product, /\b(reversible|hinge)\b/i)) bits.push('reversible hinge');
   const capacity = getCapacityLabel(product);
   if (capacity) bits.push(capacity);
-  const annual = annualEnergyCost(product?.kwh_year);
-  if (annual) bits.push(`~$${annual}/yr estimated energy`);
+  if (product?.kwh_year != null && String(product.kwh_year).trim() !== ''
+    && Number.isFinite(Number(product.kwh_year)) && Number(product.kwh_year) >= 0) {
+    const annual = annualEnergyCost(product.kwh_year);
+    if (annual) bits.push(`~$${annual}/yr estimated energy`);
+  }
   const compactFeatures = (Array.isArray(product?.features) ? product.features : [])
     .filter((feature) => !/\b(reversible|hinge)\b/i.test(String(feature ?? '')))
     .filter((feature) => !capacity || String(feature ?? '').trim().toLowerCase() !== capacity.toLowerCase())

@@ -1386,7 +1386,10 @@ const CATEGORY_LABELS = {
   dishwasher: 'Dishwashers',
   dryer: 'Dryers',
 };
-function annualEnergyCost(kwh_year) { return (kwh_year * TARIFF).toFixed(0); }
+function annualEnergyCost(kwh_year) {
+  const usage = kwh_year == null || String(kwh_year).trim() === '' ? NaN : Number(kwh_year);
+  return Number.isFinite(usage) && usage >= 0 ? (usage * TARIFF).toFixed(0) : '';
+}
 function lifetimeCost(price, kwh_year, years=10) { return price + kwh_year * TARIFF * years; }
 
 /* ══════════════════════════════════════════════════════════
