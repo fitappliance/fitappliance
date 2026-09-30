@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a through G4a are accepted and merged. PR214 was last production-verified at `7b0764b` on 2026-09-23. G4b remains REPAIR_REQUIRED: Important R3-1 supersedes initial v4 APPROVED. The authorized 2026-09-24 design round is audited but not accepted: B/C/R has no new demonstrated bounded-scope bypass, while D-1 requires a decision on parser-version release control versus per-invocation runtime checks. All agent seats are closed; implementation/release remain stopped. The 45/3316 green code captures do not close R3-1. No G4b commit, accepted implementation, real new V3 receipt or V3 Fit enablement exists; old-receipt repair remains unfinished.
+> Status: EXECUTION STARTED — G0a through G4b module/code releases are accepted and merged. PR215 G4b/D-1 option1 release was production-verified at `56852cdd5`; separate PR216 trust-display release is current production `8b87ecbcf`. G5a is RUNNING for a bounded pure review-event/history-graph increment; persistence, CAS/idempotency, CurrentEligibility and complete G5a acceptance are still pending. G5b/G6 and real/new admitted/public receipts, whole-inventory repair and V3 Fit enablement remain pending. Historical R3-1/D-1 holds below are preserved as history and superseded by the verified release checkpoint.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -236,7 +236,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G3b | Region router + canary attestation | G3a, G2a | COMPLETE | Code `6b66125`; [PR213](https://github.com/fitappliance/fitappliance/pull/213) merge `34e7ae0` | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) and release checkpoint below | Distinct v3/v4 reviews approved; all6 PR checks pass. Exact-head Node20 CI3205pass/0fail/1explicit absent-store skip; mounted original test separately pass1/skip0. Preview27 and production28 controls pass; reviewed/merged tree identical. No receipt/Fit promotion. | G4a now complete; preserve G4b/G6 source replay and reissue gates |
 | G4a | Exact-product Claim V3 | G1b, G3a | COMPLETE | Code `6363b1e`; [PR214](https://github.com/fitappliance/fitappliance/pull/214) merge `7b0764b` | [Main acceptance](../../architecture-v3/execution/G4a-main-acceptance.md); [v2 re-review](../../architecture-v3/execution/G4a-independent-rereview-v2.md) and release checkpoint below | Distinct audit closes F1/F2; affected83pass; exact-head Node20 CI3270pass/0fail/1existing absent-store skip. All6 PR checks, preview16 and production17 controls pass; reviewed/merged tree identical. Unknowns/old API preserved; no receipt/Fit authority. | G4b direct original-source replay and Claim receipt is REPAIR_REQUIRED; do not re-dispatch G4a |
 | G4b | Direct source binding + receipt | G4a, G3b | COMPLETE | [PR215](https://github.com/fitappliance/fitappliance/pull/215) merged `56852cdd5`; reviewed final head `f6401a7ea` | [Independent acceptance v5](../../architecture-v3/execution/G4b-independent-acceptance-v5.md); [verified release](../../architecture-v3/execution/G4b-release-verification.md) | Module/code release verified: original R3-1 capture replay; D-1 option1 25-package identity gate; exact-head Node20 CI and production identity/smoke pass. No new real/admitted/public receipts or Verified Fit authority | G5/G6 and official exact-model coverage remain pending; separate trust release PR216 verified at `8b87ecbcf` |
-| G5a | Append review store + CurrentEligibility | G4b | NOT_STARTED | — | — | — | — |
+| G5a | Append review store + CurrentEligibility | G4b | RUNNING | Local `codex/g5a-review-graph`, based on released `8b87ecbcf` plus preserved docs `55020ed96` | [G5a execution report](../../architecture-v3/execution/G5a-review-store.md) | Pure review graph increment frozen: focused27/full3367 pass, zero skips; independent code review pending. No persistence or Claim authority changes | Independently review frozen increment; then durable common-head store and CurrentEligibility remain required before G5a acceptance |
 | G5b | Complete-inventory adjudication | G5a, G1a | NOT_STARTED | — | — | — | — |
 | G6a | EvidenceSnapshot + readiness | G5b | NOT_STARTED | — | — | — | — |
 | G6b | Exact-SKU vertical canary | G6a, G3b | NOT_STARTED | — | — | — | — |
@@ -1567,7 +1567,7 @@ npm test
 
 ## G5a — append review store and CurrentEligibility
 
-**Status:** NOT_STARTED · **Depends on:** G4b · **Worker:** `gpt-5.6-terra` / max
+**Status:** RUNNING — bounded pure review graph increment; full task not accepted · **Depends on:** G4b · **Worker:** `gpt-5.6-terra` / max
 
 **Goal.** Persist review decisions safely and compute transitive current eligibility without corrupting history.
 
