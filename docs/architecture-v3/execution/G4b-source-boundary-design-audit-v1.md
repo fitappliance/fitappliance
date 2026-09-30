@@ -27,7 +27,8 @@ The manifest's top-level `parse5@8.0.0` is an inventory fact, not the parser
 actually imported by `cheerio`. The subsequent read-only correction identifies
 the actual ESM runtime as Cheerio `1.2.0` plus nested `parse5@7.3.0`, ESM parser
 SHA-256 `23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d`
-([dependency correction](../../../.superpowers/sdd/2026-09-13-architecture-v3-evidence-foundation/G4b-boundary-design-dependency-correction.md):5-30).
+as recorded in the local, untracked SDD artifact
+`G4b-boundary-design-dependency-correction.md` (lines 5-30).
 This audit used that runtime source, not the top-level package, for location
 semantics. No broader equivalence of the two parse5 packages is asserted.
 
@@ -45,8 +46,8 @@ review.
   lines 79-104). The frozen R3 evidence remains the actual proof that the
   current implementation lacks this condition: its first table ended at 147
   without `endTag` and the tail was not counted
-  ([hold](G4b-source-boundary-hold.md):21-42;
-  [v4 note](../../../.superpowers/sdd/2026-09-13-architecture-v3-evidence-foundation/G4b-audit-v4-boundary-note.md):13-30).
+  ([hold](G4b-source-boundary-hold.md):21-42; local, untracked SDD artifact
+  `G4b-audit-v4-boundary-note.md`, lines 13-30).
 
 - **C has the necessary fail-closed shape.** Atomic token/text ranges,
   overlap and bounds rejection, raw-text-to-parsed-text CR/CRLF-only matching,
