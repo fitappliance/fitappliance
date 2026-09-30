@@ -62,7 +62,7 @@ function buildVideoBlock({ videos, brandSlug }) {
 
   return `${VIDEO_START}
 <section id="install-video" class="install-video">
-  <h2>Official installation videos</h2>
+  <h2>Official refrigerator help videos</h2>
   <div class="video-grid">
 ${cards}
   </div>

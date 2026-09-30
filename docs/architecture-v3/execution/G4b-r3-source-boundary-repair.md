@@ -101,12 +101,13 @@ baseline/repaired fresh and stored outcomes without editing either worktree.
 
 ## Remaining acceptance gates
 
-- The D-1 wording and code delta need the programme's formal independent
-  design/code acceptance; the user has now selected the release-boundary
-  control, but a local patch review is not formal acceptance. This gate does
-  not prove historical parser identity on arbitrary runtimes.
+- Formal independent code/design acceptance is now APPROVED at `56228b996`; see [v5](G4b-independent-acceptance-v5.md). The current-parser and build/release guarantee remains bounded; it does not prove historical parser identity on arbitrary runtimes.
 - The exact committed head needs the project's Node 20 CI, original-store
   availability handling, lock/parser identity and release checks. No real new
   source, receipt, review, CurrentEligibility, Fit outcome or public artifact
   was created by this repair. G5/G6 and whole-inventory legacy repair remain
   pending.
+
+## 2026-09-30 release follow-up
+
+A fresh lockfile installation on UGREEN resolves the local missing fflate dependency. All six video records were genuinely revalidated through official YouTube oEmbed by executor and independent reviewer, retaining useful data and upload dates; the heading now accurately says official refrigerator help videos. Final local full suite passes3328/3328 with no skips; canonical build/lint/schema/docs pass. This does not erase the earlier baseline failure evidence. Final committed Node20 CI and production identity verification remain required; [release preflight](G4b-release-preflight.md) records these gates and the verified external storage migration.
