@@ -228,7 +228,7 @@ test('buildPublicDeployment ignores crashed generated stage and backup siblings'
   assert.equal(fs.existsSync(path.join(root, '.site-public', '.site-public-backup-crashed')), false);
 });
 
-test('canonical build preserves the original pipeline before appending public deployment packaging', () => {
+test('canonical build checks G4b identity before the original pipeline and public deployment packaging', () => {
   const { scripts } = JSON.parse(fs.readFileSync(path.join(repoRoot, 'package.json'), 'utf8'));
   const originalBuildSteps = [
     'node scripts/vendor-fit-engine.js',
@@ -250,8 +250,9 @@ test('canonical build preserves the original pipeline before appending public de
     'npm run audit:active-retail-release',
   ];
 
-  assert.equal(scripts['build:public-deployment'], 'node scripts/build-public-deployment.js');
+  assert.equal(scripts['build:public-deployment'], 'npm run verify:g4b-build-identity && node scripts/build-public-deployment.js');
   assert.deepEqual(scripts.build.split(' && '), [
+    'npm run verify:g4b-build-identity',
     ...originalBuildSteps,
     'npm run build:public-deployment',
   ]);

@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "lockSha256": "ad45d58a7bf0e4c88a0b26edc9c73100810358286f2f39354b978bc25238d0e7",
+  "cheerio": {
+    "version": "1.2.0",
+    "entry": "dist/esm/index.js",
+    "treeSha256": "5a01cfef2b1027cdbb0f7cec42417aa434bfebd460eda7bc0a8c5a8ce4065ddd"
+  },
+  "parse5": {
+    "version": "7.3.0",
+    "entry": "dist/index.js",
+    "treeSha256": "90de947f8a735c1abd6be5a0f08ac7400c4c7863c372230e734d927e71c9b964",
+    "resolution": "cheerio-nested"
+  },
+  "parse5Adapter": {
+    "version": "7.1.0",
+    "entry": "dist/index.js",
+    "treeSha256": "7da1f8de3416cb2ff2146f9be4de08ef253cd2f00b932effb2d9569f59ee801b"
+  },
+  "adapterParse5": {
+    "version": "7.3.0",
+    "entry": "dist/index.js",
+    "treeSha256": "90de947f8a735c1abd6be5a0f08ac7400c4c7863c372230e734d927e71c9b964",
+    "resolution": "adapter-nested"
+  },
+  "domhandler": {
+    "version": "5.0.3",
+    "entry": "lib/esm/index.js",
+    "treeSha256": "9df63ac68037e8fe1106ae3ceb3608ea0b9957545f7c2a1087ce05e24dd6ba45"
+  },
+  "htmlparser2": {
+    "version": "10.1.0",
+    "entry": "dist/esm/index.js",
+    "treeSha256": "c2f261014bd8d917f0da55c603935938e4af1076281a9018a93ae22f8ce08ffd"
+  },
+  "dependencyClosure": {
+    "boolbase": {
+      "name": "boolbase",
+      "version": "1.0.0",
+      "treeSha256": "c64dd4bff6ee5b8fa800b827f264b314d2ae7c22445ccb3f1bcbd6eb29324f34",
+      "dependencies": {}
+    },
+    "cheerio": {
+      "name": "cheerio",
+      "version": "1.2.0",
+      "treeSha256": "5a01cfef2b1027cdbb0f7cec42417aa434bfebd460eda7bc0a8c5a8ce4065ddd",
+      "dependencies": {
+        "cheerio-select": "cheerio-select",
+        "dom-serializer": "dom-serializer",
+        "domhandler": "domhandler",
+        "domutils": "domutils",
+        "encoding-sniffer": "encoding-sniffer",
+        "htmlparser2": "htmlparser2",
+        "parse5": "cheerio/node_modules/parse5",
+        "parse5-htmlparser2-tree-adapter": "parse5-htmlparser2-tree-adapter",
+        "parse5-parser-stream": "parse5-parser-stream",
+        "undici": "undici",
+        "whatwg-mimetype": "cheerio/node_modules/whatwg-mimetype"
+      }
+    },
+    "cheerio-select": {
+      "name": "cheerio-select",
+      "version": "2.1.0",
+      "treeSha256": "45cda5c9bc99ee905b73497c9d4240032b631ba477a881873ac2db3d88d029ea",
+      "dependencies": {
+        "boolbase": "boolbase",
+        "css-select": "css-select",
+        "css-what": "css-what",
+        "domelementtype": "domelementtype",
+        "domhandler": "domhandler",
+        "domutils": "domutils"
+      }
+    },
+    "cheerio/node_modules/parse5": {
+      "name": "parse5",
+      "version": "7.3.0",
+      "treeSha256": "90de947f8a735c1abd6be5a0f08ac7400c4c7863c372230e734d927e71c9b964",
+      "dependencies": {
+        "entities": "entities"
+      }
+    },
+    "cheerio/node_modules/whatwg-mimetype": {
+      "name": "whatwg-mimetype",
+      "version": "4.0.0",
+      "treeSha256": "34d113b9c94993dab85b04fc629028df1f45e9ae5c8b27b355ade428d334efc9",
+      "dependencies": {}
+    },
+    "css-select": {
+      "name": "css-select",
+      "version": "5.2.2",
+      "treeSha256": "041db55668b3d920bd1fc3a2be8fb15849747e2999cd68b3ad5bb87307671186",
+      "dependencies": {
+        "boolbase": "boolbase",
+        "css-what": "css-what",
+        "domhandler": "domhandler",
+        "domutils": "domutils",
+        "nth-check": "nth-check"
+      }
+    },
+    "css-what": {
+      "name": "css-what",
+      "version": "6.2.2",
+      "treeSha256": "2e98c24e523cba4d05ef275df04bc17f5826f026794f6337f21851e9415d4dcd",
+      "dependencies": {}
+    },
+    "dom-serializer": {
+      "name": "dom-serializer",
+      "version": "2.0.0",
+      "treeSha256": "f7603f61711225d0152128ea3786512c8f42746eab5f14fa3579668c9398d881",
+      "dependencies": {
+        "domelementtype": "domelementtype",
+        "domhandler": "domhandler",
+        "entities": "dom-serializer/node_modules/entities"
+      }
+    },
+    "dom-serializer/node_modules/entities": {
+      "name": "entities",
+      "version": "4.5.0",
+      "treeSha256": "dcea6f2dad8748f73ba454f5f125efca22faa252e073e77ff3368206ebfaabbc",
+      "dependencies": {}
+    },
+    "domelementtype": {
+      "name": "domelementtype",
+      "version": "2.3.0",
+      "treeSha256": "3621aaf30771b71d8cff68a3f568bad8a74a3e876f4d88bb544aa4a3d3e798c7",
+      "dependencies": {}
+    },
+    "domhandler": {
+      "name": "domhandler",
+      "version": "5.0.3",
+      "treeSha256": "9df63ac68037e8fe1106ae3ceb3608ea0b9957545f7c2a1087ce05e24dd6ba45",
+      "dependencies": {
+        "domelementtype": "domelementtype"
+      }
+    },
+    "domutils": {
+      "name": "domutils",
+      "version": "3.2.2",
+      "treeSha256": "6db007f7d5404a9dcbfbe1020053e13b5ed694cf2dae66731048a9fb65fb1590",
+      "dependencies": {
+        "dom-serializer": "dom-serializer",
+        "domelementtype": "domelementtype",
+        "domhandler": "domhandler"
+      }
+    },
+    "encoding-sniffer": {
+      "name": "encoding-sniffer",
+      "version": "0.2.1",
+      "treeSha256": "6e2b1e342daf99649685a1240a14f9094a4466585cf44636dd5c4b1354bd769f",
+      "dependencies": {
+        "iconv-lite": "iconv-lite",
+        "whatwg-encoding": "whatwg-encoding"
+      }
+    },
+    "entities": {
+      "name": "entities",
+      "version": "6.0.1",
+      "treeSha256": "1a5bd651475fc83c4fb31868a2049c3c22f268b94b2733ae562521d240e29f08",
+      "dependencies": {}
+    },
+    "htmlparser2": {
+      "name": "htmlparser2",
+      "version": "10.1.0",
+      "treeSha256": "c2f261014bd8d917f0da55c603935938e4af1076281a9018a93ae22f8ce08ffd",
+      "dependencies": {
+        "domelementtype": "domelementtype",
+        "domhandler": "domhandler",
+        "domutils": "domutils",
+        "entities": "htmlparser2/node_modules/entities"
+      }
+    },
+    "htmlparser2/node_modules/entities": {
+      "name": "entities",
+      "version": "7.0.1",
+      "treeSha256": "256e5c04a4f9320cf8649a29a99ea9264ef9f719d19d06097f5d11797557f485",
+      "dependencies": {}
+    },
+    "iconv-lite": {
+      "name": "iconv-lite",
+      "version": "0.6.3",
+      "treeSha256": "b76f5244f94198c6f339f6dc4c37e1497998069b3fab7c70235cbbbcfc2bbe09",
+      "dependencies": {
+        "safer-buffer": "safer-buffer"
+      }
+    },
+    "nth-check": {
+      "name": "nth-check",
+      "version": "2.1.1",
+      "treeSha256": "8e3ebc1fb6451b890dc7676bde405bf372aa873ce015b2333840caae75ef9977",
+      "dependencies": {
+        "boolbase": "boolbase"
+      }
+    },
+    "parse5-htmlparser2-tree-adapter": {
+      "name": "parse5-htmlparser2-tree-adapter",
+      "version": "7.1.0",
+      "treeSha256": "7da1f8de3416cb2ff2146f9be4de08ef253cd2f00b932effb2d9569f59ee801b",
+      "dependencies": {
+        "domhandler": "domhandler",
+        "parse5": "parse5-htmlparser2-tree-adapter/node_modules/parse5"
+      }
+    },
+    "parse5-htmlparser2-tree-adapter/node_modules/parse5": {
+      "name": "parse5",
+      "version": "7.3.0",
+      "treeSha256": "90de947f8a735c1abd6be5a0f08ac7400c4c7863c372230e734d927e71c9b964",
+      "dependencies": {
+        "entities": "entities"
+      }
+    },
+    "parse5-parser-stream": {
+      "name": "parse5-parser-stream",
+      "version": "7.1.2",
+      "treeSha256": "db02221550819ab91352e5cfbba562cab3eb611e63a88fb3686eaa540267ee79",
+      "dependencies": {
+        "parse5": "parse5-parser-stream/node_modules/parse5"
+      }
+    },
+    "parse5-parser-stream/node_modules/parse5": {
+      "name": "parse5",
+      "version": "7.3.0",
+      "treeSha256": "90de947f8a735c1abd6be5a0f08ac7400c4c7863c372230e734d927e71c9b964",
+      "dependencies": {
+        "entities": "entities"
+      }
+    },
+    "safer-buffer": {
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "treeSha256": "0cb026452cdcbb0e4ba7b325629a8ec7204b4e159f7183fdc44731e16a473072",
+      "dependencies": {}
+    },
+    "undici": {
+      "name": "undici",
+      "version": "7.25.0",
+      "treeSha256": "42cc22f467f98c83a65798511c6b1afafc92d2e26492d99eed1c2470dd969665",
+      "dependencies": {}
+    },
+    "whatwg-encoding": {
+      "name": "whatwg-encoding",
+      "version": "3.1.1",
+      "treeSha256": "6897c0b86a9239eec6fdd14b2dd2b44a83a092b3d1a0e7166c407339c0afa241",
+      "dependencies": {
+        "iconv-lite": "iconv-lite"
+      }
+    }
+  },
+  "sources": {
+    "src/domain/architecture-v3/verified-source-binding.mjs": "2e48fa1f9506d63dbbe4b26a3e24c01729813b0f4bc1d1fdc1820bf815d00795",
+    "src/domain/architecture-v3/evidence-claim-receipt.mjs": "a08e82f80f2649a8e0a92d7942b8e4d2bf1fe1dfbdee64f6d5d925dced11f95f"
+  }
+}

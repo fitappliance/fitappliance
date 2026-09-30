@@ -1,6 +1,6 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a through G3b are accepted and merged. PR213 is production-verified at `34e7ae0` (2026-09-15). G4a is ACCEPTED_PENDING_RELEASE after distinct v1/v2 audit and main acceptance; final-commit CI and deployment remain pending. No V3 receipt has been issued or V3 Fit behavior enabled; old-receipt repair remains unfinished.
+> Status: EXECUTION STARTED — G0a through G4a are accepted and merged. PR214 was last production-verified at `7b0764b` on 2026-09-23. G4b remains REPAIR_REQUIRED: Important R3-1 supersedes initial v4 APPROVED. The authorized 2026-09-24 design round is audited but not accepted: B/C/R has no new demonstrated bounded-scope bypass, while D-1 requires a decision on parser-version release control versus per-invocation runtime checks. All agent seats are closed; implementation/release remain stopped. The 45/3316 green code captures do not close R3-1. No G4b commit, accepted implementation, real new V3 receipt or V3 Fit enablement exists; old-receipt repair remains unfinished.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
@@ -233,9 +233,9 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G2a | AU BrandRegistry | G1a | COMPLETE | `cf4a632a2` | [G2a report](../../architecture-v3/execution/G2a-brand-registry.md) | All6 Draft PR209 checks passed at this code commit. Node20.20.2 run `34826534937`: 3,072 pass,0 fail/skip; build/publication checks pass. Main reviewed all152 groups/157 spellings/26 policy refs, shared validators and15 protected-preview HTTP checks. Public artifact unchanged; no receipt/Fit/publication promotion. | G2b: research-only family graph, no inheritance |
 | G2b | Family research graph/index | G2a, G1a | COMPLETE | `531172adb` | [G2b report](../../architecture-v3/execution/G2b-family-research.md) | All6 [Draft PR210](https://github.com/fitappliance/fitappliance/pull/210) checks pass at this code commit. Node20.20.2 run `34839185517`: 3,115 pass,0 fail/skip; build/publication gates pass. Main reviewed source-bound seed and10 private/public preview controls. No field inheritance or production promotion. | G3a: typed artifact lineage/anchors |
 | G3a | Typed lineage/anchors/relations | G1a | COMPLETE | `868f10a79` | [G3a report](../../architecture-v3/execution/G3a-lineage.md) | All6 [Draft PR211](https://github.com/fitappliance/fitappliance/pull/211) checks pass at this code commit. Node20.20.2 run34844532895: 3,141 pass,0 fail/skip/cancelled; build/publication/generated gates pass. Main reviewed structural/witness/coordinate contracts and8 preview controls. Original-source replay remains NOT_RUN; no receipt or production promotion. | G3b: region routing and canary attestation |
-| G3b | Region router + canary attestation | G3a, G2a | COMPLETE | Code `6b66125`; [PR213](https://github.com/fitappliance/fitappliance/pull/213) merge `34e7ae0` | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) and release checkpoint below | Distinct v3/v4 reviews approved; all6 PR checks pass. Exact-head Node20 CI3205pass/0fail/1explicit absent-store skip; mounted original test separately pass1/skip0. Preview27 and production28 controls pass; reviewed/merged tree identical. No receipt/Fit promotion. | G4a immutable exact-product Claims, not yet started; preserve G4b/G6 reissue gates |
-| G4a | Exact-product Claim V3 | G1b, G3a | ACCEPTED_PENDING_RELEASE | Base `34e7ae0`; source `30b55f2f` and context `8e5495ae` | [Main acceptance](../../architecture-v3/execution/G4a-main-acceptance.md); [v2 re-review](../../architecture-v3/execution/G4a-independent-rereview-v2.md) | Distinct audit closes F1/F2, affected83pass/0fail; unknowns/old API preserved; no receipt/Fit authority | Commit, exact-head3271-test CI, all PR checks and actual release verification |
-| G4b | Direct source binding + receipt | G4a, G3b | NOT_STARTED | — | — | — | — |
+| G3b | Region router + canary attestation | G3a, G2a | COMPLETE | Code `6b66125`; [PR213](https://github.com/fitappliance/fitappliance/pull/213) merge `34e7ae0` | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) and release checkpoint below | Distinct v3/v4 reviews approved; all6 PR checks pass. Exact-head Node20 CI3205pass/0fail/1explicit absent-store skip; mounted original test separately pass1/skip0. Preview27 and production28 controls pass; reviewed/merged tree identical. No receipt/Fit promotion. | G4a now complete; preserve G4b/G6 source replay and reissue gates |
+| G4a | Exact-product Claim V3 | G1b, G3a | COMPLETE | Code `6363b1e`; [PR214](https://github.com/fitappliance/fitappliance/pull/214) merge `7b0764b` | [Main acceptance](../../architecture-v3/execution/G4a-main-acceptance.md); [v2 re-review](../../architecture-v3/execution/G4a-independent-rereview-v2.md) and release checkpoint below | Distinct audit closes F1/F2; affected83pass; exact-head Node20 CI3270pass/0fail/1existing absent-store skip. All6 PR checks, preview16 and production17 controls pass; reviewed/merged tree identical. Unknowns/old API preserved; no receipt/Fit authority. | G4b direct original-source replay and Claim receipt is REPAIR_REQUIRED; do not re-dispatch G4a |
+| G4b | Direct source binding + receipt | G4a, G3b | ACCEPTED_PENDING_RELEASE | Reviewed code `56228b996`; [PR215](https://github.com/fitappliance/fitappliance/pull/215) draft | [Independent acceptance v5](../../architecture-v3/execution/G4b-independent-acceptance-v5.md); [release preflight](../../architecture-v3/execution/G4b-release-preflight.md) | R3-1 original captured failure reproduced and repaired; D-1 option1 approved and implemented with 25-package build identity gate. Focused64/local clean full3328 pass; final-head Node20 CI/release pending. Real/new/accepted/public0 | Complete final commit CI and production identity/smoke verification; G5/G6 and real receipt repair remain pending |
 | G5a | Append review store + CurrentEligibility | G4b | NOT_STARTED | — | — | — | — |
 | G5b | Complete-inventory adjudication | G5a, G1a | NOT_STARTED | — | — | — | — |
 | G6a | EvidenceSnapshot + readiness | G5b | NOT_STARTED | — | — | — | — |
@@ -1183,7 +1183,7 @@ npm test
 
 ## G4a — immutable exact-product Claim V3
 
-**Status:** ACCEPTED_PENDING_RELEASE · **Depends on:** G1b, G3a · **Worker:** `gpt-5.6-terra` / max
+**Status:** COMPLETE · **Depends on:** G1b, G3a · **Worker:** `gpt-5.6-terra` / max
 
 2026-09-15 preflight: current main is `34e7ae0`, GitHub write rights verified,
 and the existing linked worktree is reused on a new G4a branch. The prior
@@ -1224,14 +1224,45 @@ V3 syntax and scoped whitespace checks pass. Main checked the raw hashes,
 before/after identities and unchanged report prefix. No new full-suite, lint or
 schema run was repeated; old3216 applies only to v1. The unchanged test entrypoint
 plus83 new affected tests replacing old10Claim+18semantic tests predicts3271
-total tests for final-head CI. Independent repair acceptance remains pending.
+total tests for final-head CI. At that handoff, independent repair acceptance was pending.
 
 Independent v2 re-review now approves F1/F2/spec/quality, SHA
 `7292e3b3034b104117944921f9469ef6327f0d16ecbbf146b8c62792ede5e9c7`.
 Main [acceptance](../../architecture-v3/execution/G4a-main-acceptance.md) confirms
 the narrow unknown-preserving repair and evidence accounting. Both agents are
-closed. Final commit, complete Node20 CI, all PR checks and actual production
-verification are still required; this paragraph does not mark release complete.
+closed. At this pre-commit checkpoint, final commit, complete Node20 CI, all PR
+checks and actual production verification were still required; this historical
+acceptance alone did not mark release complete.
+
+2026-09-15 release checkpoint: all9 committed files at
+`6363b1ea90833169d8317aa5793ad4235d784e4d` match the accepted raw hashes.
+[PR214](https://github.com/fitappliance/fitappliance/pull/214) passed all6 checks.
+Exact-head Node20 CI34934721085/job104270059683 completed3271tests:
+3270pass,0fail,0cancel,1existing explicit absent-original-store skip. All9
+build/lint/publication workflow gates succeeded; full raw log1816683bytes/SHA
+`9e8697b6a991e15db80436caea302273ad8d06517a5ad65b85cdc3a2543a59b5`.
+Head-guarded merge at06:02:44Z produced
+`7b0764b0c5b099ed19b8af9b46860408c4121083`; reviewed/merged tree is exactly
+`de50157aa24a9139ce0a62175a820ceb9b13750f`, with unchanged base34e7ae0.
+Protected preview16controls passed at6363b1e. Production
+`dpl_Hm6UNR7UmJ6aWRUjRhQuEtyjAWvX` is READY at7b0764b, Node24/.site-public;
+17 actual HTTP/artifact controls passed at06:05:02Z. Manifest3281files/54856568bytes,
+SHA`d80c116b27dc4088a02bc694baadb37b56880597678506de011752e1ce9eab12`,
+matches the accepted application except the commit-specific cache version.
+All9 changed internal paths plus2 controls return404, public application/data
+bytes are unchanged, and apex redirects308 to canonicalwww. Provider5xx snapshot
+06:02:44Z–06:05:23Z returned0rows/limit100; this is not ongoing monitoring.
+Previous34e7ae0 production remains READY; no branch/deployment/source/recovery
+cleanup occurred. Original recovery status/diff hashes are unchanged.
+The complete private release evidence is retained in the existing SDD ledger;
+this post-release plan-only checkpoint travels with the next implementation
+commit, avoiding a separate metadata-only production deployment.
+
+G4a is complete, but this is immutable structural Claim validation only. It did
+not perform new OCR, acquire sources, reissue old receipts, enable V3 Fit or
+increase verified evidence coverage. Existing mounted-source regression execution
+is not new source repair. G4b must replay the complete actual source/field/context
+chain; G6 remains responsible for common-standard legacy receipt reissue.
 
 **Goal.** Create canonical schema-3 exact-product Claims with explicit semantics, context, source representation, and typed evidence.
 
@@ -1286,13 +1317,180 @@ npm test
 
 ## G4b — direct source binding and Claim receipt
 
-**Status:** NOT_STARTED · **Depends on:** G4a, G3b · **Worker:** `gpt-5.6-terra` / max
+**Status:** REPAIR_REQUIRED · **Depends on:** G4a, G3b · **Worker:** `gpt-5.6-terra` / max
+
+2026-09-15 preflight: main/production7b0764b and GitHub write rights were rechecked.
+The existing linked worktree is reused on `codex/architecture-v3-g4b-source-binding`;
+the G4a post-release plan patch is retained. The complete manufacturer replay
+already exists in `verifyAttestedResolutionArtifact` in
+`src/domain/evidence-artifact-verifier.mjs`; it calls `verifyVerificationReceipt`
+and re-attests original/derived/discovery bytes. Use that owner rather than
+mistaking metadata/digest-only verification for source replay. Installation
+replay also needs the original PDF and complete G3a lineage verified around its
+existing JSON/locator replay. Historic source failures remain failures.
+
+Preflight interface clarification: a serialized source-binding digest cannot
+prove its own fact array. Direct receipt creation and stored receipt validation
+therefore receive an explicit `readObject` resolver and replay the binding's
+bound inputs through the same producer. No opaque process-only token, trusted
+boolean, or second verifier substitutes for replay. This is an internal API
+completion, not a change to source/rights/physical acceptance thresholds.
+
+Case identity must resolve its existing immutable case/canonical owner; two
+caller-supplied product/market strings agreeing is not independent proof.
+The installation adapter uses its own field-receipt replay plus original
+PDF/MinerU/provenance verification, without requiring a separate manufacturer
+dimension receipt. Document role remains unknown without anchored classification.
+Main's bounded original audit replays three manufacturer sources and two
+standalone installation receipts successfully at their historical policy/time;
+this is not G4b acceptance or receipt reissue. Five original PDFs and their
+selected MinerU JSON are reused unchanged; new OCR conversions remain zero.
+
+The initial frozen delivery passed focused19/full3290 with complete captured
+output, but a distinct auditor reproduced a fully rehashed relation-witness
+bypass. Hash/fragment consistency did not prove same-table-row/model semantics
+from the original source. Main also confirmed that the decimal token regex
+rejects valid fractional scalars. Both defects are pre-merge blockers, not a
+reason to weaken evidence thresholds. Repair only the new G4b producer/tests:
+source-derived relation replay, genuine structured positive inputs, rehashed
+wrong-row/SKU counterexamples, and decimal factory regressions. Unsupported
+relations preserve candidate gaps; paragraph-based PDFs are not globally bad.
+Original failure records, receipts, profiles and current production stay intact.
+
+2026-09-23 R1 independent re-review remains **CHANGES_REQUIRED**. The 33/3304
+repair captures and all execution identities are intact; F2 decimal behavior and
+F3 reference are independently addressed. F1 has a remaining concrete bypass:
+an orphan conflicting-model `th` or `td` is an implicit row in the existing
+HTML parser, but is skipped by G4b's separate location-enabled parser. Both
+variants still produce a replayable synthetic receipt. See the retained
+[v2 independent report](../../architecture-v3/execution/G4b-independent-rereview-v2.md).
+Main traced this to divergent parse topology, not source hashes or old receipt
+failure. After repeated F1 corrections, source changes and release are paused
+for the user's first-principles decision: converge the new relation replay and
+original-position binding onto the existing parsing semantics, without changing
+old parser owners or evidence thresholds. A read-only local capability probe
+shows the existing parser can supply source offsets and expose the implicit
+conflicting row; this is feasibility evidence, not an implemented factory fix.
+Both Terra/max seats are stopped. No new OCR, real binding or receipt was made.
+
+The user subsequently approved the proposed convergence on 2026-09-23.
+R2 is limited to the new binding producer, focused tests and implementation
+report: the existing default HTML parse supplies both table semantics and
+original source locations. Reuse installed dependencies; do not add a second
+AST or rewrite existing parser owners. Implicit nodes must not receive guessed
+source spans. Actual factory RED/GREEN must cover orphan th/td, supported
+positives, serialized replay and UTF-16/source-location boundaries. Preserve
+F2/F3 and all old evidence. Avicenna executes; different Meitner audits the
+frozen repair. No source acceptance or release follows merely from approval.
+
+2026-09-23 R2 implementation and independent re-review are complete, but code
+acceptance remains **CHANGES_REQUIRED**. The current source uses one parse5
+tree for semantics and original UTF-16 spans; normal/Unicode/CRLF positives,
+both original orphan-row negatives and stored erroneous receipt rejection are
+proved. Focused40/full3311 pass with zero fail/cancel/skip; lint and isolated
+schema2330 pages/6145 blocks/0 errors pass. Original R1-1 is ADDRESSED.
+
+The [v3 independent report](../../architecture-v3/execution/G4b-independent-rereview-v3.md)
+demonstrates a new Important R2-1 on the frozen repair: an intervening wrong-model
+heading or bare text is within the original table source range, but parse5
+relocates it outside the DOM table. Descendant-only validation then ignores it
+and actual receipt construction/JSON replay succeeds. The prior frozen-v2
+binding rejected both forms. These are two erroneous synthetic audit envelopes,
+not real/public receipts or acceptable positives. Main checked the raw six-case
+diagnostic and current frozen identities and accepts this as a release blocker.
+
+Following the user's instruction to pause on problems, both agent seats are
+stopped and source/release work is held. Proposed next invariant, pending the
+user's decision: all meaningful content in the original selected table range
+must remain accounted for in the verified scope, even if the parser relocates
+or drops it. An ambiguous/non-lossless mapping remains a field-scoped candidate
+gap, not a bad-PDF label; dimensions-only filtering stays unchanged. Preserve
+single-parse convergence, normal/Unicode/CRLF positives, immutable old records
+and existing owner/profile/rights boundaries. Do not substitute a heading-tag
+blacklist, another parser, or a caller-supplied completeness boolean. No R3
+implementation, new evidence acquisition, receipt repair, commit or release
+has been dispatched or performed. Five supported synthetic receipt identities
+remain separate from zero real new/admitted/accepted/public receipts.
+
+The user answered yes to that complete-source-accounting principle on
+2026-09-23. This lifts the design hold, not the release gate. R3 must prove that
+meaningful content in the selected original table range is accounted for by
+the verified scope even when the single parser relocates or discards it.
+Unexplained source content remains a typed candidate gap. A relocated-node
+check alone does not prove coverage of discarded source content. Preserve
+normal tables, legitimate implicit grouping, UTF-16/CRLF original offsets,
+all old receipt failures and dimensions-only behavior. Avicenna handles bounded
+TDD/implementation in the existing producer/tests/report; Meitner reviews a
+frozen exact R2-to-R3 diff after the executor stops. No new parser, dependency,
+generic HTML grammar, tag blacklist or completeness trust flag is authorized.
+
+2026-09-23 R3 is implemented and its first independent v4 review was APPROVED:
+four actual relocated/discarded-source negatives and stored bad envelopes now
+reject, five supported synthetic receipt identities are unchanged, and the
+captured final focused45/full3316, lint and isolated schema checks pass. Those
+results and the unedited report remain historical evidence, not final acceptance.
+
+Before accepting, main raised a concrete `tableSpan.endOffset` question. The
+same independent auditor reproduced Important R3-1: an extra table start makes
+parse5 implicitly close the selected table at147 in a197-code-unit input. The
+conflicting tail is outside that shortened span, so actual receipt construction
+and JSON replay succeed. The explicit-separated-table control still passes;
+this does not classify every outside heading or omitted tag as invalid. The
+[source-boundary hold](../../architecture-v3/execution/G4b-source-boundary-hold.md)
+records raw identities and the supplemental CHANGES_REQUIRED verdict, which
+supersedes v4's no-blocker conclusion. Earlier closed findings remain closed;
+no claim is made about the first version introducing this remaining flaw.
+
+Following the user's conditional pause instruction, both Terra/max seats are
+stopped/closed. Next proposed step, pending the user's decision, is a bounded
+source-boundary contract and independent counterexample review before further
+implementation: establish the original scope endpoints before relying on
+complete coverage inside them. Do not assume a closing-tag-only rule is proven
+sufficient, introduce another parser or weaken existing semantics/rights.
+Unproven scope remains a field-scoped candidate gap without discarding the PDF
+or changing dimensions filtering. Source/tests and every earlier audit/capture
+are preserved; only main-owned progress/hold records change after review.
+No G4b commit/push/PR/release, new OCR or real/admitted/accepted/public receipt
+has occurred. G5a remains NOT_STARTED; whole-corpus repair is unfinished.
+
+2026-09-24 the user approved the design-only round. Main wrote the
+[local source-boundary contract](../specs/2026-09-24-g4b-source-boundary-design.md):
+prove original own table endpoints (B), account for atomic original content
+inside them (C), and preserve exact model/field relation semantics (R). A bare
+end-tag check is not a sufficient acceptance rule. Legitimate implicit child
+grouping and explicitly separated tables remain distinct from implicit table
+termination. No new parser, public schema or truth flag is proposed. The
+document also defines raw-string coordinates, replay/identity invariants,
+source-completion limits and a future factory-level acceptance matrix.
+
+The six-file design freeze is f78e442f for the spec, with current R3 source,
+receipt, tests, lockfile and original hold report unchanged. New independent
+Terra/max auditor Pasteur `01a0d051-41cb-73e0-8f98-37772ac85c92` reviews the
+written design; main does not treat self-review as independent approval. Earlier
+Avicenna/Meitner seats remain closed. This round does not implement the proposed
+contract or rerun the green code suite. R3-1 and G4b code/release gates stay open
+until an authorized implementation passes actual tests and separate code review.
+
+The independent design audit then returned **CHANGES_REQUIRED**, Important
+D-1. No new bounded-scope B/C/R counterexample was found, but the draft combines
+unsupported parser/schema rejection although the receipt and binding have no
+runtime parser identity check. Main confirms this mismatch in actual code.
+Cheerio's actual resolved parser is nested7.3.0, not top-level8.0.0; the separate
+dependency correction preserves the original inventory and reviewed files.
+The [main design ruling](../../architecture-v3/execution/G4b-source-boundary-design-ruling.md)
+records both options and recommends keeping parser lock/code capture and
+revalidation at the controlled release boundary while removing the unsupported
+cross-runtime replay promise. A new runtime identity guard would be additional
+scope, not a documentation-only correction. Await user decision; Pasteur is
+closed and the draft remains byte-frozen. No implementation or extra audit is
+dispatched. The parser-only probe is limited capability evidence, not new
+factory validation. Design approval, R3-1 repair and release remain distinct.
 
 **Goal.** Bind direct Claims only to exact verified facts for the same case/product/field/value/semantics/context/anchors/rights.
 
 **Files.**
 
-- Replay through `src/domain/evidence-source-verifier.mjs` (`verifyVerificationReceipt`) and `src/domain/installation-evidence-pipeline.mjs` (`replayInstallationFieldReceipt`). Any necessary field/cross-region extension is a versioned change limited to these boundaries, preserving old replay tests.
+- Replay through `src/domain/evidence-artifact-verifier.mjs` (`verifyAttestedResolutionArtifact`, including `verifyVerificationReceipt` from `src/domain/evidence-source-verifier.mjs`) and `src/domain/installation-evidence-pipeline.mjs` (`replayInstallationFieldReceipt`). Any necessary field/cross-region extension is a versioned change limited to the source-verifier and installation-pipeline boundaries, preserving old replay tests; the existing artifact verifier is reused read-only.
 <!-- doc-audit: ignore -->
 - G4b creates `src/domain/architecture-v3/verified-source-binding.mjs`, `src/domain/architecture-v3/evidence-claim-receipt.mjs`, `tests/architecture-v3/direct-source-binding.test.mjs`, and `docs/architecture-v3/execution/G4b-direct-binding.md`.
 
@@ -1305,8 +1503,12 @@ verifyAndBindSource({
 }) -> binding | typed validation error
 
 createDirectClaimReceipt({
-  claim, sourceBinding, factBindingId, anchors, toolchain, policy, rightsDecisions
-}) -> receipt | typed validation error
+  claim, sourceBinding, factBindingId, anchors, toolchain, policy, rightsDecisions,
+  readObject
+}) -> Promise<receipt> | typed validation error
+
+verifyDirectClaimReceipt({ receipt, readObject })
+  -> Promise<receipt> | typed validation error
 ```
 
 `verifyAndBindSource` replays the actual original receipt, case, source bytes and derived artifacts through the allowlisted verifier. Authority, role and `verifiedFactBindings` are outputs, never caller assertions. A copied `verified: true` or caller-made fact array cannot issue a binding. New fields/configurations require explicit re-attestation against source anchors; old receipt scope is not widened. The binding itself carries digest-bound replay inputs for later verification.
@@ -1318,6 +1520,18 @@ media type, tool revision or options hash changes that binding even when raw
 bytes are unchanged. G3a performs structural validation, not original-source
 approval; G4a schema construction cannot stand in for this G4b replay gate.
 
+`extractionProfileSha256` identifies the actual replayed extraction profile from
+the existing document-family/region-routing owner, not a source-specific proof
+digest. Keep the complete G3a provenance digest separate. A missing compatible
+profile is an explicit candidate gap; it is not a bad PDF or permission to use
+another brand's profile. No frozen profile is widened by this G4b task.
+
+Claim evidence follows the existing G4a closed reference projection:
+`{ sourceArtifactSha256, anchors, relations }`. Compare it with that explicit
+projection of the replayed fact, never with the larger complete proof object.
+The complete fact proof remains in the binding/receipt anchor proof, with full
+validation inputs, provenance digest, schema/codec and original replay checks.
+
 The new receipt's hashed envelope includes `receiptType: 'EvidenceClaimReceipt'`,
 `schemaVersion: 3` and `canonicalizationVersion: 'fit-evidence-json-v3-1'` for
 direct and later derived receipts. Existing manufacturer verification receipts
@@ -1327,8 +1541,16 @@ already-upgraded test. Validators check the named contract and actual bindings.
 **Must prove.**
 
 - Same PDF/host but wrong SKU, unproved multi-model row, new field, changed datum/inclusion/configuration/source representation, or missing case identity rejects.
+- A fully rehashed caller witness must not invent a table row, model scope or
+  other relation. Asserted relations replay from the attested source structure;
+  G3a structural validity alone is insufficient. Valid fractional source values
+  follow existing precision/unit rules, never an accidental integer-only gate.
 - Legacy W/H/D receipt proves only its historic field scope.
 - Manufacturer/install adapters are end-to-end; government/provider/retailer remain typed V2 candidates/hints.
+- A complete supported portable source must construct a real named receipt and
+  successfully verify after JSON serialization through the same factories.
+  Negative-only receipt tests cannot establish acceptance. Portable success is
+  reported separately from real-source issuance and reviewed/public acceptance.
 - Historical proof and current `public_display` right are separately evaluated.
 - A repaired candidate and a newly acquired candidate use the same factories and acceptance checks. Old PASS/schema rewrite/rehashed payload alone cannot produce a new receipt.
 - Failed historical replay is retained as a scoped failure; independent newly verified source evidence may support a replacement. Never bind the replacement to the failed old receipt or pretend the old assertion was valid.
@@ -2092,14 +2314,30 @@ exclusion decision. Unresolved gaps, skipped origins and quarantines cannot be
 counted as repaired. Code-gate completion, receipt upgrade, installation evidence
 coverage and production cutover are four different claims.
 
-**Current task:** G4a is ACCEPTED_PENDING_RELEASE after separate implementation,
-v1/v2 independent audit and main acceptance. Both agents are closed. Main proceeds
-with scoped commit, exact-head CI and existing deployment gates; G4b remains
-NOT_STARTED until this release is verified.
-G3b remains complete and production-verified. G4b/G6 receipt replay/reissue and
-whole-corpus repair are not completed by schema construction.
+**Current task:** G4a is COMPLETE and production-verified via PR214/7b0764b.
+G4b remains on `codex/architecture-v3-g4b-source-binding`. R3 is frozen, but
+supplemental independent review is CHANGES_REQUIRED: Important R3-1 supersedes
+the initial v4 APPROVED verdict. Original R1-1/R2-1 and F2/F3 are addressed;
+implicit source-boundary shortening remains a receipt-acceptance blocker.
+Executor Avicenna `01a0a453-4a89-7e93-b95b-05fbdf002700` and distinct auditor
+Meitner `01a0a4bb-9764-7890-a2ab-515026cbed14` remain stopped/closed. The user
+approved local design review only on 2026-09-24; main's written contract is
+independently audited by Terra/max Pasteur
+`01a0d051-41cb-73e0-8f98-37772ac85c92`, now closed. Result CHANGES_REQUIRED D-1:
+choose release-level parser identity control (main recommendation) or a newly
+designed per-invocation runtime guard. The draft must not promise an absent
+cross-runtime version check. No new implementation has been dispatched. After
+the decision, revise and narrowly re-review D-1, then obtain the written-design
+decision before bounded implementation. Do not repeat closed findings, continue
+tag patches speculatively or restart unrelated architecture work. The preserved
+45/3316 passing capture does not prove the missing boundary invariant.
+No commit or release has occurred. The goal UI remains usageLimited; this
+checkpoint does not create a duplicate goal or assert program completion.
+G3b remains complete. G4b/G6 receipt replay/reissue and whole-corpus repair are not
+completed by schema construction. The preserved G4a post-release checkpoint will
+travel with this G4b implementation, not a separate metadata-only deployment.
 Main retains original-page/semantic review, contract decisions and the original
-plan. G4/G6 common-standard Claim construction, replay and receipt reissue remain
+plan. G4b/G6 common-standard source replay and actual receipt reissue remain
 unfinished and must use real prepared inputs, not only synthetic fixtures.
 PR212 preparation and PR210/211 are merged
 and production-verified. No reset or paid credit was used. Both production hotfixes
@@ -2109,3 +2347,19 @@ No new V3 preview may use the old root-output configuration. G0a/G0b/G1a/G1b sta
 complete; recheck only contracts affected by changed code/inputs or new risk.
 G2a is brand identity/index work, not geometry inheritance, legacy receipt repair,
 G6c backfill or V3 production cutover.
+
+2026-09-30 local continuation: the preserved G4b worktree above remains
+unchanged. A separate `codex/g4b-source-boundary-repair` candidate reproduces
+and repairs the R3-1 implicit-table boundary mechanism and narrows the D-1
+parser-identity contract to build/release acceptance. See
+[G4b R3 source-boundary repair](../../architecture-v3/execution/G4b-r3-source-boundary-repair.md).
+The preserved private erroneous receipt was later located and replayed against
+both old and repaired code, with the original failure and repaired rejection
+confirmed. The user then selected D-1's release-boundary option 1, and the
+isolated candidate now checks the installed parser, lockfile and reviewed G4b
+source identities before the declared build/deployment commands. This is still
+not G4b acceptance: formal independent acceptance and exact-head CI remain
+open. G5/G6
+and production evidence coverage are unchanged.
+
+2026-09-30 release continuation supersedes the earlier local hold: a distinct independent reviewer approved G4b code/design at `56228b996`, reproduced all original diagnostic replay cases and retained the real-receipt boundaries. The user-selected D-1 option1 is closed at the design/code level. The video-expiry release gate was repaired through actual executor and independent oEmbed validation, with all six useful records retained and an accurate help-video heading. Clean external dependencies yield local full3328/3328 pass; final committed Node20 CI and production verification remain open. Storage follows the latest user direction: this task’s worktrees, build artifacts, review files, dependencies and temporary output now reside on UGREEN; preexisting project worktrees/common Git remain internal. See the release preflight for exact paths and acceptance limits.
