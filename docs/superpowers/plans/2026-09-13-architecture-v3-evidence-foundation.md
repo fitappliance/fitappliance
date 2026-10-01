@@ -1,12 +1,14 @@
 # FitAppliance Architecture V3 Evidence Foundation — Revision 3 Plan
 
-> Status: EXECUTION STARTED — G0a through G4b module/code releases are accepted and merged. PR215 G4b/D-1 option1 release was production-verified at `56852cdd5`; separate PR216 trust-display release is current production `8b87ecbcf`. G5a remains RUNNING: its bounded pure review-event/history-graph increment is locally independently approved at `da296e4bd`; persistence, CAS/idempotency, CurrentEligibility and complete G5a acceptance are still pending. G5b/G6 and real/new admitted/public receipts, whole-inventory repair and V3 Fit enablement remain pending. Historical R3-1/D-1 holds below are preserved as history and superseded by the verified release checkpoint.
+> Status: EXECUTION STARTED — G0a through G4b module/code releases are accepted and merged. PR215 G4b/D-1 option1 release was production-verified at `56852cdd5`; separate PR216 trust-display release is current production `8b87ecbcf`. G5a is LOCAL_APPROVED_PENDING_CI: the prior independently approved graph increment is preserved, and the remaining shared-store/CurrentEligibility implementation is locally independently accepted at `307a774f3` with focused37+61 and full3,465 tests passing, zero skips. The distinct reviewer verified store37+10 counterchecks, eligibility61+18 combined counterchecks and2 original-source historical canaries. Exact-head Node20 CI and release remain pending. G5b/G6 and real/new admitted/public receipts, whole-inventory repair and V3 Fit enablement remain pending. Historical R3-1/D-1 holds below are preserved as history and superseded by the verified release checkpoint.
 >
 > Design authority: Revision 3 of [the V3 design](../specs/2026-09-13-architecture-v3-evidence-foundation-design.md).
 >
 > Product authority: [Product Core Brief](../../product-core-brief.md).
 >
 > Worker protocol: [Terra Max execution protocol](../../architecture-v3/terra-max-execution.md).
+>
+> Current execution override (user, 2026-09-30): use 6.1 Sol for implementation and independent review. Keep this task's isolated worktrees, artifacts, cache and temporary files on UGREEN; preserve original internal checkouts and Git common metadata. This supersedes the protocol's old model/internal task-storage defaults, without introducing an external-disk requirement in portable code or ordinary CI.
 >
 > Progress authority: this plan is the only durable task-progress index.
 
@@ -236,7 +238,7 @@ The main agent updates this table after each review. `.superpowers/sdd/` notes/r
 | G3b | Region router + canary attestation | G3a, G2a | COMPLETE | Code `6b66125`; [PR213](https://github.com/fitappliance/fitappliance/pull/213) merge `34e7ae0` | [Main acceptance](../../architecture-v3/execution/G3b-main-acceptance.md) and release checkpoint below | Distinct v3/v4 reviews approved; all6 PR checks pass. Exact-head Node20 CI3205pass/0fail/1explicit absent-store skip; mounted original test separately pass1/skip0. Preview27 and production28 controls pass; reviewed/merged tree identical. No receipt/Fit promotion. | G4a now complete; preserve G4b/G6 source replay and reissue gates |
 | G4a | Exact-product Claim V3 | G1b, G3a | COMPLETE | Code `6363b1e`; [PR214](https://github.com/fitappliance/fitappliance/pull/214) merge `7b0764b` | [Main acceptance](../../architecture-v3/execution/G4a-main-acceptance.md); [v2 re-review](../../architecture-v3/execution/G4a-independent-rereview-v2.md) and release checkpoint below | Distinct audit closes F1/F2; affected83pass; exact-head Node20 CI3270pass/0fail/1existing absent-store skip. All6 PR checks, preview16 and production17 controls pass; reviewed/merged tree identical. Unknowns/old API preserved; no receipt/Fit authority. | G4b direct original-source replay and Claim receipt is REPAIR_REQUIRED; do not re-dispatch G4a |
 | G4b | Direct source binding + receipt | G4a, G3b | COMPLETE | [PR215](https://github.com/fitappliance/fitappliance/pull/215) merged `56852cdd5`; reviewed final head `f6401a7ea` | [Independent acceptance v5](../../architecture-v3/execution/G4b-independent-acceptance-v5.md); [verified release](../../architecture-v3/execution/G4b-release-verification.md) | Module/code release verified: original R3-1 capture replay; D-1 option1 25-package identity gate; exact-head Node20 CI and production identity/smoke pass. No new real/admitted/public receipts or Verified Fit authority | G5/G6 and official exact-model coverage remain pending; separate trust release PR216 verified at `8b87ecbcf` |
-| G5a | Append review store + CurrentEligibility | G4b | RUNNING | Local `codex/g5a-review-graph`, based on released `8b87ecbcf` plus preserved docs `55020ed96` | [G5a execution report](../../architecture-v3/execution/G5a-review-store.md) | Pure review graph increment locally approved at `da296e4bd`: focused27/full3367 pass, zero skips; distinct reviewer27tests+16counterchecks pass. No persistence or Claim authority changes | Implement durable common-head store and CurrentEligibility; exact-head Node20 CI/release and full G5a acceptance remain pending |
+| G5a | Append review store + CurrentEligibility | G4b | LOCAL_APPROVED_PENDING_CI | Local independently accepted `307a774f3`, branch `codex/g5a-review-graph`; preserves `53ae24b7e` and docs `55020ed96` | [G5a execution report](../../architecture-v3/execution/G5a-review-store.md) | Shared cumulative store/CAS/idempotent recovery and CurrentEligibility complete locally: focused37+61/full3,465 pass, zero skips; distinct final reviewer store37+10 and eligibility61+18 counterchecks,2 original canaries pass. No public/Claim authority promotion | Exact-head Node20 CI/canonical build/release pending; local G5a prerequisite approved, G5b/G6 typed integration and official coverage remain separate pending work |
 | G5b | Complete-inventory adjudication | G5a, G1a | NOT_STARTED | — | — | — | — |
 | G6a | EvidenceSnapshot + readiness | G5b | NOT_STARTED | — | — | — | — |
 | G6b | Exact-SKU vertical canary | G6a, G3b | NOT_STARTED | — | — | — | — |
@@ -1567,7 +1569,7 @@ npm test
 
 ## G5a — append review store and CurrentEligibility
 
-**Status:** RUNNING — pure review graph increment locally independently approved; full task not accepted · **Depends on:** G4b · **Worker:** `gpt-5.6-terra` / max
+**Status:** LOCAL_APPROVED_PENDING_CI — complete local shared-store/CurrentEligibility scope independently accepted at `307a774f3`; full3,465 pass, zero skips; exact-head Node20 CI/canonical build/release pending · **Depends on:** G4b · **Worker:** `gpt-6.1-sol` / max
 
 **Goal.** Persist review decisions safely and compute transitive current eligibility without corrupting history.
 
