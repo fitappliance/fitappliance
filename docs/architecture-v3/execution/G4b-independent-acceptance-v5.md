@@ -20,3 +20,7 @@ I independently verified the preserved R3-1 capture and all six object hashes in
 ## Evidence accounting by the release coordinator
 
 The review approves the G4b code/design only. Its local full-suite observation came from the worktree containing the separately verified, uncommitted video metadata update; it is not exact-commit CI evidence. The Node 20 run for `56228b996` independently installed dependencies and failed on the stale committed video date. Release requires a new committed head with passing Node 20 tests/build and all downstream checks. No real source receipt or Fit authority is promoted by either review.
+
+## Release coordinator verification — 2026-09-30
+
+The earlier quoted review and initial release holds above are retained as historical records. Their release-pending conditions were subsequently satisfied by exact-head Node20 CI and production verification for PR215; see [verified release evidence](G4b-release-verification.md). Reviewed G4b binding, receipt, manifest and gate identities are unchanged at final PR head `f6401a7ea`, merged as `56852cdd5`. The video unblock was separately independently reviewed. PR216's trust-display changes were independently reviewed and released separately; they do not modify those G4b identities. This closes module/code release acceptance only, without extending the independent verdict to real/new/admitted/public receipts, rights, Verified Fit or G5/G6.
