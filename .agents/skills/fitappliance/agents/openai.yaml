@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fitappliance"
+  short_description: "Repo-specific patterns and workflows for fitappliance"
+  default_prompt: "Use the fitappliance repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
