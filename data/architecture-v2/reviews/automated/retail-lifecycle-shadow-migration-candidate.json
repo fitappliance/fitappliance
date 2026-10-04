@@ -5,10 +5,10 @@
   "releaseEpoch": "retail-lifecycle-shadow-2026-07-21-inputs-9bbd5004205e",
   "asOf": "2026-07-21T12:12:18.070Z",
   "sourceBindings": {
-    "publicProjectionSha256": "5ce822636cf15e509b9404b7bcdd9b02f8f0efdbd253ea65216f937cd48b028f",
-    "publicProjectionSemanticSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
-    "officialMarketLifecycleSha256": "e38414eb9cde0d8328339e7499df5af0dd22a33d019b531c0af2151b634a6387",
-    "officialMarketLifecycleSemanticSha256": "373a99e91f6861f3999e2a0af8dd16f13869861e1311019565828dc7318e0834",
+    "publicProjectionSha256": "65d29da8fcc2aaf78285d6162e2eed7e780273cfcac85f35d535e20ba4851da1",
+    "publicProjectionSemanticSha256": "a76b046aa1905dd1c8e6c3569a235964a0581e2bf97bb636e2d2087fa191b50e",
+    "officialMarketLifecycleSha256": "3a6baa5f1837fb77804db088e46a5c7896fca5c5d8523bc723cea23220f8fecf",
+    "officialMarketLifecycleSemanticSha256": "ecdbd6787ed8434367ae4ae52ce18217ccfdc44c7baeb394ddd2c00b26b09da9",
     "retailerLedgerSha256": "24051b205e3998974e1dad23b860818568d35603b04b8ce9121a825b82a99cff",
     "sourcePolicySha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125",
     "releasePolicySha256": "1941c9a79a6640afc3357699ce8eb1078f7aea8d8cf57770fda97e30f0426241",
@@ -502977,6 +502977,6 @@
     "unresolvedLegacyCurrentIds": [],
     "unsafeRemovedLegacyCurrentIds": []
   },
-  "shadowId": "retail_lifecycle_shadow_a9633f57fb50a2efc3d48491",
-  "semanticSha256": "a9633f57fb50a2efc3d48491395a4a04df30d04c5a10a2163c73749e342d838d"
+  "shadowId": "retail_lifecycle_shadow_6b2e6b419537d7cdec72faa6",
+  "semanticSha256": "6b2e6b419537d7cdec72faa6b72e98d1afe069f32d5c114b5ca9d7f7bc85b94f"
 }
