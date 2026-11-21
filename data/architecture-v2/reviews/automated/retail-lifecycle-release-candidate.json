@@ -7,16 +7,16 @@
   "sourceBindings": {
     "baselinePublicProjectionSha256": "50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1",
     "baselinePublicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
-    "candidateBaseProjectionSha256": "5ce822636cf15e509b9404b7bcdd9b02f8f0efdbd253ea65216f937cd48b028f",
-    "candidateBaseProjectionSemanticSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
-    "finalCandidateProjectionSha256": "890def556d805d5740097ed56245bbdb775dbed7adaf73fcc9acdf6cad6d6de7",
-    "finalCandidateProjectionSemanticSha256": "7f6a60f0c1e5e26ef21af1942448da2771efad8c0bc9714dff2e9d4a981b3594",
+    "candidateBaseProjectionSha256": "56ceb56ec8318ea32851a1f5d0b8994a40430c2a0fa7455802d7f270cec4f6bd",
+    "candidateBaseProjectionSemanticSha256": "092a433984ff23e52c1519ce5fcc293c96cf8b5e677cf5a16d2c2f448b55f0f8",
+    "finalCandidateProjectionSha256": "11143128faaf7cc76926da534ff2604136cdd57ed777f8a1414d54c27a8daabc",
+    "finalCandidateProjectionSemanticSha256": "f7e23e7b8ae5c324604d9395d79f354e293a076eb64d719fbdce248be37d0932",
     "identityMigrationSha256": "5528e4843539638a37d68db5329f5c85ddb95d006dbabc85dda9242d5984a751",
     "identityMigrationSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
-    "candidateShadowSha256": "03e3fd14e6aa859ab62b24ab61fbb5832eb62c0753b5245be473a71eafb16cfe",
-    "candidateShadowSemanticSha256": "a9633f57fb50a2efc3d48491395a4a04df30d04c5a10a2163c73749e342d838d",
-    "officialMarketLifecycleSha256": "e38414eb9cde0d8328339e7499df5af0dd22a33d019b531c0af2151b634a6387",
-    "officialMarketLifecycleSemanticSha256": "373a99e91f6861f3999e2a0af8dd16f13869861e1311019565828dc7318e0834",
+    "candidateShadowSha256": "c2ee601985f98ad3536b74c3bcad22071bb8de1bfb898ad692b84ec9878d77a2",
+    "candidateShadowSemanticSha256": "79c47724c7c54aebe729c71b34ab06c8aa3331d86ead521df638425491559cdf",
+    "officialMarketLifecycleSha256": "02cde825abe46a5d6c11ae4d819045c77a515c7d72bdda13332250dea6d3c75d",
+    "officialMarketLifecycleSemanticSha256": "e859c719e2f73aec31b2f380b227e06067a9b5b83e7d7be48290086115d436e4",
     "historicalReferenceCandidateSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
     "historicalReferenceCandidateSemanticSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13",
     "releasePolicySha256": "1941c9a79a6640afc3357699ce8eb1078f7aea8d8cf57770fda97e30f0426241"
@@ -1453,6 +1453,6 @@
     "status": "PROVEN_BYTE_IDENTICAL",
     "restoredBaselineSha256": "50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1"
   },
-  "releaseCandidateId": "retail_lifecycle_release_40e107c7532fb0893a2eb25a",
-  "semanticSha256": "40e107c7532fb0893a2eb25ad29f5ef9740ac6b75a90ec153429b454fb0fc374"
+  "releaseCandidateId": "retail_lifecycle_release_cd64934617c9f8f1f29e761e",
+  "semanticSha256": "cd64934617c9f8f1f29e761ef91622e79e07366e8434e04f82cfbeb2cbc2cf11"
 }
